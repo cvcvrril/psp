@@ -1,6 +1,6 @@
 package dao;
 
-import dao.staticTables.Coffee;
+import model.Coffee;
 import io.vavr.control.Either;
 
 import java.util.List;
