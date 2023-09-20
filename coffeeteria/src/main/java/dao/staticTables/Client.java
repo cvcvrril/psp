@@ -1,4 +1,4 @@
 package dao.staticTables;
 
-public interface DAOcoffee {
+public class Client {
 }
