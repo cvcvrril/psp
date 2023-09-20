@@ -1,4 +1,4 @@
-package ui.pantallas.list;
+package ui.pantallas.customerlist;
 
 
 import jakarta.enterprise.inject.Instance;

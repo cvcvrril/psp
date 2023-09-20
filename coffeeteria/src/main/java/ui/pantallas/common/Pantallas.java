@@ -4,7 +4,7 @@ public enum Pantallas {
 
     PANTALLA1 ("/fxml/screen1.fxml"),
     LOGIN ("/fxml/login.fxml"),
-    LISTADO ("/fxml/listado.fxml"),
+    UPDATE_ORDER ("/fxml/update_order.fxml"),
     DETALLE ("/fxml/detalle.fxml"),
     PANTALLANUEVA (ConstantesPantallas.FXML_PANTALLA_NUEVA_FXML);
 

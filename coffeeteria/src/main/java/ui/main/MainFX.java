@@ -6,9 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ui.pantallas.list.ListController;
+import ui.pantallas.customerlist.ListController;
 
 import java.io.IOException;
+import java.util.Properties;
+import java.util.ResourceBundle;
 
 public class MainFX {
 
@@ -21,7 +23,7 @@ public class MainFX {
 //            ResourceBundle r = ResourceBundle.getBundle("/i18n/textos");
 
             //fxmlLoader.setResources(r);
-            Parent fxmlParent = fxmlLoader.load(getClass().getResourceAsStream("/fxml/principal.fxml"));
+            Parent fxmlParent = fxmlLoader.load(getClass().getResourceAsStream("/fxml/list.fxml"));
             ListController controller = fxmlLoader.getController();
             controller.setStage(stage);
 

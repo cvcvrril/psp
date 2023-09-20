@@ -1,7 +1,7 @@
 package ui.pantallas.common;
 
 
-import ui.pantallas.list.ListController;
+import ui.pantallas.customerlist.ListController;
 
 public class BasePantallaController {
 
