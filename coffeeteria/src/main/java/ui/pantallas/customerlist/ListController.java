@@ -43,8 +43,6 @@ public class ListController {
     public ListController(Instance<Object> instance) {
        this.instance = instance;
        alert= new Alert(Alert.AlertType.NONE);
-
-
     }
 
     private void cargarPantalla(Pantallas pantalla) {
@@ -73,7 +71,6 @@ public class ListController {
         alert.setContentText(mensaje);
         alert.getDialogPane().setId("alert");
         alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
-        //alert.getDialogPane().lookupButton(ButtonType.CANCEL).setId("btn-cancel");
         alert.showAndWait();
     }
 
@@ -103,7 +100,7 @@ public class ListController {
 
     public void initialize() {
         menuPrincipal.setVisible(true);
-        cargarPantalla(Pantallas.PRINCIPAL);
+        cargarPantalla(Pantallas.LOGIN);
 
     }
 
@@ -123,14 +120,6 @@ public class ListController {
                 event.consume();
             }
         });
-    }
-
-    public void help(ActionEvent actionEvent) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Ayuda");
-        alert.setHeaderText("Ayuda");
-        alert.setContentText("Este es un mensaje de ayuda");
-        alert.showAndWait();
     }
 
     public void exit(ActionEvent actionEvent) {

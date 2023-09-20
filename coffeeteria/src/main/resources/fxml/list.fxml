@@ -34,4 +34,16 @@
             </menus>
         </MenuBar>
     </top>
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView layoutX="20.0" layoutY="51.0" prefHeight="237.0" prefWidth="325.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="ID Customer" />
+                <TableColumn prefWidth="75.0" text="First Name" />
+                  <TableColumn prefWidth="96.0" text="Second Name" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
+   </left>
 </BorderPane>
