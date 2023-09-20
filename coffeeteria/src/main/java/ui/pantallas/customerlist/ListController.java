@@ -103,7 +103,7 @@ public class ListController {
 
     public void initialize() {
         menuPrincipal.setVisible(true);
-        cargarPantalla(Pantallas.PANTALLA1);
+        cargarPantalla(Pantallas.PRINCIPAL);
 
     }
 
