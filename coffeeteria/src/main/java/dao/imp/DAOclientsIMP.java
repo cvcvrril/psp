@@ -1,4 +1,4 @@
-package dao.staticTables;
+package dao.imp;
 
 import dao.DAOclients;
 
