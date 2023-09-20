@@ -1,4 +1,4 @@
-package ui.pantallas.principal;
+package ui.pantallas.list;
 
 
 import jakarta.enterprise.inject.Instance;
@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 @Log4j2
-public class PrincipalController {
+public class ListController {
 
     @FXML
     private Menu menuHelp;
@@ -40,7 +40,7 @@ public class PrincipalController {
 
 
     @Inject
-    public PrincipalController(Instance<Object> instance) {
+    public ListController(Instance<Object> instance) {
        this.instance = instance;
        alert= new Alert(Alert.AlertType.NONE);
 

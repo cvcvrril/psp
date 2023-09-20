@@ -6,7 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ui.pantallas.principal.PrincipalController;
+import ui.pantallas.list.ListController;
 
 import java.io.IOException;
 
@@ -22,7 +22,7 @@ public class MainFX {
 
             //fxmlLoader.setResources(r);
             Parent fxmlParent = fxmlLoader.load(getClass().getResourceAsStream("/fxml/principal.fxml"));
-            PrincipalController controller = fxmlLoader.getController();
+            ListController controller = fxmlLoader.getController();
             controller.setStage(stage);
 
             stage.setScene(new Scene(fxmlParent));

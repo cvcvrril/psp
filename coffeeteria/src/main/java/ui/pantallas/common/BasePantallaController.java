@@ -1,18 +1,18 @@
 package ui.pantallas.common;
 
 
-import ui.pantallas.principal.PrincipalController;
+import ui.pantallas.list.ListController;
 
 public class BasePantallaController {
 
-    private PrincipalController principalController;
+    private ListController listController;
 
-    public PrincipalController getPrincipalController() {
-        return principalController;
+    public ListController getPrincipalController() {
+        return listController;
     }
 
-    public void setPrincipalController(PrincipalController principalController) {
-        this.principalController = principalController;
+    public void setPrincipalController(ListController listController) {
+        this.listController = listController;
     }
 
     public void principalCargado()
