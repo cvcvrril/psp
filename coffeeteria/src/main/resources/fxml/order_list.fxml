@@ -2,10 +2,39 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.orderlist">
    <children>
-      <BorderPane layoutX="-16.0" layoutY="221.0" prefHeight="200.0" prefWidth="200.0" />
-      <Label layoutX="199.0" layoutY="105.0" prefHeight="169.0" prefWidth="152.0" text="Label" />
+      <TableView layoutX="93.0" layoutY="114.0" prefHeight="200.0" prefWidth="152.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Order ID" />
+          <TableColumn prefWidth="75.0" text="Price" />
+        </columns>
+      </TableView>
+      <Label layoutX="93.0" layoutY="49.0" text="Order list">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </AnchorPane>
