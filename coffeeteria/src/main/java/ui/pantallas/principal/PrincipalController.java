@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import ui.pantallas.common.BasePantallaController;
 import ui.pantallas.common.Pantallas;
@@ -19,7 +20,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 @Log4j2
-public class PrincipalController {
+public class PrincipalController extends BasePantallaController {
 
     @FXML
     private Menu menuHelp;
@@ -30,6 +31,8 @@ public class PrincipalController {
     private MenuBar menuPrincipal;
     private Stage primaryStage;
 
+    @Getter
+    private String usuario;
     @FXML
     public BorderPane root;
 
@@ -93,7 +96,10 @@ public class PrincipalController {
 
     }
 
-
+    public void onLogin(String usuario) {
+        this.usuario=usuario;
+        cargarPantalla(Pantallas.PRINCIPAL);
+    }
 
     public void exit(ActionEvent actionEvent) {
 //        primaryStage.close();

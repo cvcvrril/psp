@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -27,6 +28,15 @@ public class LoginController extends BasePantallaController {
     private Stage primaryStage;
     @FXML
     public BorderPane root;
+
+
+    @FXML
+    private TextField userText;
+    @FXML
+    private void Login(ActionEvent actionEvent) {
+
+        getPrincipalController().onLogin(userText.getText());
+    }
 
     /*Métodos*/
 }
