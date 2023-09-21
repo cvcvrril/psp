@@ -2,7 +2,7 @@ package ui.pantallas.common;
 
 public enum Pantallas {
 
-    PRINCIPAL("/fxml/list.fxml"),
+    PRINCIPAL("/fxml/customer_list.fxml"),
     LOGIN ("/fxml/login.fxml"),
     UPDATE_ORDER ("/fxml/update_order.fxml"),
     DETALLE ("/fxml/detalle.fxml"),

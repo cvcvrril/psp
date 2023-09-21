@@ -16,6 +16,7 @@ module coffeeteria {
     exports ui.pantallas.login;
     exports ui.pantallas.customerlist;
     exports ui.pantallas.orderupdate;
+    exports ui.pantallas.orderlist;
 
     exports dao.imp;
 
