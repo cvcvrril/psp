@@ -21,7 +21,7 @@ public class MainFX {
 //            ResourceBundle r = ResourceBundle.getBundle("/i18n/textos");
 
             //fxmlLoader.setResources(r);
-            Parent fxmlParent = fxmlLoader.load(getClass().getResourceAsStream("/fxml/login.fxml"));
+            Parent fxmlParent = fxmlLoader.load(getClass().getResourceAsStream("/fxml/principal.fxml"));
             PrincipalController controller = fxmlLoader.getController();
             controller.setStage(stage);
 

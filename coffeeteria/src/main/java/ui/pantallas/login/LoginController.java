@@ -28,10 +28,4 @@ public class LoginController extends BasePantallaController {
 
     @FXML
     public BorderPane root;
-
-    public void exit(ActionEvent actionEvent) {
-//        primaryStage.close();
-//        Platform.exit();
-        primaryStage.fireEvent(new WindowEvent(primaryStage, WindowEvent.WINDOW_CLOSE_REQUEST));
-    }
 }

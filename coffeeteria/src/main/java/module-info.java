@@ -6,12 +6,13 @@ module coffeeteria {
     requires org.apache.logging.log4j;
     requires javafx.controls;
     requires jakarta.cdi;
-
+    requires jakarta.inject;
     exports common;
     exports services;
     exports model;
 
-    exports ui.main;
+    exports ui.main to javafx.graphics;
+    exports ui.pantallas;
     exports ui.pantallas.common;
     exports ui.pantallas.login;
     exports ui.pantallas.principal;
@@ -25,6 +26,8 @@ module coffeeteria {
     exports dao.imp;
 
     opens ui.main;
+    opens ui.pantallas to javafx.fxml;
     opens ui.pantallas.login;
-    //opens ui.pantallas.principal;
+    opens fxml;
+    opens ui.pantallas.principal;
 }
