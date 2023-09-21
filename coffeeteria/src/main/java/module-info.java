@@ -20,6 +20,7 @@ module coffeeteria {
     exports ui.pantallas.orderdelete;
     exports ui.pantallas.customerupdate;
     exports ui.pantallas.customerdelete;
+    exports ui.pantallas.customerlist;
 
     exports dao.imp;
 
