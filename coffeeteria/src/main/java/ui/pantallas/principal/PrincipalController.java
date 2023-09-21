@@ -88,28 +88,12 @@ public class PrincipalController {
 
 
     public void initialize() {
-        menuPrincipal.setVisible(true);
+        menuPrincipal.setVisible(false);
         cargarPantalla(Pantallas.LOGIN);
 
     }
 
-    private void closeWindowEvent(WindowEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.getButtonTypes().remove(ButtonType.OK);
-        alert.getButtonTypes().add(ButtonType.CANCEL);
-        alert.getButtonTypes().add(ButtonType.YES);
-        alert.setTitle("Quit application");
-        alert.setContentText("Close without saving?");
-        alert.initOwner(primaryStage.getOwner());
-        Optional<ButtonType> res = alert.showAndWait();
 
-
-        res.ifPresent(buttonType -> {
-            if (buttonType == ButtonType.CANCEL) {
-                event.consume();
-            }
-        });
-    }
 
     public void exit(ActionEvent actionEvent) {
 //        primaryStage.close();
@@ -119,7 +103,6 @@ public class PrincipalController {
 
     public void setStage(Stage stage) {
         primaryStage = stage;
-        primaryStage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeWindowEvent);
     }
 
 }

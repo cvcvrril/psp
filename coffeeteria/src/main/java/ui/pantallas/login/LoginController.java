@@ -25,7 +25,8 @@ public class LoginController extends BasePantallaController {
     @FXML
     private MenuBar menuPrincipal;
     private Stage primaryStage;
-
     @FXML
     public BorderPane root;
+
+    /*Métodos*/
 }
