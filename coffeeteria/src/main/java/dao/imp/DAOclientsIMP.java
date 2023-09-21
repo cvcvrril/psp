@@ -8,7 +8,7 @@ import java.util.List;
 
 public class DAOclientsIMP implements DAOclients {
 
-    private List<Client> getClients(){
+     List<Client> getClients(){
 
         List<Client> clientList = new ArrayList<>();
         clientList.add(new Client(1, "Pepe", "Algo"));
