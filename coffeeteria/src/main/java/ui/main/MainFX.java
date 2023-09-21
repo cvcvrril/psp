@@ -6,7 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ui.pantallas.customerlist.ListController;
+import ui.pantallas.principal.PrincipalController;
 
 import java.io.IOException;
 
@@ -21,8 +21,8 @@ public class MainFX {
 //            ResourceBundle r = ResourceBundle.getBundle("/i18n/textos");
 
             //fxmlLoader.setResources(r);
-            Parent fxmlParent = fxmlLoader.load(getClass().getResourceAsStream("/fxml/customer_list.fxml"));
-            ListController controller = fxmlLoader.getController();
+            Parent fxmlParent = fxmlLoader.load(getClass().getResourceAsStream("/fxml/login.fxml"));
+            PrincipalController controller = fxmlLoader.getController();
             controller.setStage(stage);
 
             stage.setScene(new Scene(fxmlParent));

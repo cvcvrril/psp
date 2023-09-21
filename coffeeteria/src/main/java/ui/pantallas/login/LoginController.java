@@ -1,5 +1,6 @@
 package ui.pantallas.login;
 
+import jakarta.enterprise.inject.Instance;
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,6 +34,4 @@ public class LoginController extends BasePantallaController {
 //        Platform.exit();
         primaryStage.fireEvent(new WindowEvent(primaryStage, WindowEvent.WINDOW_CLOSE_REQUEST));
     }
-
-
 }

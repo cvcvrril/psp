@@ -1,4 +1,4 @@
-package ui.pantallas.customerlist;
+package ui.pantallas.principal;
 
 
 import jakarta.enterprise.inject.Instance;
@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 @Log4j2
-public class ListController {
+public class PrincipalController {
 
     @FXML
     private Menu menuHelp;
@@ -40,7 +40,7 @@ public class ListController {
 
 
     @Inject
-    public ListController(Instance<Object> instance) {
+    public PrincipalController(Instance<Object> instance) {
        this.instance = instance;
        alert= new Alert(Alert.AlertType.NONE);
     }
@@ -63,17 +63,6 @@ public class ListController {
                 break;
         }
     }
-
-
-    public void sacarAlertError(String mensaje)
-    {
-        alert.setAlertType(Alert.AlertType.ERROR);
-        alert.setContentText(mensaje);
-        alert.getDialogPane().setId("alert");
-        alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
-        alert.showAndWait();
-    }
-
 
     private Pane cargarPantalla(String ruta) {
         Pane panePantalla = null;
@@ -131,16 +120,6 @@ public class ListController {
     public void setStage(Stage stage) {
         primaryStage = stage;
         primaryStage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeWindowEvent);
-    }
-
-    public double getHeight() {
-        return root.getScene().getWindow().getHeight();
-    }
-
-    public double getWidth()
-    {
-//        return 600;
-        return root.getScene().getWindow().getWidth();
     }
 
 }
