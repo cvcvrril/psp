@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <BorderPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.customerlist.ListController">
     <center>
@@ -11,13 +12,13 @@
             <menus>
                 <Menu fx:id="menuOptions" mnemonicParsing="false" text="Options">
                     <items>
-                        <MenuItem fx:id="menuOptionsLogout" mnemonicParsing="false" onAction="#menuClick" text="Logout" />
+                        <MenuItem fx:id="menuOptionsLogout" mnemonicParsing="false" text="Logout" />
                         <MenuItem fx:id="menuOptionsExit" mnemonicParsing="false" onAction="#exit" text="Exit" />
                     </items>
                 </Menu>
                 <Menu fx:id="menuCustomers" mnemonicParsing="false" text="Customers">
                     <items>
-                        <MenuItem fx:id="menuCustomersList" mnemonicParsing="false" onAction="#cambiarcss" text="List" />
+                        <MenuItem fx:id="menuCustomersList" mnemonicParsing="false" text="List" />
                         <MenuItem fx:id="menuCustomersAdd" mnemonicParsing="false" text="Add" />
                         <MenuItem fx:id="menuCustomersUpdate" mnemonicParsing="false" text="Update" />
                         <MenuItem fx:id="menuCustomersDelete" mnemonicParsing="false" text="Delete" />
@@ -25,7 +26,7 @@
                 </Menu>
                 <Menu fx:id="menuOrders" mnemonicParsing="false" text="Orders">
                     <items>
-                        <MenuItem fx:id="menuOrdersList" mnemonicParsing="false" onAction="#cambiarcss" text="List" />
+                        <MenuItem fx:id="menuOrdersList" mnemonicParsing="false" text="List" />
                         <MenuItem fx:id="menuOrdersAdd" mnemonicParsing="false" text="Add" />
                         <MenuItem fx:id="menuOrdersCut" mnemonicParsing="false" text="Update" />
                         <MenuItem fx:id="menuOrdersCopy" mnemonicParsing="false" text="Delete" />
@@ -37,13 +38,18 @@
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView layoutX="20.0" layoutY="51.0" prefHeight="237.0" prefWidth="325.0">
+            <TableView layoutX="49.0" layoutY="83.0" prefHeight="243.0" prefWidth="246.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="ID Customer" />
                 <TableColumn prefWidth="75.0" text="First Name" />
                   <TableColumn prefWidth="96.0" text="Second Name" />
               </columns>
             </TableView>
+            <Label layoutX="49.0" layoutY="36.0" text="Customer list">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
    </left>
 </BorderPane>

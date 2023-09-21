@@ -133,25 +133,6 @@ public class ListController {
         primaryStage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeWindowEvent);
     }
 
-    @FXML
-    private void cambiarcss(ActionEvent actionEvent) {
-        /*
-        System.out.println(primaryStage.getScene().getRoot().getStylesheets().stream().findFirst().orElseGet(() ->"no encontrado"));
-
-
-        primaryStage.getScene().getRoot().getStylesheets().clear();
-
-
-
-        primaryStage.getScene().getRoot().getStylesheets().add(getClass().getResource("/css/darkmode.css").toExternalForm());
-
-
-         */
-
-    }
-
-
-
     public double getHeight() {
         return root.getScene().getWindow().getHeight();
     }
@@ -162,28 +143,4 @@ public class ListController {
         return root.getScene().getWindow().getWidth();
     }
 
-
-    @FXML
-    private void menuClick(ActionEvent actionEvent) {
-        /*
-        switch (((MenuItem)actionEvent.getSource()).getId())
-        {
-            case "menuItemPantalla1":
-                cargarPantalla(Pantallas.PANTALLA1);
-                break;
-            case "menuItemListado":
-                cargarPantalla(Pantallas.LISTADO);
-                break;
-            case "menuItemPantallaNueva":
-                cargarPantalla(Pantallas.PANTALLANUEVA);
-                break;
-            case "menuItemLogout":
-                logout();
-                break;
-        }
-
-         */
-
-
-    }
 }

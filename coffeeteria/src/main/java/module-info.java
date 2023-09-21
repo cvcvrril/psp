@@ -8,6 +8,8 @@ module coffeeteria {
     requires jakarta.cdi;
 
     exports common;
+    exports services;
+    exports model;
 
     exports ui.main;
     exports ui.pantallas.common;
@@ -18,5 +20,6 @@ module coffeeteria {
     exports dao.imp;
 
     opens ui.main;
+    //opens ui.pantallas.login;
     opens ui.pantallas.customerlist;
 }
