@@ -2,13 +2,22 @@ package ui.pantallas.common;
 
 public enum Pantallas {
 
+    /*MAIN*/
     PRINCIPAL("/fxml/principal.fxml"),      //base de todas las pantallas, no tocar
     LOGIN ("/fxml/login.fxml"),
     WELCOME("/fxml/welcome.fxml"),
+
+    /*CUSTOMERS*/
     CUS_LIST ("/fxml/customer_list.fxml"),
     CUS_ADD ("/fxml/update_customer.fxml"),
     CUS_UPDATE("/fxml/update_customer.fxml"),
     CUS_DEL("/fxml/del_customer.fxml"),
+
+    /*ORDERS*/
+    OR_LIST("/fxml/order_list.fxml"),
+    OR_ADD("/fxml/order_list.fxml"),
+    OR_UPDATE("/fxml/order_list.fxml"),
+    OR_DEL("/fxml/order_list.fxml"),
     PANTALLANUEVA (ConstantesPantallas.FXML_PANTALLA_NUEVA_FXML);
 
     private String ruta;

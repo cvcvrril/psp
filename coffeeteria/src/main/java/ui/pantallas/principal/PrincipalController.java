@@ -159,16 +159,16 @@ public class PrincipalController extends BasePantallaController {
     private void actMenuOrders(ActionEvent actionEvent) {
         switch (((MenuItem) actionEvent.getSource()).getId()) {
             case "menuOrdersList":
-                cargarPantalla(Pantallas.CUS_LIST);
+                cargarPantalla(Pantallas.OR_LIST);
                 break;
             case "menuOrdersAdd":
-                cargarPantalla(Pantallas.CUS_ADD);
+                cargarPantalla(Pantallas.OR_ADD);
                 break;
             case "menuOrdersUpdate":
-                cargarPantalla(Pantallas.CUS_UPDATE);
+                cargarPantalla(Pantallas.OR_UPDATE);
                 break;
             case "menuOrdersDelete":
-                cargarPantalla(Pantallas.CUS_DEL);
+                cargarPantalla(Pantallas.OR_DEL);
                 break;
         }
     }
