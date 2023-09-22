@@ -19,11 +19,7 @@ public class SERVclient {
 
     /*Métodos*/
 
-    public List<Client> getCustomers(){
-        return daOclientsIMP.getClients();
-    }
-
-
+    p
 
 
 
