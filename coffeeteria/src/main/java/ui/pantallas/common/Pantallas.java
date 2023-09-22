@@ -15,9 +15,9 @@ public enum Pantallas {
 
     /*ORDERS*/
     OR_LIST("/fxml/order_list.fxml"),
-    OR_ADD("/fxml/order_list.fxml"),
-    OR_UPDATE("/fxml/order_list.fxml"),
-    OR_DEL("/fxml/order_list.fxml"),
+    OR_ADD("/fxml/add_order.fxml"),
+    OR_UPDATE("/fxml/update_order.fxml"),
+    OR_DEL("/fxml/del_order.fxml"),
     PANTALLANUEVA (ConstantesPantallas.FXML_PANTALLA_NUEVA_FXML);
 
     private String ruta;

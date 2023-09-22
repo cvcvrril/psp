@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DAOclientsIMP implements DAOclients {
 
-    private static List<Client> clients;
+    private static final List<Client> clients;
 
     static{
             clients = new ArrayList<>();
@@ -25,7 +25,7 @@ public class DAOclientsIMP implements DAOclients {
         return clients;
     }
 
-    public Either<ErrorC, List<Client>> getClient (int id) {
+    public Either<ErrorC, List<Client>> getClient () {
         return null;
     }
 

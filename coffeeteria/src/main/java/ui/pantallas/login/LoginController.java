@@ -38,7 +38,7 @@ public class LoginController extends BasePantallaController {
 
     @FXML
     private void Login(ActionEvent actionEvent) {
-        if (userText.getText().equals("root") && passwdText.getText().equals("2dam")) {
+        if (userText.getText().equals(getPrincipalController().getUsuario()) && passwdText.getText().equals("2dam")) {
             getPrincipalController().onLogin(userText.getText());
         } else {
             principalController.sacarAlertError("Usuario o contraseña incorrectos");

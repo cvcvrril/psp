@@ -1,4 +1,6 @@
 package ui.pantallas.customeradd;
 
-public class AddCustomerController {
+import ui.pantallas.common.BasePantallaController;
+
+public class AddCustomerController extends BasePantallaController {
 }
