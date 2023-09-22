@@ -2,6 +2,7 @@ package dao.imp;
 
 import dao.DAOclients;
 import model.Client;
+import model.Order;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,5 +19,19 @@ public class DAOclientsIMP implements DAOclients {
 
          }
 
+    @Override
+    public int save(Client t) {
+        return 0;
     }
+
+    @Override
+    public int uptdate(Client t) {
+        return 0;
+    }
+
+    @Override
+    public int delete(Client t) {
+        return 0;
+    }
+}
 

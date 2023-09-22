@@ -19,6 +19,4 @@ public class Client {
         this.secondName = secondName;
     }
 
-    /*Métodos*/
-
 }
