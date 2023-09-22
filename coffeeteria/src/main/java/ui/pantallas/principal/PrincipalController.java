@@ -17,7 +17,6 @@ import ui.pantallas.common.BasePantallaController;
 import ui.pantallas.common.Pantallas;
 
 import java.io.IOException;
-import java.util.Optional;
 
 @Log4j2
 public class PrincipalController extends BasePantallaController {
@@ -98,7 +97,8 @@ public class PrincipalController extends BasePantallaController {
 
     public void onLogin(String usuario) {
         this.usuario=usuario;
-        cargarPantalla(Pantallas.PRINCIPAL);
+        menuPrincipal.setVisible(true);
+        cargarPantalla(Pantallas.WELCOME);
     }
 
     public void exit(ActionEvent actionEvent) {

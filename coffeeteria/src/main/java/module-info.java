@@ -12,7 +12,7 @@ module coffeeteria {
     exports model;
 
     exports ui.main to javafx.graphics;
-    exports ui.pantallas;
+
     exports ui.pantallas.common;
     exports ui.pantallas.login;
     exports ui.pantallas.principal;
@@ -22,11 +22,12 @@ module coffeeteria {
     exports ui.pantallas.customerupdate;
     exports ui.pantallas.customerdelete;
     exports ui.pantallas.customerlist;
+    exports ui.pantallas.welcome;
 
     exports dao.imp;
 
     opens ui.main;
-    opens ui.pantallas to javafx.fxml;
+
     opens ui.pantallas.login;
     opens fxml;
     opens ui.pantallas.principal;

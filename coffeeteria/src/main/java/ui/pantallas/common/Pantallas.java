@@ -2,9 +2,10 @@ package ui.pantallas.common;
 
 public enum Pantallas {
 
-    PRINCIPAL("/fxml/principal.fxml"),
+    PRINCIPAL("/fxml/principal.fxml"),      //base de todas las pantallas, no tocar
     LOGIN ("/fxml/login.fxml"),
-    UPDATE_ORDER ("/fxml/update_order.fxml"),
+    WELCOME("/fxml/welcome.fxml"),
+    CUS_LIST ("/fxml/customer_list.fxml"),
     DETALLE ("/fxml/detalle.fxml"),
     PANTALLANUEVA (ConstantesPantallas.FXML_PANTALLA_NUEVA_FXML);
 
