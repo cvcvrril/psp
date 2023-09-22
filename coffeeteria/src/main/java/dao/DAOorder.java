@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface DAOorder {
 
-    Either<ErrorC, List<Order>>Coffee_get(int id);
+    Either<ErrorC, List<Order>>getOrder(int id);
     Either<ErrorC,List<Order>> getAll();
     int save(Order t);
     int uptdate (Order t);
