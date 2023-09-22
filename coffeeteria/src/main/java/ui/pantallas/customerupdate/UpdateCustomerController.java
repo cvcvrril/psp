@@ -1,4 +1,6 @@
 package ui.pantallas.customerupdate;
 
-public class UpdateCustomerController {
+import ui.pantallas.common.BasePantallaController;
+
+public class UpdateCustomerController extends BasePantallaController {
 }

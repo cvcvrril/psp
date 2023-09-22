@@ -1,4 +1,6 @@
 package ui.pantallas.orderdelete;
 
-public class DeleteOrderController {
+import ui.pantallas.common.BasePantallaController;
+
+public class DeleteOrderController extends BasePantallaController {
 }

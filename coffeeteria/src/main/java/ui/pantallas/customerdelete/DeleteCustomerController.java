@@ -1,4 +1,6 @@
 package ui.pantallas.customerdelete;
 
-public class DeleteCustomerController {
+import ui.pantallas.common.BasePantallaController;
+
+public class DeleteCustomerController extends BasePantallaController {
 }

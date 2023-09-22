@@ -4,8 +4,9 @@ import dao.imp.DAOclientsIMP;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Client;
+import ui.pantallas.common.BasePantallaController;
 
-public class CustomerListController {
+public class CustomerListController extends BasePantallaController {
 
 
     private DAOclientsIMP daOclientsIMP;
@@ -23,8 +24,8 @@ public class CustomerListController {
     /*Métodos*/
 
     public void initialize(){
+
         id_c.setCellValueFactory(new PropertyValueFactory<>("Customer ID"));
     }
-
 
 }

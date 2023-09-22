@@ -1,4 +1,6 @@
 package ui.pantallas.orderupdate;
 
-public class UpdateOrderController {
+import ui.pantallas.common.BasePantallaController;
+
+public class UpdateOrderController extends BasePantallaController {
 }
