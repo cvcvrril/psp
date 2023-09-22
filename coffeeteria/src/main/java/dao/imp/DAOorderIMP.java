@@ -3,17 +3,18 @@ package dao.imp;
 import dao.DAOorder;
 import io.vavr.control.Either;
 import model.Order;
+import model.errors.ErrorC;
 
 import java.util.List;
 
 public class DAOorderIMP implements DAOorder {
     @Override
-    public Either<String, List<Order>> Coffee_get(int id) {
+    public Either<ErrorC, List<Order>> Coffee_get(int id) {
         return null;
     }
 
     @Override
-    public Either<String, List<Order>> getAll() {
+    public Either<ErrorC, List<Order>> getAll() {
         return null;
     }
 

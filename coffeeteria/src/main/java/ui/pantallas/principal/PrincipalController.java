@@ -21,8 +21,9 @@ import java.io.IOException;
 @Log4j2
 public class PrincipalController extends BasePantallaController {
 
+    public MenuItem menuCustomersList;
     @FXML
-    private Menu menuHelp;
+    private Menu menuOptions;
     // objeto especial para DI
     Instance<Object> instance;
 
@@ -35,6 +36,8 @@ public class PrincipalController extends BasePantallaController {
     @FXML
     public BorderPane root;
 
+    @FXML
+    private Menu menuCustomers;
 
     private final Alert alert;
 
@@ -43,8 +46,8 @@ public class PrincipalController extends BasePantallaController {
 
     @Inject
     public PrincipalController(Instance<Object> instance) {
-       this.instance = instance;
-       alert= new Alert(Alert.AlertType.NONE);
+        this.instance = instance;
+        alert = new Alert(Alert.AlertType.NONE);
     }
 
     private void cargarPantalla(Pantallas pantalla) {
@@ -79,7 +82,7 @@ public class PrincipalController extends BasePantallaController {
 
 
         } catch (IOException e) {
-            log.error(e.getMessage(),e);
+            log.error(e.getMessage(), e);
         }
         return panePantalla;
     }
@@ -88,17 +91,28 @@ public class PrincipalController extends BasePantallaController {
         root.setCenter(pantallaNueva);
     }
 
+    public void sacarAlertError(String mensaje) {
+        alert.setAlertType(Alert.AlertType.ERROR);
+        alert.setContentText(mensaje);
+        alert.getDialogPane().setId("alert");
+        alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
+        alert.showAndWait();
+    }
 
     public void initialize() {
         menuPrincipal.setVisible(false);
         cargarPantalla(Pantallas.LOGIN);
-
     }
 
     public void onLogin(String usuario) {
-        this.usuario=usuario;
+        this.usuario = usuario;
         menuPrincipal.setVisible(true);
         cargarPantalla(Pantallas.WELCOME);
+    }
+
+    public void logout() {
+        menuPrincipal.setVisible(false);
+        cargarPantalla(Pantallas.LOGIN);
     }
 
     public void exit(ActionEvent actionEvent) {
@@ -111,4 +125,51 @@ public class PrincipalController extends BasePantallaController {
         primaryStage = stage;
     }
 
+    /*Menu Options*/
+    @FXML
+    private void actMenuOptions(ActionEvent actionEvent){
+        switch (((MenuItem) actionEvent.getSource()).getId()){
+            case "menuOptionsLogout":
+                logout();
+        }
+    }
+
+    /*Menu de customers*/
+    @FXML
+    private void actMenuCustomers(ActionEvent actionEvent) {
+        switch (((MenuItem) actionEvent.getSource()).getId()) {
+            case "menuCustomersList":
+                cargarPantalla(Pantallas.CUS_LIST);
+                break;
+            case "menuCustomersAdd":
+                cargarPantalla(Pantallas.CUS_ADD);
+                break;
+            case "menuCustomersUpdate":
+                cargarPantalla(Pantallas.CUS_UPDATE);
+                break;
+            case "menuCustomersDelete":
+                cargarPantalla(Pantallas.CUS_DEL);
+                break;
+        }
+    }
+
+    /*Menu de orders*/
+
+    @FXML
+    private void actMenuOrders(ActionEvent actionEvent) {
+        switch (((MenuItem) actionEvent.getSource()).getId()) {
+            case "menuOrdersList":
+                cargarPantalla(Pantallas.CUS_LIST);
+                break;
+            case "menuOrdersAdd":
+                cargarPantalla(Pantallas.CUS_ADD);
+                break;
+            case "menuOrdersUpdate":
+                cargarPantalla(Pantallas.CUS_UPDATE);
+                break;
+            case "menuOrdersDelete":
+                cargarPantalla(Pantallas.CUS_DEL);
+                break;
+        }
+    }
 }

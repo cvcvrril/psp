@@ -1,4 +1,7 @@
 module coffeeteria {
+
+    /*Se requieren*/
+
     requires javafx.graphics;
     requires javafx.fxml;
     requires io.vavr;
@@ -7,11 +10,8 @@ module coffeeteria {
     requires javafx.controls;
     requires jakarta.cdi;
     requires jakarta.inject;
-    exports common;
-    exports services;
-    exports model;
 
-    exports ui.main to javafx.graphics;
+    /*Pantallas*/
 
     exports ui.pantallas.common;
     exports ui.pantallas.login;
@@ -24,11 +24,19 @@ module coffeeteria {
     exports ui.pantallas.customerlist;
     exports ui.pantallas.welcome;
 
+    /*Otros exports*/
+
+    exports model.errors;
     exports dao.imp;
+    exports common;
+    exports services;
+    exports model;
+    exports ui.main to javafx.graphics;
 
-    opens ui.main;
+    /*Abrir módulos*/
 
-    opens ui.pantallas.login;
     opens fxml;
+    opens ui.main;
+    opens ui.pantallas.login;
     opens ui.pantallas.principal;
 }

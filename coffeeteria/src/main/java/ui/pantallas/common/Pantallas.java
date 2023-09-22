@@ -6,7 +6,9 @@ public enum Pantallas {
     LOGIN ("/fxml/login.fxml"),
     WELCOME("/fxml/welcome.fxml"),
     CUS_LIST ("/fxml/customer_list.fxml"),
-    DETALLE ("/fxml/detalle.fxml"),
+    CUS_ADD ("/fxml/update_customer.fxml"),
+    CUS_UPDATE("/fxml/update_customer.fxml"),
+    CUS_DEL("/fxml/del_customer.fxml"),
     PANTALLANUEVA (ConstantesPantallas.FXML_PANTALLA_NUEVA_FXML);
 
     private String ruta;

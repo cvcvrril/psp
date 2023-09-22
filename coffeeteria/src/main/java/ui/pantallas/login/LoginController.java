@@ -13,10 +13,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import ui.pantallas.common.BasePantallaController;
+import ui.pantallas.principal.PrincipalController;
 import ui.pantallas.common.Pantallas;
 import lombok.extern.log4j.Log4j2;
-
-import java.io.IOException;
 
 @Log4j2
 public class LoginController extends BasePantallaController {
@@ -29,13 +28,21 @@ public class LoginController extends BasePantallaController {
     @FXML
     public BorderPane root;
 
+    @FXML
+    private PrincipalController principalController;
 
     @FXML
     private TextField userText;
     @FXML
-    private void Login(ActionEvent actionEvent) {
+    private TextField passwdText;
 
-        getPrincipalController().onLogin(userText.getText());
+    @FXML
+    private void Login(ActionEvent actionEvent) {
+        if (userText.getText().equals("root") && passwdText.getText().equals("2dam")) {
+            getPrincipalController().onLogin(userText.getText());
+        } else {
+            principalController.sacarAlertError("Usuario o contraseña incorrectos");
+        }
     }
 
     /*Métodos*/

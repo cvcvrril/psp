@@ -18,6 +18,4 @@ public class Order {
         this.id_table = id_table;
     }
 
-    /*Métodos*/
-
 }
