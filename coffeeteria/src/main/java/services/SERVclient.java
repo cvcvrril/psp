@@ -1,12 +1,15 @@
 package services;
 
 import dao.imp.DAOclientsIMP;
+import model.Client;
+
+import java.util.List;
 
 public class SERVclient {
 
     /*Atributos*/
 
-    private DAOclientsIMP daOclientsIMP;
+    private final DAOclientsIMP daOclientsIMP;
 
     /*Constructor*/
 
@@ -16,7 +19,11 @@ public class SERVclient {
 
     /*Métodos*/
 
-    p
+    public List<Client> getCustomers(){
+        return daOclientsIMP.getClients();
+    }
+
+
 
 
 

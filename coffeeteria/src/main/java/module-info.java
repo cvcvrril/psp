@@ -23,6 +23,8 @@ module coffeeteria {
     exports ui.pantallas.customerdelete;
     exports ui.pantallas.customerlist;
     exports ui.pantallas.welcome;
+    exports ui.pantallas.customeradd;
+    exports ui.pantallas.orderadd;
 
     /*Otros exports*/
 

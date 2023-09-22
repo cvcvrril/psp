@@ -10,12 +10,16 @@ import java.util.List;
 
 public class DAOorderIMP implements DAOorder {
 
-    private static List<Order> getOrders;
+    private static List<Order> orders;
     static {
-        getOrders = new ArrayList<>();
-        getOrders.add(new Order(1, 1, 1));
-        getOrders.add(new Order(2, 2, 1));
-        getOrders.add(new Order(3, 2, 3));
+        orders = new ArrayList<>();
+        orders.add(new Order(1, 1, 1));
+        orders.add(new Order(2, 2, 1));
+        orders.add(new Order(3, 2, 3));
+    }
+
+    public List<Order> getOrders(){
+        return orders;
     }
 
     @Override

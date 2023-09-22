@@ -1,23 +1,33 @@
 package dao.imp;
 
 import dao.DAOclients;
+import io.vavr.control.Either;
 import model.Client;
 import model.Order;
+import model.errors.ErrorC;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DAOclientsIMP implements DAOclients {
 
-    private static List<Client> getClients;
+    private static List<Client> clients;
 
     static{
-            getClients = new ArrayList<>();
-            getClients.add(new Client(1, "Pepe", "Pepito"));
-            getClients.add(new Client(2, "Juan", "Juanito"));
-            getClients.add(new Client(3, "Lola", "Lolita"));
+            clients = new ArrayList<>();
+            clients.add(new Client(1, "Pepe", "Pepito"));
+            clients.add(new Client(2, "Juan", "Juanito"));
+            clients.add(new Client(3, "Lola", "Lolita"));
 
          }
+
+    public List<Client> getClients(){
+        return clients;
+    }
+
+    public Either<ErrorC, List<Client>> getClient (int id) {
+        return null;
+    }
 
     @Override
     public int save(Client t) {
