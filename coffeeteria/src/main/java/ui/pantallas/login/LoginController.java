@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import model.Credential;
 import ui.pantallas.common.BasePantallaController;
 import ui.pantallas.principal.PrincipalController;
 import ui.pantallas.common.Pantallas;
@@ -19,14 +20,6 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class LoginController extends BasePantallaController {
-
-    @FXML
-    private MenuItem menuOptionsExit;
-    @FXML
-    private MenuBar menuPrincipal;
-    private Stage primaryStage;
-    @FXML
-    public BorderPane root;
 
     @FXML
     private final PrincipalController principalController;
@@ -48,10 +41,6 @@ public class LoginController extends BasePantallaController {
         } else {
             principalController.sacarAlertError("Usuario o contraseña incorrectos");
         }
-    }
-
-    public void onLogin(String usuario){
-
     }
 
     /*Métodos*/

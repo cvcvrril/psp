@@ -103,6 +103,14 @@ public class PrincipalController extends BasePantallaController {
         alert.showAndWait();
     }
 
+    public void sacarAlertConf(String mensaje) {
+        alert.setAlertType(Alert.AlertType.CONFIRMATION);
+        alert.setContentText(mensaje);
+        alert.getDialogPane().setId("alert");
+        alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
+        alert.showAndWait();
+    }
+
     public void initialize() {
         menuPrincipal.setVisible(false);
         cargarPantalla(Pantallas.LOGIN);
