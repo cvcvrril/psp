@@ -4,6 +4,7 @@ import dao.imp.DAOorderIMP;
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,15 +20,17 @@ public class DeleteOrderController extends BasePantallaController {
     private final DAOorderIMP daOorderIMP;
 
     @FXML
-    public TableView<Order> tableOrders;
+    private TableView<Order> tableOrders;
     @FXML
-    public TableColumn<Order,Integer> id_ord;
+    private TableColumn<Order,Integer> id_ord;
     @FXML
-    public TableColumn<Order,Integer> id_c;
+    private TableColumn<Order,Integer> id_c;
     @FXML
-    public TableColumn<Order,Integer> id_table;
+    private TableColumn<Order,Integer> id_table;
     @FXML
-    public TableColumn<Order, LocalDate> date_order;
+    private TableColumn<Order, LocalDate> date_order;
+    @FXML
+    private Button delOrderButton;
 
     @Inject
     public DeleteOrderController(PrincipalController principalController, DAOorderIMP daOorderIMP) {

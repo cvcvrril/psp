@@ -17,15 +17,15 @@ public class OrderListController extends BasePantallaController {
     private final DAOorderIMP daOorderIMP;
 
     @FXML
-    public TableView<Order> tableOrders;
+    private TableView<Order> tableOrders;
     @FXML
-    public TableColumn<Order, Integer> id_ord;
+    private TableColumn<Order, Integer> id_ord;
     @FXML
-    public TableColumn<Order, Integer> id_c;
+    private TableColumn<Order, Integer> id_c;
     @FXML
-    public TableColumn<Order, Integer> id_table;
+    private TableColumn<Order, Integer> id_table;
     @FXML
-    public TableColumn<Order, LocalDate> date_order;
+    private TableColumn<Order, LocalDate> date_order;
 
     /*Constructores*/
 

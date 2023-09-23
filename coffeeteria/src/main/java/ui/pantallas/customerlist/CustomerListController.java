@@ -15,13 +15,13 @@ public class CustomerListController extends BasePantallaController {
     private final DAOclientsIMP daOclientsIMP;
 
     @FXML
-    public TableView<Client> tableCustomers;
+    private TableView<Client> tableCustomers;
     @FXML
-    public TableColumn<Client, Integer> id_c;
+    private TableColumn<Client, Integer> id_c;
     @FXML
-    public TableColumn<Client, String> firstName;
+    private TableColumn<Client, String> firstName;
     @FXML
-    public TableColumn<Client, String> secondName;
+    private TableColumn<Client, String> secondName;
 
     /*Constructores*/
 

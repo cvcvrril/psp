@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ui.pantallas.customerupdate.UpdateCustomerController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.customerupdate.UpdateCustomerController">
+   <children>
+      <Label layoutX="46.0" layoutY="33.0" text="Update Customer">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="91.0" text="First name" />
+      <TextField layoutX="46.0" layoutY="116.0" promptText="e.g. Pepe" />
+      <TextField layoutX="46.0" layoutY="182.0" promptText="e.g. Pepito" />
+      <TextField layoutX="46.0" layoutY="253.0" promptText="e.g. 123456789" />
+      <TextField layoutX="46.0" layoutY="328.0" promptText="e.g. pepitoemail@email.com" />
+      <TableView fx:id="tableCustomers" layoutX="274.0" layoutY="82.0" prefHeight="200.0" prefWidth="284.0">
+        <columns>
+          <TableColumn fx:id="id_c" prefWidth="75.0" text="Customer ID" />
+          <TableColumn fx:id="firstName" prefWidth="75.0" text="First Name" />
+          <TableColumn fx:id="secondName" prefWidth="117.0" text="Second Name" />
+        </columns>
+      </TableView>
+      <Button fx:id="updateCustomerButton" layoutX="274.0" layoutY="316.0" mnemonicParsing="false" onAction="#updateCustomer" text="Update customer" />
+      <Button fx:id="resetCustomerButton" layoutX="415.0" layoutY="316.0" mnemonicParsing="false" onAction="#resetCustomer" text="Reset" />
+      <Label layoutX="60.0" layoutY="155.0" text="Second name" />
+      <Label layoutX="60.0" layoutY="228.0" text="Phone number" />
+      <Label layoutX="60.0" layoutY="299.0" text="Email" />
+   </children>
 </AnchorPane>

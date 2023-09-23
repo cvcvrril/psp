@@ -42,4 +42,9 @@ module coffeeteria {
     opens ui.pantallas.login;
     opens ui.pantallas.principal;
     opens ui.pantallas.welcome;
+    opens ui.pantallas.orderdelete to javafx.fxml;
+    opens ui.pantallas.orderlist to javafx.fxml;
+    opens ui.pantallas.customerupdate to javafx.fxml;
+    opens ui.pantallas.customerlist to javafx.fxml;
+    opens ui.pantallas.orderupdate to javafx.fxml;
 }
