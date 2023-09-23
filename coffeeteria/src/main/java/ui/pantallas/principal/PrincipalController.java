@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
+import model.Credential;
 import ui.pantallas.common.BasePantallaController;
 import ui.pantallas.common.Pantallas;
 
@@ -32,7 +33,10 @@ public class PrincipalController extends BasePantallaController {
     private Stage primaryStage;
 
     @Getter
-    private String usuario;
+    private Credential rootUser;
+
+    @Getter
+    private String user;
     @FXML
     public BorderPane root;
 
@@ -104,8 +108,9 @@ public class PrincipalController extends BasePantallaController {
         cargarPantalla(Pantallas.LOGIN);
     }
 
-    public void onLogin(String usuario) {
-        this.usuario = usuario;
+    public void onLogin(String user) {
+        //Credential root = new Credential("root", "2dam");
+        this.user = user;
         menuPrincipal.setVisible(true);
         cargarPantalla(Pantallas.WELCOME);
     }

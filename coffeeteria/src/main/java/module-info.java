@@ -41,4 +41,5 @@ module coffeeteria {
     opens ui.main;
     opens ui.pantallas.login;
     opens ui.pantallas.principal;
+    opens ui.pantallas.welcome;
 }

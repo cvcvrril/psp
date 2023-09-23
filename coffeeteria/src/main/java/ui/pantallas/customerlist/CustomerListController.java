@@ -12,7 +12,7 @@ import ui.pantallas.common.BasePantallaController;
 
 public class CustomerListController extends BasePantallaController {
 
-    private DAOclientsIMP daOclientsIMP;
+    private final DAOclientsIMP daOclientsIMP;
 
     @FXML
     public TableView<Client> tableCustomers;

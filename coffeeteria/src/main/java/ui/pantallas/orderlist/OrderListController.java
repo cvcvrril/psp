@@ -1,11 +1,50 @@
 package ui.pantallas.orderlist;
 
+import dao.imp.DAOorderIMP;
+import jakarta.inject.Inject;
+import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.Order;
 import ui.pantallas.common.BasePantallaController;
 
+import java.time.LocalDate;
+
 public class OrderListController extends BasePantallaController {
-    public TableColumn id_ord;
-    public TableColumn price;
-    public TableColumn id_c;
-    public TableColumn id_table;
+
+
+    private final DAOorderIMP daOorderIMP;
+
+    @FXML
+    public TableView<Order> tableOrders;
+    @FXML
+    public TableColumn<Order, Integer> id_ord;
+    @FXML
+    public TableColumn<Order, Integer> id_c;
+    @FXML
+    public TableColumn<Order, Integer> id_table;
+    @FXML
+    public TableColumn<Order, LocalDate> date_order;
+
+    /*Constructores*/
+
+    @Inject
+    public OrderListController(DAOorderIMP daOorderIMP) {
+        this.daOorderIMP = daOorderIMP;
+    }
+
+    /*Métodos*/
+
+    public void initialize(){
+
+        id_ord.setCellValueFactory(new PropertyValueFactory<>("id_ord"));
+        id_c.setCellValueFactory(new PropertyValueFactory<>("id_co"));
+        id_table.setCellValueFactory(new PropertyValueFactory<>("id_table"));
+        date_order.setCellValueFactory(new PropertyValueFactory<>("or_date"));
+
+        tableOrders.getItems().addAll(daOorderIMP.getOrders());
+
+    }
+
 }

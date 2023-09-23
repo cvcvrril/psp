@@ -29,20 +29,29 @@ public class LoginController extends BasePantallaController {
     public BorderPane root;
 
     @FXML
-    private PrincipalController principalController;
+    private final PrincipalController principalController;
 
     @FXML
     private TextField userText;
     @FXML
     private TextField passwdText;
 
+    @Inject
+    public LoginController(PrincipalController principalController) {
+        this.principalController = principalController;
+    }
+
     @FXML
     private void Login(ActionEvent actionEvent) {
-        if (userText.getText().equals(getPrincipalController().getUsuario()) && passwdText.getText().equals("2dam")) {
+        if (userText.getText().equals("root") && passwdText.getText().equals("2dam")) {
             getPrincipalController().onLogin(userText.getText());
         } else {
             principalController.sacarAlertError("Usuario o contraseña incorrectos");
         }
+    }
+
+    public void onLogin(String usuario){
+
     }
 
     /*Métodos*/
