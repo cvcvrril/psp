@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.customerdelete.DeleteCustomerController" />
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.customerdelete.DeleteCustomerController">
+   <children>
+      <Label layoutX="61.0" layoutY="42.0" text="Delete customer">
+         <font>
+            <Font size="27.0" />
+         </font></Label>
+      <TableView fx:id="tableCustomers" layoutX="85.0" layoutY="117.0" prefHeight="200.0" prefWidth="260.0">
+        <columns>
+          <TableColumn fx:id="id_c" prefWidth="75.0" text="Customer ID" />
+          <TableColumn fx:id="firstName" prefWidth="75.0" text="First Name" />
+            <TableColumn fx:id="secondName" prefWidth="105.0" text="Second Name" />
+        </columns>
+      </TableView>
+      <Button fx:id="delCustomer" layoutX="415.0" layoutY="188.0" mnemonicParsing="false" text="Delete customer" onAction="#delCustomer" />
+   </children>
+</AnchorPane>

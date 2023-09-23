@@ -22,7 +22,7 @@ public class AddOrderController extends BasePantallaController {
     public AddOrderController(PrincipalController principalController) {
         this.principalController = principalController;
     }
-    
+
     public void addOrder(ActionEvent actionEvent) {
         principalController.sacarAlertConf("The order has been added");
     }

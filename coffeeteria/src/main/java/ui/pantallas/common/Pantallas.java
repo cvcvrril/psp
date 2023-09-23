@@ -9,7 +9,7 @@ public enum Pantallas {
 
     /*CUSTOMERS*/
     CUS_LIST ("/fxml/customer_list.fxml"),
-    CUS_ADD ("/fxml/update_customer.fxml"),
+    CUS_ADD ("/fxml/add_customer.fxml"),
     CUS_UPDATE("/fxml/update_customer.fxml"),
     CUS_DEL("/fxml/del_customer.fxml"),
 
@@ -17,8 +17,7 @@ public enum Pantallas {
     OR_LIST("/fxml/order_list.fxml"),
     OR_ADD("/fxml/add_order.fxml"),
     OR_UPDATE("/fxml/update_order.fxml"),
-    OR_DEL("/fxml/del_order.fxml"),
-    PANTALLANUEVA (ConstantesPantallas.FXML_PANTALLA_NUEVA_FXML);
+    OR_DEL("/fxml/del_order.fxml");
 
     private String ruta;
     Pantallas(String ruta) {
