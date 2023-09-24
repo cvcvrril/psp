@@ -1,5 +1,8 @@
 package model;
 
+import lombok.Data;
+
+@Data
 public class Credential {
 
     /*Atributos*/
@@ -10,7 +13,7 @@ public class Credential {
     /*Constructores*/
 
     public Credential(String user, String passwd) {
-        this.user = user;
-        this.passwd = passwd;
+        this.user = "root";
+        this.passwd = "2dam";
     }
 }

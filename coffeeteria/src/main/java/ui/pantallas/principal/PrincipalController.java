@@ -22,7 +22,8 @@ import java.io.IOException;
 @Log4j2
 public class PrincipalController extends BasePantallaController {
 
-    public MenuItem menuCustomersList;
+    @FXML
+    private MenuItem menuCustomersList;
     @FXML
     private Menu menuOptions;
     // objeto especial para DI
@@ -38,7 +39,7 @@ public class PrincipalController extends BasePantallaController {
     @Getter
     private String user;
     @FXML
-    public BorderPane root;
+    private BorderPane root;
 
     @FXML
     private Menu menuCustomers;
