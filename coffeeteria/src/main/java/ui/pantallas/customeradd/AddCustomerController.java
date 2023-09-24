@@ -8,6 +8,7 @@ import ui.pantallas.common.BasePantallaController;
 import ui.pantallas.principal.PrincipalController;
 
 public class AddCustomerController extends BasePantallaController {
+
     private final PrincipalController principalController;
 
     @FXML
@@ -20,6 +21,6 @@ public class AddCustomerController extends BasePantallaController {
 
 
     public void addCustomer(ActionEvent actionEvent) {
-        principalController.sacarAlertConf("User added");
+        principalController.sacarAlertConf(common.Constantes.USER_ADDED);
     }
 }

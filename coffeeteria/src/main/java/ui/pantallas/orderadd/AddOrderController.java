@@ -1,5 +1,6 @@
 package ui.pantallas.orderadd;
 
+import common.Constantes;
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import ui.pantallas.common.BasePantallaController;
 import ui.pantallas.principal.PrincipalController;
 
 public class AddOrderController extends BasePantallaController {
+
 
     private final PrincipalController principalController;
 
@@ -23,15 +25,14 @@ public class AddOrderController extends BasePantallaController {
         this.principalController = principalController;
     }
 
-    public void addOrder(ActionEvent actionEvent) {
-        principalController.sacarAlertConf("The order has been added");
+    public void addOrder(ActionEvent actionEvent) { principalController.sacarAlertConf(Constantes.THE_ORDER_HAS_BEEN_ADDED);
     }
 
     public void addItem(ActionEvent actionEvent) {
-        principalController.sacarAlertConf("The menu item has been added");
+        principalController.sacarAlertConf(Constantes.THE_MENU_ITEM_HAS_BEEN_ADDED);
     }
 
     public void removeItem(ActionEvent actionEvent) {
-        principalController.sacarAlertConf("The menu item has been removed");
+        principalController.sacarAlertConf(Constantes.THE_MENU_ITEM_HAS_BEEN_REMOVED);
     }
 }

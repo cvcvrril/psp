@@ -1,8 +1,8 @@
 package ui.pantallas.customerlist;
 
+import common.Constantes;
 import dao.imp.DAOclientsIMP;
 import jakarta.inject.Inject;
-import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -34,9 +34,9 @@ public class CustomerListController extends BasePantallaController {
 
     public void initialize() {
 
-        id_c.setCellValueFactory(new PropertyValueFactory<>("id_c"));
-        firstName.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
-        secondName.setCellValueFactory(new PropertyValueFactory<>("SecondName"));
+        id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_C));
+        firstName.setCellValueFactory(new PropertyValueFactory<>(Constantes.FIRST_NAME));
+        secondName.setCellValueFactory(new PropertyValueFactory<>(Constantes.SECOND_NAME));
 
         tableCustomers.getItems().addAll(daOclientsIMP.getClients());
 

@@ -1,5 +1,6 @@
 package ui.pantallas.customerupdate;
 
+import common.Constantes;
 import dao.imp.DAOclientsIMP;
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
@@ -37,18 +38,18 @@ public class UpdateCustomerController extends BasePantallaController {
     }
 
     public void updateCustomer(ActionEvent actionEvent) {
-        principalController.sacarAlertConf("Customer updated");
+        principalController.sacarAlertConf(Constantes.CUSTOMER_UPDATED);
     }
 
     public void resetCustomer(ActionEvent actionEvent) {
-        principalController.sacarAlertConf("Succesfully reset");
+        principalController.sacarAlertConf(Constantes.SUCCESFULLY_RESET);
     }
 
     public void initialize() {
 
-        id_c.setCellValueFactory(new PropertyValueFactory<>("id_c"));
-        firstName.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
-        secondName.setCellValueFactory(new PropertyValueFactory<>("SecondName"));
+        id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_C));
+        firstName.setCellValueFactory(new PropertyValueFactory<>(Constantes.FIRST_NAME));
+        secondName.setCellValueFactory(new PropertyValueFactory<>(Constantes.SECOND_NAME));
 
         tableCustomers.getItems().addAll(daOclientsIMP.getClients());
 

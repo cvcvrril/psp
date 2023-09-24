@@ -1,5 +1,6 @@
 package ui.pantallas.login;
 
+import common.Constantes;
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class LoginController extends BasePantallaController {
+
 
     public Credential credential;
     @FXML
@@ -31,7 +33,7 @@ public class LoginController extends BasePantallaController {
         if (userText.getText().equals("root") && passwdText.getText().equals("2dam")) {
             getPrincipalController().onLogin(userText.getText());
         } else {
-            principalController.sacarAlertError("Usuario o contraseña incorrectos");
+            principalController.sacarAlertError(Constantes.USUARIO_O_CONTRASENA_INCORRECTOS);
         }
     }
 

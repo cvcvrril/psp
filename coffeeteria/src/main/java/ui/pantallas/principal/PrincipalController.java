@@ -130,8 +130,6 @@ public class PrincipalController extends BasePantallaController {
     }
 
     public void exit(ActionEvent actionEvent) {
-//        primaryStage.close();
-//        Platform.exit();
         primaryStage.fireEvent(new WindowEvent(primaryStage, WindowEvent.WINDOW_CLOSE_REQUEST));
     }
 
