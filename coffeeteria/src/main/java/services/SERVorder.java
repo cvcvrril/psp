@@ -13,6 +13,8 @@ public class SERVorder {
 
     private DAOorderIMP daOorderIMP;
 
+    private ErrorC errorC;
+
     /*Constructor*/
 
     public SERVorder(DAOorderIMP daOorderIMP) {
@@ -26,7 +28,23 @@ public class SERVorder {
     }
 
     public Either<ErrorC, List<Order>> getOrders(int i){
-        return daOorderIMP.getOrder(i);
+        if (i > 0)
+        return Either.right(daOorderIMP.getOrders());
+        else
+            return Either.left(errorC);
+
+    }
+
+    public Order saveOrder (int i){
+        return null;
+    }
+
+    public Order updateOrder (int i){
+        return null;
+    }
+
+    public Order delOrder (int i){
+        return null;
     }
 
 
