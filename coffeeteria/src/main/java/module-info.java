@@ -47,4 +47,7 @@ module coffeeteria {
     opens ui.pantallas.customerupdate to javafx.fxml;
     opens ui.pantallas.customerlist to javafx.fxml;
     opens ui.pantallas.orderupdate to javafx.fxml;
+    opens ui.pantallas.customeradd to javafx.fxml;
+    opens ui.pantallas.customerdelete to javafx.fxml;
+    opens ui.pantallas.orderadd to javafx.fxml;
 }

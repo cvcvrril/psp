@@ -18,16 +18,16 @@ public class DeleteCustomerController extends BasePantallaController {
     private final DAOclientsIMP daOclientsIMP;
 
     @FXML
-    public Button delCustomer;
+    private Button delCustomer;
 
     @FXML
-    public TableView<Client> tableCustomers;
+    private TableView<Client> tableCustomers;
     @FXML
-    public TableColumn<Client,Integer> id_c;
+    private TableColumn<Client, Integer> id_c;
     @FXML
-    public TableColumn<Client,String> firstName;
+    private TableColumn<Client, String> firstName;
     @FXML
-    public TableColumn<Client,String> secondName;
+    private TableColumn<Client, String> secondName;
 
 
     @Inject
@@ -43,7 +43,7 @@ public class DeleteCustomerController extends BasePantallaController {
 
     }
 
-    public void initialize(){
+    public void initialize() {
 
         id_c.setCellValueFactory(new PropertyValueFactory<>("id_c"));
         firstName.setCellValueFactory(new PropertyValueFactory<>("FirstName"));

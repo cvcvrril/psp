@@ -12,11 +12,11 @@ public class AddOrderController extends BasePantallaController {
     private final PrincipalController principalController;
 
     @FXML
-    public Button addOrderButton;
+    private Button addOrderButton;
     @FXML
-    public Button addItemButton;
+    private Button addItemButton;
     @FXML
-    public Button removeItemButton;
+    private Button removeItemButton;
 
     @Inject
     public AddOrderController(PrincipalController principalController) {

@@ -12,6 +12,7 @@ import java.util.List;
 public class DAOorderIMP implements DAOorder {
 
     private static List<Order> orders;
+
     static {
         orders = new ArrayList<>();
         orders.add(new Order(1, 1, 1, LocalDate.now()));
@@ -19,12 +20,12 @@ public class DAOorderIMP implements DAOorder {
         orders.add(new Order(3, 2, 3, LocalDate.now()));
     }
 
-    public List<Order> getOrders(){
+    public List<Order> getOrders() {
         return orders;
     }
 
     @Override
-    public Either<ErrorC, List<Order>> getOrder (int id) {
+    public Either<ErrorC, List<Order>> getOrder(int id) {
         return null;
     }
 

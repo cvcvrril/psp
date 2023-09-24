@@ -20,11 +20,11 @@ public class UpdateCustomerController extends BasePantallaController {
     @FXML
     private TableView<Client> tableCustomers;
     @FXML
-    private TableColumn<Client,Integer> id_c;
+    private TableColumn<Client, Integer> id_c;
     @FXML
-    private TableColumn<Client,String> firstName;
+    private TableColumn<Client, String> firstName;
     @FXML
-    private TableColumn<Client,String> secondName;
+    private TableColumn<Client, String> secondName;
     @FXML
     private Button resetCustomerButton;
     @FXML
@@ -44,7 +44,7 @@ public class UpdateCustomerController extends BasePantallaController {
         principalController.sacarAlertConf("Succesfully reset");
     }
 
-    public void initialize(){
+    public void initialize() {
 
         id_c.setCellValueFactory(new PropertyValueFactory<>("id_c"));
         firstName.setCellValueFactory(new PropertyValueFactory<>("FirstName"));

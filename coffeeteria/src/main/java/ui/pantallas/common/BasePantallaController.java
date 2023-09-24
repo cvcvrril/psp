@@ -15,8 +15,7 @@ public abstract class BasePantallaController {
         this.principalController = principalController;
     }
 
-    public void principalCargado()
-    {
+    public void principalCargado() {
 
     }
 }

@@ -13,19 +13,19 @@ public class DAOclientsIMP implements DAOclients {
 
     private static final List<Client> clients;
 
-    static{
-            clients = new ArrayList<>();
-            clients.add(new Client(1, "Pepe", "Pepito"));
-            clients.add(new Client(2, "Juan", "Juanito"));
-            clients.add(new Client(3, "Lola", "Lolita"));
+    static {
+        clients = new ArrayList<>();
+        clients.add(new Client(1, "Pepe", "Pepito"));
+        clients.add(new Client(2, "Juan", "Juanito"));
+        clients.add(new Client(3, "Lola", "Lolita"));
 
-         }
+    }
 
-    public List<Client> getClients(){
+    public List<Client> getClients() {
         return clients;
     }
 
-    public Either<ErrorC, List<Client>> getClient () {
+    public Either<ErrorC, List<Client>> getClient() {
         return null;
     }
 

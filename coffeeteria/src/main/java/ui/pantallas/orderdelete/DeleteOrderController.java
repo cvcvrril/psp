@@ -22,11 +22,11 @@ public class DeleteOrderController extends BasePantallaController {
     @FXML
     private TableView<Order> tableOrders;
     @FXML
-    private TableColumn<Order,Integer> id_ord;
+    private TableColumn<Order, Integer> id_ord;
     @FXML
-    private TableColumn<Order,Integer> id_c;
+    private TableColumn<Order, Integer> id_c;
     @FXML
-    private TableColumn<Order,Integer> id_table;
+    private TableColumn<Order, Integer> id_table;
     @FXML
     private TableColumn<Order, LocalDate> date_order;
     @FXML
@@ -42,7 +42,7 @@ public class DeleteOrderController extends BasePantallaController {
         principalController.sacarAlertConf("Order deleted");
     }
 
-    public void initialize(){
+    public void initialize() {
 
         id_ord.setCellValueFactory(new PropertyValueFactory<>("id_ord"));
         id_c.setCellValueFactory(new PropertyValueFactory<>("id_co"));

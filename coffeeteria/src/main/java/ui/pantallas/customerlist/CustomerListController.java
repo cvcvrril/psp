@@ -32,13 +32,13 @@ public class CustomerListController extends BasePantallaController {
 
     /*Métodos*/
 
-    public void initialize(){
+    public void initialize() {
 
-       id_c.setCellValueFactory(new PropertyValueFactory<>("id_c"));
-       firstName.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
-       secondName.setCellValueFactory(new PropertyValueFactory<>("SecondName"));
+        id_c.setCellValueFactory(new PropertyValueFactory<>("id_c"));
+        firstName.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
+        secondName.setCellValueFactory(new PropertyValueFactory<>("SecondName"));
 
-       tableCustomers.getItems().addAll(daOclientsIMP.getClients());
+        tableCustomers.getItems().addAll(daOclientsIMP.getClients());
 
     }
 

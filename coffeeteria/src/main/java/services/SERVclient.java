@@ -23,32 +23,28 @@ public class SERVclient {
 
     /*Métodos*/
 
-    public List<Client> getClients(){
+    public List<Client> getClients() {
         return daOclientsIMP.getClients();
     }
 
-    public Either<ErrorC, List<Client>> getClients(int i){
+    public Either<ErrorC, List<Client>> getClients(int i) {
         if (i > 0)
             return Either.right(daOclientsIMP.getClients());
         else
             return Either.left(errorC);
     }
 
-    public Client saveClient (int i){
+    public Client saveClient(int i) {
         return null;
     }
 
-    public Client updateClient (int i){
+    public Client updateClient(int i) {
         return null;
     }
 
-    public Client delClient (int i){
+    public Client delClient(int i) {
         return null;
     }
-
-
-
-
 
 
 }

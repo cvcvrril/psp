@@ -11,7 +11,7 @@ public class AddCustomerController extends BasePantallaController {
     private final PrincipalController principalController;
 
     @FXML
-    public Button addCustomerButton;
+    private Button addCustomerButton;
 
     @Inject
     public AddCustomerController(PrincipalController principalController) {

@@ -23,30 +23,29 @@ public class SERVorder {
 
     /*Métodos*/
 
-    public List<Order> getOrders(){
+    public List<Order> getOrders() {
         return daOorderIMP.getOrders();
     }
 
-    public Either<ErrorC, List<Order>> getOrders(int i){
+    public Either<ErrorC, List<Order>> getOrders(int i) {
         if (i > 0)
-        return Either.right(daOorderIMP.getOrders());
+            return Either.right(daOorderIMP.getOrders());
         else
             return Either.left(errorC);
 
     }
 
-    public Order saveOrder (int i){
+    public Order saveOrder(int i) {
         return null;
     }
 
-    public Order updateOrder (int i){
+    public Order updateOrder(int i) {
         return null;
     }
 
-    public Order delOrder (int i){
+    public Order delOrder(int i) {
         return null;
     }
-
 
 
 }
