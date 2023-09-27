@@ -15,9 +15,9 @@ public class DAOclientsIMP implements DAOclients {
 
     static {
         clients = new ArrayList<>();
-        clients.add(new Client(1, "Pepe", "Pepito"));
-        clients.add(new Client(2, "Juan", "Juanito"));
-        clients.add(new Client(3, "Lola", "Lolita"));
+        clients.add(new Client(1, "Pepe", "Pepito", "pepepepito@gmail.com", 123456789));
+        clients.add(new Client(2, "Juan", "Juanito", "juanjuanito@gmail.com", 987654321));
+        clients.add(new Client(3, "Lola", "Lolita", "lolalolita@gmail.com", 111111111));
 
     }
 
