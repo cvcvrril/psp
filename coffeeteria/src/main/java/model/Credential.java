@@ -7,13 +7,6 @@ public class Credential {
 
     /*Atributos*/
 
-    private String user;
-    private String passwd;
-
-    /*Constructores*/
-
-    public Credential(String user, String passwd) {
-        this.user = "root";
-        this.passwd = "2dam";
-    }
+    private final String user;
+    private final String passwd;
 }

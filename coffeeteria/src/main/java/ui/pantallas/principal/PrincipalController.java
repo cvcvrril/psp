@@ -33,8 +33,7 @@ public class PrincipalController extends BasePantallaController {
     private MenuBar menuPrincipal;
     private Stage primaryStage;
 
-    @Getter
-    private Credential rootUser;
+    public Credential actCred;
 
     @Getter
     private String user;
@@ -56,22 +55,7 @@ public class PrincipalController extends BasePantallaController {
     }
 
     private void cargarPantalla(Pantallas pantalla) {
-
-        switch (pantalla) {
-//            case LISTADO:
-//                cambioPantalla(cargarPantalla(pantalla.getRuta()));
-//                break;
-//            case PANTALLA1:
-//                if (pantallaBienvenida == null){
-//                    pantallaBienvenida = cargarPantalla(pantalla.getRuta());
-//                }
-//
-//                cambioPantalla(pantallaBienvenida);
-//                break;
-            default:
                 cambioPantalla(cargarPantalla(pantalla.getRuta()));
-                break;
-        }
     }
 
     private Pane cargarPantalla(String ruta) {
@@ -117,9 +101,8 @@ public class PrincipalController extends BasePantallaController {
         cargarPantalla(Pantallas.LOGIN);
     }
 
-    public void onLogin(String user) {
-        //Credential root = new Credential("root", "2dam");
-        this.user = user;
+    public void onLogin(Credential credential) {
+        actCred = credential;
         menuPrincipal.setVisible(true);
         cargarPantalla(Pantallas.WELCOME);
     }

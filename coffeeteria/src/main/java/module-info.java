@@ -39,6 +39,7 @@ module coffeeteria {
 
     opens fxml;
     opens ui.main;
+    opens services;
     opens ui.pantallas.login;
     opens ui.pantallas.principal;
     opens ui.pantallas.welcome;
