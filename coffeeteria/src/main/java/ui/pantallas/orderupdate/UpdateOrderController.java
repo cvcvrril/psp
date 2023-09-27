@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Order;
 import ui.pantallas.common.BasePantallaController;
@@ -36,6 +37,14 @@ public class UpdateOrderController extends BasePantallaController {
     private Button removeItemButton;
     @FXML
     private Button updateOrderButton;
+    @FXML
+    private TextField dateField;
+    @FXML
+    private TextField tableField;
+    @FXML
+    private TextField customerField;
+    @FXML
+    private TextField quantityField;
 
     @Inject
     public UpdateOrderController(PrincipalController principalController, DAOorderIMP daOorderIMP) {

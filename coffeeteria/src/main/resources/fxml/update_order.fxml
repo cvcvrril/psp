@@ -11,10 +11,11 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <TextField layoutX="49.0" layoutY="107.0" />
-      <ComboBox layoutX="49.0" layoutY="155.0" prefWidth="150.0" />
-      <ComboBox layoutX="49.0" layoutY="207.0" prefWidth="150.0" />
-      <TableView layoutX="259.0" layoutY="55.0" prefHeight="106.0" prefWidth="200.0">
+      <TextField fx:id="dateField" layoutX="49.0" layoutY="107.0" />
+      <TextField fx:id="tableField" layoutX="49.0" layoutY="155.0" prefWidth="150.0" />
+      <TextField fx:id="customerField" layoutX="49.0" layoutY="207.0" prefWidth="150.0" />
+      <TextField fx:id="quantityField" layoutX="50.0" layoutY="260.0" prefHeight="25.0" prefWidth="70.0" />
+       <TableView layoutX="259.0" layoutY="55.0" prefHeight="106.0" prefWidth="200.0">
         <columns>
           <TableColumn prefWidth="75.0" text="Name item" />
           <TableColumn prefWidth="75.0" text="Quantity" />
@@ -28,16 +29,16 @@
             <TableColumn fx:id="date_order" prefWidth="75.0" text="Date" />
         </columns>
       </TableView>
-      <Button fx:id="addItemButton" layoutX="492.0" layoutY="55.0" mnemonicParsing="false" text="Add" onAction="#addItem" />
-      <Button fx:id="removeItemButton" layoutX="492.0" layoutY="96.0" mnemonicParsing="false" text="Remove" onAction="#removeItem" />
-      <TextField layoutX="50.0" layoutY="260.0" prefHeight="25.0" prefWidth="70.0" />
+      <Button fx:id="addItemButton" layoutX="492.0" layoutY="55.0" mnemonicParsing="false" onAction="#addItem" text="Add" />
+      <Button fx:id="removeItemButton" layoutX="492.0" layoutY="96.0" mnemonicParsing="false" onAction="#removeItem" text="Remove" />
+
       <ComboBox layoutX="138.0" layoutY="260.0" prefHeight="25.0" prefWidth="103.0" />
       <Label layoutX="63.0" layoutY="88.0" text="Date" />
       <Label layoutX="62.0" layoutY="132.0" text="Table" />
-      <Label layoutX="63.0" layoutY="180.0" text="Customer" />
+      <Label layoutX="51.0" layoutY="192.0" text="Customer" />
       <Label layoutX="49.0" layoutY="243.0" text="Quantity" />
       <Label layoutX="147.0" layoutY="243.0" text="Menu item" />
       <Label layoutX="272.0" layoutY="172.0" text="Menu items" />
-      <Button fx:id="updateOrderButton" layoutX="138.0" layoutY="313.0" mnemonicParsing="false" text="Update Order" onAction="#updateOrder" />
+      <Button fx:id="updateOrderButton" layoutX="138.0" layoutY="313.0" mnemonicParsing="false" onAction="#updateOrder" text="Update Order" />
    </children>
 </AnchorPane>
