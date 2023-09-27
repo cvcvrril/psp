@@ -23,9 +23,14 @@ public class WelcomeController extends BasePantallaController {
 
     }
 
-    public void initialize(){
-        //welcomeText.setText("Welcome " + principalController.getUser());
+    public void principalCargado(){
+        //welcomeText.setText("Welcome " + principalController.actCred.getUser());
         welcomeText.setText("Welcome root");
+    }
+
+    public void initialize(){
+
+        //welcomeText.setText("Welcome root");
     }
 
 }

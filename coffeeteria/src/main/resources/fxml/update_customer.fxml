@@ -11,11 +11,12 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <Label layoutX="60.0" layoutY="91.0" text="First name" />
-      <TextField layoutX="46.0" layoutY="116.0" promptText="e.g. Pepe" />
-      <TextField layoutX="46.0" layoutY="182.0" promptText="e.g. Pepito" />
-      <TextField layoutX="46.0" layoutY="253.0" promptText="e.g. 123456789" />
-      <TextField layoutX="46.0" layoutY="328.0" promptText="e.g. pepitoemail@email.com" />
+      <Label layoutX="64.0" layoutY="165.0" text="First name" />
+      <TextField fx:id="firstNameField" layoutX="46.0" layoutY="188.0" promptText="e.g. Pepe" />
+      <TextField fx:id="secondNameField" layoutX="46.0" layoutY="249.0" promptText="e.g. Pepito" />
+      <TextField fx:id="phoneField" layoutX="46.0" layoutY="295.0" promptText="e.g. 123456789" />
+      <TextField fx:id="emailField" layoutX="46.0" layoutY="341.0" promptText="e.g. pepitoemail@email.com" />
+      <TextField fx:id="idCustomerField" layoutX="45.0" layoutY="130.0" promptText="e.g. 1" />
       <TableView fx:id="tableCustomers" layoutX="274.0" layoutY="82.0" prefHeight="200.0" prefWidth="284.0">
         <columns>
           <TableColumn fx:id="id_c" prefWidth="75.0" text="Customer ID" />
@@ -25,8 +26,9 @@
       </TableView>
       <Button fx:id="updateCustomerButton" layoutX="274.0" layoutY="316.0" mnemonicParsing="false" onAction="#updateCustomer" text="Update customer" />
       <Button fx:id="resetCustomerButton" layoutX="415.0" layoutY="316.0" mnemonicParsing="false" onAction="#resetCustomer" text="Reset" />
-      <Label layoutX="60.0" layoutY="155.0" text="Second name" />
-      <Label layoutX="60.0" layoutY="228.0" text="Phone number" />
-      <Label layoutX="60.0" layoutY="299.0" text="Email" />
+      <Label layoutX="61.0" layoutY="232.0" text="Second name" />
+      <Label layoutX="57.0" layoutY="274.0" text="Phone number" />
+      <Label layoutX="62.0" layoutY="320.0" text="Email" />
+      <Label layoutX="63.0" layoutY="106.0" text="ID Customer" />
    </children>
 </AnchorPane>

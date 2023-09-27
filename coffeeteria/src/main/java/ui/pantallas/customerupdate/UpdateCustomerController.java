@@ -8,7 +8,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import model.Client;
 import ui.pantallas.common.BasePantallaController;
 import ui.pantallas.principal.PrincipalController;
@@ -17,6 +19,16 @@ public class UpdateCustomerController extends BasePantallaController {
 
     private final PrincipalController principalController;
     private final DAOclientsIMP daOclientsIMP;
+    @FXML
+    private TextField idCustomerField;
+    @FXML
+    private TextField firstNameField;
+    @FXML
+    private TextField secondNameField;
+    @FXML
+    private TextField phoneField;
+    @FXML
+    private TextField emailField;
 
     @FXML
     private TableView<Client> tableCustomers;
@@ -50,8 +62,17 @@ public class UpdateCustomerController extends BasePantallaController {
         id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_C));
         firstName.setCellValueFactory(new PropertyValueFactory<>(Constantes.FIRST_NAME));
         secondName.setCellValueFactory(new PropertyValueFactory<>(Constantes.SECOND_NAME));
-
         tableCustomers.getItems().addAll(daOclientsIMP.getClients());
+        tableCustomers.setOnMouseClicked(this::handleTable);
+    }
 
+    private void handleTable(MouseEvent event){
+        if (event.getClickCount() == 1){
+            Client selClient = tableCustomers.getSelectionModel().getSelectedItem();
+            if (selClient != null) {
+                idCustomerField.setText(String.valueOf(selClient.getId_c()));
+                
+            }
+        }
     }
 }

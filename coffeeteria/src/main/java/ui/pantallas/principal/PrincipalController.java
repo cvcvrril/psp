@@ -108,6 +108,7 @@ public class PrincipalController extends BasePantallaController {
     }
 
     public void logout() {
+        actCred = null;
         menuPrincipal.setVisible(false);
         cargarPantalla(Pantallas.LOGIN);
     }
