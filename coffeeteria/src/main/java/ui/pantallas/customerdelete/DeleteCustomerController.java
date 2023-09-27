@@ -29,6 +29,11 @@ public class DeleteCustomerController extends BasePantallaController {
     private TableColumn<Client, String> firstName;
     @FXML
     private TableColumn<Client, String> secondName;
+    @FXML
+    private TableColumn<Client,String> email;
+    @FXML
+    private TableColumn<Client,Integer> phoneNumber;
+
 
 
     @Inject
@@ -49,6 +54,8 @@ public class DeleteCustomerController extends BasePantallaController {
         id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_C));
         firstName.setCellValueFactory(new PropertyValueFactory<>(Constantes.FIRST_NAME));
         secondName.setCellValueFactory(new PropertyValueFactory<>(Constantes.SECOND_NAME));
+        email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
+        phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
 
         tableCustomers.getItems().addAll(daOclientsIMP.getClients());
 
