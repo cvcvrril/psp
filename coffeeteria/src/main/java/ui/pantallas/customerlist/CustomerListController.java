@@ -22,6 +22,11 @@ public class CustomerListController extends BasePantallaController {
     private TableColumn<Client, String> firstName;
     @FXML
     private TableColumn<Client, String> secondName;
+    @FXML
+    private TableColumn<Client,Integer> phoneNumber;
+    @FXML
+    private TableColumn<Client,String> email;
+
 
     /*Constructores*/
 
@@ -37,7 +42,8 @@ public class CustomerListController extends BasePantallaController {
         id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_C));
         firstName.setCellValueFactory(new PropertyValueFactory<>(Constantes.FIRST_NAME));
         secondName.setCellValueFactory(new PropertyValueFactory<>(Constantes.SECOND_NAME));
-
+        phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
+        email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
         tableCustomers.getItems().addAll(daOclientsIMP.getClients());
 
     }
