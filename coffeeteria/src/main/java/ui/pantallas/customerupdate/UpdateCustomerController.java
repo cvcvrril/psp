@@ -3,7 +3,6 @@ package ui.pantallas.customerupdate;
 import common.Constantes;
 import dao.imp.DAOclientsIMP;
 import jakarta.inject.Inject;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -56,11 +55,11 @@ public class UpdateCustomerController extends BasePantallaController {
         this.daOclientsIMP = daOclientsIMP;
     }
 
-    public void updateCustomer(ActionEvent actionEvent) {
+    public void updateCustomer() {
         principalController.sacarAlertConf(Constantes.CUSTOMER_UPDATED);
     }
 
-    public void resetCustomer(ActionEvent actionEvent) {
+    public void resetCustomer() {
         principalController.sacarAlertConf(Constantes.SUCCESFULLY_RESET);
     }
 

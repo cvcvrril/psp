@@ -3,13 +3,13 @@ package ui.pantallas.orderupdate;
 import common.Constantes;
 import dao.imp.DAOorderIMP;
 import jakarta.inject.Inject;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import model.Order;
 import ui.pantallas.common.BasePantallaController;
 import ui.pantallas.principal.PrincipalController;
@@ -38,6 +38,8 @@ public class UpdateOrderController extends BasePantallaController {
     @FXML
     private Button updateOrderButton;
     @FXML
+    private TextField orderIdField;
+    @FXML
     private TextField dateField;
     @FXML
     private TextField tableField;
@@ -52,15 +54,15 @@ public class UpdateOrderController extends BasePantallaController {
         this.daOorderIMP = daOorderIMP;
     }
 
-    public void addItem(ActionEvent actionEvent) {
+    public void addItem() {
         principalController.sacarAlertConf(Constantes.THE_MENU_ITEM_HAS_BEEN_ADDED);
     }
 
-    public void removeItem(ActionEvent actionEvent) {
+    public void removeItem() {
         principalController.sacarAlertConf(Constantes.THE_MENU_ITEM_HAS_BEEN_REMOVED);
     }
 
-    public void updateOrder(ActionEvent actionEvent) {
+    public void updateOrder() {
         principalController.sacarAlertConf(Constantes.ORDER_UPDATED);
     }
 
@@ -70,9 +72,21 @@ public class UpdateOrderController extends BasePantallaController {
         id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
         id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
-
         tableOrders.getItems().addAll(daOorderIMP.getOrders());
+        tableOrders.setOnMouseClicked(this::handleTable);
+    }
 
+    private void handleTable(MouseEvent event){
+        if (event.getClickCount() == 1){
+            Order selOrder = tableOrders.getSelectionModel().getSelectedItem();
+            if (selOrder != null){
+                orderIdField.setText(String.valueOf(selOrder.getId_ord()));
+                customerField.setText(String.valueOf(selOrder.getId_co()));
+                tableField.setText(String.valueOf(selOrder.getId_table()));
+                dateField.setText(String.valueOf(selOrder.getOr_date()));
+
+            }
+        }
     }
 
 }
