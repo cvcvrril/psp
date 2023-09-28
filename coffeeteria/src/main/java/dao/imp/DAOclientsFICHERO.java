@@ -30,7 +30,7 @@ public class DAOclientsFICHERO {
     public static List<Client> readFile(String file){
         createFiles();
         ArrayList<Client> aux = null;
-        
+
         return null;
     }
 

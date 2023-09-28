@@ -5,6 +5,7 @@ import dao.imp.DAOorderIMP;
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -17,8 +18,6 @@ import java.time.LocalDate;
 
 public class DeleteOrderController extends BasePantallaController {
 
-
-    private final PrincipalController principalController;
     private final DAOorderIMP daOorderIMP;
 
     @FXML
@@ -35,13 +34,14 @@ public class DeleteOrderController extends BasePantallaController {
     private Button delOrderButton;
 
     @Inject
-    public DeleteOrderController(PrincipalController principalController, DAOorderIMP daOorderIMP) {
-        this.principalController = principalController;
+    public DeleteOrderController(DAOorderIMP daOorderIMP) {
         this.daOorderIMP = daOorderIMP;
     }
 
     public void delOrder(ActionEvent actionEvent) {
-        principalController.sacarAlertConf(Constantes.ORDER_DELETED);
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText(Constantes.ORDER_DELETED);
+        a.show();
     }
 
     public void initialize() {

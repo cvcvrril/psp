@@ -4,10 +4,7 @@ import common.Constantes;
 import dao.imp.DAOclientsIMP;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import model.Client;
@@ -18,7 +15,7 @@ public class UpdateCustomerController extends BasePantallaController {
 
 
 
-    private final PrincipalController principalController;
+
     private final DAOclientsIMP daOclientsIMP;
 
     @FXML
@@ -50,17 +47,20 @@ public class UpdateCustomerController extends BasePantallaController {
     private Button updateCustomerButton;
 
     @Inject
-    public UpdateCustomerController(PrincipalController principalController, DAOclientsIMP daOclientsIMP) {
-        this.principalController = principalController;
+    public UpdateCustomerController(DAOclientsIMP daOclientsIMP) {
         this.daOclientsIMP = daOclientsIMP;
     }
 
     public void updateCustomer() {
-        principalController.sacarAlertConf(Constantes.CUSTOMER_UPDATED);
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText(Constantes.CUSTOMER_UPDATED);
+        a.show();
     }
 
     public void resetCustomer() {
-        principalController.sacarAlertConf(Constantes.SUCCESFULLY_RESET);
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText(Constantes.SUCCESFULLY_RESET);
+        a.show();
     }
 
     public void initialize() {
@@ -86,4 +86,6 @@ public class UpdateCustomerController extends BasePantallaController {
             }
         }
     }
+
+
 }

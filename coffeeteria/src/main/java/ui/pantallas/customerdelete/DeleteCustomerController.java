@@ -5,6 +5,7 @@ import dao.imp.DAOclientsIMP;
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -15,7 +16,6 @@ import ui.pantallas.principal.PrincipalController;
 
 public class DeleteCustomerController extends BasePantallaController {
 
-    private final PrincipalController principalController;
     private final DAOclientsIMP daOclientsIMP;
 
     @FXML
@@ -38,14 +38,15 @@ public class DeleteCustomerController extends BasePantallaController {
 
     @Inject
 
-    public DeleteCustomerController(PrincipalController principalController, DAOclientsIMP daOclientsIMP) {
-        this.principalController = principalController;
+    public DeleteCustomerController(DAOclientsIMP daOclientsIMP) {
         this.daOclientsIMP = daOclientsIMP;
     }
 
 
-    public void delCustomer(ActionEvent actionEvent) {
-        principalController.sacarAlertConf(Constantes.USER_DELETED);
+    public void delCustomer() {
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText(Constantes.USER_DELETED);
+        a.show();
 
     }
 

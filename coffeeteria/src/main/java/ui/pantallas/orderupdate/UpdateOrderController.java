@@ -4,10 +4,7 @@ import common.Constantes;
 import dao.imp.DAOorderIMP;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import model.Order;
@@ -18,7 +15,6 @@ import java.time.LocalDate;
 
 public class UpdateOrderController extends BasePantallaController {
 
-    private final PrincipalController principalController;
     private final DAOorderIMP daOorderIMP;
 
     @FXML
@@ -49,21 +45,26 @@ public class UpdateOrderController extends BasePantallaController {
     private TextField quantityField;
 
     @Inject
-    public UpdateOrderController(PrincipalController principalController, DAOorderIMP daOorderIMP) {
-        this.principalController = principalController;
+    public UpdateOrderController(DAOorderIMP daOorderIMP) {
         this.daOorderIMP = daOorderIMP;
     }
 
     public void addItem() {
-        principalController.sacarAlertConf(Constantes.THE_MENU_ITEM_HAS_BEEN_ADDED);
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText(Constantes.THE_MENU_ITEM_HAS_BEEN_ADDED);
+        a.show();
     }
 
     public void removeItem() {
-        principalController.sacarAlertConf(Constantes.THE_MENU_ITEM_HAS_BEEN_REMOVED);
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText(Constantes.THE_MENU_ITEM_HAS_BEEN_REMOVED);
+        a.show();
     }
 
     public void updateOrder() {
-        principalController.sacarAlertConf(Constantes.ORDER_UPDATED);
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText(Constantes.ORDER_UPDATED);
+        a.show();
     }
 
     public void initialize(){

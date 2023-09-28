@@ -4,14 +4,13 @@ import common.Constantes;
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import ui.pantallas.common.BasePantallaController;
 import ui.pantallas.principal.PrincipalController;
 
 public class AddOrderController extends BasePantallaController {
 
-
-    private final PrincipalController principalController;
 
     @FXML
     private Button addOrderButton;
@@ -21,18 +20,24 @@ public class AddOrderController extends BasePantallaController {
     private Button removeItemButton;
 
     @Inject
-    public AddOrderController(PrincipalController principalController) {
-        this.principalController = principalController;
+    public AddOrderController() {
     }
 
-    public void addOrder(ActionEvent actionEvent) { principalController.sacarAlertConf(Constantes.THE_ORDER_HAS_BEEN_ADDED);
+    public void addOrder() {
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText(Constantes.THE_ORDER_HAS_BEEN_ADDED);
+        a.show();
     }
 
     public void addItem(ActionEvent actionEvent) {
-        principalController.sacarAlertConf(Constantes.THE_MENU_ITEM_HAS_BEEN_ADDED);
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText(Constantes.THE_MENU_ITEM_HAS_BEEN_ADDED);
+        a.show();
     }
 
     public void removeItem(ActionEvent actionEvent) {
-        principalController.sacarAlertConf(Constantes.THE_MENU_ITEM_HAS_BEEN_REMOVED);
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText(Constantes.THE_MENU_ITEM_HAS_BEEN_REMOVED);
+        a.show();
     }
 }
