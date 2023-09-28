@@ -1,9 +1,13 @@
 package dao.imp;
 
+import model.Client;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class DAOclientsFICHERO {
@@ -22,5 +26,14 @@ public class DAOclientsFICHERO {
         }
 
     }
+
+    public static List<Client> readFile(String file){
+        createFiles();
+        ArrayList<Client> aux = null;
+        
+        return null;
+    }
+
+
 
 }
