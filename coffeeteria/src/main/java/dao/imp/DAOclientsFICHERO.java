@@ -20,7 +20,6 @@ import java.util.Properties;
 @Log4j2
 public class DAOclientsFICHERO implements DAOclients {
 
-
     @Override
     public Either<ErrorC, List<Client>> getAll() {
         Path path = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
@@ -28,15 +27,14 @@ public class DAOclientsFICHERO implements DAOclients {
         List<String> aux;
         try {
             aux = Files.readAllLines(path);
-            DateTimeFormatter form = DateTimeFormatter.ofPattern("YYYY-MM-DD");
+            DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             for (String line : aux){
                 String[] trozo = line.split(";");
-                clients.add(new Client(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[5]), LocalDate.parse(trozo[6])));
+                clients.add(new Client(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form)));
             }
-            System.out.println(aux);
+
         } catch (IOException e) {
             log.error(e.getMessage(), e);
-            throw new RuntimeException(e);
         }
         return Either.right(clients);
     }
