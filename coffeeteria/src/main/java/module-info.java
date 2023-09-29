@@ -41,6 +41,7 @@ module coffeeteria {
     opens config;
     opens ui.main;
     opens services;
+    opens common;
     opens ui.pantallas.login;
     opens ui.pantallas.principal;
     opens ui.pantallas.welcome;

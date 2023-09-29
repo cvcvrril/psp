@@ -34,23 +34,30 @@ public class DAOclientsIMP implements DAOclients {
         //return clients;
     }
 
-    public Either<ErrorC, List<Client>> getClient() {
+
+    @Override
+    public Either<ErrorC, List<Client>> getAll() {
         return null;
     }
 
     @Override
-    public int save(Client t) {
-        return 0;
+    public Either<ErrorC, Client> get(int i) {
+        return null;
     }
 
     @Override
-    public int uptdate(Client t) {
-        return 0;
+    public Either<ErrorC, Integer> save(Client t) {
+        return null;
     }
 
     @Override
-    public int delete(Client t) {
-        return 0;
+    public Either<ErrorC, Integer> update(Client t) {
+        return null;
+    }
+
+    @Override
+    public Either<ErrorC, Integer> delete(Client t) {
+        return null;
     }
 }
 
