@@ -21,14 +21,14 @@ public class DAOorderIMP implements DAOorder {
 
     }
 
-    private static List<Order> orders;
-
-    static {
-        orders = new ArrayList<>();
-        orders.add(new Order(1, 1, 1, LocalDate.now()));
-        orders.add(new Order(2, 2, 1, LocalDate.now()));
-        orders.add(new Order(3, 2, 3, LocalDate.now()));
-    }
+//    private static List<Order> orders;
+//
+//    static {
+//        orders = new ArrayList<>();
+//        orders.add(new Order(1, 1, 1, LocalDate.now()));
+//        orders.add(new Order(2, 2, 1, LocalDate.now()));
+//        orders.add(new Order(3, 2, 3, LocalDate.now()));
+//    }
 
     public List<Order> getOrders() {
         return orderList();

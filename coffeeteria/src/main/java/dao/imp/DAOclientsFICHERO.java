@@ -34,7 +34,7 @@ public class DAOclientsFICHERO {
         createFiles();
         ArrayList<Client> aux = null;
 
-        return null;
+        return aux;
     }
 
 
