@@ -17,7 +17,7 @@ public class Configuration {
 
     private Configuration(){
         try{
-            Properties p = new Properties();
+            p = new Properties();
             p.load(getClass().getClassLoader().getResourceAsStream("config/config.properties"));
             this.pathDataCustomers = p.getProperty("pathDataCustomers");
             this.pathDataOrders = p.getProperty("pathDataOrders");

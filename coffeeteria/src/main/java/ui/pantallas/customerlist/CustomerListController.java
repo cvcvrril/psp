@@ -1,20 +1,20 @@
 package ui.pantallas.customerlist;
 
 import common.Constantes;
-import dao.imp.DAOclientsIMP;
+import dao.imp.DAOclientsFICHERO;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Client;
-import services.SERVclient;
 import ui.pantallas.common.BasePantallaController;
 
 public class CustomerListController extends BasePantallaController {
 
     //private final DAOclientsIMP daOclientsIMP;
-    private final SERVclient serVclient;
+    //private final SERVclient serVclient;
+    private final DAOclientsFICHERO daOclientsFICHERO;
 
     @FXML
     private TableView<Client> tableCustomers;
@@ -31,10 +31,12 @@ public class CustomerListController extends BasePantallaController {
 
 
     /*Constructores*/
-    
-    public CustomerListController(SERVclient serVclient) {
+
+    @Inject
+    public CustomerListController(DAOclientsFICHERO daOclientsFICHERO) {
         //this.daOclientsIMP = daOclientsIMP;
-        this.serVclient = serVclient;
+        //this.serVclient = serVclient;
+        this.daOclientsFICHERO = daOclientsFICHERO;
     }
 
     /*Métodos*/
@@ -47,7 +49,8 @@ public class CustomerListController extends BasePantallaController {
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
         email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
         //tableCustomers.getItems().addAll(daOclientsIMP.getClients());
-        tableCustomers.getItems().addAll(serVclient.getClients().get());
+        //tableCustomers.getItems().addAll(serVclient.getClients().getOrNull());
+        tableCustomers.getItems().addAll(daOclientsFICHERO.getAll().getOrNull());
 
     }
 
