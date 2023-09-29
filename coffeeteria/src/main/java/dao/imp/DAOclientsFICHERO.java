@@ -1,5 +1,6 @@
 package dao.imp;
 
+import lombok.extern.log4j.Log4j2;
 import model.Client;
 
 import java.io.IOException;
@@ -10,20 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+@Log4j2
 public class DAOclientsFICHERO {
 
     private static Properties properties;
 
     public static void createFiles(){
-
-        Path path1 = Paths.get(properties.getProperty("file_path"));
-
-        try{
-            Path createdFilePath = Files.createFile(path1);
+        Path path = Paths.get(properties.getProperty("pathDataCustomers"));
+        List<Client> aux;
+        try {
+            aux = Files.readAllLines(path);
         } catch (IOException e) {
-            //Dios ha muerto y no me acuerdo de como loggear los errores
+            log.error(e.getMessage(),e);
             throw new RuntimeException(e);
         }
+
 
     }
 
