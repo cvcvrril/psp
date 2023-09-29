@@ -8,11 +8,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Client;
+import services.SERVclient;
 import ui.pantallas.common.BasePantallaController;
 
 public class CustomerListController extends BasePantallaController {
 
-    private final DAOclientsIMP daOclientsIMP;
+    //private final DAOclientsIMP daOclientsIMP;
+    private final SERVclient serVclient;
 
     @FXML
     private TableView<Client> tableCustomers;
@@ -29,10 +31,10 @@ public class CustomerListController extends BasePantallaController {
 
 
     /*Constructores*/
-
-    @Inject
-    public CustomerListController(DAOclientsIMP daOclientsIMP) {
-        this.daOclientsIMP = daOclientsIMP;
+    
+    public CustomerListController(SERVclient serVclient) {
+        //this.daOclientsIMP = daOclientsIMP;
+        this.serVclient = serVclient;
     }
 
     /*Métodos*/
@@ -44,7 +46,8 @@ public class CustomerListController extends BasePantallaController {
         secondName.setCellValueFactory(new PropertyValueFactory<>(Constantes.SECOND_NAME));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
         email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
-        tableCustomers.getItems().addAll(daOclientsIMP.getClients());
+        //tableCustomers.getItems().addAll(daOclientsIMP.getClients());
+        tableCustomers.getItems().addAll(serVclient.getClients().get());
 
     }
 

@@ -31,7 +31,7 @@ public class DAOclientsFICHERO implements DAOclients {
             DateTimeFormatter form = DateTimeFormatter.ofPattern("YYYY-MM-DD");
             for (String line : aux){
                 String[] trozo = line.split(";");
-                clients.add(new Client(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[5])));
+                clients.add(new Client(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[5]), LocalDate.parse(trozo[6])));
             }
             System.out.println(aux);
         } catch (IOException e) {

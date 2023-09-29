@@ -18,12 +18,17 @@ public class Client {
 
     /*Construcctores*/
 
-    public Client(int id_c, String firstName, String secondName, String email, int phoneNumber) {
+    public Client(int id_c, String firstName, String secondName, String email, int phoneNumber, LocalDate date) {
         this.id_c = id_c;
         this.firstName = firstName;
         this.secondName = secondName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.date = date;
     }
 
+
+    public String toStringFile() {
+        return id_c + ";" + firstName + ";" + secondName + ";" + email + ";" + phoneNumber + ";" + date;
+    }
 }

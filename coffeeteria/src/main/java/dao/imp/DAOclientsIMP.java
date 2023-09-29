@@ -5,6 +5,7 @@ import io.vavr.control.Either;
 import model.Client;
 import model.errors.ErrorC;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +13,9 @@ public class DAOclientsIMP implements DAOclients {
 
     public List<Client>clientsList(){
         List<Client> resClientsList = new ArrayList<>();
-        resClientsList.add(new Client(1, "Pepe", "Pepito", "pepepepito@gmail.com", 123456789));
-        resClientsList.add(new Client(2, "Juan", "Juanito", "juanjuanito@gmail.com", 987654321));
-        resClientsList.add(new Client(3, "Lola", "Lolita", "lolalolita@gmail.com", 111111111));
+        resClientsList.add(new Client(1, "Pepe", "Pepito", "pepepepito@gmail.com", 123456789, LocalDate.now()));
+        resClientsList.add(new Client(2, "Juan", "Juanito", "juanjuanito@gmail.com", 987654321, LocalDate.now()));
+        resClientsList.add(new Client(3, "Lola", "Lolita", "lolalolita@gmail.com", 111111111, LocalDate.now()));
 
         return  resClientsList;
     }
