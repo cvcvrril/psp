@@ -11,6 +11,16 @@ import java.util.List;
 
 public class DAOorderIMP implements DAOorder {
 
+    public List<Order> orderList(){
+        List<Order> resOrderList = new ArrayList<>();
+        resOrderList.add(new Order(1, 1, 1, LocalDate.now()));
+        resOrderList.add(new Order(2, 2, 1, LocalDate.now()));
+        resOrderList.add(new Order(3, 2, 3, LocalDate.now()));
+        return resOrderList;
+
+
+    }
+
     private static List<Order> orders;
 
     static {
@@ -21,7 +31,8 @@ public class DAOorderIMP implements DAOorder {
     }
 
     public List<Order> getOrders() {
-        return orders;
+        return orderList();
+        //return orders;
     }
 
     @Override

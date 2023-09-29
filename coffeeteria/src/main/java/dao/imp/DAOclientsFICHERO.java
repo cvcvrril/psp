@@ -18,9 +18,10 @@ public class DAOclientsFICHERO {
 
     public static void createFiles(){
         Path path = Paths.get(properties.getProperty("pathDataCustomers"));
-        List<Client> aux;
+        List<String> aux;
         try {
             aux = Files.readAllLines(path);
+            System.out.println(aux);
         } catch (IOException e) {
             log.error(e.getMessage(),e);
             throw new RuntimeException(e);

@@ -13,21 +13,12 @@ import java.util.List;
 public class DAOclientsIMP implements DAOclients {
 
     public List<Client>clientsList(){
-        Either<ErrorC, List<Client>> res;
         List<Client> resClientsList = new ArrayList<>();
         resClientsList.add(new Client(1, "Pepe", "Pepito", "pepepepito@gmail.com", 123456789));
         resClientsList.add(new Client(2, "Juan", "Juanito", "juanjuanito@gmail.com", 987654321));
         resClientsList.add(new Client(3, "Lola", "Lolita", "lolalolita@gmail.com", 111111111));
 
-        if (clientsList().isEmpty()) {
-            Either.left(new ErrorC());
-            return Collections.emptyList();
-        }
-            else {
-            Either.right(resClientsList);
-            return resClientsList;
-        }
-
+        return  resClientsList;
     }
 
     private static final List<Client> clients;
@@ -41,8 +32,8 @@ public class DAOclientsIMP implements DAOclients {
     }
 
     public List<Client> getClients() {
-        //return clientsList();
-        return clients;
+        return clientsList();
+        //return clients;
     }
 
     public Either<ErrorC, List<Client>> getClient() {
