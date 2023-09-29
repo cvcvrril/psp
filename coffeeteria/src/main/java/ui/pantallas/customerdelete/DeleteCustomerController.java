@@ -1,9 +1,9 @@
 package ui.pantallas.customerdelete;
 
 import common.Constantes;
+import dao.imp.DAOclientsFICHERO;
 import dao.imp.DAOclientsIMP;
 import jakarta.inject.Inject;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -12,11 +12,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Client;
 import ui.pantallas.common.BasePantallaController;
-import ui.pantallas.principal.PrincipalController;
 
 public class DeleteCustomerController extends BasePantallaController {
 
-    private final DAOclientsIMP daOclientsIMP;
+    //private final DAOclientsIMP daOclientsIMP;
+    private final DAOclientsFICHERO daOclientsFICHERO;
 
     @FXML
     private Button delCustomer;
@@ -38,8 +38,9 @@ public class DeleteCustomerController extends BasePantallaController {
 
     @Inject
 
-    public DeleteCustomerController(DAOclientsIMP daOclientsIMP) {
-        this.daOclientsIMP = daOclientsIMP;
+    public DeleteCustomerController(DAOclientsFICHERO daOclientsFICHERO) {
+        this.daOclientsFICHERO = daOclientsFICHERO;
+        //this.daOclientsIMP = daOclientsIMP;
     }
 
 
@@ -57,8 +58,8 @@ public class DeleteCustomerController extends BasePantallaController {
         secondName.setCellValueFactory(new PropertyValueFactory<>(Constantes.SECOND_NAME));
         email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
-
-        tableCustomers.getItems().addAll(daOclientsIMP.getClients());
+        //tableCustomers.getItems().addAll(daOclientsIMP.getClients());
+        tableCustomers.getItems().addAll(daOclientsFICHERO.getAll().getOrNull());
 
     }
 

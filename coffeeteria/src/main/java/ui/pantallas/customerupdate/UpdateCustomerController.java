@@ -1,6 +1,7 @@
 package ui.pantallas.customerupdate;
 
 import common.Constantes;
+import dao.imp.DAOclientsFICHERO;
 import dao.imp.DAOclientsIMP;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
@@ -16,7 +17,8 @@ public class UpdateCustomerController extends BasePantallaController {
 
 
 
-    private final DAOclientsIMP daOclientsIMP;
+    //private final DAOclientsIMP daOclientsIMP;
+    private final DAOclientsFICHERO daOclientsFICHERO;
 
     @FXML
     private TextField idCustomerField;
@@ -47,8 +49,9 @@ public class UpdateCustomerController extends BasePantallaController {
     private Button updateCustomerButton;
 
     @Inject
-    public UpdateCustomerController(DAOclientsIMP daOclientsIMP) {
-        this.daOclientsIMP = daOclientsIMP;
+    public UpdateCustomerController(DAOclientsFICHERO daOclientsFICHERO) {
+        //this.daOclientsIMP = daOclientsIMP;
+        this.daOclientsFICHERO = daOclientsFICHERO;
     }
 
     public void updateCustomer() {
@@ -70,7 +73,8 @@ public class UpdateCustomerController extends BasePantallaController {
         secondName.setCellValueFactory(new PropertyValueFactory<>(Constantes.SECOND_NAME));
         email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
-        tableCustomers.getItems().addAll(daOclientsIMP.getClients());
+        //tableCustomers.getItems().addAll(daOclientsIMP.getClients());
+        tableCustomers.getItems().addAll(daOclientsFICHERO.getAll().getOrNull());
         tableCustomers.setOnMouseClicked(this::handleTable);
     }
 
