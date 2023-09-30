@@ -58,7 +58,14 @@ public class SERVclient {
     }
 
     public Either<ErrorCCustomer, Integer> delClient(int i) {
-        return daOclientsFICHERO.delete(getClients(i).getOrNull());
+        Either<ErrorCCustomer, Client> res = daOclientsFICHERO.get(i);
+        if (res.isRight()){
+            Client client = res.get();
+            return daOclientsFICHERO.delete(client);
+        }else {
+            return Either.left(res.getLeft());
+        }
+
     }
 
 

@@ -43,7 +43,23 @@ public class DAOclientsFICHERO implements DAOclients {
 
     @Override
     public Either<ErrorCCustomer, Client> get(int i) {
-        return null;
+        Path path = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
+        List<String> lines;
+        try {
+            lines = Files.readAllLines(path);
+            if (i >= 0 && i < lines.size()) {
+                String line = lines.get(i);
+                String[] trozo = line.split(";");
+                DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                Client client = new Client(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form));
+                return Either.right(client);
+            } else {
+                return Either.left(new ErrorCCustomer("Cliente no encontrado", 1));
+            }
+        } catch (IOException e) {
+            log.error(e.getMessage(), e);
+            return Either.left(new ErrorCCustomer("Error al leer el archivo", 2));
+        }
     }
 
     @Override
@@ -67,7 +83,33 @@ public class DAOclientsFICHERO implements DAOclients {
 
     @Override
     public Either<ErrorCCustomer, Integer> delete(Client t) {
-        return null;
+        Path path = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
+        List<Client> clients = new ArrayList<>();
+        List<String> lines;
+        try {
+            lines = Files.readAllLines(path);
+            DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+            for (String line : lines) {
+                String[] trozo = line.split(";");
+                Client client = new Client(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form));
+                clients.add(client);
+            }
+
+            clients.removeIf(client -> client.getId_c() == t.getId_c());
+
+            List<String> updatedLines = new ArrayList<>();
+            for (Client client : clients) {
+                updatedLines.add(client.toStringFile());
+            }
+
+            Files.write(path, updatedLines);
+
+            return Either.right(1); // Éxito al eliminar el cliente
+        } catch (IOException e) {
+            log.error(e.getMessage(), e);
+            return Either.left(new ErrorCCustomer("Error al leer/escribir el archivo", 2));
+        }
     }
 
 }
