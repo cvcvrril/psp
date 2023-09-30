@@ -1,16 +1,17 @@
 package ui.pantallas.orderadd;
 
 import common.Constantes;
+import dao.imp.DAOordersFICHERO;
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import ui.pantallas.common.BasePantallaController;
-import ui.pantallas.principal.PrincipalController;
 
 public class AddOrderController extends BasePantallaController {
 
+    private final DAOordersFICHERO daOordersFICHERO;
 
     @FXML
     private Button addOrderButton;
@@ -20,7 +21,8 @@ public class AddOrderController extends BasePantallaController {
     private Button removeItemButton;
 
     @Inject
-    public AddOrderController() {
+    public AddOrderController(DAOordersFICHERO daOordersFICHERO) {
+        this.daOordersFICHERO = daOordersFICHERO;
     }
 
     public void addOrder() {

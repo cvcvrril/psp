@@ -1,7 +1,6 @@
 package ui.pantallas.orderlist;
 
 import common.Constantes;
-import dao.imp.DAOclientsFICHERO;
 import dao.imp.DAOordersFICHERO;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
@@ -9,6 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Order;
+import services.SERVorder;
 import ui.pantallas.common.BasePantallaController;
 
 import java.time.LocalDate;
@@ -18,6 +18,7 @@ public class OrderListController extends BasePantallaController {
 
     //private final DAOorderIMP daOorderIMP;
     private final DAOordersFICHERO  daOordersFICHERO;
+    //private final SERVorder serVorder;
 
     @FXML
     private TableView<Order> tableOrders;
@@ -34,6 +35,7 @@ public class OrderListController extends BasePantallaController {
 
     @Inject
     public OrderListController(DAOordersFICHERO daOordersFICHERO) {
+        //this.serVorder = serVorder;
         this.daOordersFICHERO = daOordersFICHERO;
     }
 
@@ -47,6 +49,7 @@ public class OrderListController extends BasePantallaController {
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
         //tableOrders.getItems().addAll(daOorderIMP.getOrders());
         tableOrders.getItems().addAll(daOordersFICHERO.getAll().getOrNull());
+        //tableOrders.getItems().addAll(serVorder.getOrders());
 
     }
 

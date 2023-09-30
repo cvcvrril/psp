@@ -2,6 +2,7 @@ package ui.pantallas.orderdelete;
 
 import common.Constantes;
 import dao.imp.DAOorderIMP;
+import dao.imp.DAOordersFICHERO;
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,13 +13,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Order;
 import ui.pantallas.common.BasePantallaController;
-import ui.pantallas.principal.PrincipalController;
 
 import java.time.LocalDate;
 
 public class DeleteOrderController extends BasePantallaController {
 
-    private final DAOorderIMP daOorderIMP;
+    //private final DAOorderIMP daOorderIMP;
+    private final DAOordersFICHERO daOordersFICHERO;
 
     @FXML
     private TableView<Order> tableOrders;
@@ -34,8 +35,8 @@ public class DeleteOrderController extends BasePantallaController {
     private Button delOrderButton;
 
     @Inject
-    public DeleteOrderController(DAOorderIMP daOorderIMP) {
-        this.daOorderIMP = daOorderIMP;
+    public DeleteOrderController(DAOordersFICHERO daOordersFICHERO) {
+        this.daOordersFICHERO = daOordersFICHERO;
     }
 
     public void delOrder(ActionEvent actionEvent) {
@@ -50,8 +51,8 @@ public class DeleteOrderController extends BasePantallaController {
         id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
         id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
-
-        tableOrders.getItems().addAll(daOorderIMP.getOrders());
+        tableOrders.getItems().addAll(daOordersFICHERO.getAll().getOrNull());
+        //tableOrders.getItems().addAll(daOorderIMP.getOrders());
 
     }
 }

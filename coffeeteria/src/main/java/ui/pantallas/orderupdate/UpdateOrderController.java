@@ -2,6 +2,7 @@ package ui.pantallas.orderupdate;
 
 import common.Constantes;
 import dao.imp.DAOorderIMP;
+import dao.imp.DAOordersFICHERO;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -9,13 +10,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import model.Order;
 import ui.pantallas.common.BasePantallaController;
-import ui.pantallas.principal.PrincipalController;
 
 import java.time.LocalDate;
 
 public class UpdateOrderController extends BasePantallaController {
 
-    private final DAOorderIMP daOorderIMP;
+    //private final DAOorderIMP daOorderIMP;
+    private final DAOordersFICHERO daOordersFICHERO;
 
     @FXML
     private TableView<Order> tableOrders;
@@ -45,8 +46,8 @@ public class UpdateOrderController extends BasePantallaController {
     private TextField quantityField;
 
     @Inject
-    public UpdateOrderController(DAOorderIMP daOorderIMP) {
-        this.daOorderIMP = daOorderIMP;
+    public UpdateOrderController(DAOordersFICHERO daOordersFICHERO) {
+        this.daOordersFICHERO = daOordersFICHERO;
     }
 
     public void addItem() {
@@ -73,7 +74,8 @@ public class UpdateOrderController extends BasePantallaController {
         id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
         id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
-        tableOrders.getItems().addAll(daOorderIMP.getOrders());
+        //tableOrders.getItems().addAll(daOorderIMP.getOrders());
+        tableOrders.getItems().addAll(daOordersFICHERO.getAll().getOrNull());
         tableOrders.setOnMouseClicked(this::handleTable);
     }
 

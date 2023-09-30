@@ -1,6 +1,7 @@
 package services;
 
 import dao.imp.DAOorderIMP;
+import dao.imp.DAOordersFICHERO;
 import io.vavr.control.Either;
 import model.Order;
 import model.errors.ErrorC;
@@ -11,20 +12,23 @@ public class SERVorder {
 
     /*Atributos*/
 
-    private DAOorderIMP daOorderIMP;
+    private final DAOorderIMP daOorderIMP;
+    private final DAOordersFICHERO daOordersFICHERO;
 
     private ErrorC errorC;
 
     /*Constructor*/
 
-    public SERVorder(DAOorderIMP daOorderIMP) {
+    public SERVorder(DAOorderIMP daOorderIMP, DAOordersFICHERO daOordersFICHERO) {
         this.daOorderIMP = daOorderIMP;
+        this.daOordersFICHERO = daOordersFICHERO;
     }
 
     /*Métodos*/
 
     public List<Order> getOrders() {
-        return daOorderIMP.getOrders();
+        //return daOorderIMP.getOrders();
+        return daOordersFICHERO.getAll().getOrNull();
     }
 
     public Either<ErrorC, List<Order>> getOrders(int i) {
