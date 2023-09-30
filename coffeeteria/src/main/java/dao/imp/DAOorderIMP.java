@@ -41,22 +41,23 @@ public class DAOorderIMP implements DAOorder {
     }
 
     @Override
-    public Either<ErrorC, List<Order>> getAll() {
+    public Either<ErrorC, Integer> save(Order t) {
         return null;
     }
 
     @Override
-    public int save(Order t) {
-        return 0;
+    public Either<ErrorC, Integer> update(Order t) {
+        return null;
     }
 
     @Override
-    public int uptdate(Order t) {
-        return 0;
+    public Either<ErrorC, Integer> delete(Order t) {
+        return null;
     }
 
     @Override
-    public int delete(Order t) {
-        return 0;
+    public Either<ErrorC, List<Order>> getAll() {
+        return null;
     }
+
 }

@@ -8,15 +8,15 @@ import java.util.List;
 
 public interface DAOorder {
 
-    Either<ErrorC, List<Order>> getOrder(int id);
-
     Either<ErrorC, List<Order>> getAll();
 
-    int save(Order t);
+    Either<ErrorC, List<Order>> getOrder(int id);
 
-    int uptdate(Order t);
+    Either<ErrorC, Integer> save(Order t);
 
-    int delete(Order t);
+    Either<ErrorC, Integer> update(Order t);
+
+    Either<ErrorC, Integer> delete(Order t);
 
 
 }
