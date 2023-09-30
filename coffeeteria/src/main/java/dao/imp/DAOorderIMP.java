@@ -4,6 +4,7 @@ import dao.DAOorder;
 import io.vavr.control.Either;
 import model.Order;
 import model.errors.ErrorC;
+import model.errors.ErrorCOrder;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -36,27 +37,27 @@ public class DAOorderIMP implements DAOorder {
     }
 
     @Override
-    public Either<ErrorC, List<Order>> getOrder(int id) {
+    public Either<ErrorCOrder, List<Order>> getOrder(int id) {
         return null;
     }
 
     @Override
-    public Either<ErrorC, Integer> save(Order t) {
+    public Either<ErrorCOrder, Integer> save(Order t) {
         return null;
     }
 
     @Override
-    public Either<ErrorC, Integer> update(Order t) {
+    public Either<ErrorCOrder, Integer> update(Order t) {
         return null;
     }
 
     @Override
-    public Either<ErrorC, Integer> delete(Order t) {
+    public Either<ErrorCOrder, Integer> delete(Order t) {
         return null;
     }
 
     @Override
-    public Either<ErrorC, List<Order>> getAll() {
+    public Either<ErrorCOrder, List<Order>> getAll() {
         return null;
     }
 

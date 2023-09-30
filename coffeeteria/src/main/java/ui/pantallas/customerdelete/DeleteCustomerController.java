@@ -45,6 +45,7 @@ public class DeleteCustomerController extends BasePantallaController {
 
 
     public void delCustomer() {
+
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setContentText(Constantes.USER_DELETED);
         a.show();

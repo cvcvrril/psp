@@ -3,8 +3,10 @@ package services;
 import dao.imp.DAOclientsFICHERO;
 import dao.imp.DAOclientsIMP;
 import io.vavr.control.Either;
+import jakarta.inject.Inject;
 import model.Client;
 import model.errors.ErrorC;
+import model.errors.ErrorCCustomer;
 
 import java.util.List;
 
@@ -19,6 +21,7 @@ public class SERVclient {
 
     /*Constructor*/
 
+    @Inject
     public SERVclient(DAOclientsIMP daOclientsIMP, DAOclientsFICHERO daOclientsFICHERO) {
         this.daOclientsIMP = daOclientsIMP;
         this.daOclientsFICHERO = daOclientsFICHERO;
@@ -26,25 +29,36 @@ public class SERVclient {
 
     /*Métodos*/
 
-    public Either<ErrorC, List<Client>> getClients() {
+    public int getLastUsedId() {
+        List<Client> clients = daOclientsFICHERO.getAll().getOrNull();
+        int lastUsedId = 0;
+        for (Client client : clients) {
+            if (client.getId_c() > lastUsedId) {
+                lastUsedId = client.getId_c();
+            }
+        }
+        return lastUsedId + 1;
+    }
+
+    public Either<ErrorCCustomer, List<Client>> getClients() {
         //return daOclientsIMP.getClients();
         return daOclientsFICHERO.getAll();
     }
 
-    public Either<ErrorC, Client> getClients(int i) {
+    public Either<ErrorCCustomer, Client> getClients(int i) {
             return daOclientsFICHERO.get(i);
     }
 
-    public Client saveClient(int i) {
-        return null;
+    public Either<ErrorCCustomer, Integer> saveClient(Client i) {
+        return daOclientsFICHERO.save(i);
     }
 
-    public Client updateClient(int i) {
-        return null;
+    public Either<ErrorCCustomer, Integer> updateClient(int i) {
+        return daOclientsFICHERO.save(getClients(i).getOrNull());
     }
 
-    public Client delClient(int i) {
-        return null;
+    public Either<ErrorCCustomer, Integer> delClient(int i) {
+        return daOclientsFICHERO.delete(getClients(i).getOrNull());
     }
 
 

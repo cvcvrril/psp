@@ -6,11 +6,13 @@ import io.vavr.control.Either;
 import lombok.extern.log4j.Log4j2;
 import model.Client;
 import model.errors.ErrorC;
+import model.errors.ErrorCCustomer;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ import java.util.List;
 public class DAOclientsFICHERO implements DAOclients {
 
     @Override
-    public Either<ErrorC, List<Client>> getAll() {
+    public Either<ErrorCCustomer, List<Client>> getAll() {
         Path path = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
         List<Client> clients = new ArrayList<>();
         List<String> aux;
@@ -40,23 +42,31 @@ public class DAOclientsFICHERO implements DAOclients {
     }
 
     @Override
-    public Either<ErrorC, Client> get(int i) {
+    public Either<ErrorCCustomer, Client> get(int i) {
         return null;
     }
 
     @Override
-    public Either<ErrorC, Integer> save(Client t) {
-        return null;
+    public Either<ErrorCCustomer, Integer> save(Client t) {
+        Path file = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
+        int error = 0;
+        try {
+            Files.write(file, (t.toStringFile() + System.lineSeparator()).getBytes(), StandardOpenOption.APPEND);
+            error = 1;
+        } catch (IOException e) {
+            log.error("Error writing the file", e);
+        }
+        return Either.right(error);
     }
 
 
     @Override
-    public Either<ErrorC, Integer> update(Client t) {
+    public Either<ErrorCCustomer, Integer> update(Client t) {
         return null;
     }
 
     @Override
-    public Either<ErrorC, Integer> delete(Client t) {
+    public Either<ErrorCCustomer, Integer> delete(Client t) {
         return null;
     }
 

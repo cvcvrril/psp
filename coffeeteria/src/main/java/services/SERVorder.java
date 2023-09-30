@@ -1,10 +1,10 @@
 package services;
 
-import dao.imp.DAOorderIMP;
 import dao.imp.DAOordersFICHERO;
 import io.vavr.control.Either;
+import jakarta.inject.Inject;
 import model.Order;
-import model.errors.ErrorC;
+import model.errors.ErrorCOrder;
 
 import java.util.List;
 
@@ -12,30 +12,30 @@ public class SERVorder {
 
     /*Atributos*/
 
-    private final DAOorderIMP daOorderIMP;
+    //private final DAOorderIMP daOorderIMP;
     private final DAOordersFICHERO daOordersFICHERO;
-
-    private ErrorC errorC;
 
     /*Constructor*/
 
-    public SERVorder(DAOorderIMP daOorderIMP, DAOordersFICHERO daOordersFICHERO) {
-        this.daOorderIMP = daOorderIMP;
+    @Inject
+    public SERVorder(DAOordersFICHERO daOordersFICHERO) {
+        //this.daOorderIMP = daOorderIMP;
         this.daOordersFICHERO = daOordersFICHERO;
     }
 
     /*Métodos*/
 
-    public List<Order> getOrders() {
+    public List<Order> getAll() {
         //return daOorderIMP.getOrders();
         return daOordersFICHERO.getAll().getOrNull();
     }
 
-    public Either<ErrorC, List<Order>> getOrders(int i) {
+    public Either<ErrorCOrder, List<Order>> getOrder(int i) {
         if (i > 0)
-            return Either.right(daOorderIMP.getOrders());
+            //return Either.right(daOorderIMP.getOrders());
+            return Either.right(daOordersFICHERO.getOrder(i).getOrNull());
         else
-            return Either.left(errorC);
+            return Either.left(new ErrorCOrder("Error in the Order list", 1));
 
     }
 

@@ -4,6 +4,7 @@ import dao.DAOclients;
 import io.vavr.control.Either;
 import model.Client;
 import model.errors.ErrorC;
+import model.errors.ErrorCCustomer;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -37,27 +38,27 @@ public class DAOclientsIMP implements DAOclients {
 
 
     @Override
-    public Either<ErrorC, List<Client>> getAll() {
+    public Either<ErrorCCustomer, List<Client>> getAll() {
         return null;
     }
 
     @Override
-    public Either<ErrorC, Client> get(int i) {
+    public Either<ErrorCCustomer, Client> get(int i) {
         return null;
     }
 
     @Override
-    public Either<ErrorC, Integer> save(Client t) {
+    public Either<ErrorCCustomer, Integer> save(Client t) {
         return null;
     }
 
     @Override
-    public Either<ErrorC, Integer> update(Client t) {
+    public Either<ErrorCCustomer, Integer> update(Client t) {
         return null;
     }
 
     @Override
-    public Either<ErrorC, Integer> delete(Client t) {
+    public Either<ErrorCCustomer, Integer> delete(Client t) {
         return null;
     }
 }

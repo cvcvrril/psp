@@ -11,14 +11,16 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <TextField layoutX="51.0" layoutY="119.0" promptText="e.g. Pepe" />
-      <TextField layoutX="51.0" layoutY="188.0" promptText="e.g. Pepito" />
+      <TextField fx:id="firstNameField" layoutX="51.0" layoutY="119.0" promptText="e.g. Pepe" />
+      <TextField fx:id="secondNameField" layoutX="51.0" layoutY="188.0" promptText="e.g. Pepito" />
+      <TextField fx:id="phoneField" layoutX="290.0" layoutY="119.0" promptText="e.g. 123456789" />
+      <TextField fx:id="emailField" layoutX="290.0" layoutY="188.0" promptText="e.g. pepitoemail@email.com" />
+      <TextField fx:id="dateField" layoutX="51.0" layoutY="261.0" />
       <Label layoutX="63.0" layoutY="95.0" text="First Name" />
       <Label layoutX="63.0" layoutY="165.0" text="Second Name" />
-      <Button fx:id="addCustomerButton" layoutX="255.0" layoutY="317.0" mnemonicParsing="false" text="Add customer" onAction="#addCustomer"/>
-      <TextField layoutX="290.0" layoutY="119.0" promptText="e.g. 123456789" />
+      <Button fx:id="addCustomerButton" layoutX="255.0" layoutY="317.0" mnemonicParsing="false" onAction="#addCustomer" text="Add customer" />
       <Label layoutX="300.0" layoutY="95.0" text="Phone number" />
-      <TextField layoutX="290.0" layoutY="188.0" promptText="e.g. pepitoemail@email.com" />
       <Label layoutX="301.0" layoutY="165.0" text="Email" />
+      <Label layoutX="63.0" layoutY="244.0" text="Date" />
    </children>
 </AnchorPane>

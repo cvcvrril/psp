@@ -6,6 +6,8 @@ import io.vavr.control.Either;
 import lombok.extern.log4j.Log4j2;
 import model.Order;
 import model.errors.ErrorC;
+import model.errors.ErrorCCustomer;
+import model.errors.ErrorCOrder;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +23,7 @@ import java.util.List;
 public class DAOordersFICHERO implements DAOorder {
 
     @Override
-    public Either<ErrorC, List<Order>> getAll() {
+    public Either<ErrorCOrder, List<Order>> getAll() {
         Path path = Paths.get(Configuration.getInstance().getProperty("pathDataOrders"));
         List<Order> orders = new ArrayList<>();
         BufferedReader reader = null;
@@ -42,22 +44,22 @@ public class DAOordersFICHERO implements DAOorder {
     }
 
     @Override
-    public Either<ErrorC, List<Order>> getOrder(int id) {
+    public Either<ErrorCOrder, List<Order>> getOrder(int id) {
         return null;
     }
 
     @Override
-    public Either<ErrorC, Integer> save(Order t) {
+    public Either<ErrorCOrder, Integer> save(Order t) {
         return null;
     }
 
     @Override
-    public Either<ErrorC, Integer> update(Order t) {
+    public Either<ErrorCOrder, Integer> update(Order t) {
         return null;
     }
 
     @Override
-    public Either<ErrorC, Integer> delete(Order t) {
+    public Either<ErrorCOrder, Integer> delete(Order t) {
         return null;
     }
 
