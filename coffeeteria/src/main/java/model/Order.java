@@ -24,4 +24,8 @@ public class Order {
         this.or_date = or_date;
     }
 
+
+    public String toStringFile() {
+        return id_co + ";" + id_ord + ";" + id_table + ";" + or_date;
+    }
 }
