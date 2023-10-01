@@ -21,7 +21,6 @@ import java.util.List;
 public class AddOrderController extends BasePantallaController {
 
     private final SERVorder serVorder;
-    //private final DAOordersFICHERO daOordersFICHERO;
     @FXML
     private ComboBox<Integer> customerComboBox;
     @FXML
@@ -41,9 +40,9 @@ public class AddOrderController extends BasePantallaController {
         this.serVorder = serVorder;
     }
 
-
     public void initialize() {
-        customerComboBox.getItems().addAll(1,2,3,4,5);
+        List<Integer> customerIDs = serVorder.getCustomerIDs();
+        customerComboBox.getItems().addAll(customerIDs);
         tableComboBox.getItems().addAll(1,2,3,4,5,6,7,8);
     }
 
@@ -51,27 +50,25 @@ public class AddOrderController extends BasePantallaController {
     public void addOrder(ActionEvent actionEvent) {
         int customerId = customerComboBox.getValue();
         int tableId = tableComboBox.getValue();
-        LocalDate orderDate = LocalDate.parse(dateField.getText()); // Asume que se ingresa la fecha en el formato correcto
-
+        LocalDate orderDate = LocalDate.parse(dateField.getText());
         Order newOrder = new Order(customerId, getNextOrderId(), tableId, orderDate);
-
-        // Guardar la nueva orden
         Either<ErrorCOrder, Integer> saveResult = serVorder.saveOrder(newOrder);
         if (saveResult.isRight()) {
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setContentText(Constantes.THE_ORDER_HAS_BEEN_ADDED);
             a.show();
-            // Limpia los campos después de agregar la orden
-            customerComboBox.getSelectionModel().clearSelection();
-            tableComboBox.getSelectionModel().clearSelection();
-            dateField.clear();
+            clearFields();
         } else {
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setContentText("Error al agregar la orden");
             a.show();
         }
+    }
 
-
+    private void clearFields() {
+        customerComboBox.getSelectionModel().clearSelection();
+        tableComboBox.getSelectionModel().clearSelection();
+        dateField.clear();
     }
 
     public void addItem(ActionEvent actionEvent) {

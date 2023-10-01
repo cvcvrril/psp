@@ -1,14 +1,19 @@
 package services;
 
+import dao.imp.DAOclientsFICHERO;
 import dao.imp.DAOordersFICHERO;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
+import model.Client;
 import model.Order;
+import model.errors.ErrorCCustomer;
 import model.errors.ErrorCOrder;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SERVorder {
 
@@ -16,13 +21,15 @@ public class SERVorder {
 
     //private final DAOorderIMP daOorderIMP;
     private final DAOordersFICHERO daOordersFICHERO;
+    private final DAOclientsFICHERO daOclientsFICHERO;
 
     /*Constructor*/
 
     @Inject
-    public SERVorder(DAOordersFICHERO daOordersFICHERO) {
+    public SERVorder(DAOordersFICHERO daOordersFICHERO, DAOclientsFICHERO daOclientsFICHERO) {
         //this.daOorderIMP = daOorderIMP;
         this.daOordersFICHERO = daOordersFICHERO;
+        this.daOclientsFICHERO = daOclientsFICHERO;
     }
 
     /*Métodos*/
@@ -76,6 +83,16 @@ public class SERVorder {
             }
         }
         return filteredOrders;
+    }
+
+    public List<Integer> getCustomerIDs() {
+        Either<ErrorCCustomer, List<Client>> result = daOclientsFICHERO.getAll();
+        if (result.isRight()) {
+            List<Client> clients = result.get();
+            return clients.stream().map(Client::getId_c).collect(Collectors.toList());
+        } else {
+            return Collections.emptyList();
+        }
     }
 
 }
