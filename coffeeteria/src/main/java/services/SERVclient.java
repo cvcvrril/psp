@@ -53,8 +53,8 @@ public class SERVclient {
         return daOclientsFICHERO.save(i);
     }
 
-    public Either<ErrorCCustomer, Integer> updateClient(int i) {
-        return daOclientsFICHERO.save(getClients(i).getOrNull());
+    public Either<ErrorCCustomer, Integer> updateClient(Client i) {
+        return daOclientsFICHERO.update(i);
     }
 
     public Either<ErrorCCustomer, Integer> delClient(int i) {
@@ -67,6 +67,4 @@ public class SERVclient {
         }
 
     }
-
-
 }

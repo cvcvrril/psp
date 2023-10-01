@@ -5,7 +5,6 @@ import dao.DAOclients;
 import io.vavr.control.Either;
 import lombok.extern.log4j.Log4j2;
 import model.Client;
-import model.errors.ErrorC;
 import model.errors.ErrorCCustomer;
 
 import java.io.IOException;
@@ -78,7 +77,39 @@ public class DAOclientsFICHERO implements DAOclients {
 
     @Override
     public Either<ErrorCCustomer, Integer> update(Client t) {
-        return null;
+        Path path = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
+        List<Client> clients = new ArrayList<>();
+        List<String> lines;
+        try {
+            lines = Files.readAllLines(path);
+            DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+            for (String line : lines) {
+                String[] trozo = line.split(";");
+                Client client = new Client(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form));
+
+                if (client.getId_c() == t.getId_c()) {
+                    client.setFirstName(t.getFirstName());
+                    client.setSecondName(t.getSecondName());
+                    client.setEmail(t.getEmail());
+                    client.setPhoneNumber(t.getPhoneNumber());
+                }
+
+                clients.add(client);
+            }
+
+            List<String> updatedLines = new ArrayList<>();
+            for (Client client : clients) {
+                updatedLines.add(client.toStringFile());
+            }
+
+            Files.write(path, updatedLines);
+
+            return Either.right(1); // Éxito al actualizar el cliente
+        } catch (IOException e) {
+            log.error(e.getMessage(), e);
+            return Either.left(new ErrorCCustomer("Error al leer/escribir el archivo", 2));
+        }
     }
 
     @Override

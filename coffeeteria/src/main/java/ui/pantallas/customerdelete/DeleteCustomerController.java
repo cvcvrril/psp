@@ -64,10 +64,6 @@ public class DeleteCustomerController extends BasePantallaController {
                 errorAlert.show();
             }
         }
-
-
-
-
     }
 
     public void initialize() {
