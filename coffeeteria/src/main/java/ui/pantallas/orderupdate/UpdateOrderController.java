@@ -13,7 +13,7 @@ import ui.pantallas.common.BasePantallaController;
 import java.time.LocalDate;
 
 public class UpdateOrderController extends BasePantallaController {
-    
+
     private final DAOordersFICHERO daOordersFICHERO;
 
     @FXML
