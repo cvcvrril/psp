@@ -19,7 +19,7 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <ComboBox layoutX="30.0" layoutY="329.0" prefWidth="150.0" promptText="Filter" />
+      <ComboBox fx:id="filterComboBox" layoutX="30.0" layoutY="329.0" prefWidth="150.0" promptText="Filter" onAction="#handleFilterSelection"/>
       <TableView layoutX="368.0" layoutY="115.0" prefHeight="200.0" prefWidth="200.0">
         <columns>
           <TableColumn prefWidth="75.0" text="ID" />
@@ -31,7 +31,7 @@
       <Label layoutX="376.0" layoutY="80.0" text="Order items" />
       <Label layoutX="322.0" layoutY="333.0" text="Total amount" />
       <Label layoutX="376.0" layoutY="26.0" text="Customer name" />
-      <DatePicker layoutX="34.0" layoutY="361.0" prefHeight="25.0" prefWidth="118.0" promptText="Date" />
-      <TextField layoutX="173.0" layoutY="361.0" prefHeight="25.0" prefWidth="95.0" promptText="Customer" />
+      <DatePicker fx:id="fechaDatePicker" layoutX="34.0" layoutY="361.0" prefHeight="25.0" prefWidth="118.0" promptText="Date" />
+      <TextField fx:id="customerField" layoutX="173.0" layoutY="361.0" prefHeight="25.0" prefWidth="95.0" promptText="Customer" />
    </children>
 </AnchorPane>

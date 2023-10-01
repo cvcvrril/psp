@@ -6,6 +6,8 @@ import jakarta.inject.Inject;
 import model.Order;
 import model.errors.ErrorCOrder;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SERVorder {
@@ -39,6 +41,7 @@ public class SERVorder {
 
     }
 
+
     public Order saveOrder(int i) {
         return null;
     }
@@ -51,5 +54,32 @@ public class SERVorder {
         return null;
     }
 
+
+    /*Aux*/
+
+    public List<Order> getOrdersByDate(LocalDate selectedDate) {
+        List<Order> allOrders = daOordersFICHERO.getAll().getOrNull();
+        List<Order> filteredOrders = new ArrayList<>();
+
+        for (Order order : allOrders) {
+            if (order.getOr_date().isEqual(selectedDate)) {
+                filteredOrders.add(order);
+            }
+        }
+        return filteredOrders;
+    }
+
+    public List<Order> getOrdersByCustomer(int selectedCustomerId) {
+        List<Order> allOrders = daOordersFICHERO.getAll().getOrNull();
+        List<Order> filteredOrders = new ArrayList<>();
+
+        for (Order order : allOrders) {
+            if (order.getId_co() == selectedCustomerId) {
+                filteredOrders.add(order);
+            }
+        }
+
+        return filteredOrders;
+    }
 
 }

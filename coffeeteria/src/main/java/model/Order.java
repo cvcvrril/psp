@@ -26,6 +26,6 @@ public class Order {
 
 
     public String toStringFile() {
-        return id_co + ";" + id_ord + ";" + id_table + ";" + or_date;
+        return id_co + ";" + id_ord + ";" + id_table + ";" + or_date + "\n";
     }
 }
