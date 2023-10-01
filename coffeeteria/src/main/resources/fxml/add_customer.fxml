@@ -3,6 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import common.ConstantesFXML.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.customeradd.AddCustomerController">
    <children>
@@ -11,7 +12,7 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <TextField fx:id="firstNameField" layoutX="51.0" layoutY="119.0" promptText="e.g. Pepe" />
+      <TextField fx:id="firstNameField" layoutX="51.0" layoutY="119.0" promptText="e.g. Pepe"/>
       <TextField fx:id="secondNameField" layoutX="51.0" layoutY="188.0" promptText="e.g. Pepito" />
       <TextField fx:id="phoneField" layoutX="290.0" layoutY="119.0" promptText="e.g. 123456789" />
       <TextField fx:id="emailField" layoutX="290.0" layoutY="188.0" promptText="e.g. pepitoemail@email.com" />

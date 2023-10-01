@@ -66,7 +66,7 @@ public class DAOclientsFICHERO implements DAOclients {
         Path file = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
         int error = 0;
         try {
-            Files.write(file, (t.toStringFile() + System.lineSeparator()).getBytes(), StandardOpenOption.APPEND);
+            Files.write(file, (t.toStringFile()).getBytes(), StandardOpenOption.APPEND);
             error = 1;
         } catch (IOException e) {
             log.error("Error writing the file", e);
