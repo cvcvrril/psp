@@ -1,7 +1,6 @@
 package ui.pantallas.customerupdate;
 
 import common.Constantes;
-import dao.imp.DAOclientsFICHERO;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
@@ -14,8 +13,6 @@ import services.SERVclient;
 import ui.pantallas.common.BasePantallaController;
 
 public class UpdateCustomerController extends BasePantallaController {
-
-    //private final DAOclientsFICHERO daOclientsFICHERO;
     private final SERVclient serVclient;
 
     @FXML
@@ -58,7 +55,7 @@ public class UpdateCustomerController extends BasePantallaController {
         String email = emailField.getText();
         int phoneNumber = Integer.parseInt(phoneField.getText());
 
-        Client updatedClient = new Client(id, firstName, secondName, email, phoneNumber, null); // Puedes proporcionar la fecha adecuada
+        Client updatedClient = new Client(id, firstName, secondName, email, phoneNumber, null);
 
         Either<ErrorCCustomer, Integer> res = serVclient.updateClient(updatedClient);
         if (res.isRight()) {
@@ -98,8 +95,6 @@ public class UpdateCustomerController extends BasePantallaController {
         secondName.setCellValueFactory(new PropertyValueFactory<>(Constantes.SECOND_NAME));
         email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
-        //tableCustomers.getItems().addAll(daOclientsIMP.getClients());
-        //tableCustomers.getItems().addAll(daOclientsFICHERO.getAll().getOrNull());
         tableCustomers.getItems().addAll(serVclient.getClients().getOrNull());
         tableCustomers.setOnMouseClicked(this::handleTable);
     }

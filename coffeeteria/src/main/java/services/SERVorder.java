@@ -35,13 +35,11 @@ public class SERVorder {
     /*Métodos*/
 
     public List<Order> getAll() {
-        //return daOorderIMP.getOrders();
         return daOordersFICHERO.getAll().getOrNull();
     }
 
     public Either<ErrorCOrder, Order> getOrder(int i) {
         if (i > 0)
-            //return Either.right(daOorderIMP.getOrders());
             return daOordersFICHERO.getOrder(i);
         else
             return Either.left(new ErrorCOrder("Error in the Order list", 1));

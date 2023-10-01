@@ -29,11 +29,15 @@ public class DAOclientsFICHERO implements DAOclients {
             aux = Files.readAllLines(path);
             DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             for (String line : aux){
-                String[] trozo = line.split(";");
-                //Client/Customer =
-                clients.add(new Client(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form)));
+                if (!line.trim().isEmpty()) {
+                    String[] trozo = line.split(";");
+                    if (trozo.length == 6) {
+                        clients.add(new Client(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form)));
+                    } else {
+                        log.warn("Línea mal formateada: " + line);
+                    }
+                }
             }
-
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         }
@@ -73,8 +77,6 @@ public class DAOclientsFICHERO implements DAOclients {
         }
         return Either.right(error);
     }
-
-
     @Override
     public Either<ErrorCCustomer, Integer> update(Client t) {
         Path path = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
@@ -94,24 +96,19 @@ public class DAOclientsFICHERO implements DAOclients {
                     client.setEmail(t.getEmail());
                     client.setPhoneNumber(t.getPhoneNumber());
                 }
-
                 clients.add(client);
             }
-
             List<String> updatedLines = new ArrayList<>();
             for (Client client : clients) {
                 updatedLines.add(client.toStringFile());
             }
-
             Files.write(path, updatedLines);
-
-            return Either.right(1); // Éxito al actualizar el cliente
+            return Either.right(1);
         } catch (IOException e) {
             log.error(e.getMessage(), e);
             return Either.left(new ErrorCCustomer("Error al leer/escribir el archivo", 2));
         }
     }
-
     @Override
     public Either<ErrorCCustomer, Integer> delete(Client t) {
         Path path = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
@@ -120,23 +117,28 @@ public class DAOclientsFICHERO implements DAOclients {
         try {
             lines = Files.readAllLines(path);
             DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
             for (String line : lines) {
                 String[] trozo = line.split(";");
-                Client client = new Client(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form));
-                clients.add(client);
+                if (trozo.length == 6) {
+                    Client client = new Client(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form));
+                    if (client.getId_c() == t.getId_c()) {
+                        client.setFirstName(t.getFirstName());
+                        client.setSecondName(t.getSecondName());
+                        client.setEmail(t.getEmail());
+                        client.setPhoneNumber(t.getPhoneNumber());
+                    }
+                    clients.add(client);
+                } else {
+                    log.warn("Línea mal formateada: " + line);
+                }
             }
-
             clients.removeIf(client -> client.getId_c() == t.getId_c());
-
             List<String> updatedLines = new ArrayList<>();
             for (Client client : clients) {
                 updatedLines.add(client.toStringFile());
             }
-
             Files.write(path, updatedLines);
-
-            return Either.right(1); // Éxito al eliminar el cliente
+            return Either.right(1);
         } catch (IOException e) {
             log.error(e.getMessage(), e);
             return Either.left(new ErrorCCustomer("Error al leer/escribir el archivo", 2));

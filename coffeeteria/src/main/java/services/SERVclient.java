@@ -41,7 +41,6 @@ public class SERVclient {
     }
 
     public Either<ErrorCCustomer, List<Client>> getClients() {
-        //return daOclientsIMP.getClients();
         return daOclientsFICHERO.getAll();
     }
 
@@ -58,6 +57,8 @@ public class SERVclient {
     }
 
     public Either<ErrorCCustomer, Integer> delClient(int i) {
+
+
         Either<ErrorCCustomer, Client> res = daOclientsFICHERO.get(i);
         if (res.isRight()){
             Client client = res.get();

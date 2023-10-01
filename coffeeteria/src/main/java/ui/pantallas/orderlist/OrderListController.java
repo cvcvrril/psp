@@ -15,9 +15,6 @@ import java.util.List;
 
 public class OrderListController extends BasePantallaController {
 
-
-    //private final DAOorderIMP daOorderIMP;
-    //private final DAOordersFICHERO  daOordersFICHERO;
     private final SERVorder serVorder;
 
     @FXML
@@ -42,7 +39,6 @@ public class OrderListController extends BasePantallaController {
     @Inject
     public OrderListController(SERVorder serVorder) {
         this.serVorder = serVorder;
-        //this.daOordersFICHERO = daOordersFICHERO;
     }
 
     /*Métodos*/
@@ -52,9 +48,6 @@ public class OrderListController extends BasePantallaController {
         id_ord.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_ORD));
         id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
         id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
-        date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
-        //tableOrders.getItems().addAll(daOorderIMP.getOrders());
-        //tableOrders.getItems().addAll(daOordersFICHERO.getAll().getOrNull());
         tableOrders.getItems().addAll(serVorder.getAll());
         filterComboBox.getItems().addAll("Date", "Customer");
     }
@@ -64,19 +57,11 @@ public class OrderListController extends BasePantallaController {
         String selectedItem = (String) filterComboBox.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             if (selectedItem.equals("Date")) {
-                // Filtrar por fecha
-                // Obtener la fecha seleccionada (puedes usar otro ComboBox o DatePicker)
-                LocalDate selectedDate = fechaDatePicker.getValue(); // Aquí deberías obtener la fecha seleccionada
-
-                // Filtrar la lista de pedidos por la fecha seleccionada
+                LocalDate selectedDate = fechaDatePicker.getValue();
                 List<Order> filteredOrders = serVorder.getOrdersByDate(selectedDate);
                 updateTable(filteredOrders);
             } else if (selectedItem.equals("Customer")) {
-                // Filtrar por cliente
-                // Obtener el cliente seleccionado (puedes usar otro ComboBox)
-                int selectedCustomerId = Integer.parseInt(customerField.getText()); // Aquí deberías obtener el ID del cliente seleccionado
-
-                // Filtrar la lista de pedidos por el cliente seleccionado
+                int selectedCustomerId = Integer.parseInt(customerField.getText());
                 List<Order> filteredOrders = serVorder.getOrdersByCustomer(selectedCustomerId);
                 updateTable(filteredOrders);
             }
@@ -84,10 +69,7 @@ public class OrderListController extends BasePantallaController {
     }
 
     private void updateTable(List<Order> orders) {
-        // Limpiar la tabla
         tableOrders.getItems().clear();
-
-        // Agregar los pedidos filtrados a la tabla
         tableOrders.getItems().addAll(orders);
     }
 

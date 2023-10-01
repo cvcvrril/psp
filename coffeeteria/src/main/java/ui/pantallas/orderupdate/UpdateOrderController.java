@@ -1,7 +1,6 @@
 package ui.pantallas.orderupdate;
 
 import common.Constantes;
-import dao.imp.DAOorderIMP;
 import dao.imp.DAOordersFICHERO;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
@@ -14,8 +13,7 @@ import ui.pantallas.common.BasePantallaController;
 import java.time.LocalDate;
 
 public class UpdateOrderController extends BasePantallaController {
-
-    //private final DAOorderIMP daOorderIMP;
+    
     private final DAOordersFICHERO daOordersFICHERO;
 
     @FXML
@@ -74,7 +72,6 @@ public class UpdateOrderController extends BasePantallaController {
         id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
         id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
-        //tableOrders.getItems().addAll(daOorderIMP.getOrders());
         tableOrders.getItems().addAll(daOordersFICHERO.getAll().getOrNull());
         tableOrders.setOnMouseClicked(this::handleTable);
     }

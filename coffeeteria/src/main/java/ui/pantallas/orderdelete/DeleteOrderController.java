@@ -42,24 +42,19 @@ public class DeleteOrderController extends BasePantallaController {
 
     public void delOrder(ActionEvent actionEvent) {
         Order selectedOrder = tableOrders.getSelectionModel().getSelectedItem();
-
         if (selectedOrder != null) {
             Either<ErrorCOrder, Integer> deleteResult = serVorder.delOrder(selectedOrder);
             if (deleteResult.isRight()) {
                 Alert a = new Alert(Alert.AlertType.CONFIRMATION);
                 a.setContentText(Constantes.ORDER_DELETED);
                 a.show();
-
-                // Actualiza la tabla de órdenes después de eliminar la orden
                 tableOrders.getItems().remove(selectedOrder);
             } else {
-                // Maneja el error, muestra un mensaje de error, por ejemplo
                 Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                 errorAlert.setContentText("Error deleting order: " + deleteResult.getLeft());
                 errorAlert.show();
             }
         } else {
-            // No se seleccionó ninguna orden para eliminar
             Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
             infoAlert.setContentText("Please select an order to delete.");
             infoAlert.show();

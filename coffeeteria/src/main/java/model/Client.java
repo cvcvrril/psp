@@ -29,6 +29,6 @@ public class Client {
 
 
     public String toStringFile() {
-        return id_c + ";" + firstName + ";" + secondName + ";" + email + ";" + phoneNumber + ";" + date + "\n";
+        return id_c + ";" + firstName + ";" + secondName + ";" + email + ";" + phoneNumber + ";" + date;
     }
 }
