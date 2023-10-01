@@ -18,8 +18,6 @@ import java.util.Optional;
 
 public class DeleteCustomerController extends BasePantallaController {
 
-    //private final DAOclientsIMP daOclientsIMP;
-    //private final DAOclientsFICHERO daOclientsFICHERO;
     private final SERVclient serVclient;
     private final SERVorder serVorder;
 
@@ -45,8 +43,6 @@ public class DeleteCustomerController extends BasePantallaController {
 
     public DeleteCustomerController(SERVclient serVclient, SERVorder serVorder) {
         this.serVclient = serVclient;
-        //this.daOclientsFICHERO = daOclientsFICHERO;
-        //this.daOclientsIMP = daOclientsIMP;
         this.serVorder = serVorder;
     }
 
@@ -89,8 +85,6 @@ public class DeleteCustomerController extends BasePantallaController {
         secondName.setCellValueFactory(new PropertyValueFactory<>(Constantes.SECOND_NAME));
         email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
-        //tableCustomers.getItems().addAll(daOclientsIMP.getClients());
-        //tableCustomers.getItems().addAll(daOclientsFICHERO.getAll().getOrNull());
         tableCustomers.getItems().addAll(serVclient.getClients().getOrNull());
 
     }

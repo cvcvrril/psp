@@ -1,6 +1,5 @@
 package ui.pantallas.customeradd;
 
-import dao.imp.DAOclientsFICHERO;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
