@@ -3,7 +3,6 @@ package dao.imp;
 import dao.DAOorder;
 import io.vavr.control.Either;
 import model.Order;
-import model.errors.ErrorC;
 import model.errors.ErrorCOrder;
 
 import java.time.LocalDate;
@@ -37,7 +36,7 @@ public class DAOorderIMP implements DAOorder {
     }
 
     @Override
-    public Either<ErrorCOrder, List<Order>> getOrder(int id) {
+    public Either<ErrorCOrder, Order> getOrder(int id) {
         return null;
     }
 

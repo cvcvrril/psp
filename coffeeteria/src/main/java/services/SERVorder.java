@@ -32,26 +32,25 @@ public class SERVorder {
         return daOordersFICHERO.getAll().getOrNull();
     }
 
-    public Either<ErrorCOrder, List<Order>> getOrder(int i) {
+    public Either<ErrorCOrder, Order> getOrder(int i) {
         if (i > 0)
             //return Either.right(daOorderIMP.getOrders());
-            return Either.right(daOordersFICHERO.getOrder(i).getOrNull());
+            return daOordersFICHERO.getOrder(i);
         else
             return Either.left(new ErrorCOrder("Error in the Order list", 1));
 
     }
 
-
-    public Order saveOrder(int i) {
-        return null;
+    public Either<ErrorCOrder, Integer> saveOrder(Order o) {
+        return daOordersFICHERO.save(o);
     }
 
-    public Order updateOrder(int i) {
-        return null;
+    public Either<ErrorCOrder, Integer> updateOrder(Order o) {
+        return daOordersFICHERO.update(o);
     }
 
-    public Order delOrder(int i) {
-        return null;
+    public Either<ErrorCOrder, Integer> delOrder(Order o) {
+        return daOordersFICHERO.delete(o);
     }
 
 
@@ -60,7 +59,6 @@ public class SERVorder {
     public List<Order> getOrdersByDate(LocalDate selectedDate) {
         List<Order> allOrders = daOordersFICHERO.getAll().getOrNull();
         List<Order> filteredOrders = new ArrayList<>();
-
         for (Order order : allOrders) {
             if (order.getOr_date().isEqual(selectedDate)) {
                 filteredOrders.add(order);
@@ -72,13 +70,11 @@ public class SERVorder {
     public List<Order> getOrdersByCustomer(int selectedCustomerId) {
         List<Order> allOrders = daOordersFICHERO.getAll().getOrNull();
         List<Order> filteredOrders = new ArrayList<>();
-
         for (Order order : allOrders) {
             if (order.getId_co() == selectedCustomerId) {
                 filteredOrders.add(order);
             }
         }
-
         return filteredOrders;
     }
 

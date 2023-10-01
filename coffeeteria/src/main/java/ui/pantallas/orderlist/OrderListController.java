@@ -68,7 +68,7 @@ public class OrderListController extends BasePantallaController {
                 // Obtener la fecha seleccionada (puedes usar otro ComboBox o DatePicker)
                 LocalDate selectedDate = fechaDatePicker.getValue(); // Aquí deberías obtener la fecha seleccionada
 
-                // Filtrar la lista de pedidos por la fecha seleccionada  
+                // Filtrar la lista de pedidos por la fecha seleccionada
                 List<Order> filteredOrders = serVorder.getOrdersByDate(selectedDate);
                 updateTable(filteredOrders);
             } else if (selectedItem.equals("Customer")) {

@@ -5,11 +5,10 @@ import dao.DAOorder;
 import io.vavr.control.Either;
 import lombok.extern.log4j.Log4j2;
 import model.Order;
-import model.errors.ErrorC;
-import model.errors.ErrorCCustomer;
 import model.errors.ErrorCOrder;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -44,13 +43,26 @@ public class DAOordersFICHERO implements DAOorder {
     }
 
     @Override
-    public Either<ErrorCOrder, List<Order>> getOrder(int id) {
+    public Either<ErrorCOrder, Order> getOrder(int id) {
         return null;
     }
 
     @Override
     public Either<ErrorCOrder, Integer> save(Order t) {
-        return null;
+        Path path = Paths.get(Configuration.getInstance().getProperty("pathDataOrders"));
+        int error = 0;
+        try{
+            BufferedWriter writer = Files.newBufferedWriter(path, java.nio.file.StandardOpenOption.APPEND);
+            DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String orderString = String.format("%d;%d;%d;%s%n", t.getId_co(), t.getId_ord(), t.getId_table(), t.getOr_date().format(form));
+            writer.write(orderString);
+            writer.close();
+            error = 1;
+        } catch (IOException e) {
+            log.error("Error writing the file", e);
+            return Either.left(new ErrorCOrder("Error al guardar la orden", 1));
+        }
+        return Either.right(error);
     }
 
     @Override
