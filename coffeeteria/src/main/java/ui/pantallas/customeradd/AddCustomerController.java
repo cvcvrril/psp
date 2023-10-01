@@ -15,8 +15,6 @@ import ui.pantallas.common.BasePantallaController;
 import java.time.LocalDate;
 
 public class AddCustomerController extends BasePantallaController {
-
-    //private final DAOclientsFICHERO daOclientsFICHERO;
     private final SERVclient serVclient;
 
     @FXML
@@ -35,7 +33,6 @@ public class AddCustomerController extends BasePantallaController {
 
     @Inject
     public AddCustomerController(SERVclient serVclient) {
-        //this.daOclientsFICHERO = daOclientsFICHERO;
         this.serVclient = serVclient;
     }
 

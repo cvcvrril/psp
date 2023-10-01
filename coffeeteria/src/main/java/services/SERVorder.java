@@ -57,7 +57,7 @@ public class SERVorder {
     }
 
     public Either<ErrorCOrder, Integer> delOrder(Order o) {
-        return daOordersFICHERO.delete(o);
+       return daOordersFICHERO.delete(o);
     }
 
 

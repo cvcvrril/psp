@@ -72,9 +72,38 @@ public class DAOordersFICHERO implements DAOorder {
 
     @Override
     public Either<ErrorCOrder, Integer> delete(Order t) {
-        return null;
+        Path path = Paths.get(Configuration.getInstance().getProperty("pathDataOrders"));
+        List<String> lines = new ArrayList<>();
+        int error = 0;
+
+        try {
+            BufferedReader reader = Files.newBufferedReader(path);
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] trozo = line.split(";");
+                int id_co = Integer.parseInt(trozo[0]);
+                int id_ord = Integer.parseInt(trozo[1]);
+                int id_table = Integer.parseInt(trozo[2]);
+                LocalDate or_date = LocalDate.parse(trozo[3], DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                Order order = new Order(id_co, id_ord, id_table, or_date);
+
+                if (!order.equals(t)) {
+                    lines.add(line);
+                }
+            }
+
+            BufferedWriter writer = Files.newBufferedWriter(path);
+            for (String l : lines) {
+                writer.write(l + "\n");
+            }
+            writer.close();
+
+            error = 1;
+        } catch (IOException e) {
+            log.error("Error writing the file", e);
+        }
+
+        return Either.right(error);
     }
-
-
 
 }

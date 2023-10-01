@@ -1,8 +1,8 @@
 package ui.pantallas.orderdelete;
 
 import common.Constantes;
-import dao.imp.DAOorderIMP;
 import dao.imp.DAOordersFICHERO;
+import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,14 +12,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Order;
+import model.errors.ErrorCOrder;
+import services.SERVorder;
 import ui.pantallas.common.BasePantallaController;
 
 import java.time.LocalDate;
 
 public class DeleteOrderController extends BasePantallaController {
 
-    //private final DAOorderIMP daOorderIMP;
-    private final DAOordersFICHERO daOordersFICHERO;
+    private final SERVorder serVorder;
 
     @FXML
     private TableView<Order> tableOrders;
@@ -35,14 +36,34 @@ public class DeleteOrderController extends BasePantallaController {
     private Button delOrderButton;
 
     @Inject
-    public DeleteOrderController(DAOordersFICHERO daOordersFICHERO) {
-        this.daOordersFICHERO = daOordersFICHERO;
+    public DeleteOrderController(SERVorder serVorder) {
+        this.serVorder = serVorder;
     }
 
     public void delOrder(ActionEvent actionEvent) {
-        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-        a.setContentText(Constantes.ORDER_DELETED);
-        a.show();
+        Order selectedOrder = tableOrders.getSelectionModel().getSelectedItem();
+
+        if (selectedOrder != null) {
+            Either<ErrorCOrder, Integer> deleteResult = serVorder.delOrder(selectedOrder);
+            if (deleteResult.isRight()) {
+                Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+                a.setContentText(Constantes.ORDER_DELETED);
+                a.show();
+
+                // Actualiza la tabla de órdenes después de eliminar la orden
+                tableOrders.getItems().remove(selectedOrder);
+            } else {
+                // Maneja el error, muestra un mensaje de error, por ejemplo
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setContentText("Error deleting order: " + deleteResult.getLeft());
+                errorAlert.show();
+            }
+        } else {
+            // No se seleccionó ninguna orden para eliminar
+            Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
+            infoAlert.setContentText("Please select an order to delete.");
+            infoAlert.show();
+        }
     }
 
     public void initialize() {
@@ -51,8 +72,7 @@ public class DeleteOrderController extends BasePantallaController {
         id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
         id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
-        tableOrders.getItems().addAll(daOordersFICHERO.getAll().getOrNull());
-        //tableOrders.getItems().addAll(daOorderIMP.getOrders());
+        tableOrders.getItems().addAll(serVorder.getAll());
 
     }
 }
