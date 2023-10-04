@@ -10,6 +10,8 @@ module coffeeteria {
     requires javafx.controls;
     requires jakarta.cdi;
     requires jakarta.inject;
+    requires jakarta.xml.bind;
+    requires org.glassfish.jaxb.runtime;
 
     /*Pantallas*/
 
