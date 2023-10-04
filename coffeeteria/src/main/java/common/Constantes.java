@@ -9,6 +9,7 @@ public class Constantes {
     public static final String SECOND_NAME = "SecondName";
     public static final String EMAIL = "email";
     public static final String PHONE_NUMBER = "phoneNumber";
+    public static final String DATE = "date";
     public static final String CUSTOMER_UPDATED = "Customer updated";
     public static final String SUCCESFULLY_RESET = "Succesfully reset";
     public static final String USUARIO_O_CONTRASENA_INCORRECTOS = "Usuario o contraseña incorrectos";

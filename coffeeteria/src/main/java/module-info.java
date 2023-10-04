@@ -12,6 +12,12 @@ module coffeeteria {
     requires jakarta.inject;
     requires jakarta.xml.bind;
     requires org.glassfish.jaxb.runtime;
+    requires MaterialFX;
+    requires io.reactivex.rxjava3;
+    requires org.pdfsam.rxjavafx;
+    requires java.logging;
+    requires java.sql;
+
 
     /*Pantallas*/
 

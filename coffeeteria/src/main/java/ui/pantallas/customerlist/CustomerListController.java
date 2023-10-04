@@ -11,10 +11,13 @@ import model.Client;
 import services.SERVclient;
 import ui.pantallas.common.BasePantallaController;
 
+import java.time.LocalDate;
+
 public class CustomerListController extends BasePantallaController {
 
     //private final DAOclientsIMP daOclientsIMP;
     private final SERVclient serVclient;
+
     //private final DAOclientsFICHERO daOclientsFICHERO;
 
     @FXML
@@ -29,6 +32,8 @@ public class CustomerListController extends BasePantallaController {
     private TableColumn<Client,Integer> phoneNumber;
     @FXML
     private TableColumn<Client,String> email;
+    @FXML
+    private TableColumn<Client, LocalDate> date;
 
 
     /*Constructores*/
@@ -47,6 +52,7 @@ public class CustomerListController extends BasePantallaController {
         secondName.setCellValueFactory(new PropertyValueFactory<>(Constantes.SECOND_NAME));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
         email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
+        date.setCellValueFactory(new PropertyValueFactory<>(Constantes.DATE));
         tableCustomers.getItems().addAll(serVclient.getClients().getOrNull());
 
     }
