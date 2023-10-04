@@ -14,13 +14,16 @@ public class Configuration {
     private static Configuration instance;
     private String pathDataCustomers;
     private String pathDataOrders;
+    private String pathXMLOrders;
 
     private Configuration(){
         try{
             p = new Properties();
             p.load(getClass().getClassLoader().getResourceAsStream("config/config.properties"));
+            p.loadFromXML(Configuration.class.getClassLoader().getResourceAsStream("config/properties.xml"));
             this.pathDataCustomers = p.getProperty("pathDataCustomers");
             this.pathDataOrders = p.getProperty("pathDataOrders");
+            this.pathXMLOrders = p.getProperty("xmlOrdersPath");
 
         } catch (IOException e) {
             log.error(e.getMessage(), e);
