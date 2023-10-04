@@ -15,6 +15,7 @@ import java.util.List;
 
 public class OrderListController extends BasePantallaController {
 
+
     private final SERVorder serVorder;
 
     @FXML
@@ -48,6 +49,7 @@ public class OrderListController extends BasePantallaController {
         id_ord.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_ORD));
         id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
         id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
+        date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
         tableOrders.getItems().addAll(serVorder.getAll());
         filterComboBox.getItems().addAll("Date", "Customer", "None");
     }
@@ -65,6 +67,7 @@ public class OrderListController extends BasePantallaController {
                 List<Order> filteredOrders = serVorder.getOrdersByCustomer(selectedCustomerId);
                 updateTable(filteredOrders);
             } else if (selectedItem.equals("None")) {
+                tableOrders.getItems().clear();
                 tableOrders.getItems().addAll(serVorder.getAll());
                 clearFields();
             }
@@ -80,5 +83,6 @@ public class OrderListController extends BasePantallaController {
         customerField.clear();
         fechaDatePicker.setValue(null);
     }
+
 
 }
