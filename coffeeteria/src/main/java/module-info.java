@@ -12,6 +12,7 @@ module coffeeteria {
     requires jakarta.inject;
     requires jakarta.xml.bind;
     requires org.glassfish.jaxb.runtime;
+    requires jakarta.jakartaee.api;
 
     /*Pantallas*/
 

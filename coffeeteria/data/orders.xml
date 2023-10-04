@@ -1,32 +1,33 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <orders>
     <order>
-        <id_o>1</id_o>
-        <orderItem>
-            <id>1</id>
-            <menuItem>Water</menuItem>
+        <id>1</id>
+        <order_item>
+            <menu_item>Caesar Salad</menu_item>
             <quantity>2</quantity>
-        </orderItem>
-    </order>
-    <order>
-        <id_o>2</id_o>
-        <orderItem>
-            <id>3</id>
-            <menuItem>Ice Cream</menuItem>
-            <quantity>3</quantity>
-        </orderItem>
-        <orderItem>
-            <id>7</id>
-            <menuItem>Pasta</menuItem>
+        </order_item>
+        <order_item>
+            <menu_item>Pasta</menu_item>
             <quantity>1</quantity>
-        </orderItem>
+        </order_item>
+        <order_item>
+            <menu_item>Salmon</menu_item>
+            <quantity>3</quantity>
+        </order_item>
+        <order_item>
+            <menu_item>Apple cake</menu_item>
+            <quantity>2</quantity>
+        </order_item>
     </order>
     <order>
-        <id_o>3</id_o>
-        <orderItem>
-            <id>2</id>
-            <menuItem>Wine</menuItem>
+        <id>2</id>
+        <order_item>
+            <menu_item>Hamburger</menu_item>
             <quantity>2</quantity>
-        </orderItem>
+        </order_item>
+        <order_item>
+            <menu_item>Coffee</menu_item>
+            <quantity>2</quantity>
+        </order_item>
     </order>
 </orders>
