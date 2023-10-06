@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
-public class DAOclientsFICHERO implements DAOclients {
+public class DAOclientsFILE implements DAOclients {
 
     @Override
     public Either<ErrorCCustomer, List<Client>> getAll() {

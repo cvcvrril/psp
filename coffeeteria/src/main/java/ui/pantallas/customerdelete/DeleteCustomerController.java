@@ -6,6 +6,7 @@ import jakarta.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import model.Client;
 import model.Order;
 import model.errors.ErrorCCustomer;
@@ -22,7 +23,6 @@ public class DeleteCustomerController extends BasePantallaController {
     private final SERVclient serVclient;
     private final SERVorder serVorder;
 
-
     @FXML
     private Button delCustomer;
 
@@ -36,7 +36,7 @@ public class DeleteCustomerController extends BasePantallaController {
     private TableColumn<Order,Integer> id_table;
     @FXML
     private TableColumn<Order, LocalDate> date_order;
-    
+
     @FXML
     private TableView<Client> tableCustomers;
     @FXML
@@ -49,6 +49,8 @@ public class DeleteCustomerController extends BasePantallaController {
     private TableColumn<Client,String> email;
     @FXML
     private TableColumn<Client,Integer> phoneNumber;
+    @FXML
+    private TableColumn<Client,LocalDate> date;
 
 
 
@@ -59,6 +61,7 @@ public class DeleteCustomerController extends BasePantallaController {
         this.serVorder = serVorder;
     }
 
+    //TODO arreglar que me elimina lo primero
 
     public void delCustomer() {
         Client selCustomer = tableCustomers.getSelectionModel().getSelectedItem();
@@ -80,16 +83,24 @@ public class DeleteCustomerController extends BasePantallaController {
                 Alert a = new Alert(Alert.AlertType.CONFIRMATION);
                 a.setContentText(Constantes.USER_DELETED);
                 a.show();
-                tableCustomers.getItems().remove(selCustomer);
             } else {
                 ErrorCCustomer error = res.getLeft();
                 Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                 errorAlert.setContentText("Error al eliminar el cliente");
                 errorAlert.show();
             }
+            tableCustomers.getItems().remove(selCustomer);
         }
     }
 
+    public void setTableOrdersCus(MouseEvent event){
+        tableOrdersCus.getItems().clear();
+        id_c2.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
+        id_ord.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_ORD));
+        id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
+        date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
+        tableOrdersCus.getItems().addAll(serVorder.getAll());
+    }
 
     public void initialize() {
 
@@ -98,7 +109,9 @@ public class DeleteCustomerController extends BasePantallaController {
         secondName.setCellValueFactory(new PropertyValueFactory<>(Constantes.SECOND_NAME));
         email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
+        date.setCellValueFactory(new PropertyValueFactory<>(Constantes.DATE));
         tableCustomers.getItems().addAll(serVclient.getClients().getOrNull());
+        tableCustomers.setOnMouseClicked(this::setTableOrdersCus);
 
     }
 

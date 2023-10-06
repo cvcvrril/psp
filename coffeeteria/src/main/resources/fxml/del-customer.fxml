@@ -17,6 +17,7 @@
           <TableColumn fx:id="secondName" prefWidth="105.0" text="Second Name" />
           <TableColumn fx:id="email" prefWidth="75.0" text="Email" />
           <TableColumn fx:id="phoneNumber" prefWidth="75.0" text="Phone Number" />
+          <TableColumn fx:id="date" prefWidth="75.0" text="Date" />
         </columns>
       </TableView>
       <Button fx:id="delCustomer" layoutX="257.0" layoutY="340.0" mnemonicParsing="false" onAction="#delCustomer" text="Delete customer" />

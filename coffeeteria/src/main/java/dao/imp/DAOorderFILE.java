@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
-public class DAOordersFICHERO implements DAOorder {
+public class DAOorderFILE implements DAOorder {
 
     @Override
     public Either<ErrorCOrder, List<Order>> getAll() {
@@ -43,7 +43,7 @@ public class DAOordersFICHERO implements DAOorder {
     }
 
     @Override
-    public Either<ErrorCOrder, Order> getOrder(int id) {
+    public Either<ErrorCOrder, Order> get(int id) {
         return null;
     }
 

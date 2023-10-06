@@ -1,7 +1,7 @@
 package ui.pantallas.orderupdate;
 
 import common.Constantes;
-import dao.imp.DAOordersFICHERO;
+import dao.imp.DAOorderFILE;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -14,7 +14,7 @@ import java.time.LocalDate;
 
 public class UpdateOrderController extends BasePantallaController {
 
-    private final DAOordersFICHERO daOordersFICHERO;
+    private final DAOorderFILE daOorderFILE;
 
     @FXML
     private TableView<Order> tableOrders;
@@ -44,8 +44,8 @@ public class UpdateOrderController extends BasePantallaController {
     private TextField quantityField;
 
     @Inject
-    public UpdateOrderController(DAOordersFICHERO daOordersFICHERO) {
-        this.daOordersFICHERO = daOordersFICHERO;
+    public UpdateOrderController(DAOorderFILE daOorderFILE) {
+        this.daOorderFILE = daOorderFILE;
     }
 
     public void addItem() {
@@ -72,7 +72,7 @@ public class UpdateOrderController extends BasePantallaController {
         id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
         id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
-        tableOrders.getItems().addAll(daOordersFICHERO.getAll().getOrNull());
+        tableOrders.getItems().addAll(daOorderFILE.getAll().getOrNull());
         tableOrders.setOnMouseClicked(this::handleTable);
     }
 

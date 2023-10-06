@@ -1,7 +1,6 @@
 package services;
 
-import dao.imp.DAOclientsFICHERO;
-import dao.imp.DAOclientsIMP;
+import dao.imp.DAOclientsFILE;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import model.Client;
@@ -14,23 +13,21 @@ public class SERVclient {
 
     /*Atributos*/
 
-    private final DAOclientsIMP daOclientsIMP;
-    private final DAOclientsFICHERO daOclientsFICHERO;
+    private final DAOclientsFILE daOclientsFILE;
 
     private ErrorC errorC;
 
     /*Constructor*/
 
     @Inject
-    public SERVclient(DAOclientsIMP daOclientsIMP, DAOclientsFICHERO daOclientsFICHERO) {
-        this.daOclientsIMP = daOclientsIMP;
-        this.daOclientsFICHERO = daOclientsFICHERO;
+    public SERVclient(DAOclientsFILE daOclientsFILE) {
+        this.daOclientsFILE = daOclientsFILE;
     }
 
     /*Métodos*/
 
     public int getLastUsedId() {
-        List<Client> clients = daOclientsFICHERO.getAll().getOrNull();
+        List<Client> clients = daOclientsFILE.getAll().getOrNull();
         int lastUsedId = 0;
         for (Client client : clients) {
             if (client.getId_c() > lastUsedId) {
@@ -41,28 +38,28 @@ public class SERVclient {
     }
 
     public Either<ErrorCCustomer, List<Client>> getClients() {
-        return daOclientsFICHERO.getAll();
+        return daOclientsFILE.getAll();
     }
 
     public Either<ErrorCCustomer, Client> getClients(int i) {
-            return daOclientsFICHERO.get(i);
+            return daOclientsFILE.get(i);
     }
 
     public Either<ErrorCCustomer, Integer> saveClient(Client i) {
-        return daOclientsFICHERO.save(i);
+        return daOclientsFILE.save(i);
     }
 
     public Either<ErrorCCustomer, Integer> updateClient(Client i) {
-        return daOclientsFICHERO.update(i);
+        return daOclientsFILE.update(i);
     }
 
     public Either<ErrorCCustomer, Integer> delClient(int i) {
 
 
-        Either<ErrorCCustomer, Client> res = daOclientsFICHERO.get(i);
+        Either<ErrorCCustomer, Client> res = daOclientsFILE.get(i);
         if (res.isRight()){
             Client client = res.get();
-            return daOclientsFICHERO.delete(client);
+            return daOclientsFILE.delete(client);
         }else {
             return Either.left(res.getLeft());
         }

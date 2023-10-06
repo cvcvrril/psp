@@ -1,7 +1,7 @@
 package services;
 
-import dao.imp.DAOclientsFICHERO;
-import dao.imp.DAOordersFICHERO;
+import dao.imp.DAOclientsFILE;
+import dao.imp.DAOorderFILE;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import model.Client;
@@ -20,49 +20,49 @@ public class SERVorder {
     /*Atributos*/
 
     //private final DAOorderIMP daOorderIMP;
-    private final DAOordersFICHERO daOordersFICHERO;
-    private final DAOclientsFICHERO daOclientsFICHERO;
+    private final DAOorderFILE daOorderFILE;
+    private final DAOclientsFILE daOclientsFILE;
 
     /*Constructor*/
 
     @Inject
-    public SERVorder(DAOordersFICHERO daOordersFICHERO, DAOclientsFICHERO daOclientsFICHERO) {
+    public SERVorder(DAOorderFILE daOorderFILE, DAOclientsFILE daOclientsFILE) {
         //this.daOorderIMP = daOorderIMP;
-        this.daOordersFICHERO = daOordersFICHERO;
-        this.daOclientsFICHERO = daOclientsFICHERO;
+        this.daOorderFILE = daOorderFILE;
+        this.daOclientsFILE = daOclientsFILE;
     }
 
     /*Métodos*/
 
     public List<Order> getAll() {
-        return daOordersFICHERO.getAll().getOrNull();
+        return daOorderFILE.getAll().getOrNull();
     }
 
     public Either<ErrorCOrder, Order> getOrder(int i) {
         if (i > 0)
-            return daOordersFICHERO.getOrder(i);
+            return daOorderFILE.get(i);
         else
             return Either.left(new ErrorCOrder("Error in the Order list", 1));
 
     }
 
     public Either<ErrorCOrder, Integer> saveOrder(Order o) {
-        return daOordersFICHERO.save(o);
+        return daOorderFILE.save(o);
     }
 
     public Either<ErrorCOrder, Integer> updateOrder(Order o) {
-        return daOordersFICHERO.update(o);
+        return daOorderFILE.update(o);
     }
 
     public Either<ErrorCOrder, Integer> delOrder(Order o) {
-       return daOordersFICHERO.delete(o);
+       return daOorderFILE.delete(o);
     }
 
 
     /*Aux*/
 
     public List<Order> getOrdersByDate(LocalDate selectedDate) {
-        List<Order> allOrders = daOordersFICHERO.getAll().getOrNull();
+        List<Order> allOrders = daOorderFILE.getAll().getOrNull();
         List<Order> filteredOrders = new ArrayList<>();
         for (Order order : allOrders) {
             if (order.getOr_date().isEqual(selectedDate)) {
@@ -73,7 +73,7 @@ public class SERVorder {
     }
 
     public List<Order> getOrdersByCustomer(int selectedCustomerId) {
-        List<Order> allOrders = daOordersFICHERO.getAll().getOrNull();
+        List<Order> allOrders = daOorderFILE.getAll().getOrNull();
         List<Order> filteredOrders = new ArrayList<>();
         for (Order order : allOrders) {
             if (order.getId_co() == selectedCustomerId) {
@@ -84,7 +84,7 @@ public class SERVorder {
     }
 
     public List<Integer> getCustomerIDs() {
-        Either<ErrorCCustomer, List<Client>> result = daOclientsFICHERO.getAll();
+        Either<ErrorCCustomer, List<Client>> result = daOclientsFILE.getAll();
         if (result.isRight()) {
             List<Client> clients = result.get();
             return clients.stream().map(Client::getId_c).collect(Collectors.toList());

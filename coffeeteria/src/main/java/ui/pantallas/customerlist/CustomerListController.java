@@ -1,7 +1,6 @@
 package ui.pantallas.customerlist;
 
 import common.Constantes;
-import dao.imp.DAOclientsFICHERO;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -15,10 +14,7 @@ import java.time.LocalDate;
 
 public class CustomerListController extends BasePantallaController {
 
-    //private final DAOclientsIMP daOclientsIMP;
     private final SERVclient serVclient;
-
-    //private final DAOclientsFICHERO daOclientsFICHERO;
 
     @FXML
     private TableView<Client> tableCustomers;

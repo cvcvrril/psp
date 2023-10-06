@@ -1,11 +1,13 @@
 package model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.Date;
 
 @Data
+@AllArgsConstructor
 public class Order {
 
     /*Atributos*/
@@ -16,13 +18,6 @@ public class Order {
     private LocalDate or_date;
 
     /*Construcctores*/
-
-    public Order(int id_co, int id_ord, int id_table, LocalDate or_date) {
-        this.id_co = id_co;
-        this.id_ord = id_ord;
-        this.id_table = id_table;
-        this.or_date = or_date;
-    }
 
 
     public String toStringFile() {
