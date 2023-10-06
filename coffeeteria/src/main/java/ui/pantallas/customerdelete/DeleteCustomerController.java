@@ -13,6 +13,7 @@ import services.SERVclient;
 import services.SERVorder;
 import ui.pantallas.common.BasePantallaController;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,9 +22,21 @@ public class DeleteCustomerController extends BasePantallaController {
     private final SERVclient serVclient;
     private final SERVorder serVorder;
 
+
     @FXML
     private Button delCustomer;
 
+    @FXML
+    private  TableView<Order> tableOrdersCus;
+    @FXML
+    private TableColumn<Order, Integer> id_ord;
+    @FXML
+    private TableColumn<Order,Integer> id_c2;
+    @FXML
+    private TableColumn<Order,Integer> id_table;
+    @FXML
+    private TableColumn<Order, LocalDate> date_order;
+    
     @FXML
     private TableView<Client> tableCustomers;
     @FXML

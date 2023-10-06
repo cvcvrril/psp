@@ -10,7 +10,7 @@
          <font>
             <Font size="27.0" />
          </font></Label>
-      <TableView fx:id="tableCustomers" layoutX="29.0" layoutY="116.0" prefHeight="200.0" prefWidth="327.0">
+      <TableView fx:id="tableCustomers" layoutX="13.0" layoutY="116.0" prefHeight="200.0" prefWidth="315.0">
         <columns>
           <TableColumn fx:id="id_c" prefWidth="75.0" text="Customer ID" />
           <TableColumn fx:id="firstName" prefWidth="75.0" text="First Name" />
@@ -20,12 +20,12 @@
         </columns>
       </TableView>
       <Button fx:id="delCustomer" layoutX="257.0" layoutY="340.0" mnemonicParsing="false" onAction="#delCustomer" text="Delete customer" />
-      <TableView layoutX="372.0" layoutY="116.0" prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="tableOrdersCus" layoutX="344.0" layoutY="116.0" prefHeight="200.0" prefWidth="238.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Order ID" />
-          <TableColumn prefWidth="75.0" text="Costumer ID" />
-            <TableColumn prefWidth="75.0" text="Date" />
-            <TableColumn prefWidth="75.0" text="Column X" />
+          <TableColumn fx:id="id_ord" prefWidth="75.0" text="Order ID" />
+          <TableColumn fx:id="id_c2" prefWidth="75.0" text="Costumer ID" />
+          <TableColumn fx:id="date_order" prefWidth="75.0" text="Date" />
+          <TableColumn fx:id="id_table" prefWidth="75.0" text="Table ID" />
         </columns>
       </TableView>
    </children>
