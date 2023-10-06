@@ -8,16 +8,16 @@ public enum Pantallas {
     WELCOME("/fxml/welcome.fxml"),
 
     /*CUSTOMERS*/
-    CUS_LIST("/fxml/customer_list.fxml"),
-    CUS_ADD("/fxml/add_customer.fxml"),
-    CUS_UPDATE("/fxml/update_customer.fxml"),
-    CUS_DEL("/fxml/del_customer.fxml"),
+    CUS_LIST("/fxml/customer-list.fxml"),
+    CUS_ADD("/fxml/add-customer.fxml"),
+    CUS_UPDATE("/fxml/update-customer.fxml"),
+    CUS_DEL("/fxml/del-customer.fxml"),
 
     /*ORDERS*/
-    OR_LIST("/fxml/order_list.fxml"),
-    OR_ADD("/fxml/add_order.fxml"),
-    OR_UPDATE("/fxml/update_order.fxml"),
-    OR_DEL("/fxml/del_order.fxml");
+    OR_LIST("/fxml/order-list.fxml"),
+    OR_ADD("/fxml/add-order.fxml"),
+    OR_UPDATE("/fxml/update-order.fxml"),
+    OR_DEL("/fxml/del-order.fxml");
 
     private String ruta;
 
