@@ -1,12 +1,9 @@
 package ui.pantallas.llamadas.llamadapersonaje;
 
-import common.Constantes;
-import jakarta.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import model.Client;
+import domain.Client;
 import ui.pantallas.common.BasePantallaController;
 
 public class LlamadaPersonajeController extends BasePantallaController {

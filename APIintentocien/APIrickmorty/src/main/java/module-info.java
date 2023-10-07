@@ -22,9 +22,9 @@ module coffeeteria {
 
     /*Otros exports*/
 
-    exports model.errors;
+    exports domain.errors;
     exports common;
-    exports model;
+    exports domain;
     exports ui.main to javafx.graphics;
 
     /*Abrir módulos*/

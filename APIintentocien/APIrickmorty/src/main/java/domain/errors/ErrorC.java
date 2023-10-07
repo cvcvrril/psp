@@ -1,4 +1,4 @@
-package model.errors;
+package domain.errors;
 
 public class ErrorC {
 
