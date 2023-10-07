@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
-import model.Credential;
 import ui.pantallas.common.BasePantallaController;
 import ui.pantallas.common.Pantallas;
 
@@ -33,8 +32,6 @@ public class PrincipalController extends BasePantallaController {
     private MenuBar menuPrincipal;
     private Stage primaryStage;
 
-    @Getter
-    private Credential rootUser;
 
     @Getter
     private String user;
