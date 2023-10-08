@@ -1,4 +1,4 @@
 package dao.retrofit.llamadas;
 
-public class PersonajeAPI {
+public interface PersonajeAPI {
 }
