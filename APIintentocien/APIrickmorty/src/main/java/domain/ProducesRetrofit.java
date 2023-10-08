@@ -1,4 +1,4 @@
-package dao.retrofit.modulo;
+package domain;
 
 public class ProducesRetrofit {
 }

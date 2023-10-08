@@ -3,7 +3,7 @@ package ui.pantallas.llamadas.llamadapersonaje;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import domain.Client;
+import domain.modelo.Client;
 import ui.pantallas.common.BasePantallaController;
 
 public class LlamadaPersonajeController extends BasePantallaController {

@@ -24,7 +24,6 @@ module coffeeteria {
 
     exports domain.errors;
     exports common;
-    exports domain;
     exports ui.main to javafx.graphics;
 
     /*Abrir módulos*/
@@ -36,4 +35,5 @@ module coffeeteria {
     opens ui.pantallas.llamadas.llamadaepisodio to javafx.fxml;
     opens ui.pantallas.llamadas.llamadapersonaje to javafx.fxml;
     opens ui.pantallas.llamadas.llamadalugar to javafx.fxml;
+    exports domain.modelo;
 }

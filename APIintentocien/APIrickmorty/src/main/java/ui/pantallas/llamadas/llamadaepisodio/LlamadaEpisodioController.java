@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import domain.Client;
+import domain.modelo.Client;
 import ui.pantallas.common.BasePantallaController;
 
 public class LlamadaEpisodioController extends BasePantallaController {
