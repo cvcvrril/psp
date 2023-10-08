@@ -12,7 +12,4 @@ public class Personaje {
     private String status;
     private String species;
 
-    /*Construcctores*/
-
-
 }
