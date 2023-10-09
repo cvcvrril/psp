@@ -10,6 +10,11 @@ module coffeeteria {
     requires javafx.controls;
     requires jakarta.cdi;
     requires jakarta.inject;
+    requires okhttp3;
+    requires com.squareup.moshi;
+    requires retrofit2.converter.moshi;
+    requires retrofit2;
+    requires retrofit2.adapter.rxjava3;
 
     /*Pantallas*/
 
