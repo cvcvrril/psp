@@ -31,7 +31,7 @@
       <Label layoutX="376.0" layoutY="80.0" text="Order items" />
       <Label layoutX="322.0" layoutY="333.0" text="Total amount" />
       <Label layoutX="376.0" layoutY="26.0" text="Customer name" />
-      <DatePicker fx:id="fechaDatePicker" layoutX="34.0" layoutY="361.0" prefHeight="25.0" prefWidth="118.0" promptText="Date" />
+      <DatePicker fx:id="fechaDatePicker" layoutX="34.0" layoutY="361.0" prefHeight="25.0" prefWidth="118.0" promptText="yyyy-MM-dd"  />
       <TextField fx:id="customerField" layoutX="173.0" layoutY="361.0" prefHeight="25.0" prefWidth="95.0" promptText="Customer" />
       <TextField layoutX="376.0" layoutY="49.0" />
       <TextField layoutX="294.0" layoutY="361.0" />
