@@ -17,16 +17,16 @@ public class Configuration {
 
     public Configuration(){
         try {
-            properties = new Properties();
-            properties.load(getClass().getClassLoader()
-                    .getResourceAsStream(Constantes.CONFIG_CONFIG_PROPERTIES));
-            this.pathApi = properties.getProperty(Constantes.API_URL);
+            this.properties = new Properties();
+            this.properties.load(getClass().getClassLoader()
+                    .getResourceAsStream("config/config.properties"));
+            this.pathApi = properties.getProperty("apiUrl");
         } catch (IOException e) {
             log.error(e.getMessage(),e);
         }
     }
 
     public String getProperty(String key){
-        return properties.getProperty(key);
+        return this.properties.getProperty(key);
     }
 }
