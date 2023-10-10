@@ -17,11 +17,12 @@ public class ProducesRetrofit {
     }
 
     @Produces
-    public Retrofit retrofit(Moshi moshi){
-        OkHttpClient okHttpClient = new OkHttpClient();
-        return
+    public OkHttpClient getOk(Configuration config){
+        return new OkHttpClient.Builder()
+                .connectionPool(new okhttp3.ConnectionPool(1, 1, java.util.concurrent.TimeUnit.SECONDS))
+                .build();
     }
-
+    
 
 
 
