@@ -11,10 +11,10 @@ module coffeeteria {
     requires jakarta.cdi;
     requires jakarta.inject;
     requires okhttp3;
-    requires com.squareup.moshi;
     requires retrofit2.converter.moshi;
     requires retrofit2;
     requires retrofit2.adapter.rxjava3;
+    requires moshi;
 
     /*Pantallas*/
 
@@ -24,6 +24,10 @@ module coffeeteria {
     exports ui.pantallas.llamadas.llamadapersonaje;
     exports ui.pantallas.welcome;
     exports ui.pantallas.llamadas.llamadalugar;
+    exports dao.retrofit.modelo;
+    exports domain.usecase;
+    exports domain;
+    exports dao.impl;
 
     /*Otros exports*/
 

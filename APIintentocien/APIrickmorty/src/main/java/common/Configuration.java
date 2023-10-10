@@ -3,7 +3,6 @@ package common;
 
 import jakarta.inject.Singleton;
 import lombok.Data;
-import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.IOException;
@@ -18,7 +17,7 @@ public class Configuration {
 
     public Configuration(){
         try {
-            Properties properties = new Properties();
+            properties = new Properties();
             properties.load(getClass().getClassLoader()
                     .getResourceAsStream(Constantes.CONFIG_CONFIG_PROPERTIES));
             this.pathApi = properties.getProperty(Constantes.API_URL);
