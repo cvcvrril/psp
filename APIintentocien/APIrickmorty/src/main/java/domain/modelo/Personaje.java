@@ -14,5 +14,5 @@ public class Personaje {
     private String type;
     private String gender;
     private Lugar location;
-    
+
 }
