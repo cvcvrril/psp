@@ -7,11 +7,11 @@ import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
-public class Client {
+public class Customer {
 
     /*Atributos*/
 
-    private int id_c;
+    private int idC;
     private String firstName;
     private String secondName;
     private String email;
@@ -21,6 +21,6 @@ public class Client {
     /*Construcctores*/
 
     public String toStringFile() {
-        return id_c + ";" + firstName + ";" + secondName + ";" + email + ";" + phoneNumber + ";" + date;
+        return idC + ";" + firstName + ";" + secondName + ";" + email + ";" + phoneNumber + ";" + date;
     }
 }

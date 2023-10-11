@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import model.Client;
+import model.Customer;
 import model.Order;
 import model.errors.ErrorCCustomer;
 import services.SERVclient;
@@ -38,19 +38,19 @@ public class DeleteCustomerController extends BasePantallaController {
     private TableColumn<Order, LocalDate> dateOrder;
 
     @FXML
-    private TableView<Client> tableCustomers;
+    private TableView<Customer> tableCustomers;
     @FXML
-    private TableColumn<Client, Integer> idC;
+    private TableColumn<Customer, Integer> idC;
     @FXML
-    private TableColumn<Client, String> firstName;
+    private TableColumn<Customer, String> firstName;
     @FXML
-    private TableColumn<Client, String> secondName;
+    private TableColumn<Customer, String> secondName;
     @FXML
-    private TableColumn<Client,String> email;
+    private TableColumn<Customer,String> email;
     @FXML
-    private TableColumn<Client,Integer> phoneNumber;
+    private TableColumn<Customer,Integer> phoneNumber;
     @FXML
-    private TableColumn<Client,LocalDate> date;
+    private TableColumn<Customer,LocalDate> date;
 
 
 
@@ -62,10 +62,10 @@ public class DeleteCustomerController extends BasePantallaController {
     }
 
     public void delCustomer() {
-        Client selCustomer = tableCustomers.getSelectionModel().getSelectedItem();
+        Customer selCustomer = tableCustomers.getSelectionModel().getSelectedItem();
         if (selCustomer != null) {
             // Verificar si el cliente tiene órdenes asociadas
-            List<Order> customerOrders = serVorder.getOrdersByCustomer(selCustomer.getId_c());
+            List<Order> customerOrders = serVorder.getOrdersByCustomer(selCustomer.getIdC());
             if (!customerOrders.isEmpty()) {
                 // Si el cliente tiene órdenes, preguntar al usuario si desea eliminarlo
                 Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -76,7 +76,7 @@ public class DeleteCustomerController extends BasePantallaController {
                 }
             }
 
-            Either<ErrorCCustomer, Integer> res = serVclient.delClient(selCustomer.getId_c());
+            Either<ErrorCCustomer, Integer> res = serVclient.delClient(selCustomer.getIdC());
             if (res.isRight()) {
                 Alert a = new Alert(Alert.AlertType.CONFIRMATION);
                 a.setContentText(Constantes.USER_DELETED);

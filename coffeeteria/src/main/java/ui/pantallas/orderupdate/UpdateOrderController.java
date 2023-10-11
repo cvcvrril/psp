@@ -80,10 +80,10 @@ public class UpdateOrderController extends BasePantallaController {
         if (event.getClickCount() == 1){
             Order selOrder = tableOrders.getSelectionModel().getSelectedItem();
             if (selOrder != null){
-                orderIdField.setText(String.valueOf(selOrder.getId_ord()));
-                customerField.setText(String.valueOf(selOrder.getId_co()));
-                tableField.setText(String.valueOf(selOrder.getId_table()));
-                dateField.setText(String.valueOf(selOrder.getOr_date()));
+                orderIdField.setText(String.valueOf(selOrder.getIdOrd()));
+                customerField.setText(String.valueOf(selOrder.getIdCo()));
+                tableField.setText(String.valueOf(selOrder.getIdTable()));
+                dateField.setText(String.valueOf(selOrder.getOrDate()));
 
             }
         }

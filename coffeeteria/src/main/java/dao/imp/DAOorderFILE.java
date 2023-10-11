@@ -54,7 +54,7 @@ public class DAOorderFILE implements DAOorder {
         try{
             BufferedWriter writer = Files.newBufferedWriter(path, java.nio.file.StandardOpenOption.APPEND);
             DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            String orderString = String.format("%d;%d;%d;%s%n", t.getId_co(), t.getId_ord(), t.getId_table(), t.getOr_date().format(form));
+            String orderString = String.format("%d;%d;%d;%s%n", t.getIdCo(), t.getIdOrd(), t.getIdTable(), t.getOrDate().format(form));
             writer.write(orderString);
             writer.close();
             error = 1;

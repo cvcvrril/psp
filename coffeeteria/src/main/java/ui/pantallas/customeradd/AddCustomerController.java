@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import model.Client;
+import model.Customer;
 import model.errors.ErrorCCustomer;
 import services.SERVclient;
 import ui.pantallas.common.BasePantallaController;
@@ -54,7 +54,7 @@ public class AddCustomerController extends BasePantallaController {
             return;
         }
 
-        Client newCustomer = new Client(nextID,firstName, secondName, email,phoneNumber, date );
+        Customer newCustomer = new Customer(nextID,firstName, secondName, email,phoneNumber, date );
         Either<ErrorCCustomer, Integer> res = serVclient.saveClient(newCustomer);
         clearFields();
 

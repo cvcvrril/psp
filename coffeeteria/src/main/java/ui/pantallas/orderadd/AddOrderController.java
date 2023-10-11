@@ -85,7 +85,7 @@ public class AddOrderController extends BasePantallaController {
     private int getNextOrderId() {
         List<Order> orders = serVorder.getAll();
         if (!orders.isEmpty()) {
-            return orders.get(orders.size() - 1).getId_ord() + 1;
+            return orders.get(orders.size() - 1).getIdOrd() + 1;
         } else {
             return 1;
         }

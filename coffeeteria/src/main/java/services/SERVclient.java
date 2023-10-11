@@ -3,7 +3,7 @@ package services;
 import dao.imp.DAOclientsFILE;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
-import model.Client;
+import model.Customer;
 import model.errors.ErrorC;
 import model.errors.ErrorCCustomer;
 
@@ -27,39 +27,39 @@ public class SERVclient {
     /*Métodos*/
 
     public int getLastUsedId() {
-        List<Client> clients = daOclientsFILE.getAll().getOrNull();
+        List<Customer> customers = daOclientsFILE.getAll().getOrNull();
         int lastUsedId = 0;
-        for (Client client : clients) {
-            if (client.getId_c() > lastUsedId) {
-                lastUsedId = client.getId_c();
+        for (Customer customer : customers) {
+            if (customer.getIdC() > lastUsedId) {
+                lastUsedId = customer.getIdC();
             }
         }
         return lastUsedId + 1;
     }
 
-    public Either<ErrorCCustomer, List<Client>> getClients() {
+    public Either<ErrorCCustomer, List<Customer>> getClients() {
         return daOclientsFILE.getAll();
     }
 
-    public Either<ErrorCCustomer, Client> getClients(int i) {
+    public Either<ErrorCCustomer, Customer> getClients(int i) {
             return daOclientsFILE.get(i);
     }
 
-    public Either<ErrorCCustomer, Integer> saveClient(Client i) {
+    public Either<ErrorCCustomer, Integer> saveClient(Customer i) {
         return daOclientsFILE.save(i);
     }
 
-    public Either<ErrorCCustomer, Integer> updateClient(Client i) {
+    public Either<ErrorCCustomer, Integer> updateClient(Customer i) {
         return daOclientsFILE.update(i);
     }
 
     public Either<ErrorCCustomer, Integer> delClient(int i) {
 
 
-        Either<ErrorCCustomer, Client> res = daOclientsFILE.get(i);
+        Either<ErrorCCustomer, Customer> res = daOclientsFILE.get(i);
         if (res.isRight()){
-            Client client = res.get();
-            return daOclientsFILE.delete(client);
+            Customer customer = res.get();
+            return daOclientsFILE.delete(customer);
         }else {
             return Either.left(res.getLeft());
         }

@@ -4,7 +4,7 @@ import common.Configuration;
 import dao.DAOclients;
 import io.vavr.control.Either;
 import lombok.extern.log4j.Log4j2;
-import model.Client;
+import model.Customer;
 import model.errors.ErrorCCustomer;
 
 import java.io.IOException;
@@ -21,9 +21,9 @@ import java.util.List;
 public class DAOclientsFILE implements DAOclients {
 
     @Override
-    public Either<ErrorCCustomer, List<Client>> getAll() {
+    public Either<ErrorCCustomer, List<Customer>> getAll() {
         Path path = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
-        List<Client> clients = new ArrayList<>();
+        List<Customer> customers = new ArrayList<>();
         List<String> aux;
         try {
             aux = Files.readAllLines(path);
@@ -32,7 +32,7 @@ public class DAOclientsFILE implements DAOclients {
                 if (!line.trim().isEmpty()) {
                     String[] trozo = line.split(";");
                     if (trozo.length == 6) {
-                        clients.add(new Client(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form)));
+                        customers.add(new Customer(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form)));
                     } else {
                         log.warn("Línea mal formateada: " + line);
                     }
@@ -41,11 +41,11 @@ public class DAOclientsFILE implements DAOclients {
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         }
-        return Either.right(clients);
+        return Either.right(customers);
     }
 
     @Override
-    public Either<ErrorCCustomer, Client> get(int i) {
+    public Either<ErrorCCustomer, Customer> get(int i) {
         Path path = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
         List<String> lines;
         try {
@@ -54,8 +54,8 @@ public class DAOclientsFILE implements DAOclients {
                 String line = lines.get(i);
                 String[] trozo = line.split(";");
                 DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                Client client = new Client(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form));
-                return Either.right(client);
+                Customer customer = new Customer(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form));
+                return Either.right(customer);
             } else {
                 return Either.left(new ErrorCCustomer("Cliente no encontrado", 1));
             }
@@ -66,7 +66,7 @@ public class DAOclientsFILE implements DAOclients {
     }
 
     @Override
-    public Either<ErrorCCustomer, Integer> save(Client t) {
+    public Either<ErrorCCustomer, Integer> save(Customer t) {
         Path file = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
         int error = 0;
         try {
@@ -78,9 +78,9 @@ public class DAOclientsFILE implements DAOclients {
         return Either.right(error);
     }
     @Override
-    public Either<ErrorCCustomer, Integer> update(Client t) {
+    public Either<ErrorCCustomer, Integer> update(Customer t) {
         Path path = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
-        List<Client> clients = new ArrayList<>();
+        List<Customer> customers = new ArrayList<>();
         List<String> lines;
         try {
             lines = Files.readAllLines(path);
@@ -88,19 +88,19 @@ public class DAOclientsFILE implements DAOclients {
 
             for (String line : lines) {
                 String[] trozo = line.split(";");
-                Client client = new Client(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form));
+                Customer customer = new Customer(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form));
 
-                if (client.getId_c() == t.getId_c()) {
-                    client.setFirstName(t.getFirstName());
-                    client.setSecondName(t.getSecondName());
-                    client.setEmail(t.getEmail());
-                    client.setPhoneNumber(t.getPhoneNumber());
+                if (customer.getIdC() == t.getIdC()) {
+                    customer.setFirstName(t.getFirstName());
+                    customer.setSecondName(t.getSecondName());
+                    customer.setEmail(t.getEmail());
+                    customer.setPhoneNumber(t.getPhoneNumber());
                 }
-                clients.add(client);
+                customers.add(customer);
             }
             List<String> updatedLines = new ArrayList<>();
-            for (Client client : clients) {
-                updatedLines.add(client.toStringFile());
+            for (Customer customer : customers) {
+                updatedLines.add(customer.toStringFile());
             }
             Files.write(path, updatedLines);
             return Either.right(1);
@@ -110,9 +110,9 @@ public class DAOclientsFILE implements DAOclients {
         }
     }
     @Override
-    public Either<ErrorCCustomer, Integer> delete(Client t) {
+    public Either<ErrorCCustomer, Integer> delete(Customer t) {
         Path path = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
-        List<Client> clients = new ArrayList<>();
+        List<Customer> customers = new ArrayList<>();
         List<String> lines;
         try {
             lines = Files.readAllLines(path);
@@ -120,22 +120,22 @@ public class DAOclientsFILE implements DAOclients {
             for (String line : lines) {
                 String[] trozo = line.split(";");
                 if (trozo.length == 6) {
-                    Client client = new Client(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form));
-                    if (client.getId_c() == t.getId_c()) {
-                        client.setFirstName(t.getFirstName());
-                        client.setSecondName(t.getSecondName());
-                        client.setEmail(t.getEmail());
-                        client.setPhoneNumber(t.getPhoneNumber());
+                    Customer customer = new Customer(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form));
+                    if (customer.getIdC() == t.getIdC()) {
+                        customer.setFirstName(t.getFirstName());
+                        customer.setSecondName(t.getSecondName());
+                        customer.setEmail(t.getEmail());
+                        customer.setPhoneNumber(t.getPhoneNumber());
                     }
-                    clients.add(client);
+                    customers.add(customer);
                 } else {
                     log.warn("Línea mal formateada: " + line);
                 }
             }
-            clients.removeIf(client -> client.getId_c() == t.getId_c());
+            customers.removeIf(client -> client.getIdC() == t.getIdC());
             List<String> updatedLines = new ArrayList<>();
-            for (Client client : clients) {
-                updatedLines.add(client.toStringFile());
+            for (Customer customer : customers) {
+                updatedLines.add(customer.toStringFile());
             }
             Files.write(path, updatedLines);
             return Either.right(1);

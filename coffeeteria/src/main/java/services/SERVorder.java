@@ -4,7 +4,7 @@ import dao.imp.DAOclientsFILE;
 import dao.imp.DAOorderFILE;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
-import model.Client;
+import model.Customer;
 import model.Order;
 import model.errors.ErrorCCustomer;
 import model.errors.ErrorCOrder;
@@ -65,7 +65,7 @@ public class SERVorder {
         List<Order> allOrders = daOorderFILE.getAll().getOrNull();
         List<Order> filteredOrders = new ArrayList<>();
         for (Order order : allOrders) {
-            if (order.getOr_date().isEqual(selectedDate)) {
+            if (order.getOrDate().isEqual(selectedDate)) {
                 filteredOrders.add(order);
             }
         }
@@ -76,7 +76,7 @@ public class SERVorder {
         List<Order> allOrders = daOorderFILE.getAll().getOrNull();
         List<Order> filteredOrders = new ArrayList<>();
         for (Order order : allOrders) {
-            if (order.getId_co() == selectedCustomerId) {
+            if (order.getIdCo() == selectedCustomerId) {
                 filteredOrders.add(order);
             }
         }
@@ -84,10 +84,10 @@ public class SERVorder {
     }
 
     public List<Integer> getCustomerIDs() {
-        Either<ErrorCCustomer, List<Client>> result = daOclientsFILE.getAll();
+        Either<ErrorCCustomer, List<Customer>> result = daOclientsFILE.getAll();
         if (result.isRight()) {
-            List<Client> clients = result.get();
-            return clients.stream().map(Client::getId_c).collect(Collectors.toList());
+            List<Customer> customers = result.get();
+            return customers.stream().map(Customer::getIdC).collect(Collectors.toList());
         } else {
             return Collections.emptyList();
         }

@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import model.Client;
+import model.Customer;
 import model.errors.ErrorCCustomer;
 import services.SERVclient;
 import ui.pantallas.common.BasePantallaController;
@@ -27,17 +27,17 @@ public class UpdateCustomerController extends BasePantallaController {
     private TextField emailField;
 
     @FXML
-    private TableView<Client> tableCustomers;
+    private TableView<Customer> tableCustomers;
     @FXML
-    private TableColumn<Client, Integer> idC;
+    private TableColumn<Customer, Integer> idC;
     @FXML
-    private TableColumn<Client, String> firstName;
+    private TableColumn<Customer, String> firstName;
     @FXML
-    private TableColumn<Client, String> secondName;
+    private TableColumn<Customer, String> secondName;
     @FXML
-    private TableColumn<Client, String> email;
+    private TableColumn<Customer, String> email;
     @FXML
-    private TableColumn<Client, Integer> phoneNumber;
+    private TableColumn<Customer, Integer> phoneNumber;
     @FXML
     private Button resetCustomerButton;
     @FXML
@@ -55,9 +55,9 @@ public class UpdateCustomerController extends BasePantallaController {
         String email = emailField.getText();
         int phoneNumber = Integer.parseInt(phoneField.getText());
 
-        Client updatedClient = new Client(id, firstName, secondName, email, phoneNumber, null);
+        Customer updatedCustomer = new Customer(id, firstName, secondName, email, phoneNumber, null);
 
-        Either<ErrorCCustomer, Integer> res = serVclient.updateClient(updatedClient);
+        Either<ErrorCCustomer, Integer> res = serVclient.updateClient(updatedCustomer);
         if (res.isRight()) {
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setContentText(Constantes.CUSTOMER_UPDATED);
@@ -101,13 +101,13 @@ public class UpdateCustomerController extends BasePantallaController {
 
     private void handleTable(MouseEvent event){
         if (event.getClickCount() == 1){
-            Client selClient = tableCustomers.getSelectionModel().getSelectedItem();
-            if (selClient != null) {
-                idCustomerField.setText(String.valueOf(selClient.getId_c()));
-                firstNameField.setText(String.valueOf(selClient.getFirstName()));
-                secondNameField.setText(String.valueOf(selClient.getSecondName()));
-                emailField.setText(String.valueOf(selClient.getEmail()));
-                phoneField.setText(String.valueOf(selClient.getPhoneNumber()));
+            Customer selCustomer = tableCustomers.getSelectionModel().getSelectedItem();
+            if (selCustomer != null) {
+                idCustomerField.setText(String.valueOf(selCustomer.getIdC()));
+                firstNameField.setText(String.valueOf(selCustomer.getFirstName()));
+                secondNameField.setText(String.valueOf(selCustomer.getSecondName()));
+                emailField.setText(String.valueOf(selCustomer.getEmail()));
+                phoneField.setText(String.valueOf(selCustomer.getPhoneNumber()));
             }
         }
     }

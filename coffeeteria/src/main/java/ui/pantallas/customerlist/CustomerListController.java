@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.Client;
+import model.Customer;
 import services.SERVclient;
 import ui.pantallas.common.BasePantallaController;
 
@@ -17,19 +17,19 @@ public class CustomerListController extends BasePantallaController {
     private final SERVclient serVclient;
 
     @FXML
-    private TableView<Client> tableCustomers;
+    private TableView<Customer> tableCustomers;
     @FXML
-    private TableColumn<Client, Integer> idC;
+    private TableColumn<Customer, Integer> idC;
     @FXML
-    private TableColumn<Client, String> firstName;
+    private TableColumn<Customer, String> firstName;
     @FXML
-    private TableColumn<Client, String> secondName;
+    private TableColumn<Customer, String> secondName;
     @FXML
-    private TableColumn<Client,Integer> phoneNumber;
+    private TableColumn<Customer,Integer> phoneNumber;
     @FXML
-    private TableColumn<Client,String> email;
+    private TableColumn<Customer,String> email;
     @FXML
-    private TableColumn<Client, LocalDate> date;
+    private TableColumn<Customer, LocalDate> date;
 
 
     /*Constructores*/
