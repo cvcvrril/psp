@@ -42,6 +42,8 @@ public class DAOorderFILE implements DAOorder {
         return Either.right(orders);
     }
 
+    //TODO: el método write()
+
     @Override
     public Either<ErrorCOrder, Order> get(int id) {
         return null;
