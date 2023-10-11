@@ -19,7 +19,7 @@ public class CustomerListController extends BasePantallaController {
     @FXML
     private TableView<Client> tableCustomers;
     @FXML
-    private TableColumn<Client, Integer> id_c;
+    private TableColumn<Client, Integer> idC;
     @FXML
     private TableColumn<Client, String> firstName;
     @FXML
@@ -43,7 +43,7 @@ public class CustomerListController extends BasePantallaController {
 
     public void initialize() {
 
-        id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_C));
+        idC.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_C));
         firstName.setCellValueFactory(new PropertyValueFactory<>(Constantes.FIRST_NAME));
         secondName.setCellValueFactory(new PropertyValueFactory<>(Constantes.SECOND_NAME));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));

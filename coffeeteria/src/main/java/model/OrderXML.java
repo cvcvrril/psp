@@ -13,15 +13,15 @@ public class OrderXML {
     /*Atributos*/
 
     @XmlElement(name = "id")
-    private int id_ord;
+    private int idOrd;
     @XmlElement(name = "order_item")
-    private List<String> order_item;
+    private List<String> orderItem;
 
     /*Constructor*/
 
-    public OrderXML(int id_ord, List<String> order_item) {
-        this.id_ord = id_ord;
-        this.order_item = order_item;
+    public OrderXML(int idOrd, List<String> orderItem) {
+        this.idOrd = idOrd;
+        this.orderItem = orderItem;
     }
 
     /*Métodos*/

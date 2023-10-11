@@ -19,7 +19,7 @@
       <TextField fx:id="idCustomerField" layoutX="45.0" layoutY="130.0" promptText="e.g. 1" />
       <TableView fx:id="tableCustomers" layoutX="224.0" layoutY="82.0" prefHeight="200.0" prefWidth="366.0">
         <columns>
-          <TableColumn fx:id="id_c" prefWidth="79.0" text="Customer ID" />
+          <TableColumn fx:id="idC" prefWidth="79.0" text="Customer ID" />
           <TableColumn fx:id="firstName" prefWidth="71.0" text="First Name" />
           <TableColumn fx:id="secondName" prefWidth="84.0" text="Second Name" />
             <TableColumn fx:id="email" prefWidth="75.0" text="Email" />

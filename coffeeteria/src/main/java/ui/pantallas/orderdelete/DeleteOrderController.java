@@ -24,13 +24,13 @@ public class DeleteOrderController extends BasePantallaController {
     @FXML
     private TableView<Order> tableOrders;
     @FXML
-    private TableColumn<Order, Integer> id_ord;
+    private TableColumn<Order, Integer> idOrd;
     @FXML
-    private TableColumn<Order, Integer> id_c;
+    private TableColumn<Order, Integer> idC;
     @FXML
-    private TableColumn<Order, Integer> id_table;
+    private TableColumn<Order, Integer> idTable;
     @FXML
-    private TableColumn<Order, LocalDate> date_order;
+    private TableColumn<Order, LocalDate> dateOrder;
     @FXML
     private Button delOrderButton;
 
@@ -62,10 +62,10 @@ public class DeleteOrderController extends BasePantallaController {
 
     public void initialize() {
 
-        id_ord.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_ORD));
-        id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
-        id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
-        date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
+        idOrd.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_ORD));
+        idC.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
+        idTable.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
+        dateOrder.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
         tableOrders.getItems().addAll(serVorder.getAll());
 
     }
