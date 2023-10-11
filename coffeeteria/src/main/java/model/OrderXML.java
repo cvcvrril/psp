@@ -10,20 +10,18 @@ import java.util.List;
 @Data
 public class OrderXML {
 
-    /*Atributos*/
+    /*Atb*/
 
     @XmlElement(name = "id")
     private int idOrd;
     @XmlElement(name = "order_item")
-    private List<String> orderItem;
+    private List<OrderItemXML> orderItem;
 
-    /*Constructor*/
+    /*Builder*/
 
-    public OrderXML(int idOrd, List<String> orderItem) {
+    public OrderXML(int idOrd, List<OrderItemXML> orderItem) {
         this.idOrd = idOrd;
         this.orderItem = orderItem;
     }
-
-    /*Métodos*/
 
 }
