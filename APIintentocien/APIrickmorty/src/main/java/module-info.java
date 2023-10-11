@@ -14,7 +14,7 @@ module coffeeteria {
     requires retrofit2.converter.moshi;
     requires retrofit2;
     requires retrofit2.adapter.rxjava3;
-    requires moshi;
+    requires com.squareup.moshi;
 
     /*Pantallas*/
 

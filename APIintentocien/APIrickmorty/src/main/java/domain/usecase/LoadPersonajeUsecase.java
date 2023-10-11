@@ -22,7 +22,7 @@ public class LoadPersonajeUsecase {
     public Either<String, List<MiPersonaje>> llamadaRetrofit() {
         return daOpersonaje.llamadaRetrofit().map(miPersonajes -> {
             if (miPersonajes.isEmpty()) {
-                return List.of(); // Devolver una lista vacía si no hay elementos
+                return List.of();
             } else {
                 return List.of(new MiPersonaje(miPersonajes.get(0).id(), miPersonajes.get(0).name()));
             }
