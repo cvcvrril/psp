@@ -14,7 +14,7 @@ module APIrickmorty {
     requires retrofit2.converter.moshi;
     requires retrofit2;
     requires retrofit2.adapter.rxjava3;
-    requires com.squareup.moshi;
+    requires moshi;
 
     /*Pantallas*/
 
@@ -45,7 +45,7 @@ module APIrickmorty {
     opens ui.pantallas.llamadas.llamadaepisodio to javafx.fxml;
     opens ui.pantallas.llamadas.llamadapersonaje to javafx.fxml;
     opens ui.pantallas.llamadas.llamadalugar to javafx.fxml;
-    opens dao.retrofit.modelo to com.squareup.moshi;
-    opens domain.modelo to com.squareup.moshi;
+    opens dao.retrofit.modelo to moshi;
+    opens domain.modelo to moshi;
     exports domain.modelo;
 }

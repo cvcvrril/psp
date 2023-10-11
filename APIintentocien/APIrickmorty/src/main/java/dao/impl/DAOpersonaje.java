@@ -9,6 +9,7 @@ import retrofit2.Response;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class DAOpersonaje {
@@ -27,14 +28,15 @@ public class DAOpersonaje {
 
     public Either<String, List<MiPersonaje>> llamadaRetrofit() {
         Either<String, List<MiPersonaje>> res;
-        Response<List<ResponsePersonaje>> r;
+        Response<Map<String, Object>> r;
         try {
             r = personajeAPI.getPersonajes().execute();
             if (r.isSuccessful()) {
-                List<ResponsePersonaje> responsePersonajes = r.body();
-                assert responsePersonajes != null;
+                Map<String, Object> responseMap = r.body();
+                List<Map<String, Object>> responsePersonajes = (List<Map<String, Object>>) responseMap.get("results");
+
                 List<MiPersonaje> miPersonajes = responsePersonajes.stream()
-                        .map(rp -> new MiPersonaje(rp.getId(), rp.getName()))
+                        .map(result -> new MiPersonaje(((Double) result.get("id")).intValue(), (String) result.get("name")))
                         .toList();
                 res = Either.right(miPersonajes);
             } else {
