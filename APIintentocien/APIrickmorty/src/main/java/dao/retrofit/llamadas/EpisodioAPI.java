@@ -1,6 +1,6 @@
 package dao.retrofit.llamadas;
 
-import dao.retrofit.modelo.ResponseEpisodio;
+import dao.retrofit.modelo.episodios.ResponseEpisodio;
 import retrofit2.Call;
 import retrofit2.http.GET;
 

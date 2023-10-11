@@ -1,4 +1,4 @@
-package dao.retrofit.modelo;
+package dao.retrofit.modelo.personajes;
 
 import domain.modelo.Lugar;
 import lombok.Data;

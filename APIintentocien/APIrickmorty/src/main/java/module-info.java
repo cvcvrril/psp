@@ -24,7 +24,6 @@ module APIrickmorty {
     exports ui.pantallas.llamadas.llamadapersonaje;
     exports ui.pantallas.welcome;
     exports ui.pantallas.llamadas.llamadalugar;
-    exports dao.retrofit.modelo;
     exports domain.usecase;
     exports domain;
     exports dao.impl;
@@ -45,7 +44,12 @@ module APIrickmorty {
     opens ui.pantallas.llamadas.llamadaepisodio to javafx.fxml;
     opens ui.pantallas.llamadas.llamadapersonaje to javafx.fxml;
     opens ui.pantallas.llamadas.llamadalugar to javafx.fxml;
-    opens dao.retrofit.modelo to moshi;
     opens domain.modelo to moshi;
     exports domain.modelo;
+    exports dao.retrofit.modelo.episodios;
+    opens dao.retrofit.modelo.episodios to moshi;
+    exports dao.retrofit.modelo.lugares;
+    opens dao.retrofit.modelo.lugares to moshi;
+    exports dao.retrofit.modelo.personajes;
+    opens dao.retrofit.modelo.personajes to moshi;
 }

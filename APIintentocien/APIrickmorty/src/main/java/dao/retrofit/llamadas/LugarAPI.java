@@ -1,6 +1,6 @@
 package dao.retrofit.llamadas;
 
-import dao.retrofit.modelo.ResponsePersonaje;
+import dao.retrofit.modelo.personajes.ResponsePersonaje;
 import retrofit2.Call;
 import retrofit2.http.GET;
 

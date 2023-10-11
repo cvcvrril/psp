@@ -1,7 +1,6 @@
 package dao.impl;
 
 import dao.retrofit.llamadas.PersonajeAPI;
-import dao.retrofit.modelo.ResponsePersonaje;
 import domain.modelo.MiPersonaje;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
@@ -10,7 +9,6 @@ import retrofit2.Response;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class DAOpersonaje {
 
@@ -36,7 +34,7 @@ public class DAOpersonaje {
                 List<Map<String, Object>> responsePersonajes = (List<Map<String, Object>>) responseMap.get("results");
 
                 List<MiPersonaje> miPersonajes = responsePersonajes.stream()
-                        .map(result -> new MiPersonaje(((Double) result.get("id")).intValue(), (String) result.get("name")))
+                        .map(result -> new MiPersonaje(((Double) result.get("id")).intValue(), (String) result.get("name"), (String) result.get("status")))
                         .toList();
                 res = Either.right(miPersonajes);
             } else {

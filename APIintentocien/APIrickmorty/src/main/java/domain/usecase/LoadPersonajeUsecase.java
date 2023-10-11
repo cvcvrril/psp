@@ -26,7 +26,7 @@ public class LoadPersonajeUsecase {
             if (miPersonajes.isEmpty()) {
                 return List.of();
             } else {
-                return List.of(new MiPersonaje(miPersonajes.get(0).id(), miPersonajes.get(0).name()));
+                return miPersonajes;
             }
         });
     }
