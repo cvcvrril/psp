@@ -19,6 +19,7 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,17 +29,28 @@ import java.util.List;
 @Log4j2
 public class DAOOrdersXML {
 
-    public Either<String, List<OrdersXML>> write() {
+    public Either<String, List<OrdersXML>> read() {
         List<OrdersXML> ordersXMLS;
+        try {
+            JAXBContext context = JAXBContext.newInstance(OrdersXML.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+            unmarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            Path xmlFile = Paths.get(Configuration.getInstance().getProperty("xmlOrdersPath"));
+            ordersXMLS = (List<OrdersXML>) unmarshaller.unmarshal(Files.newInputStream(xmlFile));
+        } catch (JAXBException | IOException e) {
+            log.error(e.getMessage(), e);
+            return Either.left(e.getMessage());
+        }
+        return Either.right(ordersXMLS);
+    }
+    
+    public Either<String, List<OrdersXML>> write() {
+        List<OrdersXML> ordersXMLS = new ArrayList<>();
         try {
             JAXBContext context = JAXBContext.newInstance(OrdersXML.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            Unmarshaller unmarshaller = context.createUnmarshaller();
-            Path xmlFile = Paths
-                    .get(Configuration.getInstance().getProperty("xmlOrdersPath"));
-
-            ordersXMLS = (List<OrdersXML>) unmarshaller.unmarshal(Files.newInputStream(xmlFile));
+            Path xmlFile = Paths.get(Configuration.getInstance().getProperty("xmlOrdersPath"));
             marshaller.marshal(ordersXMLS, Files.newOutputStream(xmlFile));
         } catch (JAXBException | IOException e) {
             log.error(e.getMessage(), e);
@@ -47,36 +59,9 @@ public class DAOOrdersXML {
         return Either.right(ordersXMLS);
     }
 
+    //Read Unmarshall
+    //Write Marshall
 
-    public Either<String, List<OrdersXML>> read() {
-        List<OrdersXML> ordersXMLS = new ArrayList<>();
-        try {
 
-            //Get the DOM Builder Factory
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
-            //Get the DOM Builder
-            DocumentBuilder builder = factory.newDocumentBuilder();
-
-            //Load and Parse the XML document
-            //document contains the complete XML as a Tree.
-            Document document = builder.parse(Files.newInputStream(Paths
-                    .get(Configuration.getInstance().getProperty("xmlOrdersPath"))));
-
-            //Writing to the file
-            // Generates the DOM document and saves it into an XML file
-            Source source = new DOMSource(document);
-
-            Result result = new StreamResult(Files.newOutputStream(Paths
-                    .get(Configuration.getInstance().getProperty("xmlOrdersPath")))); // name of the file
-
-            Transformer transformer = TransformerFactory.newInstance().newTransformer();
-            transformer.transform(source, result);
-
-        } catch (ParserConfigurationException | IOException | TransformerException | SAXException e) {
-            log.error(e.getMessage(), e);
-            return Either.left(e.getMessage());
-        }
-        return Either.right(ordersXMLS);
-    }
 }

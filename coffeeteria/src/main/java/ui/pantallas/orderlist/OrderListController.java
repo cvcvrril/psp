@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Order;
+import services.SERVclient;
 import services.SERVorder;
 import ui.pantallas.common.BasePantallaController;
 
@@ -17,6 +18,8 @@ public class OrderListController extends BasePantallaController {
 
 
     private final SERVorder serVorder;
+    private final SERVclient serVclient;
+    public TextField customerNameField;
 
     @FXML
     private TableView<Order> tableOrders;
@@ -38,8 +41,9 @@ public class OrderListController extends BasePantallaController {
     /*Constructores*/
 
     @Inject
-    public OrderListController(SERVorder serVorder) {
+    public OrderListController(SERVorder serVorder, SERVclient serVclient) {
         this.serVorder = serVorder;
+        this.serVclient = serVclient;
     }
 
     /*Métodos*/
@@ -52,6 +56,14 @@ public class OrderListController extends BasePantallaController {
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
         tableOrders.getItems().addAll(serVorder.getAll());
         filterComboBox.getItems().addAll("Date", "Customer", "None");
+        tableOrders.getSelectionModel().selectedItemProperty().addListener((observable, oldSelection, newSelection) -> {
+            customerNameField.getText();
+            if (newSelection != null){
+                customerNameField.setText(serVclient.getClients(tableOrders.getSelectionModel().getSelectedItem().getIdCo()).get().getFirstName());
+            }
+
+        });
+
     }
 
     @FXML
