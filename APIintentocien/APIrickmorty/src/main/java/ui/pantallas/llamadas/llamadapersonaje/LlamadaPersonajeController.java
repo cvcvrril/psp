@@ -9,8 +9,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ui.pantallas.common.BasePantallaController;
 
-import java.util.List;
-
 public class LlamadaPersonajeController extends BasePantallaController {
 
     /*Atributos*/
@@ -18,9 +16,8 @@ public class LlamadaPersonajeController extends BasePantallaController {
     private final LoadPersonajeUsecase loadPersonajeUsecase;
 
 
-
     @FXML
-    private TableView<MiPersonaje> tableCustomers;
+    private TableView<MiPersonaje> tablePersonajes;
     @FXML
     private  TableColumn<MiPersonaje, Integer> idC;
     @FXML
@@ -41,7 +38,7 @@ public class LlamadaPersonajeController extends BasePantallaController {
         idC.setCellValueFactory(new PropertyValueFactory<>("id"));
         firstName.setCellValueFactory(new PropertyValueFactory<>("name"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
-        tableCustomers.getItems().addAll(loadPersonajeUsecase.llamadaRetrofit().getOrNull());
+        tablePersonajes.getItems().addAll(loadPersonajeUsecase.llamadaRetrofit().getOrNull());
 
     }
 

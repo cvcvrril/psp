@@ -32,7 +32,6 @@ public class DAOpersonaje {
             if (r.isSuccessful()) {
                 Map<String, Object> responseMap = r.body();
                 List<Map<String, Object>> responsePersonajes = (List<Map<String, Object>>) responseMap.get("results");
-
                 List<MiPersonaje> miPersonajes = responsePersonajes.stream()
                         .map(result -> new MiPersonaje(((Double) result.get("id")).intValue(), (String) result.get("name"), (String) result.get("status")))
                         .toList();

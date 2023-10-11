@@ -13,6 +13,6 @@ public class Personaje {
     private String species;
     private String type;
     private String gender;
-    private Lugar location;
+    private MiLugar location;
 
 }

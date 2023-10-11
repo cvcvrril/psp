@@ -1,6 +1,6 @@
 package dao.retrofit.modelo.personajes;
 
-import domain.modelo.Lugar;
+import domain.modelo.MiLugar;
 import lombok.Data;
 
 @Data
@@ -11,7 +11,7 @@ public class ResponsePersonaje {
     private final String species;
     private final String type;
     private final String gender;
-    private final Lugar location;
+    private final MiLugar location;
 
 
 }
