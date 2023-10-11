@@ -26,15 +26,16 @@ public class DAOpersonaje {
     /*Métodos*/
 
     public Either<String, List<MiPersonaje>> llamadaRetrofit() {
-        Either<String, List<MiPersonaje>> res = null;
-        Response<List<ResponsePersonaje>> r = null;
+        Either<String, List<MiPersonaje>> res;
+        Response<List<ResponsePersonaje>> r;
         try {
             r = personajeAPI.getPersonajes().execute();
             if (r.isSuccessful()) {
                 List<ResponsePersonaje> responsePersonajes = r.body();
+                assert responsePersonajes != null;
                 List<MiPersonaje> miPersonajes = responsePersonajes.stream()
                         .map(rp -> new MiPersonaje(rp.getId(), rp.getName()))
-                        .collect(Collectors.toList());
+                        .toList();
                 res = Either.right(miPersonajes);
             } else {
                 r.errorBody().string();

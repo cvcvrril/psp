@@ -4,9 +4,11 @@ import dao.impl.DAOpersonaje;
 import domain.modelo.MiPersonaje;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
+import lombok.Data;
 
 import java.util.List;
 
+@Data
 public class LoadPersonajeUsecase {
 
     /*Atributos*/

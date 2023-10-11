@@ -1,4 +1,4 @@
-module coffeeteria {
+module APIrickmorty {
 
     /*Se requieren*/
 
@@ -41,8 +41,11 @@ module coffeeteria {
     opens ui.main;
     opens ui.pantallas.principal;
     opens ui.pantallas.welcome;
+    opens config;
     opens ui.pantallas.llamadas.llamadaepisodio to javafx.fxml;
     opens ui.pantallas.llamadas.llamadapersonaje to javafx.fxml;
     opens ui.pantallas.llamadas.llamadalugar to javafx.fxml;
+    opens dao.retrofit.modelo to com.squareup.moshi;
+    opens domain.modelo to com.squareup.moshi;
     exports domain.modelo;
 }
