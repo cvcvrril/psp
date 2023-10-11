@@ -19,7 +19,6 @@ public class SERVorder {
 
     /*Atributos*/
 
-    //private final DAOorderIMP daOorderIMP;
     private final DAOorderFILE daOorderFILE;
     private final DAOclientsFILE daOclientsFILE;
 
@@ -27,7 +26,6 @@ public class SERVorder {
 
     @Inject
     public SERVorder(DAOorderFILE daOorderFILE, DAOclientsFILE daOclientsFILE) {
-        //this.daOorderIMP = daOorderIMP;
         this.daOorderFILE = daOorderFILE;
         this.daOclientsFILE = daOclientsFILE;
     }

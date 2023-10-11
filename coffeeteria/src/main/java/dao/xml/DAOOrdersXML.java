@@ -29,7 +29,7 @@ import java.util.List;
 public class DAOOrdersXML {
 
     public Either<String, List<OrdersXML>> write() {
-        List<OrdersXML> ordersXMLS = new ArrayList<>();
+        List<OrdersXML> ordersXMLS;
         try {
             JAXBContext context = JAXBContext.newInstance(OrdersXML.class);
             Marshaller marshaller = context.createMarshaller();
@@ -53,8 +53,7 @@ public class DAOOrdersXML {
         try {
 
             //Get the DOM Builder Factory
-            DocumentBuilderFactory factory =
-                    DocumentBuilderFactory.newInstance();
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
             //Get the DOM Builder
             DocumentBuilder builder = factory.newDocumentBuilder();
