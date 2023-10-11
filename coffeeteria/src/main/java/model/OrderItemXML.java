@@ -1,6 +1,7 @@
 package model;
 
 
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 
@@ -9,8 +10,9 @@ import lombok.Data;
 public class OrderItemXML {
 
     /*Atb*/
-
+    @XmlElement(name = "menu_item")
     private String menuItem;
+    @XmlElement(name = "quantity")
     private int quantity;
 
     /*Builder*/
