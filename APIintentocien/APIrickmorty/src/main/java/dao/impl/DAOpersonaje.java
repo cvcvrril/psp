@@ -46,4 +46,51 @@ public class DAOpersonaje {
         }
         return res;
     }
+
+    public Either<String, List<MiPersonaje>> llamadaRetrofitFem(){
+        Either<String, List<MiPersonaje>> res;
+        Response<Map<String, Object>> r;
+        try {
+            r = personajeAPI.getPersonajesGender("female").execute();
+            if (r.isSuccessful()) {
+                Map<String, Object> responseMap = r.body();
+                List<Map<String, Object>> responsePersonajes = (List<Map<String, Object>>) responseMap.get("results");
+                List<MiPersonaje> miPersonajes = responsePersonajes.stream()
+                        .map(result -> new MiPersonaje(((Double) result.get("id")).intValue(), (String) result.get("name"), (String) result.get("status")))
+                        .toList();
+                res = Either.right(miPersonajes);
+            } else {
+                r.errorBody().string();
+                res = Either.left(r.message());
+            }
+
+        } catch (IOException e) {
+            res = Either.left(e.getMessage());
+        }
+        return res;
+    }
+
+    public Either<String, List<MiPersonaje>> llamadaRetrofitDead(){
+        Either<String, List<MiPersonaje>> res;
+        Response<Map<String, Object>> r;
+        try {
+            r = personajeAPI.getPersonajesStatus("dead").execute();
+            if (r.isSuccessful()) {
+                Map<String, Object> responseMap = r.body();
+                List<Map<String, Object>> responsePersonajes = (List<Map<String, Object>>) responseMap.get("results");
+                List<MiPersonaje> miPersonajes = responsePersonajes.stream()
+                        .map(result -> new MiPersonaje(((Double) result.get("id")).intValue(), (String) result.get("name"), (String) result.get("status")))
+                        .toList();
+                res = Either.right(miPersonajes);
+            } else {
+                r.errorBody().string();
+                res = Either.left(r.message());
+            }
+
+        } catch (IOException e) {
+            res = Either.left(e.getMessage());
+        }
+        return res;
+    }
+
 }

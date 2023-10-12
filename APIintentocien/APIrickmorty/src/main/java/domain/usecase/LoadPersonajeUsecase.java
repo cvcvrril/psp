@@ -31,5 +31,25 @@ public class LoadPersonajeUsecase {
         });
     }
 
+    public Either<String, List<MiPersonaje>> llamadaRetrofitFem() {
+        return daOpersonaje.llamadaRetrofitFem().map(miPersonajes -> {
+            if (miPersonajes.isEmpty()) {
+                return List.of();
+            } else {
+                return miPersonajes;
+            }
+        });
+    }
+
+    public Either<String, List<MiPersonaje>> llamadaRetrofitDead() {
+        return daOpersonaje.llamadaRetrofitDead().map(miPersonajes -> {
+            if (miPersonajes.isEmpty()) {
+                return List.of();
+            } else {
+                return miPersonajes;
+            }
+        });
+    }
+
 
 }

@@ -19,8 +19,8 @@ public class Configuration {
         try {
             this.properties = new Properties();
             this.properties.load(getClass().getClassLoader()
-                    .getResourceAsStream("config/config.properties"));
-            this.pathApi = properties.getProperty("apiUrl");
+                    .getResourceAsStream(Constantes.CONFIG_CONFIG_PROPERTIES));
+            this.pathApi = properties.getProperty(Constantes.API_URL);
         } catch (IOException e) {
             log.error(e.getMessage(),e);
         }
