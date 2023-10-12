@@ -6,11 +6,11 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.llamadas.llamadaepisodio.LlamadaEpisodioController">
    <children>
-      <TableView fx:id="tableCustomers" layoutX="274.0" layoutY="82.0" prefHeight="200.0" prefWidth="284.0">
+      <TableView fx:id="tableEpisodios" layoutX="274.0" layoutY="82.0" prefHeight="200.0" prefWidth="284.0">
         <columns>
-          <TableColumn fx:id="id_c" prefWidth="75.0" text="Customer ID" />
-          <TableColumn fx:id="firstName" prefWidth="75.0" text="First Name" />
-          <TableColumn fx:id="secondName" prefWidth="117.0" text="Second Name" />
+          <TableColumn fx:id="idE" prefWidth="75.0" text="Customer ID" />
+          <TableColumn fx:id="epName" prefWidth="75.0" text="First Name" />
+          <TableColumn fx:id="epCode" prefWidth="117.0" text="Second Name" />
         </columns>
       </TableView>
       <Label layoutX="83.0" layoutY="37.0" text="Episodios">
