@@ -51,5 +51,9 @@ public class LoadPersonajeUsecase {
         });
     }
 
+    public Either<String, MiPersonaje> llamadaRetrofitJD() {
+        return daOpersonaje.llamadaRetrofitJD();
+    }
+
 
 }

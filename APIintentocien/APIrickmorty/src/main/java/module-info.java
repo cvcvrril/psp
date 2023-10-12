@@ -30,7 +30,6 @@ module APIrickmorty {
 
     /*Otros exports*/
 
-    exports domain.errors;
     exports common;
     exports ui.main to javafx.graphics;
 

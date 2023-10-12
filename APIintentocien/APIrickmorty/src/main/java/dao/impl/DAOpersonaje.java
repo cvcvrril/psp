@@ -93,4 +93,28 @@ public class DAOpersonaje {
         return res;
     }
 
+    public Either<String, MiPersonaje> llamadaRetrofitJD(){
+        Either<String, MiPersonaje> res;
+        Response<Map<String, Object>> r;
+        try {
+            r = personajeAPI.getPersonajesId(183).execute();
+            if (r.isSuccessful()) {
+                Map<String, Object> responseMap = r.body();
+                MiPersonaje miPersonaje = new MiPersonaje(
+                        ((Double) responseMap.get("id")).intValue(),
+                        (String) responseMap.get("name"),
+                        (String) responseMap.get("status")
+                );
+                res = Either.right(miPersonaje);
+            } else {
+                r.errorBody().string();
+                res = Either.left(r.message());
+            }
+
+        } catch (IOException e) {
+            res = Either.left(e.getMessage());
+        }
+        return res;
+    }
+
 }

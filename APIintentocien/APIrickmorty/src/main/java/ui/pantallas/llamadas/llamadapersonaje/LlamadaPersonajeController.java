@@ -43,7 +43,7 @@ public class LlamadaPersonajeController extends BasePantallaController {
         idC.setCellValueFactory(new PropertyValueFactory<>("id"));
         firstName.setCellValueFactory(new PropertyValueFactory<>("name"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
-        filtroPersonaje.getItems().addAll("Ninguno", "Personajes femeninos", "Personajes muertos", "Jhonny Depp");
+        filtroPersonaje.getItems().addAll("Ninguno", "Personajes femeninos", "Personajes muertos", "Johnny Depp");
         tablePersonajes.getItems().addAll(loadPersonajeUsecase.llamadaRetrofit().getOrNull());
     }
 
@@ -53,10 +53,12 @@ public class LlamadaPersonajeController extends BasePantallaController {
             if (selectedItem.equals("Personajes femeninos")) {
                 tablePersonajes.getItems().clear();
                 tablePersonajes.getItems().addAll(loadPersonajeUsecase.llamadaRetrofitFem().getOrNull());
-            }
-            if (selectedItem.equals("Personajes muertos")) {
+            } else if (selectedItem.equals("Personajes muertos")) {
                 tablePersonajes.getItems().clear();
                 tablePersonajes.getItems().addAll(loadPersonajeUsecase.llamadaRetrofitDead().getOrNull());
+            } else if (selectedItem.equals("Johnny Depp")) {
+                tablePersonajes.getItems().clear();
+                tablePersonajes.getItems().addAll(loadPersonajeUsecase.llamadaRetrofitJD().getOrNull());
             } else {
                 tablePersonajes.getItems().clear();
                 tablePersonajes.getItems().addAll(loadPersonajeUsecase.llamadaRetrofit().getOrNull());
