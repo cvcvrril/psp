@@ -15,18 +15,18 @@ public class Configuration {
     private String pathApi;
     private Properties properties;
 
-    public Configuration(){
+    public Configuration() {
         try {
             this.properties = new Properties();
             this.properties.load(getClass().getClassLoader()
                     .getResourceAsStream(Constantes.CONFIG_CONFIG_PROPERTIES));
             this.pathApi = properties.getProperty(Constantes.API_URL);
         } catch (IOException e) {
-            log.error(e.getMessage(),e);
+            log.error(e.getMessage(), e);
         }
     }
 
-    public String getProperty(String key){
+    public String getProperty(String key) {
         return this.properties.getProperty(key);
     }
 }

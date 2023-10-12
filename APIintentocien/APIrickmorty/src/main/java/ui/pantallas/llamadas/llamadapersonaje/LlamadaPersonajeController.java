@@ -1,5 +1,6 @@
 package ui.pantallas.llamadas.llamadapersonaje;
 
+import common.Constantes;
 import domain.modelo.MiPersonaje;
 import domain.usecase.LoadPersonajeUsecase;
 import jakarta.inject.Inject;
@@ -11,9 +12,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ui.pantallas.common.BasePantallaController;
 
-import java.util.List;
 
 public class LlamadaPersonajeController extends BasePantallaController {
+
 
     /*Atributos*/
 
@@ -40,23 +41,23 @@ public class LlamadaPersonajeController extends BasePantallaController {
     /*Métodos*/
 
     public void initialize() {
-        idC.setCellValueFactory(new PropertyValueFactory<>("id"));
-        firstName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        status.setCellValueFactory(new PropertyValueFactory<>("status"));
-        filtroPersonaje.getItems().addAll("Ninguno", "Personajes femeninos", "Personajes muertos", "Johnny Depp");
+        idC.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID));
+        firstName.setCellValueFactory(new PropertyValueFactory<>(Constantes.NAME));
+        status.setCellValueFactory(new PropertyValueFactory<>(Constantes.STATUS));
+        filtroPersonaje.getItems().addAll(Constantes.NINGUNO, Constantes.PERSONAJES_FEMENINOS, Constantes.PERSONAJES_MUERTOS, Constantes.JOHNNY_DEPP);
         tablePersonajes.getItems().addAll(loadPersonajeUsecase.llamadaRetrofit().getOrNull());
     }
 
     public void handleFilterSelection(ActionEvent event) {
         String selectedItem = (String) filtroPersonaje.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
-            if (selectedItem.equals("Personajes femeninos")) {
+            if (selectedItem.equals(Constantes.PERSONAJES_FEMENINOS)) {
                 tablePersonajes.getItems().clear();
                 tablePersonajes.getItems().addAll(loadPersonajeUsecase.llamadaRetrofitFem().getOrNull());
-            } else if (selectedItem.equals("Personajes muertos")) {
+            } else if (selectedItem.equals(Constantes.PERSONAJES_MUERTOS)) {
                 tablePersonajes.getItems().clear();
                 tablePersonajes.getItems().addAll(loadPersonajeUsecase.llamadaRetrofitDead().getOrNull());
-            } else if (selectedItem.equals("Johnny Depp")) {
+            } else if (selectedItem.equals(Constantes.JOHNNY_DEPP)) {
                 tablePersonajes.getItems().clear();
                 tablePersonajes.getItems().addAll(loadPersonajeUsecase.llamadaRetrofitJD().getOrNull());
             } else {

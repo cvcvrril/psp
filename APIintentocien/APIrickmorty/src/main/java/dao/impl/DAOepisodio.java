@@ -1,5 +1,6 @@
 package dao.impl;
 
+import common.Constantes;
 import dao.retrofit.llamadas.EpisodioAPI;
 import domain.modelo.MiEpisodio;
 import domain.modelo.MiPersonaje;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public class DAOepisodio {
+
 
     /*Atributos*/
 
@@ -32,9 +34,9 @@ public class DAOepisodio {
             r = episodioAPI.getEpisodios().execute();
             if (r.isSuccessful()) {
                 Map<String, Object> responseMap = r.body();
-                List<Map<String, Object>> responseEpisodios = (List<Map<String, Object>>) responseMap.get("results");
+                List<Map<String, Object>> responseEpisodios = (List<Map<String, Object>>) responseMap.get(Constantes.RESULTS);
                 List<MiEpisodio> miEpisodios = responseEpisodios.stream()
-                        .map(result -> new MiEpisodio(((Double) result.get("id")).intValue(), (String) result.get("name"), (String) result.get("episode")))
+                        .map(result -> new MiEpisodio(((Double) result.get(Constantes.ID)).intValue(), (String) result.get(Constantes.NAME), (String) result.get(Constantes.EPISODE)))
                         .toList();
                 res = Either.right(miEpisodios);
             } else {

@@ -1,5 +1,6 @@
 package dao.impl;
 
+import common.Constantes;
 import dao.retrofit.llamadas.LugarAPI;
 import domain.modelo.MiLugar;
 import io.vavr.control.Either;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class DAOlugar {
+
 
     /*Atributos*/
 
@@ -25,16 +27,16 @@ public class DAOlugar {
 
     /*Métodos*/
 
-    public Either<String, List<MiLugar>> llamadaRetrofit(){
+    public Either<String, List<MiLugar>> llamadaRetrofit() {
         Either<String, List<MiLugar>> res = null;
         Response<Map<String, Object>> r;
         try {
             r = lugarAPI.getLugares().execute();
-            if (r.isSuccessful()){
-                Map<String,Object> responseMap = r.body();
-                List<Map<String,Object>> responseLugares = (List<Map<String, Object>>) responseMap.get("results");
+            if (r.isSuccessful()) {
+                Map<String, Object> responseMap = r.body();
+                List<Map<String, Object>> responseLugares = (List<Map<String, Object>>) responseMap.get(Constantes.RESULTS);
                 List<MiLugar> miLugares = responseLugares.stream()
-                        .map(result -> new MiLugar(((Double)result.get("id")).intValue(), (String) result.get("name"), (String) result.get("type"), (String) result.get("dimension")))
+                        .map(result -> new MiLugar(((Double) result.get(Constantes.ID)).intValue(), (String) result.get(Constantes.NAME), (String) result.get(Constantes.TYPE), (String) result.get(Constantes.DIMENSION)))
                         .toList();
                 res = Either.right(miLugares);
             }

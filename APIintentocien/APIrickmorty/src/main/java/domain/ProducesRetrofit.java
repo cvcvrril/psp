@@ -17,12 +17,12 @@ public class ProducesRetrofit {
 
     @Produces
     @Singleton
-    public Moshi getMoshi(){
+    public Moshi getMoshi() {
         return new Moshi.Builder().build();
     }
 
     @Produces
-    public OkHttpClient getOk(){
+    public OkHttpClient getOk() {
         return new OkHttpClient.Builder()
                 .connectionPool(new okhttp3.ConnectionPool(1, 1, java.util.concurrent.TimeUnit.SECONDS))
                 .build();
@@ -30,7 +30,7 @@ public class ProducesRetrofit {
 
     @Produces
     @Singleton
-    public Retrofit retrofit(Configuration config, Moshi moshi, OkHttpClient okHttpClient){
+    public Retrofit retrofit(Configuration config, Moshi moshi, OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
                 .baseUrl(config.getProperty(Constantes.API_URL))
                 .addConverterFactory(MoshiConverterFactory.create(moshi))
@@ -41,19 +41,19 @@ public class ProducesRetrofit {
 
     /*Personajes*/
     @Produces
-    public PersonajeAPI getPersonajeAPI (Retrofit retrofit){
+    public PersonajeAPI getPersonajeAPI(Retrofit retrofit) {
         return retrofit.create(PersonajeAPI.class);
     }
 
     /*Episodios*/
     @Produces
-    public EpisodioAPI getEpisodioAPI (Retrofit retrofit){
+    public EpisodioAPI getEpisodioAPI(Retrofit retrofit) {
         return retrofit.create(EpisodioAPI.class);
     }
 
     /*Lugares*/
     @Produces
-    public LugarAPI getLugarAPI (Retrofit retrofit){
+    public LugarAPI getLugarAPI(Retrofit retrofit) {
         return retrofit.create(LugarAPI.class);
     }
 

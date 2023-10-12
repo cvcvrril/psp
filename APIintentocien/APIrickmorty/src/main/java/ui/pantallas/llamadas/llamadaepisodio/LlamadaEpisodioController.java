@@ -1,5 +1,6 @@
 package ui.pantallas.llamadas.llamadaepisodio;
 
+import common.Constantes;
 import domain.modelo.MiEpisodio;
 import domain.usecase.LoadEpisodioUsecase;
 import jakarta.inject.Inject;
@@ -29,9 +30,9 @@ public class LlamadaEpisodioController extends BasePantallaController {
     }
 
     public void initialize() {
-        idE.setCellValueFactory(new PropertyValueFactory<>("id"));
-        epName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        epCode.setCellValueFactory(new PropertyValueFactory<>("episode"));
+        idE.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID));
+        epName.setCellValueFactory(new PropertyValueFactory<>(Constantes.NAME));
+        epCode.setCellValueFactory(new PropertyValueFactory<>(Constantes.EPISODE));
         tableEpisodios.getItems().addAll(loadEpisodioUsecase.llamadaRetrofit().getOrNull());
     }
 }

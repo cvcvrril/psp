@@ -1,5 +1,6 @@
 package dao.impl;
 
+import common.Constantes;
 import dao.retrofit.llamadas.PersonajeAPI;
 import domain.modelo.MiPersonaje;
 import io.vavr.control.Either;
@@ -31,9 +32,13 @@ public class DAOpersonaje {
             r = personajeAPI.getPersonajes().execute();
             if (r.isSuccessful()) {
                 Map<String, Object> responseMap = r.body();
-                List<Map<String, Object>> responsePersonajes = (List<Map<String, Object>>) responseMap.get("results");
+                List<Map<String, Object>> responsePersonajes = (List<Map<String, Object>>) responseMap.get(Constantes.RESULTS);
                 List<MiPersonaje> miPersonajes = responsePersonajes.stream()
-                        .map(result -> new MiPersonaje(((Double) result.get("id")).intValue(), (String) result.get("name"), (String) result.get("status")))
+                        .map(result ->
+                                new MiPersonaje(
+                                        ((Double) result.get(Constantes.ID)).intValue(),
+                                        (String) result.get(Constantes.NAME),
+                                        (String) result.get(Constantes.STATUS)))
                         .toList();
                 res = Either.right(miPersonajes);
             } else {
@@ -47,16 +52,20 @@ public class DAOpersonaje {
         return res;
     }
 
-    public Either<String, List<MiPersonaje>> llamadaRetrofitFem(){
+    public Either<String, List<MiPersonaje>> llamadaRetrofitFem() {
         Either<String, List<MiPersonaje>> res;
         Response<Map<String, Object>> r;
         try {
-            r = personajeAPI.getPersonajesGender("female").execute();
+            r = personajeAPI.getPersonajesGender(Constantes.FEMALE).execute();
             if (r.isSuccessful()) {
                 Map<String, Object> responseMap = r.body();
-                List<Map<String, Object>> responsePersonajes = (List<Map<String, Object>>) responseMap.get("results");
+                List<Map<String, Object>> responsePersonajes = (List<Map<String, Object>>) responseMap.get(Constantes.RESULTS);
                 List<MiPersonaje> miPersonajes = responsePersonajes.stream()
-                        .map(result -> new MiPersonaje(((Double) result.get("id")).intValue(), (String) result.get("name"), (String) result.get("status")))
+                        .map(result ->
+                                new MiPersonaje(
+                                        ((Double) result.get(Constantes.ID)).intValue(),
+                                        (String) result.get(Constantes.NAME),
+                                        (String) result.get(Constantes.STATUS)))
                         .toList();
                 res = Either.right(miPersonajes);
             } else {
@@ -70,16 +79,20 @@ public class DAOpersonaje {
         return res;
     }
 
-    public Either<String, List<MiPersonaje>> llamadaRetrofitDead(){
+    public Either<String, List<MiPersonaje>> llamadaRetrofitDead() {
         Either<String, List<MiPersonaje>> res;
         Response<Map<String, Object>> r;
         try {
-            r = personajeAPI.getPersonajesStatus("dead").execute();
+            r = personajeAPI.getPersonajesStatus(Constantes.DEAD).execute();
             if (r.isSuccessful()) {
                 Map<String, Object> responseMap = r.body();
-                List<Map<String, Object>> responsePersonajes = (List<Map<String, Object>>) responseMap.get("results");
+                List<Map<String, Object>> responsePersonajes = (List<Map<String, Object>>) responseMap.get(Constantes.RESULTS);
                 List<MiPersonaje> miPersonajes = responsePersonajes.stream()
-                        .map(result -> new MiPersonaje(((Double) result.get("id")).intValue(), (String) result.get("name"), (String) result.get("status")))
+                        .map(result ->
+                                new MiPersonaje(
+                                        ((Double) result.get(Constantes.ID)).intValue(),
+                                        (String) result.get(Constantes.NAME),
+                                        (String) result.get(Constantes.STATUS)))
                         .toList();
                 res = Either.right(miPersonajes);
             } else {
@@ -93,7 +106,7 @@ public class DAOpersonaje {
         return res;
     }
 
-    public Either<String, MiPersonaje> llamadaRetrofitJD(){
+    public Either<String, MiPersonaje> llamadaRetrofitJD() {
         Either<String, MiPersonaje> res;
         Response<Map<String, Object>> r;
         try {
@@ -101,9 +114,9 @@ public class DAOpersonaje {
             if (r.isSuccessful()) {
                 Map<String, Object> responseMap = r.body();
                 MiPersonaje miPersonaje = new MiPersonaje(
-                        ((Double) responseMap.get("id")).intValue(),
-                        (String) responseMap.get("name"),
-                        (String) responseMap.get("status")
+                        ((Double) responseMap.get(Constantes.ID)).intValue(),
+                        (String) responseMap.get(Constantes.NAME),
+                        (String) responseMap.get(Constantes.STATUS)
                 );
                 res = Either.right(miPersonaje);
             } else {

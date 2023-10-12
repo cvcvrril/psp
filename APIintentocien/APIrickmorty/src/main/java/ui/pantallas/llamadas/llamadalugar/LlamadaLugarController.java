@@ -1,5 +1,6 @@
 package ui.pantallas.llamadas.llamadalugar;
 
+import common.Constantes;
 import domain.modelo.MiLugar;
 import domain.usecase.LoadLugarUsecase;
 import jakarta.inject.Inject;
@@ -36,10 +37,10 @@ public class LlamadaLugarController extends BasePantallaController {
     /*Métodos*/
 
     public void initialize(){
-        idL.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nombre.setCellValueFactory(new PropertyValueFactory<>("name"));
-        tipo.setCellValueFactory(new PropertyValueFactory<>("type"));
-        dimension.setCellValueFactory(new PropertyValueFactory<>("dimension"));
+        idL.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID));
+        nombre.setCellValueFactory(new PropertyValueFactory<>(Constantes.NAME));
+        tipo.setCellValueFactory(new PropertyValueFactory<>(Constantes.TYPE));
+        dimension.setCellValueFactory(new PropertyValueFactory<>(Constantes.DIMENSION));
         tableLugares.getItems().addAll(loadLugarUsecase.llamadaRetrofit().getOrNull());
 
     }
