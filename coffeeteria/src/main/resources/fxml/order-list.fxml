@@ -20,7 +20,7 @@
          </font>
       </Label>
       <ComboBox fx:id="filterComboBox" layoutX="30.0" layoutY="329.0" onAction="#handleFilterSelection" prefWidth="150.0" promptText="Filter" />
-      <TableView fx:id="orderItemsTable" layoutX="418.0" layoutY="115.0" prefHeight="200.0" prefWidth="149.0">
+      <TableView fx:id="orderItemsTable" layoutX="418.0" layoutY="115.0" prefHeight="200.0" prefWidth="149.0" onMouseClicked="#setTableOrders">
         <columns>
           <TableColumn fx:id="orderItemName" prefWidth="75.0" text="Name" />
             <TableColumn fx:id="orderItemQuantity" prefWidth="75.0" text="Quantity" />

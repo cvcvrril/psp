@@ -73,11 +73,12 @@ public class DAOOrdersXML {
 
         Either<ErrorCOrder, OrdersXML> listXml = read();
         if (listXml.isRight()) {
-            //OrderXML order = listXml.get().getList().stream().filter(i -> i.getId() == orderId).findFirst().orElse(null);
             OrderXML order = listXml.get().getOrderXMLList().stream().filter(i ->i.getId() == orderId).findFirst().orElse(null);
             if (order != null) {
                 for (OrderItemXML orderItemXML : order.getOrderItem()) {
-                    list.add(new OrderItem(0, orderId, "", 0));
+                    String itemMenuItem = orderItemXML.getMenuItem();
+                    int itemQuantity = orderItemXML.getQuantity();
+                    list.add(new OrderItem(2, orderId, itemMenuItem, itemQuantity));
                 }
                 either = Either.right(list);
             } else {

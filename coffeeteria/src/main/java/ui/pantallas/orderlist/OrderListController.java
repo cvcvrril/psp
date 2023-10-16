@@ -9,6 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lombok.extern.log4j.Log4j2;
 import model.Order;
+import model.OrderItem;
+import model.errors.ErrorCCustomer;
 import model.xml.OrderItemXML;
 import model.xml.OrdersXML;
 import model.errors.ErrorCOrder;
@@ -47,11 +49,11 @@ public class OrderListController extends BasePantallaController {
     @FXML
     private TextField customerNameField;
     @FXML
-    private TableView<OrderItemXML> orderItemsTable;
+    private TableView<OrderItem> orderItemsTable;
     @FXML
-    private TableColumn<OrderItemXML,String> orderItemName;
+    private TableColumn<OrderItem, String> orderItemName;
     @FXML
-    private TableColumn<OrderItemXML, Integer> orderItemQuantity;
+    private TableColumn<OrderItem, Integer> orderItemQuantity;
 
     /*Constructores*/
 
@@ -71,23 +73,15 @@ public class OrderListController extends BasePantallaController {
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
         tableOrders.getItems().addAll(serVorder.getAll());
         filterComboBox.getItems().addAll("Date", "Customer", "None");
+
         tableOrders.getSelectionModel().selectedItemProperty().addListener((observable, oldSelection, newSelection) -> {
             customerNameField.getText();
             if (newSelection != null) {
                 customerNameField.setText(serVclient.getClients(tableOrders.getSelectionModel().getSelectedItem().getIdCo()).get().getFirstName());
             }
-
         });
-        tableOrders.getSelectionModel().selectedItemProperty().addListener((observable, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                int orderId = newSelection.getIdOrd();
-                Either<ErrorCOrder, List<OrderItemXML>> result = connectOrderIdWithOrderItem(orderId);
-                if (result.isRight()) {
-                    orderItemsTable.getItems().setAll(result.get());
-                } else {
-                }
-            }
-        });
+        orderItemName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        orderItemQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
     }
 
     @FXML
@@ -120,14 +114,23 @@ public class OrderListController extends BasePantallaController {
         fechaDatePicker.setValue(null);
     }
 
-    public Either<ErrorCOrder, List<OrderItemXML>> connectOrderIdWithOrderItem(int orderId) {
-        Either<ErrorCOrder, OrdersXML> result = serVorderItem.getOrders(orderId);
-
-        return result.map(ordersXML -> {
-            List<OrderItemXML> orderItems = new ArrayList<>();
-            orderItems.addAll(ordersXML.getOrderXMLList().get(0).getOrderItem());
-            return orderItems;
-        });
+    public void setTableOrders() {
+        try {
+            OrderItem selectedItem = orderItemsTable.getSelectionModel().getSelectedItem();
+            if (selectedItem != null) {
+                Either<ErrorCOrder, List<OrderItem>> orderItems = serVorderItem.getOrders(selectedItem.getId());
+                if (orderItems.isRight()) {
+                    orderItemsTable.getItems().clear();
+                    orderItemsTable.getItems().addAll(orderItems.get());
+                } else {
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                    errorAlert.setContentText("Error al mostrar los order items");
+                    errorAlert.show();
+                }
+            }
+        } catch (Exception e){
+            log.error(e.getMessage(),e);
+        }
     }
 
 }
