@@ -24,7 +24,7 @@ public class DAOclientsFILE implements DAOclients {
         return Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
     }
 
-    private List<Customer> readCustomersFromFile(Path path) throws IOException {
+    private List<Customer> read(Path path) throws IOException {
         List<Customer> customers = new ArrayList<>();
         DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -45,18 +45,22 @@ public class DAOclientsFILE implements DAOclients {
         return customers;
     }
 
-    private void writeCustomersToFile(Path path, List<Customer> customers) throws IOException {
-        List<String> updatedLines = new ArrayList<>();
-        for (Customer customer : customers) {
-            updatedLines.add(customer.toStringFile());
+    private void write(Path path, List<Customer> customers){
+        try {
+            List<String> updatedLines = new ArrayList<>();
+            for (Customer customer : customers) {
+                updatedLines.add(customer.toStringFile());
+            }
+            Files.write(path, updatedLines);
+        }catch (IOException e){
+            log.error(e.getMessage(), e);
         }
-        Files.write(path, updatedLines);
     }
 
     @Override
     public Either<ErrorCCustomer, List<Customer>> getAll() {
         try {
-            List<Customer> customers = readCustomersFromFile(getPath());
+            List<Customer> customers = read(getPath());
             return Either.right(customers);
         } catch (IOException e) {
             log.error(e.getMessage(), e);
@@ -103,7 +107,7 @@ public class DAOclientsFILE implements DAOclients {
     public Either<ErrorCCustomer, Integer> update(Customer t) {
         Path path = getPath();
         try {
-            List<Customer> customers = readCustomersFromFile(path);
+            List<Customer> customers = read(path);
             DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
             for (Customer customer : customers) {
@@ -115,7 +119,7 @@ public class DAOclientsFILE implements DAOclients {
                 }
             }
 
-            writeCustomersToFile(path, customers);
+            write(path, customers);
 
             return Either.right(1);
         } catch (IOException e) {
@@ -128,9 +132,9 @@ public class DAOclientsFILE implements DAOclients {
     public Either<ErrorCCustomer, Integer> delete(Customer t) {
         Path path = getPath();
         try {
-            List<Customer> customers = readCustomersFromFile(path);
+            List<Customer> customers = read(path);
             customers.removeIf(client -> client.getIdC() == t.getIdC());
-            writeCustomersToFile(path, customers);
+            write(path, customers);
             return Either.right(1);
         } catch (IOException e) {
             log.error(e.getMessage(), e);

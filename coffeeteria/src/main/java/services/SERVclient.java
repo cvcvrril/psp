@@ -55,7 +55,6 @@ public class SERVclient {
 
     public Either<ErrorCCustomer, Integer> delClient(int i) {
 
-
         Either<ErrorCCustomer, Customer> res = daOclientsFILE.get(i);
         if (res.isRight()){
             Customer customer = res.get();
