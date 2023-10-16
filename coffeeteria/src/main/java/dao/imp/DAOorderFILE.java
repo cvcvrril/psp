@@ -73,7 +73,7 @@ public class DAOorderFILE implements DAOorder {
             return Either.right(orders);
         } catch (IOException e) {
             log.error(e.getMessage(), e);
-            return Either.left(new ErrorCOrder("Error al leer el archivo", 2));
+            return Either.left(new ErrorCOrder("Error al leer el archivo", 0));
         }
     }
 
@@ -86,10 +86,10 @@ public class DAOorderFILE implements DAOorder {
                     return Either.right(order);
                 }
             }
-            return Either.left(new ErrorCOrder("Orden no encontrada", 1));
+            return Either.left(new ErrorCOrder("Orden no encontrada", 0));
         } catch (IOException e) {
             log.error(e.getMessage(), e);
-            return Either.left(new ErrorCOrder("Error al leer el archivo", 2));
+            return Either.left(new ErrorCOrder("Error al leer el archivo", 0));
         }
     }
 
@@ -100,7 +100,7 @@ public class DAOorderFILE implements DAOorder {
             return Either.right(1);
         } catch (IOException e) {
             log.error("Error al escribir el archivo", e);
-            return Either.left(new ErrorCOrder("Error al guardar la orden", 1));
+            return Either.left(new ErrorCOrder("Error al guardar la orden", 0));
         }
     }
 
@@ -119,7 +119,7 @@ public class DAOorderFILE implements DAOorder {
             return Either.right(1);
         } catch (IOException e) {
             log.error(e.getMessage(), e);
-            return Either.left(new ErrorCOrder("Error al leer/escribir el archivo", 2));
+            return Either.left(new ErrorCOrder("Error al leer/escribir el archivo", 0));
         }
     }
 
@@ -132,7 +132,7 @@ public class DAOorderFILE implements DAOorder {
             return Either.right(1);
         } catch (IOException e) {
             log.error(e.getMessage(), e);
-            return Either.left(new ErrorCOrder("Error al leer/escribir el archivo", 2));
+            return Either.left(new ErrorCOrder("Error al leer/escribir el archivo", 0));
         }
     }
 }

@@ -42,7 +42,7 @@ public class SERVclient {
     }
 
     public Either<ErrorCCustomer, Customer> getClients(int i) {
-            return daOclientsFILE.get(i);
+        return daOclientsFILE.get(i);
     }
 
     public Either<ErrorCCustomer, Integer> saveClient(Customer i) {
@@ -54,12 +54,11 @@ public class SERVclient {
     }
 
     public Either<ErrorCCustomer, Integer> delClient(int i) {
-
         Either<ErrorCCustomer, Customer> res = daOclientsFILE.get(i);
-        if (res.isRight()){
+        if (res.isRight()) {
             Customer customer = res.get();
             return daOclientsFILE.delete(customer);
-        }else {
+        } else {
             return Either.left(res.getLeft());
         }
 
