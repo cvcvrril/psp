@@ -19,6 +19,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Log4j2
 public class DAOOrdersXML {
@@ -50,11 +51,8 @@ public class DAOOrdersXML {
             JAXBContext context = JAXBContext.newInstance(OrdersXML.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
             Path xmlFile = Paths.get(Configuration.getInstance().getPropertyXML("xmlOrdersPath"));
-
             marshaller.marshal(ordersXML, Files.newOutputStream(xmlFile));
-
         } catch (JAXBException | IOException e) {
             either = Either.left(new ErrorCOrder(e.getMessage(), 0));
             log.error(e.getMessage());
@@ -67,10 +65,17 @@ public class DAOOrdersXML {
     //Read Unmarshall
     //Write Marshall
 
+    public static class UniqueIDGenerator {
+
+        public static int generateUniqueID() {
+            return Integer.parseInt(UUID.randomUUID().toString());
+        }
+
+    }
+
     public Either<ErrorCOrder, List<OrderItem>> getAll(int orderId) {
         Either<ErrorCOrder, List<OrderItem>> either;
         List<OrderItem> list = new ArrayList<>();
-
         Either<ErrorCOrder, OrdersXML> listXml = read();
         if (listXml.isRight()) {
             OrderXML order = listXml.get().getOrderXMLList().stream().filter(i ->i.getId() == orderId).findFirst().orElse(null);
@@ -78,11 +83,12 @@ public class DAOOrdersXML {
                 for (OrderItemXML orderItemXML : order.getOrderItem()) {
                     String itemMenuItem = orderItemXML.getMenuItem();
                     int itemQuantity = orderItemXML.getQuantity();
-                    list.add(new OrderItem(2, orderId, itemMenuItem, itemQuantity));
+                    int uniqueID = UniqueIDGenerator.generateUniqueID();
+                    list.add(new OrderItem(uniqueID, orderId, itemMenuItem, itemQuantity));
                 }
                 either = Either.right(list);
             } else {
-                either = Either.left(new ErrorCOrder("", 0));
+                either = Either.left(new ErrorCOrder("Error al recibir los order_items", 0));
             }
 
         } else {
@@ -95,16 +101,13 @@ public class DAOOrdersXML {
         Either<ErrorCOrder, Integer> add;
         Either<ErrorCOrder, OrdersXML> read = read();
         if (read.isRight()) {
-            //add order
             List<OrderItemXML> itemsXML = new ArrayList<>();
             for (OrderItem orderItem : orderItemList) {
-                itemsXML.add(new OrderItemXML("", orderItem.getQuantity()));
+                itemsXML.add(new OrderItemXML("mitem", orderItem.getQuantity()));
             }
             OrderXML orderXML = new OrderXML(orderId, itemsXML);
             List<OrderXML> orders = read.get().getOrderXMLList();
             orders.add(orderXML);
-
-            //write order
             Either<ErrorCOrder, Integer> write = write(new OrdersXML(orders));
             if (write.isRight()) {
                 add = Either.right(orders.size());
@@ -124,33 +127,28 @@ public class DAOOrdersXML {
             Either<ErrorCOrder, List<OrderItem>> oldItems = getAll(orderId);
             List<OrderXML> orders = read.get().getOrderXMLList();
             if (oldItems.isRight()) {
-                //delete old order
                 List<OrderItemXML> oldItemsXML = new ArrayList<>();
                 for (OrderItem orderItem : oldItems.get()) {
                     oldItemsXML.add(new OrderItemXML("", orderItem.getQuantity()));
                 }
                 OrderXML oldOrder = new OrderXML(orderId, oldItemsXML);
                 orders.remove(oldOrder);
-
-                //add updated order
                 List<OrderItemXML> newItemsXML = new ArrayList<>();
                 for (OrderItem orderItem : orderItemList) {
                     newItemsXML.add(new OrderItemXML("", orderItem.getQuantity()));
                 }
                 OrderXML newOrder = new OrderXML(orderId, newItemsXML);
                 orders.add(newOrder);
-
-                //write
                 Either<ErrorCOrder, Integer> write = write(new OrdersXML(orders));
                 if (write.isRight()) {
                     update = Either.right(write.get());
                 } else {
                     update = Either.left(write.getLeft());
                 }
-            } else {//order not in list
+            } else {
                 update = Either.left(oldItems.getLeft());
             }
-        } else {//failure to read orders
+        } else {
             update = Either.left(read.getLeft());
         }
         return update;
@@ -162,7 +160,6 @@ public class DAOOrdersXML {
         if (read.isRight()) {
             List<OrderXML> orders = read.get().getOrderXMLList();
             Either<ErrorCOrder, List<OrderItem>> deleteList = getAll(orderId);
-
             if(deleteList.isRight()){
                 List<OrderItemXML> deleteItemsXML = new ArrayList<>();
                 for(OrderItem orderItem : deleteList.get()){
@@ -170,8 +167,6 @@ public class DAOOrdersXML {
                 }
                 OrderXML deleteOrder = new OrderXML(orderId, deleteItemsXML);
                 orders.remove(deleteOrder);
-
-                //write
                 Either<ErrorCOrder, Integer> write = write(new OrdersXML(orders));
                 if (write.isRight()) {
                     delete = Either.right(orders.size());

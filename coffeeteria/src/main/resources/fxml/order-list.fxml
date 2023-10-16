@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.orderlist.OrderListController">
    <children>
-      <TableView fx:id="tableOrders" layoutX="30.0" layoutY="115.0" prefHeight="200.0" prefWidth="306.0">
+      <TableView fx:id="tableOrders" layoutX="27.0" layoutY="80.0" prefHeight="200.0" prefWidth="306.0">
         <columns>
           <TableColumn fx:id="id_ord" prefWidth="75.0" text="Order ID" />
             <TableColumn fx:id="id_c" prefWidth="72.0" text="Costumer ID" />
@@ -14,24 +14,23 @@
             <TableColumn fx:id="date_order" prefWidth="91.0" text="Date" />
         </columns>
       </TableView>
-      <Label layoutX="93.0" layoutY="49.0" text="Order list">
+      <Label layoutX="93.0" layoutY="30.0" text="Order list">
          <font>
             <Font size="27.0" />
          </font>
       </Label>
-      <ComboBox fx:id="filterComboBox" layoutX="30.0" layoutY="329.0" onAction="#handleFilterSelection" prefWidth="150.0" promptText="Filter" />
-      <TableView fx:id="orderItemsTable" layoutX="418.0" layoutY="115.0" prefHeight="200.0" prefWidth="149.0" onMouseClicked="#setTableOrders">
+      <ComboBox fx:id="filterComboBox" layoutX="34.0" layoutY="303.0" onAction="#hide" prefWidth="150.0" promptText="Filter" />
+      <TableView fx:id="orderItemsTable" layoutX="418.0" layoutY="115.0" onMouseClicked="#setTableOrders" prefHeight="200.0" prefWidth="149.0">
         <columns>
-          <TableColumn fx:id="orderItemName" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="orderItemName" prefWidth="75.0" text="Name"/>
             <TableColumn fx:id="orderItemQuantity" prefWidth="75.0" text="Quantity" />
         </columns>
       </TableView>
-      <Label layoutX="376.0" layoutY="80.0" text="Order items" />
-      <Label layoutX="322.0" layoutY="333.0" text="Total amount" />
+      <Label layoutX="419.0" layoutY="80.0" text="Order items" />
       <Label layoutX="376.0" layoutY="26.0" text="Customer name" />
-      <DatePicker fx:id="fechaDatePicker" layoutX="34.0" layoutY="361.0" prefHeight="25.0" prefWidth="118.0" promptText="yyyy-MM-dd" />
-      <TextField fx:id="customerField" layoutX="173.0" layoutY="361.0" prefHeight="25.0" prefWidth="95.0" promptText="Customer" />
+      <DatePicker fx:id="fechaDatePicker" layoutX="62.0" layoutY="338.0" prefHeight="25.0" prefWidth="118.0" promptText="yyyy-MM-dd" />
+      <TextField fx:id="customerField" layoutX="204.0" layoutY="338.0" prefHeight="25.0" prefWidth="95.0" promptText="Customer" />
       <TextField fx:id="customerNameField" layoutX="376.0" layoutY="49.0" />
-      <TextField layoutX="294.0" layoutY="361.0" />
+       <Button layoutX="214.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleFilterSelection" text="Filter" />
    </children>
 </AnchorPane>

@@ -10,9 +10,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import lombok.extern.log4j.Log4j2;
 import model.Order;
 import model.OrderItem;
-import model.errors.ErrorCCustomer;
-import model.xml.OrderItemXML;
-import model.xml.OrdersXML;
 import model.errors.ErrorCOrder;
 import services.SERVclient;
 import services.SERVorder;
@@ -20,8 +17,8 @@ import services.SERVorderItem;
 import ui.pantallas.common.BasePantallaController;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Log4j2
 public class OrderListController extends BasePantallaController {
@@ -41,7 +38,7 @@ public class OrderListController extends BasePantallaController {
     @FXML
     private TableColumn<Order, LocalDate> date_order;
     @FXML
-    private ComboBox filterComboBox;
+    private ComboBox<String> filterComboBox;
     @FXML
     private DatePicker fechaDatePicker;
     @FXML
@@ -80,13 +77,14 @@ public class OrderListController extends BasePantallaController {
                 customerNameField.setText(serVclient.getClients(tableOrders.getSelectionModel().getSelectedItem().getIdCo()).get().getFirstName());
             }
         });
+
         orderItemName.setCellValueFactory(new PropertyValueFactory<>("name"));
         orderItemQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
     }
 
     @FXML
     private void handleFilterSelection(ActionEvent event) {
-        String selectedItem = (String) filterComboBox.getSelectionModel().getSelectedItem();
+        String selectedItem =filterComboBox.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             if (selectedItem.equals("Date")) {
                 LocalDate selectedDate = fechaDatePicker.getValue();
@@ -114,6 +112,21 @@ public class OrderListController extends BasePantallaController {
         fechaDatePicker.setValue(null);
     }
 
+    public void hide(){
+        if (Objects.equals(filterComboBox.getSelectionModel().getSelectedItem(), "Date")){
+            fechaDatePicker.setVisible(true);
+            customerField.setVisible(false);
+        } else if (Objects.equals(filterComboBox.getSelectionModel().getSelectedItem(), "Customer")){
+            fechaDatePicker.setVisible(false);
+            customerField.setVisible(true);
+        } else if (Objects.equals(filterComboBox.getSelectionModel().getSelectedItem(), "None")){
+            fechaDatePicker.setVisible(false);
+            customerField.setVisible(false);
+        }
+    }
+
+    //Por alguna razón no me pilla los valores de los order_items
+
     public void setTableOrders() {
         try {
             OrderItem selectedItem = orderItemsTable.getSelectionModel().getSelectedItem();
@@ -132,5 +145,4 @@ public class OrderListController extends BasePantallaController {
             log.error(e.getMessage(),e);
         }
     }
-
 }

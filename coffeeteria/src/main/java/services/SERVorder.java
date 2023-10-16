@@ -62,9 +62,11 @@ public class SERVorder {
     public List<Order> getOrdersByDate(LocalDate selectedDate) {
         List<Order> allOrders = daOorderFILE.getAll().getOrNull();
         List<Order> filteredOrders = new ArrayList<>();
-        for (Order order : allOrders) {
-            if (order.getOrDate().isEqual(selectedDate)) {
-                filteredOrders.add(order);
+        if (selectedDate != null) {
+            for (Order order : allOrders) {
+                if (order.getOrDate() != null && order.getOrDate().isEqual(selectedDate)) {
+                    filteredOrders.add(order);
+                }
             }
         }
         return filteredOrders;

@@ -64,15 +64,13 @@ public class DeleteCustomerController extends BasePantallaController {
     public void delCustomer() {
         Customer selCustomer = tableCustomers.getSelectionModel().getSelectedItem();
         if (selCustomer != null) {
-            // Verificar si el cliente tiene órdenes asociadas
             List<Order> customerOrders = serVorder.getOrdersByCustomer(selCustomer.getIdC());
             if (!customerOrders.isEmpty()) {
-                // Si el cliente tiene órdenes, preguntar al usuario si desea eliminarlo
                 Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
                 confirmationAlert.setContentText("Este cliente tiene órdenes asociadas. ¿Desea eliminarlo de todos modos?");
                 Optional<ButtonType> result = confirmationAlert.showAndWait();
                 if (result.isPresent() && result.get() == ButtonType.CANCEL) {
-                    return; // El usuario canceló la eliminación
+                    return;
                 }
             }
 
