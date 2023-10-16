@@ -20,41 +20,63 @@ import java.util.List;
 @Log4j2
 public class DAOclientsFILE implements DAOclients {
 
-    @Override
-    public Either<ErrorCCustomer, List<Customer>> getAll() {
-        Path path = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
+    private Path getPath() {
+        return Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
+    }
+
+    private List<Customer> readCustomersFromFile(Path path) throws IOException {
         List<Customer> customers = new ArrayList<>();
-        List<String> aux;
-        try {
-            aux = Files.readAllLines(path);
-            DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            for (String line : aux){
-                if (!line.trim().isEmpty()) {
-                    String[] trozo = line.split(";");
-                    if (trozo.length == 6) {
-                        customers.add(new Customer(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form)));
-                    } else {
-                        log.warn("Línea mal formateada: " + line);
-                    }
+        DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        List<String> lines = Files.readAllLines(path);
+        for (String line : lines) {
+            if (!line.trim().isEmpty()) {
+                String[] trozo = line.split(";");
+                if (trozo.length == 6) {
+                    customers.add(new Customer(
+                            Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3],
+                            Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form)
+                    ));
+                } else {
+                    log.warn("Línea mal formateada: " + line);
                 }
             }
+        }
+        return customers;
+    }
+
+    private void writeCustomersToFile(Path path, List<Customer> customers) throws IOException {
+        List<String> updatedLines = new ArrayList<>();
+        for (Customer customer : customers) {
+            updatedLines.add(customer.toStringFile());
+        }
+        Files.write(path, updatedLines);
+    }
+
+    @Override
+    public Either<ErrorCCustomer, List<Customer>> getAll() {
+        try {
+            List<Customer> customers = readCustomersFromFile(getPath());
+            return Either.right(customers);
         } catch (IOException e) {
             log.error(e.getMessage(), e);
+            return Either.left(new ErrorCCustomer("Error al leer el archivo", 2));
         }
-        return Either.right(customers);
     }
 
     @Override
     public Either<ErrorCCustomer, Customer> get(int i) {
-        Path path = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
-        List<String> lines;
         try {
-            lines = Files.readAllLines(path);
+            Path path = getPath();
+            List<String> lines = Files.readAllLines(path);
             if (i >= 0 && i < lines.size()) {
                 String line = lines.get(i);
                 String[] trozo = line.split(";");
                 DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                Customer customer = new Customer(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form));
+                Customer customer = new Customer(
+                        Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3],
+                        Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form)
+                );
                 return Either.right(customer);
             } else {
                 return Either.left(new ErrorCCustomer("Cliente no encontrado", 1));
@@ -67,77 +89,34 @@ public class DAOclientsFILE implements DAOclients {
 
     @Override
     public Either<ErrorCCustomer, Integer> save(Customer t) {
-        Path file = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
-        int error = 0;
+        Path file = getPath();
         try {
-            Files.write(file, (t.toStringFile()).getBytes(), StandardOpenOption.APPEND);
-            error = 1;
+            Files.write(file, (t.toStringFile() + "\n").getBytes(), StandardOpenOption.APPEND);
+            return Either.right(1);
         } catch (IOException e) {
-            log.error("Error writing the file", e);
+            log.error("Error al escribir el archivo", e);
+            return Either.left(new ErrorCCustomer("Error al escribir el archivo", 2));
         }
-        return Either.right(error);
     }
+
     @Override
     public Either<ErrorCCustomer, Integer> update(Customer t) {
-        Path path = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
-        List<Customer> customers = new ArrayList<>();
-        List<String> lines;
+        Path path = getPath();
         try {
-            lines = Files.readAllLines(path);
+            List<Customer> customers = readCustomersFromFile(path);
             DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-            for (String line : lines) {
-                String[] trozo = line.split(";");
-                Customer customer = new Customer(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form));
-
+            for (Customer customer : customers) {
                 if (customer.getIdC() == t.getIdC()) {
                     customer.setFirstName(t.getFirstName());
                     customer.setSecondName(t.getSecondName());
                     customer.setEmail(t.getEmail());
                     customer.setPhoneNumber(t.getPhoneNumber());
                 }
-                customers.add(customer);
             }
-            List<String> updatedLines = new ArrayList<>();
-            for (Customer customer : customers) {
-                updatedLines.add(customer.toStringFile());
-            }
-            Files.write(path, updatedLines);
-            return Either.right(1);
-        } catch (IOException e) {
-            log.error(e.getMessage(), e);
-            return Either.left(new ErrorCCustomer("Error al leer/escribir el archivo", 2));
-        }
-    }
-    @Override
-    public Either<ErrorCCustomer, Integer> delete(Customer t) {
-        Path path = Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
-        List<Customer> customers = new ArrayList<>();
-        List<String> lines;
-        try {
-            lines = Files.readAllLines(path);
-            DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            for (String line : lines) {
-                String[] trozo = line.split(";");
-                if (trozo.length == 6) {
-                    Customer customer = new Customer(Integer.parseInt(trozo[0]), trozo[1], trozo[2], trozo[3], Integer.parseInt(trozo[4]), LocalDate.parse(trozo[5], form));
-                    if (customer.getIdC() == t.getIdC()) {
-                        customer.setFirstName(t.getFirstName());
-                        customer.setSecondName(t.getSecondName());
-                        customer.setEmail(t.getEmail());
-                        customer.setPhoneNumber(t.getPhoneNumber());
-                    }
-                    customers.add(customer);
-                } else {
-                    log.warn("Línea mal formateada: " + line);
-                }
-            }
-            customers.removeIf(client -> client.getIdC() == t.getIdC());
-            List<String> updatedLines = new ArrayList<>();
-            for (Customer customer : customers) {
-                updatedLines.add(customer.toStringFile());
-            }
-            Files.write(path, updatedLines);
+
+            writeCustomersToFile(path, customers);
+
             return Either.right(1);
         } catch (IOException e) {
             log.error(e.getMessage(), e);
@@ -145,4 +124,17 @@ public class DAOclientsFILE implements DAOclients {
         }
     }
 
+    @Override
+    public Either<ErrorCCustomer, Integer> delete(Customer t) {
+        Path path = getPath();
+        try {
+            List<Customer> customers = readCustomersFromFile(path);
+            customers.removeIf(client -> client.getIdC() == t.getIdC());
+            writeCustomersToFile(path, customers);
+            return Either.right(1);
+        } catch (IOException e) {
+            log.error(e.getMessage(), e);
+            return Either.left(new ErrorCCustomer("Error al leer/escribir el archivo", 2));
+        }
+    }
 }
