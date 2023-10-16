@@ -23,7 +23,7 @@ import java.util.List;
 public class DAOorderFILE implements DAOorder {
 
     private Path getPath() {
-        return Paths.get(Configuration.getInstance().getProperty("pathDataOrders"));
+        return Paths.get(Configuration.getInstance().getPropertyTXT("pathDataOrders"));
     }
 
     private List<Order> readOrdersFromFile(Path path) throws IOException {

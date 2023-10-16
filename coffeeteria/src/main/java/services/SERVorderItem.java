@@ -2,9 +2,13 @@ package services;
 
 import dao.xml.DAOOrdersXML;
 import io.vavr.control.Either;
-import model.OrdersXML;
+import jakarta.inject.Inject;
+import model.OrderItem;
+import model.xml.OrderItemXML;
+import model.xml.OrdersXML;
 import model.errors.ErrorCOrder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SERVorderItem {
@@ -15,6 +19,7 @@ public class SERVorderItem {
 
     /*Builder*/
 
+    @Inject
     public SERVorderItem(DAOOrdersXML daoOrdersXML) {
         this.daoOrdersXML = daoOrdersXML;
     }
@@ -22,24 +27,21 @@ public class SERVorderItem {
     /*Methods*/
 
 
-    public Either<ErrorCOrder, List<OrdersXML>> getOrders() {
-        return daoOrdersXML.getAll();
+    public Either<ErrorCOrder, List<OrderItem>> getOrders(int i) {
+        return daoOrdersXML.getAll(i);
     }
 
-    public Either<ErrorCOrder, OrdersXML> getOrders(int i){
-        return daoOrdersXML.get(i);
+    public Either<ErrorCOrder,Integer> addOrders(List<OrderItem> orderItemList, int i){
+        return daoOrdersXML.add(orderItemList,i);
     }
 
-    public Either<ErrorCOrder, Integer> saveOrders(OrdersXML ordersXML){
-        return daoOrdersXML.save(ordersXML);
+    public Either<ErrorCOrder, Integer> updateOrders(List<OrderItem> orderItemList, int i) {
+        return daoOrdersXML.update(orderItemList,i);
     }
 
-    public Either<ErrorCOrder, Integer> updateOrders(OrdersXML ordersXML){
-        return daoOrdersXML.update(ordersXML);
+    public Either<ErrorCOrder, Integer> delOrders(int i) {
+        return daoOrdersXML.delete(i);
     }
 
-    public Either<ErrorCOrder, Integer> delOrders(OrdersXML ordersXML){
-        return daoOrdersXML.delete(ordersXML);
-    }
 
 }

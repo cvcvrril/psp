@@ -10,7 +10,8 @@ import java.util.Properties;
 @Log4j2
 public class Configuration {
 
-    private Properties p;
+    private Properties ptxt;
+    private Properties pxml;
     private static Configuration instance;
     private String pathDataCustomers;
     private String pathDataOrders;
@@ -18,12 +19,13 @@ public class Configuration {
 
     private Configuration(){
         try{
-            p = new Properties();
-            p.load(getClass().getClassLoader().getResourceAsStream("config/config.properties"));
-            p.loadFromXML(Configuration.class.getClassLoader().getResourceAsStream("config/properties.xml"));
-            this.pathDataCustomers = p.getProperty("pathDataCustomers");
-            this.pathDataOrders = p.getProperty("pathDataOrders");
-            this.pathXMLOrders = p.getProperty("xmlOrdersPath");
+            ptxt = new Properties();
+            ptxt.load(getClass().getClassLoader().getResourceAsStream("config/config.properties"));
+            this.pathDataCustomers = ptxt.getProperty("pathDataCustomers");
+            this.pathDataOrders = ptxt.getProperty("pathDataOrders");
+            pxml = new Properties();
+            pxml.loadFromXML(Configuration.class.getClassLoader().getResourceAsStream("config/properties.xml"));
+            this.pathXMLOrders = pxml.getProperty("xmlOrdersPath");
 
         } catch (IOException e) {
             log.error(e.getMessage(), e);
@@ -37,9 +39,11 @@ public class Configuration {
         return instance;
     }
 
-    public String getProperty (String key){
-        return p.getProperty(key);
+    public String getPropertyTXT(String key){
+        return ptxt.getProperty(key);
     }
+
+    public String getPropertyXML(String key){return pxml.getProperty(key);}
 
 
 }

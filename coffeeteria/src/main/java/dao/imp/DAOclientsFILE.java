@@ -21,7 +21,7 @@ import java.util.List;
 public class DAOclientsFILE implements DAOclients {
 
     private Path getPath() {
-        return Paths.get(Configuration.getInstance().getProperty("pathDataCustomers"));
+        return Paths.get(Configuration.getInstance().getPropertyTXT("pathDataCustomers"));
     }
 
     private List<Customer> read(Path path) throws IOException {

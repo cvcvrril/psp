@@ -1,25 +1,32 @@
 package ui.pantallas.orderlist;
 
 import common.Constantes;
+import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lombok.extern.log4j.Log4j2;
 import model.Order;
+import model.xml.OrderItemXML;
+import model.xml.OrdersXML;
+import model.errors.ErrorCOrder;
 import services.SERVclient;
 import services.SERVorder;
+import services.SERVorderItem;
 import ui.pantallas.common.BasePantallaController;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+@Log4j2
 public class OrderListController extends BasePantallaController {
-
 
     private final SERVorder serVorder;
     private final SERVclient serVclient;
-    public TextField customerNameField;
+    private final SERVorderItem serVorderItem;
 
     @FXML
     private TableView<Order> tableOrders;
@@ -37,19 +44,27 @@ public class OrderListController extends BasePantallaController {
     private DatePicker fechaDatePicker;
     @FXML
     private TextField customerField;
+    @FXML
+    private TextField customerNameField;
+    @FXML
+    private TableView<OrderItemXML> orderItemsTable;
+    @FXML
+    private TableColumn<OrderItemXML,String> orderItemName;
+    @FXML
+    private TableColumn<OrderItemXML, Integer> orderItemQuantity;
 
     /*Constructores*/
 
     @Inject
-    public OrderListController(SERVorder serVorder, SERVclient serVclient) {
+    public OrderListController(SERVorder serVorder, SERVclient serVclient, SERVorderItem serVorderItem) {
         this.serVorder = serVorder;
         this.serVclient = serVclient;
+        this.serVorderItem = serVorderItem;
     }
 
     /*Métodos*/
 
-    public void initialize(){
-
+    public void initialize() {
         id_ord.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_ORD));
         id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
         id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
@@ -58,12 +73,21 @@ public class OrderListController extends BasePantallaController {
         filterComboBox.getItems().addAll("Date", "Customer", "None");
         tableOrders.getSelectionModel().selectedItemProperty().addListener((observable, oldSelection, newSelection) -> {
             customerNameField.getText();
-            if (newSelection != null){
+            if (newSelection != null) {
                 customerNameField.setText(serVclient.getClients(tableOrders.getSelectionModel().getSelectedItem().getIdCo()).get().getFirstName());
             }
 
         });
-
+        tableOrders.getSelectionModel().selectedItemProperty().addListener((observable, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                int orderId = newSelection.getIdOrd();
+                Either<ErrorCOrder, List<OrderItemXML>> result = connectOrderIdWithOrderItem(orderId);
+                if (result.isRight()) {
+                    orderItemsTable.getItems().setAll(result.get());
+                } else {
+                }
+            }
+        });
     }
 
     @FXML
@@ -96,5 +120,14 @@ public class OrderListController extends BasePantallaController {
         fechaDatePicker.setValue(null);
     }
 
+    public Either<ErrorCOrder, List<OrderItemXML>> connectOrderIdWithOrderItem(int orderId) {
+        Either<ErrorCOrder, OrdersXML> result = serVorderItem.getOrders(orderId);
+
+        return result.map(ordersXML -> {
+            List<OrderItemXML> orderItems = new ArrayList<>();
+            orderItems.addAll(ordersXML.getOrderXMLList().get(0).getOrderItem());
+            return orderItems;
+        });
+    }
 
 }

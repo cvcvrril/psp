@@ -18,7 +18,6 @@ module coffeeteria {
     requires java.logging;
     requires java.sql;
 
-
     /*Pantallas*/
 
     exports ui.pantallas.common;
@@ -62,4 +61,7 @@ module coffeeteria {
     opens ui.pantallas.customeradd to javafx.fxml;
     opens ui.pantallas.customerdelete to javafx.fxml;
     opens ui.pantallas.orderadd to javafx.fxml;
+    opens model to jakarta.xml.bind;
+    exports model.xml;
+    opens model.xml to jakarta.xml.bind;
 }
