@@ -9,18 +9,17 @@ import java.sql.SQLException;
 
 public class DBConnection {
 
-//    private Configuration config;
-//
-//    @Inject
-//    public DBConnection(Configuration config) {
-//        this.config = config;
-//    }
-//
-//    public Connection getConnection() throws SQLException {
-//        Connection conn = DriverManager
-//                .getConnection(config.getProperty("urlDB"), config.getProperty("user_name"), config.getProperty("password"));
-//        System.out.println("Connected to DB");
-//        return conn;
-//    }
+    private Configuration config;
+
+    @Inject
+    public DBConnection(Configuration config) {
+        this.config = config;
+    }
+
+    public Connection getConnection() throws SQLException {
+        Connection conn = DriverManager
+                .getConnection(config.getPropertySQL("pathSQL"), config.getPropertySQL("userSQL"), config.getPropertySQL("passSQL"));
+        return conn;
+    }
 
 }
