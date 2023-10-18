@@ -1,5 +1,6 @@
 package services;
 
+import dao.db.DAOcustomerDB;
 import dao.imp.DAOclientsFILE;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
@@ -14,14 +15,16 @@ public class SERVclient {
     /*Atributos*/
 
     private final DAOclientsFILE daOclientsFILE;
+    private final DAOcustomerDB daOcustomerDB;
 
     private ErrorC errorC;
 
     /*Constructor*/
 
     @Inject
-    public SERVclient(DAOclientsFILE daOclientsFILE) {
+    public SERVclient(DAOclientsFILE daOclientsFILE, DAOcustomerDB daOcustomerDB) {
         this.daOclientsFILE = daOclientsFILE;
+        this.daOcustomerDB = daOcustomerDB;
     }
 
     /*Métodos*/
@@ -40,6 +43,7 @@ public class SERVclient {
     public Either<ErrorCCustomer, List<Customer>> getClients() {
         return daOclientsFILE.getAll();
     }
+    public Either<ErrorCCustomer,List<Customer>> getAll(){return daOcustomerDB.getAll();}
 
     public Either<ErrorCCustomer, Customer> getClients(int i) {
         return daOclientsFILE.get(i);

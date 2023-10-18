@@ -49,7 +49,8 @@ public class CustomerListController extends BasePantallaController {
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
         email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
         date.setCellValueFactory(new PropertyValueFactory<>(Constantes.DATE));
-        tableCustomers.getItems().addAll(serVclient.getClients().getOrNull());
+//        tableCustomers.getItems().addAll(serVclient.getClients().getOrNull());
+        tableCustomers.getItems().addAll(serVclient.getAll().getOrNull());
 
     }
 
