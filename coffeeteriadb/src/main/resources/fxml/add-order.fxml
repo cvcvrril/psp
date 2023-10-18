@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.orderadd.AddOrderController">
+   <children>
+      <TextField fx:id="dateField" layoutX="48.0" layoutY="115.0" promptText="e.g. 2023-07-27" />
+      <TextField layoutX="373.0" layoutY="56.0" prefHeight="25.0" prefWidth="77.0" />
+      <Label layoutX="48.0" layoutY="29.0" text="Add Order">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="91.0" text="Date" />
+      <ComboBox fx:id="tableComboBox" layoutX="48.0" layoutY="175.0" prefWidth="150.0" />
+      <ComboBox fx:id="customerComboBox" layoutX="48.0" layoutY="246.0" prefWidth="150.0" />
+      <Label layoutX="58.0" layoutY="156.0" text="Table" />
+      <Label layoutX="59.0" layoutY="225.0" text="Customer" />
+      <ComboBox layoutX="249.0" layoutY="56.0" prefHeight="25.0" prefWidth="77.0" />
+      <Label layoutX="249.0" layoutY="35.0" text="Menu item" />
+      <Label layoutX="373.0" layoutY="35.0" text="Quantity" />
+      <Button fx:id="addOrderButton" layoutX="243.0" layoutY="317.0" mnemonicParsing="false" onAction="#addOrder" prefHeight="25.0" prefWidth="90.0" text="Add order" />
+      <Button fx:id="addItemButton" layoutX="501.0" layoutY="34.0" mnemonicParsing="false" onAction="#addItem" text="Add" />
+      <Button fx:id="removeItemButton" layoutX="501.0" layoutY="69.0" mnemonicParsing="false" onAction="#removeItem" text="Remove" />
+      <TableView layoutX="360.0" layoutY="131.0" prefHeight="113.0" prefWidth="200.0">
+        <columns>
+          <TableColumn prefWidth="115.0" text="Name item" />
+          <TableColumn prefWidth="63.0" text="Quantity" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
