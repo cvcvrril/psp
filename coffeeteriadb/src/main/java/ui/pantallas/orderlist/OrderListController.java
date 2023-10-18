@@ -74,7 +74,8 @@ public class OrderListController extends BasePantallaController {
         tableOrders.getSelectionModel().selectedItemProperty().addListener((observable, oldSelection, newSelection) -> {
             customerNameField.getText();
             if (newSelection != null) {
-                customerNameField.setText(serVclient.getClients(tableOrders.getSelectionModel().getSelectedItem().getIdCo()).get().getFirstName());
+//                customerNameField.setText(serVclient.getClients(tableOrders.getSelectionModel().getSelectedItem().getIdCo()).get().getFirstName());
+                customerNameField.setText(serVclient.get(tableOrders.getSelectionModel().getSelectedItem().getIdCo()).get().getFirstName());
             }
         });
 

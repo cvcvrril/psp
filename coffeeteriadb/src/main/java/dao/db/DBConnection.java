@@ -17,9 +17,8 @@ public class DBConnection {
     }
 
     public Connection getConnection() throws SQLException {
-        Connection conn = DriverManager
+        return DriverManager
                 .getConnection(config.getPropertySQL("pathSQL"), config.getPropertySQL("userSQL"), config.getPropertySQL("passSQL"));
-        return conn;
     }
 
 }

@@ -43,10 +43,15 @@ public class SERVclient {
     public Either<ErrorCCustomer, List<Customer>> getClients() {
         return daOclientsFILE.getAll();
     }
-    public Either<ErrorCCustomer,List<Customer>> getAll(){return daOcustomerDB.getAll();}
+    public Either<ErrorCCustomer,List<Customer>> getAll(){
+        return daOcustomerDB.getAll();}
 
     public Either<ErrorCCustomer, Customer> getClients(int i) {
         return daOclientsFILE.get(i);
+    }
+
+    public Either<ErrorCCustomer, Customer> get(int id) {
+        return daOcustomerDB.get(id);
     }
 
     public Either<ErrorCCustomer, Integer> saveClient(Customer i) {
