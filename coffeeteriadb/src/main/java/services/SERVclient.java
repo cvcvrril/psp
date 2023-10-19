@@ -72,4 +72,13 @@ public class SERVclient {
         }
 
     }
+
+    public Either<ErrorCCustomer, Integer> delete(int i){
+        Either<ErrorCCustomer, Customer> res = daOcustomerDB.get(i);
+        if (res.isRight()) {
+            return daOcustomerDB.delete(i);
+        } else {
+            return Either.left(res.getLeft());
+        }
+    }
 }

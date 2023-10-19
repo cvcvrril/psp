@@ -70,7 +70,6 @@ public class OrderListController extends BasePantallaController {
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
         tableOrders.getItems().addAll(serVorder.getAll());
         filterComboBox.getItems().addAll("Date", "Customer", "None");
-
         tableOrders.getSelectionModel().selectedItemProperty().addListener((observable, oldSelection, newSelection) -> {
             customerNameField.getText();
             if (newSelection != null) {
