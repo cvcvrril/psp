@@ -63,7 +63,7 @@ public class DAOcustomerDB {
 
             Either<ErrorCCustomer, Customer> read;
             cus = readRS(rs).get(0);
-            
+
             res = Either.right(cus);
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
