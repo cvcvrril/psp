@@ -19,8 +19,8 @@ import java.util.List;
 public class DAOcustomerDB {
 
     /*Atb*/
-    private Configuration config;
-    private DBConnection db;
+    private final Configuration config;
+    private final DBConnection db;
 
     /*Cons*/
     @Inject
@@ -56,9 +56,14 @@ public class DAOcustomerDB {
         Either<ErrorCCustomer,Customer> res;
         try (Connection myConnection = db.getConnection(); 
              PreparedStatement stmt = myConnection.prepareStatement("select * from customer where id = ?")) {
-            stmt.setString(1, String.valueOf(id));
+            stmt.setInt(1,id);
             ResultSet rs = stmt.executeQuery();
-            cus = readRS(rs).stream().filter(customer -> customer.getIdC() == id).findFirst().orElse(null);
+
+            //TODO: montar otro Either para el readRS
+
+            Either<ErrorCCustomer, Customer> read;
+            cus = readRS(rs).get(0);
+            
             res = Either.right(cus);
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
@@ -88,7 +93,8 @@ public class DAOcustomerDB {
         Either<ErrorCCustomer, Integer> res;
         try (Connection connection = db.getConnection()){
             PreparedStatement pstmt = connection.prepareStatement("");
-        res = Either.right();
+
+            res = Either.right(null);
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorCCustomer(e.getMessage(), 0));

@@ -43,16 +43,13 @@ public class SERVclient {
     public Either<ErrorCCustomer, List<Customer>> getClients() {
         return daOclientsFILE.getAll();
     }
-    public Either<ErrorCCustomer,List<Customer>> getAll(){
-        return daOcustomerDB.getAll();}
+
 
     public Either<ErrorCCustomer, Customer> getClients(int i) {
         return daOclientsFILE.get(i);
     }
 
-    public Either<ErrorCCustomer, Customer> get(int id) {
-        return daOcustomerDB.get(id);
-    }
+
 
     public Either<ErrorCCustomer, Integer> saveClient(Customer i) {
         return daOclientsFILE.save(i);
@@ -73,12 +70,26 @@ public class SERVclient {
 
     }
 
-    public Either<ErrorCCustomer, Integer> delete(int i){
+    /*Métodos con SQL*/
+
+    public Either<ErrorCCustomer, List<Customer>> getAll() {
+        return daOcustomerDB.getAll();
+    }
+
+    public Either<ErrorCCustomer, Customer> get(int id) {
+        return daOcustomerDB.get(id);
+    }
+
+    public Either<ErrorCCustomer, Integer> delete(int i) {
         Either<ErrorCCustomer, Customer> res = daOcustomerDB.get(i);
         if (res.isRight()) {
             return daOcustomerDB.delete(i);
         } else {
             return Either.left(res.getLeft());
         }
+    }
+
+    public Either<ErrorCCustomer, Integer> update(){
+        return null;
     }
 }
