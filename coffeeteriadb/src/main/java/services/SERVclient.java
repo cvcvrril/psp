@@ -89,7 +89,7 @@ public class SERVclient {
         }
     }
 
-    public Either<ErrorCCustomer, Integer> update(){
-        return null;
+    public Either<ErrorCCustomer, Integer> update(Customer customer){
+        return daOcustomerDB.update(customer);
     }
 }

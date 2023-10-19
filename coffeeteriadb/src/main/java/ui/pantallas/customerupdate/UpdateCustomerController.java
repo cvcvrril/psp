@@ -12,8 +12,13 @@ import model.errors.ErrorCCustomer;
 import services.SERVclient;
 import ui.pantallas.common.BasePantallaController;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class UpdateCustomerController extends BasePantallaController {
     private final SERVclient serVclient;
+
+
 
     @FXML
     private TextField idCustomerField;
@@ -25,6 +30,8 @@ public class UpdateCustomerController extends BasePantallaController {
     private TextField phoneField;
     @FXML
     private TextField emailField;
+    @FXML
+    private TextField dateField;
 
     @FXML
     private TableView<Customer> tableCustomers;
@@ -39,6 +46,8 @@ public class UpdateCustomerController extends BasePantallaController {
     @FXML
     private TableColumn<Customer, Integer> phoneNumber;
     @FXML
+    private TableColumn<Customer, LocalDate> date;
+    @FXML
     private Button resetCustomerButton;
     @FXML
     private Button updateCustomerButton;
@@ -49,22 +58,29 @@ public class UpdateCustomerController extends BasePantallaController {
     }
 
     public void updateCustomer() {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
         int id = Integer.parseInt(idCustomerField.getText());
         String firstName = firstNameField.getText();
         String secondName = secondNameField.getText();
         String email = emailField.getText();
         int phoneNumber = Integer.parseInt(phoneField.getText());
+        String dateText = dateField.getText();
+        LocalDate date = LocalDate.parse(dateText, dateFormatter);
 
-        Customer updatedCustomer = new Customer(id, firstName, secondName, email, phoneNumber, null);
+        Customer updatedCustomer = new Customer(id, firstName, secondName, email, phoneNumber, date);
 
-        Either<ErrorCCustomer, Integer> res = serVclient.updateClient(updatedCustomer);
+        //Either<ErrorCCustomer, Integer> res = serVclient.updateClient(updatedCustomer);
+        Either<ErrorCCustomer, Integer> res = serVclient.update(updatedCustomer);
         if (res.isRight()) {
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setContentText(Constantes.CUSTOMER_UPDATED);
             a.show();
             resetFields();
             tableCustomers.getItems().clear();
-            tableCustomers.getItems().addAll(serVclient.getClients().getOrNull());
+            //tableCustomers.getItems().addAll(serVclient.getClients().getOrNull());
+            tableCustomers.getItems().addAll(serVclient.getAll().getOrNull());
+
         } else {
             ErrorCCustomer error = res.getLeft();
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
@@ -95,7 +111,9 @@ public class UpdateCustomerController extends BasePantallaController {
         secondName.setCellValueFactory(new PropertyValueFactory<>(Constantes.SECOND_NAME));
         email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
-        tableCustomers.getItems().addAll(serVclient.getClients().getOrNull());
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        //tableCustomers.getItems().addAll(serVclient.getClients().getOrNull());
+        tableCustomers.getItems().addAll(serVclient.getAll().getOrNull());
         tableCustomers.setOnMouseClicked(this::handleTable);
     }
 
