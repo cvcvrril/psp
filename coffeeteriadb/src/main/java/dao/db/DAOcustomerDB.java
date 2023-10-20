@@ -18,6 +18,7 @@ import java.util.List;
 @Log4j2
 public class DAOcustomerDB {
 
+
     /*Atb*/
     private final Configuration config;
     private final DBConnection db;
@@ -54,11 +55,10 @@ public class DAOcustomerDB {
     public Either<ErrorCCustomer, Customer> get(int id) {
         Either<ErrorCCustomer,Customer> res;
         try (Connection myConnection = db.getConnection(); 
-             PreparedStatement stmt = myConnection.prepareStatement("select * from customers where id = ?")) {
+             PreparedStatement stmt = myConnection.prepareStatement(SQLqueries.SELECT_CUSTOMERS_ID)) {
             stmt.setInt(1,id);
             ResultSet rs = stmt.executeQuery();
             List<Customer> customerList = readRS(rs);
-
             if (!customerList.isEmpty()){
                res = Either.right(customerList.get(0));
             }else {
@@ -97,7 +97,7 @@ public class DAOcustomerDB {
         int rowsAffected;
         Either<ErrorCCustomer, Integer> res;
         try (Connection connection = db.getConnection()){
-            PreparedStatement pstmt = connection.prepareStatement("UPDATE customers SET first_name=?, last_name=?, email=?, phone_number=?, birth_date=? WHERE id=?");
+            PreparedStatement pstmt = connection.prepareStatement(SQLqueries.UPDATE_CUSTOMERS);
             pstmt.setString(1, customer.getFirstName());
             pstmt.setString(2, customer.getSecondName());
             pstmt.setString(3, customer.getEmail());
@@ -119,13 +119,13 @@ public class DAOcustomerDB {
         int rowsAffected;
         Either<ErrorCCustomer, Integer> res;
         try (Connection connection = db.getConnection()) {
-            PreparedStatement pstmtOrders = connection.prepareStatement("DELETE FROM orders WHERE customer_id = ?");
+            PreparedStatement pstmtOrders = connection.prepareStatement(SQLqueries.DELETE_ORDERS);
             pstmtOrders.setInt(1, id);
             pstmtOrders.executeUpdate();
-            PreparedStatement pstmtCredentials = connection.prepareStatement("DELETE FROM credentials WHERE customer_id = ?");
+            PreparedStatement pstmtCredentials = connection.prepareStatement(SQLqueries.DELETE_CREDENTIALS);
             pstmtCredentials.setInt(1, id);
             pstmtCredentials.executeUpdate();
-            PreparedStatement pstmtCustomer = connection.prepareStatement("DELETE FROM customers WHERE id = ?");
+            PreparedStatement pstmtCustomer = connection.prepareStatement(SQLqueries.DELETE_CUSTOMERS);
             pstmtCustomer.setInt(1, id);
             rowsAffected = pstmtCustomer.executeUpdate();
             res = Either.right(rowsAffected);
