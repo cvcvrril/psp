@@ -53,21 +53,21 @@ public class DAOcustomerDB {
 
     /*get(id)*/
     public Either<ErrorCCustomer, Customer> get(int id) {
-        Either<ErrorCCustomer,Customer> res;
-        try (Connection myConnection = db.getConnection(); 
+        Either<ErrorCCustomer, Customer> res;
+        try (Connection myConnection = db.getConnection();
              PreparedStatement stmt = myConnection.prepareStatement(SQLqueries.SELECT_CUSTOMERS_ID)) {
-            stmt.setInt(1,id);
+            stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             List<Customer> customerList = readRS(rs);
-            if (!customerList.isEmpty()){
-               res = Either.right(customerList.get(0));
-            }else {
+            if (!customerList.isEmpty()) {
+                res = Either.right(customerList.get(0));
+            } else {
                 res = Either.left(new ErrorCCustomer("Error al leer datos", 0));
             }
             rs.close();
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
-            res = Either.left(new ErrorCCustomer(e.getMessage(),0));
+            res = Either.left(new ErrorCCustomer(e.getMessage(), 0));
         }
         return res;
     }
@@ -93,10 +93,10 @@ public class DAOcustomerDB {
 
     /*update*/
 
-    public Either<ErrorCCustomer, Integer> update(Customer customer){
+    public Either<ErrorCCustomer, Integer> update(Customer customer) {
         int rowsAffected;
         Either<ErrorCCustomer, Integer> res;
-        try (Connection connection = db.getConnection()){
+        try (Connection connection = db.getConnection()) {
             PreparedStatement pstmt = connection.prepareStatement(SQLqueries.UPDATE_CUSTOMERS);
             pstmt.setString(1, customer.getFirstName());
             pstmt.setString(2, customer.getSecondName());
@@ -115,23 +115,40 @@ public class DAOcustomerDB {
 
     /*delete(id)*/
 
-    public Either<ErrorCCustomer, Integer> delete(int id){
-        int rowsAffected;
+    public Either<ErrorCCustomer, Integer> delConf(int id, boolean confirmed) {
+        return delete(id, confirmed);
+    }
+
+    public Either<ErrorCCustomer, Integer> delete(int id, boolean confirmed) {
+
         Either<ErrorCCustomer, Integer> res;
-        try (Connection connection = db.getConnection()) {
-            PreparedStatement pstmtOrders = connection.prepareStatement(SQLqueries.DELETE_ORDERS);
-            pstmtOrders.setInt(1, id);
-            pstmtOrders.executeUpdate();
-            PreparedStatement pstmtCredentials = connection.prepareStatement(SQLqueries.DELETE_CREDENTIALS);
-            pstmtCredentials.setInt(1, id);
-            pstmtCredentials.executeUpdate();
-            PreparedStatement pstmtCustomer = connection.prepareStatement(SQLqueries.DELETE_CUSTOMERS);
-            pstmtCustomer.setInt(1, id);
-            rowsAffected = pstmtCustomer.executeUpdate();
-            res = Either.right(rowsAffected);
-        } catch (SQLException e) {
-            log.error(e.getMessage(),e);
-            res = Either.left(new ErrorCCustomer(e.getMessage(), 0));
+        if (!confirmed) {
+            try (Connection connection = db.getConnection()) {
+                PreparedStatement pstmtOrders = connection.prepareStatement(SQLqueries.DELETE_ORDERS);
+                pstmtOrders.setInt(1, id);
+                pstmtOrders.executeUpdate();
+                PreparedStatement pstmtCredentials = connection.prepareStatement(SQLqueries.DELETE_CREDENTIALS);
+                pstmtCredentials.setInt(1, id);
+                pstmtCredentials.executeUpdate();
+                PreparedStatement pstmtCustomer = connection.prepareStatement(SQLqueries.DELETE_CUSTOMERS);
+                pstmtCustomer.setInt(1, id);
+                int rowsAffected = pstmtCustomer.executeUpdate();
+                if (rowsAffected != 1) {
+                    res = Either.left(new ErrorCCustomer("Error", 0));
+                } else {
+                    res = Either.right(rowsAffected);
+                }
+                res = Either.right(rowsAffected);
+            } catch (SQLException e) {
+                log.error(e.getMessage(), e);
+                if (e.getErrorCode() == 1451) {
+                    res = Either.left(new ErrorCCustomer(e.getMessage(), e.getErrorCode()));
+                } else {
+                    res = Either.left(new ErrorCCustomer(e.getMessage(), e.getErrorCode()));
+                }
+            }
+        }else {
+            res = Either.left(new ErrorCCustomer("error", 0));
         }
         return res;
     }

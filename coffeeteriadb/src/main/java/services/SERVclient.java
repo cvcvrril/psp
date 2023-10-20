@@ -80,10 +80,10 @@ public class SERVclient {
         return daOcustomerDB.get(id);
     }
 
-    public Either<ErrorCCustomer, Integer> delete(int i) {
+    public Either<ErrorCCustomer, Integer> delete(int i, boolean conf) {
         Either<ErrorCCustomer, Customer> res = daOcustomerDB.get(i);
         if (res.isRight()) {
-            return daOcustomerDB.delete(i);
+            return daOcustomerDB.delete(i, conf);
         } else {
             return Either.left(res.getLeft());
         }

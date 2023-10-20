@@ -75,7 +75,7 @@ public class DeleteCustomerController extends BasePantallaController {
             }
 
             //Either<ErrorCCustomer, Integer> res = serVclient.delClient(selCustomer.getIdC());
-            Either<ErrorCCustomer, Integer> res = serVclient.delete(selCustomer.getIdC());
+            Either<ErrorCCustomer, Integer> res = serVclient.delete(selCustomer.getIdC(), true);
             if (res.isRight()) {
                 Alert a = new Alert(Alert.AlertType.CONFIRMATION);
                 a.setContentText(Constantes.USER_DELETED);
