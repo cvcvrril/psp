@@ -17,7 +17,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO: cambiar todo esto de fiels al DB
 
 @Log4j2
 public class DAOclientsFILE implements DAOclients {
