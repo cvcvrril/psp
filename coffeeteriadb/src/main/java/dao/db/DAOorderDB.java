@@ -1,17 +1,14 @@
 package dao.db;
 
 import common.Configuration;
+import common.SQLqueries;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
-import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 import model.Order;
 import model.errors.ErrorCOrder;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -22,6 +19,7 @@ import java.util.List;
 
 @Log4j2
 public class DAOorderDB {
+
 
     /*Atb*/
 
@@ -39,7 +37,7 @@ public class DAOorderDB {
         Either<ErrorCOrder, List<Order>> res;
         try (Connection myConnection = db.getConnection()){
             Statement stmt = myConnection.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from orders");
+            ResultSet rs = stmt.executeQuery(SQLqueries.SELECT_FROM_ORDERS);
             orderList = readRS(rs);
             res = Either.right(orderList);
         } catch (SQLException e) {
@@ -49,6 +47,18 @@ public class DAOorderDB {
         return null;
     }
 
+    public Either<ErrorCOrder, List<Order>> get(int id){
+        Either<ErrorCOrder, List<Order>> res;
+        try (Connection myConnection = db.getConnection()){
+            PreparedStatement pstmt = myConnection.prepareStatement("select * from orders where order_id=?");
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+            res = Either.left(new ErrorCOrder(e.getMessage(),  0));
+        }
+        return null;
+    }
 
     private List<Order> readRS (ResultSet rs) throws SQLException {
         List<Order> orderList = new ArrayList<>();

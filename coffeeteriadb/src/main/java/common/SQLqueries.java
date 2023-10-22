@@ -9,4 +9,5 @@ public class SQLqueries {
     public static final String UPDATE_CUSTOMERS = "UPDATE customers SET first_name=?, last_name=?, email=?, phone_number=?, birth_date=? WHERE id=?";
     public static final String SELECT_CUSTOMERS_ID = "select * from customers where id = ?";
 
+    public static final String SELECT_FROM_ORDERS = "select * from orders";
 }
