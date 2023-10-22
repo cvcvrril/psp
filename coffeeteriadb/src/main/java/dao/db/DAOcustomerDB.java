@@ -25,7 +25,6 @@ public class DAOcustomerDB {
 
     /*Cons*/
     @Inject
-
     public DAOcustomerDB(Configuration config, DBConnection db) {
         this.config = config;
         this.db = db;
