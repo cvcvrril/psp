@@ -53,7 +53,7 @@ public class SERVorder {
     }
 
     public Either<ErrorCOrder, Integer> updateOrder(Order o) {
-        return daOorderFILE.update(o);
+        return daOorderDB.update(o);
     }
 
     public Either<ErrorCOrder, Integer> delOrder(int i) {

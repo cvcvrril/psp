@@ -64,6 +64,23 @@ public class DAOorderDB {
         return res;
     }
 
+    public Either<ErrorCOrder, Integer> update(Order order){
+        int rowsAffected;
+        Either<ErrorCOrder, Integer> res;
+        try (Connection myConnection = db.getConnection()){
+            PreparedStatement pstmt = myConnection.prepareStatement("update orders set order_date=?, customer_id=?, table_id=? where id=?");
+            pstmt.setTimestamp(1, Timestamp.valueOf(order.getOrDate()));
+            pstmt.setInt(2,order.getIdCo());
+            pstmt.setInt(3, order.getIdTable());
+            rowsAffected = pstmt.executeUpdate();
+            res = Either.right(rowsAffected);
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+            res = Either.left(new ErrorCOrder(e.getMessage(), 0));
+        }
+        return res;
+    }
+
     public Either<ErrorCOrder, Integer> delete (int id){
         Either<ErrorCOrder, Integer> res;
         try (Connection myConnection = db.getConnection()){

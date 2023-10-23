@@ -2,15 +2,18 @@ package ui.pantallas.orderupdate;
 
 import common.Constantes;
 import dao.imp.DAOorderFILE;
+import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import model.Order;
+import model.errors.ErrorCOrder;
 import ui.pantallas.common.BasePantallaController;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class UpdateOrderController extends BasePantallaController {
 
@@ -60,12 +63,6 @@ public class UpdateOrderController extends BasePantallaController {
         a.show();
     }
 
-    public void updateOrder() {
-        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-        a.setContentText(Constantes.ORDER_UPDATED);
-        a.show();
-    }
-
     public void initialize(){
 
         id_ord.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_ORD));
@@ -89,4 +86,30 @@ public class UpdateOrderController extends BasePantallaController {
         }
     }
 
+    public void updateOrder(){
+        try {
+            int orderId = Integer.parseInt(orderIdField.getText());
+            int customerId = Integer.parseInt(customerField.getText());
+            int tableId = Integer.parseInt(tableField.getText());
+            LocalDate orderDate = LocalDate.parse(dateField.getText());
+            LocalDateTime orderDateTime = orderDate.atStartOfDay();
+            Order updatedOrder = new Order(orderId, orderDateTime, customerId, tableId);
+            Either<ErrorCOrder, Integer> updateResult = daOorderFILE.update(updatedOrder);
+
+            if (updateResult.isRight()){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Order updated successfully");
+                alert.show();
+            }else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Failed to update order: " + updateResult.getLeft());
+                alert.show();
+            }
+        }catch (NumberFormatException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Invalid input data");
+            alert.show();
+        }
+
+    }
 }
