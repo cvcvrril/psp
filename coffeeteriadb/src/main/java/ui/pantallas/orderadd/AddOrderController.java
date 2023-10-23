@@ -50,7 +50,7 @@ public class AddOrderController extends BasePantallaController {
         int customerId = customerComboBox.getValue();
         int tableId = tableComboBox.getValue();
         LocalDate orderDate = LocalDate.parse(dateField.getText());
-        Order newOrder = new Order(customerId, getNextOrderId(), tableId, orderDate);
+        Order newOrder = new Order(customerId, orderDate.atStartOfDay(), tableId,   getNextOrderId());
         Either<ErrorCOrder, Integer> saveResult = serVorder.saveOrder(newOrder);
         if (saveResult.isRight()) {
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);

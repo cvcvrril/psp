@@ -14,7 +14,7 @@ module APIrickmorty {
     requires retrofit2.converter.moshi;
     requires retrofit2;
     requires retrofit2.adapter.rxjava3;
-    requires com.squareup.moshi;
+    requires moshi;
 
     /*Pantallas*/
 

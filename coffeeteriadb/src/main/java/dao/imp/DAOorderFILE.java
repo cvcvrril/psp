@@ -35,8 +35,8 @@ public class DAOorderFILE implements DAOorder {
         while ((line = reader.readLine()) != null) {
             String[] trozo = line.split(";");
             orders.add(new Order(
-                    Integer.parseInt(trozo[0]), Integer.parseInt(trozo[1]),
-                    Integer.parseInt(trozo[2]), LocalDate.parse(trozo[3], form)
+                    Integer.parseInt(trozo[0]), LocalDate.parse(trozo[3], form).atStartOfDay(),
+                    Integer.parseInt(trozo[2]), Integer.parseInt(trozo[1])
             ));
         }
         return orders;

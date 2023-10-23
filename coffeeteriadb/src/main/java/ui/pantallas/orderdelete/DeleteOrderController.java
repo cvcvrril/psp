@@ -42,7 +42,7 @@ public class DeleteOrderController extends BasePantallaController {
     public void delOrder(ActionEvent actionEvent) {
         Order selectedOrder = tableOrders.getSelectionModel().getSelectedItem();
         if (selectedOrder != null) {
-            Either<ErrorCOrder, Integer> deleteResult = serVorder.delOrder(selectedOrder);
+            Either<ErrorCOrder, Integer> deleteResult = serVorder.delOrder(selectedOrder.getIdOrd());
             if (deleteResult.isRight()) {
                 Alert a = new Alert(Alert.AlertType.CONFIRMATION);
                 a.setContentText(Constantes.ORDER_DELETED);

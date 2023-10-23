@@ -1,5 +1,6 @@
 package services;
 
+import dao.db.DAOorderDB;
 import dao.imp.DAOclientsFILE;
 import dao.imp.DAOorderFILE;
 import io.vavr.control.Either;
@@ -21,19 +22,22 @@ public class SERVorder {
 
     private final DAOorderFILE daOorderFILE;
     private final DAOclientsFILE daOclientsFILE;
+    private final DAOorderDB daOorderDB;
 
     /*Constructor*/
 
     @Inject
-    public SERVorder(DAOorderFILE daOorderFILE, DAOclientsFILE daOclientsFILE) {
+    public SERVorder(DAOorderFILE daOorderFILE, DAOclientsFILE daOclientsFILE, DAOorderDB daOorderDB) {
         this.daOorderFILE = daOorderFILE;
         this.daOclientsFILE = daOclientsFILE;
+        this.daOorderDB = daOorderDB;
     }
 
     /*Métodos*/
 
     public List<Order> getAll() {
-        return daOorderFILE.getAll().getOrNull();
+        //return daOorderFILE.getAll().getOrNull();
+        return daOorderDB.getAll().getOrNull();
     }
 
     public Either<ErrorCOrder, Order> getOrder(int i) {
@@ -52,8 +56,8 @@ public class SERVorder {
         return daOorderFILE.update(o);
     }
 
-    public Either<ErrorCOrder, Integer> delOrder(Order o) {
-       return daOorderFILE.delete(o);
+    public Either<ErrorCOrder, Integer> delOrder(int i) {
+       return daOorderDB.delete(i);
     }
 
 
@@ -64,7 +68,7 @@ public class SERVorder {
         List<Order> filteredOrders = new ArrayList<>();
         if (selectedDate != null) {
             for (Order order : allOrders) {
-                if (order.getOrDate() != null && order.getOrDate().isEqual(selectedDate)) {
+                if (order.getOrDate() != null && order.getOrDate().isEqual(selectedDate.atStartOfDay())) {
                     filteredOrders.add(order);
                 }
             }
