@@ -10,4 +10,7 @@ public class SQLqueries {
     public static final String SELECT_CUSTOMERS_ID = "select * from customers where id = ?";
 
     public static final String SELECT_FROM_ORDERS = "select * from orders";
+    public static final String SELECT_ORDERS_ID = "select * from orders where order_id=?";
+    public static final String DELETE_ORDER_ITEMS = "delete from order_items where order_id=?";
+    public static final String DELETE_ORDERS_ID = "delete from orders where order_id=?";
 }

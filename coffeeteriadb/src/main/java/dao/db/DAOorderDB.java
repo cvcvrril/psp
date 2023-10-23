@@ -47,7 +47,7 @@ public class DAOorderDB {
     public Either<ErrorCOrder, Order> get(int id){
         Either<ErrorCOrder, Order> res;
         try (Connection myConnection = db.getConnection()){
-            PreparedStatement pstmt = myConnection.prepareStatement("select * from orders where order_id=?");
+            PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.SELECT_ORDERS_ID);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             List<Order> orderList = readRS(rs);
@@ -67,10 +67,10 @@ public class DAOorderDB {
     public Either<ErrorCOrder, Integer> delete (int id){
         Either<ErrorCOrder, Integer> res;
         try (Connection myConnection = db.getConnection()){
-            PreparedStatement pstmt1= myConnection.prepareStatement("delete from order_items where order_id=?");
+            PreparedStatement pstmt1= myConnection.prepareStatement(SQLqueries.DELETE_ORDER_ITEMS);
             pstmt1.setInt(1, id);
             pstmt1.executeUpdate();
-            PreparedStatement pstmt2= myConnection.prepareStatement("delete from orders where order_id=?");
+            PreparedStatement pstmt2= myConnection.prepareStatement(SQLqueries.DELETE_ORDERS_ID);
             pstmt2.setInt(1, id);
             int rowsAffected = pstmt2.executeUpdate();
             if (rowsAffected !=1){
