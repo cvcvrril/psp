@@ -20,9 +20,6 @@ import java.util.List;
 @Log4j2
 public class DAOorderDB {
 
-
-    /*Atb*/
-
     private final Configuration config;
     private final DBConnection db;
 
@@ -59,6 +56,18 @@ public class DAOorderDB {
         }
         return null;
     }
+
+    public Either<ErrorCOrder, List<Order>> delete (int id){
+        Either<ErrorCOrder, List<Order>> res;
+        try (Connection myConnection = db.getConnection()){
+            PreparedStatement pstmt= myConnection.prepareStatement("delete from orders where ");
+        } catch (SQLException e) {
+            log.error(e.getMessage(),e);
+            res = Either.left(new ErrorCOrder(e.getMessage(), 0));
+        }
+        return null;
+    }
+
 
     private List<Order> readRS (ResultSet rs) throws SQLException {
         List<Order> orderList = new ArrayList<>();

@@ -18,22 +18,15 @@ import java.util.List;
 @Log4j2
 public class DAOcustomerDB {
 
-
-    /*Atb*/
     private final Configuration config;
     private final DBConnection db;
 
-    /*Cons*/
     @Inject
     public DAOcustomerDB(Configuration config, DBConnection db) {
         this.config = config;
         this.db = db;
     }
 
-    /*Methods*/
-
-
-    /*getAll()*/
     public Either<ErrorCCustomer, List<Customer>> getAll() {
         List<Customer> customerList = new ArrayList<>();
         Either<ErrorCCustomer, List<Customer>> res;
@@ -49,8 +42,6 @@ public class DAOcustomerDB {
         return res;
     }
 
-
-    /*get(id)*/
     public Either<ErrorCCustomer, Customer> get(int id) {
         Either<ErrorCCustomer, Customer> res;
         try (Connection myConnection = db.getConnection();
@@ -71,7 +62,6 @@ public class DAOcustomerDB {
         return res;
     }
 
-    /*readRS(rs)*/
     private List<Customer> readRS(ResultSet rs) throws SQLException {
         List<Customer> customerList = new ArrayList<>();
         while (rs.next()) {
@@ -89,8 +79,6 @@ public class DAOcustomerDB {
         }
         return customerList;
     }
-
-    /*update*/
 
     public Either<ErrorCCustomer, Integer> update(Customer customer) {
         int rowsAffected;
@@ -112,14 +100,11 @@ public class DAOcustomerDB {
         return res;
     }
 
-    /*delete(id)*/
-
     public Either<ErrorCCustomer, Integer> delConf(int id, boolean confirmed) {
         return delete(id, confirmed);
     }
 
     public Either<ErrorCCustomer, Integer> delete(int id, boolean confirmed) {
-
         Either<ErrorCCustomer, Integer> res;
         if (!confirmed) {
             try (Connection connection = db.getConnection()) {
@@ -152,5 +137,4 @@ public class DAOcustomerDB {
         return res;
     }
 
-    /*add*/
 }
