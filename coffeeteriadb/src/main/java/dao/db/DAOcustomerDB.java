@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO: hacer los métodos get(id), update, add
+//TODO: hacer el método add
 
 @Log4j2
 public class DAOcustomerDB {
