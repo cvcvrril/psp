@@ -20,10 +20,10 @@ public class DBConnectionPool {
     private BasicDataSource basicDataSource;
 
     @Inject
-    public DBConnectionPool(Configuration config, DataSource hikariDataSource, BasicDataSource basicDataSource) {
+    public DBConnectionPool(Configuration config) {
         this.config = config;
-        this.hikariDataSource = hikariDataSource;
-        this.basicDataSource = basicDataSource;
+        this.hikariDataSource = getHikariPool();
+        this.basicDataSource = getBasicPool();
     }
 
     private DataSource getHikariPool() {
