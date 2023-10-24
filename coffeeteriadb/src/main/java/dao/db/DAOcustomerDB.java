@@ -20,11 +20,13 @@ public class DAOcustomerDB {
 
     private final Configuration config;
     private final DBConnection db;
+    private final DBConnectionPool pool;
 
     @Inject
-    public DAOcustomerDB(Configuration config, DBConnection db) {
+    public DAOcustomerDB(Configuration config, DBConnection db, DBConnectionPool pool) {
         this.config = config;
         this.db = db;
+        this.pool = pool;
     }
 
     public Either<ErrorCCustomer, List<Customer>> getAll() {

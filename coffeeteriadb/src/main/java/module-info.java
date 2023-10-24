@@ -17,6 +17,8 @@ module coffeeteria {
     requires org.pdfsam.rxjavafx;
     requires java.logging;
     requires java.sql;
+    requires commons.dbcp2;
+    requires com.zaxxer.hikari;
 
     /*Pantallas*/
 
