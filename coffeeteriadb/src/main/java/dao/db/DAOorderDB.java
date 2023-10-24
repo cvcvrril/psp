@@ -64,6 +64,22 @@ public class DAOorderDB {
         return res;
     }
 
+    private List<Order> readRS (ResultSet rs) throws SQLException {
+        List<Order> orderList = new ArrayList<>();
+        while (rs.next()){
+            int id = rs.getInt("order_id");
+            LocalDateTime dateTime = null;
+            Timestamp timestamp = rs.getTimestamp("order_date");
+            if (timestamp != null){
+                dateTime = timestamp.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+            }
+            int customerId = rs.getInt("customer_id");
+            int tableId = rs.getInt("table_id");
+            orderList.add(new Order(id, dateTime, customerId, tableId));
+        }
+        return orderList;
+    }
+
     public Either<ErrorCOrder, Integer> update(Order order){
         int rowsAffected;
         Either<ErrorCOrder, Integer> res;
@@ -103,20 +119,6 @@ public class DAOorderDB {
     }
 
 
-    private List<Order> readRS (ResultSet rs) throws SQLException {
-        List<Order> orderList = new ArrayList<>();
-        while (rs.next()){
-            int id = rs.getInt("order_id");
-            LocalDateTime dateTime = null;
-            Timestamp timestamp = rs.getTimestamp("order_date");
-            if (timestamp != null){
-                dateTime = timestamp.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-            }
-            int customerId = rs.getInt("customer_id");
-            int tableId = rs.getInt("table_id");
-            orderList.add(new Order(id, dateTime, customerId, tableId));
-        }
-        return orderList;
-    }
+
 
 }
