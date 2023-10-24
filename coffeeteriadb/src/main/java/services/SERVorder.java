@@ -47,8 +47,8 @@ public class SERVorder {
 
     }
 
-    public Either<ErrorCOrder, Integer> saveOrder(Order o) {
-        return daOorderFILE.save(o);
+    public Either<ErrorCOrder, Integer> add(Order order) {
+        return daOorderDB.add(order);
     }
 
     public Either<ErrorCOrder, Integer> updateOrder(Order o) {

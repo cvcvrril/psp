@@ -118,7 +118,26 @@ public class DAOorderDB {
         return res;
     }
 
-
+    public Either<ErrorCOrder, Integer> add(Order order){
+        int rowsAffected;
+        Either<ErrorCOrder, Integer> res;
+        try (Connection myConnection = db.getConnection()){
+            PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.INSERT_ORDER);
+            pstmt.setTimestamp(1, Timestamp.valueOf(order.getOrDate())); // Suponiendo que orderDate es de tipo LocalDateTime
+            pstmt.setInt(2, order.getIdCo());
+            pstmt.setInt(3, order.getIdTable());
+            rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected != 1) {
+                res = Either.left(new ErrorCOrder("Error al insertar la orden", 0));
+            } else {
+                res = Either.right(rowsAffected);
+            }
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+            res = Either.left(new ErrorCOrder(e.getMessage(), 0));
+        }
+        return res;
+    }
 
 
 }
