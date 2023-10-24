@@ -1,7 +1,6 @@
 package services;
 
 import dao.db.DAOcustomerDB;
-import dao.imp.DAOclientsFILE;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import model.Customer;
@@ -14,7 +13,6 @@ public class SERVclient {
 
     /*Atributos*/
 
-    private final DAOclientsFILE daOclientsFILE;
     private final DAOcustomerDB daOcustomerDB;
 
     private ErrorC errorC;
@@ -22,15 +20,14 @@ public class SERVclient {
     /*Constructor*/
 
     @Inject
-    public SERVclient(DAOclientsFILE daOclientsFILE, DAOcustomerDB daOcustomerDB) {
-        this.daOclientsFILE = daOclientsFILE;
+    public SERVclient(DAOcustomerDB daOcustomerDB) {
         this.daOcustomerDB = daOcustomerDB;
     }
 
     /*Métodos*/
 
     public int getLastUsedId() {
-        List<Customer> customers = daOclientsFILE.getAll().getOrNull();
+        List<Customer> customers = daOcustomerDB.getAll().getOrNull();
         int lastUsedId = 0;
         for (Customer customer : customers) {
             if (customer.getIdC() > lastUsedId) {
@@ -40,35 +37,6 @@ public class SERVclient {
         return lastUsedId + 1;
     }
 
-    public Either<ErrorCCustomer, List<Customer>> getClients() {
-        return daOclientsFILE.getAll();
-    }
-
-
-    public Either<ErrorCCustomer, Customer> getClients(int i) {
-        return daOclientsFILE.get(i);
-    }
-
-
-
-    public Either<ErrorCCustomer, Integer> saveClient(Customer i) {
-        return daOclientsFILE.save(i);
-    }
-
-    public Either<ErrorCCustomer, Integer> updateClient(Customer i) {
-        return daOclientsFILE.update(i);
-    }
-
-    public Either<ErrorCCustomer, Integer> delClient(int i) {
-        Either<ErrorCCustomer, Customer> res = daOclientsFILE.get(i);
-        if (res.isRight()) {
-            Customer customer = res.get();
-            return daOclientsFILE.delete(customer);
-        } else {
-            return Either.left(res.getLeft());
-        }
-
-    }
 
     /*Métodos con SQL*/
 
@@ -91,5 +59,9 @@ public class SERVclient {
 
     public Either<ErrorCCustomer, Integer> update(Customer customer){
         return daOcustomerDB.update(customer);
+    }
+
+    public Either<ErrorCCustomer, Integer> add(Customer customer){
+        return daOcustomerDB.add(customer);
     }
 }

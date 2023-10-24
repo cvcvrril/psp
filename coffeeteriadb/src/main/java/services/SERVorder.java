@@ -1,7 +1,7 @@
 package services;
 
+import dao.db.DAOcustomerDB;
 import dao.db.DAOorderDB;
-import dao.imp.DAOclientsFILE;
 import dao.imp.DAOorderFILE;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
@@ -21,22 +21,21 @@ public class SERVorder {
     /*Atributos*/
 
     private final DAOorderFILE daOorderFILE;
-    private final DAOclientsFILE daOclientsFILE;
+    private final DAOcustomerDB daOcustomerDB;
     private final DAOorderDB daOorderDB;
 
     /*Constructor*/
 
     @Inject
-    public SERVorder(DAOorderFILE daOorderFILE, DAOclientsFILE daOclientsFILE, DAOorderDB daOorderDB) {
+    public SERVorder(DAOorderFILE daOorderFILE, DAOcustomerDB daOcustomerDB, DAOorderDB daOorderDB) {
         this.daOorderFILE = daOorderFILE;
-        this.daOclientsFILE = daOclientsFILE;
+        this.daOcustomerDB = daOcustomerDB;
         this.daOorderDB = daOorderDB;
     }
 
     /*Métodos*/
 
     public List<Order> getAll() {
-        //return daOorderFILE.getAll().getOrNull();
         return daOorderDB.getAll().getOrNull();
     }
 
@@ -88,7 +87,7 @@ public class SERVorder {
     }
 
     public List<Integer> getCustomerIDs() {
-        Either<ErrorCCustomer, List<Customer>> result = daOclientsFILE.getAll();
+        Either<ErrorCCustomer, List<Customer>> result = daOcustomerDB.getAll();
         if (result.isRight()) {
             List<Customer> customers = result.get();
             return customers.stream().map(Customer::getIdC).collect(Collectors.toList());

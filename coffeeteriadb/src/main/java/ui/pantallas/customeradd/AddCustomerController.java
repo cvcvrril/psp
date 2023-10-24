@@ -55,7 +55,7 @@ public class AddCustomerController extends BasePantallaController {
         }
 
         Customer newCustomer = new Customer(nextID,firstName, secondName, email,phoneNumber, date );
-        Either<ErrorCCustomer, Integer> res = serVclient.saveClient(newCustomer);
+        Either<ErrorCCustomer, Integer> res = serVclient.add(newCustomer);
         clearFields();
 
         if (res.isRight()) {

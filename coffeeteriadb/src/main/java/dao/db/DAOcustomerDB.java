@@ -137,4 +137,7 @@ public class DAOcustomerDB {
         return res;
     }
 
+    public Either<ErrorCCustomer, Integer> add(Customer customer) {
+        return null;
+    }
 }
