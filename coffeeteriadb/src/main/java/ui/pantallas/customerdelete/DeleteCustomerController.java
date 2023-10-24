@@ -62,6 +62,7 @@ public class DeleteCustomerController extends BasePantallaController {
     }
 
     public void delCustomer() {
+        boolean conf = false;
         Customer selCustomer = tableCustomers.getSelectionModel().getSelectedItem();
         if (selCustomer != null) {
             List<Order> customerOrders = serVorder.getOrdersByCustomer(selCustomer.getIdC());
@@ -70,18 +71,19 @@ public class DeleteCustomerController extends BasePantallaController {
                 confirmationAlert.setContentText("Este cliente tiene órdenes asociadas. ¿Desea eliminarlo de todos modos?");
                 Optional<ButtonType> result = confirmationAlert.showAndWait();
                 if (result.isPresent() && result.get() == ButtonType.CANCEL) {
+                    conf = false;
                     return;
+                } else {
+                    conf = true;
                 }
             }
 
-            //Either<ErrorCCustomer, Integer> res = serVclient.delClient(selCustomer.getIdC());
-            Either<ErrorCCustomer, Integer> res = serVclient.delete(selCustomer.getIdC(), false);
+            Either<ErrorCCustomer, Integer> res = serVclient.delete(selCustomer.getIdC(), conf);
             if (res.isRight()) {
                 Alert a = new Alert(Alert.AlertType.CONFIRMATION);
                 a.setContentText(Constantes.USER_DELETED);
                 a.show();
             } else {
-
                 ErrorCCustomer error = res.getLeft();
                 Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                 errorAlert.setContentText("Error al eliminar el cliente");
