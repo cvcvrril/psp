@@ -15,9 +15,8 @@ import java.sql.SQLException;
 
 public class DBConnectionPool {
 
-    private Configuration config;
-    private DataSource hikariDataSource;
-    private BasicDataSource basicDataSource;
+    private final Configuration config;
+    private final DataSource hikariDataSource;
 
     @Inject
     public DBConnectionPool(Configuration config) {
