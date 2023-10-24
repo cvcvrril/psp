@@ -4,27 +4,18 @@ import dao.db.DAOcustomerDB;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import model.Customer;
-import model.errors.ErrorC;
 import model.errors.ErrorCCustomer;
 
 import java.util.List;
 
 public class SERVclient {
 
-    /*Atributos*/
-
     private final DAOcustomerDB daOcustomerDB;
-
-    private ErrorC errorC;
-
-    /*Constructor*/
 
     @Inject
     public SERVclient(DAOcustomerDB daOcustomerDB) {
         this.daOcustomerDB = daOcustomerDB;
     }
-
-    /*Métodos*/
 
     public int getLastUsedId() {
         List<Customer> customers = daOcustomerDB.getAll().getOrNull();
@@ -36,9 +27,6 @@ public class SERVclient {
         }
         return lastUsedId + 1;
     }
-
-
-    /*Métodos con SQL*/
 
     public Either<ErrorCCustomer, List<Customer>> getAll() {
         return daOcustomerDB.getAll();
@@ -57,11 +45,11 @@ public class SERVclient {
         }
     }
 
-    public Either<ErrorCCustomer, Integer> update(Customer customer){
+    public Either<ErrorCCustomer, Integer> update(Customer customer) {
         return daOcustomerDB.update(customer);
     }
 
-    public Either<ErrorCCustomer, Integer> add(Customer customer){
+    public Either<ErrorCCustomer, Integer> add(Customer customer) {
         return daOcustomerDB.add(customer);
     }
 }

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //TODO: hacer el método add
-//TODO: Meter el pool en
+//TODO: Meter el pool en todos los métodos
 
 @Log4j2
 public class DAOorderDB {

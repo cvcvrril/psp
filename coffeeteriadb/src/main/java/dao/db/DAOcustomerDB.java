@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //TODO: hacer el método add
+//TODO: Meter el pool en todos los métodos
 
 @Log4j2
 public class DAOcustomerDB {
@@ -138,6 +139,14 @@ public class DAOcustomerDB {
     }
 
     public Either<ErrorCCustomer, Integer> add(Customer customer) {
+        int rowsAffected;
+        Either<ErrorCCustomer, Integer> res;
+        try (Connection myConnection = db.getConnection()){
+        PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.INSERT_CUSTOMER);
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+            res = Either.left(new ErrorCCustomer(e.getMessage(), 0));
+        }
         return null;
     }
 }
