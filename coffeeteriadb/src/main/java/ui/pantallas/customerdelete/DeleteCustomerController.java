@@ -75,12 +75,13 @@ public class DeleteCustomerController extends BasePantallaController {
             }
 
             //Either<ErrorCCustomer, Integer> res = serVclient.delClient(selCustomer.getIdC());
-            Either<ErrorCCustomer, Integer> res = serVclient.delete(selCustomer.getIdC(), true);
+            Either<ErrorCCustomer, Integer> res = serVclient.delete(selCustomer.getIdC(), false);
             if (res.isRight()) {
                 Alert a = new Alert(Alert.AlertType.CONFIRMATION);
                 a.setContentText(Constantes.USER_DELETED);
                 a.show();
             } else {
+
                 ErrorCCustomer error = res.getLeft();
                 Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                 errorAlert.setContentText("Error al eliminar el cliente");
@@ -107,7 +108,6 @@ public class DeleteCustomerController extends BasePantallaController {
         email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
         date.setCellValueFactory(new PropertyValueFactory<>(Constantes.DATE));
-        //tableCustomers.getItems().addAll(serVclient.getClients().getOrNull());
         tableCustomers.getItems().addAll(serVclient.getAll().getOrNull());
         tableCustomers.setOnMouseClicked(this::setTableOrdersCus);
 

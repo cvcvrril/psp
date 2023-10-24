@@ -132,7 +132,7 @@ public class DAOcustomerDB {
                     res = Either.left(new ErrorCCustomer(e.getMessage(), e.getErrorCode()));
                 }
             }
-        }else {
+        } else {
             res = Either.left(new ErrorCCustomer("error", 0));
         }
         return res;
@@ -141,12 +141,34 @@ public class DAOcustomerDB {
     public Either<ErrorCCustomer, Integer> add(Customer customer) {
         int rowsAffected;
         Either<ErrorCCustomer, Integer> res;
-        try (Connection myConnection = db.getConnection()){
-        PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.INSERT_CUSTOMER);
+        try (Connection myConnection = db.getConnection()) {
+            PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.INSERT_CUSTOMER, Statement.RETURN_GENERATED_KEYS);
+            pstmt.setString(1, customer.getFirstName());
+            pstmt.setString(2, customer.getSecondName());
+            pstmt.setString(3, customer.getEmail());
+            pstmt.setInt(4, customer.getPhoneNumber());
+            if (customer.getDate() != null) {
+                pstmt.setObject(5, customer.getDate());
+            } else {
+                pstmt.setNull(5, Types.DATE);
+            }
+            rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected == 1) {
+                ResultSet generatedKeys = pstmt.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    int generatedId = generatedKeys.getInt(1);
+                    res = Either.right(generatedId);
+                } else {
+                    res = Either.left(new ErrorCCustomer("No se pudo obtener el ID generado", 0));
+                }
+            } else {
+                res = Either.left(new ErrorCCustomer("No se pudo insertar el cliente", 0));
+            }
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorCCustomer(e.getMessage(), 0));
         }
-        return null;
+        return res;
     }
 }
