@@ -20,7 +20,7 @@ public class Configuration {
     private String pathSQL;
     private String userSQL;
     private String passSQL;
-    private String driverPool;
+    private String driver;
 
     private Configuration(){
         try{
@@ -32,11 +32,11 @@ public class Configuration {
             pxml.loadFromXML(Configuration.class.getClassLoader().getResourceAsStream("config/properties.xml"));
             this.pathXMLOrders = pxml.getProperty("xmlOrdersPath");
             psql = new Properties();
-            psql.loadFromXML(Configuration.class.getClassLoader().getResourceAsStream("config/properties.xml"));
+            psql.loadFromXML(Configuration.class.getClassLoader().getResourceAsStream("config/propertiesDB.xml"));
             this.pathSQL = psql.getProperty("pathDB");
             this.userSQL = psql.getProperty("userDB");
             this.passSQL = psql.getProperty("passDB");
-            this.driverPool = psql.getProperty("driver");
+            this.driver = psql.getProperty("driver");
 
         } catch (IOException e) {
             log.error(e.getMessage(), e);

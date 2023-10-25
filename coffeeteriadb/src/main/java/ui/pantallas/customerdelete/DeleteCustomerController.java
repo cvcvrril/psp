@@ -99,7 +99,7 @@ public class DeleteCustomerController extends BasePantallaController {
         idOrd.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_ORD));
         idTable.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
         dateOrder.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
-        tableOrdersCus.getItems().addAll(serVorder.getAll());
+        tableOrdersCus.getItems().addAll(serVorder.getOrdersByCustomer(tableCustomers.getSelectionModel().getSelectedItem().getIdC()));
     }
 
     public void initialize() {

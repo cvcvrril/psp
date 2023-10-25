@@ -73,7 +73,7 @@ public class SERVorder {
     }
 
     public List<Order> getOrdersByCustomer(int selectedCustomerId) {
-        List<Order> allOrders = daOorderFILE.getAll().getOrNull();
+        List<Order> allOrders = daOorderFILE.getAll().get();
         List<Order> filteredOrders = new ArrayList<>();
         for (Order order : allOrders) {
             if (order.getIdCo() == selectedCustomerId) {
@@ -93,4 +93,14 @@ public class SERVorder {
         }
     }
 
+    public List<Order> getDateOrder(LocalDate localDate){
+        List<Order> listOrder = daOorderFILE.getAll().getOrNull();
+        List<Order> listOrderSpec = new ArrayList<>();
+        for (Order order : listOrder){
+            if (order.getOrDate().toString().equalsIgnoreCase(localDate.toString())){
+                listOrderSpec.add(order);
+            }
+        }
+     return listOrderSpec;
+    }
 }

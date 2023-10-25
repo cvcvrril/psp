@@ -40,7 +40,7 @@ public class OrderListController extends BasePantallaController {
     @FXML
     private ComboBox<String> filterComboBox;
     @FXML
-    private DatePicker fechaDatePicker;
+    private ComboBox<LocalDate> fechaDatePicker;
     @FXML
     private TextField customerField;
     @FXML
@@ -70,7 +70,8 @@ public class OrderListController extends BasePantallaController {
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
         tableOrders.getItems().addAll(serVorder.getAll());
         filterComboBox.getItems().addAll("Date", "Customer", "None");
-
+        fechaDatePicker.setVisible(false);
+        customerField.setVisible(false);
         tableOrders.getSelectionModel().selectedItemProperty().addListener((observable, oldSelection, newSelection) -> {
             customerNameField.getText();
             if (newSelection != null) {
@@ -143,6 +144,14 @@ public class OrderListController extends BasePantallaController {
             }
         } catch (Exception e){
             log.error(e.getMessage(),e);
+        }
+    }
+
+    public void filterDate(ActionEvent actionEvent){
+        tableOrders.getItems().clear();
+        customerNameField.clear();
+        if (fechaDatePicker!= null){
+            tableOrders.getItems().addAll(serVorder.getDateOrder(fechaDatePicker.getSelectionModel().getSelectedItem()));
         }
     }
 }

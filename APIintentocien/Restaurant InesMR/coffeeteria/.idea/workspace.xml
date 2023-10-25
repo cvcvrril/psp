@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5fd1117-22f0-465c-b7b5-b7803abe003f" name="Changes" comment="" />
+    <list default="true" id="d5fd1117-22f0-465c-b7b5-b7803abe003f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../coffeeteriadb/src/main/resources/config/propertiesDB.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../coffeeteriadb/src/main/java/common/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../coffeeteriadb/src/main/java/common/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../coffeeteriadb/src/main/java/dao/db/DBConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../coffeeteriadb/src/main/java/dao/db/DBConnectionPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../coffeeteriadb/src/main/resources/config/properties.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../coffeeteriadb/src/main/resources/config/properties.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,6 +56,8 @@
       <workItem from="1696574703268" duration="51000" />
       <workItem from="1696574761701" duration="18000" />
       <workItem from="1696580878236" duration="122000" />
+      <workItem from="1698220310909" duration="12000" />
+      <workItem from="1698220330189" duration="7000" />
     </task>
     <servers />
   </component>

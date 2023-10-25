@@ -28,7 +28,7 @@ public class DBConnectionPool {
         hikariConfig.setJdbcUrl(config.getPropertySQL("urlDB"));
         hikariConfig.setUsername(config.getPropertySQL("userSQL"));
         hikariConfig.setPassword(config.getPropertySQL("passSQL"));
-        hikariConfig.setDriverClassName(config.getPropertySQL("driver"));
+        hikariConfig.setDriverClassName(config.getPropertySQL("driverPool"));
         hikariConfig.setMaximumPoolSize(4);
 
         hikariConfig.addDataSourceProperty("cachePrepStmts", true);
