@@ -138,7 +138,7 @@ public class OrderListController extends BasePantallaController {
                     orderItemsTable.getItems().addAll(orderItems.get());
                 } else {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                    errorAlert.setContentText("Error al mostrar los order items");
+                    errorAlert.setContentText("Error at displaying the order items");
                     errorAlert.show();
                 }
             }
@@ -147,7 +147,7 @@ public class OrderListController extends BasePantallaController {
         }
     }
 
-    public void filterDate(ActionEvent actionEvent){
+    public void filterDate(){
         tableOrders.getItems().clear();
         customerNameField.clear();
         if (fechaDatePicker!= null){
