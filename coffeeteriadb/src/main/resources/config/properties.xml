@@ -2,5 +2,9 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <comment>XML file</comment>
+    <entry key="pathDB">jdbc:mysql://dam2.mysql.iesquevedo.es:3335/inesmartinez_restaurant</entry>
     <entry key="xmlOrdersPath">data/orders.xml</entry>
+    <entry key="userDB">root</entry>
+    <entry key="passDB">quevedo2dam</entry>
+    <entry key="driver">com.mysql.cj.jdbc.Driver</entry>
 </properties>
