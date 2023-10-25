@@ -103,4 +103,15 @@ public class SERVorder {
         }
      return listOrderSpec;
     }
+
+    public int getLastUsedId() {
+        List<Order> orders = daOorderFILE.getAll().getOrNull();
+        int lastUsedId = 0;
+        for (Order order : orders) {
+            if (order.getIdOrd() > lastUsedId) {
+                lastUsedId = order.getIdCo();
+            }
+        }
+        return lastUsedId + 1;
+    }
 }
