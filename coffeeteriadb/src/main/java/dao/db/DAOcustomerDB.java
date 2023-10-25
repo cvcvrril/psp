@@ -87,8 +87,8 @@ public class DAOcustomerDB {
     public Either<ErrorCCustomer, Integer> update(Customer customer) {
         int rowsAffected;
         Either<ErrorCCustomer, Integer> res;
-        //try (Connection connection = db.getConnection())
-        try (Connection connection = pool.getConnection()){
+        try (Connection connection = db.getConnection()){
+        //try (Connection connection = pool.getConnection()){
             PreparedStatement pstmt = connection.prepareStatement(SQLqueries.UPDATE_CUSTOMERS);
             connection.setAutoCommit(false);
             pstmt.setString(1, customer.getFirstName());

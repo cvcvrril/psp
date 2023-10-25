@@ -57,6 +57,8 @@ public class UpdateCustomerController extends BasePantallaController {
         this.serVclient = serVclient;
     }
 
+    //TODO: revisar el error que pega
+
     public void updateCustomer() {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -65,8 +67,7 @@ public class UpdateCustomerController extends BasePantallaController {
         String secondName = secondNameField.getText();
         String email = emailField.getText();
         int phoneNumber = Integer.parseInt(phoneField.getText());
-        String dateText = dateField.getText();
-        LocalDate date = LocalDate.parse(dateText, dateFormatter);
+        LocalDate date = LocalDate.parse(dateField.getText(), dateFormatter);
 
         Customer updatedCustomer = new Customer(id, firstName, secondName, email, phoneNumber, date);
 
@@ -111,7 +112,7 @@ public class UpdateCustomerController extends BasePantallaController {
         secondName.setCellValueFactory(new PropertyValueFactory<>(Constantes.SECOND_NAME));
         email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
-        date.setCellValueFactory(new PropertyValueFactory<>("date_of_birth"));
+        date.setCellValueFactory(new PropertyValueFactory<>(Constantes.DATE));
         //tableCustomers.getItems().addAll(serVclient.getClients().getOrNull());
         tableCustomers.getItems().addAll(serVclient.getAll().getOrNull());
         tableCustomers.setOnMouseClicked(this::handleTable);
