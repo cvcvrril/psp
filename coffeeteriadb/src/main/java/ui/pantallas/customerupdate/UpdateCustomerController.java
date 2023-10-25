@@ -111,7 +111,7 @@ public class UpdateCustomerController extends BasePantallaController {
         secondName.setCellValueFactory(new PropertyValueFactory<>(Constantes.SECOND_NAME));
         email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
-        date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        date.setCellValueFactory(new PropertyValueFactory<>("date_of_birth"));
         //tableCustomers.getItems().addAll(serVclient.getClients().getOrNull());
         tableCustomers.getItems().addAll(serVclient.getAll().getOrNull());
         tableCustomers.setOnMouseClicked(this::handleTable);

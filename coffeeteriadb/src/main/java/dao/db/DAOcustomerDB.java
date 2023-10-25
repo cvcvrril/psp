@@ -32,8 +32,10 @@ public class DAOcustomerDB {
     public Either<ErrorCCustomer, List<Customer>> getAll() {
         List<Customer> customerList = new ArrayList<>();
         Either<ErrorCCustomer, List<Customer>> res;
-        try (Connection myConnection = db.getConnection()) {
-            Statement stmt = myConnection.createStatement();
+        //try (Connection myConnection = db.getConnection())
+        try (Connection connection = pool.getConnection()){
+            Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = stmt.executeQuery(SQLqueries.SELECT_FROM_CUSTOMERS);
             customerList = readRS(rs);
             res = Either.right(customerList);
@@ -85,8 +87,10 @@ public class DAOcustomerDB {
     public Either<ErrorCCustomer, Integer> update(Customer customer) {
         int rowsAffected;
         Either<ErrorCCustomer, Integer> res;
-        try (Connection connection = db.getConnection()) {
+        //try (Connection connection = db.getConnection())
+        try (Connection connection = pool.getConnection()){
             PreparedStatement pstmt = connection.prepareStatement(SQLqueries.UPDATE_CUSTOMERS);
+            connection.setAutoCommit(false);
             pstmt.setString(1, customer.getFirstName());
             pstmt.setString(2, customer.getSecondName());
             pstmt.setString(3, customer.getEmail());
@@ -94,6 +98,7 @@ public class DAOcustomerDB {
             pstmt.setDate(5, Date.valueOf(customer.getDate()));
             pstmt.setInt(6, customer.getIdC());
             rowsAffected = pstmt.executeUpdate();
+            connection.commit();
             res = Either.right(rowsAffected);
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
