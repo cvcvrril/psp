@@ -83,7 +83,7 @@ public class DAOorderDB {
         int rowsAffected;
         Either<ErrorCOrder, Integer> res;
         try (Connection myConnection = db.getConnection()){
-            PreparedStatement pstmt = myConnection.prepareStatement("update orders set order_date=?, customer_id=?, table_id=? where id=?");
+            PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.UPDATE_ORDERS);
             pstmt.setTimestamp(1, Timestamp.valueOf(order.getOrDate()));
             pstmt.setInt(2,order.getIdCo());
             pstmt.setInt(3, order.getIdTable());
