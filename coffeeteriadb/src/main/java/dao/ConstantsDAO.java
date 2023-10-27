@@ -16,6 +16,13 @@ public class ConstantsDAO {
 
     /*Orders*/
 
+    public static final String ORDER_ID = "order_id";
+    public static final String ORDER_DATE = "order_date";
+    public static final String CUSTOMER_ID = "customer_id";
+    public static final String TABLE_ID = "table_id";
+    public static final String ERROR_DELETING_ORDER = "Error when deleting the order";
+
+
     /*Order Items*/
 
     /*Tables*/

@@ -2,6 +2,7 @@ package dao.db;
 
 import common.Configuration;
 import common.SQLqueries;
+import dao.ConstantsDAO;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
@@ -53,7 +54,7 @@ public class DAOorderDB {
             if (!orderList.isEmpty()){
                 res = Either.right(orderList.get(0));
             } else {
-                res = Either.left(new ErrorCOrder("Error al leer los datos", 0));
+                res = Either.left(new ErrorCOrder(ConstantsDAO.ERROR_READING_DATABASE, 0));
             }
             rs.close();
         } catch (SQLException e) {
@@ -66,14 +67,14 @@ public class DAOorderDB {
     private List<Order> readRS (ResultSet rs) throws SQLException {
         List<Order> orderList = new ArrayList<>();
         while (rs.next()){
-            int id = rs.getInt("order_id");
+            int id = rs.getInt(ConstantsDAO.ORDER_ID);
             LocalDateTime dateTime = null;
-            Timestamp timestamp = rs.getTimestamp("order_date");
+            Timestamp timestamp = rs.getTimestamp(ConstantsDAO.ORDER_DATE);
             if (timestamp != null){
                 dateTime = timestamp.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
             }
-            int customerId = rs.getInt("customer_id");
-            int tableId = rs.getInt("table_id");
+            int customerId = rs.getInt(ConstantsDAO.CUSTOMER_ID);
+            int tableId = rs.getInt(ConstantsDAO.TABLE_ID);
             orderList.add(new Order(id, dateTime, customerId, tableId));
         }
         return orderList;
@@ -106,7 +107,7 @@ public class DAOorderDB {
             pstmt2.setInt(1, id);
             int rowsAffected = pstmt2.executeUpdate();
             if (rowsAffected !=1){
-                res = Either.left(new ErrorCOrder("Error", 0));
+                res = Either.left(new ErrorCOrder(ConstantsDAO.ERROR_DELETING_ORDER, 0));
             } else {
                 res = Either.right(rowsAffected);
             }
