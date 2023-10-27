@@ -82,7 +82,7 @@ public class DAOOrdersXML {
             OrderXML order = ordersXMLS.get().getOrderXMLList().stream().filter(i -> i.getId() == orderId).findFirst().orElse(null);
             if (order != null) {
                 for (OrderItemXML orderItemXML : order.getOrderItem()) {
-                    String itemMenuItem = orderItemXML.getMenuItem();
+                    int itemMenuItem = Integer.parseInt(orderItemXML.getMenuItem());
                     int itemQuantity = orderItemXML.getQuantity();
                     int uniqueID = UniqueIDGenerator.generateUniqueID();
                     list.add(new OrderItem(uniqueID, orderId, itemMenuItem, itemQuantity));
