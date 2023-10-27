@@ -1,7 +1,7 @@
 package dao.imp;
 
 import common.Configuration;
-import dao.DAOlogin;
+import dao.interfaces.DAOlogin;
 import jakarta.inject.Inject;
 import model.Credential;
 

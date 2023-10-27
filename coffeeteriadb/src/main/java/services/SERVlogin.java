@@ -1,6 +1,6 @@
 package services;
 
-import dao.DAOlogin;
+import dao.interfaces.DAOlogin;
 import jakarta.inject.Inject;
 import model.Credential;
 

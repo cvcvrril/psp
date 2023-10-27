@@ -1,4 +1,4 @@
-package dao;
+package dao.interfaces;
 
 import io.vavr.control.Either;
 import model.Customer;

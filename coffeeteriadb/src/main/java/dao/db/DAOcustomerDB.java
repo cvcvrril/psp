@@ -2,6 +2,7 @@ package dao.db;
 
 import common.Configuration;
 import common.SQLqueries;
+import dao.ConstantsDAO;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @Log4j2
 public class DAOcustomerDB {
+
 
     private final Configuration config;
     private final DBConnection db;
@@ -56,7 +58,7 @@ public class DAOcustomerDB {
             if (!customerList.isEmpty()) {
                 res = Either.right(customerList.get(0));
             } else {
-                res = Either.left(new ErrorCCustomer("Error al leer datos", 0));
+                res = Either.left(new ErrorCCustomer(ConstantsDAO.ERROR_READING_DATABASE, 0));
             }
             rs.close();
         } catch (SQLException e) {
@@ -69,17 +71,17 @@ public class DAOcustomerDB {
     private List<Customer> readRS(ResultSet rs) throws SQLException {
         List<Customer> customerList = new ArrayList<>();
         while (rs.next()) {
-            int id = rs.getInt("id");
-            String first_name = rs.getString("first_name");
-            String last_name = rs.getString("last_name");
-            String email = rs.getString("email");
-            int phone = rs.getInt("phone");
+            int id = rs.getInt(ConstantsDAO.ID);
+            String firstName = rs.getString(ConstantsDAO.FIRST_NAME);
+            String lastName = rs.getString(ConstantsDAO.LAST_NAME);
+            String email = rs.getString(ConstantsDAO.EMAIL);
+            int phone = rs.getInt(ConstantsDAO.PHONE);
             LocalDate date = null;
-            Date dateFromDB = rs.getDate("date_of_birth");
+            Date dateFromDB = rs.getDate(ConstantsDAO.DATE_OF_BIRTH);
             if (dateFromDB != null) {
                 date = dateFromDB.toLocalDate();
             }
-            customerList.add(new Customer(id, first_name, last_name, email, phone, date));
+            customerList.add(new Customer(id, firstName, lastName, email, phone, date));
         }
         return customerList;
     }
@@ -125,7 +127,7 @@ public class DAOcustomerDB {
                 pstmtCustomer.setInt(1, id);
                 int rowsAffected = pstmtCustomer.executeUpdate();
                 if (rowsAffected != 1) {
-                    res = Either.left(new ErrorCCustomer("Error", 0));
+                    res = Either.left(new ErrorCCustomer(ConstantsDAO.ERROR_DELETING_CUSTOMER, 0));
                 } else {
                     res = Either.right(rowsAffected);
                 }
@@ -139,7 +141,7 @@ public class DAOcustomerDB {
                 }
             }
         } else {
-            res = Either.left(new ErrorCCustomer("error", 0));
+            res = Either.left(new ErrorCCustomer(ConstantsDAO.ERROR_DELETING_CUSTOMER, 0));
         }
         return res;
     }
@@ -166,10 +168,10 @@ public class DAOcustomerDB {
                     int generatedId = generatedKeys.getInt(1);
                     res = Either.right(generatedId);
                 } else {
-                    res = Either.left(new ErrorCCustomer("No se pudo obtener el ID generado", 0));
+                    res = Either.left(new ErrorCCustomer(ConstantsDAO.ERROR_OBTAINING_ID, 0));
                 }
             } else {
-                res = Either.left(new ErrorCCustomer("No se pudo insertar el cliente", 0));
+                res = Either.left(new ErrorCCustomer(ConstantsDAO.ERROR_ADDDING_CUSTOMER, 0));
             }
         } catch (SQLException e) {
             log.error(e.getMessage(), e);

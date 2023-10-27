@@ -1,7 +1,7 @@
 package dao.imp;
 
 import common.Configuration;
-import dao.DAOorder;
+import dao.interfaces.DAOorder;
 import io.vavr.control.Either;
 import lombok.extern.log4j.Log4j2;
 import model.Order;

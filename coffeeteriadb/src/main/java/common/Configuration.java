@@ -25,18 +25,18 @@ public class Configuration {
     private Configuration(){
         try{
             ptxt = new Properties();
-            ptxt.load(getClass().getClassLoader().getResourceAsStream("config/config.properties"));
-            this.pathDataCustomers = ptxt.getProperty("pathDataCustomers");
-            this.pathDataOrders = ptxt.getProperty("pathDataOrders");
+            ptxt.load(getClass().getClassLoader().getResourceAsStream(ConstantsCommon.CONFIG_PROPERTIES_TXT));
+            this.pathDataCustomers = ptxt.getProperty(ConstantsCommon.PATH_DATA_CUSTOMERS);
+            this.pathDataOrders = ptxt.getProperty(ConstantsCommon.PATH_DATA_ORDERS);
             pxml = new Properties();
-            pxml.loadFromXML(Configuration.class.getClassLoader().getResourceAsStream("config/properties.xml"));
-            this.pathXMLOrders = pxml.getProperty("xmlOrdersPath");
+            pxml.loadFromXML(Configuration.class.getClassLoader().getResourceAsStream(ConstantsCommon.CONFIG_PROPERTIES_XML));
+            this.pathXMLOrders = pxml.getProperty(ConstantsCommon.XML_ORDERS_PATH);
             psql = new Properties();
-            psql.loadFromXML(Configuration.class.getClassLoader().getResourceAsStream("config/propertiesDB.xml"));
-            this.pathSQL = psql.getProperty("pathDB");
-            this.userSQL = psql.getProperty("userDB");
-            this.passSQL = psql.getProperty("passDB");
-            this.driver = psql.getProperty("driver");
+            psql.loadFromXML(Configuration.class.getClassLoader().getResourceAsStream(ConstantsCommon.CONFIG_PROPERTIES_DB_XML));
+            this.pathSQL = psql.getProperty(ConstantsCommon.PATH_DB);
+            this.userSQL = psql.getProperty(ConstantsCommon.USER_DB);
+            this.passSQL = psql.getProperty(ConstantsCommon.PASS_DB);
+            this.driver = psql.getProperty(ConstantsCommon.DRIVER);
 
         } catch (IOException e) {
             log.error(e.getMessage(), e);
