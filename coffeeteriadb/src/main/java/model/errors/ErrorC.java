@@ -5,12 +5,12 @@ public abstract class ErrorC {
     /*Atributos*/
 
     private String message;
-    private int num_error;
+    private int numError;
 
     /*Constructor*/
 
-    public ErrorC(String message, int num_error) {
+    public ErrorC(String message, int numError) {
         this.message = message;
-        this.num_error = num_error;
+        this.numError = numError;
     }
 }
