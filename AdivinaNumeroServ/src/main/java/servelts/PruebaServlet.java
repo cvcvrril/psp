@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "prueba", value = "/prueba")
+@WebServlet(name = "prueba", value = "prueba")
 public class PruebaServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
