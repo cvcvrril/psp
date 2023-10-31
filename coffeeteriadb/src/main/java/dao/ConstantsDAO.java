@@ -21,9 +21,11 @@ public class ConstantsDAO {
     public static final String CUSTOMER_ID = "customer_id";
     public static final String TABLE_ID = "table_id";
     public static final String ERROR_DELETING_ORDER = "Error when deleting the order";
-
+    public static final String ERROR_ADDING_ORDER = "There was a problem adding the order";
 
     /*Order Items*/
+
+
 
     /*Tables*/
 

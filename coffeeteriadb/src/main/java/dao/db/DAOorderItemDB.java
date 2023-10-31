@@ -1,6 +1,7 @@
 package dao.db;
 
 import common.Configuration;
+import common.SQLqueries;
 import io.vavr.control.Either;
 import lombok.extern.log4j.Log4j2;
 import model.OrderItem;
@@ -31,7 +32,7 @@ public class DAOorderItemDB {
         Either<ErrorCOrderItem, List<OrderItem>> res;
         try (Connection myconnection = db.getConnection()) {
             Statement stmt = myconnection.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from order_items");
+            ResultSet rs = stmt.executeQuery(SQLqueries.SELECT_FROM_ORDER_ITEMS);
             orderItemList = readRS(rs);
             res = Either.right(orderItemList);
         } catch (SQLException e) {
