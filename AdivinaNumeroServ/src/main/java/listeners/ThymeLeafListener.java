@@ -31,12 +31,12 @@ public class ThymeLeafListener implements ServletContextListener {
     }
 
     private ITemplateEngine templateEngine(IWebApplication application) {
-        TemplateEngine templateEngine = new TemplateEngine();
+        TemplateEngine tEngine = new TemplateEngine();
 
         WebApplicationTemplateResolver templateResolver = templateResolver(application);
-        templateEngine.setTemplateResolver(templateResolver);
+        tEngine.setTemplateResolver(templateResolver);
 
-        return templateEngine;
+        return tEngine;
     }
 
     private WebApplicationTemplateResolver templateResolver(IWebApplication application) {
