@@ -25,11 +25,18 @@ public class ConstantsDAO {
 
     /*Order Items*/
 
-
+    public static final String ORDER_ITEM_ID = "order_item_id";
+    public static final String MENU_ITEM_ID = "menu_item_id";
+    public static final String QUANTITY = "quantity";
 
     /*Tables*/
 
+    public static final String TABLE_NUMBER_ID = "table_number_id";
+    public static final String NUMBER_OF_SEATS = "number_of_seats";
+
     /*Menu Items*/
+
+    
 
     /*Connection /// Connection Pool*/
 }
