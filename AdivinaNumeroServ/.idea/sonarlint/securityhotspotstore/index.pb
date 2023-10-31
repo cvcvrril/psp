@@ -3,8 +3,6 @@
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 [
 +src/main/webapp/WEB-INF/templates/home.html,b\6\b6ee712d09490d168097dfc1846c3b8b90a5fef5
-\
-,src/main/webapp/WEB-INF/templates/param.html,2\5\257a47288102ad233c54e91c6e93e64964c3f830
 J
 src/main/webapp/index.html,1\3\1337d72a3b1928dba82aa5210f5cdc0e88ce895b
 \
