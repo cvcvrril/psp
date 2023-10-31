@@ -1,6 +1,6 @@
 package servelts;
 
-import Common.Constantes;
+import common.Constantes;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,8 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@WebServlet(name = "AdivinarServlet", value = "/adivina")
+@WebServlet(name = Constantes.ADIVINAR_SERVLET, value = Constantes.ADIVINA_VALUE)
 public class AdivinaServlet extends HttpServlet {
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException{
@@ -25,25 +26,25 @@ public class AdivinaServlet extends HttpServlet {
         IWebExchange webExchange = JakartaServletWebApplication.buildApplication(getServletContext()).buildExchange(req, res);
         WebContext context = new WebContext(webExchange);
         String numRandom = generarRandom(req);
-        String numero = req.getParameter("numero");
+        String numero = req.getParameter(Constantes.NUMERO);
 
         if (numero == null || numero.isEmpty()){
-            context.setVariable("mensaje", "Mete un numero, no seas cabezon plis");
-            tEngine.process("home", context, res.getWriter());
+            context.setVariable(Constantes.MENSAJE, Constantes.NO_NUM);
+            tEngine.process(Constantes.HOME, context, res.getWriter());
         } else {
             if (!comprobarRepetido(req, numero)){
                 if (contador(req) < 10){
                     String resul = comprobarNumero(numero, numRandom, context, req);
                     tEngine.process(resul, context, res.getWriter());
                 } else {
-                    context.setVariable("mensaje", "Perdiste, has agotado tus intentos");
-                    tEngine.process("lose", context, res.getWriter());
+                    context.setVariable(Constantes.MENSAJE, Constantes.NO_INTENTOS);
+                    tEngine.process(Constantes.LOSE, context, res.getWriter());
                 }
             } else {
-                int contador = 10 - (Integer) req.getSession().getAttribute("contador");
-                context.setVariable("mensaje", "Venga maquina, has repetido numero");
-                context.setVariable("intentos", contador);
-                tEngine.process("rep", context, res.getWriter());
+                int contador = 10 - (Integer) req.getSession().getAttribute(Constantes.CONTADOR);
+                context.setVariable(Constantes.MENSAJE, Constantes.NUM_REPETIDO);
+                context.setVariable(Constantes.INTENTOS, contador);
+                tEngine.process(Constantes.REP, context, res.getWriter());
             }
         }
     }
@@ -62,43 +63,43 @@ public class AdivinaServlet extends HttpServlet {
     private String comprobarNumero(String numero, String numRandom, WebContext context, HttpServletRequest req) {
         int contadorInt = (Integer) req.getSession().getAttribute(Constantes.CONTADOR_KEY);
         if (numero.equals(numRandom)){
-            context.setVariable("numero",numero);
-            context.setVariable("intentos", contadorInt);
-            return "gana";
+            context.setVariable(Constantes.NUMERO,numero);
+            context.setVariable(Constantes.INTENTOS, contadorInt);
+            return Constantes.GANA;
         } else {
-            String pista = Integer.parseInt(numero) < Integer.parseInt(numRandom)? "El numero es mas alto": "El numero es mas bajo";
-            context.setVariable("mensaje", pista);
-            context.setVariable("intentos", 10-contadorInt);
-            return "fallo";
+            String pista = Integer.parseInt(numero) < Integer.parseInt(numRandom)? Constantes.NUMERO_ALTO : "El numero es mas bajo";
+            context.setVariable(Constantes.MENSAJE, pista);
+            context.setVariable(Constantes.INTENTOS, 10-contadorInt);
+            return Constantes.FALLO;
         }
     }
 
     private boolean comprobarRepetido(HttpServletRequest req, String numero){
         List<String> list = new ArrayList<>();
         boolean rep;
-        if (req.getSession().getAttribute("prev") == null){
-            req.getSession().setAttribute("prev", list);
+        if (req.getSession().getAttribute(Constantes.PREV) == null){
+            req.getSession().setAttribute(Constantes.PREV, list);
         } else {
-            list = (List<String>) req.getSession().getAttribute("prev");
+            list = (List<String>) req.getSession().getAttribute(Constantes.PREV);
         }
         if (list.contains(numero)){
             rep = true;
         } else {
             rep = false;
             list.add(numero);
-            req.getSession().setAttribute("prev", list);
+            req.getSession().setAttribute(Constantes.PREV, list);
         }
         return rep;
     }
 
     private String generarRandom(HttpServletRequest req){
         String numRandom;
-        if (req.getSession().getAttribute("incognita") == null){
+        if (req.getSession().getAttribute(Constantes.INCOGNITA) == null){
             Random r = new Random();
             numRandom = String.valueOf(r.nextInt(11));
-            req.getSession().setAttribute("incognita", numRandom);
+            req.getSession().setAttribute(Constantes.INCOGNITA, numRandom);
         } else {
-            numRandom = (String) req.getSession().getAttribute("incognita");
+            numRandom = (String) req.getSession().getAttribute(Constantes.INCOGNITA);
         }
         return numRandom;
     }
