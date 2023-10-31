@@ -28,7 +28,7 @@ public class AdivinaServlet extends HttpServlet {
         String numero = req.getParameter("numero");
 
         if (numero == null || numero.isEmpty()){
-            context.setVariable("mensaje", "Mete un numero, no seas cabezon");
+            context.setVariable("mensaje", "Mete un numero, no seas cabezon plis");
             tEngine.process("home", context, res.getWriter());
         } else {
             if (!comprobarRepetido(req, numero)){
@@ -36,17 +36,16 @@ public class AdivinaServlet extends HttpServlet {
                     String resul = comprobarNumero(numero, numRandom, context, req);
                     tEngine.process(resul, context, res.getWriter());
                 } else {
-                    context.setVariable("error", "Perdiste, has agotado los intentos");
-                    tEngine.process("error", context, res.getWriter());
+                    context.setVariable("mensaje", "Perdiste, has agotado tus intentos");
+                    tEngine.process("lose", context, res.getWriter());
                 }
             } else {
                 int contador = 10 - (Integer) req.getSession().getAttribute("contador");
-                context.setVariable("mensaje", "Crack, has repetido número");
+                context.setVariable("mensaje", "Venga maquina, has repetido numero");
                 context.setVariable("intentos", contador);
-                tEngine.process("error", context, res.getWriter());
+                tEngine.process("rep", context, res.getWriter());
             }
         }
-
     }
 
     private int contador(HttpServletRequest req){
@@ -67,10 +66,10 @@ public class AdivinaServlet extends HttpServlet {
             context.setVariable("intentos", contadorInt);
             return "gana";
         } else {
-            String pista = Integer.parseInt(numero) > Integer.parseInt(numRandom)? "El número es más alto": "El número es más bajo";
+            String pista = Integer.parseInt(numero) < Integer.parseInt(numRandom)? "El numero es mas alto": "El numero es mas bajo";
             context.setVariable("mensaje", pista);
             context.setVariable("intentos", 10-contadorInt);
-            return "error";
+            return "fallo";
         }
     }
 
