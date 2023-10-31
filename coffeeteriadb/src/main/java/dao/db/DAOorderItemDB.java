@@ -6,19 +6,17 @@ import dao.ConstantsDAO;
 import io.vavr.control.Either;
 import lombok.extern.log4j.Log4j2;
 import model.OrderItem;
+import model.errors.ErrorCOrder;
 import model.errors.ErrorCOrderItem;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
 public class DAOorderItemDB {
 
-    //TODO: hacer el getAll(), el get(i) y update()
+    //TODO: hacer el get(i) y update()
 
     private final Configuration configuration;
     private final DBConnection db;
@@ -39,6 +37,17 @@ public class DAOorderItemDB {
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorCOrderItem(e.getMessage(), 0));
+        }
+        return res;
+    }
+
+    public Either<ErrorCOrderItem, OrderItem> get(int id){
+        Either<ErrorCOrder, OrderItem> res;
+        try(Connection myconnection = db.getConnection()){
+            PreparedStatement pstmt = myconnection.prepareStatement();
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+            res = Either.left(new ErrorCOrder(e.getMessage(), 0));
         }
         return res;
     }
