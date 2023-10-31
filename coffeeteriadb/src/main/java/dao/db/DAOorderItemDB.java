@@ -1,6 +1,8 @@
 package dao.db;
 
 import common.Configuration;
+import common.SQLqueries;
+import dao.ConstantsDAO;
 import io.vavr.control.Either;
 import lombok.extern.log4j.Log4j2;
 import model.OrderItem;
@@ -31,7 +33,7 @@ public class DAOorderItemDB {
         Either<ErrorCOrderItem, List<OrderItem>> res;
         try (Connection myconnection = db.getConnection()) {
             Statement stmt = myconnection.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from order_items");
+            ResultSet rs = stmt.executeQuery(SQLqueries.SELECT_FROM_ORDER_ITEMS);
             orderItemList = readRS(rs);
             res = Either.right(orderItemList);
         } catch (SQLException e) {
@@ -44,10 +46,10 @@ public class DAOorderItemDB {
     private List<OrderItem> readRS(ResultSet rs) throws SQLException {
         List<OrderItem> orderItemList = new ArrayList<>();
         while (rs.next()){
-            int id = rs.getInt("order_item_id");
-            int orderId = rs.getInt("order_id");
-            int menuItemId = rs.getInt("menu_item_id");
-            int quantity = rs.getInt("quantity");
+            int id = rs.getInt(ConstantsDAO.ORDER_ITEM_ID);
+            int orderId = rs.getInt(ConstantsDAO.ORDER_ID);
+            int menuItemId = rs.getInt(ConstantsDAO.MENU_ITEM_ID);
+            int quantity = rs.getInt(ConstantsDAO.QUANTITY);
             orderItemList.add(new OrderItem(id, orderId, menuItemId, quantity));
         }
         return orderItemList;

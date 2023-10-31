@@ -15,4 +15,9 @@ public class SQLqueries {
     public static final String DELETE_ORDERS_ID = "DELETE FROM orders WHERE order_id=?";
     public static final String INSERT_ORDER = "INSERT INTO orders (order_date, customer_id, table_id) VALUES (?, ?, ?)";
     public static final String UPDATE_ORDERS = "update orders set order_date=?, customer_id=?, table_id=? where id=?";
+    public static final String SELECT_FROM_ORDER_ITEMS = "select * from order_items";
+    public static final String SELECT_FROM_RESTAURANT_TABLES = "select * from restaurant_tables";
+    public static final String SELECT_NUMBER_ID = "select * from restaurant_tables where table_number_id = ?";
+
 }
+

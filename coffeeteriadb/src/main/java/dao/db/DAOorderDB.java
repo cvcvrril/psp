@@ -128,7 +128,7 @@ public class DAOorderDB {
             pstmt.setInt(3, order.getIdTable());
             rowsAffected = pstmt.executeUpdate();
             if (rowsAffected != 1) {
-                res = Either.left(new ErrorCOrder("Error al insertar la orden", 0));
+                res = Either.left(new ErrorCOrder(ConstantsDAO.ERROR_ADDING_ORDER, 0));
             } else {
                 res = Either.right(rowsAffected);
             }
