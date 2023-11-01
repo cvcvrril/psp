@@ -95,9 +95,9 @@ public class DAOcustomerDB {
             connection.setAutoCommit(false);
             pstmt.setString(1, customer.getFirstName());
             pstmt.setString(2, customer.getSecondName());
-            pstmt.setString(3, customer.getEmail());
+            pstmt.setString(3, customer.getEmailCus());
             pstmt.setInt(4, customer.getPhoneNumber());
-            pstmt.setDate(5, Date.valueOf(customer.getDate()));
+            pstmt.setDate(5, Date.valueOf(customer.getDateBirth()));
             pstmt.setInt(6, customer.getIdC());
             rowsAffected = pstmt.executeUpdate();
             connection.commit();
@@ -153,10 +153,10 @@ public class DAOcustomerDB {
             PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.INSERT_CUSTOMER, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, customer.getFirstName());
             pstmt.setString(2, customer.getSecondName());
-            pstmt.setString(3, customer.getEmail());
+            pstmt.setString(3, customer.getEmailCus());
             pstmt.setInt(4, customer.getPhoneNumber());
-            if (customer.getDate() != null) {
-                pstmt.setObject(5, customer.getDate());
+            if (customer.getDateBirth() != null) {
+                pstmt.setObject(5, customer.getDateBirth());
             } else {
                 pstmt.setNull(5, Types.DATE);
             }

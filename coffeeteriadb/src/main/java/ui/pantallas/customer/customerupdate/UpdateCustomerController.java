@@ -14,11 +14,10 @@ import ui.pantallas.common.BasePantallaController;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class UpdateCustomerController extends BasePantallaController {
     private final SERVclient serVclient;
-
-
 
     @FXML
     private TextField idCustomerField;
@@ -62,16 +61,23 @@ public class UpdateCustomerController extends BasePantallaController {
     public void updateCustomer() {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-        int id = Integer.parseInt(idCustomerField.getText());
-        String firstName = firstNameField.getText();
-        String secondName = secondNameField.getText();
-        String email = emailField.getText();
-        int phoneNumber = Integer.parseInt(phoneField.getText());
-        LocalDate date = LocalDate.parse(dateField.getText(), dateFormatter);
+        int idCus = Integer.parseInt(idCustomerField.getText());
+        String firstNameCus = firstNameField.getText();
+        String secondNameCus = secondNameField.getText();
+        String emailCus = emailField.getText();
+        int phoneNumberCus = Integer.parseInt(phoneField.getText());
+        LocalDate dateCus;
+        try {
+            dateCus = LocalDate.parse(dateField.getText(), dateFormatter);
+        } catch (DateTimeParseException e) {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setContentText("Formato de fecha incorrecto. Debe ser yyyy-MM-dd.");
+            errorAlert.show();
+            return;
+        }
 
-        Customer updatedCustomer = new Customer(id, firstName, secondName, email, phoneNumber, date);
+        Customer updatedCustomer = new Customer(idCus, firstNameCus, secondNameCus, emailCus, phoneNumberCus, dateCus);
 
-        //Either<ErrorCCustomer, Integer> res = serVclient.updateClient(updatedCustomer);
         Either<ErrorCCustomer, Integer> res = serVclient.update(updatedCustomer);
         if (res.isRight()) {
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
@@ -79,7 +85,6 @@ public class UpdateCustomerController extends BasePantallaController {
             a.show();
             resetFields();
             tableCustomers.getItems().clear();
-            //tableCustomers.getItems().addAll(serVclient.getClients().getOrNull());
             tableCustomers.getItems().addAll(serVclient.getAll().getOrNull());
 
         } else {
@@ -103,6 +108,7 @@ public class UpdateCustomerController extends BasePantallaController {
         secondNameField.clear();
         emailField.clear();
         phoneField.clear();
+        dateField.clear();
     }
 
     public void initialize() {
@@ -113,7 +119,6 @@ public class UpdateCustomerController extends BasePantallaController {
         email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
         date.setCellValueFactory(new PropertyValueFactory<>(Constantes.DATE));
-        //tableCustomers.getItems().addAll(serVclient.getClients().getOrNull());
         tableCustomers.getItems().addAll(serVclient.getAll().getOrNull());
         tableCustomers.setOnMouseClicked(this::handleTable);
     }
@@ -125,8 +130,9 @@ public class UpdateCustomerController extends BasePantallaController {
                 idCustomerField.setText(String.valueOf(selCustomer.getIdC()));
                 firstNameField.setText(String.valueOf(selCustomer.getFirstName()));
                 secondNameField.setText(String.valueOf(selCustomer.getSecondName()));
-                emailField.setText(String.valueOf(selCustomer.getEmail()));
+                emailField.setText(String.valueOf(selCustomer.getEmailCus()));
                 phoneField.setText(String.valueOf(selCustomer.getPhoneNumber()));
+                dateField.setText(String.valueOf(selCustomer.getDateBirth()));
             }
         }
     }

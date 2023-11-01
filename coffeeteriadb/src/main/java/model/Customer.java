@@ -14,13 +14,9 @@ public class Customer {
     private int idC;
     private String firstName;
     private String secondName;
-    private String email;
+    private String emailCus;
     private int phoneNumber;
-    private LocalDate date;
+    private LocalDate dateBirth;
 
     /*Construcctores*/
-
-    public String toStringFile() {
-        return idC + ";" + firstName + ";" + secondName + ";" + email + ";" + phoneNumber + ";" + date;
-    }
 }
