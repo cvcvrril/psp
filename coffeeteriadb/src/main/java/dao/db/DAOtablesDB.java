@@ -23,7 +23,7 @@ public class DAOtablesDB {
         this.db = db;
     }
 
-    private Either<ErrorCTables, List<TableRestaurant>> getAll(){
+    public Either<ErrorCTables, List<TableRestaurant>> getAll(){
         List<TableRestaurant> tableRestaurantList = new ArrayList<>();
         Either <ErrorCTables, List<TableRestaurant>> res;
         try (Connection myconnection = db.getConnection()){
@@ -38,7 +38,7 @@ public class DAOtablesDB {
         return res;
     }
 
-    private Either<ErrorCTables, TableRestaurant> get(int i){
+    public Either<ErrorCTables, TableRestaurant> get(int i){
         Either<ErrorCTables, TableRestaurant> res;
         try (Connection myconnection = db.getConnection()){
             PreparedStatement pstmt = myconnection.prepareStatement(SQLqueries.SELECT_NUMBER_ID);

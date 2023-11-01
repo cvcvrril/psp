@@ -17,18 +17,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SERVorder {
-
-    /*Atributos*/
-
-    private final DAOorderFILE daOorderFILE;
     private final DAOcustomerDB daOcustomerDB;
     private final DAOorderDB daOorderDB;
 
-    /*Constructor*/
 
     @Inject
-    public SERVorder(DAOorderFILE daOorderFILE, DAOcustomerDB daOcustomerDB, DAOorderDB daOorderDB) {
-        this.daOorderFILE = daOorderFILE;
+    public SERVorder(DAOcustomerDB daOcustomerDB, DAOorderDB daOorderDB) {
         this.daOcustomerDB = daOcustomerDB;
         this.daOorderDB = daOorderDB;
     }
@@ -41,7 +35,7 @@ public class SERVorder {
 
     public Either<ErrorCOrder, Order> getOrder(int i) {
         if (i > 0)
-            return daOorderFILE.get(i);
+            return daOorderDB.get(i);
         else
             return Either.left(new ErrorCOrder("Error in the Order list", 1));
 
@@ -63,7 +57,7 @@ public class SERVorder {
     /*Aux*/
 
     public List<Order> getOrdersByDate(LocalDate selectedDate) {
-        List<Order> allOrders = daOorderFILE.getAll().getOrNull();
+        List<Order> allOrders = daOorderDB.getAll().getOrNull();
         List<Order> filteredOrders = new ArrayList<>();
         if (selectedDate != null) {
             for (Order order : allOrders) {
@@ -76,7 +70,7 @@ public class SERVorder {
     }
 
     public List<Order> getOrdersByCustomer(int selectedCustomerId) {
-        List<Order> allOrders = daOorderFILE.getAll().getOrNull();
+        List<Order> allOrders = daOorderDB.getAll().getOrNull();
         List<Order> filteredOrders = new ArrayList<>();
         for (Order order : allOrders) {
             if (order.getIdCo() == selectedCustomerId) {
