@@ -4,6 +4,7 @@ import common.Configuration;
 import common.SQLqueries;
 import dao.ConstantsDAO;
 import io.vavr.control.Either;
+import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
 import model.TableRestaurant;
 import model.errors.ErrorCTables;
@@ -18,6 +19,7 @@ public class DAOtablesDB {
     private final Configuration configuration;
     private final DBConnection db;
 
+    @Inject
     public DAOtablesDB(Configuration configuration, DBConnection db) {
         this.configuration = configuration;
         this.db = db;

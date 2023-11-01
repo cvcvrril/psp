@@ -2,6 +2,7 @@ package services;
 
 import dao.db.DAOtablesDB;
 import io.vavr.control.Either;
+import jakarta.inject.Inject;
 import model.TableRestaurant;
 import model.errors.ErrorCTables;
 
@@ -11,6 +12,7 @@ public class SERVtablesRestaurant {
 
     private final DAOtablesDB daOtablesDB;
 
+    @Inject
     public SERVtablesRestaurant(DAOtablesDB daOtablesDB) {
         this.daOtablesDB = daOtablesDB;
     }
