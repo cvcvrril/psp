@@ -30,14 +30,18 @@ public class LoginController extends BasePantallaController {
         String password = passwdText.getText();
 
         Credential credential = serVlogin.getCredentialByUsername(username);
-
-        if (serVlogin.doLogin(credential)) {
-            getPrincipalController().onLogin(credential);
-        } else {
+        if (credential != null) {
+            if (serVlogin.doLogin(credential)) {
+                getPrincipalController().onLogin(credential);
+            } else {
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setContentText(Constantes.USUARIO_O_CONTRASENA_INCORRECTOS);
+                a.show();
+            }
+        }else {
             Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setContentText(Constantes.USUARIO_O_CONTRASENA_INCORRECTOS);
+            a.setContentText("No existe el usuario");
             a.show();
         }
     }
-
 }

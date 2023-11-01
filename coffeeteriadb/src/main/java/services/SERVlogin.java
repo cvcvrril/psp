@@ -20,12 +20,25 @@ public class SERVlogin {
     }
 
     public boolean doLogin(Credential credential){
-        return daOlogin.doLogin(credential);
+        Credential storedCredential = getCredentialByUsername(credential.getUserName());
+
+        if (storedCredential != null) {
+            if (storedCredential.getPassword().equals(credential.getPassword())) {
+                if (storedCredential.getId() < 0) {
+                    daOlogin.doLogin(credential);
+                    return true;
+                } else {
+                    daOlogin.doLogin(credential);
+                    return false;
+                }
+            }
+        }
+        // User does not exist or password is incorrect
+        return false;
     }
 
     public Credential getCredentialByUsername(String username) {
         List<Credential> credentials = daOcredentials.getAll().getOrElse(new ArrayList<>());
-
         for (Credential credential : credentials) {
             if (credential.getUserName().equals(username)) {
                 return credential;
