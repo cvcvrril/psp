@@ -8,22 +8,29 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import model.MenuItem;
 import model.Order;
 import model.errors.ErrorCOrder;
+import services.SERVmenuItems;
 import services.SERVorder;
 import services.SERVtablesRestaurant;
 import ui.pantallas.common.BasePantallaController;
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 public class AddOrderController extends BasePantallaController {
 
     private final SERVorder serVorder;
     private final SERVtablesRestaurant serVtablesRestaurant;
+    private final SERVmenuItems serVmenuItems;
+
     @FXML
     private ComboBox<Integer> customerComboBox;
     @FXML
     private ComboBox<Integer> tableComboBox;
+    @FXML
+    private ComboBox<String> menuItemsCBox;
 
     @FXML
     private Button addOrderButton;
@@ -33,15 +40,18 @@ public class AddOrderController extends BasePantallaController {
     private Button removeItemButton;
 
     @Inject
-    public AddOrderController(SERVorder serVorder, SERVtablesRestaurant serVtablesRestaurant) {
+    public AddOrderController(SERVorder serVorder, SERVtablesRestaurant serVtablesRestaurant, SERVmenuItems serVmenuItems) {
         this.serVorder = serVorder;
         this.serVtablesRestaurant = serVtablesRestaurant;
+        this.serVmenuItems = serVmenuItems;
     }
 
     public void initialize() {
         List<Integer> customerIDs = serVorder.getCustomerIDs();
         customerComboBox.getItems().addAll(customerIDs);
         tableComboBox.getItems().addAll(1, 2, 3, 4, 5);
+        List<MenuItem> menuItems = serVmenuItems.getAll().getOrElse(Collections.emptyList());
+        menuItemsCBox.getItems().addAll(String.valueOf(menuItems));
 //        Either<ErrorCTables, List<TableRestaurant>> result = serVtablesRestaurant.getAll();
 //        if (result.isRight()) {
 //            List<TableRestaurant> tables = result.get();

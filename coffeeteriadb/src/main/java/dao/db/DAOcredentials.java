@@ -32,7 +32,7 @@ public class DAOcredentials {
         Either<ErrorCCredential, List<Credential>> res;
         try (Connection myConnection = db.getConnection()){
             Statement stmt = myConnection.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from credentials");
+            ResultSet rs = stmt.executeQuery("select * from credential");
             credentialList = readRS(rs);
             res = Either.right(credentialList);
         } catch (SQLException e) {
@@ -45,8 +45,8 @@ public class DAOcredentials {
     private List<Credential> readRS(ResultSet rs) throws SQLException {
         List<Credential> credentialList = new ArrayList<>();
         while (rs.next()){
-            int id = rs.getInt("customer_id");
-            String user = rs.getString("user_name");
+            int id = rs.getInt("id");
+            String user = rs.getString("username");
             String password = rs.getString("password");
             credentialList.add(new Credential(id, user, password));
         }
