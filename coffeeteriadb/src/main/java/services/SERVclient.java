@@ -52,4 +52,6 @@ public class SERVclient {
     public Either<ErrorCCustomer, Integer> add(Customer customer) {
         return daOcustomerDB.add(customer);
     }
+
+
 }

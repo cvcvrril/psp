@@ -4,6 +4,7 @@ import common.Configuration;
 import common.SQLqueries;
 import dao.ConstantsDAO;
 import io.vavr.control.Either;
+import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
 import model.OrderItem;
 import model.errors.ErrorCOrderItem;
@@ -18,6 +19,7 @@ public class DAOorderItemDB {
     private final Configuration configuration;
     private final DBConnection db;
 
+    @Inject
     public DAOorderItemDB(Configuration configuration, DBConnection db) {
         this.configuration = configuration;
         this.db = db;
@@ -50,6 +52,22 @@ public class DAOorderItemDB {
             } else {
                 res = Either.left(new ErrorCOrderItem(ConstantsDAO.ERROR_READING_DATABASE, 0));
             }
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+            res = Either.left(new ErrorCOrderItem(e.getMessage(), 0));
+        }
+        return res;
+    }
+
+    public Either<ErrorCOrderItem, List<OrderItem>> getByOrderId(int orderId){
+        List<OrderItem> orderItemList = new ArrayList<>();
+        Either<ErrorCOrderItem, List<OrderItem>> res;
+        try(Connection myconnection = db.getConnection()){
+            PreparedStatement pstmt = myconnection.prepareStatement("select * from order_items where order_id = ?");
+            pstmt.setInt(1, orderId);
+            ResultSet rs = pstmt.executeQuery();
+            orderItemList = readRS(rs);
+            res = Either.right(orderItemList);
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorCOrderItem(e.getMessage(), 0));

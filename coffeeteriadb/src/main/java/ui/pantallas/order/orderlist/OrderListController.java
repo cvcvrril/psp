@@ -8,9 +8,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lombok.extern.log4j.Log4j2;
+import model.Customer;
 import model.Order;
 import model.OrderItem;
-import model.errors.ErrorCOrder;
+import model.errors.ErrorCOrderItem;
 import services.SERVclient;
 import services.SERVorder;
 import services.SERVorderItem;
@@ -26,6 +27,7 @@ public class OrderListController extends BasePantallaController {
     private final SERVorder serVorder;
     private final SERVclient serVclient;
     private final SERVorderItem serVorderItem;
+
 
     @FXML
     private TableView<Order> tableOrders;
@@ -48,9 +50,11 @@ public class OrderListController extends BasePantallaController {
     @FXML
     private TableView<OrderItem> orderItemsTable;
     @FXML
-    private TableColumn<OrderItem, String> orderItemName;
+    private TableColumn<OrderItem, String> menuItemName;
     @FXML
     private TableColumn<OrderItem, Integer> orderItemQuantity;
+    @FXML
+    private TableColumn<OrderItem,Integer> orderItemID;
 
     /*Constructores*/
 
@@ -70,15 +74,18 @@ public class OrderListController extends BasePantallaController {
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
         tableOrders.getItems().addAll(serVorder.getAll());
         filterComboBox.getItems().addAll("Date", "Customer", "None");
-        tableOrders.getSelectionModel().selectedItemProperty().addListener((observable, oldSelection, newSelection) -> {
-            customerNameField.getText();
+        tableOrders.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
-                customerNameField.setText(serVclient.get(tableOrders.getSelectionModel().getSelectedItem().getIdCo()).get().getFirstName());
+                int customerId = newSelection.getIdCo();
+                Customer customer = serVclient.get(customerId).getOrNull();
+                if (customer != null) {
+                    customerNameField.setText(customer.getFirstName());
+                }
+                loadOrderItems(newSelection.getIdOrd());
             }
         });
-
-        orderItemName.setCellValueFactory(new PropertyValueFactory<>("name"));
         orderItemQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        orderItemID.setCellValueFactory(new PropertyValueFactory<>("id"));
     }
 
     @FXML
@@ -128,20 +135,36 @@ public class OrderListController extends BasePantallaController {
 
     public void setTableOrders() {
         try {
-            OrderItem selectedItem = orderItemsTable.getSelectionModel().getSelectedItem();
-            if (selectedItem != null) {
-                Either<ErrorCOrder, List<OrderItem>> orderItems = serVorderItem.getOrders(selectedItem.getId());
-                if (orderItems.isRight()) {
-                    orderItemsTable.getItems().clear();
-                    orderItemsTable.getItems().addAll(orderItems.get());
-                } else {
-                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                    errorAlert.setContentText("Error al mostrar los order items");
-                    errorAlert.show();
-                }
+            Order selectedOrder = tableOrders.getSelectionModel().getSelectedItem();
+            if (selectedOrder != null) {
+                loadOrderItemsByOrderId(selectedOrder.getIdOrd());
             }
-        } catch (Exception e){
-            log.error(e.getMessage(),e);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+    }
+
+    private void loadOrderItems(int orderId) {
+        Either<ErrorCOrderItem, List<OrderItem>> orderItems = serVorderItem.getOrders(orderId);
+        if (orderItems.isRight()) {
+            orderItemsTable.getItems().clear();
+            orderItemsTable.getItems().addAll(orderItems.get());
+        } else {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setContentText("Error al mostrar los order items");
+            errorAlert.show();
+        }
+    }
+
+    private void loadOrderItemsByOrderId(int orderId) {
+        Either<ErrorCOrderItem, List<OrderItem>> orderItems = serVorderItem.getOrders(orderId);
+        if (orderItems.isRight()) {
+            orderItemsTable.getItems().clear();
+            orderItemsTable.getItems().addAll(orderItems.get());
+        } else {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setContentText("Error al mostrar los Order Items");
+            errorAlert.show();
         }
     }
 }
