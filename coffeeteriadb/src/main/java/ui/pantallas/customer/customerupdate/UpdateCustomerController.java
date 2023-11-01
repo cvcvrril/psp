@@ -56,8 +56,6 @@ public class UpdateCustomerController extends BasePantallaController {
         this.serVclient = serVclient;
     }
 
-    //TODO: revisar el error que pega
-
     public void updateCustomer() {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
