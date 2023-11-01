@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.order.orderadd.AddOrderController">
    <children>
-      <TextField layoutX="398.0" layoutY="57.0" prefHeight="25.0" prefWidth="77.0" />
+      <TextField fx:id="menuItemQuantity" layoutX="398.0" layoutY="57.0" prefHeight="25.0" prefWidth="77.0" />
       <Label layoutX="48.0" layoutY="29.0" text="Add Order">
          <font>
             <Font size="27.0" />
@@ -22,11 +22,11 @@
       <Button fx:id="addOrderButton" layoutX="243.0" layoutY="317.0" mnemonicParsing="false" onAction="#addOrder" prefHeight="25.0" prefWidth="90.0" text="Add order" />
       <Button fx:id="addItemButton" layoutX="501.0" layoutY="34.0" mnemonicParsing="false" onAction="#addItem" text="Add" />
       <Button fx:id="removeItemButton" layoutX="501.0" layoutY="69.0" mnemonicParsing="false" onAction="#removeItem" text="Remove" />
-      <TableView layoutX="224.0" layoutY="113.0" prefHeight="179.0" prefWidth="336.0">
+      <TableView fx:id="mItemTable" layoutX="224.0" layoutY="113.0" prefHeight="179.0" prefWidth="336.0">
         <columns>
-            <TableColumn prefWidth="113.0" text="Menu Item ID" />
-          <TableColumn prefWidth="139.0" text="Menu Item Name" />
-          <TableColumn prefWidth="54.0" text="Quantity" />
+            <TableColumn fx:id="mItemIDCol" prefWidth="113.0" text="Menu Item ID" />
+          <TableColumn fx:id="mItemNameCol" prefWidth="139.0" text="Menu Item Name" />
+          <TableColumn fx:id="quantityCol" prefWidth="54.0" text="Quantity" />
         </columns>
       </TableView>
    </children>

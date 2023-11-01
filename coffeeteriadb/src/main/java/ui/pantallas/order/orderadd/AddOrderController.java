@@ -5,9 +5,8 @@ import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.MenuItem;
 import model.Order;
 import model.errors.ErrorCOrder;
@@ -24,6 +23,14 @@ public class AddOrderController extends BasePantallaController {
     private final SERVorder serVorder;
     private final SERVtablesRestaurant serVtablesRestaurant;
     private final SERVmenuItems serVmenuItems;
+    public TableView<MenuItem> mItemTable;
+    @FXML
+    private TableColumn<MenuItem, Integer> mItemIDCol;
+    @FXML
+    private TableColumn<MenuItem, String> mItemNameCol;
+    @FXML
+    private TableColumn<MenuItem, Integer> quantityCol;
+
 
     @FXML
     private ComboBox<Integer> customerComboBox;
@@ -31,6 +38,8 @@ public class AddOrderController extends BasePantallaController {
     private ComboBox<Integer> tableComboBox;
     @FXML
     private ComboBox<String> menuItemsCBox;
+    @FXML
+    private TextField menuItemQuantity;
 
     @FXML
     private Button addOrderButton;
@@ -51,7 +60,9 @@ public class AddOrderController extends BasePantallaController {
         customerComboBox.getItems().addAll(customerIDs);
         tableComboBox.getItems().addAll(1, 2, 3, 4, 5);
         List<MenuItem> menuItems = serVmenuItems.getAll().getOrElse(Collections.emptyList());
-        menuItemsCBox.getItems().addAll(String.valueOf(menuItems));
+        for (MenuItem menuItem : menuItems ){
+            menuItemsCBox.getItems().add(menuItem.getNameMItem());
+        }
 //        Either<ErrorCTables, List<TableRestaurant>> result = serVtablesRestaurant.getAll();
 //        if (result.isRight()) {
 //            List<TableRestaurant> tables = result.get();
@@ -63,6 +74,13 @@ public class AddOrderController extends BasePantallaController {
 //            errorAlert.setContentText("Error al obtener la lista de mesas");
 //            errorAlert.show();
 //        }
+
+        mItemIDCol.setCellValueFactory(new PropertyValueFactory<>("menuItemID"));
+        mItemNameCol.setCellValueFactory(new PropertyValueFactory<>("menuItemName"));
+        quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        mItemTable.getItems().addAll();
+
+
     }
 
     @FXML
