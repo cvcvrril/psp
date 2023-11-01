@@ -21,17 +21,14 @@ public class SERVlogin {
 
     public boolean doLogin(Credential credential){
         Credential storedCredential = getCredentialByUsername(credential.getUserName());
-
-        if (storedCredential != null) {
-            if (storedCredential.getPassword().equals(credential.getPassword())) {
+        if (storedCredential != null && (storedCredential.getPassword().equals(credential.getPassword()))) {
                 if (storedCredential.getId() < 0) {
                     daOlogin.doLogin(credential);
                     return true;
                 } else {
                     daOlogin.doLogin(credential);
-                    return false;
+                    return true;
                 }
-            }
         }
         // User does not exist or password is incorrect
         return false;
