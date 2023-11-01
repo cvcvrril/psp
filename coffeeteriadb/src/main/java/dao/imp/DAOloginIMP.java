@@ -16,7 +16,7 @@ public class DAOloginIMP implements DAOlogin {
 
     @Override
     public boolean doLogin(Credential credential) {
-        return credential.getUser().equals("root") && credential.getPasswd().equals("2dam");
+        return credential.getUserName().equals("root") && credential.getPassword().equals("2dam");
     }
 
 }

@@ -124,10 +124,10 @@ public class DAOorderDB {
         Either<ErrorCOrder, Integer> res;
         try (Connection myConnection = db.getConnection()){
             PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.INSERT_ORDER);
-            pstmt.setTimestamp(1, Timestamp.valueOf(order.getOrDate()));
-            pstmt.setInt(2, order.getIdCo());
-            pstmt.setInt(3, order.getIdTable());
-            pstmt.setInt(4,order.getIdOrd());
+            pstmt.setInt(1,order.getIdOrd());
+            pstmt.setTimestamp(2, Timestamp.valueOf(order.getOrDate()));
+            pstmt.setInt(3, order.getIdCo());
+            pstmt.setInt(4, order.getIdTable());
             rowsAffected = pstmt.executeUpdate();
             if (rowsAffected != 1) {
                 res = Either.left(new ErrorCOrder(ConstantsDAO.ERROR_ADDING_ORDER, 0));
