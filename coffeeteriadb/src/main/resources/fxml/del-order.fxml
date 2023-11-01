@@ -19,11 +19,11 @@
             <TableColumn fx:id="dateOrder" prefWidth="75.0" text="Date" />
         </columns>
       </TableView>
-      <Button fx:id="delOrderButton" layoutX="375.0" layoutY="343.0" mnemonicParsing="false" text="Delete order" onAction="#delOrder"/>
-      <TableView layoutX="366.0" layoutY="107.0" prefHeight="200.0" prefWidth="200.0">
+      <Button fx:id="delOrderButton" layoutX="375.0" layoutY="343.0" mnemonicParsing="false" onAction="#delOrder" text="Delete order" />
+      <TableView fx:id="orderItemsTable" layoutX="366.0" layoutY="107.0" prefHeight="200.0" prefWidth="200.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Name item" />
-          <TableColumn prefWidth="75.0" text="Quantity" />
+          <TableColumn fx:id="nameItemCell" prefWidth="88.0" text="Name item" />
+          <TableColumn fx:id="quantityCell" prefWidth="62.0" text="Quantity" />
         </columns>
       </TableView>
       <Label layoutX="375.0" layoutY="78.0" text="Order items" />

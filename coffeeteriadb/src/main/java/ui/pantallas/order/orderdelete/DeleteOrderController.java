@@ -11,15 +11,29 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Order;
+import model.OrderItem;
+import model.errors.ErrorCMenuItem;
 import model.errors.ErrorCOrder;
+import services.SERVmenuItems;
 import services.SERVorder;
+import services.SERVorderItem;
 import ui.pantallas.common.BasePantallaController;
-
+;
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
 
 public class DeleteOrderController extends BasePantallaController {
 
     private final SERVorder serVorder;
+    private final SERVorderItem serVorderItem;
+    private final SERVmenuItems serVmenuItems;
+    @FXML
+    private TableView<OrderItem> orderItemsTable;
+    @FXML
+    private TableColumn<OrderItem, String> nameItemCell;
+    @FXML
+    private TableColumn<Order, Integer> quantityCell;
 
     @FXML
     private TableView<Order> tableOrders;
@@ -35,8 +49,26 @@ public class DeleteOrderController extends BasePantallaController {
     private Button delOrderButton;
 
     @Inject
-    public DeleteOrderController(SERVorder serVorder) {
+    public DeleteOrderController(SERVorder serVorder, SERVorderItem serVorderItem, SERVmenuItems serVmenuItems) {
         this.serVorder = serVorder;
+        this.serVorderItem = serVorderItem;
+        this.serVmenuItems = serVmenuItems;
+    }
+
+    public void initialize() {
+
+        idOrd.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_ORD));
+        idC.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
+        idTable.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
+        dateOrder.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
+        tableOrders.getItems().addAll(serVorder.getAll());
+        tableOrders.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                updateOrderItemsTable(newValue);
+            }
+        });
+
+        quantityCell.setCellValueFactory(new PropertyValueFactory<>("quantity"));
     }
 
     public void delOrder(ActionEvent actionEvent) {
@@ -47,6 +79,7 @@ public class DeleteOrderController extends BasePantallaController {
                 Alert a = new Alert(Alert.AlertType.CONFIRMATION);
                 a.setContentText(Constantes.ORDER_DELETED);
                 a.show();
+                orderItemsTable.getItems().clear();
                 tableOrders.getItems().remove(selectedOrder);
             } else {
                 Alert errorAlert = new Alert(Alert.AlertType.ERROR);
@@ -60,13 +93,8 @@ public class DeleteOrderController extends BasePantallaController {
         }
     }
 
-    public void initialize() {
-
-        idOrd.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_ORD));
-        idC.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
-        idTable.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
-        dateOrder.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
-        tableOrders.getItems().addAll(serVorder.getAll());
-
+    public void updateOrderItemsTable(Order order) {
+        List<OrderItem> orderItems = serVorderItem.getOrders(order.getIdOrd()).getOrElse(Collections.emptyList());
+        orderItemsTable.getItems().setAll(orderItems);
     }
 }

@@ -122,7 +122,7 @@ public class PrincipalController extends BasePantallaController {
             cargarPantalla(Pantallas.WELCOME);
             menuOptions.setDisable(false);
             menuCustomers.setDisable(false);
-            menuOrdersAdd.setDisable(true);
+            menuOrdersAdd.setDisable(false);
         } if (credential.getId() >0){
             cargarPantalla(Pantallas.WELCOME);
             menuOptions.setDisable(false);

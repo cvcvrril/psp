@@ -28,9 +28,9 @@ public class AddOrderController extends BasePantallaController {
     private final SERVorderItem serVorderItem;
     public TableView<OrderItem> mItemTable;
     @FXML
-    private TableColumn<MenuItem, Integer> mItemIDCol;
+    private TableColumn<OrderItem, Integer> mItemIDCol;
     @FXML
-    private TableColumn<MenuItem, String> mItemNameCol;
+    private TableColumn<OrderItem, String> mItemNameCol;
     @FXML
     private TableColumn<OrderItem, Integer> quantityCol;
 
