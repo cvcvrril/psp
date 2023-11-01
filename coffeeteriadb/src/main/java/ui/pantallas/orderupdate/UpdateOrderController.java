@@ -10,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import model.Order;
 import model.errors.ErrorCOrder;
+import services.SERVorder;
 import ui.pantallas.common.BasePantallaController;
 
 import java.time.LocalDate;
@@ -17,7 +18,7 @@ import java.time.LocalDateTime;
 
 public class UpdateOrderController extends BasePantallaController {
 
-    private final DAOorderFILE daOorderFILE;
+    private final SERVorder serVorder;
 
     @FXML
     private TableView<Order> tableOrders;
@@ -47,8 +48,8 @@ public class UpdateOrderController extends BasePantallaController {
     private TextField quantityField;
 
     @Inject
-    public UpdateOrderController(DAOorderFILE daOorderFILE) {
-        this.daOorderFILE = daOorderFILE;
+    public UpdateOrderController(SERVorder serVorder) {
+        this.serVorder = serVorder;
     }
 
     public void addItem() {
@@ -69,7 +70,7 @@ public class UpdateOrderController extends BasePantallaController {
         id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
         id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
-        tableOrders.getItems().addAll(daOorderFILE.getAll().getOrNull());
+        tableOrders.getItems().addAll(serVorder.getAll());
         tableOrders.setOnMouseClicked(this::handleTable);
     }
 
@@ -94,7 +95,7 @@ public class UpdateOrderController extends BasePantallaController {
             LocalDate orderDate = LocalDate.parse(dateField.getText());
             LocalDateTime orderDateTime = orderDate.atStartOfDay();
             Order updatedOrder = new Order(orderId, orderDateTime, customerId, tableId);
-            Either<ErrorCOrder, Integer> updateResult = daOorderFILE.update(updatedOrder);
+            Either<ErrorCOrder, Integer> updateResult = serVorder.updateOrder(updatedOrder) ;
 
             if (updateResult.isRight()){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
