@@ -27,7 +27,6 @@ public class LoginController extends BasePantallaController {
     @FXML
     private void Login() {
         String username = userText.getText();
-        String password = passwdText.getText();
 
         Credential credential = serVlogin.getCredentialByUsername(username);
         if (credential != null) {

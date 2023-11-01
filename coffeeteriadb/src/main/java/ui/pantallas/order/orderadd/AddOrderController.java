@@ -10,7 +10,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.MenuItem;
 import model.Order;
 import model.OrderItem;
+import model.TableRestaurant;
 import model.errors.ErrorCOrder;
+import model.errors.ErrorCTables;
 import services.SERVmenuItems;
 import services.SERVorder;
 import services.SERVorderItem;
@@ -62,22 +64,21 @@ public class AddOrderController extends BasePantallaController {
     public void initialize() {
         List<Integer> customerIDs = serVorder.getCustomerIDs();
         customerComboBox.getItems().addAll(customerIDs);
-        tableComboBox.getItems().addAll(1, 2, 3, 4, 5);
         List<MenuItem> menuItems = serVmenuItems.getAll().getOrElse(Collections.emptyList());
         for (MenuItem menuItem : menuItems ){
             menuItemsCBox.getItems().add(menuItem.getNameMItem());
         }
-//        Either<ErrorCTables, List<TableRestaurant>> result = serVtablesRestaurant.getAll();
-//        if (result.isRight()) {
-//            List<TableRestaurant> tables = result.get();
-//            for (TableRestaurant table : tables) {
-//                tableComboBox.getItems().add(table.getIdTable());
-//            }
-//        } else {
-//            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-//            errorAlert.setContentText("Error al obtener la lista de mesas");
-//            errorAlert.show();
-//        }
+        Either<ErrorCTables, List<TableRestaurant>> result = serVtablesRestaurant.getAll();
+        if (result.isRight()) {
+            List<TableRestaurant> tables = result.get();
+            for (TableRestaurant table : tables) {
+                tableComboBox.getItems().add(table.getIdTable());
+            }
+        } else {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setContentText("Error al obtener la lista de mesas");
+            errorAlert.show();
+        }
 
 
     }

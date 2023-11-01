@@ -30,7 +30,6 @@ public class SERVlogin {
                     return true;
                 }
         }
-        // User does not exist or password is incorrect
         return false;
     }
 
