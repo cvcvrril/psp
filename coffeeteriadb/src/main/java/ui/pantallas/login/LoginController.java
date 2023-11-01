@@ -2,14 +2,12 @@ package ui.pantallas.login;
 
 import common.Constantes;
 import jakarta.inject.Inject;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import model.Credential;
 import services.SERVlogin;
 import ui.pantallas.common.BasePantallaController;
-import ui.pantallas.principal.PrincipalController;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -28,7 +26,11 @@ public class LoginController extends BasePantallaController {
 
     @FXML
     private void Login() {
-        Credential credential = new Credential(0,userText.getText(), passwdText.getText());
+        String username = userText.getText();
+        String password = passwdText.getText();
+
+        Credential credential = serVlogin.getCredentialByUsername(username);
+
         if (serVlogin.doLogin(credential)) {
             getPrincipalController().onLogin(credential);
         } else {
@@ -38,5 +40,4 @@ public class LoginController extends BasePantallaController {
         }
     }
 
-    /*Métodos*/
 }

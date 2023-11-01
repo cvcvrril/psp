@@ -23,6 +23,22 @@ import java.io.IOException;
 public class PrincipalController extends BasePantallaController {
 
     @FXML
+    private MenuItem menuCustomersAdd;
+    @FXML
+    private MenuItem menuCustomersUpdate;
+    @FXML
+    private Menu menuOrders;
+    @FXML
+    private MenuItem menuOrdersList;
+    @FXML
+    private MenuItem menuOrdersAdd;
+    @FXML
+    private MenuItem menuOrdersUpdate;
+    @FXML
+    private MenuItem menuOrdersDelete;
+    @FXML
+    private MenuItem menuCustomersDelete;
+    @FXML
     private MenuItem menuCustomersList;
     @FXML
     private Menu menuOptions;
@@ -102,6 +118,23 @@ public class PrincipalController extends BasePantallaController {
     public void onLogin(Credential credential) {
         this.user = credential.getUserName();
         menuPrincipal.setVisible(true);
+        if(credential.getId() < 0){
+            cargarPantalla(Pantallas.WELCOME);
+            menuOptions.setDisable(false);
+            menuCustomers.setDisable(false);
+            menuOrdersAdd.setDisable(true);
+        } if (credential.getId() >0){
+            cargarPantalla(Pantallas.WELCOME);
+            menuOptions.setDisable(false);
+            menuCustomers.setDisable(true);
+            menuOrders.setDisable(false);
+            menuOrdersList.setDisable(false);
+            menuOrdersUpdate.setDisable(false);
+            menuOrdersAdd.setDisable(false);
+            menuOrdersDelete.setDisable(true);
+            
+        }
+
         cargarPantalla(Pantallas.WELCOME);
     }
 
