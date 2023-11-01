@@ -141,8 +141,6 @@ public class OrderListController extends BasePantallaController {
         }
     }
 
-    //Por alguna razón no me pilla los valores de los order_items
-
     public void setTableOrders() {
         try {
             Order selectedOrder = tableOrders.getSelectionModel().getSelectedItem();

@@ -79,8 +79,6 @@ public class AddOrderController extends BasePantallaController {
             errorAlert.setContentText("Error al obtener la lista de mesas");
             errorAlert.show();
         }
-
-
     }
 
     @FXML

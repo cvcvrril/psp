@@ -132,9 +132,7 @@ public class PrincipalController extends BasePantallaController {
             menuOrdersUpdate.setDisable(false);
             menuOrdersAdd.setDisable(false);
             menuOrdersDelete.setDisable(true);
-            
         }
-
         cargarPantalla(Pantallas.WELCOME);
     }
 
