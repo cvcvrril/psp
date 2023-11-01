@@ -9,9 +9,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.MenuItem;
 import model.Order;
+import model.OrderItem;
 import model.errors.ErrorCOrder;
 import services.SERVmenuItems;
 import services.SERVorder;
+import services.SERVorderItem;
 import services.SERVtablesRestaurant;
 import ui.pantallas.common.BasePantallaController;
 import java.time.LocalDateTime;
@@ -23,13 +25,14 @@ public class AddOrderController extends BasePantallaController {
     private final SERVorder serVorder;
     private final SERVtablesRestaurant serVtablesRestaurant;
     private final SERVmenuItems serVmenuItems;
-    public TableView<MenuItem> mItemTable;
+    private final SERVorderItem serVorderItem;
+    public TableView<OrderItem> mItemTable;
     @FXML
     private TableColumn<MenuItem, Integer> mItemIDCol;
     @FXML
     private TableColumn<MenuItem, String> mItemNameCol;
     @FXML
-    private TableColumn<MenuItem, Integer> quantityCol;
+    private TableColumn<OrderItem, Integer> quantityCol;
 
 
     @FXML
@@ -49,10 +52,11 @@ public class AddOrderController extends BasePantallaController {
     private Button removeItemButton;
 
     @Inject
-    public AddOrderController(SERVorder serVorder, SERVtablesRestaurant serVtablesRestaurant, SERVmenuItems serVmenuItems) {
+    public AddOrderController(SERVorder serVorder, SERVtablesRestaurant serVtablesRestaurant, SERVmenuItems serVmenuItems, SERVorderItem serVorderItem) {
         this.serVorder = serVorder;
         this.serVtablesRestaurant = serVtablesRestaurant;
         this.serVmenuItems = serVmenuItems;
+        this.serVorderItem = serVorderItem;
     }
 
     public void initialize() {
@@ -74,11 +78,6 @@ public class AddOrderController extends BasePantallaController {
 //            errorAlert.setContentText("Error al obtener la lista de mesas");
 //            errorAlert.show();
 //        }
-
-        mItemIDCol.setCellValueFactory(new PropertyValueFactory<>("menuItemID"));
-        mItemNameCol.setCellValueFactory(new PropertyValueFactory<>("menuItemName"));
-        quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        mItemTable.getItems().addAll();
 
 
     }

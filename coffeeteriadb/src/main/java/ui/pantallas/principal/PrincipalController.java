@@ -33,8 +33,6 @@ public class PrincipalController extends BasePantallaController {
     private MenuBar menuPrincipal;
     private Stage primaryStage;
 
-    public Credential actCred;
-
     @Getter
     private String user;
     @FXML
@@ -102,13 +100,13 @@ public class PrincipalController extends BasePantallaController {
     }
 
     public void onLogin(Credential credential) {
-        actCred = credential;
+        this.user = credential.getUserName();
         menuPrincipal.setVisible(true);
         cargarPantalla(Pantallas.WELCOME);
     }
 
     public void logout() {
-        actCred = null;
+        this.user = null;
         menuPrincipal.setVisible(false);
         cargarPantalla(Pantallas.LOGIN);
     }

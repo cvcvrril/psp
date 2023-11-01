@@ -72,6 +72,7 @@ public class UpdateOrderController extends BasePantallaController {
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
         tableOrders.getItems().addAll(serVorder.getAll());
         tableOrders.setOnMouseClicked(this::handleTable);
+
     }
 
     private void handleTable(MouseEvent event){
