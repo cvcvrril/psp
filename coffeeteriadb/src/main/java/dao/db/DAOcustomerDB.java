@@ -34,7 +34,6 @@ public class DAOcustomerDB {
     public Either<ErrorCCustomer, List<Customer>> getAll() {
         List<Customer> customerList = new ArrayList<>();
         Either<ErrorCCustomer, List<Customer>> res;
-        //try (Connection myConnection = db.getConnection())
         try (Connection connection = pool.getConnection()){
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
@@ -50,7 +49,7 @@ public class DAOcustomerDB {
 
     public Either<ErrorCCustomer, Customer> get(int id) {
         Either<ErrorCCustomer, Customer> res;
-        try (Connection myConnection = db.getConnection();
+        try (Connection myConnection = pool.getConnection();
              PreparedStatement stmt = myConnection.prepareStatement(SQLqueries.SELECT_CUSTOMERS_ID)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
@@ -72,7 +71,6 @@ public class DAOcustomerDB {
     public Either<ErrorCCustomer, Integer> update(Customer customer) {
         int rowsAffected;
         Either<ErrorCCustomer, Integer> res;
-        //try (Connection connection = db.getConnection()){
         try (Connection connection = pool.getConnection()){
             PreparedStatement pstmt = connection.prepareStatement(SQLqueries.UPDATE_CUSTOMERS);
             connection.setAutoCommit(false);
@@ -132,7 +130,7 @@ public class DAOcustomerDB {
     public Either<ErrorCCustomer, Integer> add(Customer customer) {
         int rowsAffected;
         Either<ErrorCCustomer, Integer> res;
-        try (Connection myConnection = db.getConnection()) {
+        try (Connection myConnection = pool.getConnection()) {
             PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.INSERT_CUSTOMER, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, customer.getFirstName());
             pstmt.setString(2, customer.getSecondName());
@@ -144,7 +142,6 @@ public class DAOcustomerDB {
                 pstmt.setNull(5, Types.DATE);
             }
             rowsAffected = pstmt.executeUpdate();
-
             if (rowsAffected == 1) {
                 ResultSet generatedKeys = pstmt.getGeneratedKeys();
                 if (generatedKeys.next()) {

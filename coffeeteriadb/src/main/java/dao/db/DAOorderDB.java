@@ -22,18 +22,21 @@ public class DAOorderDB {
 
     private final Configuration config;
     private final DBConnection db;
+    private final DBConnectionPool pool;
 
     @Inject
-    public DAOorderDB(Configuration config, DBConnection db) {
+    public DAOorderDB(Configuration config, DBConnection db, DBConnectionPool pool) {
         this.config = config;
         this.db = db;
+        this.pool = pool;
     }
 
     public Either<ErrorCOrder, List<Order>> getAll(){
         List<Order> orderList = new ArrayList<>();
         Either<ErrorCOrder, List<Order>> res;
-        try (Connection myConnection = db.getConnection()){
-            Statement stmt = myConnection.createStatement();
+        try (Connection myConnection = pool.getConnection()){
+            Statement stmt = myConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = stmt.executeQuery(SQLqueries.SELECT_FROM_ORDERS);
             orderList = readRS(rs);
             res = Either.right(orderList);
@@ -46,7 +49,7 @@ public class DAOorderDB {
 
     public Either<ErrorCOrder, Order> get(int id){
         Either<ErrorCOrder, Order> res;
-        try (Connection myConnection = db.getConnection()){
+        try (Connection myConnection = pool.getConnection()){
             PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.SELECT_ORDERS_ID);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
@@ -64,33 +67,22 @@ public class DAOorderDB {
         return res;
     }
 
-    private List<Order> readRS (ResultSet rs) throws SQLException {
-        List<Order> orderList = new ArrayList<>();
-        while (rs.next()){
-            int id = rs.getInt(ConstantsDAO.ORDER_ID);
-            LocalDateTime dateTime = null;
-            Timestamp timestamp = rs.getTimestamp(ConstantsDAO.ORDER_DATE);
-            if (timestamp != null){
-                dateTime = timestamp.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-            }
-            int customerId = rs.getInt(ConstantsDAO.CUSTOMER_ID);
-            int tableId = rs.getInt(ConstantsDAO.TABLE_ID);
-            orderList.add(new Order(id, dateTime, customerId, tableId));
-        }
-        return orderList;
-    }
+
 
     public Either<ErrorCOrder, Integer> update(Order order){
         int rowsAffected;
         Either<ErrorCOrder, Integer> res;
-        try (Connection myConnection = db.getConnection()){
-            PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.UPDATE_ORDERS);
-            pstmt.setTimestamp(1, Timestamp.valueOf(order.getOrDate()));
-            pstmt.setInt(2,order.getIdCo());
-            pstmt.setInt(3, order.getIdOrd());
-            pstmt.setInt(4, order.getIdTable());
-            rowsAffected = pstmt.executeUpdate();
-            res = Either.right(rowsAffected);
+        try (Connection myConnection = pool.getConnection()){
+            try (PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.UPDATE_ORDERS)) {
+                myConnection.setAutoCommit(false);
+                pstmt.setTimestamp(1, Timestamp.valueOf(order.getOrDate()));
+                pstmt.setInt(2, order.getIdCo());
+                pstmt.setInt(3, order.getIdOrd());
+                pstmt.setInt(4, order.getIdTable());
+                rowsAffected = pstmt.executeUpdate();
+                myConnection.commit();
+                res = Either.right(rowsAffected);
+            }
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorCOrder(e.getMessage(), 0));
@@ -122,8 +114,8 @@ public class DAOorderDB {
     public Either<ErrorCOrder, Integer> add(Order order){
         int rowsAffected;
         Either<ErrorCOrder, Integer> res;
-        try (Connection myConnection = db.getConnection()){
-            PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.INSERT_ORDER);
+        try (Connection myConnection = pool.getConnection()){
+            PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.INSERT_ORDER, Statement.RETURN_GENERATED_KEYS);
             pstmt.setInt(1,order.getIdOrd());
             pstmt.setTimestamp(2, Timestamp.valueOf(order.getOrDate()));
             pstmt.setInt(3, order.getIdCo());
@@ -141,5 +133,20 @@ public class DAOorderDB {
         return res;
     }
 
+    private List<Order> readRS (ResultSet rs) throws SQLException {
+        List<Order> orderList = new ArrayList<>();
+        while (rs.next()){
+            int id = rs.getInt(ConstantsDAO.ORDER_ID);
+            LocalDateTime dateTime = null;
+            Timestamp timestamp = rs.getTimestamp(ConstantsDAO.ORDER_DATE);
+            if (timestamp != null){
+                dateTime = timestamp.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+            }
+            int customerId = rs.getInt(ConstantsDAO.CUSTOMER_ID);
+            int tableId = rs.getInt(ConstantsDAO.TABLE_ID);
+            orderList.add(new Order(id, dateTime, customerId, tableId));
+        }
+        return orderList;
+    }
 
 }
