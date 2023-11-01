@@ -1,4 +1,4 @@
-package ui.pantallas.orderdelete;
+package ui.pantallas.order.orderdelete;
 
 import common.Constantes;
 import io.vavr.control.Either;

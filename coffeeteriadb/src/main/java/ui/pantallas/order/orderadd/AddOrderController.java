@@ -1,4 +1,4 @@
-package ui.pantallas.orderadd;
+package ui.pantallas.order.orderadd;
 
 import common.Constantes;
 import io.vavr.control.Either;

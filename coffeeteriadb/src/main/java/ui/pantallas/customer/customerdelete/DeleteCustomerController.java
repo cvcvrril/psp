@@ -1,4 +1,4 @@
-package ui.pantallas.customerdelete;
+package ui.pantallas.customer.customerdelete;
 
 import common.Constantes;
 import io.vavr.control.Either;

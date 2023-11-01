@@ -1,4 +1,4 @@
-package ui.pantallas.customerupdate;
+package ui.pantallas.customer.customerupdate;
 
 import common.Constantes;
 import io.vavr.control.Either;

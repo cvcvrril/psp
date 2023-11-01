@@ -25,15 +25,15 @@ module coffeeteria {
     exports ui.pantallas.common;
     exports ui.pantallas.login;
     exports ui.pantallas.principal;
-    exports ui.pantallas.orderupdate;
-    exports ui.pantallas.orderlist;
-    exports ui.pantallas.orderdelete;
-    exports ui.pantallas.customerupdate;
-    exports ui.pantallas.customerdelete;
-    exports ui.pantallas.customerlist;
+    exports ui.pantallas.order.orderupdate;
+    exports ui.pantallas.order.orderlist;
+    exports ui.pantallas.order.orderdelete;
+    exports ui.pantallas.customer.customerupdate;
+    exports ui.pantallas.customer.customerdelete;
+    exports ui.pantallas.customer.customerlist;
     exports ui.pantallas.welcome;
-    exports ui.pantallas.customeradd;
-    exports ui.pantallas.orderadd;
+    exports ui.pantallas.customer.customeradd;
+    exports ui.pantallas.order.orderadd;
 
     /*Otros exports*/
 
@@ -57,14 +57,14 @@ module coffeeteria {
     opens ui.pantallas.login;
     opens ui.pantallas.principal;
     opens ui.pantallas.welcome;
-    opens ui.pantallas.orderdelete to javafx.fxml;
-    opens ui.pantallas.orderlist to javafx.fxml;
-    opens ui.pantallas.customerupdate to javafx.fxml;
-    opens ui.pantallas.customerlist to javafx.fxml;
-    opens ui.pantallas.orderupdate to javafx.fxml;
-    opens ui.pantallas.customeradd to javafx.fxml;
-    opens ui.pantallas.customerdelete to javafx.fxml;
-    opens ui.pantallas.orderadd to javafx.fxml;
+    opens ui.pantallas.order.orderdelete to javafx.fxml;
+    opens ui.pantallas.order.orderlist to javafx.fxml;
+    opens ui.pantallas.customer.customerupdate to javafx.fxml;
+    opens ui.pantallas.customer.customerlist to javafx.fxml;
+    opens ui.pantallas.order.orderupdate to javafx.fxml;
+    opens ui.pantallas.customer.customeradd to javafx.fxml;
+    opens ui.pantallas.customer.customerdelete to javafx.fxml;
+    opens ui.pantallas.order.orderadd to javafx.fxml;
     opens model to jakarta.xml.bind;
     exports model.xml;
     opens model.xml to jakarta.xml.bind;

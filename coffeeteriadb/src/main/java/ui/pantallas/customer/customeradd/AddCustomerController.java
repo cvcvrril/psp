@@ -1,4 +1,4 @@
-package ui.pantallas.customeradd;
+package ui.pantallas.customer.customeradd;
 
 import io.vavr.control.Either;
 import jakarta.inject.Inject;

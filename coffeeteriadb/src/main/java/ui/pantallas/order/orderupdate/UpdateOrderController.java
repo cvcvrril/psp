@@ -1,7 +1,6 @@
-package ui.pantallas.orderupdate;
+package ui.pantallas.order.orderupdate;
 
 import common.Constantes;
-import dao.imp.DAOorderFILE;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
@@ -15,6 +14,7 @@ import ui.pantallas.common.BasePantallaController;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 
 public class UpdateOrderController extends BasePantallaController {
 
@@ -92,10 +92,12 @@ public class UpdateOrderController extends BasePantallaController {
             int orderId = Integer.parseInt(orderIdField.getText());
             int customerId = Integer.parseInt(customerField.getText());
             int tableId = Integer.parseInt(tableField.getText());
-            LocalDate orderDate = LocalDate.parse(dateField.getText());
-            LocalDateTime orderDateTime = orderDate.atStartOfDay();
+            String dateText = dateField.getText();
+            LocalDateTime orderDateTime = LocalDateTime.parse(dateText);
+
             Order updatedOrder = new Order(orderId, orderDateTime, customerId, tableId);
-            Either<ErrorCOrder, Integer> updateResult = serVorder.updateOrder(updatedOrder) ;
+
+            Either<ErrorCOrder, Integer> updateResult = serVorder.updateOrder(updatedOrder);
 
             if (updateResult.isRight()){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -109,6 +111,10 @@ public class UpdateOrderController extends BasePantallaController {
         }catch (NumberFormatException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Invalid input data");
+            alert.show();
+        }catch (DateTimeParseException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Invalid date and time format. Please use the format 'YYYY-MM-DDTHH:mm'.");
             alert.show();
         }
 

@@ -1,4 +1,4 @@
-package ui.pantallas.orderlist;
+package ui.pantallas.order.orderlist;
 
 import common.Constantes;
 import io.vavr.control.Either;

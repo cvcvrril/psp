@@ -1,4 +1,4 @@
-package ui.pantallas.customerlist;
+package ui.pantallas.customer.customerlist;
 
 import common.Constantes;
 import jakarta.inject.Inject;

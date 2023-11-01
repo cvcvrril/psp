@@ -88,6 +88,7 @@ public class DAOorderDB {
             pstmt.setTimestamp(1, Timestamp.valueOf(order.getOrDate()));
             pstmt.setInt(2,order.getIdCo());
             pstmt.setInt(3, order.getIdTable());
+            pstmt.setInt(4, order.getIdOrd());
             rowsAffected = pstmt.executeUpdate();
             res = Either.right(rowsAffected);
         } catch (SQLException e) {
