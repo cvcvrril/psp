@@ -3,6 +3,7 @@ package ui.pantallas.order.orderlist;
 import common.Constantes;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -11,8 +12,10 @@ import lombok.extern.log4j.Log4j2;
 import model.Customer;
 import model.Order;
 import model.OrderItem;
+import model.errors.ErrorCMenuItem;
 import model.errors.ErrorCOrderItem;
 import services.SERVclient;
+import services.SERVmenuItems;
 import services.SERVorder;
 import services.SERVorderItem;
 import ui.pantallas.common.BasePantallaController;
@@ -26,6 +29,7 @@ public class OrderListController extends BasePantallaController {
 
     private final SERVorder serVorder;
     private final SERVclient serVclient;
+    private final SERVmenuItems serVmenuItems;
     private final SERVorderItem serVorderItem;
 
 
@@ -59,9 +63,10 @@ public class OrderListController extends BasePantallaController {
     /*Constructores*/
 
     @Inject
-    public OrderListController(SERVorder serVorder, SERVclient serVclient, SERVorderItem serVorderItem) {
+    public OrderListController(SERVorder serVorder, SERVclient serVclient, SERVmenuItems serVmenuItems, SERVorderItem serVorderItem) {
         this.serVorder = serVorder;
         this.serVclient = serVclient;
+        this.serVmenuItems = serVmenuItems;
         this.serVorderItem = serVorderItem;
     }
 
@@ -86,6 +91,11 @@ public class OrderListController extends BasePantallaController {
         });
         orderItemQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         orderItemID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        menuItemName.setCellValueFactory(cellData -> {
+            int menuItemId = cellData.getValue().getMenuItem();
+            String menuItemName = getMenuItemNameById(menuItemId);
+            return new SimpleStringProperty(menuItemName);
+        });
     }
 
     @FXML
@@ -165,6 +175,15 @@ public class OrderListController extends BasePantallaController {
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setContentText("Error al mostrar los Order Items");
             errorAlert.show();
+        }
+    }
+
+    public String getMenuItemNameById(int id) {
+        Either<ErrorCMenuItem, String> result = serVmenuItems.getMenuItemName(id);
+        if(result.isRight()) {
+            return result.get();
+        } else {
+            return null;
         }
     }
 }

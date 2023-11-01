@@ -46,6 +46,7 @@ public class DAOMenuItemDB {
         Either<ErrorCMenuItem, MenuItem> res;
         try (Connection myConnection = db.getConnection()){
             PreparedStatement pstmt = myConnection.prepareStatement("select  * from menu_items where menu_item_id=?");
+            pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             List<MenuItem> menuItemList = readRS(rs);
             if (!menuItemList.isEmpty()){

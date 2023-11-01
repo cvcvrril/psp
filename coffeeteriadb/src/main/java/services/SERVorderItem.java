@@ -17,8 +17,6 @@ public class SERVorderItem {
         this.daOorderItemDB = daOorderItemDB;
     }
 
-    /*Methods*/
-
     public Either<ErrorCOrderItem, List<OrderItem>> getOrders(int i) {
         return daOorderItemDB.getByOrderId(i);
     }
