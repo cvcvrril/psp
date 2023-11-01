@@ -68,29 +68,12 @@ public class DAOcustomerDB {
         return res;
     }
 
-    private List<Customer> readRS(ResultSet rs) throws SQLException {
-        List<Customer> customerList = new ArrayList<>();
-        while (rs.next()) {
-            int id = rs.getInt(ConstantsDAO.ID);
-            String firstName = rs.getString(ConstantsDAO.FIRST_NAME);
-            String lastName = rs.getString(ConstantsDAO.LAST_NAME);
-            String email = rs.getString(ConstantsDAO.EMAIL);
-            int phone = rs.getInt(ConstantsDAO.PHONE);
-            LocalDate date = null;
-            Date dateFromDB = rs.getDate(ConstantsDAO.DATE_OF_BIRTH);
-            if (dateFromDB != null) {
-                date = dateFromDB.toLocalDate();
-            }
-            customerList.add(new Customer(id, firstName, lastName, email, phone, date));
-        }
-        return customerList;
-    }
 
     public Either<ErrorCCustomer, Integer> update(Customer customer) {
         int rowsAffected;
         Either<ErrorCCustomer, Integer> res;
-        try (Connection connection = db.getConnection()){
-        //try (Connection connection = pool.getConnection()){
+        //try (Connection connection = db.getConnection()){
+        try (Connection connection = pool.getConnection()){
             PreparedStatement pstmt = connection.prepareStatement(SQLqueries.UPDATE_CUSTOMERS);
             connection.setAutoCommit(false);
             pstmt.setString(1, customer.getFirstName());
@@ -178,5 +161,23 @@ public class DAOcustomerDB {
             res = Either.left(new ErrorCCustomer(e.getMessage(), 0));
         }
         return res;
+    }
+
+    private List<Customer> readRS(ResultSet rs) throws SQLException {
+        List<Customer> customerList = new ArrayList<>();
+        while (rs.next()) {
+            int id = rs.getInt(ConstantsDAO.ID);
+            String firstName = rs.getString(ConstantsDAO.FIRST_NAME);
+            String lastName = rs.getString(ConstantsDAO.LAST_NAME);
+            String email = rs.getString(ConstantsDAO.EMAIL);
+            int phone = rs.getInt(ConstantsDAO.PHONE);
+            LocalDate date = null;
+            Date dateFromDB = rs.getDate(ConstantsDAO.DATE_OF_BIRTH);
+            if (dateFromDB != null) {
+                date = dateFromDB.toLocalDate();
+            }
+            customerList.add(new Customer(id, firstName, lastName, email, phone, date));
+        }
+        return customerList;
     }
 }
