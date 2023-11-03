@@ -102,6 +102,8 @@ public class UpdateOrderController extends BasePantallaController {
             String menuItemName = getMenuItemNameById(menuItemId);
             return new SimpleStringProperty(menuItemName);
         });
+        orderItemTable.setOnMouseClicked(this::handleorderItemsTable);
+
 
     }
 
@@ -114,6 +116,15 @@ public class UpdateOrderController extends BasePantallaController {
                 tableField.setText(String.valueOf(selOrder.getIdTable()));
                 dateField.setText(String.valueOf(selOrder.getOrDate()));
 
+            }
+        }
+    }
+
+    private void handleorderItemsTable(MouseEvent event){
+        if (event.getClickCount() == 1){
+            OrderItem selOrderItem = orderItemTable.getSelectionModel().getSelectedItem();
+            if (selOrderItem != null){
+                quantityField.setText(String.valueOf(selOrderItem.getQuantity()));
             }
         }
     }
