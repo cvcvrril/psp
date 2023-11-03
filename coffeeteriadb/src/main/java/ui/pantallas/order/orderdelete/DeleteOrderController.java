@@ -3,6 +3,7 @@ package ui.pantallas.order.orderdelete;
 import common.Constantes;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -67,8 +68,12 @@ public class DeleteOrderController extends BasePantallaController {
                 updateOrderItemsTable(newValue);
             }
         });
-
         quantityCell.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        nameItemCell.setCellValueFactory(cellData -> {
+            int menuItemId = cellData.getValue().getMenuItem();
+            String menuItemName = getMenuItemNameById(menuItemId);
+            return new SimpleStringProperty(menuItemName);
+        });
     }
 
     public void delOrder(ActionEvent actionEvent) {
@@ -96,5 +101,14 @@ public class DeleteOrderController extends BasePantallaController {
     public void updateOrderItemsTable(Order order) {
         List<OrderItem> orderItems = serVorderItem.getOrders(order.getIdOrd()).getOrElse(Collections.emptyList());
         orderItemsTable.getItems().setAll(orderItems);
+    }
+
+    public String getMenuItemNameById(int id) {
+        Either<ErrorCMenuItem, String> result = serVmenuItems.getMenuItemName(id);
+        if(result.isRight()) {
+            return result.get();
+        } else {
+            return null;
+        }
     }
 }

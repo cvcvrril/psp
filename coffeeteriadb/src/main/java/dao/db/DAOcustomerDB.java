@@ -16,8 +16,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO: Meter el pool en todos los métodos
-
 @Log4j2
 public class DAOcustomerDB {
 

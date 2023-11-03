@@ -22,8 +22,8 @@
       <Button fx:id="delOrderButton" layoutX="375.0" layoutY="343.0" mnemonicParsing="false" onAction="#delOrder" text="Delete order" />
       <TableView fx:id="orderItemsTable" layoutX="366.0" layoutY="107.0" prefHeight="200.0" prefWidth="200.0">
         <columns>
-          <TableColumn fx:id="nameItemCell" prefWidth="88.0" text="Name item" />
-          <TableColumn fx:id="quantityCell" prefWidth="62.0" text="Quantity" />
+          <TableColumn fx:id="nameItemCell" prefWidth="139.99996948242188" text="Name item" />
+          <TableColumn fx:id="quantityCell" prefWidth="58.66668701171875" text="Quantity" />
         </columns>
       </TableView>
       <Label layoutX="375.0" layoutY="78.0" text="Order items" />
