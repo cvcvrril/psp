@@ -1,4 +1,4 @@
-package dao.db;
+package dao.connection;
 
 import common.Configuration;
 import jakarta.inject.Inject;

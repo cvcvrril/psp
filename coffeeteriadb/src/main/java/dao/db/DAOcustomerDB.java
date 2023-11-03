@@ -3,6 +3,8 @@ package dao.db;
 import common.Configuration;
 import common.SQLqueries;
 import dao.ConstantsDAO;
+import dao.connection.DBConnection;
+import dao.connection.DBConnectionPool;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;

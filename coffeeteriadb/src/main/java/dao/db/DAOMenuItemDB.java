@@ -2,6 +2,7 @@ package dao.db;
 
 import common.Configuration;
 import dao.ConstantsDAO;
+import dao.connection.DBConnection;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;

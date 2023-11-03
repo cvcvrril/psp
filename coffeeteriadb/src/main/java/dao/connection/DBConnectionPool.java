@@ -1,4 +1,4 @@
-package dao.db;
+package dao.connection;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -46,14 +46,6 @@ public class DBConnectionPool {
             e.printStackTrace();
         }
         return con;
-    }
-
-    public void closeConnection(Connection con) {
-        try {
-            con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     @PreDestroy
