@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import model.Order;
+import model.OrderItem;
 import model.errors.ErrorCOrder;
 import services.SERVorder;
 import ui.pantallas.common.BasePantallaController;
@@ -19,6 +20,7 @@ import java.time.format.DateTimeParseException;
 public class UpdateOrderController extends BasePantallaController {
 
     private final SERVorder serVorder;
+
 
     @FXML
     private TableView<Order> tableOrders;
@@ -46,6 +48,13 @@ public class UpdateOrderController extends BasePantallaController {
     private TextField customerField;
     @FXML
     private TextField quantityField;
+
+    @FXML
+    private TableView<OrderItem> orderItemTable;
+    @FXML
+    private TableColumn<OrderItem, String> nameItemCell;
+    @FXML
+    private TableColumn<OrderItem, Integer> quantityCell;
 
     @Inject
     public UpdateOrderController(SERVorder serVorder) {

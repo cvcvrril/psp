@@ -11,15 +11,15 @@
             <Font size="27.0" />
          </font>
       </Label>
-       <TextField fx:id="orderIdField" layoutX="49.0" layoutY="96.0"  />
+       <TextField fx:id="orderIdField" layoutX="49.0" layoutY="96.0" />
       <TextField fx:id="dateField" layoutX="49.0" layoutY="136.0" />
       <TextField fx:id="tableField" layoutX="49.0" layoutY="188.0" prefWidth="150.0" />
       <TextField fx:id="customerField" layoutX="49.0" layoutY="233.0" prefWidth="150.0" />
       <TextField fx:id="quantityField" layoutX="53.0" layoutY="285.0" prefHeight="25.0" prefWidth="70.0" />
-       <TableView layoutX="259.0" layoutY="55.0" prefHeight="106.0" prefWidth="200.0">
+       <TableView fx:id="orderItemTable" layoutX="259.0" layoutY="55.0" prefHeight="106.0" prefWidth="200.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Name item" />
-          <TableColumn prefWidth="75.0" text="Quantity" />
+          <TableColumn fx:id="nameItemCell" prefWidth="75.0" text="Name item" />
+          <TableColumn fx:id="quantityCell" prefWidth="75.0" text="Quantity" />
         </columns>
       </TableView>
       <TableView fx:id="tableOrders" layoutX="259.0" layoutY="200.0" prefHeight="145.0" prefWidth="296.0">

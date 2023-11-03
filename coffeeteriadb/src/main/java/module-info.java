@@ -44,7 +44,6 @@ module coffeeteria {
     exports services;
     exports model;
     exports ui.main to javafx.graphics;
-    exports dao.xml;
     exports dao;
     exports dao.db;
 
