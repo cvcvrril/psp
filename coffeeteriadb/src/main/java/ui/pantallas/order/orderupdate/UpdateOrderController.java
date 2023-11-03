@@ -3,23 +3,31 @@ package ui.pantallas.order.orderupdate;
 import common.Constantes;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import model.Order;
 import model.OrderItem;
+import model.errors.ErrorCMenuItem;
 import model.errors.ErrorCOrder;
+import services.SERVmenuItems;
 import services.SERVorder;
+import services.SERVorderItem;
 import ui.pantallas.common.BasePantallaController;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
+import java.util.Collections;
+import java.util.List;
 
 public class UpdateOrderController extends BasePantallaController {
 
     private final SERVorder serVorder;
+    private final SERVorderItem serVorderItem;
+    private final SERVmenuItems serVmenuItems;
 
 
     @FXML
@@ -57,8 +65,10 @@ public class UpdateOrderController extends BasePantallaController {
     private TableColumn<OrderItem, Integer> quantityCell;
 
     @Inject
-    public UpdateOrderController(SERVorder serVorder) {
+    public UpdateOrderController(SERVorder serVorder, SERVorderItem serVorderItem, SERVmenuItems serVmenuItems) {
         this.serVorder = serVorder;
+        this.serVorderItem = serVorderItem;
+        this.serVmenuItems = serVmenuItems;
     }
 
     public void addItem() {
@@ -81,6 +91,17 @@ public class UpdateOrderController extends BasePantallaController {
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
         tableOrders.getItems().addAll(serVorder.getAll());
         tableOrders.setOnMouseClicked(this::handleTable);
+        tableOrders.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                updateOrderItemsTable(newValue);
+            }
+        });
+        quantityCell.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        nameItemCell.setCellValueFactory(cellData -> {
+            int menuItemId = cellData.getValue().getMenuItem();
+            String menuItemName = getMenuItemNameById(menuItemId);
+            return new SimpleStringProperty(menuItemName);
+        });
 
     }
 
@@ -128,5 +149,19 @@ public class UpdateOrderController extends BasePantallaController {
             alert.show();
         }
 
+    }
+
+    public void updateOrderItemsTable(Order order) {
+        List<OrderItem> orderItems = serVorderItem.getOrders(order.getIdOrd()).getOrElse(Collections.emptyList());
+        orderItemTable.getItems().setAll(orderItems);
+    }
+
+    public String getMenuItemNameById(int id) {
+        Either<ErrorCMenuItem, String> result = serVmenuItems.getMenuItemName(id);
+        if(result.isRight()) {
+            return result.get();
+        } else {
+            return null;
+        }
     }
 }
