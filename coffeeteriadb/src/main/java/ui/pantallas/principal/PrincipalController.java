@@ -1,6 +1,7 @@
 package ui.pantallas.principal;
 
 
+import dao.connection.DBConnectionPool;
 import jakarta.enterprise.inject.Instance;
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
@@ -60,11 +61,13 @@ public class PrincipalController extends BasePantallaController {
     private final Alert alert;
 
     private Pane pantallaBienvenida;
+    private final DBConnectionPool dbConnectionPool;
 
 
     @Inject
-    public PrincipalController(Instance<Object> instance) {
+    public PrincipalController(Instance<Object> instance, DBConnectionPool dbConnectionPool) {
         this.instance = instance;
+        this.dbConnectionPool = dbConnectionPool;
         alert = new Alert(Alert.AlertType.NONE);
     }
 
@@ -144,6 +147,7 @@ public class PrincipalController extends BasePantallaController {
 
     public void exit(ActionEvent actionEvent) {
         primaryStage.fireEvent(new WindowEvent(primaryStage, WindowEvent.WINDOW_CLOSE_REQUEST));
+        dbConnectionPool.closePool();
     }
 
     public void setStage(Stage stage) {
