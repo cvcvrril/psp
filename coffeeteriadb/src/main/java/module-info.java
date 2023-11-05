@@ -71,4 +71,5 @@ module coffeeteria {
     opens model.xml to jakarta.xml.bind;
     exports dao.interfaces;
     exports dao.connection;
+    exports dao.spring;
 }
