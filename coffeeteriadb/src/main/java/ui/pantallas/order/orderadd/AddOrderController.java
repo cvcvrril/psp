@@ -3,6 +3,7 @@ package ui.pantallas.order.orderadd;
 import common.Constantes;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -11,6 +12,7 @@ import model.MenuItem;
 import model.Order;
 import model.OrderItem;
 import model.TableRestaurant;
+import model.errors.ErrorCMenuItem;
 import model.errors.ErrorCOrder;
 import model.errors.ErrorCTables;
 import services.SERVmenuItems;
@@ -28,7 +30,8 @@ public class AddOrderController extends BasePantallaController {
     private final SERVtablesRestaurant serVtablesRestaurant;
     private final SERVmenuItems serVmenuItems;
     private final SERVorderItem serVorderItem;
-    public TableView<OrderItem> mItemTable;
+    @FXML
+    private TableView<OrderItem> mItemTable;
     @FXML
     private TableColumn<OrderItem, Integer> mItemIDCol;
     @FXML
@@ -79,6 +82,14 @@ public class AddOrderController extends BasePantallaController {
             errorAlert.setContentText("Error al obtener la lista de mesas");
             errorAlert.show();
         }
+        mItemIDCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        mItemNameCol.setCellValueFactory(cellData -> {
+            int menuItemId = cellData.getValue().getMenuItem();
+            String menuItemName = getMenuItemNameById(menuItemId);
+            return new SimpleStringProperty(menuItemName);
+        });
+
     }
 
     @FXML
@@ -107,13 +118,37 @@ public class AddOrderController extends BasePantallaController {
     }
 
     public void addItem(ActionEvent actionEvent) {
+        int customerId = customerComboBox.getValue();
+        int tableId = tableComboBox.getValue();
+        LocalDateTime orderDate = LocalDateTime.now();
+        String selectedItemName = menuItemsCBox.getValue();
+        int quantity = Integer.parseInt(menuItemQuantity.getText());
 
+        MenuItem selectedMenuItem = null;
+        for (MenuItem menuItem : serVmenuItems.getAll().getOrElse(Collections.emptyList())) {
+            if (menuItem.getNameMItem().equals(selectedItemName)) {
+                selectedMenuItem = menuItem;
+                break;
+            }
+        }
+
+        if (selectedMenuItem != null) {
+            int lastOrderItemId = getLastOrderItemIdFromDatabase();
+            Order o = new Order(getNextOrderId() , orderDate,customerId, tableId);
+            OrderItem newOrderItem = new OrderItem(lastOrderItemId, o.getIdOrd() , selectedMenuItem.getIdMItem(), quantity);
+
+            mItemTable.getItems().add(newOrderItem);
+            menuItemsCBox.getSelectionModel().clearSelection();
+            menuItemQuantity.clear();
+        } else {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setContentText("Ítem de menú no encontrado");
+            errorAlert.show();
+        }
     }
 
     public void removeItem(ActionEvent actionEvent) {
-        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-        a.setContentText(Constantes.THE_MENU_ITEM_HAS_BEEN_REMOVED);
-        a.show();
+        mItemTable.getItems().clear();
     }
 
     private int getNextOrderId() {
@@ -123,5 +158,28 @@ public class AddOrderController extends BasePantallaController {
         } else {
             return 1;
         }
+    }
+
+    public String getMenuItemNameById(int id) {
+        Either<ErrorCMenuItem, String> result = serVmenuItems.getMenuItemName(id);
+        if(result.isRight()) {
+            return result.get();
+        } else {
+            return null;
+        }
+    }
+
+    private int getLastOrderItemIdFromDatabase() {
+        List<OrderItem> orderItems = serVorderItem.getAll().getOrElse(Collections.emptyList());
+
+        int lastOrderItemId = 0;
+
+        for (OrderItem orderItem : orderItems) {
+            if (orderItem.getId() > lastOrderItemId) {
+                lastOrderItemId = orderItem.getId();
+            }
+        }
+
+        return lastOrderItemId;
     }
 }

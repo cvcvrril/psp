@@ -11,7 +11,6 @@ import java.util.List;
 public class SERVorderItem {
     private final DAOorderItemDB daOorderItemDB;
 
-
     @Inject
     public SERVorderItem(DAOorderItemDB daOorderItemDB) {
         this.daOorderItemDB = daOorderItemDB;
@@ -21,7 +20,9 @@ public class SERVorderItem {
         return daOorderItemDB.getByOrderId(i);
     }
 
-
+    public Either<ErrorCOrderItem, List<OrderItem>> getAll(){
+        return daOorderItemDB.getAll();
+    }
 
 //    public Either<ErrorCOrder,Integer> addOrders(List<OrderItem> orderItemList, int i){
 //        return daoOrdersXML.add(orderItemList,i);
