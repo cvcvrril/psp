@@ -52,4 +52,8 @@ public class DBConnectionPool {
     public void closePool() {
         ((HikariDataSource) hikariDataSource).close();
     }
+
+    public DataSource getDataSource() {
+        return hikariDataSource;
+    }
 }

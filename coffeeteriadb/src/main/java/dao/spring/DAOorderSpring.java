@@ -1,6 +1,6 @@
 package dao.spring;
 
-public class DAOorderSpring {
+public class DAOorderSpring{
 
 
 }

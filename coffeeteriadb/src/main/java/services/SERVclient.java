@@ -1,20 +1,24 @@
 package services;
 
 import dao.db.DAOcustomerDB;
+import dao.spring.DAOcustomerSpring;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import model.Customer;
 import model.errors.ErrorCCustomer;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class SERVclient {
 
     private final DAOcustomerDB daOcustomerDB;
+    private final DAOcustomerSpring daOcustomerSpring;
 
     @Inject
-    public SERVclient(DAOcustomerDB daOcustomerDB) {
+    public SERVclient(DAOcustomerDB daOcustomerDB, DAOcustomerSpring daOcustomerSpring) {
         this.daOcustomerDB = daOcustomerDB;
+        this.daOcustomerSpring = daOcustomerSpring;
     }
 
     public int getLastUsedId() {
@@ -29,7 +33,13 @@ public class SERVclient {
     }
 
     public Either<ErrorCCustomer, List<Customer>> getAll() {
-        return daOcustomerDB.getAll();
+        //return daOcustomerDB.getAll();
+        try {
+            return daOcustomerSpring.getAll();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public Either<ErrorCCustomer, Customer> get(int id) {
