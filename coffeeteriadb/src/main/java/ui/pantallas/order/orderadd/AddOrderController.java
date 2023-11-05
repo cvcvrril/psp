@@ -107,9 +107,7 @@ public class AddOrderController extends BasePantallaController {
     }
 
     public void addItem(ActionEvent actionEvent) {
-        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-        a.setContentText(Constantes.THE_MENU_ITEM_HAS_BEEN_ADDED);
-        a.show();
+
     }
 
     public void removeItem(ActionEvent actionEvent) {

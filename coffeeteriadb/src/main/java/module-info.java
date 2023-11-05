@@ -46,6 +46,7 @@ module coffeeteria {
     exports ui.main to javafx.graphics;
     exports dao;
     exports dao.db;
+    exports dao.mappers;
 
     /*Abrir módulos*/
 
