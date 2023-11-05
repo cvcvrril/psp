@@ -43,7 +43,8 @@ public class SERVclient {
     }
 
     public Either<ErrorCCustomer, Customer> get(int id) {
-        return daOcustomerDB.get(id);
+        //    return daOcustomerDB.get(id);
+        return daOcustomerSpring.get(id);
     }
 
     public Either<ErrorCCustomer, Integer> delete(int i, boolean conf) {
