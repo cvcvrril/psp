@@ -20,6 +20,7 @@ module coffeeteria {
     requires commons.dbcp2;
     requires com.zaxxer.hikari;
     requires spring.jdbc;
+    requires spring.tx;
 
     /*Pantallas*/
 

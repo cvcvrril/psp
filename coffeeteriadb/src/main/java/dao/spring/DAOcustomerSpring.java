@@ -11,6 +11,10 @@ import model.errors.ErrorCCustomer;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -30,19 +34,19 @@ public class DAOcustomerSpring {
 
     //TODO: hacer el update y el delete
 
-    public Either<ErrorCCustomer,List<Customer>> getAll() throws SQLException {
+    public Either<ErrorCCustomer, List<Customer>> getAll() throws SQLException {
         Either<ErrorCCustomer, List<Customer>> res;
-        JdbcTemplate jtm =new JdbcTemplate(pool.getDataSource());
-        List<Customer> customerList =jtm.query("select * from customers", new CustomerMapper());
+        JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
+        List<Customer> customerList = jtm.query("select * from customers", new CustomerMapper());
         res = Either.right(customerList);
         return res;
     }
 
-    public Either<ErrorCCustomer, Customer> get (int id){
+    public Either<ErrorCCustomer, Customer> get(int id) {
         Either<ErrorCCustomer, Customer> res;
         JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
         List<Customer> cus = jtm.query("select * from customers where id =?", new CustomerMapper(), id);
-        if (cus.isEmpty()){
+        if (cus.isEmpty()) {
             res = Either.left(new ErrorCCustomer("vacio", 0));
         } else {
             res = Either.right(cus.get(0));
@@ -52,7 +56,7 @@ public class DAOcustomerSpring {
 
     //TODO: ARREGLAR USANDO LO DEL ADDSUPPLIERGK
 
-    public Either<ErrorCCustomer, Integer> add(Customer newCustomer, Credential newCredential){
+    public Either<ErrorCCustomer, Integer> add(Customer newCustomer, Credential newCredential) {
         try {
             SimpleJdbcInsert customerInsert = new SimpleJdbcInsert(pool.getDataSource()).withTableName("customers");
             Map<String, Object> customerParams = new HashMap<>();
@@ -80,5 +84,34 @@ public class DAOcustomerSpring {
             log.error(e.getMessage(), e);
             return Either.left(new ErrorCCustomer(e.getMessage(), 0));
         }
+    }
+
+    //TODO: ARREGLAR, SIMPLIFICAR, ETC
+
+    public Either<ErrorCCustomer, Integer> delete(int id, boolean conf) {
+        Either<ErrorCCustomer, Integer> res;
+        TransactionDefinition txDef = new DefaultTransactionDefinition();
+        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(pool.getDataSource());
+        TransactionStatus txStatus = transactionManager.getTransaction(txDef);
+        try {
+            JdbcTemplate jtm = new JdbcTemplate(transactionManager.getDataSource());
+
+            int credentialId = jtm.queryForObject("SELECT credential_id FROM customers WHERE id=?", Integer.class, id);
+
+            int rowsAffected = jtm.update("DELETE FROM customers WHERE id=?", id);
+
+            if (rowsAffected == 1) {
+                jtm.update("DELETE FROM credential WHERE id=?", credentialId);
+                transactionManager.commit(txStatus);
+                res = Either.right(id);
+            } else {
+                transactionManager.rollback(txStatus);
+                res = Either.left(new ErrorCCustomer("Error al eliminar el cliente", 0));
+            }
+        } catch (Exception e){
+            log.error(e.getMessage(), e);
+            res = Either.left(new ErrorCCustomer(e.getMessage(),0));
+        }
+        return res;
     }
 }
