@@ -23,8 +23,8 @@
       <Label layoutX="61.0" layoutY="289.0" text="Email" />
       <Label layoutX="63.0" layoutY="188.0" text="Date of birth" />
       <Label layoutX="300.0" layoutY="85.0" text="Username" />
-      <TextField layoutX="291.0" layoutY="107.0" promptText="e.g. pepe1234" />
+      <TextField fx:id="usernameField" layoutX="291.0" layoutY="107.0" promptText="e.g. pepe1234" />
       <Label layoutX="300.0" layoutY="139.0" text="Password" />
-      <TextField layoutX="291.0" layoutY="161.0" promptText="e.g. password1234" />
+      <TextField fx:id="passwordField" layoutX="291.0" layoutY="161.0" promptText="e.g. password1234" />
    </children>
 </AnchorPane>

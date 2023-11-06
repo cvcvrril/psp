@@ -8,6 +8,7 @@ import dao.connection.DBConnectionPool;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
+import model.Credential;
 import model.Customer;
 import model.errors.ErrorCCustomer;
 
@@ -127,32 +128,72 @@ public class DAOcustomerDB {
         return res;
     }
 
-    public Either<ErrorCCustomer, Integer> add(Customer customer) {
+    public Either<ErrorCCustomer, Integer> add(Customer customer, Credential credential) {
         int rowsAffected;
         Either<ErrorCCustomer, Integer> res;
         try (Connection myConnection = pool.getConnection()) {
-            PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.INSERT_CUSTOMER, Statement.RETURN_GENERATED_KEYS);
-            pstmt.setString(1, customer.getFirstName());
-            pstmt.setString(2, customer.getSecondName());
-            pstmt.setString(3, customer.getEmailCus());
-            pstmt.setInt(4, customer.getPhoneNumber());
+            myConnection.setAutoCommit(false);
+
+            PreparedStatement pstmtCustomer = myConnection.prepareStatement(SQLqueries.INSERT_CUSTOMER, Statement.RETURN_GENERATED_KEYS);
+            pstmtCustomer.setString(1, customer.getFirstName());
+            pstmtCustomer.setString(2, customer.getSecondName());
+            pstmtCustomer.setString(3, customer.getEmailCus());
+            pstmtCustomer.setInt(4, customer.getPhoneNumber());
             if (customer.getDateBirth() != null) {
-                pstmt.setObject(5, customer.getDateBirth());
+                pstmtCustomer.setObject(5, customer.getDateBirth());
             } else {
-                pstmt.setNull(5, Types.DATE);
+                pstmtCustomer.setNull(5, Types.DATE);
             }
-            rowsAffected = pstmt.executeUpdate();
-            if (rowsAffected == 1) {
-                ResultSet generatedKeys = pstmt.getGeneratedKeys();
-                if (generatedKeys.next()) {
-                    int generatedId = generatedKeys.getInt(1);
-                    res = Either.right(generatedId);
-                } else {
-                    res = Either.left(new ErrorCCustomer(ConstantsDAO.ERROR_OBTAINING_ID, 0));
-                }
+            rowsAffected = pstmtCustomer.executeUpdate();
+
+            if (rowsAffected != 1) {
+                myConnection.rollback();
+                return Either.left(new ErrorCCustomer(ConstantsDAO.ERROR_ADDDING_CUSTOMER, 0));
+            }
+
+            ResultSet generatedKeys = pstmtCustomer.getGeneratedKeys();
+            int generatedCustomerId;
+            if (generatedKeys.next()) {
+                generatedCustomerId = generatedKeys.getInt(1);
             } else {
-                res = Either.left(new ErrorCCustomer(ConstantsDAO.ERROR_ADDDING_CUSTOMER, 0));
+                myConnection.rollback();
+                return Either.left(new ErrorCCustomer(ConstantsDAO.ERROR_OBTAINING_ID, 0));
             }
+
+            PreparedStatement pstmtCredential = myConnection.prepareStatement(SQLqueries.INSERT_CREDENTIAL, Statement.RETURN_GENERATED_KEYS);
+            pstmtCredential.setString(1, credential.getUserName());
+            pstmtCredential.setString(2, credential.getPassword());
+            pstmtCredential.setInt(3, generatedCustomerId);
+
+            rowsAffected = pstmtCredential.executeUpdate();
+
+            if (rowsAffected != 1) {
+                myConnection.rollback();
+                return Either.left(new ErrorCCustomer("Error añadiendo el credential", 0));
+            }
+
+            ResultSet generatedCredentialKeys = pstmtCredential.getGeneratedKeys();
+            int generatedCredentialId;
+            if (generatedCredentialKeys.next()) {
+                generatedCredentialId = generatedCredentialKeys.getInt(1);
+            } else {
+                myConnection.rollback();
+                return Either.left(new ErrorCCustomer("Error obteniendo el id del credential", 0));
+            }
+
+            PreparedStatement pstmtLink = myConnection.prepareStatement(SQLqueries.LINK_CREDENTIAL_ID);
+            pstmtLink.setInt(1, generatedCustomerId);
+            pstmtLink.setInt(2, generatedCredentialId);
+            rowsAffected = pstmtLink.executeUpdate();
+
+            if (rowsAffected != 1) {
+                myConnection.rollback();
+                return Either.left(new ErrorCCustomer("Error", 0));
+            }
+
+            myConnection.commit();
+            res = Either.right(generatedCustomerId);
+
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorCCustomer(e.getMessage(), 0));

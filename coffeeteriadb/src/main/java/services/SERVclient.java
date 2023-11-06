@@ -4,6 +4,7 @@ import dao.db.DAOcustomerDB;
 import dao.spring.DAOcustomerSpring;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
+import model.Credential;
 import model.Customer;
 import model.errors.ErrorCCustomer;
 
@@ -60,10 +61,8 @@ public class SERVclient {
         return daOcustomerDB.update(customer);
     }
 
-    public Either<ErrorCCustomer, Integer> add(Customer customer) {
-        //return daOcustomerDB.add(customer);
-        return daOcustomerSpring.add(customer);
+    public Either<ErrorCCustomer, Integer> add(Customer customer, Credential credential) {
+        return daOcustomerDB.add(customer, credential);
+        //return daOcustomerSpring.add(customer);
     }
-
-
 }

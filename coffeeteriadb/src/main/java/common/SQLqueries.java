@@ -18,6 +18,7 @@ public class SQLqueries {
     public static final String SELECT_FROM_ORDER_ITEMS = "select * from order_items";
     public static final String SELECT_FROM_RESTAURANT_TABLES = "select * from restaurant_tables";
     public static final String SELECT_NUMBER_ID = "select * from restaurant_tables where table_number_id = ?";
-
+    public static final String INSERT_CREDENTIAL = "INSERT INTO credential (username, password, id)VALUES (?, ?, ?)";
+    public static final String LINK_CREDENTIAL_ID = "UPDATE customers SET credential_id = ? WHERE id = ?";
 }
 

@@ -4,15 +4,21 @@ import dao.connection.DBConnectionPool;
 import dao.mappers.CustomerMapper;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
+import lombok.extern.log4j.Log4j2;
+import model.Credential;
 import model.Customer;
 import model.errors.ErrorCCustomer;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+@Log4j2
 public class DAOcustomerSpring {
 
     private final DBConnectionPool pool;
@@ -22,7 +28,7 @@ public class DAOcustomerSpring {
         this.pool = pool;
     }
 
-    //TODO: hacer el resto de métodos
+    //TODO: hacer el update y el delete
 
     public Either<ErrorCCustomer,List<Customer>> getAll() throws SQLException {
         Either<ErrorCCustomer, List<Customer>> res;
@@ -44,21 +50,35 @@ public class DAOcustomerSpring {
         return res;
     }
 
-    public Either<ErrorCCustomer, Integer> add(Customer newCustomer){
-        Either<ErrorCCustomer, Customer> res;
-        JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
+    //TODO: ARREGLAR USANDO LO DEL ADDSUPPLIERGK
+
+    public Either<ErrorCCustomer, Integer> add(Customer newCustomer, Credential newCredential){
         try {
-            int rowsAffected = jtm.update("INSERT INTO customers (first_name, last_name, email, phone, date_of_birth) VALUES (?, ?, ?, ?, ?)",
-                    newCustomer.getFirstName(), newCustomer.getSecondName(), newCustomer.getEmailCus(), newCustomer.getPhoneNumber(), newCustomer.getDateBirth());
+            SimpleJdbcInsert customerInsert = new SimpleJdbcInsert(pool.getDataSource()).withTableName("customers");
+            Map<String, Object> customerParams = new HashMap<>();
+            customerParams.put("id", newCustomer.getIdC());
+            customerParams.put("first_name", newCustomer.getFirstName());
+            customerParams.put("last_name", newCustomer.getSecondName());
+            customerParams.put("email", newCustomer.getEmailCus());
+            customerParams.put("phone", newCustomer.getPhoneNumber());
+            customerParams.put("date_of_birth", newCustomer.getDateBirth());
 
-            if (rowsAffected > 0) {
-                res = Either.right(newCustomer);
+            int customerRowsAffected = customerInsert.execute(customerParams);
+
+            SimpleJdbcInsert credentialInsert = new SimpleJdbcInsert(pool.getDataSource()).withTableName("credential").usingGeneratedKeyColumns("id");
+            Map<String, Object> credentialParams = new HashMap<>();
+            credentialParams.put("user_name", newCredential.getUserName());
+            credentialParams.put("password", newCredential.getPassword());
+            credentialParams.put("customer_id", newCustomer.getIdC());
+
+            if (customerRowsAffected == 1) {
+                return Either.right((int) credentialInsert.executeAndReturnKey(credentialParams));
             } else {
-                res = Either.left(new ErrorCCustomer("Error al agregar el cliente", 500)); // Personaliza el mensaje y el código de error según tus necesidades.
+                return Either.left(new ErrorCCustomer("Error al agregar el cliente o la credencial", 0));
             }
-        } finally {
-
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return Either.left(new ErrorCCustomer(e.getMessage(), 0));
         }
-        return res;
     }
 }

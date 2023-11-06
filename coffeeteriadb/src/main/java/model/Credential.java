@@ -1,13 +1,15 @@
 package model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Credential {
 
-    /*Atributos*/
-
-    private final int id;
-    private final String userName;
-    private final String password;
+    private int id;
+    private String userName;
+    private String password;
 }

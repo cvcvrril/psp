@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import model.Credential;
 import model.Customer;
 import model.errors.ErrorCCustomer;
 import services.SERVclient;
@@ -26,6 +27,10 @@ public class AddCustomerController extends BasePantallaController {
     private TextField emailField;
     @FXML
     private TextField dateField;
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private TextField passwordField;
 
     @FXML
     private Button addCustomerButton;
@@ -46,6 +51,8 @@ public class AddCustomerController extends BasePantallaController {
         String dateText = dateField.getText();
         int phoneNumber = Integer.parseInt(phone);
         LocalDate date = LocalDate.parse(dateText);
+        String username = usernameField.getText();
+        String password = passwordField.getText();
 
         if (firstName.isEmpty() || secondName.isEmpty() || dateText.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -54,8 +61,9 @@ public class AddCustomerController extends BasePantallaController {
             return;
         }
 
-        Customer newCustomer = new Customer(nextID,firstName, secondName, email,phoneNumber, date );
-        Either<ErrorCCustomer, Integer> res = serVclient.add(newCustomer);
+        Customer newCustomer = new Customer(nextID,firstName, secondName, email,phoneNumber, date);
+        Credential newCredential = new Credential(nextID, username, password);
+        Either<ErrorCCustomer, Integer> res = serVclient.add(newCustomer, newCredential);
         clearFields();
 
         if (res.isRight()) {
