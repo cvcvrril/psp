@@ -43,4 +43,22 @@ public class DAOcustomerSpring {
         }
         return res;
     }
+
+    public Either<ErrorCCustomer, Integer> add(Customer newCustomer){
+        Either<ErrorCCustomer, Customer> res;
+        JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
+        try {
+            int rowsAffected = jtm.update("INSERT INTO customers (first_name, last_name, email, phone, date_of_birth) VALUES (?, ?, ?, ?, ?)",
+                    newCustomer.getFirstName(), newCustomer.getSecondName(), newCustomer.getEmailCus(), newCustomer.getPhoneNumber(), newCustomer.getDateBirth());
+
+            if (rowsAffected > 0) {
+                res = Either.right(newCustomer);
+            } else {
+                res = Either.left(new ErrorCCustomer("Error al agregar el cliente", 500)); // Personaliza el mensaje y el código de error según tus necesidades.
+            }
+        } finally {
+
+        }
+        return res;
+    }
 }

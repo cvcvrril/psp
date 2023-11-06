@@ -61,7 +61,8 @@ public class SERVclient {
     }
 
     public Either<ErrorCCustomer, Integer> add(Customer customer) {
-        return daOcustomerDB.add(customer);
+        //return daOcustomerDB.add(customer);
+        return daOcustomerSpring.add(customer);
     }
 
 
