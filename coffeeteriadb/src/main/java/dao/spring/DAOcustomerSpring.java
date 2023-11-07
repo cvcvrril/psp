@@ -32,8 +32,6 @@ public class DAOcustomerSpring {
         this.pool = pool;
     }
 
-    //TODO: hacer el update y el delete
-
     public Either<ErrorCCustomer, List<Customer>> getAll() throws SQLException {
         Either<ErrorCCustomer, List<Customer>> res;
         JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());

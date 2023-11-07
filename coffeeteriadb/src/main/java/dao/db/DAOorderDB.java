@@ -116,9 +116,9 @@ public class DAOorderDB {
         int rowsAffected;
         Either<ErrorCOrder, Integer> res;
         try (Connection myConnection = pool.getConnection()) {
-            myConnection.setAutoCommit(false);  // Desactiva la confirmación automática
+            myConnection.setAutoCommit(false);
 
-            // Insertar el Order
+            //Lo del order
             try (PreparedStatement pstmtOrder = myConnection.prepareStatement(SQLqueries.INSERT_ORDER, Statement.RETURN_GENERATED_KEYS)) {
                 pstmtOrder.setInt(1, order.getIdOrd());
                 pstmtOrder.setTimestamp(2, Timestamp.valueOf(order.getOrDate()));
@@ -127,10 +127,10 @@ public class DAOorderDB {
                 rowsAffected = pstmtOrder.executeUpdate();
 
                 if (rowsAffected != 1) {
-                    myConnection.rollback();  // Deshacer la transacción si falla la inserción del Order
+                    myConnection.rollback();
                     res = Either.left(new ErrorCOrder(ConstantsDAO.ERROR_ADDING_ORDER, 0));
                 } else {
-                    // Insertar los OrderItem
+                    //Lo de los orderItems
                     for (OrderItem orderItem : orderItems) {
                         try (PreparedStatement pstmtOrderItem = myConnection.prepareStatement(SQLqueries.INSERT_ORDER_ITEM)) {
                             pstmtOrderItem.setInt(1, orderItem.getOrderId());
@@ -145,11 +145,11 @@ public class DAOorderDB {
                     res = Either.right(rowsAffected);
                 }
             } catch (SQLException e) {
-                myConnection.rollback();  // Deshacer la transacción si hay una excepción
+                myConnection.rollback();
                 log.error(e.getMessage(), e);
                 res = Either.left(new ErrorCOrder(e.getMessage(), 0));
             } finally {
-                myConnection.setAutoCommit(true);  // Restablecer la confirmación automática
+                myConnection.setAutoCommit(true);
             }
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
