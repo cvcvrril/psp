@@ -1,6 +1,7 @@
 package dao.connection;
 
 import common.Configuration;
+import dao.ConstantsDAO;
 import jakarta.inject.Inject;
 
 import java.sql.Connection;
@@ -18,7 +19,7 @@ public class DBConnection {
 
     public Connection getConnection() throws SQLException {
         return DriverManager
-                .getConnection(config.getPropertySQL("pathDB"), config.getPropertySQL("userDB"), config.getPropertySQL("passDB"));
+                .getConnection(config.getPropertySQL(ConstantsDAO.PATH_DB), config.getPropertySQL(ConstantsDAO.USER_DB), config.getPropertySQL(ConstantsDAO.PASS_DB));
     }
 
 }

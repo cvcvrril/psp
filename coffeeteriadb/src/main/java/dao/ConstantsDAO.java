@@ -36,7 +36,11 @@ public class ConstantsDAO {
 
     /*Menu Items*/
 
-    
 
     /*Connection /// Connection Pool*/
+
+    public static final String PATH_DB = "pathDB";
+    public static final String USER_DB = "userDB";
+    public static final String PASS_DB = "passDB";
+    public static final String DRIVER = "driver";
 }

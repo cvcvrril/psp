@@ -6,6 +6,7 @@ import common.Configuration;
 
 import javax.sql.DataSource;
 
+import dao.ConstantsDAO;
 import jakarta.annotation.PreDestroy;
 import jakarta.inject.Inject;
 
@@ -25,10 +26,10 @@ public class DBConnectionPool {
 
     private DataSource getHikariPool() {
         HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setJdbcUrl(config.getPropertySQL("pathDB"));
-        hikariConfig.setUsername(config.getPropertySQL("userDB"));
-        hikariConfig.setPassword(config.getPropertySQL("passDB"));
-        hikariConfig.setDriverClassName(config.getPropertySQL("driver"));
+        hikariConfig.setJdbcUrl(config.getPropertySQL(ConstantsDAO.PATH_DB));
+        hikariConfig.setUsername(config.getPropertySQL(ConstantsDAO.USER_DB));
+        hikariConfig.setPassword(config.getPropertySQL(ConstantsDAO.PASS_DB));
+        hikariConfig.setDriverClassName(config.getPropertySQL(ConstantsDAO.DRIVER));
         hikariConfig.setMaximumPoolSize(4);
 
         hikariConfig.addDataSourceProperty("cachePrepStmts", true);
