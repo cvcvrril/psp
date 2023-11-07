@@ -11,13 +11,13 @@ import model.errors.ErrorCCustomer;
 import java.sql.SQLException;
 import java.util.List;
 
-public class SERVclient {
+public class SERVcustomer {
 
     private final DAOcustomerDB daOcustomerDB;
     private final DAOcustomerSpring daOcustomerSpring;
 
     @Inject
-    public SERVclient(DAOcustomerDB daOcustomerDB, DAOcustomerSpring daOcustomerSpring) {
+    public SERVcustomer(DAOcustomerDB daOcustomerDB, DAOcustomerSpring daOcustomerSpring) {
         this.daOcustomerDB = daOcustomerDB;
         this.daOcustomerSpring = daOcustomerSpring;
     }
@@ -60,6 +60,7 @@ public class SERVclient {
 
     public Either<ErrorCCustomer, Integer> update(Customer customer) {
         return daOcustomerDB.update(customer);
+        //return daOcustomerSpring.update(customer);
     }
 
     public Either<ErrorCCustomer, Integer> add(Customer customer, Credential credential) {

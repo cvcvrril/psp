@@ -14,7 +14,7 @@ import model.Order;
 import model.OrderItem;
 import model.errors.ErrorCMenuItem;
 import model.errors.ErrorCOrderItem;
-import services.SERVclient;
+import services.SERVcustomer;
 import services.SERVmenuItems;
 import services.SERVorder;
 import services.SERVorderItem;
@@ -28,7 +28,7 @@ import java.util.Objects;
 public class OrderListController extends BasePantallaController {
 
     private final SERVorder serVorder;
-    private final SERVclient serVclient;
+    private final SERVcustomer serVcustomer;
     private final SERVmenuItems serVmenuItems;
     private final SERVorderItem serVorderItem;
 
@@ -63,9 +63,9 @@ public class OrderListController extends BasePantallaController {
     /*Constructores*/
 
     @Inject
-    public OrderListController(SERVorder serVorder, SERVclient serVclient, SERVmenuItems serVmenuItems, SERVorderItem serVorderItem) {
+    public OrderListController(SERVorder serVorder, SERVcustomer serVcustomer, SERVmenuItems serVmenuItems, SERVorderItem serVorderItem) {
         this.serVorder = serVorder;
-        this.serVclient = serVclient;
+        this.serVcustomer = serVcustomer;
         this.serVmenuItems = serVmenuItems;
         this.serVorderItem = serVorderItem;
     }
@@ -82,7 +82,7 @@ public class OrderListController extends BasePantallaController {
         tableOrders.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 int customerId = newSelection.getIdCo();
-                Customer customer = serVclient.get(customerId).getOrNull();
+                Customer customer = serVcustomer.get(customerId).getOrNull();
                 if (customer != null) {
                     customerNameField.setText(customer.getFirstName());
                 }

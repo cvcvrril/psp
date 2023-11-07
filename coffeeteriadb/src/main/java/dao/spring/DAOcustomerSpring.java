@@ -1,5 +1,6 @@
 package dao.spring;
 
+import common.SQLqueries;
 import dao.connection.DBConnectionPool;
 import dao.mappers.CustomerMapper;
 import io.vavr.control.Either;
@@ -107,6 +108,26 @@ public class DAOcustomerSpring {
                 res = Either.left(new ErrorCCustomer("Error al eliminar el cliente", 0));
             }
         } catch (Exception e){
+            log.error(e.getMessage(), e);
+            res = Either.left(new ErrorCCustomer(e.getMessage(),0));
+        }
+        return res;
+    }
+
+    //TODO: RESOLVER EXCEPTION QUE ME TIRA????? PREGUNTAR A LUCIA
+
+    public Either<ErrorCCustomer, Integer> update(Customer updatedCustomer){
+        Either<ErrorCCustomer, Integer> res;
+        try {
+            JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
+            res = Either.right(jtm.update(SQLqueries.UPDATE_CUSTOMERS,
+                    updatedCustomer.getIdC(),
+                    updatedCustomer.getFirstName(),
+                    updatedCustomer.getSecondName(),
+                    updatedCustomer.getEmailCus(),
+                    updatedCustomer.getPhoneNumber(),
+                    updatedCustomer.getDateBirth()));
+        }catch (Exception e){
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorCCustomer(e.getMessage(),0));
         }

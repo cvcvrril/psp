@@ -9,7 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import model.Customer;
 import model.errors.ErrorCCustomer;
-import services.SERVclient;
+import services.SERVcustomer;
 import ui.pantallas.common.BasePantallaController;
 
 import java.time.LocalDate;
@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class UpdateCustomerController extends BasePantallaController {
-    private final SERVclient serVclient;
+    private final SERVcustomer serVcustomer;
 
     @FXML
     private TextField idCustomerField;
@@ -52,8 +52,8 @@ public class UpdateCustomerController extends BasePantallaController {
     private Button updateCustomerButton;
 
     @Inject
-    public UpdateCustomerController(SERVclient serVclient) {
-        this.serVclient = serVclient;
+    public UpdateCustomerController(SERVcustomer serVcustomer) {
+        this.serVcustomer = serVcustomer;
     }
 
     public void updateCustomer() {
@@ -76,14 +76,14 @@ public class UpdateCustomerController extends BasePantallaController {
 
         Customer updatedCustomer = new Customer(idCus, firstNameCus, secondNameCus, emailCus, phoneNumberCus, dateCus);
 
-        Either<ErrorCCustomer, Integer> res = serVclient.update(updatedCustomer);
+        Either<ErrorCCustomer, Integer> res = serVcustomer.update(updatedCustomer);
         if (res.isRight()) {
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setContentText(Constantes.CUSTOMER_UPDATED);
             a.show();
             resetFields();
             tableCustomers.getItems().clear();
-            tableCustomers.getItems().addAll(serVclient.getAll().getOrNull());
+            tableCustomers.getItems().addAll(serVcustomer.getAll().getOrNull());
 
         } else {
             ErrorCCustomer error = res.getLeft();
@@ -117,7 +117,7 @@ public class UpdateCustomerController extends BasePantallaController {
         email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
         date.setCellValueFactory(new PropertyValueFactory<>(Constantes.DATE));
-        tableCustomers.getItems().addAll(serVclient.getAll().getOrNull());
+        tableCustomers.getItems().addAll(serVcustomer.getAll().getOrNull());
         tableCustomers.setOnMouseClicked(this::handleTable);
     }
 

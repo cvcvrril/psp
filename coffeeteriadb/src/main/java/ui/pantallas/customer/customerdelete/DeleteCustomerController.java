@@ -10,7 +10,7 @@ import javafx.scene.input.MouseEvent;
 import model.Customer;
 import model.Order;
 import model.errors.ErrorCCustomer;
-import services.SERVclient;
+import services.SERVcustomer;
 import services.SERVorder;
 import ui.pantallas.common.BasePantallaController;
 
@@ -20,7 +20,7 @@ import java.util.Optional;
 
 public class DeleteCustomerController extends BasePantallaController {
 
-    private final SERVclient serVclient;
+    private final SERVcustomer serVcustomer;
     private final SERVorder serVorder;
 
     @FXML
@@ -56,8 +56,8 @@ public class DeleteCustomerController extends BasePantallaController {
 
     @Inject
 
-    public DeleteCustomerController(SERVclient serVclient, SERVorder serVorder) {
-        this.serVclient = serVclient;
+    public DeleteCustomerController(SERVcustomer serVcustomer, SERVorder serVorder) {
+        this.serVcustomer = serVcustomer;
         this.serVorder = serVorder;
     }
 
@@ -78,7 +78,7 @@ public class DeleteCustomerController extends BasePantallaController {
                 }
             }
 
-            Either<ErrorCCustomer, Integer> res = serVclient.delete(selCustomer.getIdC(), conf);
+            Either<ErrorCCustomer, Integer> res = serVcustomer.delete(selCustomer.getIdC(), conf);
             if (res.isRight()) {
                 Alert a = new Alert(Alert.AlertType.CONFIRMATION);
                 a.setContentText(Constantes.USER_DELETED);
@@ -110,7 +110,7 @@ public class DeleteCustomerController extends BasePantallaController {
         email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
         date.setCellValueFactory(new PropertyValueFactory<>(Constantes.DATE));
-        tableCustomers.getItems().addAll(serVclient.getAll().getOrNull());
+        tableCustomers.getItems().addAll(serVcustomer.getAll().getOrNull());
         tableCustomers.setOnMouseClicked(this::setTableOrdersCus);
 
     }

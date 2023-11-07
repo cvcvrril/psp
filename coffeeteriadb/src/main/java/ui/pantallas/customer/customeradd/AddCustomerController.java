@@ -9,13 +9,13 @@ import javafx.scene.control.TextField;
 import model.Credential;
 import model.Customer;
 import model.errors.ErrorCCustomer;
-import services.SERVclient;
+import services.SERVcustomer;
 import ui.pantallas.common.BasePantallaController;
 
 import java.time.LocalDate;
 
 public class AddCustomerController extends BasePantallaController {
-    private final SERVclient serVclient;
+    private final SERVcustomer serVcustomer;
 
     @FXML
     private TextField firstNameField;
@@ -36,14 +36,14 @@ public class AddCustomerController extends BasePantallaController {
     private Button addCustomerButton;
 
     @Inject
-    public AddCustomerController(SERVclient serVclient) {
-        this.serVclient = serVclient;
+    public AddCustomerController(SERVcustomer serVcustomer) {
+        this.serVcustomer = serVcustomer;
     }
 
 
     public void addCustomer() {
 
-        int nextID = serVclient.getLastUsedId();
+        int nextID = serVcustomer.getLastUsedId();
         String firstName = firstNameField.getText();
         String secondName = secondNameField.getText();
         String phone = phoneField.getText();
@@ -63,7 +63,7 @@ public class AddCustomerController extends BasePantallaController {
 
         Customer newCustomer = new Customer(nextID,firstName, secondName, email,phoneNumber, date);
         Credential newCredential = new Credential(nextID, username, password);
-        Either<ErrorCCustomer, Integer> res = serVclient.add(newCustomer, newCredential);
+        Either<ErrorCCustomer, Integer> res = serVcustomer.add(newCustomer, newCredential);
         clearFields();
 
         if (res.isRight()) {
