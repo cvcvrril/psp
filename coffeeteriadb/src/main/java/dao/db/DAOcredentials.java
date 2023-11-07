@@ -1,6 +1,7 @@
 package dao.db;
 
 import common.Configuration;
+import common.SQLqueries;
 import dao.connection.DBConnection;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
@@ -33,7 +34,7 @@ public class DAOcredentials {
         Either<ErrorCCredential, List<Credential>> res;
         try (Connection myConnection = db.getConnection()){
             Statement stmt = myConnection.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from credential");
+            ResultSet rs = stmt.executeQuery(SQLqueries.SELECT_FROM_CREDENTIAL);
             credentialList = readRS(rs);
             res = Either.right(credentialList);
         } catch (SQLException e) {

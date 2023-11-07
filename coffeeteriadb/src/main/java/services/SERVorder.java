@@ -6,6 +6,7 @@ import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import model.Customer;
 import model.Order;
+import model.OrderItem;
 import model.errors.ErrorCCustomer;
 import model.errors.ErrorCOrder;
 
@@ -40,8 +41,8 @@ public class SERVorder {
 
     }
 
-    public Either<ErrorCOrder, Integer> add(Order order) {
-        return daOorderDB.add(order);
+    public Either<ErrorCOrder, Integer> add(Order order, List<OrderItem> orderItems) {
+        return daOorderDB.add(order, orderItems);
     }
 
     public Either<ErrorCOrder, Integer> updateOrder(Order o) {

@@ -9,6 +9,7 @@ import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
 import model.Order;
+import model.OrderItem;
 import model.errors.ErrorCOrder;
 
 import java.sql.*;
@@ -111,25 +112,50 @@ public class DAOorderDB {
         return res;
     }
 
-    public Either<ErrorCOrder, Integer> add(Order order){
+    public Either<ErrorCOrder, Integer> add(Order order, List<OrderItem> orderItems){
         int rowsAffected;
         Either<ErrorCOrder, Integer> res;
-        try (Connection myConnection = pool.getConnection()){
-            PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.INSERT_ORDER, Statement.RETURN_GENERATED_KEYS);
-            pstmt.setInt(1,order.getIdOrd());
-            pstmt.setTimestamp(2, Timestamp.valueOf(order.getOrDate()));
-            pstmt.setInt(3, order.getIdCo());
-            pstmt.setInt(4, order.getIdTable());
-            rowsAffected = pstmt.executeUpdate();
-            if (rowsAffected != 1) {
-                res = Either.left(new ErrorCOrder(ConstantsDAO.ERROR_ADDING_ORDER, 0));
-            } else {
-                res = Either.right(rowsAffected);
+        try (Connection myConnection = pool.getConnection()) {
+            myConnection.setAutoCommit(false);  // Desactiva la confirmación automática
+
+            // Insertar el Order
+            try (PreparedStatement pstmtOrder = myConnection.prepareStatement(SQLqueries.INSERT_ORDER, Statement.RETURN_GENERATED_KEYS)) {
+                pstmtOrder.setInt(1, order.getIdOrd());
+                pstmtOrder.setTimestamp(2, Timestamp.valueOf(order.getOrDate()));
+                pstmtOrder.setInt(3, order.getIdCo());
+                pstmtOrder.setInt(4, order.getIdTable());
+                rowsAffected = pstmtOrder.executeUpdate();
+
+                if (rowsAffected != 1) {
+                    myConnection.rollback();  // Deshacer la transacción si falla la inserción del Order
+                    res = Either.left(new ErrorCOrder(ConstantsDAO.ERROR_ADDING_ORDER, 0));
+                } else {
+                    // Insertar los OrderItem
+                    for (OrderItem orderItem : orderItems) {
+                        try (PreparedStatement pstmtOrderItem = myConnection.prepareStatement(SQLqueries.INSERT_ORDER_ITEM)) {
+                            pstmtOrderItem.setInt(1, orderItem.getOrderId());
+                            pstmtOrderItem.setInt(2,order.getIdOrd());
+                            pstmtOrderItem.setInt(3, orderItem.getMenuItem());
+                            pstmtOrderItem.setInt(4, orderItem.getQuantity());
+                            pstmtOrderItem.executeUpdate();
+                        }
+                    }
+
+                    myConnection.commit();
+                    res = Either.right(rowsAffected);
+                }
+            } catch (SQLException e) {
+                myConnection.rollback();  // Deshacer la transacción si hay una excepción
+                log.error(e.getMessage(), e);
+                res = Either.left(new ErrorCOrder(e.getMessage(), 0));
+            } finally {
+                myConnection.setAutoCommit(true);  // Restablecer la confirmación automática
             }
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorCOrder(e.getMessage(), 0));
         }
+
         return res;
     }
 

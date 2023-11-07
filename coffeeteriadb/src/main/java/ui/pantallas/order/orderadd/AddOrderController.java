@@ -21,6 +21,7 @@ import services.SERVorderItem;
 import services.SERVtablesRestaurant;
 import ui.pantallas.common.BasePantallaController;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -99,7 +100,10 @@ public class AddOrderController extends BasePantallaController {
         LocalDateTime orderDate = LocalDateTime.now();
 
         Order newOrder = new Order( getNextOrderId() , orderDate,customerId, tableId);
-        Either<ErrorCOrder, Integer> saveResult = serVorder.add(newOrder);
+
+        List<OrderItem> orderItems = new ArrayList<>(mItemTable.getItems());
+
+        Either<ErrorCOrder, Integer> saveResult = serVorder.add(newOrder, orderItems);
         if (saveResult.isRight()) {
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setContentText(Constantes.THE_ORDER_HAS_BEEN_ADDED);
@@ -118,9 +122,6 @@ public class AddOrderController extends BasePantallaController {
     }
 
     public void addItem(ActionEvent actionEvent) {
-        int customerId = customerComboBox.getValue();
-        int tableId = tableComboBox.getValue();
-        LocalDateTime orderDate = LocalDateTime.now();
         String selectedItemName = menuItemsCBox.getValue();
         int quantity = Integer.parseInt(menuItemQuantity.getText());
 
@@ -134,9 +135,9 @@ public class AddOrderController extends BasePantallaController {
 
         if (selectedMenuItem != null) {
             int lastOrderItemId = getLastOrderItemIdFromDatabase();
-            Order o = new Order(getNextOrderId() , orderDate,customerId, tableId);
-            OrderItem newOrderItem = new OrderItem(lastOrderItemId, o.getIdOrd() , selectedMenuItem.getIdMItem(), quantity);
+            OrderItem newOrderItem = new OrderItem(lastOrderItemId, 0, selectedMenuItem.getIdMItem(), quantity);
 
+            // Agregar el nuevo OrderItem a la tabla
             mItemTable.getItems().add(newOrderItem);
             menuItemsCBox.getSelectionModel().clearSelection();
             menuItemQuantity.clear();
