@@ -33,8 +33,8 @@ public class SERVorder {
     /*Métodos*/
 
     public List<Order> getAll() {
-        //return daOorderDB.getAll().getOrNull();
-        return daOorderSpring.getAll().getOrNull();
+        return daOorderDB.getAll().getOrNull();
+        //return daOorderSpring.getAll().getOrNull();
     }
 
     public Either<ErrorCOrder, Order> getOrder(int i) {
@@ -45,8 +45,8 @@ public class SERVorder {
 
     }
 
-    public Either<ErrorCOrder, Integer> add(Order order, List<OrderItem> orderItems) {
-        return daOorderDB.add(order, orderItems);
+    public Either<ErrorCOrder, Integer> add(Order order) {
+        return daOorderDB.add(order);
     }
 
     public Either<ErrorCOrder, Integer> updateOrder(Order o) {

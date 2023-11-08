@@ -99,11 +99,12 @@ public class AddOrderController extends BasePantallaController {
         int tableId = tableComboBox.getValue();
         LocalDateTime orderDate = LocalDateTime.now();
 
-        Order newOrder = new Order( getNextOrderId() , orderDate,customerId, tableId);
+
 
         List<OrderItem> orderItems = new ArrayList<>(mItemTable.getItems());
+        Order newOrder = new Order(null,orderDate,customerId, tableId, orderItems);
 
-        Either<ErrorCOrder, Integer> saveResult = serVorder.add(newOrder, orderItems);
+        Either<ErrorCOrder, Integer> saveResult = serVorder.add(newOrder);
         if (saveResult.isRight()) {
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setContentText(Constantes.THE_ORDER_HAS_BEEN_ADDED);

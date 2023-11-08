@@ -137,7 +137,7 @@ public class UpdateOrderController extends BasePantallaController {
             String dateText = dateField.getText();
             LocalDateTime orderDateTime = LocalDateTime.parse(dateText);
 
-            Order updatedOrder = new Order(orderId, orderDateTime, customerId, tableId);
+            Order updatedOrder = new Order(orderId, orderDateTime, customerId, tableId, orderItemTable.getItems());
 
             Either<ErrorCOrder, Integer> updateResult = serVorder.updateOrder(updatedOrder);
 

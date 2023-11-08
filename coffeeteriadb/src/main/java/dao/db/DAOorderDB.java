@@ -11,6 +11,7 @@ import lombok.extern.log4j.Log4j2;
 import model.Order;
 import model.OrderItem;
 import model.errors.ErrorCOrder;
+import services.SERVorderItem;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -24,12 +25,14 @@ public class DAOorderDB {
     private final Configuration config;
     private final DBConnection db;
     private final DBConnectionPool pool;
+    private final SERVorderItem serv;
 
     @Inject
-    public DAOorderDB(Configuration config, DBConnection db, DBConnectionPool pool) {
+    public DAOorderDB(Configuration config, DBConnection db, DBConnectionPool pool, SERVorderItem serv) {
         this.config = config;
         this.db = db;
         this.pool = pool;
+        this.serv = serv;
     }
 
     public Either<ErrorCOrder, List<Order>> getAll(){
@@ -78,11 +81,21 @@ public class DAOorderDB {
                 myConnection.setAutoCommit(false);
                 pstmt.setTimestamp(1, Timestamp.valueOf(order.getOrDate()));
                 pstmt.setInt(2, order.getIdCo());
-                pstmt.setInt(3, order.getIdOrd());
-                pstmt.setInt(4, order.getIdTable());
+                pstmt.setInt(3, order.getIdTable());
+                pstmt.setInt(4, order.getIdOrd());
                 rowsAffected = pstmt.executeUpdate();
                 myConnection.commit();
                 res = Either.right(rowsAffected);
+            } catch (SQLException e){
+                log.error(e.getMessage(),e);
+                res = Either.left(new ErrorCOrder(e.getMessage(), 0));
+                try{
+                   myConnection.rollback();
+                } catch (SQLException ex){
+                    res = Either.left(new ErrorCOrder(e.getMessage(), 0));
+                }
+            } finally {
+                myConnection.setAutoCommit(true);
             }
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
@@ -112,7 +125,7 @@ public class DAOorderDB {
         return res;
     }
 
-    public Either<ErrorCOrder, Integer> add(Order order, List<OrderItem> orderItems){
+    public Either<ErrorCOrder, Integer> add(Order order){
         int rowsAffected;
         Either<ErrorCOrder, Integer> res;
         try (Connection myConnection = pool.getConnection()) {
@@ -120,20 +133,23 @@ public class DAOorderDB {
 
             //Lo del order
             try (PreparedStatement pstmtOrder = myConnection.prepareStatement(SQLqueries.INSERT_ORDER, Statement.RETURN_GENERATED_KEYS)) {
-                pstmtOrder.setInt(1, order.getIdOrd());
-                pstmtOrder.setTimestamp(2, Timestamp.valueOf(order.getOrDate()));
-                pstmtOrder.setInt(3, order.getIdCo());
-                pstmtOrder.setInt(4, order.getIdTable());
+                pstmtOrder.setTimestamp(1, Timestamp.valueOf(order.getOrDate()));
+                pstmtOrder.setInt(2, order.getIdCo());
+                pstmtOrder.setInt(3, order.getIdTable());
                 rowsAffected = pstmtOrder.executeUpdate();
+                ResultSet rs = pstmtOrder.getGeneratedKeys();
+                if (rs.next()){
+                    order.setIdOrd(rs.getInt(1));
+                }
 
                 if (rowsAffected != 1) {
                     myConnection.rollback();
                     res = Either.left(new ErrorCOrder(ConstantsDAO.ERROR_ADDING_ORDER, 0));
                 } else {
                     //Lo de los orderItems
-                    for (OrderItem orderItem : orderItems) {
+                    for (OrderItem orderItem : order.getOrderItems()) {
                         try (PreparedStatement pstmtOrderItem = myConnection.prepareStatement(SQLqueries.INSERT_ORDER_ITEM)) {
-                            pstmtOrderItem.setInt(1, orderItem.getOrderId());
+                            pstmtOrderItem.setInt(1, order.getOrderItems().get(0).getOrderId());
                             pstmtOrderItem.setInt(2,order.getIdOrd());
                             pstmtOrderItem.setInt(3, orderItem.getMenuItem());
                             pstmtOrderItem.setInt(4, orderItem.getQuantity());
@@ -170,7 +186,7 @@ public class DAOorderDB {
             }
             int customerId = rs.getInt(ConstantsDAO.CUSTOMER_ID);
             int tableId = rs.getInt(ConstantsDAO.TABLE_ID);
-            orderList.add(new Order(id, dateTime, customerId, tableId));
+            orderList.add(new Order(id, dateTime, customerId, tableId, serv.getAll().get()));
         }
         return orderList;
     }

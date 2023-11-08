@@ -14,7 +14,7 @@ public class Order {
 
     /*Atributos*/
 
-    private int idOrd;
+    private Integer idOrd;
     private LocalDateTime orDate;
     private int idCo;
     private int idTable;
