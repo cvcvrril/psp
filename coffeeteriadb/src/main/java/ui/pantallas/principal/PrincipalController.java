@@ -154,6 +154,12 @@ public class PrincipalController extends BasePantallaController {
 
     public void setStage(Stage stage) {
         primaryStage = stage;
+        primaryStage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeWindowsEvent);
+
+    }
+
+    private void closeWindowsEvent(WindowEvent event){
+        dbConnectionPool.closePool();
     }
 
     /*Menu Options*/

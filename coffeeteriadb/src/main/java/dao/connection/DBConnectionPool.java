@@ -9,10 +9,12 @@ import javax.sql.DataSource;
 import dao.ConstantsDAO;
 import jakarta.annotation.PreDestroy;
 import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
+@Singleton
 public class DBConnectionPool {
 
     private final Configuration config;
