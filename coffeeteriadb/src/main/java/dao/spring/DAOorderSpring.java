@@ -1,8 +1,8 @@
 package dao.spring;
 
 import common.SQLqueries;
+import dao.DAOorder;
 import dao.connection.DBConnectionPool;
-import dao.mappers.OrderItemMapper;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
@@ -14,7 +14,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 
 @Log4j2
-public class DAOorderSpring{
+public class DAOorderSpring implements DAOorder {
 
     private final DBConnectionPool pool;
 
@@ -47,5 +47,20 @@ public class DAOorderSpring{
             res = Either.right(orderList.get(0));
         }
         return res;
+    }
+
+    @Override
+    public Either<ErrorCOrder, Integer> add(Order t) {
+        return null;
+    }
+
+    @Override
+    public Either<ErrorCOrder, Integer> update(Order t) {
+        return null;
+    }
+
+    @Override
+    public Either<ErrorCOrder, Integer> delete(Order t) {
+        return null;
     }
 }

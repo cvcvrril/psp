@@ -12,7 +12,7 @@ public interface DAOorder {
 
     Either<ErrorCOrder, Order> get(int id);
 
-    Either<ErrorCOrder, Integer> save(Order t);
+    Either<ErrorCOrder, Integer> add(Order t);
 
     Either<ErrorCOrder, Integer> update(Order t);
 

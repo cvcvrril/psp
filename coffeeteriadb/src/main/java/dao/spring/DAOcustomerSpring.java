@@ -2,6 +2,7 @@ package dao.spring;
 
 import common.SQLqueries;
 import dao.ConstantsDAO;
+import dao.DAOcustomer;
 import dao.connection.DBConnectionPool;
 import dao.mappers.CustomerMapper;
 import io.vavr.control.Either;
@@ -23,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 @Log4j2
-public class DAOcustomerSpring {
+public class DAOcustomerSpring implements DAOcustomer {
 
     private final DBConnectionPool pool;
 
@@ -32,11 +33,16 @@ public class DAOcustomerSpring {
         this.pool = pool;
     }
 
-    public Either<ErrorCCustomer, List<Customer>> getAll() throws SQLException {
+    public Either<ErrorCCustomer, List<Customer>> getAll() {
         Either<ErrorCCustomer, List<Customer>> res;
-        JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
-        List<Customer> customerList = jtm.query(SQLqueries.SELECT_FROM_CUSTOMERS, new CustomerMapper());
-        res = Either.right(customerList);
+        try {
+            JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
+            List<Customer> customerList = jtm.query(SQLqueries.SELECT_FROM_CUSTOMERS, new CustomerMapper());
+            res = Either.right(customerList);
+        }catch (Exception e){
+            log.error(e.getMessage(), e);
+            res = Either.left(new ErrorCCustomer(e.getMessage(), 0));
+        }
         return res;
     }
 
