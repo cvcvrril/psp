@@ -33,8 +33,8 @@ public class SERVorder {
     /*Métodos*/
 
     public List<Order> getAll() {
-        return daOorderDB.getAll().getOrNull();
-        //return daOorderSpring.getAll().getOrNull();
+        //return daOorderDB.getAll().getOrNull();
+        return daOorderSpring.getAll().getOrNull();
     }
 
     public Either<ErrorCOrder, Order> getOrder(int i) {

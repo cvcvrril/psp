@@ -2,12 +2,13 @@ package dao.spring;
 
 import common.SQLqueries;
 import dao.connection.DBConnectionPool;
-import dao.mappers.OrderMapper;
+import dao.mappers.OrderItemMapper;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
 import model.Order;
 import model.errors.ErrorCOrder;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
@@ -22,12 +23,12 @@ public class DAOorderSpring{
         this.pool = pool;
     }
 
-    //TODO: resolver por qué me sale la lista vacía
+    //TODO: revisar query
 
     public Either<ErrorCOrder, List<Order>> getAll(){
         Either<ErrorCOrder, List<Order>> res;
         JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
-        List<Order> orderList = jtm.query(SQLqueries.SELECT_FROM_ORDERS, new OrderMapper());
+        List<Order> orderList = jtm.query(SQLqueries.SELECT_FROM_ORDERS_JOIN, BeanPropertyRowMapper.newInstance(Order.class));
         if (orderList.isEmpty()){
             res = Either.left(new ErrorCOrder("error", 0));
         } else {
@@ -39,7 +40,7 @@ public class DAOorderSpring{
     public Either<ErrorCOrder, Order> get(int id){
         Either<ErrorCOrder, Order> res;
         JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
-        List<Order> orderList = jtm.query(SQLqueries.SELECT_ORDERS_ID, new OrderMapper());
+        List<Order> orderList = jtm.query(SQLqueries.SELECT_ORDERS_ID, BeanPropertyRowMapper.newInstance(Order.class));
         if (orderList.isEmpty()){
             res = Either.left(new ErrorCOrder("error", 0));
         } else {

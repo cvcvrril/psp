@@ -23,5 +23,7 @@ public class SQLqueries {
     public static final String SELECT_FROM_CREDENTIAL = "select * from credential";
     public static final String INSERT_ORDER_ITEM = "INSERT INTO order_items (order_item_id, order_id, menu_item_id, quantity) VALUES (?, ?, ?, ?)";
     public static final String SELECT_CREDENTIAL_ID_FROM_CUSTOMERS_WHERE_ID = "SELECT credential_id FROM customers WHERE id=?";
+    public static final String SELECT_FROM_ORDERS_JOIN = "SELECT * FROM orders inner join order_items on orders.order_id = order_items.order_id inner join menu_items on order_items.menu_item_id = menu_items.menu_item_id";
+    public static final String UPDATE_CUSTOMERS_JOIN = "";
 }
 
