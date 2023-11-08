@@ -35,11 +35,8 @@ public class SERVcustomer {
 
     public Either<ErrorCCustomer, List<Customer>> getAll() {
         //return daOcustomerDB.getAll();
-        try {
-            return daOcustomerSpring.getAll();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+         return daOcustomerSpring.getAll();
+
 
     }
 
