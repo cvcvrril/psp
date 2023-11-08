@@ -59,8 +59,8 @@ public class SERVcustomer {
     }
 
     public Either<ErrorCCustomer, Integer> update(Customer customer) {
-        return daOcustomerDB.update(customer);
-        //return daOcustomerSpring.update(customer);
+        //return daOcustomerDB.update(customer);
+        return daOcustomerSpring.update(customer);
     }
 
     public Either<ErrorCCustomer, Integer> add(Customer customer, Credential credential) {
