@@ -10,8 +10,12 @@ import model.Order;
 import model.errors.ErrorCOrder;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Log4j2
 public class DAOorderSpring implements DAOorder {
@@ -49,9 +53,31 @@ public class DAOorderSpring implements DAOorder {
         return res;
     }
 
+    //TODO: AJUSTAR ESTO
+
     @Override
-    public Either<ErrorCOrder, Integer> add(Order t) {
-        return null;
+    public Either<ErrorCOrder, Integer> add(Order newOrder) {
+        Either<ErrorCOrder, Integer> res;
+        try{
+            SimpleJdbcInsert orderInsert = new SimpleJdbcInsert(new JdbcTemplate());
+            Map<String, Object> orderParams = new HashMap<>();
+            orderParams.put("order_id", newOrder.getIdOrd());
+            orderParams.put("order_date", newOrder.getOrDate());
+            orderParams.put("customer_id", newOrder.getIdCo());
+            orderParams.put("table_id", newOrder.getIdTable());
+
+            int orderRowsAffected = orderInsert.execute(orderParams);
+
+            if (orderRowsAffected == 1){
+                res = Either.right((int)orderInsert.executeAndReturnKey(orderParams));
+            }else {
+                res = Either.left(new ErrorCOrder("Error", 0));
+            }
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+            res = Either.left(new ErrorCOrder("Error", 0));
+        }
+        return res;
     }
 
     @Override
