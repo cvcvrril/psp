@@ -2,6 +2,7 @@ package services;
 
 import dao.db.DAOcustomerDB;
 import dao.db.DAOorderDB;
+import dao.spring.DAOorderSpring;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import model.Customer;
@@ -19,18 +20,21 @@ import java.util.stream.Collectors;
 public class SERVorder {
     private final DAOcustomerDB daOcustomerDB;
     private final DAOorderDB daOorderDB;
+    private final DAOorderSpring daOorderSpring;
 
 
     @Inject
-    public SERVorder(DAOcustomerDB daOcustomerDB, DAOorderDB daOorderDB) {
+    public SERVorder(DAOcustomerDB daOcustomerDB, DAOorderDB daOorderDB, DAOorderSpring daOorderSpring) {
         this.daOcustomerDB = daOcustomerDB;
         this.daOorderDB = daOorderDB;
+        this.daOorderSpring = daOorderSpring;
     }
 
     /*Métodos*/
 
     public List<Order> getAll() {
         return daOorderDB.getAll().getOrNull();
+        //return daOorderSpring.getAll().getOrNull();
     }
 
     public Either<ErrorCOrder, Order> getOrder(int i) {
