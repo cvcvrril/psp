@@ -123,14 +123,12 @@ public class PrincipalController extends BasePantallaController {
         menuPrincipal.setVisible(true);
         if(credential.getId() < 0){
             cargarPantalla(Pantallas.WELCOME);
-            menuOptions.setDisable(false);
             menuCustomers.setDisable(false);
             menuOrdersAdd.setDisable(true);
             menuOrdersUpdate.setDisable(false);
             menuOrdersDelete.setDisable(false);
         } else {
             cargarPantalla(Pantallas.WELCOME);
-            menuOptions.setDisable(false);
             menuCustomers.setDisable(true);
             menuOrders.setDisable(false);
             menuOrdersList.setDisable(false);

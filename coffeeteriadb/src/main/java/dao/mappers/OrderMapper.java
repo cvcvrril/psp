@@ -10,7 +10,8 @@ public class OrderMapper implements RowMapper<Order> {
     @Override
     public Order mapRow(ResultSet rs, int rowNum) throws SQLException {
         Order order = new Order();
-        
+        order.setIdOrd(rs.getInt(""));
+        order.setOrDate(rs.getDate("").toLocalDate().atStartOfDay());
         return order;
     }
 }

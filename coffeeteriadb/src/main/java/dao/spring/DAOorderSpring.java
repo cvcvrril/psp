@@ -28,7 +28,7 @@ public class DAOorderSpring{
     public Either<ErrorCOrder, List<Order>> getAll(){
         Either<ErrorCOrder, List<Order>> res;
         JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
-        List<Order> orderList = jtm.query(SQLqueries.SELECT_FROM_ORDERS_JOIN, BeanPropertyRowMapper.newInstance(Order.class));
+        List<Order> orderList = jtm.query(SQLqueries.SELECT_FROM_ORDERS, BeanPropertyRowMapper.newInstance(Order.class));
         if (orderList.isEmpty()){
             res = Either.left(new ErrorCOrder("error", 0));
         } else {

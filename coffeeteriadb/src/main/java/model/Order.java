@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -17,12 +18,5 @@ public class Order {
     private LocalDateTime orDate;
     private int idCo;
     private int idTable;
-
-
-    /*Construcctores*/
-
-
-    public String toStringFile() {
-        return idCo + ";" + idOrd + ";" + idTable + ";" + orDate + "\n";
-    }
+    private List<OrderItem> orderItems;
 }

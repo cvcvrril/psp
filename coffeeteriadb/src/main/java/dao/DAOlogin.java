@@ -1,4 +1,4 @@
-package dao.interfaces;
+package dao;
 
 import model.Credential;
 
