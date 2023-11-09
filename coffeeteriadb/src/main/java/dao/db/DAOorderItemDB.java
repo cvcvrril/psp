@@ -9,6 +9,7 @@ import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
 import model.OrderItem;
 import model.errors.ErrorCOrderItem;
+import services.SERVmenuItems;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,11 +20,13 @@ public class DAOorderItemDB {
 
     private final Configuration configuration;
     private final DBConnection db;
+    private final SERVmenuItems serVmenuItems;
 
     @Inject
-    public DAOorderItemDB(Configuration configuration, DBConnection db) {
+    public DAOorderItemDB(Configuration configuration, DBConnection db, SERVmenuItems serVmenuItems) {
         this.configuration = configuration;
         this.db = db;
+        this.serVmenuItems = serVmenuItems;
     }
 
     public Either<ErrorCOrderItem, List<OrderItem>> getAll(){
@@ -101,7 +104,7 @@ public class DAOorderItemDB {
             int orderId = rs.getInt(ConstantsDAO.ORDER_ID);
             int menuItemId = rs.getInt(ConstantsDAO.MENU_ITEM_ID);
             int quantity = rs.getInt(ConstantsDAO.QUANTITY);
-            orderItemList.add(new OrderItem(id, orderId, menuItemId, quantity));
+            orderItemList.add(new OrderItem(id, orderId, menuItemId, quantity, serVmenuItems.getAll().getOrNull()));
         }
         return orderItemList;
     }
