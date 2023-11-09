@@ -3,10 +3,10 @@ package dao;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import common.Configuration;
-import dao.ConstantsDAO;
 import jakarta.annotation.PreDestroy;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -36,11 +36,17 @@ public class DBConnectionPool {
         hikariConfig.addDataSourceProperty("prepStmtCacheSize", 250);
         hikariConfig.addDataSourceProperty("prepStmtCacheSqlLimit", 2048);
 
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(config.getPropertySQL(ConstantsDAO.DRIVER));
+        dataSource.setUrl(config.getPropertySQL(ConstantsDAO.PATH_DB));
+        dataSource.setUsername(config.getPropertySQL(ConstantsDAO.USER_DB));
+        dataSource.setPassword(config.getPropertySQL(ConstantsDAO.DRIVER));
+
         return new HikariDataSource(hikariConfig);
     }
 
     public Connection getConnection() {
-        Connection con=null;
+        Connection con = null;
         try {
             con = hikariDataSource.getConnection();
         } catch (SQLException e) {
