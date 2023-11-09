@@ -3,6 +3,7 @@ package dao.spring;
 import common.SQLqueries;
 import dao.DAOorder;
 import dao.connection.DBConnectionPool;
+import dao.mappers.OrderMapper;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
@@ -32,7 +33,7 @@ public class DAOorderSpring implements DAOorder {
     public Either<ErrorCOrder, List<Order>> getAll(){
         Either<ErrorCOrder, List<Order>> res;
         JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
-        List<Order> orderList = jtm.query(SQLqueries.SELECT_FROM_ORDERS, BeanPropertyRowMapper.newInstance(Order.class));
+        List<Order> orderList = jtm.query(SQLqueries.SELECT_FROM_ORDERS, new OrderMapper());
         if (orderList.isEmpty()){
             res = Either.left(new ErrorCOrder("error", 0));
         } else {
@@ -44,7 +45,7 @@ public class DAOorderSpring implements DAOorder {
     public Either<ErrorCOrder, Order> get(int id){
         Either<ErrorCOrder, Order> res;
         JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
-        List<Order> orderList = jtm.query(SQLqueries.SELECT_ORDERS_ID, BeanPropertyRowMapper.newInstance(Order.class));
+        List<Order> orderList = jtm.query(SQLqueries.SELECT_ORDERS_ID, new OrderMapper());
         if (orderList.isEmpty()){
             res = Either.left(new ErrorCOrder("error", 0));
         } else {
@@ -67,7 +68,6 @@ public class DAOorderSpring implements DAOorder {
             orderParams.put("table_id", newOrder.getIdTable());
 
             int orderRowsAffected = orderInsert.execute(orderParams);
-
             if (orderRowsAffected == 1){
                 res = Either.right((int)orderInsert.executeAndReturnKey(orderParams));
             }else {

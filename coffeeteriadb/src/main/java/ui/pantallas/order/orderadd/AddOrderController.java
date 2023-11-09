@@ -136,7 +136,7 @@ public class AddOrderController extends BasePantallaController {
 
         if (selectedMenuItem != null) {
             int lastOrderItemId = getLastOrderItemIdFromDatabase();
-            OrderItem newOrderItem = new OrderItem(lastOrderItemId, 0, selectedMenuItem.getIdMItem(), quantity);
+            OrderItem newOrderItem = new OrderItem(lastOrderItemId, 0, selectedMenuItem.getIdMItem(), quantity, (List<MenuItem>) serVmenuItems.get(0));
 
             // Agregar el nuevo OrderItem a la tabla
             mItemTable.getItems().add(newOrderItem);
