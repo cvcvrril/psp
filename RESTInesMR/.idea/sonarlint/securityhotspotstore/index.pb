@@ -95,3 +95,7 @@ e
 5src/main/java/dao/modelo/errores/ErrorCOrderItem.java,5\6\56c5906cf805981757f81952c203f6c8b10a11a0
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+`
+0src/main/java/jakarta/rest/JAXRSApplication.java,4\1\418ec6364e498240ce1f0314881a7cd9fc30a7f7
+Z
+*src/main/java/jakarta/rest/RESTtables.java,1\8\18418c709d5d481431e899a54d938c6fb7ccebf6
