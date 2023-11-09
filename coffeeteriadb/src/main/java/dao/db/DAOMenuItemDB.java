@@ -16,8 +16,6 @@ import java.util.List;
 @Log4j2
 public class DAOMenuItemDB {
 
-    //TODO: hacer el get(i) y el getAll()
-
     private final Configuration configuration;
     private final DBConnection db;
 
