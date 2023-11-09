@@ -1,0 +1,102 @@
+package dao.db;
+
+import common.Configuration;
+import common.SQLqueries;
+import dao.ConstantsDAO;
+import dao.DBConnection;
+import dao.modelo.OrderItem;
+import io.vavr.control.Either;
+import jakarta.inject.Inject;
+import lombok.extern.log4j.Log4j2;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class DAOorderItemDB {
+
+    private final Configuration configuration;
+    private final DBConnection db;
+
+    @Inject
+    public DAOorderItemDB(Configuration configuration, DBConnection db) {
+        this.configuration = configuration;
+        this.db = db;
+    }
+
+    public Either<Exception, List<OrderItem>> getAll() {
+        List<OrderItem> orderItemList = new ArrayList<>();
+        Either<Exception, List<OrderItem>> res;
+        try (Connection myconnection = db.getConnection()) {
+            Statement stmt = myconnection.createStatement();
+            ResultSet rs = stmt.executeQuery(SQLqueries.SELECT_FROM_ORDER_ITEMS);
+            orderItemList = readRS(rs);
+            res = Either.right(orderItemList);
+        } catch (SQLException e) {
+            throw new RuntimeException();
+        }
+        return res;
+    }
+
+    public Either<Exception, OrderItem> get(int id) {
+        Either<Exception, OrderItem> res;
+        try (Connection myconnection = db.getConnection()) {
+            PreparedStatement pstmt = myconnection.prepareStatement("select * from order_items where order_item_id = ?");
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            List<OrderItem> orderItemList = readRS(rs);
+            if (!orderItemList.isEmpty()) {
+                res = Either.right(orderItemList.get(0));
+            } else {
+                throw new RuntimeException();
+            }
+        } catch (SQLException e) {
+                throw new RuntimeException();
+        }
+        return res;
+    }
+
+    public Either<Exception, List<OrderItem>> getByOrderId(int orderId) {
+        List<OrderItem> orderItemList = new ArrayList<>();
+        Either<Exception, List<OrderItem>> res;
+        try (Connection myconnection = db.getConnection()) {
+            PreparedStatement pstmt = myconnection.prepareStatement("select * from order_items where order_id = ?");
+            pstmt.setInt(1, orderId);
+            ResultSet rs = pstmt.executeQuery();
+            orderItemList = readRS(rs);
+            res = Either.right(orderItemList);
+        } catch (SQLException e) {
+            throw new RuntimeException();
+        }
+        return res;
+    }
+
+    public Either<Exception, Integer> update(OrderItem orderItem) {
+        int rowsAffected;
+        Either<Exception, Integer> res;
+        try (Connection myConnection = db.getConnection()) {
+            PreparedStatement pstmt = myConnection.prepareStatement("update order_items set order_item_id=?, order_id=?, menu_item_id=?, quantity=?");
+            pstmt.setInt(1, orderItem.getId());
+            pstmt.setInt(2, orderItem.getOrderId());
+            pstmt.setInt(3, orderItem.getMenuItem());
+            pstmt.setInt(4, orderItem.getQuantity());
+            rowsAffected = pstmt.executeUpdate();
+            res = Either.right(rowsAffected);
+        } catch (SQLException e) {
+            throw  new RuntimeException();
+        }
+        return res;
+    }
+
+    private List<OrderItem> readRS(ResultSet rs) throws SQLException {
+        List<OrderItem> orderItemList = new ArrayList<>();
+        while (rs.next()) {
+            int id = rs.getInt(ConstantsDAO.ORDER_ITEM_ID);
+            int orderId = rs.getInt(ConstantsDAO.ORDER_ID);
+            int menuItemId = rs.getInt(ConstantsDAO.MENU_ITEM_ID);
+            int quantity = rs.getInt(ConstantsDAO.QUANTITY);
+            orderItemList.add(new OrderItem(id, orderId, menuItemId, quantity));
+        }
+        return orderItemList;
+    }
+}

@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.Properties;
 
 @Singleton
-@Log4j2
 public class Configuration {
 
     private Properties ptxt;

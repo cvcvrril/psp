@@ -10,13 +10,13 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+public class Order {
 
-public class Orden {
+    /*Atributos*/
 
-    private Integer idOr;
+    private Integer idOrd;
     private LocalDateTime orDate;
-    private int idCu;
+    private int idCo;
     private int idTable;
-    private List<OrdenItem> ordenItems;
-
+    private List<OrderItem> orderItems;
 }
