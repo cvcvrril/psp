@@ -7,9 +7,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Mesa {
 
-    private int idTable;
-    private int numSeats;
+public class MenuItem {
+
+    private int id;
+    private String nameItem;
+    private String description;
+    private float price;
 
 }
