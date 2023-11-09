@@ -99,3 +99,5 @@ e
 0src/main/java/jakarta/rest/JAXRSApplication.java,4\1\418ec6364e498240ce1f0314881a7cd9fc30a7f7
 Z
 *src/main/java/jakarta/rest/RESTtables.java,1\8\18418c709d5d481431e899a54d938c6fb7ccebf6
+W
+'src/main/java/jakarta/di/Producers.java,c\8\c823d5df9df3c3fb5cff7cf4f1e8ab3693fd2fee
