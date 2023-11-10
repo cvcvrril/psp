@@ -17,11 +17,11 @@ public class SERVorder {
         this.daOorderDB = daOorderDB;
     }
 
-    public List<Order> getAll() {
-        return daOorderDB.getAll().getOrNull();
+    public Either <ErrorCOrder,List<Order>> getAll() {
+        return daOorderDB.getAll();
     }
 
-    public Either<Exception, Order> getOrder(int i) {
+    public Either<ErrorCOrder, Order> getOrder(int i) {
         if (i > 0)
             return daOorderDB.get(i);
         else

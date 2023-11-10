@@ -34,9 +34,9 @@ public class DAOorderDB {
         this.serv = serv;
     }
 
-    public Either<Exception, List<Order>> getAll() {
+    public Either<ErrorCOrder, List<Order>> getAll() {
         List<Order> orderList = new ArrayList<>();
-        Either<Exception, List<Order>> res;
+        Either<ErrorCOrder, List<Order>> res;
         try (Connection myConnection = pool.getConnection()) {
             Statement stmt = myConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
@@ -49,8 +49,8 @@ public class DAOorderDB {
         return res;
     }
 
-    public Either<Exception, Order> get(int id) {
-        Either<Exception, Order> res;
+    public Either<ErrorCOrder, Order> get(int id) {
+        Either<ErrorCOrder, Order> res;
         try (Connection myConnection = pool.getConnection()) {
             PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.SELECT_ORDERS_ID);
             pstmt.setInt(1, id);
