@@ -1,8 +1,6 @@
 package jakarta.rest;
 
 import dao.modelo.Order;
-import dao.modelo.errores.ErrorCOrder;
-import domain.modelo.excepciones.BaseCaidaException;
 import domain.servicios.SERVorder;
 import io.vavr.control.Either;
 import jakarta.excepciones.ApiError;
@@ -26,34 +24,32 @@ public class RESTorders {
     }
 
     @GET
-    public Response getAllOrder(){
-        try {
-            Either<ApiError,List<Order>> result = serv.getAll();
+    public Response getAllOrder() {
+        Either<ApiError, List<Order>> result = serv.getAll();
+        if (result.isRight()) {
             return Response.ok(result.get()).build();
-        } catch (BaseCaidaException e){
-            return Response.status(Response.Status.NOT_FOUND)
-                    .entity(new ErrorCOrder(e.getMessage(),0))
-                    .build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
         }
+
+
     }
 
     @GET
     @Path("/{id}")
-    public Response getIdOrder(@PathParam("id") Integer id){
-        try {
-            Either<ApiError, Order> result = serv.getOrder(id);
+    public Response getIdOrder(@PathParam("id") Integer id) {
+        Either<ApiError, Order> result = serv.getOrder(id);
+        if (result.isRight()) {
             return Response.ok(result.get()).build();
-        }catch (BaseCaidaException e){
-            return Response.status(Response.Status.NOT_FOUND)
-                    .entity(new ErrorCOrder(e.getMessage(),0))
-                    .build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
         }
     }
 
     @POST
-    public Response addOrder(Order newOrder){
+    public Response addOrder(Order newOrder) {
         Either<ApiError, Integer> result = serv.add(newOrder);
-        if (result.isRight()){
+        if (result.isRight()) {
             return Response.status(Response.Status.CREATED).entity(result.get()).build();
         } else {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
@@ -61,9 +57,9 @@ public class RESTorders {
     }
 
     @PUT
-    public Response updateOrder(Order updatedOrder){
+    public Response updateOrder(Order updatedOrder) {
         Either<ApiError, Integer> result = serv.updateOrder(updatedOrder);
-        if (result.isRight()){
+        if (result.isRight()) {
             return Response.ok(result.get()).build();
         } else {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
@@ -72,12 +68,12 @@ public class RESTorders {
 
     @DELETE
     @Path("/{id}")
-    public Response deleteOrder(@PathParam("id")Integer id){
+    public Response deleteOrder(@PathParam("id") Integer id) {
         Either<ApiError, Integer> result = serv.delOrder(id);
-        if (result.isRight()){
+        if (result.isRight()) {
             return Response.ok(result.get()).build();
         } else {
-            return Response.status(500,"Dios ha muerto").build();
+            return Response.status(500, "Dios ha muerto").build();
         }
     }
 }

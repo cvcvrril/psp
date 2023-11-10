@@ -1,7 +1,6 @@
 package jakarta.rest;
 
 import dao.modelo.TableRestaurant;
-import dao.modelo.errores.ErrorCTables;
 import domain.servicios.SERVtablesRestaurant;
 import io.vavr.control.Either;
 import jakarta.excepciones.ApiError;

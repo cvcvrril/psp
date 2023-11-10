@@ -7,7 +7,6 @@ import dao.DBConnection;
 import dao.DBConnectionPool;
 import dao.modelo.Order;
 import dao.modelo.OrderItem;
-import dao.modelo.errores.ErrorCOrder;
 import domain.modelo.excepciones.BadArgumentException;
 import domain.modelo.excepciones.BaseCaidaException;
 import domain.modelo.excepciones.WrongObjectException;

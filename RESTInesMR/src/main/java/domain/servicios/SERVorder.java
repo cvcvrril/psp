@@ -2,7 +2,6 @@ package domain.servicios;
 
 import dao.db.DAOorderDB;
 import dao.modelo.Order;
-import dao.modelo.errores.ErrorCOrder;
 import io.vavr.control.Either;
 import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;

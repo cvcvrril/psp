@@ -24,15 +24,24 @@ public class RESTmenuItem {
     }
 
     @GET
-    public Response getAllMenuItems(){
+    public Response getAllMenuItems() {
         Either<ApiError, List<MenuItem>> result = sev.getAll();
-        return Response.ok(result.get()).build();
+        if (result.isRight()) {
+            return Response.ok(result.get()).build();
+        }else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
+        }
     }
 
     @GET
     @Path("/{id}")
-    public Response getIdMenuItem(@PathParam("id") Integer id){
+    public Response getIdMenuItem(@PathParam("id") Integer id) {
         Either<ApiError, MenuItem> result = sev.get(id);
-        return Response.ok(result.get()).build();
+        if (result.isRight()) {
+            return Response.ok(result.get()).build();
+        }else {
+             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
+        }
     }
+
 }

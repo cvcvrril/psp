@@ -2,7 +2,6 @@ package domain.servicios;
 
 import dao.db.DAOMenuItemDB;
 import dao.modelo.MenuItem;
-import dao.modelo.errores.ErrorCMenuItem;
 import io.vavr.control.Either;
 import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;

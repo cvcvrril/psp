@@ -9,7 +9,6 @@ import domain.modelo.excepciones.BaseCaidaException;
 import io.vavr.control.Either;
 import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.core.Response;
 import lombok.extern.log4j.Log4j2;
 
 import java.sql.*;

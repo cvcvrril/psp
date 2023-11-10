@@ -5,7 +5,10 @@ import common.SQLqueries;
 import dao.ConstantsDAO;
 import dao.DBConnection;
 import dao.modelo.OrderItem;
+import domain.modelo.excepciones.BadArgumentException;
+import domain.modelo.excepciones.BaseCaidaException;
 import io.vavr.control.Either;
+import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
 
@@ -13,6 +16,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Log4j2
 public class DAOorderItemDB {
 
     private final Configuration configuration;
@@ -24,22 +28,22 @@ public class DAOorderItemDB {
         this.db = db;
     }
 
-    public Either<Exception, List<OrderItem>> getAll() {
+    public Either<ApiError, List<OrderItem>> getAll() {
         List<OrderItem> orderItemList = new ArrayList<>();
-        Either<Exception, List<OrderItem>> res;
+        Either<ApiError, List<OrderItem>> res;
         try (Connection myconnection = db.getConnection()) {
             Statement stmt = myconnection.createStatement();
             ResultSet rs = stmt.executeQuery(SQLqueries.SELECT_FROM_ORDER_ITEMS);
             orderItemList = readRS(rs);
             res = Either.right(orderItemList);
         } catch (SQLException e) {
-            throw new RuntimeException();
+            throw new BaseCaidaException("Error al conectarse con la base de datos");
         }
         return res;
     }
 
-    public Either<Exception, OrderItem> get(int id) {
-        Either<Exception, OrderItem> res;
+    public Either<ApiError, OrderItem> get(int id) {
+        Either<ApiError, OrderItem> res;
         try (Connection myconnection = db.getConnection()) {
             PreparedStatement pstmt = myconnection.prepareStatement("select * from order_items where order_item_id = ?");
             pstmt.setInt(1, id);
@@ -48,17 +52,17 @@ public class DAOorderItemDB {
             if (!orderItemList.isEmpty()) {
                 res = Either.right(orderItemList.get(0));
             } else {
-                throw new RuntimeException();
+                throw new BaseCaidaException("Error al conectarse con la base de datos");
             }
         } catch (SQLException e) {
-                throw new RuntimeException();
+            throw new BaseCaidaException("Error al conectarse con la base de datos");
         }
         return res;
     }
 
-    public Either<Exception, List<OrderItem>> getByOrderId(int orderId) {
+    public Either<ApiError, List<OrderItem>> getByOrderId(int orderId) {
         List<OrderItem> orderItemList = new ArrayList<>();
-        Either<Exception, List<OrderItem>> res;
+        Either<ApiError, List<OrderItem>> res;
         try (Connection myconnection = db.getConnection()) {
             PreparedStatement pstmt = myconnection.prepareStatement("select * from order_items where order_id = ?");
             pstmt.setInt(1, orderId);
@@ -66,14 +70,14 @@ public class DAOorderItemDB {
             orderItemList = readRS(rs);
             res = Either.right(orderItemList);
         } catch (SQLException e) {
-            throw new RuntimeException();
+            throw new BaseCaidaException("Error al conectarse con la base de datos");
         }
         return res;
     }
 
-    public Either<Exception, Integer> update(OrderItem orderItem) {
+    public Either<ApiError, Integer> update(OrderItem orderItem) {
         int rowsAffected;
-        Either<Exception, Integer> res;
+        Either<ApiError, Integer> res;
         try (Connection myConnection = db.getConnection()) {
             PreparedStatement pstmt = myConnection.prepareStatement("update order_items set order_item_id=?, order_id=?, menu_item_id=?, quantity=?");
             pstmt.setInt(1, orderItem.getId());
@@ -83,7 +87,7 @@ public class DAOorderItemDB {
             rowsAffected = pstmt.executeUpdate();
             res = Either.right(rowsAffected);
         } catch (SQLException e) {
-            throw  new RuntimeException();
+            throw new BadArgumentException("Error al meter alguno de los argumentos");
         }
         return res;
     }

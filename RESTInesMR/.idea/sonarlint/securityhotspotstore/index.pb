@@ -87,3 +87,7 @@ q
 Asrc/main/java/jakarta/excepciones/WrongObjectExceptionMapper.java,1\b\1b8910521c0616980242f7171f2e787b751d9768
 \
 ,src/main/java/jakarta/rest/RESTmenuItem.java,5\b\5b0df7ef6f3d39987417bf0f4310a372b6082927
+l
+<src/main/java/domain/modelo/excepciones/TeaPotException.java,8\9\8907d8c3f6867b5a5572cdbffc86ec0d4929cbf7
+l
+<src/main/java/jakarta/excepciones/TeaPotExceptionMapper.java,5\e\5ea70b25cd934515fc9249949fe6ab4b7a356729

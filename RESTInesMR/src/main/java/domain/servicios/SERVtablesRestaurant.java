@@ -2,7 +2,6 @@
 
     import dao.db.DAOtablesDB;
     import dao.modelo.TableRestaurant;
-    import dao.modelo.errores.ErrorCTables;
     import io.vavr.control.Either;
     import jakarta.excepciones.ApiError;
     import jakarta.inject.Inject;

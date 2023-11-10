@@ -3,7 +3,6 @@ package dao.db;
 import common.Configuration;
 import dao.DBConnection;
 import dao.modelo.MenuItem;
-import dao.modelo.errores.ErrorCMenuItem;
 import domain.modelo.excepciones.BaseCaidaException;
 import io.vavr.control.Either;
 import jakarta.excepciones.ApiError;
@@ -14,10 +13,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Log4j2
 public class DAOMenuItemDB {
-
-    //TODO: hacer el get(i) y el getAll()
 
     private final Configuration configuration;
     private final DBConnection db;
