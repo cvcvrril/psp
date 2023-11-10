@@ -37,7 +37,8 @@ public class DAOorderItemDB {
             orderItemList = readRS(rs);
             res = Either.right(orderItemList);
         } catch (SQLException e) {
-            throw new BaseCaidaException("Error al conectarse con la base de datos");
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
         return res;
     }
@@ -52,10 +53,11 @@ public class DAOorderItemDB {
             if (!orderItemList.isEmpty()) {
                 res = Either.right(orderItemList.get(0));
             } else {
-                throw new BaseCaidaException("Error al conectarse con la base de datos");
+                throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
             }
         } catch (SQLException e) {
-            throw new BaseCaidaException("Error al conectarse con la base de datos");
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
         return res;
     }
@@ -70,7 +72,8 @@ public class DAOorderItemDB {
             orderItemList = readRS(rs);
             res = Either.right(orderItemList);
         } catch (SQLException e) {
-            throw new BaseCaidaException("Error al conectarse con la base de datos");
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
         return res;
     }
@@ -87,7 +90,8 @@ public class DAOorderItemDB {
             rowsAffected = pstmt.executeUpdate();
             res = Either.right(rowsAffected);
         } catch (SQLException e) {
-            throw new BadArgumentException("Error al meter alguno de los argumentos");
+            log.error(e.getMessage(), e);
+            throw new BadArgumentException(ConstantsDAO.BAD_ARGUMENT_EXCEPTION);
         }
         return res;
     }

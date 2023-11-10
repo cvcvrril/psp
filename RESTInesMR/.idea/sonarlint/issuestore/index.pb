@@ -91,3 +91,12 @@ l
 <src/main/java/domain/modelo/excepciones/TeaPotException.java,8\9\8907d8c3f6867b5a5572cdbffc86ec0d4929cbf7
 l
 <src/main/java/jakarta/excepciones/TeaPotExceptionMapper.java,5\e\5ea70b25cd934515fc9249949fe6ab4b7a356729
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+[
++src/main/resources/config/config.properties,a\1\a1f4ed1d29a3eebd1d8a358867311b4bf7421c05
+Z
+*src/main/resources/config/propertiesDB.xml,8\7\87b235e703f3a3630b1d9cc51b29bc8de3419f14
+X
+(src/main/resources/config/properties.xml,6\7\67a4007b83808db067bd91097f31fac290f5cfbf

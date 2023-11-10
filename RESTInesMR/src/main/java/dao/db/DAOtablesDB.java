@@ -12,7 +12,6 @@ import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
 
 import java.sql.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +36,8 @@ public class DAOtablesDB {
             tableRestaurantList = readRS(rs);
             res = Either.right(tableRestaurantList);
         } catch (SQLException e) {
-            throw new BaseCaidaException("Error al interactuar con la base de datos");
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
         return res;
     }
@@ -52,12 +52,12 @@ public class DAOtablesDB {
             if (!tableRestaurantList.isEmpty()){
                 res = Either.right(tableRestaurantList.get(0));
             }else {
-                //res = Either.left(new ApiError("Error al interactuar con la base de datos", LocalDateTime.now()));
-                throw new BaseCaidaException("Error al interactuar con la base de datos");
+                throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
             }
             rs.close();
         } catch (SQLException e) {
-            throw new BaseCaidaException("Error al interactuar con la base de datos");
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
         return res;
     }
@@ -72,7 +72,8 @@ public class DAOtablesDB {
             }
             return tableRestaurantList;
         }catch (SQLException e){
-            throw new BaseCaidaException("Error al leer la base de datos");
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
     }
 }

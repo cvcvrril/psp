@@ -22,7 +22,9 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
+@Log4j2
 public class DAOorderDB {
+
 
     private final Configuration config;
     private final DBConnection db;
@@ -47,7 +49,8 @@ public class DAOorderDB {
             orderList = readRS(rs);
             res = Either.right(orderList);
         } catch (SQLException e) {
-            throw new BaseCaidaException("Error al conectarse con la base de datos");
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
         return res;
     }
@@ -62,11 +65,12 @@ public class DAOorderDB {
             if (!orderList.isEmpty()) {
                 res = Either.right(orderList.get(0));
             } else {
-                throw new BaseCaidaException("Error al conectarse con la base de datos");
+                throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
             }
             rs.close();
         } catch (SQLException e) {
-            throw new BaseCaidaException("Error al conectarse con la base de datos");
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
         return res;
     }
@@ -86,12 +90,14 @@ public class DAOorderDB {
                 myConnection.commit();
                 res = Either.right(rowsAffected);
             } catch (SQLException e) {
-                throw new BadArgumentException("Error al meter alguno de los argumentos");
+                log.error(e.getMessage(), e);
+                throw new BadArgumentException(ConstantsDAO.BAD_ARGUMENT_EXCEPTION);
             } finally {
                 myConnection.setAutoCommit(true);
             }
         } catch (SQLException e) {
-            throw new BaseCaidaException("Error al conectarse con la base de datos");
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
         return res;
     }
@@ -106,12 +112,13 @@ public class DAOorderDB {
             pstmt2.setInt(1, id);
             int rowsAffected = pstmt2.executeUpdate();
             if (rowsAffected != 1) {
-                throw new WrongObjectException("Error al seleccionar el objeto de la base de datos");
+                throw new WrongObjectException(ConstantsDAO.WRONG_OBJECT_EXCEPTION);
             } else {
                 res = Either.right(rowsAffected);
             }
         } catch (SQLException e) {
-            throw new BaseCaidaException("Error al conectarse con la base de datos");
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
         return res;
     }
@@ -135,7 +142,7 @@ public class DAOorderDB {
 
                 if (rowsAffected != 1) {
                     myConnection.rollback();
-                    throw new BadArgumentException("Error al meter alguno de los argumentos");
+                    throw new BadArgumentException(ConstantsDAO.BAD_ARGUMENT_EXCEPTION);
                 } else {
                     //Lo de los orderItems
                     for (OrderItem orderItem : order.getOrderItems()) {
@@ -152,12 +159,14 @@ public class DAOorderDB {
                 }
             } catch (SQLException e) {
                 myConnection.rollback();
-                throw new BadArgumentException("Error al meter alguno de los argumentos");
+                log.error(e.getMessage(), e);
+                throw new BadArgumentException(ConstantsDAO.BAD_ARGUMENT_EXCEPTION);
             } finally {
                 myConnection.setAutoCommit(true);
             }
         } catch (SQLException e) {
-            throw new BaseCaidaException("Error al conectarse con la base de datos");
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
 
         return res;

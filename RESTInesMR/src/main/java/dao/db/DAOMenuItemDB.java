@@ -1,6 +1,8 @@
 package dao.db;
 
 import common.Configuration;
+import common.SQLqueries;
+import dao.ConstantsDAO;
 import dao.DBConnection;
 import dao.modelo.MenuItem;
 import domain.modelo.excepciones.BaseCaidaException;
@@ -30,11 +32,12 @@ public class DAOMenuItemDB {
         Either<ApiError, List<MenuItem>> res;
         try (Connection myConnection = db.getConnection()){
             Statement stmt = myConnection.createStatement();
-            ResultSet rs = stmt.executeQuery("select  * from menu_items");
+            ResultSet rs = stmt.executeQuery(SQLqueries.SELECT_FROM_MENU_ITEMS);
             menuItemList = readRS(rs);
             res = Either.right(menuItemList);
         } catch (SQLException e) {
-            throw new BaseCaidaException("Error al interactuar con la base de datos");
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
         return  res;
     }
@@ -42,17 +45,18 @@ public class DAOMenuItemDB {
     public Either<ApiError, MenuItem> get(int id){
         Either<ApiError, MenuItem> res;
         try (Connection myConnection = db.getConnection()){
-            PreparedStatement pstmt = myConnection.prepareStatement("select  * from menu_items where menu_item_id=?");
+            PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.SELECT_FROM_MENU_ITEMS_ID);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             List<MenuItem> menuItemList = readRS(rs);
             if (!menuItemList.isEmpty()){
                 res = Either.right(menuItemList.get(0));
             } else {
-                throw new BaseCaidaException("Error al interactuar con la base de datos");
+                throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
             }
         } catch (SQLException e) {
-            throw new BaseCaidaException("Error al interactuar con la base de datos");
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
         return res;
     }
@@ -61,15 +65,16 @@ public class DAOMenuItemDB {
         try {
             List<MenuItem> menuItemList = new ArrayList<>();
             while (rs.next()) {
-                int id = rs.getInt("menu_item_id");
-                String nameM = rs.getString("name");
-                String desM = rs.getString("description");
-                float priceM = rs.getFloat("price");
+                int id = rs.getInt(ConstantsDAO.MENU_ITEM_ID);
+                String nameM = rs.getString(ConstantsDAO.NAME);
+                String desM = rs.getString(ConstantsDAO.DESCRIPTION);
+                float priceM = rs.getFloat(ConstantsDAO.PRICE);
                 menuItemList.add(new MenuItem(id, nameM, desM, priceM));
             }
             return menuItemList;
         }catch (SQLException e){
-            throw new BaseCaidaException("Error al interactuar con la base de datos");
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
     }
 }
