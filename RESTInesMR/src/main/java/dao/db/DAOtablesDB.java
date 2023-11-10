@@ -5,9 +5,9 @@ import common.SQLqueries;
 import dao.ConstantsDAO;
 import dao.DBConnection;
 import dao.modelo.TableRestaurant;
-import dao.modelo.errores.ErrorCTables;
 import domain.modelo.excepciones.BaseCaidaException;
 import io.vavr.control.Either;
+import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
 
@@ -27,9 +27,9 @@ public class DAOtablesDB {
         this.db = db;
     }
 
-    public Either<ErrorCTables, List<TableRestaurant>> getAll(){
+    public Either<ApiError, List<TableRestaurant>> getAll(){
         List<TableRestaurant> tableRestaurantList = new ArrayList<>();
-        Either <ErrorCTables, List<TableRestaurant>> res;
+        Either <ApiError, List<TableRestaurant>> res;
         try (Connection myconnection = db.getConnection()){
             Statement stmt = myconnection.createStatement();
             ResultSet rs = stmt.executeQuery(SQLqueries.SELECT_FROM_RESTAURANT_TABLES);
@@ -41,8 +41,8 @@ public class DAOtablesDB {
         return res;
     }
 
-    public Either<ErrorCTables, TableRestaurant> get(int i){
-        Either<ErrorCTables, TableRestaurant> res;
+    public Either<ApiError, TableRestaurant> get(int i){
+        Either<ApiError, TableRestaurant> res;
         try (Connection myconnection = db.getConnection()){
             PreparedStatement pstmt = myconnection.prepareStatement(SQLqueries.SELECT_NUMBER_ID);
             pstmt.setInt(1, i);
@@ -51,7 +51,7 @@ public class DAOtablesDB {
             if (!tableRestaurantList.isEmpty()){
                 res = Either.right(tableRestaurantList.get(0));
             }else {
-                res = Either.left(new ErrorCTables(ConstantsDAO.ERROR_READING_DATABASE, 0));
+                throw new BaseCaidaException("Error al interactuar con la base de datos");
             }
             rs.close();
         } catch (SQLException e) {
@@ -60,13 +60,17 @@ public class DAOtablesDB {
         return res;
     }
 
-    private List<TableRestaurant> readRS(ResultSet rs) throws SQLException {
-        List<TableRestaurant> tableRestaurantList = new ArrayList<>();
-        while (rs.next()){
-            int id = rs.getInt(ConstantsDAO.TABLE_NUMBER_ID);
-            int seats = rs.getInt(ConstantsDAO.NUMBER_OF_SEATS);
-            tableRestaurantList.add(new TableRestaurant(id, seats));
+    private List<TableRestaurant> readRS(ResultSet rs){
+        try {
+            List<TableRestaurant> tableRestaurantList = new ArrayList<>();
+            while (rs.next()) {
+                int id = rs.getInt(ConstantsDAO.TABLE_NUMBER_ID);
+                int seats = rs.getInt(ConstantsDAO.NUMBER_OF_SEATS);
+                tableRestaurantList.add(new TableRestaurant(id, seats));
+            }
+            return tableRestaurantList;
+        }catch (SQLException e){
+            throw new BaseCaidaException("Error al leer la base de datos");
         }
-        return tableRestaurantList;
     }
 }

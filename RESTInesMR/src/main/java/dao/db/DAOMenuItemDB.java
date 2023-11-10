@@ -4,6 +4,7 @@ import common.Configuration;
 import dao.DBConnection;
 import dao.modelo.MenuItem;
 import dao.modelo.errores.ErrorCMenuItem;
+import domain.modelo.excepciones.BaseCaidaException;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
@@ -26,7 +27,6 @@ public class DAOMenuItemDB {
         this.db = db;
     }
 
-
     public Either<ErrorCMenuItem, List<MenuItem>> getAll(){
         List<MenuItem> menuItemList = new ArrayList<>();
         Either<ErrorCMenuItem, List<MenuItem>> res;
@@ -36,7 +36,7 @@ public class DAOMenuItemDB {
             menuItemList = readRS(rs);
             res = Either.right(menuItemList);
         } catch (SQLException e) {
-            throw new RuntimeException();
+            throw new BaseCaidaException("Error al interactuar con la base de datos");
         }
         return  res;
     }
@@ -51,24 +51,28 @@ public class DAOMenuItemDB {
             if (!menuItemList.isEmpty()){
                 res = Either.right(menuItemList.get(0));
             } else {
-                res = Either.left(new ErrorCMenuItem("error", 0));
+                throw new BaseCaidaException("Error al interactuar con la base de datos");
             }
         } catch (SQLException e) {
-            throw new RuntimeException();
+            throw new BaseCaidaException("Error al interactuar con la base de datos");
         }
         return res;
     }
 
     private List<MenuItem> readRS(ResultSet rs) throws SQLException {
-        List<MenuItem> menuItemList = new ArrayList<>();
-        while (rs.next()) {
-            int id = rs.getInt("menu_item_id");
-            String nameM = rs.getString("name");
-            String desM = rs.getString("description");
-            float priceM = rs.getFloat("price");
-            menuItemList.add(new MenuItem(id, nameM, desM, priceM));
-        }
-        return menuItemList;
-    }
+        try {
 
+            List<MenuItem> menuItemList = new ArrayList<>();
+            while (rs.next()) {
+                int id = rs.getInt("menu_item_id");
+                String nameM = rs.getString("name");
+                String desM = rs.getString("description");
+                float priceM = rs.getFloat("price");
+                menuItemList.add(new MenuItem(id, nameM, desM, priceM));
+            }
+            return menuItemList;
+        }catch (SQLException e){
+            throw new BaseCaidaException("Error al interactuar con la base de datos");
+        }
+    }
 }

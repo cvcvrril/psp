@@ -4,6 +4,7 @@ import dao.modelo.TableRestaurant;
 import dao.modelo.errores.ErrorCTables;
 import domain.servicios.SERVtablesRestaurant;
 import io.vavr.control.Either;
+import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -27,7 +28,7 @@ public class RESTtables {
 
     @GET
     public Response getAllTable() {
-        Either<ErrorCTables, List<TableRestaurant>> result = serv.getAll();
+        Either<ApiError, List<TableRestaurant>> result = serv.getAll();
         if (result.isRight()){
             return Response.ok(result.get()).build();
         } else {
@@ -38,7 +39,7 @@ public class RESTtables {
     @GET
     @Path("/{id}")
     public Response getIdTable(@PathParam("id") Integer id){
-        Either<ErrorCTables, TableRestaurant> result = serv.get(id);
+        Either<ApiError, TableRestaurant> result = serv.get(id);
         return Response.ok(result.get()).build();
     }
 

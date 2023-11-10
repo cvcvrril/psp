@@ -4,6 +4,7 @@
     import dao.modelo.TableRestaurant;
     import dao.modelo.errores.ErrorCTables;
     import io.vavr.control.Either;
+    import jakarta.excepciones.ApiError;
     import jakarta.inject.Inject;
 
     import java.util.List;
@@ -17,11 +18,11 @@
             this.daOtablesDB = daOtablesDB;
         }
 
-        public Either<ErrorCTables, List<TableRestaurant>> getAll(){
+        public Either<ApiError, List<TableRestaurant>> getAll(){
             return daOtablesDB.getAll();
         }
 
-        public Either<ErrorCTables, TableRestaurant> get (int id){
+        public Either<ApiError, TableRestaurant> get (int id){
             return daOtablesDB.get(id);
         }
 
