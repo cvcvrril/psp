@@ -36,6 +36,26 @@ public class RESTorders {
         return Response.ok(result.get()).build();
     }
 
+    @POST
+    public Response addOrder(Order newOrder){
+        Either<ErrorCOrder, Integer> result = serv.add(newOrder);
+        if (result.isRight()){
+            return Response.status(Response.Status.CREATED).entity(result.get()).build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
+        }
+    }
+
+    @PUT
+    public Response updateOrder(Order updatedOrder){
+        Either<ErrorCOrder, Integer> result = serv.updateOrder(updatedOrder);
+        if (result.isRight()){
+            return Response.ok(result.get()).build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
+        }
+    }
+
     @DELETE
     @Path("/{id}")
     public Response deleteOrder(@PathParam("id")Integer id){

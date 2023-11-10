@@ -31,7 +31,6 @@ public class RESTtables {
         if (result.isRight()){
             return Response.ok(result.get()).build();
         } else {
-//            return Response.status(Response.Status.BAD_GATEWAY).build();
             throw new RuntimeException();
         }
     }

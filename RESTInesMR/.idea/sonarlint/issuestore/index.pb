@@ -73,3 +73,5 @@ Z
 *src/main/java/jakarta/rest/RESTorders.java,c\4\c4ab6d3d3d1c60e4283e06eb5f30a6c177a5f5c3
 Q
 !src/main/webapp/WEB-INF/beans.xml,8\3\83008b1a88ba03a2548bb5b9ad0768c6c307d36c
+o
+?src/main/java/domain/modelo/excepciones/BaseCaidaException.java,f\0\f01d215c5108419a6cebb928afbd6bd4a964c426
