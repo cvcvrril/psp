@@ -22,10 +22,7 @@ public class SERVorder {
     }
 
     public Either<ErrorCOrder, Order> getOrder(int i) {
-        if (i > 0)
-            return daOorderDB.get(i);
-        else
-            throw new RuntimeException();
+        return daOorderDB.get(i);
 
     }
 

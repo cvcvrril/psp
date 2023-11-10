@@ -23,17 +23,9 @@ public class SERVorderItem {
         return daOorderItemDB.getAll();
     }
 
-//    public Either<ErrorCOrder,Integer> addOrders(List<OrderItem> orderItemList, int i){
-//        return daoOrdersXML.add(orderItemList,i);
-//    }
-
     public Either<Exception, Integer> updateOrders(OrderItem updatedOrderItm) {
         return daOorderItemDB.update(updatedOrderItm);
     }
-
-//    public Either<ErrorCOrder, Integer> delOrders(int i) {
-//        return daoOrdersXML.delete(i);
-//    }
 
 
 }
