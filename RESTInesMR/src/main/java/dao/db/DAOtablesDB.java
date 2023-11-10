@@ -14,6 +14,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Log4j2
 public class DAOtablesDB {
 
     private final Configuration configuration;

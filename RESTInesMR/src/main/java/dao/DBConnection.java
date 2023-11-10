@@ -17,8 +17,13 @@ public class DBConnection {
     }
 
     public Connection getConnection() throws SQLException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         return DriverManager
-                .getConnection(config.getPropertySQL(ConstantsDAO.PATH_DB), config.getPropertySQL(ConstantsDAO.USER_DB), config.getPropertySQL(ConstantsDAO.PASS_DB));
+                .getConnection(config.getPathSQL(), config.getUserSQL(), config.getPassSQL());
     }
 
 }

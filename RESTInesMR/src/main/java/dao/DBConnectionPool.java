@@ -6,7 +6,6 @@ import common.Configuration;
 import jakarta.annotation.PreDestroy;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -22,25 +21,24 @@ public class DBConnectionPool {
     public DBConnectionPool(Configuration config) {
         this.config = config;
         this.hikariDataSource = getHikariPool();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private DataSource getHikariPool() {
         HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setJdbcUrl(config.getPropertySQL(ConstantsDAO.PATH_DB));
-        hikariConfig.setUsername(config.getPropertySQL(ConstantsDAO.USER_DB));
-        hikariConfig.setPassword(config.getPropertySQL(ConstantsDAO.PASS_DB));
-        hikariConfig.setDriverClassName(config.getPropertySQL(ConstantsDAO.DRIVER));
+        hikariConfig.setJdbcUrl(config.getPathSQL());
+        hikariConfig.setUsername(config.getUserSQL());
+        hikariConfig.setPassword(config.getPassSQL());
+        hikariConfig.setDriverClassName(config.getDriver());
         hikariConfig.setMaximumPoolSize(4);
 
         hikariConfig.addDataSourceProperty("cachePrepStmts", true);
         hikariConfig.addDataSourceProperty("prepStmtCacheSize", 250);
         hikariConfig.addDataSourceProperty("prepStmtCacheSqlLimit", 2048);
-
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(config.getPropertySQL(ConstantsDAO.DRIVER));
-        dataSource.setUrl(config.getPropertySQL(ConstantsDAO.PATH_DB));
-        dataSource.setUsername(config.getPropertySQL(ConstantsDAO.USER_DB));
-        dataSource.setPassword(config.getPropertySQL(ConstantsDAO.DRIVER));
 
         return new HikariDataSource(hikariConfig);
     }

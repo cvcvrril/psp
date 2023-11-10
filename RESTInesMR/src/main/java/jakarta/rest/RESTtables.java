@@ -4,7 +4,6 @@ import dao.modelo.TableRestaurant;
 import dao.modelo.errores.ErrorCTables;
 import domain.servicios.SERVtablesRestaurant;
 import io.vavr.control.Either;
-import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -27,18 +26,14 @@ public class RESTtables {
     @GET
     public Response getAllTable() {
         Either<ErrorCTables, List<TableRestaurant>> result = serv.getAll();
-        if (result.isLeft()) {
-            // Manejar el error, por ejemplo, devolver un código de error HTTP
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error obteniendo las mesas").build();
-        }
-
         return Response.ok(result.get()).build();
     }
 
     @GET
     @Path("/{id}")
-    public TableRestaurant getIdTable(@PathParam("id") Integer id){
-        return (TableRestaurant) serv.get(id);
+    public Response getIdTable(@PathParam("id") Integer id){
+        Either<ErrorCTables, TableRestaurant> result = serv.get(id);
+        return Response.ok(result.get()).build();
     }
 
 }
