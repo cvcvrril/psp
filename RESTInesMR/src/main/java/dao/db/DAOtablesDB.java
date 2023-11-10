@@ -6,6 +6,7 @@ import dao.ConstantsDAO;
 import dao.DBConnection;
 import dao.modelo.TableRestaurant;
 import dao.modelo.errores.ErrorCTables;
+import domain.modelo.excepciones.BaseCaidaException;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
@@ -35,7 +36,7 @@ public class DAOtablesDB {
             tableRestaurantList = readRS(rs);
             res = Either.right(tableRestaurantList);
         } catch (SQLException e) {
-            res = Either.left(new ErrorCTables(e.getMessage(),  0));
+            throw new BaseCaidaException("Error al interactuar con la base de datos");
         }
         return res;
     }
@@ -54,7 +55,7 @@ public class DAOtablesDB {
             }
             rs.close();
         } catch (SQLException e) {
-            res = Either.left(new ErrorCTables(e.getMessage(), 0));
+            throw new BaseCaidaException("Error al interactuar con la base de datos");
         }
         return res;
     }

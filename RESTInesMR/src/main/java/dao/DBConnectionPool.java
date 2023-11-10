@@ -3,6 +3,7 @@ package dao;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import common.Configuration;
+import domain.modelo.excepciones.BaseCaidaException;
 import jakarta.annotation.PreDestroy;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
@@ -24,7 +25,7 @@ public class DBConnectionPool {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new BaseCaidaException("Error al conectar con la base de datos");
         }
     }
 
@@ -48,7 +49,7 @@ public class DBConnectionPool {
         try {
             con = hikariDataSource.getConnection();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new BaseCaidaException("Error al conectar con la base de datos");
         }
         return con;
     }
