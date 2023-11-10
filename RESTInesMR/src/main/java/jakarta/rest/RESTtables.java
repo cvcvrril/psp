@@ -8,9 +8,11 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
 
+@Log4j2
 @Path("/tables")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -26,7 +28,12 @@ public class RESTtables {
     @GET
     public Response getAllTable() {
         Either<ErrorCTables, List<TableRestaurant>> result = serv.getAll();
-        return Response.ok(result.get()).build();
+        if (result.isRight()){
+            return Response.ok(result.get()).build();
+        } else {
+//            return Response.status(Response.Status.BAD_GATEWAY).build();
+            throw new RuntimeException();
+        }
     }
 
     @GET

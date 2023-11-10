@@ -31,11 +31,23 @@ public class RESTorders {
 
     @GET
     @Path("/{id}")
-    public Response getIdTable(@PathParam("id") Integer id){
+    public Response getIdOrder(@PathParam("id") Integer id){
         Either<ErrorCOrder, Order> result = serv.getOrder(id);
         return Response.ok(result.get()).build();
     }
 
+
+
+    @DELETE
+    @Path("/{id}")
+    public Response deleteOrder(@PathParam("id")Integer id){
+        Either<ErrorCOrder, Integer> result = serv.delOrder(id);
+        if (result.isRight()){
+            return Response.ok(result.get()).build();
+        } else {
+            return null;
+        }
+    }
 
 
 }
