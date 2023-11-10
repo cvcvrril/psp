@@ -36,8 +36,6 @@ public class RESTorders {
         return Response.ok(result.get()).build();
     }
 
-
-
     @DELETE
     @Path("/{id}")
     public Response deleteOrder(@PathParam("id")Integer id){
@@ -45,9 +43,7 @@ public class RESTorders {
         if (result.isRight()){
             return Response.ok(result.get()).build();
         } else {
-            return null;
+            return Response.status(500,"Dios ha muerto").build();
         }
     }
-
-
 }

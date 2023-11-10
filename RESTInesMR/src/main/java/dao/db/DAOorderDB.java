@@ -149,7 +149,6 @@ public class DAOorderDB {
                             pstmtOrderItem.executeUpdate();
                         }
                     }
-
                     myConnection.commit();
                     res = Either.right(rowsAffected);
                 }
@@ -177,7 +176,7 @@ public class DAOorderDB {
             }
             int customerId = rs.getInt(ConstantsDAO.CUSTOMER_ID);
             int tableId = rs.getInt(ConstantsDAO.TABLE_ID);
-            orderList.add(new Order(id, dateTime, customerId, tableId, serv.getAll().get()));
+            orderList.add(new Order(id, dateTime, customerId, tableId, serv.getOrders(id).get()));
         }
         return orderList;
     }
