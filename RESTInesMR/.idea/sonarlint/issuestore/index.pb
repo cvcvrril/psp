@@ -75,3 +75,13 @@ Q
 !src/main/webapp/WEB-INF/beans.xml,8\3\83008b1a88ba03a2548bb5b9ad0768c6c307d36c
 o
 ?src/main/java/domain/modelo/excepciones/BaseCaidaException.java,f\0\f01d215c5108419a6cebb928afbd6bd4a964c426
+n
+>src/main/java/jakarta/excepciones/ObjectNotFoundException.java,0\a\0a6db6cd0673fddf56bbb335a8d4e30248afec9e
+t
+Dsrc/main/java/domain/modelo/excepciones/ObjectNotFoundException.java,b\4\b4ba8857713bb9dd29a5fc56146793a3e2d47c80
+t
+Dsrc/main/java/jakarta/excepciones/ObjectNotFoundExceptionMapper.java,b\7\b7dfb160ba25699f810d1f4eb706fb9b01092ccd
+q
+Asrc/main/java/domain/modelo/excepciones/WrongObjectException.java,1\c\1c0e17a6d1d072331b90328ae052accf299af826
+q
+Asrc/main/java/jakarta/excepciones/WrongObjectExceptionMapper.java,1\b\1b8910521c0616980242f7171f2e787b751d9768

@@ -2,6 +2,7 @@ package jakarta.rest;
 
 import dao.modelo.Order;
 import dao.modelo.errores.ErrorCOrder;
+import domain.modelo.excepciones.BaseCaidaException;
 import domain.servicios.SERVorder;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
@@ -25,15 +26,27 @@ public class RESTorders {
 
     @GET
     public Response getAllOrder(){
-        Either<ErrorCOrder,List<Order>> result = serv.getAll();
-        return Response.ok(result.get()).build();
+        try {
+            Either<ErrorCOrder,List<Order>> result = serv.getAll();
+            return Response.ok(result.get()).build();
+        } catch (BaseCaidaException e){
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity(new ErrorCOrder(e.getMessage(),0))
+                    .build();
+        }
     }
 
     @GET
     @Path("/{id}")
     public Response getIdOrder(@PathParam("id") Integer id){
-        Either<ErrorCOrder, Order> result = serv.getOrder(id);
-        return Response.ok(result.get()).build();
+        try {
+            Either<ErrorCOrder, Order> result = serv.getOrder(id);
+            return Response.ok(result.get()).build();
+        }catch (BaseCaidaException e){
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity(new ErrorCOrder(e.getMessage(),0))
+                    .build();
+        }
     }
 
     @POST
