@@ -85,3 +85,5 @@ q
 Asrc/main/java/domain/modelo/excepciones/WrongObjectException.java,1\c\1c0e17a6d1d072331b90328ae052accf299af826
 q
 Asrc/main/java/jakarta/excepciones/WrongObjectExceptionMapper.java,1\b\1b8910521c0616980242f7171f2e787b751d9768
+\
+,src/main/java/jakarta/rest/RESTmenuItem.java,5\b\5b0df7ef6f3d39987417bf0f4310a372b6082927

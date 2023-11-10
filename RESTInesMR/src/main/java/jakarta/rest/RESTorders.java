@@ -5,6 +5,7 @@ import dao.modelo.errores.ErrorCOrder;
 import domain.modelo.excepciones.BaseCaidaException;
 import domain.servicios.SERVorder;
 import io.vavr.control.Either;
+import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -27,7 +28,7 @@ public class RESTorders {
     @GET
     public Response getAllOrder(){
         try {
-            Either<ErrorCOrder,List<Order>> result = serv.getAll();
+            Either<ApiError,List<Order>> result = serv.getAll();
             return Response.ok(result.get()).build();
         } catch (BaseCaidaException e){
             return Response.status(Response.Status.NOT_FOUND)
@@ -40,7 +41,7 @@ public class RESTorders {
     @Path("/{id}")
     public Response getIdOrder(@PathParam("id") Integer id){
         try {
-            Either<ErrorCOrder, Order> result = serv.getOrder(id);
+            Either<ApiError, Order> result = serv.getOrder(id);
             return Response.ok(result.get()).build();
         }catch (BaseCaidaException e){
             return Response.status(Response.Status.NOT_FOUND)
@@ -51,7 +52,7 @@ public class RESTorders {
 
     @POST
     public Response addOrder(Order newOrder){
-        Either<ErrorCOrder, Integer> result = serv.add(newOrder);
+        Either<ApiError, Integer> result = serv.add(newOrder);
         if (result.isRight()){
             return Response.status(Response.Status.CREATED).entity(result.get()).build();
         } else {
@@ -61,7 +62,7 @@ public class RESTorders {
 
     @PUT
     public Response updateOrder(Order updatedOrder){
-        Either<ErrorCOrder, Integer> result = serv.updateOrder(updatedOrder);
+        Either<ApiError, Integer> result = serv.updateOrder(updatedOrder);
         if (result.isRight()){
             return Response.ok(result.get()).build();
         } else {
@@ -72,7 +73,7 @@ public class RESTorders {
     @DELETE
     @Path("/{id}")
     public Response deleteOrder(@PathParam("id")Integer id){
-        Either<ErrorCOrder, Integer> result = serv.delOrder(id);
+        Either<ApiError, Integer> result = serv.delOrder(id);
         if (result.isRight()){
             return Response.ok(result.get()).build();
         } else {

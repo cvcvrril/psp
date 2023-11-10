@@ -13,7 +13,7 @@ public class BaseCaidaExceptionMapper implements ExceptionMapper<BaseCaidaExcept
     @Override
     public Response toResponse(BaseCaidaException e) {
         ApiError apiError = new ApiError(e.getMessage(), LocalDateTime.now());
-        return Response.status(Response.Status.NOT_FOUND).entity(apiError)
+        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(apiError)
                 .type(MediaType.APPLICATION_JSON_TYPE).build();
     }
 }

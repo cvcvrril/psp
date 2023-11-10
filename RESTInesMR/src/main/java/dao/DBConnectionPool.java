@@ -7,6 +7,7 @@ import domain.modelo.excepciones.BaseCaidaException;
 import jakarta.annotation.PreDestroy;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
+import jakarta.ws.rs.core.Response;
 
 import javax.sql.DataSource;
 import java.sql.Connection;

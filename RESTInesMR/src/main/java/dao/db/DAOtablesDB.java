@@ -9,9 +9,11 @@ import domain.modelo.excepciones.BaseCaidaException;
 import io.vavr.control.Either;
 import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
+import jakarta.ws.rs.core.Response;
 import lombok.extern.log4j.Log4j2;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +53,7 @@ public class DAOtablesDB {
             if (!tableRestaurantList.isEmpty()){
                 res = Either.right(tableRestaurantList.get(0));
             }else {
+                //res = Either.left(new ApiError("Error al interactuar con la base de datos", LocalDateTime.now()));
                 throw new BaseCaidaException("Error al interactuar con la base de datos");
             }
             rs.close();

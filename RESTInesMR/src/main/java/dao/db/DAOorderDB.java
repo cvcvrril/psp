@@ -8,8 +8,12 @@ import dao.DBConnectionPool;
 import dao.modelo.Order;
 import dao.modelo.OrderItem;
 import dao.modelo.errores.ErrorCOrder;
+import domain.modelo.excepciones.BadArgumentException;
+import domain.modelo.excepciones.BaseCaidaException;
+import domain.modelo.excepciones.WrongObjectException;
 import domain.servicios.SERVorderItem;
 import io.vavr.control.Either;
+import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
 
@@ -34,9 +38,9 @@ public class DAOorderDB {
         this.serv = serv;
     }
 
-    public Either<ErrorCOrder, List<Order>> getAll() {
+    public Either<ApiError, List<Order>> getAll() {
         List<Order> orderList = new ArrayList<>();
-        Either<ErrorCOrder, List<Order>> res;
+        Either<ApiError, List<Order>> res;
         try (Connection myConnection = pool.getConnection()) {
             Statement stmt = myConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
@@ -44,13 +48,13 @@ public class DAOorderDB {
             orderList = readRS(rs);
             res = Either.right(orderList);
         } catch (SQLException e) {
-            throw new RuntimeException();
+            throw new BaseCaidaException("Error al conectarse con la base de datos");
         }
         return res;
     }
 
-    public Either<ErrorCOrder, Order> get(int id) {
-        Either<ErrorCOrder, Order> res;
+    public Either<ApiError, Order> get(int id) {
+        Either<ApiError, Order> res;
         try (Connection myConnection = pool.getConnection()) {
             PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.SELECT_ORDERS_ID);
             pstmt.setInt(1, id);
@@ -59,19 +63,19 @@ public class DAOorderDB {
             if (!orderList.isEmpty()) {
                 res = Either.right(orderList.get(0));
             } else {
-                throw new RuntimeException();
+                throw new BaseCaidaException("Error al conectarse con la base de datos");
             }
             rs.close();
         } catch (SQLException e) {
-            throw new RuntimeException();
+            throw new BaseCaidaException("Error al conectarse con la base de datos");
         }
         return res;
     }
 
 
-    public Either<ErrorCOrder, Integer> update(Order order) {
+    public Either<ApiError, Integer> update(Order order) {
         int rowsAffected;
-        Either<ErrorCOrder, Integer> res = null;
+        Either<ApiError, Integer> res = null;
         try (Connection myConnection = pool.getConnection()) {
             try (PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.UPDATE_ORDERS)) {
                 myConnection.setAutoCommit(false);
@@ -83,23 +87,18 @@ public class DAOorderDB {
                 myConnection.commit();
                 res = Either.right(rowsAffected);
             } catch (SQLException e) {
-//                throw new RuntimeException();
-//                try {
-//                    myConnection.rollback();
-//                } catch (SQLException ex) {
-//                    throw new RuntimeException();
-//                }
+                throw new BadArgumentException("Error al meter alguno de los argumentos");
             } finally {
                 myConnection.setAutoCommit(true);
             }
         } catch (SQLException e) {
-            throw new RuntimeException();
+            throw new BaseCaidaException("Error al conectarse con la base de datos");
         }
         return res;
     }
 
-    public Either<ErrorCOrder, Integer> delete(int id) {
-        Either<ErrorCOrder, Integer> res;
+    public Either<ApiError, Integer> delete(int id) {
+        Either<ApiError, Integer> res;
         try (Connection myConnection = db.getConnection()) {
             PreparedStatement pstmt1 = myConnection.prepareStatement(SQLqueries.DELETE_ORDER_ITEMS);
             pstmt1.setInt(1, id);
@@ -108,19 +107,19 @@ public class DAOorderDB {
             pstmt2.setInt(1, id);
             int rowsAffected = pstmt2.executeUpdate();
             if (rowsAffected != 1) {
-                throw new RuntimeException();
+                throw new WrongObjectException("Error al seleccionar el objeto de la base de datos");
             } else {
                 res = Either.right(rowsAffected);
             }
         } catch (SQLException e) {
-            throw new RuntimeException();
+            throw new BaseCaidaException("Error al conectarse con la base de datos");
         }
         return res;
     }
 
-    public Either<ErrorCOrder, Integer> add(Order order) {
+    public Either<ApiError, Integer> add(Order order) {
         int rowsAffected;
-        Either<ErrorCOrder, Integer> res;
+        Either<ApiError, Integer> res;
         try (Connection myConnection = pool.getConnection()) {
             myConnection.setAutoCommit(false);
 
@@ -137,7 +136,7 @@ public class DAOorderDB {
 
                 if (rowsAffected != 1) {
                     myConnection.rollback();
-                    res = Either.left(new ErrorCOrder(ConstantsDAO.ERROR_ADDING_ORDER, 0));
+                    throw new BadArgumentException("Error al meter alguno de los argumentos");
                 } else {
                     //Lo de los orderItems
                     for (OrderItem orderItem : order.getOrderItems()) {
@@ -154,12 +153,12 @@ public class DAOorderDB {
                 }
             } catch (SQLException e) {
                 myConnection.rollback();
-                res = Either.left(new ErrorCOrder(e.getMessage(), 0));
+                throw new BadArgumentException("Error al meter alguno de los argumentos");
             } finally {
                 myConnection.setAutoCommit(true);
             }
         } catch (SQLException e) {
-            res = Either.left(new ErrorCOrder(e.getMessage(), 0));
+            throw new BaseCaidaException("Error al conectarse con la base de datos");
         }
 
         return res;

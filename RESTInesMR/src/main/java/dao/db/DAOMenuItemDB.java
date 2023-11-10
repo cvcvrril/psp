@@ -6,6 +6,7 @@ import dao.modelo.MenuItem;
 import dao.modelo.errores.ErrorCMenuItem;
 import domain.modelo.excepciones.BaseCaidaException;
 import io.vavr.control.Either;
+import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
 
@@ -27,9 +28,9 @@ public class DAOMenuItemDB {
         this.db = db;
     }
 
-    public Either<ErrorCMenuItem, List<MenuItem>> getAll(){
+    public Either<ApiError, List<MenuItem>> getAll(){
         List<MenuItem> menuItemList = new ArrayList<>();
-        Either<ErrorCMenuItem, List<MenuItem>> res;
+        Either<ApiError, List<MenuItem>> res;
         try (Connection myConnection = db.getConnection()){
             Statement stmt = myConnection.createStatement();
             ResultSet rs = stmt.executeQuery("select  * from menu_items");
@@ -41,8 +42,8 @@ public class DAOMenuItemDB {
         return  res;
     }
 
-    public Either<ErrorCMenuItem, MenuItem> get(int id){
-        Either<ErrorCMenuItem, MenuItem> res;
+    public Either<ApiError, MenuItem> get(int id){
+        Either<ApiError, MenuItem> res;
         try (Connection myConnection = db.getConnection()){
             PreparedStatement pstmt = myConnection.prepareStatement("select  * from menu_items where menu_item_id=?");
             pstmt.setInt(1, id);
@@ -61,7 +62,6 @@ public class DAOMenuItemDB {
 
     private List<MenuItem> readRS(ResultSet rs) throws SQLException {
         try {
-
             List<MenuItem> menuItemList = new ArrayList<>();
             while (rs.next()) {
                 int id = rs.getInt("menu_item_id");

@@ -1,9 +1,9 @@
 package jakarta.rest;
 
 import dao.modelo.MenuItem;
-import dao.modelo.errores.ErrorCMenuItem;
 import domain.servicios.SERVmenuItems;
 import io.vavr.control.Either;
+import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -25,14 +25,14 @@ public class RESTmenuItem {
 
     @GET
     public Response getAllMenuItems(){
-        Either<ErrorCMenuItem, List<MenuItem>> result = sev.getAll();
+        Either<ApiError, List<MenuItem>> result = sev.getAll();
         return Response.ok(result.get()).build();
     }
 
     @GET
     @Path("/{id}")
     public Response getIdMenuItem(@PathParam("id") Integer id){
-        Either<ErrorCMenuItem, MenuItem> result = sev.get(id);
+        Either<ApiError, MenuItem> result = sev.get(id);
         return Response.ok(result.get()).build();
     }
 }
