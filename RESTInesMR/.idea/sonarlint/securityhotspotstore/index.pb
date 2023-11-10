@@ -71,3 +71,5 @@ W
 'src/main/java/jakarta/di/Producers.java,c\8\c823d5df9df3c3fb5cff7cf4f1e8ab3693fd2fee
 Z
 *src/main/java/jakarta/rest/RESTorders.java,c\4\c4ab6d3d3d1c60e4283e06eb5f30a6c177a5f5c3
+Q
+!src/main/webapp/WEB-INF/beans.xml,8\3\83008b1a88ba03a2548bb5b9ad0768c6c307d36c
