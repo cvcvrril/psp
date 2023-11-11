@@ -78,7 +78,7 @@ public class DAOorderDB implements DAOorder {
 
     public Either<ApiError, Integer> update(Order order) {
         int rowsAffected;
-        Either<ApiError, Integer> res = null;
+        Either<ApiError, Integer> res;
         try (Connection myConnection = pool.getConnection()) {
             try (PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.UPDATE_ORDERS)) {
                 myConnection.setAutoCommit(false);
