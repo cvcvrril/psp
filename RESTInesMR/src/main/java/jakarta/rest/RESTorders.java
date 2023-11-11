@@ -3,6 +3,7 @@ package jakarta.rest;
 import dao.modelo.Order;
 import domain.servicios.SERVorder;
 import io.vavr.control.Either;
+import jakarta.ConstantsJakarta;
 import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -11,7 +12,7 @@ import jakarta.ws.rs.core.Response;
 
 import java.util.List;
 
-@Path("/orders")
+@Path(ConstantsJakarta.ORDERS_PATH)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class RESTorders {
@@ -36,8 +37,8 @@ public class RESTorders {
     }
 
     @GET
-    @Path("/{id}")
-    public Response getIdOrder(@PathParam("id") Integer id) {
+    @Path(ConstantsJakarta.ID_PATH)
+    public Response getIdOrder(@PathParam(ConstantsJakarta.ID) Integer id) {
         Either<ApiError, Order> result = serv.getOrder(id);
         if (result.isRight()) {
             return Response.ok(result.get()).build();
@@ -67,13 +68,13 @@ public class RESTorders {
     }
 
     @DELETE
-    @Path("/{id}")
-    public Response deleteOrder(@PathParam("id") Integer id) {
+    @Path(ConstantsJakarta.ID_PATH)
+    public Response deleteOrder(@PathParam(ConstantsJakarta.ID) Integer id) {
         Either<ApiError, Integer> result = serv.delOrder(id);
         if (result.isRight()) {
             return Response.ok(result.get()).build();
         } else {
-            return Response.status(500, "Dios ha muerto").build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
 }

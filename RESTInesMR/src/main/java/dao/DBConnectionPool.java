@@ -26,7 +26,7 @@ public class DBConnectionPool {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            throw new BaseCaidaException("Error al conectar con la base de datos");
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
     }
 
@@ -50,7 +50,7 @@ public class DBConnectionPool {
         try {
             con = hikariDataSource.getConnection();
         } catch (SQLException e) {
-            throw new BaseCaidaException("Error al conectar con la base de datos");
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
         return con;
     }

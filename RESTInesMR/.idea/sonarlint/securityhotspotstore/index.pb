@@ -39,12 +39,6 @@ U
 %src/main/java/dao/db/DAOtablesDB.java,4\d\4d54ddee1a2d5b4117cff92cfc337edb561c8211
 a
 1src/main/java/domain/servicios/SERVmenuItems.java,d\9\d9f9b973c89c4db8a7595a0d4d704de91a98c9eb
-d
-4src/main/java/dao/modelo/errores/ErrorCCustomer.java,9\a\9a4c4769c5d30dcc427bdeae5377ef2406df52f5
-b
-2src/main/java/dao/modelo/errores/ErrorCTables.java,f\5\f5726c3c1f9b3bb63b6d8d58ee34679842d5c5a3
-\
-,src/main/java/dao/modelo/errores/ErrorC.java,7\5\75764bb98e7b30ac36fffdaad7f2d1aaa4284cb9
 S
 #src/main/java/dao/modelo/Order.java,4\3\431d46e2b80e08ad0f6f8bcf3517e41730b6be91
 W
@@ -53,14 +47,6 @@ W
 -src/main/java/dao/modelo/TableRestaurant.java,e\1\e1c33de87e92cf5356af08f99e42dd8abbaeb978
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
-d
-4src/main/java/dao/modelo/errores/ErrorCMenuItem.java,6\2\62886975004b10f47d5d1dc7d6569dddd6e43604
-a
-1src/main/java/dao/modelo/errores/ErrorCOrder.java,0\4\04543e6dce30022b39293cdba4b709b9dd844043
-f
-6src/main/java/dao/modelo/errores/ErrorCCredential.java,1\6\166fb393888f2b3bae48171b7351e50ed10621c8
-e
-5src/main/java/dao/modelo/errores/ErrorCOrderItem.java,5\6\56c5906cf805981757f81952c203f6c8b10a11a0
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 `
@@ -75,22 +61,12 @@ Q
 !src/main/webapp/WEB-INF/beans.xml,8\3\83008b1a88ba03a2548bb5b9ad0768c6c307d36c
 o
 ?src/main/java/domain/modelo/excepciones/BaseCaidaException.java,f\0\f01d215c5108419a6cebb928afbd6bd4a964c426
-n
->src/main/java/jakarta/excepciones/ObjectNotFoundException.java,0\a\0a6db6cd0673fddf56bbb335a8d4e30248afec9e
-t
-Dsrc/main/java/domain/modelo/excepciones/ObjectNotFoundException.java,b\4\b4ba8857713bb9dd29a5fc56146793a3e2d47c80
-t
-Dsrc/main/java/jakarta/excepciones/ObjectNotFoundExceptionMapper.java,b\7\b7dfb160ba25699f810d1f4eb706fb9b01092ccd
 q
 Asrc/main/java/domain/modelo/excepciones/WrongObjectException.java,1\c\1c0e17a6d1d072331b90328ae052accf299af826
 q
 Asrc/main/java/jakarta/excepciones/WrongObjectExceptionMapper.java,1\b\1b8910521c0616980242f7171f2e787b751d9768
 \
 ,src/main/java/jakarta/rest/RESTmenuItem.java,5\b\5b0df7ef6f3d39987417bf0f4310a372b6082927
-l
-<src/main/java/domain/modelo/excepciones/TeaPotException.java,8\9\8907d8c3f6867b5a5572cdbffc86ec0d4929cbf7
-l
-<src/main/java/jakarta/excepciones/TeaPotExceptionMapper.java,5\e\5ea70b25cd934515fc9249949fe6ab4b7a356729
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
@@ -100,3 +76,5 @@ Z
 *src/main/resources/config/propertiesDB.xml,8\7\87b235e703f3a3630b1d9cc51b29bc8de3419f14
 X
 (src/main/resources/config/properties.xml,6\7\67a4007b83808db067bd91097f31fac290f5cfbf
+[
++src/main/java/jakarta/ConstantsJakarta.java,1\7\1724b217f67e8670965b532cecda6da6a68f0297
