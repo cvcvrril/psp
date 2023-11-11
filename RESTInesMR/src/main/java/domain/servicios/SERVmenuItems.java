@@ -10,18 +10,18 @@ import java.util.List;
 
 public class SERVmenuItems {
 
-    private final DAOmenuItemDB DAOmenuItemDBd;
+    private final DAOmenuItemDB daOmenuItemDB;
 
     @Inject
-    public SERVmenuItems(DAOmenuItemDB DAOmenuItemDBd) {
-        this.DAOmenuItemDBd = DAOmenuItemDBd;
+    public SERVmenuItems(DAOmenuItemDB daOmenuItemDB) {
+        this.daOmenuItemDB = daOmenuItemDB;
     }
 
     public Either<ApiError, List<MenuItem>> getAll(){
-        return DAOmenuItemDBd.getAll();
+        return daOmenuItemDB.getAll();
     }
 
     public Either<ApiError, MenuItem> get(int id){
-        return DAOmenuItemDBd.get(id);
+        return daOmenuItemDB.get(id);
     }
 }
