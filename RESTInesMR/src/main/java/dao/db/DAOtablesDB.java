@@ -18,12 +18,10 @@ import java.util.List;
 @Log4j2
 public class DAOtablesDB {
 
-    private final Configuration configuration;
     private final DBConnection db;
 
     @Inject
     public DAOtablesDB(Configuration configuration, DBConnection db) {
-        this.configuration = configuration;
         this.db = db;
     }
 

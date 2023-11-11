@@ -19,12 +19,10 @@ import java.util.List;
 @Log4j2
 public class DAOorderItemDB {
 
-    private final Configuration configuration;
     private final DBConnection db;
 
     @Inject
     public DAOorderItemDB(Configuration configuration, DBConnection db) {
-        this.configuration = configuration;
         this.db = db;
     }
 

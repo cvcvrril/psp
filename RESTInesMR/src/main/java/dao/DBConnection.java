@@ -3,7 +3,6 @@ package dao;
 import common.Configuration;
 import domain.modelo.excepciones.BaseCaidaException;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.core.Response;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

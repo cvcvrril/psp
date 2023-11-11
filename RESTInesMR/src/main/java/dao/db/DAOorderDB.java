@@ -22,18 +22,17 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
+/**Los doble try están puestos por el AutoCommit**/
+
 @Log4j2
 public class DAOorderDB {
 
-
-    private final Configuration config;
     private final DBConnection db;
     private final DBConnectionPool pool;
     private final SERVorderItem serv;
 
     @Inject
     public DAOorderDB(Configuration config, DBConnection db, DBConnectionPool pool, SERVorderItem serv) {
-        this.config = config;
         this.db = db;
         this.pool = pool;
         this.serv = serv;
