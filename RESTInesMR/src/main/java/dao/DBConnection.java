@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class DBConnection {
 
-    private Configuration config;
+    private final Configuration config;
 
     @Inject
     public DBConnection(Configuration config) {
@@ -20,9 +20,9 @@ public class DBConnection {
 
     public Connection getConnection() throws SQLException {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(ConstantsDAO.COM_MYSQL_CJ_JDBC_DRIVER);
         } catch (ClassNotFoundException e) {
-            throw new BaseCaidaException("Error al conectar con la base de datos");
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
         return DriverManager
                 .getConnection(config.getPathSQL(), config.getUserSQL(), config.getPassSQL());

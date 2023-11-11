@@ -32,8 +32,6 @@ public class RESTorders {
         } else {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
         }
-
-
     }
 
     @GET

@@ -24,7 +24,7 @@ public class DBConnectionPool {
         this.config = config;
         this.hikariDataSource = getHikariPool();
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(ConstantsDAO.COM_MYSQL_CJ_JDBC_DRIVER);
         } catch (ClassNotFoundException e) {
             throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
@@ -38,9 +38,9 @@ public class DBConnectionPool {
         hikariConfig.setDriverClassName(config.getDriver());
         hikariConfig.setMaximumPoolSize(4);
 
-        hikariConfig.addDataSourceProperty("cachePrepStmts", true);
-        hikariConfig.addDataSourceProperty("prepStmtCacheSize", 250);
-        hikariConfig.addDataSourceProperty("prepStmtCacheSqlLimit", 2048);
+        hikariConfig.addDataSourceProperty(ConstantsDAO.CACHE_PREP_STMTS, true);
+        hikariConfig.addDataSourceProperty(ConstantsDAO.PREP_STMT_CACHE_SIZE, 250);
+        hikariConfig.addDataSourceProperty(ConstantsDAO.PREP_STMT_CACHE_SQL_LIMIT, 2048);
 
         return new HikariDataSource(hikariConfig);
     }

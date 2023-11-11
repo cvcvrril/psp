@@ -31,7 +31,7 @@ public class RESTtables {
         if (result.isRight()){
             return Response.ok(result.get()).build();
         } else {
-            throw new RuntimeException();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
         }
     }
 
@@ -39,7 +39,11 @@ public class RESTtables {
     @Path("/{id}")
     public Response getIdTable(@PathParam("id") Integer id){
         Either<ApiError, TableRestaurant> result = serv.get(id);
-        return Response.ok(result.get()).build();
+        if(result.isRight()) {
+            return Response.ok(result.get()).build();
+        }else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
+        }
     }
 
 }
