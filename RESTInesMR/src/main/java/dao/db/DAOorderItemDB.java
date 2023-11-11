@@ -44,7 +44,7 @@ public class DAOorderItemDB {
     public Either<ApiError, OrderItem> get(int id) {
         Either<ApiError, OrderItem> res;
         try (Connection myconnection = db.getConnection()) {
-            PreparedStatement pstmt = myconnection.prepareStatement("select * from order_items where order_item_id = ?");
+            PreparedStatement pstmt = myconnection.prepareStatement(SQLqueries.SELECT_FROM_ORDER_ITEMS_ID);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             List<OrderItem> orderItemList = readRS(rs);
@@ -64,7 +64,7 @@ public class DAOorderItemDB {
         List<OrderItem> orderItemList = new ArrayList<>();
         Either<ApiError, List<OrderItem>> res;
         try (Connection myconnection = db.getConnection()) {
-            PreparedStatement pstmt = myconnection.prepareStatement("select * from order_items where order_id = ?");
+            PreparedStatement pstmt = myconnection.prepareStatement(SQLqueries.SELECT_FROM_ORDER_ITEMS_WHERE_ORDER_ID);
             pstmt.setInt(1, orderId);
             ResultSet rs = pstmt.executeQuery();
             orderItemList = readRS(rs);
@@ -80,7 +80,7 @@ public class DAOorderItemDB {
         int rowsAffected;
         Either<ApiError, Integer> res;
         try (Connection myConnection = db.getConnection()) {
-            PreparedStatement pstmt = myConnection.prepareStatement("update order_items set order_item_id=?, order_id=?, menu_item_id=?, quantity=?");
+            PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.UPDATE_ORDER_ITEMS);
             pstmt.setInt(1, orderItem.getId());
             pstmt.setInt(2, orderItem.getOrderId());
             pstmt.setInt(3, orderItem.getMenuItem());

@@ -3,6 +3,7 @@ package jakarta.rest;
 import dao.modelo.MenuItem;
 import domain.servicios.SERVmenuItems;
 import io.vavr.control.Either;
+import jakarta.ConstantsJakarta;
 import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -11,7 +12,7 @@ import jakarta.ws.rs.core.Response;
 
 import java.util.List;
 
-@Path("/menu_item")
+@Path(ConstantsJakarta.MENU_ITEM)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class RESTmenuItem {
@@ -34,8 +35,8 @@ public class RESTmenuItem {
     }
 
     @GET
-    @Path("/{id}")
-    public Response getIdMenuItem(@PathParam("id") Integer id) {
+    @Path(ConstantsJakarta.ID_PATH)
+    public Response getIdMenuItem(@PathParam(ConstantsJakarta.ID) Integer id) {
         Either<ApiError, MenuItem> result = sev.get(id);
         if (result.isRight()) {
             return Response.ok(result.get()).build();

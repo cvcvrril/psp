@@ -1,10 +1,11 @@
 package jakarta.rest;
 
 
+import jakarta.ConstantsJakarta;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 
-@ApplicationPath("/api")
+@ApplicationPath(ConstantsJakarta.API)
 public class JAXRSApplication extends Application {
 
 

@@ -3,6 +3,7 @@ package jakarta.rest;
 import dao.modelo.TableRestaurant;
 import domain.servicios.SERVtablesRestaurant;
 import io.vavr.control.Either;
+import jakarta.ConstantsJakarta;
 import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -13,7 +14,7 @@ import lombok.extern.log4j.Log4j2;
 import java.util.List;
 
 @Log4j2
-@Path("/tables")
+@Path(ConstantsJakarta.TABLES)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class RESTtables {
@@ -36,8 +37,8 @@ public class RESTtables {
     }
 
     @GET
-    @Path("/{id}")
-    public Response getIdTable(@PathParam("id") Integer id){
+    @Path(ConstantsJakarta.ID_PATH)
+    public Response getIdTable(@PathParam(ConstantsJakarta.ID) Integer id){
         Either<ApiError, TableRestaurant> result = serv.get(id);
         if(result.isRight()) {
             return Response.ok(result.get()).build();
