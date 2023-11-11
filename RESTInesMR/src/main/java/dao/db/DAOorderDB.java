@@ -3,6 +3,7 @@ package dao.db;
 import common.Configuration;
 import common.SQLqueries;
 import dao.ConstantsDAO;
+import dao.DAOorder;
 import dao.DBConnection;
 import dao.DBConnectionPool;
 import dao.modelo.Order;
@@ -25,7 +26,7 @@ import java.util.List;
 /**Los doble try están puestos por el AutoCommit**/
 
 @Log4j2
-public class DAOorderDB {
+public class DAOorderDB implements DAOorder {
 
     private final DBConnection db;
     private final DBConnectionPool pool;

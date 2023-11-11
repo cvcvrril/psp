@@ -3,6 +3,7 @@ package dao.db;
 import common.Configuration;
 import common.SQLqueries;
 import dao.ConstantsDAO;
+import dao.DAOtables;
 import dao.DBConnection;
 import dao.modelo.TableRestaurant;
 import domain.modelo.excepciones.BaseCaidaException;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
-public class DAOtablesDB {
+public class DAOtablesDB implements DAOtables {
 
     private final DBConnection db;
 

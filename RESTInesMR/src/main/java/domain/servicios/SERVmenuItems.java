@@ -1,6 +1,6 @@
 package domain.servicios;
 
-import dao.db.DAOMenuItemDB;
+import dao.db.DAOmenuItemDB;
 import dao.modelo.MenuItem;
 import io.vavr.control.Either;
 import jakarta.excepciones.ApiError;
@@ -10,18 +10,18 @@ import java.util.List;
 
 public class SERVmenuItems {
 
-    private final DAOMenuItemDB daoMenuItemDBd;
+    private final DAOmenuItemDB DAOmenuItemDBd;
 
     @Inject
-    public SERVmenuItems(DAOMenuItemDB daoMenuItemDBd) {
-        this.daoMenuItemDBd = daoMenuItemDBd;
+    public SERVmenuItems(DAOmenuItemDB DAOmenuItemDBd) {
+        this.DAOmenuItemDBd = DAOmenuItemDBd;
     }
 
     public Either<ApiError, List<MenuItem>> getAll(){
-        return daoMenuItemDBd.getAll();
+        return DAOmenuItemDBd.getAll();
     }
 
     public Either<ApiError, MenuItem> get(int id){
-        return daoMenuItemDBd.get(id);
+        return DAOmenuItemDBd.get(id);
     }
 }

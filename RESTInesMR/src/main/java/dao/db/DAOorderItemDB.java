@@ -3,6 +3,7 @@ package dao.db;
 import common.Configuration;
 import common.SQLqueries;
 import dao.ConstantsDAO;
+import dao.DAOorderItem;
 import dao.DBConnection;
 import dao.modelo.OrderItem;
 import domain.modelo.excepciones.BadArgumentException;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
-public class DAOorderItemDB {
+public class DAOorderItemDB implements DAOorderItem {
 
     private final DBConnection db;
 

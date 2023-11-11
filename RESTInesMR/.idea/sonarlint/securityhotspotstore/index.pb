@@ -78,3 +78,13 @@ X
 (src/main/resources/config/properties.xml,6\7\67a4007b83808db067bd91097f31fac290f5cfbf
 [
 +src/main/java/jakarta/ConstantsJakarta.java,1\7\1724b217f67e8670965b532cecda6da6a68f0297
+O
+src/main/java/dao/DAOorder.java,f\d\fd17f5904415251a97ba14eca6e425e74c658af9
+P
+ src/main/java/dao/DAOtables.java,a\c\ace3d0de8cfb7fbb2566cdf08f3bea99ed993a27
+S
+#src/main/java/dao/DAOorderItem.java,d\7\d7efcfb21879d54cfd23041c3bad37c52c38a484
+R
+"src/main/java/dao/DAOmenuItem.java,c\f\cf2ba0cc7a8985e14dbaf04e96e17fd1ccd359f9
+W
+'src/main/java/dao/db/DAOmenuItemDB.java,e\0\e0c16a6ea1ea83c53ec14a3b256edb98b7cb8e15

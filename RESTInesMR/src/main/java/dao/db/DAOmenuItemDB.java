@@ -3,6 +3,7 @@ package dao.db;
 import common.Configuration;
 import common.SQLqueries;
 import dao.ConstantsDAO;
+import dao.DAOmenuItem;
 import dao.DBConnection;
 import dao.modelo.MenuItem;
 import domain.modelo.excepciones.BaseCaidaException;
@@ -16,12 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
-public class DAOMenuItemDB {
+public class DAOmenuItemDB implements DAOmenuItem {
 
     private final DBConnection db;
 
     @Inject
-    public DAOMenuItemDB(Configuration configuration, DBConnection db) {
+    public DAOmenuItemDB(Configuration configuration, DBConnection db) {
         this.db = db;
     }
 
@@ -59,7 +60,7 @@ public class DAOMenuItemDB {
         return res;
     }
 
-    private List<MenuItem> readRS(ResultSet rs) throws SQLException {
+    private List<MenuItem> readRS(ResultSet rs){
         try {
             List<MenuItem> menuItemList = new ArrayList<>();
             while (rs.next()) {
