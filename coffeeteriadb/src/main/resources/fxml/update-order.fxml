@@ -33,7 +33,7 @@
       <Button fx:id="addItemButton" layoutX="441.0" layoutY="201.0" mnemonicParsing="false" onAction="#addItem" text="Add" />
       <Button fx:id="removeItemButton" layoutX="488.0" layoutY="201.0" mnemonicParsing="false" onAction="#removeItem" text="Remove" />
 
-      <ComboBox layoutX="441.0" layoutY="98.0" prefHeight="25.0" prefWidth="103.0" />
+      <ComboBox fx:id="menuItemComboBox" layoutX="441.0" layoutY="98.0" prefHeight="25.0" prefWidth="103.0" />
       <Label layoutX="41.0" layoutY="119.0" text="Date" />
       <Label layoutX="36.0" layoutY="161.0" text="Table" />
       <Label layoutX="26.0" layoutY="213.0" text="Customer" />

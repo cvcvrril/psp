@@ -55,6 +55,8 @@ public class UpdateOrderController extends BasePantallaController {
     private TextField customerField;
     @FXML
     private TextField quantityField;
+    @FXML
+    private  ComboBox menuItemComboBox;
 
     @FXML
     private TableView<OrderItem> orderItemTable;
@@ -77,9 +79,19 @@ public class UpdateOrderController extends BasePantallaController {
     }
 
     public void removeItem() {
-        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-        a.setContentText(Constantes.THE_MENU_ITEM_HAS_BEEN_REMOVED);
-        a.show();
+        OrderItem selectedItem = orderItemTable.getSelectionModel().getSelectedItem();
+        if (selectedItem!= null){
+            orderItemTable.getItems().remove(selectedItem);
+            quantityField.clear();
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setContentText(Constantes.THE_MENU_ITEM_HAS_BEEN_REMOVED);
+            a.show();
+        }else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Please, select one of the order items from the table to remove.");
+            alert.show();
+        }
+
     }
 
     public void initialize(){
@@ -114,7 +126,6 @@ public class UpdateOrderController extends BasePantallaController {
                 customerField.setText(String.valueOf(selOrder.getIdCo()));
                 tableField.setText(String.valueOf(selOrder.getIdTable()));
                 dateField.setText(String.valueOf(selOrder.getOrDate()));
-
             }
         }
     }
