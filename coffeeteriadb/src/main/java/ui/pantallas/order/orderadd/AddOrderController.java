@@ -99,8 +99,6 @@ public class AddOrderController extends BasePantallaController {
         int tableId = tableComboBox.getValue();
         LocalDateTime orderDate = LocalDateTime.now();
 
-
-
         List<OrderItem> orderItems = new ArrayList<>(mItemTable.getItems());
         Order newOrder = new Order(null,orderDate,customerId, tableId, orderItems);
 

@@ -20,7 +20,8 @@ public class SERVorderItem {
     }
 
     public Either<ErrorCOrderItem, List<OrderItem>> getOrders(int i) {
-        return daOorderItemDB.getByOrderId(i);
+        //return daOorderItemDB.getByOrderId(i);
+        return daOorderItemSpring.get(i);
     }
 
     public Either<ErrorCOrderItem, List<OrderItem>> getAll(){

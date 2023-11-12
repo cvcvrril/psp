@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import model.MenuItem;
 import model.Order;
 import model.OrderItem;
 import model.errors.ErrorCMenuItem;
@@ -17,6 +18,7 @@ import services.SERVorder;
 import services.SERVorderItem;
 import ui.pantallas.common.BasePantallaController;
 
+import java.awt.event.ActionEvent;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
@@ -56,7 +58,7 @@ public class UpdateOrderController extends BasePantallaController {
     @FXML
     private TextField quantityField;
     @FXML
-    private  ComboBox menuItemComboBox;
+    private  ComboBox<String> menuItemComboBox;
 
     @FXML
     private TableView<OrderItem> orderItemTable;
@@ -73,9 +75,33 @@ public class UpdateOrderController extends BasePantallaController {
     }
 
     public void addItem() {
-        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-        a.setContentText(Constantes.THE_MENU_ITEM_HAS_BEEN_ADDED);
-        a.show();
+        String selectedItemName = menuItemComboBox.getValue();
+        int quantity = Integer.parseInt(quantityField.getText());
+        MenuItem selectedMenuItem = null;
+        for (MenuItem menuItem : serVmenuItems.getAll().getOrElse(Collections.emptyList())) {
+            if (menuItem.getNameMItem().equals(selectedItemName)) {
+                selectedMenuItem = menuItem;
+                break;
+            }
+        }
+        if (selectedMenuItem != null) {
+            int lastOrderItemId = getLastOrderItemIdFromDatabase();
+            OrderItem newOrderItem = new OrderItem(lastOrderItemId, 0, selectedMenuItem.getIdMItem(), quantity, serVmenuItems.getListMenuItems(lastOrderItemId).getOrNull());
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setContentText(Constantes.THE_MENU_ITEM_HAS_BEEN_ADDED);
+            a.show();
+
+            // Agregar el nuevo OrderItem a la tabla
+            orderItemTable.getItems().add(newOrderItem);
+            menuItemComboBox.getSelectionModel().clearSelection();
+            quantityField.clear();
+        } else {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setContentText("Ítem de menú no encontrado");
+            errorAlert.show();
+        }
+
+
     }
 
     public void removeItem() {
@@ -91,7 +117,6 @@ public class UpdateOrderController extends BasePantallaController {
             alert.setContentText("Please, select one of the order items from the table to remove.");
             alert.show();
         }
-
     }
 
     public void initialize(){
@@ -114,7 +139,10 @@ public class UpdateOrderController extends BasePantallaController {
             return new SimpleStringProperty(menuItemName);
         });
         orderItemTable.setOnMouseClicked(this::handleorderItemsTable);
-
+        List<MenuItem> menuItems = serVmenuItems.getAll().getOrElse(Collections.emptyList());
+        for (MenuItem menuItem: menuItems){
+            menuItemComboBox.getItems().add(menuItem.getNameMItem());
+        }
 
     }
 
@@ -146,8 +174,9 @@ public class UpdateOrderController extends BasePantallaController {
             int tableId = Integer.parseInt(tableField.getText());
             String dateText = dateField.getText();
             LocalDateTime orderDateTime = LocalDateTime.parse(dateText);
+            List<OrderItem> orderItemList = orderItemTable.getItems();
 
-            Order updatedOrder = new Order(orderId, orderDateTime, customerId, tableId, orderItemTable.getItems());
+            Order updatedOrder = new Order(orderId, orderDateTime, customerId, tableId, orderItemList);
 
             Either<ErrorCOrder, Integer> updateResult = serVorder.updateOrder(updatedOrder);
 
@@ -184,5 +213,19 @@ public class UpdateOrderController extends BasePantallaController {
         } else {
             return null;
         }
+    }
+
+    private int getLastOrderItemIdFromDatabase() {
+        List<OrderItem> orderItems = serVorderItem.getAll().getOrElse(Collections.emptyList());
+
+        int lastOrderItemId = 0;
+
+        for (OrderItem orderItem : orderItems) {
+            if (orderItem.getId() > lastOrderItemId) {
+                lastOrderItemId = orderItem.getId();
+            }
+        }
+
+        return lastOrderItemId;
     }
 }

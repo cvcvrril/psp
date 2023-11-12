@@ -43,7 +43,7 @@ public class DAOorderSpring {
     public Either<ErrorCOrder, Order> get(int id){
         Either<ErrorCOrder, Order> res;
         JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
-        List<Order> orderList = jtm.query(SQLqueries.SELECT_ORDERS_ID, new OrderMapper());
+        List<Order> orderList = jtm.query(SQLqueries.SELECT_ORDERS_ID, new OrderMapper(), id);
         if (orderList.isEmpty()){
             res = Either.left(new ErrorCOrder("error", 0));
         } else {
