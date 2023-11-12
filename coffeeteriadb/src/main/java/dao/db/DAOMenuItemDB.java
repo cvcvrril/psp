@@ -7,7 +7,9 @@ import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
 import model.MenuItem;
+import model.OrderItem;
 import model.errors.ErrorCMenuItem;
+import model.errors.ErrorCOrderItem;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -53,6 +55,22 @@ public class DAOMenuItemDB {
             } else {
                 res = Either.left(new ErrorCMenuItem(ConstantsDAO.ERROR_READING_DATABASE, 0));
             }
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+            res = Either.left(new ErrorCMenuItem(e.getMessage(), 0));
+        }
+        return res;
+    }
+
+    public Either<ErrorCMenuItem, List<MenuItem>> getByMenuItemId(int orderId){
+        List<MenuItem> orderItemList = new ArrayList<>();
+        Either<ErrorCMenuItem, List<MenuItem>> res;
+        try(Connection myconnection = db.getConnection()){
+            PreparedStatement pstmt = myconnection.prepareStatement("select * from menu_items where menu_item_id = ?");
+            pstmt.setInt(1, orderId);
+            ResultSet rs = pstmt.executeQuery();
+            orderItemList = readRS(rs);
+            res = Either.right(orderItemList);
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorCMenuItem(e.getMessage(), 0));

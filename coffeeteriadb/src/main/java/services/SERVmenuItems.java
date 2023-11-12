@@ -25,6 +25,10 @@ public class SERVmenuItems {
         return daoMenuItemDBd.get(id);
     }
 
+    public Either<ErrorCMenuItem, List<MenuItem>> getListMenuItems(int id){
+        return daoMenuItemDBd.getByMenuItemId(id);
+    }
+
     public Either<ErrorCMenuItem, String> getMenuItemName(int id){
         Either<ErrorCMenuItem, String> res;
         Either<ErrorCMenuItem, MenuItem> menuItemResult = daoMenuItemDBd.get(id);

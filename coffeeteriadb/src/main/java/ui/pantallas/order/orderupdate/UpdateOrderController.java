@@ -29,7 +29,6 @@ public class UpdateOrderController extends BasePantallaController {
     private final SERVorderItem serVorderItem;
     private final SERVmenuItems serVmenuItems;
 
-
     @FXML
     private TableView<Order> tableOrders;
     @FXML

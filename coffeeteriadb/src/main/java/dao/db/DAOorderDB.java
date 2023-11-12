@@ -156,7 +156,6 @@ public class DAOorderDB {
                             pstmtOrderItem.executeUpdate();
                         }
                     }
-
                     myConnection.commit();
                     res = Either.right(rowsAffected);
                 }
