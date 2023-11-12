@@ -7,6 +7,7 @@ import dao.DAOmenuItem;
 import dao.DBConnection;
 import dao.modelo.MenuItem;
 import domain.modelo.excepciones.BaseCaidaException;
+import domain.modelo.excepciones.WrongObjectException;
 import io.vavr.control.Either;
 import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
@@ -51,7 +52,7 @@ public class DAOmenuItemDB implements DAOmenuItem {
             if (!menuItemList.isEmpty()){
                 res = Either.right(menuItemList.get(0));
             } else {
-                throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
+                throw new WrongObjectException(ConstantsDAO.WRONG_OBJECT_EXCEPTION);
             }
         } catch (SQLException e) {
             log.error(e.getMessage(), e);

@@ -7,6 +7,7 @@ import dao.DAOtables;
 import dao.DBConnection;
 import dao.modelo.TableRestaurant;
 import domain.modelo.excepciones.BaseCaidaException;
+import domain.modelo.excepciones.WrongObjectException;
 import io.vavr.control.Either;
 import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
@@ -51,7 +52,7 @@ public class DAOtablesDB implements DAOtables {
             if (!tableRestaurantList.isEmpty()){
                 res = Either.right(tableRestaurantList.get(0));
             }else {
-                throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
+                throw new WrongObjectException(ConstantsDAO.WRONG_OBJECT_EXCEPTION);
             }
             rs.close();
         } catch (SQLException e) {

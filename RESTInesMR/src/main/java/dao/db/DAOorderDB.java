@@ -65,7 +65,7 @@ public class DAOorderDB implements DAOorder {
             if (!orderList.isEmpty()) {
                 res = Either.right(orderList.get(0));
             } else {
-                throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
+                throw new WrongObjectException(ConstantsDAO.WRONG_OBJECT_EXCEPTION);
             }
             rs.close();
         } catch (SQLException e) {

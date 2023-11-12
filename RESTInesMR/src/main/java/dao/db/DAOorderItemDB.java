@@ -8,6 +8,7 @@ import dao.DBConnection;
 import dao.modelo.OrderItem;
 import domain.modelo.excepciones.BadArgumentException;
 import domain.modelo.excepciones.BaseCaidaException;
+import domain.modelo.excepciones.WrongObjectException;
 import io.vavr.control.Either;
 import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
@@ -52,7 +53,7 @@ public class DAOorderItemDB implements DAOorderItem {
             if (!orderItemList.isEmpty()) {
                 res = Either.right(orderItemList.get(0));
             } else {
-                throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
+                throw new WrongObjectException(ConstantsDAO.WRONG_OBJECT_EXCEPTION);
             }
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
