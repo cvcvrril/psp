@@ -1,8 +1,6 @@
 package jakarta.rest;
 
-import dao.ConstantsDAO;
 import dao.modelo.TableRestaurant;
-import domain.modelo.excepciones.BadArgumentException;
 import domain.servicios.SERVtablesRestaurant;
 import io.vavr.control.Either;
 import jakarta.ConstantsJakarta;
@@ -41,17 +39,11 @@ public class RESTtables {
     @GET
     @Path(ConstantsJakarta.ID_PATH)
     public Response getIdTable(@PathParam(ConstantsJakarta.ID) String idParam) {
-        try {
-            Integer id = Integer.parseInt(idParam);
-            Either<ApiError, TableRestaurant> result = serv.get(id);
-            if (result.isRight()) {
-                return Response.ok(result.get()).build();
-            } else {
-                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
-            }
-        }catch (NumberFormatException e){
-            log.error(e.getMessage(),e);
-            throw new BadArgumentException(ConstantsDAO.BAD_ARGUMENT_EXCEPTION);
+        Either<ApiError, TableRestaurant> result = serv.get(idParam);
+        if (result.isRight()) {
+            return Response.ok(result.get()).build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
         }
     }
 }

@@ -41,17 +41,11 @@ public class RESTorders {
     @GET
     @Path(ConstantsJakarta.ID_PATH)
     public Response getIdOrder(@PathParam(ConstantsJakarta.ID) String idParam) {
-        try {
-            Integer id = Integer.parseInt(idParam);
-            Either<ApiError, Order> result = serv.getOrder(id);
-            if (result.isRight()) {
-                return Response.ok(result.get()).build();
-            } else {
-                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
-            }
-        } catch (NumberFormatException e) {
-            log.error(e.getMessage(),e);
-            throw new BadArgumentException(ConstantsDAO.BAD_ARGUMENT_EXCEPTION);
+        Either<ApiError, Order> result = serv.getOrder(idParam);
+        if (result.isRight()) {
+            return Response.ok(result.get()).build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
         }
     }
 
@@ -78,17 +72,11 @@ public class RESTorders {
     @DELETE
     @Path(ConstantsJakarta.ID_PATH)
     public Response deleteOrder(@PathParam(ConstantsJakarta.ID) String idParam) {
-        try {
-            Integer id = Integer.parseInt(idParam);
-            Either<ApiError, Integer> result = serv.delOrder(id);
-            if (result.isRight()) {
-                return Response.ok(result.get()).build();
-            } else {
-                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-            }
-        } catch (NumberFormatException e) {
-            log.error(e.getMessage(),e);
-            throw new BadArgumentException(ConstantsDAO.BAD_ARGUMENT_EXCEPTION);
+        Either<ApiError, Integer> result = serv.delOrder(idParam);
+        if (result.isRight()) {
+            return Response.ok(result.get()).build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
 }

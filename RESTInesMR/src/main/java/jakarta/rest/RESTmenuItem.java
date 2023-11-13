@@ -33,7 +33,7 @@ public class RESTmenuItem {
         Either<ApiError, List<MenuItem>> result = sev.getAll();
         if (result.isRight()) {
             return Response.ok(result.get()).build();
-        }else {
+        } else {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
         }
     }
@@ -42,17 +42,11 @@ public class RESTmenuItem {
     @Path(ConstantsJakarta.ID_PATH)
 
     public Response getIdMenuItem(@PathParam(ConstantsJakarta.ID) String idParam) {
-        try {
-            Integer id = Integer.parseInt(idParam);
-            Either<ApiError, MenuItem> result = sev.get(id);
-            if (result.isRight()) {
-                return Response.ok(result.get()).build();
-            } else {
-                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
-            }
-        }catch (NumberFormatException e){
-            log.error(e.getMessage(),e);
-            throw new BadArgumentException(ConstantsDAO.BAD_ARGUMENT_EXCEPTION);
+        Either<ApiError, MenuItem> result = sev.get(idParam);
+        if (result.isRight()) {
+            return Response.ok(result.get()).build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(result.getLeft()).build();
         }
     }
 
