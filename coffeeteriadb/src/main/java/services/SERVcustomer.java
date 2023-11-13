@@ -8,7 +8,6 @@ import model.Credential;
 import model.Customer;
 import model.errors.ErrorCCustomer;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class SERVcustomer {
@@ -34,21 +33,18 @@ public class SERVcustomer {
     }
 
     public Either<ErrorCCustomer, List<Customer>> getAll() {
-        //return daOcustomerDB.getAll();
          return daOcustomerSpring.getAll();
 
 
     }
 
     public Either<ErrorCCustomer, Customer> get(int id) {
-        //    return daOcustomerDB.get(id);
         return daOcustomerSpring.get(id);
     }
 
     public Either<ErrorCCustomer, Integer> delete(int i, boolean conf) {
         Either<ErrorCCustomer, Customer> res = daOcustomerDB.get(i);
         if (res.isRight()) {
-            //return daOcustomerDB.delete(i, conf);
             return daOcustomerSpring.delete(i, conf);
         } else {
             return Either.left(res.getLeft());
@@ -56,12 +52,10 @@ public class SERVcustomer {
     }
 
     public Either<ErrorCCustomer, Integer> update(Customer customer) {
-        //return daOcustomerDB.update(customer);
         return daOcustomerSpring.update(customer);
     }
 
     public Either<ErrorCCustomer, Integer> add(Customer customer, Credential credential) {
         return daOcustomerDB.add(customer, credential);
-        //return daOcustomerSpring.add(customer);
     }
 }

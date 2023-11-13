@@ -72,7 +72,6 @@ public class AddCustomerController extends BasePantallaController {
             a.setContentText(common.Constantes.USER_ADDED);
             a.show();
         }else {
-            ErrorCCustomer error = res.getLeft();
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setContentText("Error al agregar el cliente");
             errorAlert.show();

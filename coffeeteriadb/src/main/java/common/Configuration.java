@@ -1,6 +1,7 @@
 package common;
 
 import jakarta.inject.Singleton;
+import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.IOException;
@@ -8,12 +9,12 @@ import java.util.Properties;
 
 @Singleton
 @Log4j2
+@Data
 public class Configuration {
 
     private Properties ptxt;
     private Properties pxml;
     private Properties psql;
-    private static Configuration instance;
     private String pathDataCustomers;
     private String pathDataOrders;
     private String pathXMLOrders;
@@ -41,13 +42,6 @@ public class Configuration {
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         }
-    }
-
-    public static Configuration getInstance(){
-        if (instance == null){
-            instance = new Configuration();
-        }
-        return instance;
     }
 
     public String getPropertyTXT(String key){

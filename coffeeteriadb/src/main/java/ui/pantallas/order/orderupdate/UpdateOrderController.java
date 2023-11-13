@@ -204,15 +204,17 @@ public class UpdateOrderController extends BasePantallaController {
     public void updateOrderItemsTable(Order order) {
         List<OrderItem> orderItems = serVorderItem.getOrders(order.getIdOrd()).getOrElse(Collections.emptyList());
         orderItemTable.getItems().setAll(orderItems);
+
     }
 
     public String getMenuItemNameById(int id) {
         Either<ErrorCMenuItem, String> result = serVmenuItems.getMenuItemName(id);
-        if(result.isRight()) {
-            return result.get();
-        } else {
-            return null;
-        }
+        return result.get();
+//        if(result.isRight()) {
+//            return result.get();
+//        } else {
+//            return null;
+//        }
     }
 
     private int getLastOrderItemIdFromDatabase() {

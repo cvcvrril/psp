@@ -38,7 +38,6 @@ public class DAOorderItemSpring {
         Either<ErrorCOrderItem, List<OrderItem>> res;
         JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
         List<OrderItem> orderItemList = jtm.query("SELECT * FROM order_items INNER JOIN menu_items ON menu_items.menu_item_id = order_items.menu_item_id WHERE order_items.order_id = ?;", new OrderItemMapper(), id);
-        //List<OrderItem> orderItemList = jtm.query("select * from order_items where order_id =?", new OrderItemMapper(), id);
         res = Either.right(orderItemList);
         return res;
     }

@@ -20,12 +20,10 @@ import java.util.List;
 public class DAOcredentials {
 
 
-    private final Configuration config;
     private final DBConnection db;
 
     @Inject
     public DAOcredentials(Configuration config, DBConnection db) {
-        this.config = config;
         this.db = db;
     }
 

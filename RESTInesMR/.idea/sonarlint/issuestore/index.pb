@@ -57,12 +57,6 @@ Z
 *src/main/java/jakarta/rest/RESTorders.java,c\4\c4ab6d3d3d1c60e4283e06eb5f30a6c177a5f5c3
 Q
 !src/main/webapp/WEB-INF/beans.xml,8\3\83008b1a88ba03a2548bb5b9ad0768c6c307d36c
-o
-?src/main/java/domain/modelo/excepciones/BaseCaidaException.java,f\0\f01d215c5108419a6cebb928afbd6bd4a964c426
-q
-Asrc/main/java/domain/modelo/excepciones/WrongObjectException.java,1\c\1c0e17a6d1d072331b90328ae052accf299af826
-q
-Asrc/main/java/jakarta/excepciones/WrongObjectExceptionMapper.java,1\b\1b8910521c0616980242f7171f2e787b751d9768
 \
 ,src/main/java/jakarta/rest/RESTmenuItem.java,5\b\5b0df7ef6f3d39987417bf0f4310a372b6082927
 :
@@ -74,15 +68,5 @@ Z
 *src/main/resources/config/propertiesDB.xml,8\7\87b235e703f3a3630b1d9cc51b29bc8de3419f14
 X
 (src/main/resources/config/properties.xml,6\7\67a4007b83808db067bd91097f31fac290f5cfbf
-[
-+src/main/java/jakarta/ConstantsJakarta.java,1\7\1724b217f67e8670965b532cecda6da6a68f0297
-O
-src/main/java/dao/DAOorder.java,f\d\fd17f5904415251a97ba14eca6e425e74c658af9
-P
- src/main/java/dao/DAOtables.java,a\c\ace3d0de8cfb7fbb2566cdf08f3bea99ed993a27
-S
-#src/main/java/dao/DAOorderItem.java,d\7\d7efcfb21879d54cfd23041c3bad37c52c38a484
-R
-"src/main/java/dao/DAOmenuItem.java,c\f\cf2ba0cc7a8985e14dbaf04e96e17fd1ccd359f9
 W
 'src/main/java/dao/db/DAOmenuItemDB.java,e\0\e0c16a6ea1ea83c53ec14a3b256edb98b7cb8e15

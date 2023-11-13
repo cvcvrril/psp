@@ -120,7 +120,7 @@ public class AddOrderController extends BasePantallaController {
         tableComboBox.getSelectionModel().clearSelection();
     }
 
-    public void addItem(ActionEvent actionEvent) {
+    public void addItem() {
         String selectedItemName = menuItemsCBox.getValue();
         int quantity = Integer.parseInt(menuItemQuantity.getText());
 
@@ -147,17 +147,8 @@ public class AddOrderController extends BasePantallaController {
         }
     }
 
-    public void removeItem(ActionEvent actionEvent) {
+    public void removeItem() {
         mItemTable.getItems().clear();
-    }
-
-    private int getNextOrderId() {
-        List<Order> orders = serVorder.getAll();
-        if (!orders.isEmpty()) {
-            return orders.get(orders.size() - 1).getIdOrd() + 1;
-        } else {
-            return 1;
-        }
     }
 
     public String getMenuItemNameById(int id) {

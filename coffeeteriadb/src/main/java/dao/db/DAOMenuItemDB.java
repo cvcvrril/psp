@@ -18,12 +18,10 @@ import java.util.List;
 @Log4j2
 public class DAOMenuItemDB {
 
-    private final Configuration configuration;
     private final DBConnection db;
 
     @Inject
     public DAOMenuItemDB(Configuration configuration, DBConnection db) {
-        this.configuration = configuration;
         this.db = db;
     }
 
