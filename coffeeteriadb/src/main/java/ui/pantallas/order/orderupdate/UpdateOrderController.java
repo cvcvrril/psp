@@ -18,7 +18,7 @@ import services.SERVorder;
 import services.SERVorderItem;
 import ui.pantallas.common.BasePantallaController;
 
-import java.awt.event.ActionEvent;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
@@ -74,10 +74,37 @@ public class UpdateOrderController extends BasePantallaController {
         this.serVmenuItems = serVmenuItems;
     }
 
+    public void initialize(){
+
+        id_ord.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_ORD));
+        id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
+        id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
+        date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
+        tableOrders.getItems().addAll(serVorder.getAll());
+        tableOrders.setOnMouseClicked(this::handleTable);
+        tableOrders.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                updateOrderItemsTable(newValue);
+            }
+        });
+        quantityCell.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        nameItemCell.setCellValueFactory(cellData -> {
+            int menuItemId = cellData.getValue().getMenuItem();
+            String menuItemName = getMenuItemNameById(menuItemId);
+            return new SimpleStringProperty(menuItemName);
+        });
+        orderItemTable.setOnMouseClicked(this::handleorderItemsTable);
+        List<MenuItem> menuItems = serVmenuItems.getAll().getOrElse(Collections.emptyList());
+        for (MenuItem menuItem: menuItems){
+            menuItemComboBox.getItems().add(menuItem.getNameMItem());
+        }
+
+    }
+
     public void addItem() {
-        String selectedItemName = menuItemComboBox.getValue();
+        String selectedItemName = menuItemComboBox.getSelectionModel().getSelectedItem();
         int quantity = Integer.parseInt(quantityField.getText());
-        MenuItem selectedMenuItem = null;
+        MenuItem selectedMenuItem = serVmenuItems.getMenuItemByName(selectedItemName).getOrNull();
         for (MenuItem menuItem : serVmenuItems.getAll().getOrElse(Collections.emptyList())) {
             if (menuItem.getNameMItem().equals(selectedItemName)) {
                 selectedMenuItem = menuItem;
@@ -119,32 +146,7 @@ public class UpdateOrderController extends BasePantallaController {
         }
     }
 
-    public void initialize(){
 
-        id_ord.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_ORD));
-        id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
-        id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
-        date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
-        tableOrders.getItems().addAll(serVorder.getAll());
-        tableOrders.setOnMouseClicked(this::handleTable);
-        tableOrders.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                updateOrderItemsTable(newValue);
-            }
-        });
-        quantityCell.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        nameItemCell.setCellValueFactory(cellData -> {
-            int menuItemId = cellData.getValue().getMenuItem();
-            String menuItemName = getMenuItemNameById(menuItemId);
-            return new SimpleStringProperty(menuItemName);
-        });
-        orderItemTable.setOnMouseClicked(this::handleorderItemsTable);
-        List<MenuItem> menuItems = serVmenuItems.getAll().getOrElse(Collections.emptyList());
-        for (MenuItem menuItem: menuItems){
-            menuItemComboBox.getItems().add(menuItem.getNameMItem());
-        }
-
-    }
 
     private void handleTable(MouseEvent event){
         if (event.getClickCount() == 1){
@@ -174,9 +176,8 @@ public class UpdateOrderController extends BasePantallaController {
             int tableId = Integer.parseInt(tableField.getText());
             String dateText = dateField.getText();
             LocalDateTime orderDateTime = LocalDateTime.parse(dateText);
-            List<OrderItem> orderItemList = orderItemTable.getItems();
 
-            Order updatedOrder = new Order(orderId, orderDateTime, customerId, tableId, orderItemList);
+            Order updatedOrder = new Order(orderId, orderDateTime, customerId, tableId, orderItemTable.getItems());
 
             Either<ErrorCOrder, Integer> updateResult = serVorder.updateOrder(updatedOrder);
 
@@ -210,11 +211,6 @@ public class UpdateOrderController extends BasePantallaController {
     public String getMenuItemNameById(int id) {
         Either<ErrorCMenuItem, String> result = serVmenuItems.getMenuItemName(id);
         return result.get();
-//        if(result.isRight()) {
-//            return result.get();
-//        } else {
-//            return null;
-//        }
     }
 
     private int getLastOrderItemIdFromDatabase() {

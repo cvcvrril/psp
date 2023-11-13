@@ -6,6 +6,7 @@ import jakarta.inject.Inject;
 import model.MenuItem;
 import model.errors.ErrorCMenuItem;
 
+import java.util.Collections;
 import java.util.List;
 
 public class SERVmenuItems {
@@ -41,5 +42,16 @@ public class SERVmenuItems {
         return res;
     }
 
+    public Either<ErrorCMenuItem, MenuItem> getMenuItemByName(String name) {
+        List<MenuItem> menuItems = getAll().getOrElse(Collections.emptyList());
+
+        for (MenuItem menuItem : menuItems) {
+            if (menuItem.getNameMItem().equals(name)) {
+                return Either.right(menuItem);
+            }
+        }
+
+        return Either.left(new ErrorCMenuItem("MenuItem not found", 0));
+    }
 
 }
