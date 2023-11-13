@@ -98,7 +98,6 @@ public class UpdateOrderController extends BasePantallaController {
         for (MenuItem menuItem: menuItems){
             menuItemComboBox.getItems().add(menuItem.getNameMItem());
         }
-
     }
 
     public void addItem() {
@@ -204,7 +203,8 @@ public class UpdateOrderController extends BasePantallaController {
 
     public void updateOrderItemsTable(Order order) {
         List<OrderItem> orderItems = serVorderItem.getOrders(order.getIdOrd()).getOrElse(Collections.emptyList());
-        orderItemTable.getItems().setAll(orderItems);
+        orderItemTable.getItems().clear();
+        orderItemTable.getItems().addAll(orderItems);
 
     }
 
