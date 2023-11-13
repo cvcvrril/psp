@@ -104,7 +104,7 @@ public class DAOorderItemDB {
             int orderId = rs.getInt(ConstantsDAO.ORDER_ID);
             int menuItemId = rs.getInt(ConstantsDAO.MENU_ITEM_ID);
             int quantity = rs.getInt(ConstantsDAO.QUANTITY);
-            orderItemList.add(new OrderItem(id, orderId, menuItemId, quantity, serVmenuItems.getAll().getOrNull()));
+            orderItemList.add(new OrderItem(id, orderId, menuItemId, quantity, serVmenuItems.get(id).get()));
         }
         return orderItemList;
     }

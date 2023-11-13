@@ -159,7 +159,7 @@ public class OrderListController extends BasePantallaController {
             orderItemsTable.getItems().addAll(orderItems.get());
         } else {
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setContentText("Error al mostrar los order items");
+            errorAlert.setContentText("Error al mostrar los order items (loadOrderItems)");
             errorAlert.show();
         }
     }
@@ -171,7 +171,7 @@ public class OrderListController extends BasePantallaController {
             orderItemsTable.getItems().addAll(orderItems.get());
         } else {
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setContentText("Error al mostrar los Order Items");
+            errorAlert.setContentText("Error al mostrar los Order Items(loadOrderItemsByOrderId)");
             errorAlert.show();
         }
     }

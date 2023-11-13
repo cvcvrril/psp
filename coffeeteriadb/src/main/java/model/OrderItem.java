@@ -14,6 +14,6 @@ public class OrderItem {
     private int orderId;        //order_id
     private int menuItem;       //menu_item_id
     private int quantity;       //quantity
-    private List<MenuItem> menuItems;
+    private MenuItem menuItemObject;
 
 }
