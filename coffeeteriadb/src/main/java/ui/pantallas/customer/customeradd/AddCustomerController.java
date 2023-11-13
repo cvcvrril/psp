@@ -61,13 +61,13 @@ public class AddCustomerController extends BasePantallaController {
             return;
         }
 
-        Customer newCustomer = new Customer(nextID,firstName, secondName, email,phoneNumber, date);
-        Credential newCredential = new Credential(nextID, username, password);
+        Customer newCustomer = new Customer(nextID,firstName, secondName, email,phoneNumber, date, null);
+        Credential newCredential = new Credential(newCustomer.getIdC(), username, password);
+        newCustomer.setCredential(newCredential);
         Either<ErrorCCustomer, Integer> res = serVcustomer.add(newCustomer, newCredential);
         clearFields();
 
         if (res.isRight()) {
-
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setContentText(common.Constantes.USER_ADDED);
             a.show();

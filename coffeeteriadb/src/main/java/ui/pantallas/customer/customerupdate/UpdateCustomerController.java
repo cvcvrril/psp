@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import model.Credential;
 import model.Customer;
 import model.errors.ErrorCCustomer;
 import services.SERVcustomer;
@@ -14,11 +15,10 @@ import ui.pantallas.common.BasePantallaController;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
 public class UpdateCustomerController extends BasePantallaController {
     private final SERVcustomer serVcustomer;
-    public DatePicker dateFieldd;
+
 
     @FXML
     private TextField idCustomerField;
@@ -31,7 +31,7 @@ public class UpdateCustomerController extends BasePantallaController {
     @FXML
     private TextField emailField;
     @FXML
-    private TextField dateField;
+    private DatePicker dateFieldd;
 
     @FXML
     private TableView<Customer> tableCustomers;
@@ -58,7 +58,6 @@ public class UpdateCustomerController extends BasePantallaController {
     }
 
     public void updateCustomer() {
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         int idCus = Integer.parseInt(idCustomerField.getText());
         String firstNameCus = firstNameField.getText();
@@ -67,7 +66,8 @@ public class UpdateCustomerController extends BasePantallaController {
         int phoneNumberCus = Integer.parseInt(phoneField.getText());
         LocalDate dateText = dateFieldd.getValue();
 
-        Customer updatedCustomer = new Customer(idCus, firstNameCus, secondNameCus, emailCus, phoneNumberCus, dateText);
+        Credential credential = new Credential(idCus, getPrincipalController().getUser(), getPrincipalController().getPassword());
+        Customer updatedCustomer = new Customer(idCus, firstNameCus, secondNameCus, emailCus, phoneNumberCus, dateText, credential);
 
         Either<ErrorCCustomer, Integer> res = serVcustomer.update(updatedCustomer);
         if (res.isRight()) {
@@ -75,9 +75,7 @@ public class UpdateCustomerController extends BasePantallaController {
             a.setContentText(Constantes.CUSTOMER_UPDATED);
             a.show();
             resetFields();
-            tableCustomers.getItems().clear();
-            tableCustomers.getItems().addAll(serVcustomer.getAll().getOrNull());
-
+            tableCustomers.getItems().setAll(serVcustomer.getAll().getOrNull());
         } else {
             ErrorCCustomer error = res.getLeft();
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
@@ -126,6 +124,4 @@ public class UpdateCustomerController extends BasePantallaController {
             }
         }
     }
-
-
 }

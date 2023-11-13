@@ -11,14 +11,12 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Customer {
 
-    /*Atributos*/
-
     private int idC;
     private String firstName;
     private String secondName;
     private String emailCus;
     private int phoneNumber;
     private LocalDate dateBirth;
+    private Credential credential;
 
-    /*Construcctores*/
 }

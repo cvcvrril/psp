@@ -8,6 +8,7 @@ import model.Credential;
 import model.Customer;
 import model.errors.ErrorCCustomer;
 
+import java.util.Collections;
 import java.util.List;
 
 public class SERVcustomer {
@@ -22,14 +23,16 @@ public class SERVcustomer {
     }
 
     public int getLastUsedId() {
-        List<Customer> customers = daOcustomerDB.getAll().getOrNull();
+        List<Customer> customers = daOcustomerDB.getAll().getOrElse(Collections.emptyList());
         int lastUsedId = 0;
+
         for (Customer customer : customers) {
             if (customer.getIdC() > lastUsedId) {
                 lastUsedId = customer.getIdC();
             }
         }
-        return lastUsedId + 1;
+
+        return lastUsedId;
     }
 
     public Either<ErrorCCustomer, List<Customer>> getAll() {

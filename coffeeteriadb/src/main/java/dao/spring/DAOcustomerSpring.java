@@ -126,6 +126,8 @@ public class DAOcustomerSpring implements DAOcustomer {
                     updatedCustomer.getPhoneNumber(),
                     updatedCustomer.getDateBirth(),
                     updatedCustomer.getIdC()));
+
+
         }catch (Exception e){
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorCCustomer(e.getMessage(),0));

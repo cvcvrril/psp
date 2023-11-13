@@ -2,6 +2,7 @@ package dao.db;
 
 import common.Configuration;
 import common.SQLqueries;
+import dao.ConstantsDAO;
 import dao.connection.DBConnection;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
@@ -9,10 +10,7 @@ import lombok.extern.log4j.Log4j2;
 import model.Credential;
 import model.errors.ErrorCCredential;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +35,25 @@ public class DAOcredentials {
             res = Either.right(credentialList);
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
+            res = Either.left(new ErrorCCredential(e.getMessage(), 0));
+        }
+        return res;
+    }
+
+    public Either<ErrorCCredential, Credential> get(int id){
+        Either<ErrorCCredential, Credential> res;
+        try (Connection myConnection = db.getConnection()){
+            PreparedStatement stmt = myConnection.prepareStatement("select * from credential where id =?");
+            stmt.setInt(1,id);
+            ResultSet rs = stmt.executeQuery();
+            List<Credential>credentialList = readRS(rs);
+            if (!credentialList.isEmpty()){
+                res = Either.right(credentialList.get(0));
+            } else {
+                res = Either.left(new ErrorCCredential(ConstantsDAO.ERROR_READING_DATABASE, 0));
+            }
+        } catch (SQLException e) {
+            log.error(e.getMessage(),e);
             res = Either.left(new ErrorCCredential(e.getMessage(), 0));
         }
         return res;

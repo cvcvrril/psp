@@ -52,6 +52,8 @@ public class PrincipalController extends BasePantallaController {
 
     @Getter
     private String user;
+    @Getter
+    private String password;
     @FXML
     private BorderPane root;
 
@@ -120,6 +122,7 @@ public class PrincipalController extends BasePantallaController {
 
     public void onLogin(Credential credential) {
         this.user = credential.getUserName();
+        this.password = credential.getPassword();
         menuPrincipal.setVisible(true);
         if(credential.getId() < 0){
             cargarPantalla(Pantallas.WELCOME);

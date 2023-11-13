@@ -11,6 +11,7 @@ import lombok.extern.log4j.Log4j2;
 import model.Credential;
 import model.Customer;
 import model.errors.ErrorCCustomer;
+import services.SERVcredential;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -24,12 +25,14 @@ public class DAOcustomerDB {
     private final Configuration config;
     private final DBConnection db;
     private final DBConnectionPool pool;
+    private final SERVcredential serv;
 
     @Inject
-    public DAOcustomerDB(Configuration config, DBConnection db, DBConnectionPool pool) {
+    public DAOcustomerDB(Configuration config, DBConnection db, DBConnectionPool pool, SERVcredential serv) {
         this.config = config;
         this.db = db;
         this.pool = pool;
+        this.serv = serv;
     }
 
     public Either<ErrorCCustomer, List<Customer>> getAll() {
@@ -214,7 +217,7 @@ public class DAOcustomerDB {
             if (dateFromDB != null) {
                 date = dateFromDB.toLocalDate();
             }
-            customerList.add(new Customer(id, firstName, lastName, email, phone, date));
+            customerList.add(new Customer(id, firstName, lastName, email, phone, date, serv.get(id).get()));
         }
         return customerList;
     }
