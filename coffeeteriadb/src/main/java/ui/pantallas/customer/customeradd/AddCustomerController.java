@@ -5,6 +5,7 @@ import jakarta.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import model.Credential;
 import model.Customer;
@@ -16,7 +17,6 @@ import java.time.LocalDate;
 
 public class AddCustomerController extends BasePantallaController {
     private final SERVcustomer serVcustomer;
-
     @FXML
     private TextField firstNameField;
     @FXML
@@ -26,7 +26,7 @@ public class AddCustomerController extends BasePantallaController {
     @FXML
     private TextField emailField;
     @FXML
-    private TextField dateField;
+    private DatePicker dateFieldd;
     @FXML
     private TextField usernameField;
     @FXML
@@ -48,7 +48,7 @@ public class AddCustomerController extends BasePantallaController {
         String secondName = secondNameField.getText();
         String phone = phoneField.getText();
         String email = emailField.getText();
-        String dateText = dateField.getText();
+        String dateText = String.valueOf(dateFieldd.getValue());
         int phoneNumber = Integer.parseInt(phone);
         LocalDate date = LocalDate.parse(dateText);
         String username = usernameField.getText();
@@ -83,6 +83,5 @@ public class AddCustomerController extends BasePantallaController {
         secondNameField.clear();
         phoneField.clear();
         emailField.clear();
-        dateField.clear();
     }
 }

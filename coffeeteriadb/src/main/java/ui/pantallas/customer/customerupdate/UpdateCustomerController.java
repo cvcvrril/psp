@@ -18,6 +18,7 @@ import java.time.format.DateTimeParseException;
 
 public class UpdateCustomerController extends BasePantallaController {
     private final SERVcustomer serVcustomer;
+    public DatePicker dateFieldd;
 
     @FXML
     private TextField idCustomerField;
@@ -64,17 +65,9 @@ public class UpdateCustomerController extends BasePantallaController {
         String secondNameCus = secondNameField.getText();
         String emailCus = emailField.getText();
         int phoneNumberCus = Integer.parseInt(phoneField.getText());
-        LocalDate dateCus;
-        try {
-            dateCus = LocalDate.parse(dateField.getText(), dateFormatter);
-        } catch (DateTimeParseException e) {
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setContentText("Formato de fecha incorrecto. Debe ser yyyy-MM-dd.");
-            errorAlert.show();
-            return;
-        }
+        LocalDate dateText = dateFieldd.getValue();
 
-        Customer updatedCustomer = new Customer(idCus, firstNameCus, secondNameCus, emailCus, phoneNumberCus, dateCus);
+        Customer updatedCustomer = new Customer(idCus, firstNameCus, secondNameCus, emailCus, phoneNumberCus, dateText);
 
         Either<ErrorCCustomer, Integer> res = serVcustomer.update(updatedCustomer);
         if (res.isRight()) {
@@ -106,7 +99,6 @@ public class UpdateCustomerController extends BasePantallaController {
         secondNameField.clear();
         emailField.clear();
         phoneField.clear();
-        dateField.clear();
     }
 
     public void initialize() {
@@ -130,7 +122,7 @@ public class UpdateCustomerController extends BasePantallaController {
                 secondNameField.setText(String.valueOf(selCustomer.getSecondName()));
                 emailField.setText(String.valueOf(selCustomer.getEmailCus()));
                 phoneField.setText(String.valueOf(selCustomer.getPhoneNumber()));
-                dateField.setText(String.valueOf(selCustomer.getDateBirth()));
+                dateFieldd.setValue(selCustomer.getDateBirth());
             }
         }
     }
