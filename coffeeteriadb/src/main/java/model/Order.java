@@ -12,7 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 public class Order {
 
-    /*Atributos*/
 
     private Integer idOrd;
     private LocalDateTime orDate;

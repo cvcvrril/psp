@@ -43,7 +43,6 @@ public class AddCustomerController extends BasePantallaController {
 
     public void addCustomer() {
 
-        int nextID = serVcustomer.getLastUsedId();
         String firstName = firstNameField.getText();
         String secondName = secondNameField.getText();
         String phone = phoneField.getText();
@@ -61,7 +60,7 @@ public class AddCustomerController extends BasePantallaController {
             return;
         }
 
-        Customer newCustomer = new Customer(nextID,firstName, secondName, email,phoneNumber, date, null);
+        Customer newCustomer = new Customer(0,firstName, secondName, email,phoneNumber, date, null);
         Credential newCredential = new Credential(newCustomer.getIdC(), username, password);
         newCustomer.setCredential(newCredential);
         Either<ErrorCCustomer, Integer> res = serVcustomer.add(newCustomer, newCredential);
