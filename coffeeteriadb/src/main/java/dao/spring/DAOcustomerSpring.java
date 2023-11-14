@@ -18,6 +18,7 @@ import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
+import java.math.BigInteger;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -78,7 +79,9 @@ public class DAOcustomerSpring implements DAOcustomer {
             credentialParams.put("customer_id", newCustomer.getIdC());
 
             if (customerRowsAffected == 1) {
-                return Either.right((int) credentialInsert.executeAndReturnKey(credentialParams));
+                BigInteger generatedCredentialId = (BigInteger) credentialInsert.executeAndReturnKey(credentialParams);
+                int credentialId = generatedCredentialId.intValue();
+                return Either.right(credentialId);
             } else {
                 return Either.left(new ErrorCCustomer("Error al agregar el cliente o la credencial", 0));
             }
@@ -86,8 +89,8 @@ public class DAOcustomerSpring implements DAOcustomer {
             log.error(e.getMessage(), e);
             return Either.left(new ErrorCCustomer(e.getMessage(), 0));
         }
-    }
 
+    }
     public Either<ErrorCCustomer, Integer> delete(int id, boolean conf) {
         Either<ErrorCCustomer, Integer> res;
         TransactionDefinition txDef = new DefaultTransactionDefinition();

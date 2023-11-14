@@ -65,7 +65,7 @@ public class AddOrderController extends BasePantallaController {
         this.serVorderItem = serVorderItem;
     }
 
-    public void initialize() {
+    public void principalCargado() {
         List<Integer> customerIDs = serVorder.getCustomerIDs();
         customerComboBox.getItems().addAll(customerIDs);
         List<MenuItem> menuItems = serVmenuItems.getAll().getOrElse(Collections.emptyList());
@@ -172,10 +172,5 @@ public class AddOrderController extends BasePantallaController {
         }
 
         return lastOrderItemId;
-    }
-
-    @Override
-    public void principalCargado() {
-
     }
 }

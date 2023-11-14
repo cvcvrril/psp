@@ -85,7 +85,7 @@ public class UpdateOrderController extends BasePantallaController {
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
         //Llenar OrderTable
         if (getPrincipalController().getActualCredential().getId() > 0) {
-            tableOrders.getItems().addAll(serVorder.getOrder(this.getPrincipalController().getActualCredential().getId()).getOrNull());
+            tableOrders.getItems().addAll(serVorder.getOrders(this.getPrincipalController().getActualCredential().getId()).getOrNull());
         } else {
             tableOrders.getItems().addAll(serVorder.getAll());
         }
@@ -166,7 +166,6 @@ public class UpdateOrderController extends BasePantallaController {
     public void updateOrder() {
         //Cambia toda tu puta mierda de alerts para usar el controller pls
         // Y AÑADE LOS DEMAS ALERTS DE MI CODIGO (PRINCIPAL CONTROLLER)
-        //this.getPrincipalController().sacarAlertError("Puta tu madre");
         Order selectedOrder = tableOrders.getSelectionModel().getSelectedItem();
         if (selectedOrder != null) {
             selectedOrder.setIdCo(Integer.parseInt(customerField.getText()));

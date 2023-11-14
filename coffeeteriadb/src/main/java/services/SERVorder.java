@@ -2,12 +2,12 @@ package services;
 
 import dao.db.DAOcustomerDB;
 import dao.db.DAOorderDB;
+import dao.spring.DAOcustomerSpring;
 import dao.spring.DAOorderSpring;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import model.Customer;
 import model.Order;
-import model.OrderItem;
 import model.errors.ErrorCCustomer;
 import model.errors.ErrorCOrder;
 
@@ -21,13 +21,15 @@ public class SERVorder {
     private final DAOcustomerDB daOcustomerDB;
     private final DAOorderDB daOorderDB;
     private final DAOorderSpring daOorderSpring;
+    private final DAOcustomerSpring daOcustomerSpring;
 
 
     @Inject
-    public SERVorder(DAOcustomerDB daOcustomerDB, DAOorderDB daOorderDB, DAOorderSpring daOorderSpring) {
+    public SERVorder(DAOcustomerDB daOcustomerDB, DAOorderDB daOorderDB, DAOorderSpring daOorderSpring, DAOcustomerSpring daOcustomerSpring) {
         this.daOcustomerDB = daOcustomerDB;
         this.daOorderDB = daOorderDB;
         this.daOorderSpring = daOorderSpring;
+        this.daOcustomerSpring = daOcustomerSpring;
     }
 
     /*Métodos*/
@@ -38,6 +40,10 @@ public class SERVorder {
 
     public Either<ErrorCOrder, Order> getOrder(int i) {
             return daOorderSpring.get(i);
+    }
+
+    public Either<ErrorCOrder, List<Order>> getOrders(int i){
+        return daOorderDB.getOrders(i);
     }
 
     public Either<ErrorCOrder, Integer> add(Order order) {
@@ -78,7 +84,7 @@ public class SERVorder {
     }
 
     public List<Integer> getCustomerIDs() {
-        Either<ErrorCCustomer, List<Customer>> result = daOcustomerDB.getAll();
+        Either<ErrorCCustomer, List<Customer>> result = daOcustomerSpring.getAll();
         if (result.isRight()) {
             List<Customer> customers = result.get();
             return customers.stream().map(Customer::getIdC).collect(Collectors.toList());

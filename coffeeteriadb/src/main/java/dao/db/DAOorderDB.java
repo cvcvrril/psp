@@ -35,10 +35,10 @@ public class DAOorderDB {
         this.serv = serv;
     }
 
-    public Either<ErrorCOrder, List<Order>> getAll(){
+    public Either<ErrorCOrder, List<Order>> getAll() {
         List<Order> orderList = new ArrayList<>();
         Either<ErrorCOrder, List<Order>> res;
-        try (Connection myConnection = pool.getConnection()){
+        try (Connection myConnection = pool.getConnection()) {
             Statement stmt = myConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = stmt.executeQuery(SQLqueries.SELECT_FROM_ORDERS);
@@ -51,14 +51,14 @@ public class DAOorderDB {
         return res;
     }
 
-    public Either<ErrorCOrder, Order> get(int id){
+    public Either<ErrorCOrder, Order> get(int id) {
         Either<ErrorCOrder, Order> res;
-        try (Connection myConnection = pool.getConnection()){
+        try (Connection myConnection = pool.getConnection()) {
             PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.SELECT_ORDERS_ID);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             List<Order> orderList = readRS(rs);
-            if (!orderList.isEmpty()){
+            if (!orderList.isEmpty()) {
                 res = Either.right(orderList.get(0));
             } else {
                 res = Either.left(new ErrorCOrder(ConstantsDAO.ERROR_READING_DATABASE, 0));
@@ -66,17 +66,32 @@ public class DAOorderDB {
             rs.close();
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
-            res = Either.left(new ErrorCOrder(e.getMessage(),  0));
+            res = Either.left(new ErrorCOrder(e.getMessage(), 0));
+        }
+        return res;
+    }
+
+    public Either<ErrorCOrder, List<Order>> getOrders(int id) {
+        Either<ErrorCOrder, List<Order>> res;
+        List<Order> orderList;
+        try (Connection myConnection = db.getConnection()) {
+            PreparedStatement pstmt = myConnection.prepareStatement("select*from orders where customer_id=?");
+            pstmt.setInt(1,id);
+            ResultSet rs = pstmt.executeQuery();
+            orderList = readRS(rs);
+            res = Either.right(orderList);
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+            res = Either.left(new ErrorCOrder(e.getMessage(), 0));
         }
         return res;
     }
 
 
-
-    public Either<ErrorCOrder, Integer> update(Order order){
+    public Either<ErrorCOrder, Integer> update(Order order) {
         int rowsAffected;
         Either<ErrorCOrder, Integer> res;
-        try (Connection myConnection = pool.getConnection()){
+        try (Connection myConnection = pool.getConnection()) {
             try (PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.UPDATE_ORDERS)) {
                 myConnection.setAutoCommit(false);
                 pstmt.setTimestamp(1, Timestamp.valueOf(order.getOrDate()));
@@ -86,12 +101,12 @@ public class DAOorderDB {
                 rowsAffected = pstmt.executeUpdate();
                 myConnection.commit();
                 res = Either.right(rowsAffected);
-            } catch (SQLException e){
-                log.error(e.getMessage(),e);
+            } catch (SQLException e) {
+                log.error(e.getMessage(), e);
                 res = Either.left(new ErrorCOrder(e.getMessage(), 0));
-                try{
-                   myConnection.rollback();
-                } catch (SQLException ex){
+                try {
+                    myConnection.rollback();
+                } catch (SQLException ex) {
                     res = Either.left(new ErrorCOrder(e.getMessage(), 0));
                 }
             } finally {
@@ -104,28 +119,28 @@ public class DAOorderDB {
         return res;
     }
 
-    public Either<ErrorCOrder, Integer> delete (int id){
+    public Either<ErrorCOrder, Integer> delete(int id) {
         Either<ErrorCOrder, Integer> res;
-        try (Connection myConnection = db.getConnection()){
-            PreparedStatement pstmt1= myConnection.prepareStatement(SQLqueries.DELETE_ORDER_ITEMS);
+        try (Connection myConnection = db.getConnection()) {
+            PreparedStatement pstmt1 = myConnection.prepareStatement(SQLqueries.DELETE_ORDER_ITEMS);
             pstmt1.setInt(1, id);
             pstmt1.executeUpdate();
-            PreparedStatement pstmt2= myConnection.prepareStatement(SQLqueries.DELETE_ORDERS_ID);
+            PreparedStatement pstmt2 = myConnection.prepareStatement(SQLqueries.DELETE_ORDERS_ID);
             pstmt2.setInt(1, id);
             int rowsAffected = pstmt2.executeUpdate();
-            if (rowsAffected !=1){
+            if (rowsAffected != 1) {
                 res = Either.left(new ErrorCOrder(ConstantsDAO.ERROR_DELETING_ORDER, 0));
             } else {
                 res = Either.right(rowsAffected);
             }
         } catch (SQLException e) {
-            log.error(e.getMessage(),e);
+            log.error(e.getMessage(), e);
             res = Either.left(new ErrorCOrder(e.getMessage(), 0));
         }
         return res;
     }
 
-    public Either<ErrorCOrder, Integer> add(Order order){
+    public Either<ErrorCOrder, Integer> add(Order order) {
         int rowsAffected;
         Either<ErrorCOrder, Integer> res;
         try (Connection myConnection = pool.getConnection()) {
@@ -138,7 +153,7 @@ public class DAOorderDB {
                 pstmtOrder.setInt(3, order.getIdTable());
                 rowsAffected = pstmtOrder.executeUpdate();
                 ResultSet rs = pstmtOrder.getGeneratedKeys();
-                if (rs.next()){
+                if (rs.next()) {
                     order.setIdOrd(rs.getInt(1));
                 }
 
@@ -150,7 +165,7 @@ public class DAOorderDB {
                     for (OrderItem orderItem : order.getOrderItems()) {
                         try (PreparedStatement pstmtOrderItem = myConnection.prepareStatement(SQLqueries.INSERT_ORDER_ITEM)) {
                             pstmtOrderItem.setInt(1, order.getOrderItems().get(0).getOrderId());
-                            pstmtOrderItem.setInt(2,order.getIdOrd());
+                            pstmtOrderItem.setInt(2, order.getIdOrd());
                             pstmtOrderItem.setInt(3, orderItem.getMenuItem());
                             pstmtOrderItem.setInt(4, orderItem.getQuantity());
                             pstmtOrderItem.executeUpdate();
@@ -174,13 +189,13 @@ public class DAOorderDB {
         return res;
     }
 
-    private List<Order> readRS (ResultSet rs) throws SQLException {
+    private List<Order> readRS(ResultSet rs) throws SQLException {
         List<Order> orderList = new ArrayList<>();
-        while (rs.next()){
+        while (rs.next()) {
             int id = rs.getInt(ConstantsDAO.ORDER_ID);
             LocalDateTime dateTime = null;
             Timestamp timestamp = rs.getTimestamp(ConstantsDAO.ORDER_DATE);
-            if (timestamp != null){
+            if (timestamp != null) {
                 dateTime = timestamp.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
             }
             int customerId = rs.getInt(ConstantsDAO.CUSTOMER_ID);

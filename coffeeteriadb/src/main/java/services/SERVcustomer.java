@@ -59,6 +59,6 @@ public class SERVcustomer {
     }
 
     public Either<ErrorCCustomer, Integer> add(Customer customer, Credential credential) {
-        return daOcustomerDB.add(customer, credential);
+        return daOcustomerSpring.add(customer, credential);
     }
 }
