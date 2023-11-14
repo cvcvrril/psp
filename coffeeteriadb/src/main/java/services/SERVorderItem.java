@@ -19,13 +19,20 @@ public class SERVorderItem {
         this.daOorderItemSpring = daOorderItemSpring;
     }
 
-    public Either<ErrorCOrderItem, List<OrderItem>> getOrders(int i) {
+    public Either<ErrorCOrderItem, List<OrderItem>> get(int i) {
         return daOorderItemSpring.get(i);
     }
 
-    public Either<ErrorCOrderItem, List<OrderItem>> getAll(){
+    public Either<ErrorCOrderItem, List<OrderItem>> getAll() {
         return daOorderItemSpring.getAll();
     }
 
+    public Either<ErrorCOrderItem, Integer> add(List<OrderItem> orderItemList, int id) {
+        return daOorderItemDB.add(orderItemList, id);
+    }
+
+    public Either<ErrorCOrderItem, Integer> delete(int id) {
+        return daOorderItemDB.delete(id);
+    }
 
 }

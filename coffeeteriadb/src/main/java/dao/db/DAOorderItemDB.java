@@ -29,7 +29,7 @@ public class DAOorderItemDB {
         this.serVmenuItems = serVmenuItems;
     }
 
-    public Either<ErrorCOrderItem, List<OrderItem>> getAll(){
+    public Either<ErrorCOrderItem, List<OrderItem>> getAll() {
         List<OrderItem> orderItemList = new ArrayList<>();
         Either<ErrorCOrderItem, List<OrderItem>> res;
         try (Connection myconnection = db.getConnection()) {
@@ -44,14 +44,14 @@ public class DAOorderItemDB {
         return res;
     }
 
-    public Either<ErrorCOrderItem, OrderItem> get(int id){
+    public Either<ErrorCOrderItem, OrderItem> get(int id) {
         Either<ErrorCOrderItem, OrderItem> res;
-        try(Connection myconnection = db.getConnection()){
+        try (Connection myconnection = db.getConnection()) {
             PreparedStatement pstmt = myconnection.prepareStatement("select * from order_items where order_item_id = ?");
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             List<OrderItem> orderItemList = readRS(rs);
-            if (!orderItemList.isEmpty()){
+            if (!orderItemList.isEmpty()) {
                 res = Either.right(orderItemList.get(0));
             } else {
                 res = Either.left(new ErrorCOrderItem(ConstantsDAO.ERROR_READING_DATABASE, 0));
@@ -63,10 +63,10 @@ public class DAOorderItemDB {
         return res;
     }
 
-    public Either<ErrorCOrderItem, List<OrderItem>> getByOrderId(int orderId){
+    public Either<ErrorCOrderItem, List<OrderItem>> getByOrderId(int orderId) {
         List<OrderItem> orderItemList = new ArrayList<>();
         Either<ErrorCOrderItem, List<OrderItem>> res;
-        try(Connection myconnection = db.getConnection()){
+        try (Connection myconnection = db.getConnection()) {
             PreparedStatement pstmt = myconnection.prepareStatement("select * from order_items where order_id = ?");
             pstmt.setInt(1, orderId);
             ResultSet rs = pstmt.executeQuery();
@@ -79,15 +79,14 @@ public class DAOorderItemDB {
         return res;
     }
 
-    public Either<ErrorCOrderItem, Integer> update(OrderItem orderItem){
+    public Either<ErrorCOrderItem, Integer> update(OrderItem orderItem) {
         int rowsAffected;
         Either<ErrorCOrderItem, Integer> res;
-        try (Connection myConnection = db.getConnection()){
-            PreparedStatement pstmt = myConnection.prepareStatement("update order_items set order_item_id=?, order_id=?, menu_item_id=?, quantity=?");
-            pstmt.setInt(1, orderItem.getId());
-            pstmt.setInt(2,orderItem.getOrderId());
-            pstmt.setInt(3,orderItem.getMenuItem());
-            pstmt.setInt(4,orderItem.getQuantity());
+        try (Connection myConnection = db.getConnection()) {
+            PreparedStatement pstmt = myConnection.prepareStatement("update order_items set order_id=?, menu_item_id=?, quantity=?");
+            pstmt.setInt(1, orderItem.getOrderId());
+            pstmt.setInt(2, orderItem.getMenuItem());
+            pstmt.setInt(3, orderItem.getQuantity());
             rowsAffected = pstmt.executeUpdate();
             res = Either.right(rowsAffected);
         } catch (SQLException e) {
@@ -97,9 +96,55 @@ public class DAOorderItemDB {
         return res;
     }
 
+    public Either<ErrorCOrderItem, Integer> delete(int id) {
+        Either<ErrorCOrderItem, Integer> res;
+        int rowsAffected;
+        try (Connection myConnection = db.getConnection()) {
+            PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.DELETE_ORDER_ITEMS);
+            pstmt.setInt(1, id);
+            rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected != 1) {
+                res = Either.left(new ErrorCOrderItem("Error", 0));
+            } else {
+                res = Either.right(rowsAffected);
+            }
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+            res = Either.left(new ErrorCOrderItem(e.getMessage(), 0));
+        }
+        return res;
+    }
+
+    public Either<ErrorCOrderItem, Integer> add(List<OrderItem> orderItemList, int id) {
+        Either<ErrorCOrderItem, Integer> res = null;
+        int rowsAffected;
+        try (Connection myConnection = db.getConnection()){
+            PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.INSERT_ORDER_ITEM_GEN, Statement.RETURN_GENERATED_KEYS);
+            for (OrderItem orderItem: orderItemList){
+                pstmt.setInt(1, id);
+                pstmt.setInt(2,orderItem.getMenuItem());
+                pstmt.setInt(3,orderItem.getQuantity());
+                rowsAffected = pstmt.executeUpdate();
+                ResultSet rs = pstmt.getGeneratedKeys();
+                if (rs.next()){
+                    rs.getInt(1);
+                }
+                if (rowsAffected!=1){
+                    res = Either.left(new ErrorCOrderItem("Error", 0));
+                } else {
+                    res = Either.right(rowsAffected);
+                }
+            }
+        } catch (SQLException e) {
+            log.error(e.getMessage(),e);
+            res = Either.left(new ErrorCOrderItem(e.getMessage(),0));
+        }
+        return res;
+    }
+
     private List<OrderItem> readRS(ResultSet rs) throws SQLException {
         List<OrderItem> orderItemList = new ArrayList<>();
-        while (rs.next()){
+        while (rs.next()) {
             int id = rs.getInt(ConstantsDAO.ORDER_ITEM_ID);
             int orderId = rs.getInt(ConstantsDAO.ORDER_ID);
             int menuItemId = rs.getInt(ConstantsDAO.MENU_ITEM_ID);

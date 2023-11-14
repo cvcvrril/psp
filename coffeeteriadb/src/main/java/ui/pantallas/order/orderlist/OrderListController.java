@@ -159,7 +159,7 @@ public void principalCargado() {
     }
 
     private void loadOrderItems(int orderId) {
-        Either<ErrorCOrderItem, List<OrderItem>> orderItems = serVorderItem.getOrders(orderId);
+        Either<ErrorCOrderItem, List<OrderItem>> orderItems = serVorderItem.get(orderId);
         if (orderItems.isRight()) {
             orderItemsTable.getItems().clear();
             orderItemsTable.getItems().addAll(orderItems.get());
@@ -171,7 +171,7 @@ public void principalCargado() {
     }
 
     private void loadOrderItemsByOrderId(int orderId) {
-        Either<ErrorCOrderItem, List<OrderItem>> orderItems = serVorderItem.getOrders(orderId);
+        Either<ErrorCOrderItem, List<OrderItem>> orderItems = serVorderItem.get(orderId);
         if (orderItems.isRight()) {
             orderItemsTable.getItems().clear();
             orderItemsTable.getItems().addAll(orderItems.get());

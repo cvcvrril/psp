@@ -185,7 +185,7 @@ public class DAOorderDB {
             }
             int customerId = rs.getInt(ConstantsDAO.CUSTOMER_ID);
             int tableId = rs.getInt(ConstantsDAO.TABLE_ID);
-            orderList.add(new Order(id, dateTime, customerId, tableId, serv.getOrders(id).get()));
+            orderList.add(new Order(id, dateTime, customerId, tableId, serv.get(id).get()));
         }
         return orderList;
     }

@@ -9,12 +9,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import model.MenuItem;
 import model.Order;
 import model.OrderItem;
 import model.errors.ErrorCMenuItem;
-import model.errors.ErrorCOrder;
 import services.SERVmenuItems;
 import services.SERVorder;
 import services.SERVorderItem;
@@ -22,8 +20,7 @@ import ui.pantallas.common.BasePantallaController;
 
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -103,7 +100,7 @@ public class UpdateOrderController extends BasePantallaController {
                     tableField.setText(String.valueOf(selOrder.getIdTable()));
                     dateField.setText(String.valueOf(selOrder.getOrDate()));
                 }
-                orderItemTable.getItems().addAll(serVorderItem.getOrders(tableOrders.getSelectionModel().getSelectedItem().getIdOrd()).getOrNull());
+                orderItemTable.getItems().addAll(serVorderItem.get(tableOrders.getSelectionModel().getSelectedItem().getIdOrd()).getOrNull());
             }
         });
         //Columnas Item table
@@ -169,20 +166,27 @@ public class UpdateOrderController extends BasePantallaController {
     public void updateOrder() {
         //Cambia toda tu puta mierda de alerts para usar el controller pls
         // Y AÑADE LOS DEMAS ALERTS DE MI CODIGO (PRINCIPAL CONTROLLER)
-        this.getPrincipalController().sacarAlertError("Puta tu madre");
+        //this.getPrincipalController().sacarAlertError("Puta tu madre");
         Order selectedOrder = tableOrders.getSelectionModel().getSelectedItem();
         if (selectedOrder != null) {
             selectedOrder.setIdCo(Integer.parseInt(customerField.getText()));
             selectedOrder.setIdTable(Integer.parseInt(tableField.getText()));
             serVorder.updateOrder(selectedOrder);
-            if (serVorderItem.getOrders(selectedOrder.getIdOrd()) != null) {
+            if (serVorderItem.get(selectedOrder.getIdOrd()) != null) {
+                serVorderItem.delete(selectedOrder.getIdOrd());
                 //Aqui miras mi codigo en el dao de order items y te haces el insert y delete by order
                 //y en este if te haces el delete
             }
+            List<OrderItem> orderItems =new ArrayList<>(orderItemTable.getItems());
+            serVorderItem.add(orderItems, selectedOrder.getIdOrd());
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setContentText(Constantes.ORDER_UPDATED);
+            a.show();
+
             //Aqui te haces la lista de order items y los insertas todo MIRA MI CODIGO!!!
         }
-
-
+        orderItemTable.getItems().clear();
+        orderItemTable.getItems().addAll(serVorderItem.getAll().getOrNull());
     }
 
     public String getMenuItemNameById(int id) {

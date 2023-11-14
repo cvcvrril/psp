@@ -99,7 +99,7 @@ public class DeleteOrderController extends BasePantallaController {
     }
 
     public void updateOrderItemsTable(Order order) {
-        List<OrderItem> orderItems = serVorderItem.getOrders(order.getIdOrd()).getOrElse(Collections.emptyList());
+        List<OrderItem> orderItems = serVorderItem.get(order.getIdOrd()).getOrElse(Collections.emptyList());
         orderItemsTable.getItems().setAll(orderItems);
     }
 
