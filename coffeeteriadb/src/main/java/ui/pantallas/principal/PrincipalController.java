@@ -22,7 +22,7 @@ import ui.pantallas.common.Pantallas;
 import java.io.IOException;
 
 @Log4j2
-public class PrincipalController extends BasePantallaController {
+public class PrincipalController{
 
     @FXML
     private MenuItem menuCustomersAdd;
@@ -131,13 +131,13 @@ public class PrincipalController extends BasePantallaController {
         this.password = actualCredential.getPassword();
         menuPrincipal.setVisible(true);
         if(actualCredential.getId() < 0){
-            cargarPantalla(Pantallas.WELCOME);
+           // cargarPantalla(Pantallas.WELCOME);
             menuCustomers.setDisable(false);
             menuOrdersAdd.setDisable(true);
             menuOrdersUpdate.setDisable(false);
             menuOrdersDelete.setDisable(false);
         } else {
-            cargarPantalla(Pantallas.WELCOME);
+          //  cargarPantalla(Pantallas.WELCOME);
             menuCustomers.setDisable(true);
             menuOrders.setDisable(false);
             menuOrdersList.setDisable(false);
@@ -145,7 +145,7 @@ public class PrincipalController extends BasePantallaController {
             menuOrdersAdd.setDisable(false);
             menuOrdersDelete.setDisable(true);
         }
-        cargarPantalla(Pantallas.WELCOME);
+       cargarPantalla(Pantallas.WELCOME);
     }
 
     public void logout() {
@@ -217,8 +217,4 @@ public class PrincipalController extends BasePantallaController {
         }
     }
 
-    @Override
-    public void principalCargado() {
-
-    }
 }

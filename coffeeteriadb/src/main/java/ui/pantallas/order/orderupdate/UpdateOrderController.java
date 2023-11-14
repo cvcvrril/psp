@@ -4,6 +4,8 @@ import common.Constantes;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,11 +36,11 @@ public class UpdateOrderController extends BasePantallaController {
     @FXML
     private TableView<Order> tableOrders;
     @FXML
-    private TableColumn<Order,Integer> id_ord;
+    private TableColumn<Order, Integer> id_ord;
     @FXML
-    private TableColumn<Order,Integer> id_c;
+    private TableColumn<Order, Integer> id_c;
     @FXML
-    private TableColumn<Order,Integer> id_table;
+    private TableColumn<Order, Integer> id_table;
     @FXML
     private TableColumn<Order, LocalDate> date_order;
     @FXML
@@ -58,7 +60,7 @@ public class UpdateOrderController extends BasePantallaController {
     @FXML
     private TextField quantityField;
     @FXML
-    private  ComboBox<String> menuItemComboBox;
+    private ComboBox<String> menuItemComboBox;
 
     @FXML
     private TableView<OrderItem> orderItemTable;
@@ -66,6 +68,7 @@ public class UpdateOrderController extends BasePantallaController {
     private TableColumn<OrderItem, String> nameItemCell;
     @FXML
     private TableColumn<OrderItem, Integer> quantityCell;
+    private int lastOrderItemId;
 
     @Inject
     public UpdateOrderController(SERVorder serVorder, SERVorderItem serVorderItem, SERVmenuItems serVmenuItems) {
@@ -74,30 +77,56 @@ public class UpdateOrderController extends BasePantallaController {
         this.serVmenuItems = serVmenuItems;
     }
 
-    public void initialize(){
-
+    @Override
+    public void principalCargado() {
+        //CAMBIATE TODO LO DEL INITIALIZE AL PRINCIPAL CARGADO PLOX
+        lastOrderItemId = serVorderItem.getAll().get().size() + 1;
+        //Order Table Columns
         id_ord.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_ORD));
         id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
         id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
-        tableOrders.getItems().addAll(serVorder.getAll());
-        tableOrders.setOnMouseClicked(this::handleTable);
+        //Llenar OrderTable
+        if (getPrincipalController().getActualCredential().getId() > 0) {
+            tableOrders.getItems().addAll(serVorder.getOrder(this.getPrincipalController().getActualCredential().getId()).getOrNull());
+        } else {
+            tableOrders.getItems().addAll(serVorder.getAll());
+        }
+        //Llenar los campos al clickar y llenar Items table
         tableOrders.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                updateOrderItemsTable(newValue);
+                orderItemTable.getItems().clear();
+                Order selOrder = tableOrders.getSelectionModel().getSelectedItem();
+                if (selOrder != null) {
+                    orderIdField.setText(String.valueOf(selOrder.getIdOrd()));
+                    customerField.setText(String.valueOf(selOrder.getIdCo()));
+                    tableField.setText(String.valueOf(selOrder.getIdTable()));
+                    dateField.setText(String.valueOf(selOrder.getOrDate()));
+                }
+                orderItemTable.getItems().addAll(serVorderItem.getOrders(tableOrders.getSelectionModel().getSelectedItem().getIdOrd()).getOrNull());
             }
         });
+        //Columnas Item table
         quantityCell.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         nameItemCell.setCellValueFactory(cellData -> {
             int menuItemId = cellData.getValue().getMenuItem();
             String menuItemName = getMenuItemNameById(menuItemId);
             return new SimpleStringProperty(menuItemName);
         });
-        orderItemTable.setOnMouseClicked(this::handleorderItemsTable);
-        List<MenuItem> menuItems = serVmenuItems.getAll().getOrElse(Collections.emptyList());
-        for (MenuItem menuItem: menuItems){
-            menuItemComboBox.getItems().add(menuItem.getNameMItem());
+        //Llenar los campos de OrderItem
+        orderItemTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                orderItemTable.getSelectionModel().getSelectedItem().setMenuItemObject(serVmenuItems.get(orderItemTable.getSelectionModel().getSelectedItem().getMenuItem()).getOrNull());
+                menuItemComboBox.setValue(orderItemTable.getSelectionModel().getSelectedItem().getMenuItemObject().getNameMItem());
+                quantityField.setText(String.valueOf(orderItemTable.getSelectionModel().getSelectedItem().getQuantity()));
+            }
+        });
+        //ComboBox
+        ObservableList<String> observableList = FXCollections.observableArrayList();
+        for (MenuItem menuItem : serVmenuItems.getAll().getOrNull()) {
+            observableList.add(menuItem.getNameMItem());
         }
+        menuItemComboBox.getItems().addAll(observableList);
     }
 
     public void addItem() {
@@ -107,20 +136,18 @@ public class UpdateOrderController extends BasePantallaController {
         for (MenuItem menuItem : serVmenuItems.getAll().getOrElse(Collections.emptyList())) {
             if (menuItem.getNameMItem().equals(selectedItemName)) {
                 selectedMenuItem = menuItem;
-                break;
             }
         }
         if (selectedMenuItem != null) {
-            int lastOrderItemId = getLastOrderItemIdFromDatabase();
-            OrderItem newOrderItem = new OrderItem(lastOrderItemId, 0, selectedMenuItem.getIdMItem(), quantity, serVmenuItems.get(lastOrderItemId).getOrNull());
+
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setContentText(Constantes.THE_MENU_ITEM_HAS_BEEN_ADDED);
             a.show();
-
             // Agregar el nuevo OrderItem a la tabla
-            orderItemTable.getItems().add(newOrderItem);
+            orderItemTable.getItems().add(new OrderItem(lastOrderItemId, tableOrders.getSelectionModel().getSelectedItem().getIdOrd(), selectedMenuItem.getIdMItem(), quantity, serVmenuItems.get(lastOrderItemId).getOrNull()));
             menuItemComboBox.getSelectionModel().clearSelection();
             quantityField.clear();
+            lastOrderItemId = lastOrderItemId + 1;
         } else {
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setContentText("Ítem de menú no encontrado");
@@ -131,104 +158,35 @@ public class UpdateOrderController extends BasePantallaController {
     }
 
     public void removeItem() {
-        OrderItem selectedItem = orderItemTable.getSelectionModel().getSelectedItem();
-        if (selectedItem!= null){
-            orderItemTable.getItems().remove(selectedItem);
-            quantityField.clear();
-            Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-            a.setContentText(Constantes.THE_MENU_ITEM_HAS_BEEN_REMOVED);
-            a.show();
-        }else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setContentText("Please, select one of the order items from the table to remove.");
-            alert.show();
-        }
+        orderItemTable.getItems().remove(orderItemTable.getSelectionModel().getSelectedItem());
+        quantityField.clear();
+        lastOrderItemId = lastOrderItemId - 1;
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText(Constantes.THE_MENU_ITEM_HAS_BEEN_REMOVED);
+        a.show();
     }
 
-
-
-    private void handleTable(MouseEvent event){
-        if (event.getClickCount() == 1){
-            Order selOrder = tableOrders.getSelectionModel().getSelectedItem();
-            if (selOrder != null){
-                orderIdField.setText(String.valueOf(selOrder.getIdOrd()));
-                customerField.setText(String.valueOf(selOrder.getIdCo()));
-                tableField.setText(String.valueOf(selOrder.getIdTable()));
-                dateField.setText(String.valueOf(selOrder.getOrDate()));
+    public void updateOrder() {
+        //Cambia toda tu puta mierda de alerts para usar el controller pls
+        // Y AÑADE LOS DEMAS ALERTS DE MI CODIGO (PRINCIPAL CONTROLLER)
+        this.getPrincipalController().sacarAlertError("Puta tu madre");
+        Order selectedOrder = tableOrders.getSelectionModel().getSelectedItem();
+        if (selectedOrder != null) {
+            selectedOrder.setIdCo(Integer.parseInt(customerField.getText()));
+            selectedOrder.setIdTable(Integer.parseInt(tableField.getText()));
+            serVorder.updateOrder(selectedOrder);
+            if (serVorderItem.getOrders(selectedOrder.getIdOrd()) != null) {
+                //Aqui miras mi codigo en el dao de order items y te haces el insert y delete by order
+                //y en este if te haces el delete
             }
-        }
-    }
-
-    private void handleorderItemsTable(MouseEvent event){
-        if (event.getClickCount() == 1){
-            OrderItem selOrderItem = orderItemTable.getSelectionModel().getSelectedItem();
-            if (selOrderItem != null){
-                quantityField.setText(String.valueOf(selOrderItem.getQuantity()));
-            }
-        }
-    }
-
-    public void updateOrder(){
-        try {
-            int orderId = Integer.parseInt(orderIdField.getText());
-            int customerId = Integer.parseInt(customerField.getText());
-            int tableId = Integer.parseInt(tableField.getText());
-            String dateText = dateField.getText();
-            LocalDateTime orderDateTime = LocalDateTime.parse(dateText);
-
-            Order updatedOrder = new Order(orderId, orderDateTime, customerId, tableId, orderItemTable.getItems());
-
-            Either<ErrorCOrder, Integer> updateResult = serVorder.updateOrder(updatedOrder);
-
-            if (updateResult.isRight()){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Order updated successfully");
-                alert.show();
-            }else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Failed to update order: " + updateResult.getLeft());
-                alert.show();
-            }
-        }catch (NumberFormatException e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Invalid input data");
-            alert.show();
-        }catch (DateTimeParseException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Invalid date and time format. Please use the format 'YYYY-MM-DDTHH:mm'.");
-            alert.show();
+            //Aqui te haces la lista de order items y los insertas todo MIRA MI CODIGO!!!
         }
 
-    }
-
-    public void updateOrderItemsTable(Order order) {
-        List<OrderItem> orderItems = serVorderItem.getOrders(order.getIdOrd()).getOrElse(Collections.emptyList());
-        orderItemTable.getItems().clear();
-        orderItemTable.getItems().addAll(orderItems);
 
     }
 
     public String getMenuItemNameById(int id) {
         Either<ErrorCMenuItem, String> result = serVmenuItems.getMenuItemName(id);
         return result.get();
-    }
-
-    private int getLastOrderItemIdFromDatabase() {
-        List<OrderItem> orderItems = serVorderItem.getAll().getOrElse(Collections.emptyList());
-
-        int lastOrderItemId = 0;
-
-        for (OrderItem orderItem : orderItems) {
-            if (orderItem.getId() > lastOrderItemId) {
-                lastOrderItemId = orderItem.getId();
-            }
-        }
-
-        return lastOrderItemId;
-    }
-
-    @Override
-    public void principalCargado() {
-
     }
 }

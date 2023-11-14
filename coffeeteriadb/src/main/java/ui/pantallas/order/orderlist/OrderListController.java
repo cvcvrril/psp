@@ -71,15 +71,15 @@ public class OrderListController extends BasePantallaController {
     }
 
     /*Métodos*/
-
-    public void initialize() {
+@Override
+public void principalCargado() {
         id_ord.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_ORD));
         id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
         id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
 
         if (getPrincipalController().getActualCredential().getId()>0) {
-            tableOrders.getItems().addAll(serVorder.getOrder(getPrincipalController().getActualCredential().getId()).getOrNull());
+            tableOrders.getItems().addAll(serVorder.getOrder(this.getPrincipalController().getActualCredential().getId()).getOrNull());
         } else {
             tableOrders.getItems().addAll(serVorder.getAll());
         }
@@ -191,8 +191,4 @@ public class OrderListController extends BasePantallaController {
         }
     }
 
-    @Override
-    public void principalCargado() {
-
-    }
 }

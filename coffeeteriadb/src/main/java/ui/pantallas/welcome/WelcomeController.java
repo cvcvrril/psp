@@ -13,12 +13,8 @@ public class WelcomeController extends BasePantallaController {
     @FXML
     private Label welcomeText;
 
-    public void initialize(){
-        welcomeText.setText("Welcome root");
-    }
-
     @Override
     public void principalCargado() {
-
+        welcomeText.setText("Welcome "+ this.getPrincipalController().getActualCredential().getUserName());
     }
 }
