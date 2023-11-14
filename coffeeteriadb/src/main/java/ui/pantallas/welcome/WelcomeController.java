@@ -13,13 +13,12 @@ public class WelcomeController extends BasePantallaController {
     @FXML
     private Label welcomeText;
 
-    @Inject
-    public WelcomeController(PrincipalController principalController) {
-
-    }
-
     public void initialize(){
         welcomeText.setText("Welcome root");
     }
 
+    @Override
+    public void principalCargado() {
+
+    }
 }

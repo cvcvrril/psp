@@ -58,7 +58,7 @@ public class OrderListController extends BasePantallaController {
     @FXML
     private TableColumn<OrderItem, Integer> orderItemQuantity;
     @FXML
-    private TableColumn<OrderItem,Integer> orderItemID;
+    private TableColumn<OrderItem, Integer> orderItemID;
 
     /*Constructores*/
 
@@ -77,8 +77,15 @@ public class OrderListController extends BasePantallaController {
         id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
         id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
-        tableOrders.getItems().addAll(serVorder.getAll());
+
+        if (getPrincipalController().getActualCredential().getId()>0) {
+            tableOrders.getItems().addAll(serVorder.getOrder(getPrincipalController().getActualCredential().getId()).getOrNull());
+        } else {
+            tableOrders.getItems().addAll(serVorder.getAll());
+        }
         filterComboBox.getItems().addAll("Date", "Customer", "None");
+        fechaDatePicker.setVisible(false);
+        customerField.setVisible(false);
         tableOrders.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 int customerId = newSelection.getIdCo();
@@ -100,11 +107,10 @@ public class OrderListController extends BasePantallaController {
 
     @FXML
     private void handleFilterSelection(ActionEvent event) {
-        String selectedItem =filterComboBox.getSelectionModel().getSelectedItem();
+        String selectedItem = filterComboBox.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             if (selectedItem.equals("Date")) {
-                LocalDate selectedDate = fechaDatePicker.getValue();
-                List<Order> filteredOrders = serVorder.getOrdersByDate(selectedDate);
+                List<Order> filteredOrders = serVorder.getOrdersByDate(fechaDatePicker.getValue());
                 updateTable(filteredOrders);
             } else if (selectedItem.equals("Customer")) {
                 int selectedCustomerId = Integer.parseInt(customerField.getText());
@@ -128,14 +134,14 @@ public class OrderListController extends BasePantallaController {
         fechaDatePicker.setValue(null);
     }
 
-    public void hide(){
-        if (Objects.equals(filterComboBox.getSelectionModel().getSelectedItem(), "Date")){
+    public void hide() {
+        if (Objects.equals(filterComboBox.getSelectionModel().getSelectedItem(), "Date")) {
             fechaDatePicker.setVisible(true);
             customerField.setVisible(false);
-        } else if (Objects.equals(filterComboBox.getSelectionModel().getSelectedItem(), "Customer")){
+        } else if (Objects.equals(filterComboBox.getSelectionModel().getSelectedItem(), "Customer")) {
             fechaDatePicker.setVisible(false);
             customerField.setVisible(true);
-        } else if (Objects.equals(filterComboBox.getSelectionModel().getSelectedItem(), "None")){
+        } else if (Objects.equals(filterComboBox.getSelectionModel().getSelectedItem(), "None")) {
             fechaDatePicker.setVisible(false);
             customerField.setVisible(false);
         }
@@ -178,10 +184,15 @@ public class OrderListController extends BasePantallaController {
 
     public String getMenuItemNameById(int id) {
         Either<ErrorCMenuItem, String> result = serVmenuItems.getMenuItemName(id);
-        if(result.isRight()) {
+        if (result.isRight()) {
             return result.get();
         } else {
             return null;
         }
+    }
+
+    @Override
+    public void principalCargado() {
+
     }
 }

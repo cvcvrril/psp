@@ -111,4 +111,9 @@ public class DeleteOrderController extends BasePantallaController {
             return null;
         }
     }
+
+    @Override
+    public void principalCargado() {
+
+    }
 }

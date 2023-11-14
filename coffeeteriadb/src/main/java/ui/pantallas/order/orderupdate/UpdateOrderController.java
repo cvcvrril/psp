@@ -226,4 +226,9 @@ public class UpdateOrderController extends BasePantallaController {
 
         return lastOrderItemId;
     }
+
+    @Override
+    public void principalCargado() {
+
+    }
 }

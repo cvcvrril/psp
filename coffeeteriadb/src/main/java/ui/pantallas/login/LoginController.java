@@ -31,7 +31,7 @@ public class LoginController extends BasePantallaController {
         Credential credential = serVlogin.getCredentialByUsername(username);
         if (credential != null) {
             if (serVlogin.doLogin(credential)) {
-                getPrincipalController().onLogin(credential);
+                getPrincipalController().onLogin(credential.getId());
             } else {
                 Alert a = new Alert(Alert.AlertType.ERROR);
                 a.setContentText(Constantes.USUARIO_O_CONTRASENA_INCORRECTOS);
@@ -42,5 +42,10 @@ public class LoginController extends BasePantallaController {
             a.setContentText("No existe el usuario");
             a.show();
         }
+    }
+
+    @Override
+    public void principalCargado() {
+
     }
 }

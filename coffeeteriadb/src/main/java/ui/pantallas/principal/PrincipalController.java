@@ -15,6 +15,7 @@ import javafx.stage.WindowEvent;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import model.Credential;
+import services.SERVlogin;
 import ui.pantallas.common.BasePantallaController;
 import ui.pantallas.common.Pantallas;
 
@@ -54,6 +55,8 @@ public class PrincipalController extends BasePantallaController {
     private String user;
     @Getter
     private String password;
+    @Getter
+    private Credential actualCredential;
     @FXML
     private BorderPane root;
 
@@ -64,12 +67,14 @@ public class PrincipalController extends BasePantallaController {
 
     private Pane pantallaBienvenida;
     private final DBConnectionPool dbConnectionPool;
+    private final SERVlogin serVlogin;
 
 
     @Inject
-    public PrincipalController(Instance<Object> instance, DBConnectionPool dbConnectionPool) {
+    public PrincipalController(Instance<Object> instance, DBConnectionPool dbConnectionPool, SERVlogin serVlogin) {
         this.instance = instance;
         this.dbConnectionPool = dbConnectionPool;
+        this.serVlogin = serVlogin;
         alert = new Alert(Alert.AlertType.NONE);
     }
 
@@ -120,11 +125,12 @@ public class PrincipalController extends BasePantallaController {
         cargarPantalla(Pantallas.LOGIN);
     }
 
-    public void onLogin(Credential credential) {
-        this.user = credential.getUserName();
-        this.password = credential.getPassword();
+    public void onLogin(int id) {
+        this.actualCredential = serVlogin.get(id).getOrNull();
+        this.user = actualCredential.getUserName();
+        this.password = actualCredential.getPassword();
         menuPrincipal.setVisible(true);
-        if(credential.getId() < 0){
+        if(actualCredential.getId() < 0){
             cargarPantalla(Pantallas.WELCOME);
             menuCustomers.setDisable(false);
             menuOrdersAdd.setDisable(true);
@@ -143,7 +149,7 @@ public class PrincipalController extends BasePantallaController {
     }
 
     public void logout() {
-        this.user = null;
+        actualCredential = null;
         menuPrincipal.setVisible(false);
         cargarPantalla(Pantallas.LOGIN);
     }
@@ -209,5 +215,10 @@ public class PrincipalController extends BasePantallaController {
                 cargarPantalla(Pantallas.OR_DEL);
                 break;
         }
+    }
+
+    @Override
+    public void principalCargado() {
+
     }
 }

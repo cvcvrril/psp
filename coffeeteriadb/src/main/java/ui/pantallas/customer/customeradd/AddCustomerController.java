@@ -83,4 +83,9 @@ public class AddCustomerController extends BasePantallaController {
         phoneField.clear();
         emailField.clear();
     }
+
+    @Override
+    public void principalCargado() {
+
+    }
 }

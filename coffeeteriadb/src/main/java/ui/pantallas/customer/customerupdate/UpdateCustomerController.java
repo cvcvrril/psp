@@ -124,4 +124,9 @@ public class UpdateCustomerController extends BasePantallaController {
             }
         }
     }
+
+    @Override
+    public void principalCargado() {
+
+    }
 }

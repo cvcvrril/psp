@@ -115,4 +115,8 @@ public class DeleteCustomerController extends BasePantallaController {
 
     }
 
+    @Override
+    public void principalCargado() {
+
+    }
 }

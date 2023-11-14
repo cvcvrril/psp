@@ -54,4 +54,8 @@ public class CustomerListController extends BasePantallaController {
 
     }
 
+    @Override
+    public void principalCargado() {
+
+    }
 }

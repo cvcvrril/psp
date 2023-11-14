@@ -173,4 +173,9 @@ public class AddOrderController extends BasePantallaController {
 
         return lastOrderItemId;
     }
+
+    @Override
+    public void principalCargado() {
+
+    }
 }
