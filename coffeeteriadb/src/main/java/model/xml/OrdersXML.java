@@ -16,7 +16,6 @@ import java.util.List;
 @XmlRootElement(name = "orders")
 public class OrdersXML {
 
-    /*Atb*/
     @XmlElement(name="order")
     private List<OrderXML> orderXMLList;
 }
