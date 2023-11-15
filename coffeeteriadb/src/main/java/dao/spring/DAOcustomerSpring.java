@@ -61,35 +61,38 @@ public class DAOcustomerSpring implements DAOcustomer {
 
     public Either<ErrorCCustomer, Integer> add(Customer newCustomer, Credential newCredential) {
         try {
-            SimpleJdbcInsert customerInsert = new SimpleJdbcInsert(pool.getDataSource()).withTableName("customers");
-            Map<String, Object> customerParams = new HashMap<>();
-            customerParams.put(ConstantsDAO.ID, newCustomer.getIdC());
-            customerParams.put(ConstantsDAO.FIRST_NAME, newCustomer.getFirstName());
-            customerParams.put(ConstantsDAO.LAST_NAME, newCustomer.getSecondName());
-            customerParams.put("email", newCustomer.getEmailCus());
-            customerParams.put("phone", newCustomer.getPhoneNumber());
-            customerParams.put("date_of_birth", newCustomer.getDateBirth());
-
-            int customerRowsAffected = customerInsert.execute(customerParams);
-
             SimpleJdbcInsert credentialInsert = new SimpleJdbcInsert(pool.getDataSource()).withTableName("credential").usingGeneratedKeyColumns("id");
             Map<String, Object> credentialParams = new HashMap<>();
-            credentialParams.put("user_name", newCredential.getUserName());
+            credentialParams.put("username", newCredential.getUserName());
             credentialParams.put("password", newCredential.getPassword());
-            credentialParams.put("customer_id", newCustomer.getIdC());
+            int credentialsRowsAffected = credentialInsert.executeAndReturnKey(credentialParams).intValue();
+            if (credentialsRowsAffected > 0){
+                newCustomer.setIdC(credentialsRowsAffected);
 
-            if (customerRowsAffected == 1) {
-                BigInteger generatedCredentialId = (BigInteger) credentialInsert.executeAndReturnKey(credentialParams);
-                int credentialId = generatedCredentialId.intValue();
-                return Either.right(credentialId);
-            } else {
+                SimpleJdbcInsert customerInsert = new SimpleJdbcInsert(pool.getDataSource()).withTableName("customers");
+                Map<String, Object> customerParams = new HashMap<>();
+                customerParams.put(ConstantsDAO.ID, newCustomer.getIdC());
+                customerParams.put(ConstantsDAO.FIRST_NAME, newCustomer.getFirstName());
+                customerParams.put(ConstantsDAO.LAST_NAME, newCustomer.getSecondName());
+                customerParams.put("email", newCustomer.getEmailCus());
+                customerParams.put("phone", newCustomer.getPhoneNumber());
+                customerParams.put("date_of_birth", newCustomer.getDateBirth());
+                customerParams.put("credential_id", newCustomer.getIdC());
+
+                int customerRowsAffected = customerInsert.execute(customerParams);
+
+                if (customerRowsAffected > 0) {
+                    return Either.right(customerRowsAffected);
+                } else {
+                    return Either.left(new ErrorCCustomer("Error al agregar el cliente o la credencial", 0));
+                }
+            }else {
                 return Either.left(new ErrorCCustomer("Error al agregar el cliente o la credencial", 0));
             }
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             return Either.left(new ErrorCCustomer(e.getMessage(), 0));
         }
-
     }
     public Either<ErrorCCustomer, Integer> delete(int id, boolean conf) {
         Either<ErrorCCustomer, Integer> res;

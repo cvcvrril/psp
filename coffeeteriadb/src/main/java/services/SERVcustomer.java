@@ -22,23 +22,8 @@ public class SERVcustomer {
         this.daOcustomerSpring = daOcustomerSpring;
     }
 
-    public int getLastUsedId() {
-        List<Customer> customers = daOcustomerDB.getAll().getOrElse(Collections.emptyList());
-        int lastUsedId = 0;
-
-        for (Customer customer : customers) {
-            if (customer.getIdC() > lastUsedId) {
-                lastUsedId = customer.getIdC();
-            }
-        }
-
-        return lastUsedId;
-    }
-
     public Either<ErrorCCustomer, List<Customer>> getAll() {
          return daOcustomerSpring.getAll();
-
-
     }
 
     public Either<ErrorCCustomer, Customer> get(int id) {
