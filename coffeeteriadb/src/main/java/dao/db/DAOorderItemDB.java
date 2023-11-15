@@ -30,7 +30,7 @@ public class DAOorderItemDB {
     }
 
     public Either<ErrorCOrderItem, List<OrderItem>> getAll() {
-        List<OrderItem> orderItemList = new ArrayList<>();
+        List<OrderItem> orderItemList;
         Either<ErrorCOrderItem, List<OrderItem>> res;
         try (Connection myconnection = db.getConnection()) {
             Statement stmt = myconnection.createStatement();
@@ -47,7 +47,7 @@ public class DAOorderItemDB {
     public Either<ErrorCOrderItem, OrderItem> get(int id) {
         Either<ErrorCOrderItem, OrderItem> res;
         try (Connection myconnection = db.getConnection()) {
-            PreparedStatement pstmt = myconnection.prepareStatement("select * from order_items where order_item_id = ?");
+            PreparedStatement pstmt = myconnection.prepareStatement(SQLqueries.SELECT_FROM_ORDER_ITEMS_ID);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             List<OrderItem> orderItemList = readRS(rs);
@@ -63,27 +63,11 @@ public class DAOorderItemDB {
         return res;
     }
 
-    public Either<ErrorCOrderItem, List<OrderItem>> getByOrderId(int orderId) {
-        List<OrderItem> orderItemList = new ArrayList<>();
-        Either<ErrorCOrderItem, List<OrderItem>> res;
-        try (Connection myconnection = db.getConnection()) {
-            PreparedStatement pstmt = myconnection.prepareStatement("select * from order_items where order_id = ?");
-            pstmt.setInt(1, orderId);
-            ResultSet rs = pstmt.executeQuery();
-            orderItemList = readRS(rs);
-            res = Either.right(orderItemList);
-        } catch (SQLException e) {
-            log.error(e.getMessage(), e);
-            res = Either.left(new ErrorCOrderItem(e.getMessage(), 0));
-        }
-        return res;
-    }
-
     public Either<ErrorCOrderItem, Integer> update(OrderItem orderItem) {
         int rowsAffected;
         Either<ErrorCOrderItem, Integer> res;
         try (Connection myConnection = db.getConnection()) {
-            PreparedStatement pstmt = myConnection.prepareStatement("update order_items set order_id=?, menu_item_id=?, quantity=?");
+            PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.UPDATE_ORDER_ITEMS);
             pstmt.setInt(1, orderItem.getOrderId());
             pstmt.setInt(2, orderItem.getMenuItem());
             pstmt.setInt(3, orderItem.getQuantity());
@@ -104,7 +88,7 @@ public class DAOorderItemDB {
             pstmt.setInt(1, id);
             rowsAffected = pstmt.executeUpdate();
             if (rowsAffected != 1) {
-                res = Either.left(new ErrorCOrderItem("Error", 0));
+                res = Either.left(new ErrorCOrderItem("There was an error at deleting the order item", 0));
             } else {
                 res = Either.right(rowsAffected);
             }
@@ -130,7 +114,7 @@ public class DAOorderItemDB {
                     rs.getInt(1);
                 }
                 if (rowsAffected!=1){
-                    res = Either.left(new ErrorCOrderItem("Error", 0));
+                    res = Either.left(new ErrorCOrderItem("There was an error at adding the order item", 0));
                 } else {
                     res = Either.right(rowsAffected);
                 }

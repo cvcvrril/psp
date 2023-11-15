@@ -33,7 +33,7 @@ public class DAOorderSpring {
         JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
         List<Order> orderList = jtm.query(SQLqueries.SELECT_FROM_ORDERS, new OrderMapper());
         if (orderList.isEmpty()){
-            res = Either.left(new ErrorCOrder("error", 0));
+            res = Either.left(new ErrorCOrder("There was an error accessing the database", 0));
         } else {
             res = Either.right(orderList);
         }
@@ -45,7 +45,7 @@ public class DAOorderSpring {
         JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
         List<Order> orderList = jtm.query(SQLqueries.SELECT_ORDERS_ID, new OrderMapper(), id);
         if (orderList.isEmpty()){
-            res = Either.left(new ErrorCOrder("error", 0));
+            res = Either.left(new ErrorCOrder("There was an error accessing the database", 0));
         } else {
             res = Either.right(orderList.get(0));
         }

@@ -25,6 +25,14 @@ public class SQLqueries {
     public static final String INSERT_ORDER_ITEM_GEN = "INSERT INTO order_items (order_id, menu_item_id, quantity) VALUES (?, ?, ?)";
     public static final String DELETE_ORDERS_FOR_CUSTOMER = "delete from orders where customer_id =?";
     public static final String DELETE_ORDER_ITEMS_FOR_CUSTOMER = "DELETE FROM order_items WHERE order_id IN (SELECT order_id FROM orders WHERE customer_id = ?)";
+    public static final String SELECT_FROM_ORDER_ITEMS_JOIN = "SELECT * FROM order_items oi inner join menu_items mi on oi.menu_item_id = mi.menu_item_id";
+    public static final String SELECT_FROM_ORDER_ITEMS_ID_JOIN = "SELECT * FROM order_items oi inner join menu_items mi on oi.menu_item_id = mi.menu_item_id where oi.order_id = ?";
 
+    public static final String SELECT_FROM_CREDENTIAL_WHERE_ID = "select * from credential where id =?";
+    public static final String SELECT_FROM_MENU_ITEMS_ID = "select * from menu_items where menu_item_id=?";
+    public static final String SELECT_FROM_MENU_ITEMS = "select  * from menu_items";
+    public static final String SELECT_FROM_ORDERS_WHERE_CUSTOMER_ID = "select * from orders where customer_id=?";
+    public static final String UPDATE_ORDER_ITEMS = "update order_items set order_id=?, menu_item_id=?, quantity=?";
+    public static final String SELECT_FROM_ORDER_ITEMS_ID = "select * from order_items where order_item_id = ?";
 }
 

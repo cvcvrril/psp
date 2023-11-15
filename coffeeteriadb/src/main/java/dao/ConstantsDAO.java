@@ -43,4 +43,7 @@ public class ConstantsDAO {
     public static final String USER_DB = "userDB";
     public static final String PASS_DB = "passDB";
     public static final String DRIVER = "driver";
+    public static final String ERROR_ACCESSING_DB = "There was an error accessing the database";
+    public static final String ROOT = "data/customer_";
+    public static final String XML = ".xml";
 }

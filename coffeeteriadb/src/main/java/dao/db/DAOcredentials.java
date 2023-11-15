@@ -26,7 +26,7 @@ public class DAOcredentials {
     }
 
     public Either<ErrorCCredential, List<Credential>> getAll(){
-        List<Credential> credentialList = new ArrayList<>();
+        List<Credential> credentialList;
         Either<ErrorCCredential, List<Credential>> res;
         try (Connection myConnection = db.getConnection()){
             Statement stmt = myConnection.createStatement();
@@ -43,7 +43,7 @@ public class DAOcredentials {
     public Either<ErrorCCredential, Credential> get(int id){
         Either<ErrorCCredential, Credential> res;
         try (Connection myConnection = db.getConnection()){
-            PreparedStatement stmt = myConnection.prepareStatement("select * from credential where id =?");
+            PreparedStatement stmt = myConnection.prepareStatement(SQLqueries.SELECT_FROM_CREDENTIAL_WHERE_ID);
             stmt.setInt(1,id);
             ResultSet rs = stmt.executeQuery();
             List<Credential>credentialList = readRS(rs);

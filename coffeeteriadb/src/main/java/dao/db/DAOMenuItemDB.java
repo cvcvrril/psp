@@ -1,6 +1,7 @@
 package dao.db;
 
 import common.Configuration;
+import common.SQLqueries;
 import dao.ConstantsDAO;
 import dao.connection.DBConnection;
 import io.vavr.control.Either;
@@ -31,7 +32,7 @@ public class DAOMenuItemDB {
         Either<ErrorCMenuItem, List<MenuItem>> res;
         try (Connection myConnection = db.getConnection()){
             Statement stmt = myConnection.createStatement();
-            ResultSet rs = stmt.executeQuery("select  * from menu_items");
+            ResultSet rs = stmt.executeQuery(SQLqueries.SELECT_FROM_MENU_ITEMS);
             menuItemList = readRS(rs);
             res = Either.right(menuItemList);
         } catch (SQLException e) {
@@ -44,7 +45,7 @@ public class DAOMenuItemDB {
     public Either<ErrorCMenuItem, MenuItem> get(int id){
         Either<ErrorCMenuItem, MenuItem> res;
         try (Connection myConnection = db.getConnection()){
-            PreparedStatement pstmt = myConnection.prepareStatement("select  * from menu_items where menu_item_id=?");
+            PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.SELECT_FROM_MENU_ITEMS_ID);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             List<MenuItem> menuItemList = readRS(rs);
@@ -64,7 +65,7 @@ public class DAOMenuItemDB {
         List<MenuItem> orderItemList = new ArrayList<>();
         Either<ErrorCMenuItem, List<MenuItem>> res;
         try(Connection myconnection = db.getConnection()){
-            PreparedStatement pstmt = myconnection.prepareStatement("select * from menu_items where menu_item_id = ?");
+            PreparedStatement pstmt = myconnection.prepareStatement(SQLqueries.SELECT_FROM_MENU_ITEMS_ID);
             pstmt.setInt(1, orderId);
             ResultSet rs = pstmt.executeQuery();
             orderItemList = readRS(rs);

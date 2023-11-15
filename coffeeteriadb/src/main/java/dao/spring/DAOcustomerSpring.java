@@ -53,7 +53,7 @@ public class DAOcustomerSpring implements DAOcustomer {
         JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
         List<Customer> cus = jtm.query(SQLqueries.SELECT_CUSTOMERS_ID, new CustomerMapper(), id);
         if (cus.isEmpty()) {
-            res = Either.left(new ErrorCCustomer("vacio", 0));
+            res = Either.left(new ErrorCCustomer("There was an error accessing the database", 0));
         } else {
             res = Either.right(cus.get(0));
         }

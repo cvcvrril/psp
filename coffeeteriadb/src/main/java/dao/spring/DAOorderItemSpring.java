@@ -1,5 +1,7 @@
 package dao.spring;
 
+import common.SQLqueries;
+import dao.ConstantsDAO;
 import dao.connection.DBConnectionPool;
 import dao.mappers.OrderItemMapper;
 import io.vavr.control.Either;
@@ -15,6 +17,7 @@ import java.util.List;
 @Log4j2
 public class DAOorderItemSpring {
 
+
     private final DBConnectionPool pool;
 
     @Inject
@@ -25,9 +28,9 @@ public class DAOorderItemSpring {
     public Either<ErrorCOrderItem, List<OrderItem>> getAll(){
         Either<ErrorCOrderItem, List<OrderItem>> res;
         JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
-        List<OrderItem> orderItemList = jtm.query("SELECT * FROM order_items oi inner join menu_items mi on oi.menu_item_id = mi.menu_item_id", new OrderItemMapper());
+        List<OrderItem> orderItemList = jtm.query(SQLqueries.SELECT_FROM_ORDER_ITEMS_JOIN, new OrderItemMapper());
         if (orderItemList.isEmpty()){
-            res = Either.left(new ErrorCOrderItem("error", 0));
+            res = Either.left(new ErrorCOrderItem(ConstantsDAO.ERROR_ACCESSING_DB, 0));
         }else {
             res = Either.right(orderItemList);
         }
@@ -37,7 +40,7 @@ public class DAOorderItemSpring {
     public Either<ErrorCOrderItem, List<OrderItem>> get (int id){
         Either<ErrorCOrderItem, List<OrderItem>> res;
         JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
-        List<OrderItem> orderItemList = jtm.query("SELECT * FROM order_items oi inner join menu_items mi on oi.menu_item_id = mi.menu_item_id where oi.order_id = ?", new OrderItemMapper(), id);
+        List<OrderItem> orderItemList = jtm.query(SQLqueries.SELECT_FROM_ORDER_ITEMS_ID_JOIN, new OrderItemMapper(), id);
         res = Either.right(orderItemList);
         return res;
     }

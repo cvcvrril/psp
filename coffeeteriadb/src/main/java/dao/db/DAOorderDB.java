@@ -75,7 +75,7 @@ public class DAOorderDB {
         Either<ErrorCOrder, List<Order>> res;
         List<Order> orderList;
         try (Connection myConnection = db.getConnection()) {
-            PreparedStatement pstmt = myConnection.prepareStatement("select*from orders where customer_id=?");
+            PreparedStatement pstmt = myConnection.prepareStatement(SQLqueries.SELECT_FROM_ORDERS_WHERE_CUSTOMER_ID);
             pstmt.setInt(1,id);
             ResultSet rs = pstmt.executeQuery();
             orderList = readRS(rs);

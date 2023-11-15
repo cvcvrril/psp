@@ -172,7 +172,7 @@ public class DAOcustomerDB {
 
             if (rowsAffected != 1) {
                 myConnection.rollback();
-                return Either.left(new ErrorCCustomer("Error añadiendo el credential", 0));
+                return Either.left(new ErrorCCustomer("There was an error adding the credential", 0));
             }
 
             ResultSet generatedCredentialKeys = pstmtCredential.getGeneratedKeys();
@@ -181,7 +181,7 @@ public class DAOcustomerDB {
                 generatedCredentialId = generatedCredentialKeys.getInt(1);
             } else {
                 myConnection.rollback();
-                return Either.left(new ErrorCCustomer("Error obteniendo el id del credential", 0));
+                return Either.left(new ErrorCCustomer("There was an error when obtaining the ID from the credential", 0));
             }
 
             pstmtCustomer.setInt(1, generatedCustomerId);

@@ -1,5 +1,6 @@
 package dao.imp;
 
+import dao.ConstantsDAO;
 import io.vavr.control.Either;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
@@ -33,7 +34,7 @@ public class DAOorderXML {
             Marshaller marshaller = jaxbContext.createMarshaller();
             OrdersXML orderXML = new OrdersXML(parseOrdertoXML(orderList));
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            Path xmlFile = Paths.get("data/customer_" + orderList.get(0).getIdCo() + ".xml");
+            Path xmlFile = Paths.get(ConstantsDAO.ROOT + orderList.get(0).getIdCo() + ConstantsDAO.XML);
             try (OutputStream outputStream = Files.newOutputStream(xmlFile, StandardOpenOption.CREATE)) {
                 marshaller.marshal(orderXML, outputStream);
                 res = Either.right(orderXML.getOrderXMLList().size());
@@ -43,7 +44,7 @@ public class DAOorderXML {
             res = Either.right(1);
         } catch (JAXBException e) {
             log.error(e.getMessage(), e);
-            res = Either.left(new ErrorCOrder("Error al guardar la orden en XML", 0));
+            res = Either.left(new ErrorCOrder("There was an error writing the XML file", 0));
         }
         return res;
     }
