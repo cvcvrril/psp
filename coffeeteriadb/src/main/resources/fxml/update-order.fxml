@@ -38,7 +38,7 @@
       <Label layoutX="29.0" layoutY="210.0" text="Customer" />
       <Label layoutX="492.0" layoutY="136.0" text="Quantity" />
       <Label layoutX="486.0" layoutY="72.0" text="Menu item" />
-      <Label layoutX="229.0" layoutY="93.0" text="Menu items" />
+      <Label layoutX="229.0" layoutY="93.0" text="Order items" />
       <Button fx:id="updateOrderButton" layoutX="34.0" layoutY="291.0" mnemonicParsing="false" onAction="#updateOrder" text="Update Order" />
    </children>
 </AnchorPane>

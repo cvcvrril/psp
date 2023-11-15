@@ -52,6 +52,8 @@ public class OrderListController extends BasePantallaController {
     @FXML
     private TextField customerNameField;
     @FXML
+    private TextField totalAmountField;
+    @FXML
     private TableView<OrderItem> orderItemsTable;
     @FXML
     private TableColumn<OrderItem, String> menuItemName;
@@ -71,13 +73,13 @@ public class OrderListController extends BasePantallaController {
     }
 
     /*Métodos*/
-@Override
-public void principalCargado() {
+    @Override
+    public void principalCargado() {
         id_ord.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_ORD));
         id_c.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
         id_table.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_TABLE));
         date_order.setCellValueFactory(new PropertyValueFactory<>(Constantes.OR_DATE));
-        if (getPrincipalController().getActualCredential().getId()>0) {
+        if (getPrincipalController().getActualCredential().getId() > 0) {
             tableOrders.getItems().addAll(serVorder.getOrders(this.getPrincipalController().getActualCredential().getId()).getOrNull());
         } else {
             tableOrders.getItems().addAll(serVorder.getAll());
