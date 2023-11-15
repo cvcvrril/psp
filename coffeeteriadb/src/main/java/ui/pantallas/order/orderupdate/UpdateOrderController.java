@@ -47,8 +47,6 @@ public class UpdateOrderController extends BasePantallaController {
     @FXML
     private Button updateOrderButton;
     @FXML
-    private TextField orderIdField;
-    @FXML
     private TextField dateField;
     @FXML
     private TextField tableField;
@@ -76,7 +74,6 @@ public class UpdateOrderController extends BasePantallaController {
 
     @Override
     public void principalCargado() {
-        //CAMBIATE TODO LO DEL INITIALIZE AL PRINCIPAL CARGADO PLOX
         lastOrderItemId = serVorderItem.getAll().get().size() + 1;
         //Order Table Columns
         id_ord.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_ORD));
@@ -89,13 +86,11 @@ public class UpdateOrderController extends BasePantallaController {
         } else {
             tableOrders.getItems().addAll(serVorder.getAll());
         }
-        //Llenar los campos al clickar y llenar Items table
         tableOrders.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 orderItemTable.getItems().clear();
                 Order selOrder = tableOrders.getSelectionModel().getSelectedItem();
                 if (selOrder != null) {
-                    orderIdField.setText(String.valueOf(selOrder.getIdOrd()));
                     customerField.setText(String.valueOf(selOrder.getIdCo()));
                     tableField.setText(String.valueOf(selOrder.getIdTable()));
                     dateField.setText(String.valueOf(selOrder.getOrDate()));
@@ -164,8 +159,6 @@ public class UpdateOrderController extends BasePantallaController {
     }
 
     public void updateOrder() {
-        //Cambia toda tu puta mierda de alerts para usar el controller pls
-        // Y AÑADE LOS DEMAS ALERTS DE MI CODIGO (PRINCIPAL CONTROLLER)
         Order selectedOrder = tableOrders.getSelectionModel().getSelectedItem();
         if (selectedOrder != null) {
             selectedOrder.setIdCo(Integer.parseInt(customerField.getText()));
@@ -173,16 +166,12 @@ public class UpdateOrderController extends BasePantallaController {
             serVorder.updateOrder(selectedOrder);
             if (serVorderItem.get(selectedOrder.getIdOrd()) != null) {
                 serVorderItem.delete(selectedOrder.getIdOrd());
-                //Aqui miras mi codigo en el dao de order items y te haces el insert y delete by order
-                //y en este if te haces el delete
             }
             List<OrderItem> orderItems =new ArrayList<>(orderItemTable.getItems());
             serVorderItem.add(orderItems, selectedOrder.getIdOrd());
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setContentText(Constantes.ORDER_UPDATED);
             a.show();
-
-            //Aqui te haces la lista de order items y los insertas todo MIRA MI CODIGO!!!
         }
         orderItemTable.getItems().clear();
         orderItemTable.getItems().addAll(serVorderItem.getAll().getOrNull());

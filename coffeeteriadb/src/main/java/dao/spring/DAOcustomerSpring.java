@@ -84,10 +84,10 @@ public class DAOcustomerSpring implements DAOcustomer {
                 if (customerRowsAffected > 0) {
                     return Either.right(customerRowsAffected);
                 } else {
-                    return Either.left(new ErrorCCustomer("Error al agregar el cliente", 0));
+                    return Either.left(new ErrorCCustomer("There was an error adding the customer", 0));
                 }
             }else {
-                return Either.left(new ErrorCCustomer("Error al agregar la credencial", 0));
+                return Either.left(new ErrorCCustomer("There was an error adding the credential", 0));
             }
         } catch (Exception e) {
             log.error(e.getMessage(), e);
@@ -112,7 +112,7 @@ public class DAOcustomerSpring implements DAOcustomer {
                 res = Either.right(id);
             } else {
                 transactionManager.rollback(txStatus);
-                res = Either.left(new ErrorCCustomer("Error al eliminar el cliente", 0));
+                res = Either.left(new ErrorCCustomer("There was an error deleting the customer", 0));
             }
         } catch (Exception e){
             log.error(e.getMessage(), e);
@@ -132,8 +132,6 @@ public class DAOcustomerSpring implements DAOcustomer {
                     updatedCustomer.getPhoneNumber(),
                     updatedCustomer.getDateBirth(),
                     updatedCustomer.getIdC()));
-
-
         }catch (Exception e){
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorCCustomer(e.getMessage(),0));

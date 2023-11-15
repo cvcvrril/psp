@@ -11,10 +11,9 @@
             <Font size="27.0" />
          </font>
       </Label>
-       <TextField fx:id="orderIdField" layoutX="25.0" layoutY="92.0" />
-      <TextField fx:id="dateField" layoutX="25.0" layoutY="134.0" />
-      <TextField fx:id="tableField" layoutX="24.0" layoutY="185.0" prefWidth="150.0" />
-      <TextField fx:id="customerField" layoutX="24.0" layoutY="230.0" prefWidth="150.0" />
+      <TextField fx:id="dateField" layoutX="28.0" layoutY="131.0" />
+      <TextField fx:id="tableField" layoutX="27.0" layoutY="182.0" prefWidth="150.0" />
+      <TextField fx:id="customerField" layoutX="27.0" layoutY="227.0" prefWidth="150.0" />
       <TextField fx:id="quantityField" layoutX="476.0" layoutY="159.0" prefHeight="25.0" prefWidth="70.0" />
        <TableView fx:id="orderItemTable" layoutX="229.0" layoutY="119.0" prefHeight="106.0" prefWidth="200.0">
         <columns>
@@ -34,14 +33,12 @@
       <Button fx:id="removeItemButton" layoutX="488.0" layoutY="201.0" mnemonicParsing="false" onAction="#removeItem" text="Remove" />
 
       <ComboBox fx:id="menuItemComboBox" layoutX="441.0" layoutY="98.0" prefHeight="25.0" prefWidth="103.0" />
-      <Label layoutX="41.0" layoutY="119.0" text="Date" />
-      <Label layoutX="36.0" layoutY="161.0" text="Table" />
-      <Label layoutX="26.0" layoutY="213.0" text="Customer" />
+      <Label layoutX="44.0" layoutY="116.0" text="Date" />
+      <Label layoutX="39.0" layoutY="158.0" text="Table" />
+      <Label layoutX="29.0" layoutY="210.0" text="Customer" />
       <Label layoutX="492.0" layoutY="136.0" text="Quantity" />
       <Label layoutX="486.0" layoutY="72.0" text="Menu item" />
       <Label layoutX="229.0" layoutY="93.0" text="Menu items" />
       <Button fx:id="updateOrderButton" layoutX="34.0" layoutY="291.0" mnemonicParsing="false" onAction="#updateOrder" text="Update Order" />
-
-      <Label layoutX="38.0" layoutY="76.0" text="Order ID" />
    </children>
 </AnchorPane>

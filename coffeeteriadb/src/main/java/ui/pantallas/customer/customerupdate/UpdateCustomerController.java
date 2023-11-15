@@ -21,8 +21,6 @@ public class UpdateCustomerController extends BasePantallaController {
 
 
     @FXML
-    private TextField idCustomerField;
-    @FXML
     private TextField firstNameField;
     @FXML
     private TextField secondNameField;
@@ -59,15 +57,15 @@ public class UpdateCustomerController extends BasePantallaController {
 
     public void updateCustomer() {
 
-        int idCus = Integer.parseInt(idCustomerField.getText());
+        Customer selCustomer = tableCustomers.getSelectionModel().getSelectedItem();
         String firstNameCus = firstNameField.getText();
         String secondNameCus = secondNameField.getText();
         String emailCus = emailField.getText();
         int phoneNumberCus = Integer.parseInt(phoneField.getText());
         LocalDate dateText = dateFieldd.getValue();
 
-        Credential credential = new Credential(idCus, getPrincipalController().getUser(), getPrincipalController().getPassword());
-        Customer updatedCustomer = new Customer(idCus, firstNameCus, secondNameCus, emailCus, phoneNumberCus, dateText, credential);
+        Credential credential = new Credential(selCustomer.getIdC(), getPrincipalController().getUser(), getPrincipalController().getPassword());
+        Customer updatedCustomer = new Customer(selCustomer.getIdC(), firstNameCus, secondNameCus, emailCus, phoneNumberCus, dateText, credential);
 
         Either<ErrorCCustomer, Integer> res = serVcustomer.update(updatedCustomer);
         if (res.isRight()) {
@@ -92,7 +90,6 @@ public class UpdateCustomerController extends BasePantallaController {
     }
 
     private void resetFields() {
-        idCustomerField.clear();
         firstNameField.clear();
         secondNameField.clear();
         emailField.clear();
@@ -116,7 +113,6 @@ public class UpdateCustomerController extends BasePantallaController {
         if (event.getClickCount() == 1){
             Customer selCustomer = tableCustomers.getSelectionModel().getSelectedItem();
             if (selCustomer != null) {
-                idCustomerField.setText(String.valueOf(selCustomer.getIdC()));
                 firstNameField.setText(String.valueOf(selCustomer.getFirstName()));
                 secondNameField.setText(String.valueOf(selCustomer.getSecondName()));
                 emailField.setText(String.valueOf(selCustomer.getEmailCus()));
