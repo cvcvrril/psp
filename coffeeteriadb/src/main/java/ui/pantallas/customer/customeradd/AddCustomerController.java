@@ -63,6 +63,8 @@ public class AddCustomerController extends BasePantallaController {
         Customer newCustomer = new Customer(0,firstName, secondName, email,phoneNumber, date, null);
         Credential newCredential = new Credential(newCustomer.getIdC(), username, password);
         newCustomer.setCredential(newCredential);
+
+
         Either<ErrorCCustomer, Integer> res = serVcustomer.add(newCustomer, newCredential);
         clearFields();
 

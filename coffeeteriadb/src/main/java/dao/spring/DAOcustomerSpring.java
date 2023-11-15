@@ -66,6 +66,7 @@ public class DAOcustomerSpring implements DAOcustomer {
             credentialParams.put("username", newCredential.getUserName());
             credentialParams.put("password", newCredential.getPassword());
             int credentialsRowsAffected = credentialInsert.executeAndReturnKey(credentialParams).intValue();
+            //if (newCredential.getUserName().equals())
             if (credentialsRowsAffected > 0){
                 newCustomer.setIdC(credentialsRowsAffected);
 
