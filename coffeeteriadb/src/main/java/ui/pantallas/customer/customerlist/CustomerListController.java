@@ -41,7 +41,8 @@ public class CustomerListController extends BasePantallaController {
 
     /*Métodos*/
 
-    public void initialize() {
+    @Override
+    public void principalCargado() {
 
         idC.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_C));
         firstName.setCellValueFactory(new PropertyValueFactory<>(Constantes.FIRST_NAME));
@@ -49,13 +50,7 @@ public class CustomerListController extends BasePantallaController {
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(Constantes.PHONE_NUMBER));
         email.setCellValueFactory(new PropertyValueFactory<>(Constantes.EMAIL));
         date.setCellValueFactory(new PropertyValueFactory<>(Constantes.DATE));
-//        tableCustomers.getItems().addAll(serVclient.getClients().getOrNull());
         tableCustomers.getItems().addAll(serVcustomer.getAll().getOrNull());
-
-    }
-
-    @Override
-    public void principalCargado() {
 
     }
 }

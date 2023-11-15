@@ -99,7 +99,8 @@ public class UpdateCustomerController extends BasePantallaController {
         phoneField.clear();
     }
 
-    public void initialize() {
+    @Override
+    public void principalCargado() {
 
         idC.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_C));
         firstName.setCellValueFactory(new PropertyValueFactory<>(Constantes.FIRST_NAME));
@@ -125,8 +126,7 @@ public class UpdateCustomerController extends BasePantallaController {
         }
     }
 
-    @Override
-    public void principalCargado() {
+ {
 
     }
 }

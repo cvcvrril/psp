@@ -102,8 +102,8 @@ public class DeleteCustomerController extends BasePantallaController {
         tableOrdersCus.getItems().addAll(serVorder.getOrdersByCustomer(tableCustomers.getSelectionModel().getSelectedItem().getIdC()));
     }
 
-    public void initialize() {
-
+    @Override
+    public void principalCargado() {
         idC.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_C));
         firstName.setCellValueFactory(new PropertyValueFactory<>(Constantes.FIRST_NAME));
         secondName.setCellValueFactory(new PropertyValueFactory<>(Constantes.SECOND_NAME));
@@ -112,11 +112,6 @@ public class DeleteCustomerController extends BasePantallaController {
         date.setCellValueFactory(new PropertyValueFactory<>(Constantes.DATE));
         tableCustomers.getItems().addAll(serVcustomer.getAll().getOrNull());
         tableCustomers.setOnMouseClicked(this::setTableOrdersCus);
-
-    }
-
-    @Override
-    public void principalCargado() {
 
     }
 }
