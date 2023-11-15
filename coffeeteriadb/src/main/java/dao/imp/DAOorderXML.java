@@ -9,12 +9,12 @@ import lombok.extern.log4j.Log4j2;
 import model.Order;
 import model.OrderItem;
 import model.errors.ErrorCOrder;
-import model.xml.MenuItemXML;
 import model.xml.OrderItemXML;
 import model.xml.OrderXML;
 import model.xml.OrdersXML;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
@@ -31,7 +31,7 @@ public class DAOorderXML {
         return basePath.resolve(fileName);
     }
 
-    public Either<ErrorCOrder, Void> saveOrderToXML(List<Order> orderList, int customerId) {
+    public Either<ErrorCOrder, Integer> saveOrderToXML(List<Order> orderList, int customerId) {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(OrderXML.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
@@ -41,7 +41,9 @@ public class DAOorderXML {
             marshaller.marshal(orderXML,Files.newOutputStream(basePath));
 
             Path filePath = getFilePath(orderList.get(customerId).getIdCo());
-            Files.newInputStream(filePath, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            try (OutputStream outputStream = Files.newOutputStream(filePath, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
+                marshaller.marshal(orderXML, outputStream);
+            }
             return Either.right(null);
         } catch (JAXBException | IOException e) {
             log.error(e.getMessage(), e);
@@ -61,8 +63,7 @@ public class DAOorderXML {
     private List<OrderItemXML> parseOrderItemsToXML(List<OrderItem> orderItems) {
         List<OrderItemXML> orderItemXMLList = new ArrayList<>();
         for (OrderItem orderItem : orderItems) {
-            MenuItemXML menuItemXML = new MenuItemXML(orderItem.getMenuItemObject().getNameMItem());
-            OrderItemXML orderItemXML = new OrderItemXML(menuItemXML.getMenuItemName(), orderItem.getQuantity());
+            OrderItemXML orderItemXML = new OrderItemXML(orderItem.getMenuItemObject().getNameMItem(), orderItem.getQuantity());
             orderItemXMLList.add(orderItemXML);
         }
         return orderItemXMLList;

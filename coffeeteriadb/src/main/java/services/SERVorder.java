@@ -60,8 +60,8 @@ public class SERVorder {
        return daOorderDB.delete(i);
     }
 
-    public Either<ErrorCOrder, Integer> daOorderXML(List<Order> orderList, int customerId){
-        return daOorderXML(orderList,customerId);
+    public Either<ErrorCOrder, Integer> save(List<Order> orderList, int customerId){
+        return daOorderXML.saveOrderToXML(orderList,customerId);
     }
 
     public List<Order> getOrdersByDate(LocalDate selectedDate) {
