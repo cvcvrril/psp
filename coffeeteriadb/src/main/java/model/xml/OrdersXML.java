@@ -12,10 +12,9 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "orders")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class OrdersXML {
-
     @XmlElement(name="order")
     private List<OrderXML> orderXMLList;
 }

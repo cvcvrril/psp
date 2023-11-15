@@ -17,44 +17,41 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
 public class DAOorderXML {
 
-    private final Path basePath = Path.of("data");
-
-    private Path getFilePath(int customerId) {
-        String fileName = "customer_" + customerId + ".xml";
-        return basePath.resolve(fileName);
-    }
-
-    public Either<ErrorCOrder, Integer> saveOrderToXML(List<Order> orderList, int customerId) {
+    public Either<ErrorCOrder, Integer> saveOrderToXML(List<Order> orderList) {
+        Either<ErrorCOrder, Integer> res;
         try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(OrderXML.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(OrdersXML.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
-
             OrdersXML orderXML = new OrdersXML(parseOrdertoXML(orderList));
-
-            marshaller.marshal(orderXML,Files.newOutputStream(basePath));
-
-            Path filePath = getFilePath(orderList.get(customerId).getIdCo());
-            try (OutputStream outputStream = Files.newOutputStream(filePath, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            Path xmlFile = Paths.get("data/customer_" + orderList.get(0).getIdCo() + ".xml");
+            try (OutputStream outputStream = Files.newOutputStream(xmlFile, StandardOpenOption.CREATE)) {
                 marshaller.marshal(orderXML, outputStream);
+                res = Either.right(orderXML.getOrderXMLList().size());
+            } catch (IOException e) {
+                res = Either.left(new ErrorCOrder("Error writing XML file", 0));
             }
-            return Either.right(null);
-        } catch (JAXBException | IOException e) {
+            res = Either.right(1);
+        } catch (JAXBException e) {
             log.error(e.getMessage(), e);
-            return Either.left(new ErrorCOrder("Error al guardar la orden en XML", 0));
+            res = Either.left(new ErrorCOrder("Error al guardar la orden en XML", 0));
         }
+        return res;
     }
 
-    private List<OrderXML> parseOrdertoXML(List<Order> orderList){
+    private List<OrderXML> parseOrdertoXML(List<Order> orderList) {
         List<OrderXML> orderXMLList = new ArrayList<>();
-        for (Order order : orderList){
-            OrderXML orderXML = new OrderXML(order.getIdOrd(),parseOrderItemsToXML(order.getOrderItems()));
+        for (Order order : orderList) {
+            OrderXML orderXML = new OrderXML(order.getIdOrd(), parseOrderItemsToXML(order.getOrderItems()));
             orderXMLList.add(orderXML);
         }
         return orderXMLList;

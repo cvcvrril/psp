@@ -112,8 +112,6 @@ public class DAOcustomerSpring implements DAOcustomer {
 
             int rowsAffected = jtm.update(SQLqueries.DELETE_CUSTOMERS, id);
 
-
-
             if (rowsAffected == 1) {
                 jtm.update(SQLqueries.DELETE_CREDENTIALS, credentialId);
                 transactionManager.commit(txStatus);

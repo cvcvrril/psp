@@ -11,13 +11,12 @@ import lombok.NoArgsConstructor;
 
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @XmlRootElement(name = "order_item")
 @XmlAccessorType(XmlAccessType.FIELD)
-@AllArgsConstructor
 public class OrderItemXML {
-
     @XmlElement(name = "menu_item")
     private String menuItem;
-    @XmlElement(name = "quantity")
     private int quantity;
 }

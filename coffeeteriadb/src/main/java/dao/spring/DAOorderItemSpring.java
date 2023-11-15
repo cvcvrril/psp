@@ -25,7 +25,7 @@ public class DAOorderItemSpring {
     public Either<ErrorCOrderItem, List<OrderItem>> getAll(){
         Either<ErrorCOrderItem, List<OrderItem>> res;
         JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
-        List<OrderItem> orderItemList = jtm.query("select * from order_items", new OrderItemMapper());
+        List<OrderItem> orderItemList = jtm.query("SELECT * FROM order_items oi inner join menu_items mi on oi.menu_item_id = mi.menu_item_id", new OrderItemMapper());
         if (orderItemList.isEmpty()){
             res = Either.left(new ErrorCOrderItem("error", 0));
         }else {
@@ -37,7 +37,7 @@ public class DAOorderItemSpring {
     public Either<ErrorCOrderItem, List<OrderItem>> get (int id){
         Either<ErrorCOrderItem, List<OrderItem>> res;
         JdbcTemplate jtm = new JdbcTemplate(pool.getDataSource());
-        List<OrderItem> orderItemList = jtm.query("SELECT * FROM order_items INNER JOIN menu_items ON menu_items.menu_item_id = order_items.menu_item_id WHERE order_items.order_id = ?;", new OrderItemMapper(), id);
+        List<OrderItem> orderItemList = jtm.query("SELECT * FROM order_items oi inner join menu_items mi on oi.menu_item_id = mi.menu_item_id where oi.order_id = ?", new OrderItemMapper(), id);
         res = Either.right(orderItemList);
         return res;
     }

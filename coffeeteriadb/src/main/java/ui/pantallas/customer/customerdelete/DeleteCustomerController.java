@@ -12,6 +12,7 @@ import model.Order;
 import model.errors.ErrorCCustomer;
 import services.SERVcustomer;
 import services.SERVorder;
+import services.SERVorderItem;
 import ui.pantallas.common.BasePantallaController;
 
 import java.time.LocalDate;
@@ -22,6 +23,7 @@ public class DeleteCustomerController extends BasePantallaController {
 
     private final SERVcustomer serVcustomer;
     private final SERVorder serVorder;
+    private final SERVorderItem serVorderItem;
 
     @FXML
     private Button delCustomer;
@@ -56,9 +58,10 @@ public class DeleteCustomerController extends BasePantallaController {
 
     @Inject
 
-    public DeleteCustomerController(SERVcustomer serVcustomer, SERVorder serVorder) {
+    public DeleteCustomerController(SERVcustomer serVcustomer, SERVorder serVorder, SERVorderItem serVorderItem) {
         this.serVcustomer = serVcustomer;
         this.serVorder = serVorder;
+        this.serVorderItem = serVorderItem;
     }
 
     public void delCustomer() {
@@ -66,6 +69,9 @@ public class DeleteCustomerController extends BasePantallaController {
         Customer selCustomer = tableCustomers.getSelectionModel().getSelectedItem();
         if (selCustomer != null) {
             List<Order> customerOrders = serVorder.getOrdersByCustomer(selCustomer.getIdC());
+            for (Order order:customerOrders) {
+                order.setOrderItems(serVorderItem.get(order.getIdOrd()).get());
+            }
             if (!customerOrders.isEmpty()) {
                 Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
                 confirmationAlert.setContentText("Este cliente tiene órdenes asociadas. ¿Desea eliminarlo de todos modos?");
@@ -73,7 +79,7 @@ public class DeleteCustomerController extends BasePantallaController {
                 if (result.isPresent() && result.get() == ButtonType.CANCEL) {
                     conf = false;
                 } else {
-                    serVorder.save(serVorder.getOrdersByCustomer(selCustomer.getIdC()),selCustomer.getIdC());
+                    serVorder.save(serVorder.getOrdersByCustomer(selCustomer.getIdC()));
                     conf = true;
                 }
             }
