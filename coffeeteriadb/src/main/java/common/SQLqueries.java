@@ -22,7 +22,7 @@ public class SQLqueries {
     public static final String LINK_CREDENTIAL_ID = "UPDATE customers SET credential_id = ? WHERE id = ?";
     public static final String SELECT_FROM_CREDENTIAL = "select * from credential";
     public static final String INSERT_ORDER_ITEM = "INSERT INTO order_items (order_item_id, order_id, menu_item_id, quantity) VALUES (?, ?, ?, ?)";
-    public static final String SELECT_CREDENTIAL_ID_FROM_CUSTOMERS_WHERE_ID = "SELECT credential_id FROM customers WHERE id=?";
+    public static final String SELECT_CREDENTIAL_ID_FROM_CUSTOMERS_WHERE_ID = "SELECT id FROM customers WHERE id=?";
     public static final String INSERT_ORDER_ITEM_GEN = "INSERT INTO order_items (order_id, menu_item_id, quantity) VALUES (?, ?, ?)";
 }
 

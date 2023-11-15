@@ -72,7 +72,6 @@ public class DeleteCustomerController extends BasePantallaController {
                 Optional<ButtonType> result = confirmationAlert.showAndWait();
                 if (result.isPresent() && result.get() == ButtonType.CANCEL) {
                     conf = false;
-                    return;
                 } else {
                     conf = true;
                 }

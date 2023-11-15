@@ -23,6 +23,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @Log4j2
 public class DAOcustomerSpring implements DAOcustomer {
@@ -101,7 +102,7 @@ public class DAOcustomerSpring implements DAOcustomer {
         DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(pool.getDataSource());
         TransactionStatus txStatus = transactionManager.getTransaction(txDef);
         try {
-            JdbcTemplate jtm = new JdbcTemplate(transactionManager.getDataSource());
+            JdbcTemplate jtm = new JdbcTemplate(Objects.requireNonNull(transactionManager.getDataSource()));
 
             int credentialId = jtm.queryForObject(SQLqueries.SELECT_CREDENTIAL_ID_FROM_CUSTOMERS_WHERE_ID, Integer.class, id);
 
