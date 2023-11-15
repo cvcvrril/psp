@@ -2,8 +2,12 @@ package dao.imp;
 
 import common.Configuration;
 import dao.DAOlogin;
+import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import model.Credential;
+import model.errors.ErrorCCustomer;
+
+import java.util.List;
 
 public class DAOloginIMP implements DAOlogin {
 
@@ -16,7 +20,17 @@ public class DAOloginIMP implements DAOlogin {
 
     @Override
     public boolean doLogin(Credential credential) {
-        return credential.getUser().equals("root") && credential.getPasswd().equals("2dam");
+        return credential.getUser() && credential.getPasswd();
+    }
+
+    @Override
+    public Either<ErrorCCustomer, Credential> get(int id) {
+        return null;
+    }
+
+    @Override
+    public Either<ErrorCCustomer, List<Credential>> getAll() {
+        return null;
     }
 
 }
