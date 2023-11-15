@@ -23,6 +23,7 @@ import ui.pantallas.common.BasePantallaController;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Log4j2
 public class OrderListController extends BasePantallaController {
@@ -111,7 +112,10 @@ public class OrderListController extends BasePantallaController {
         String selectedItem = filterComboBox.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             if (selectedItem.equals("Date")) {
-                List<Order> filteredOrders = serVorder.getOrdersByDate(fechaDatePicker.getValue());
+                LocalDate selectedDate = fechaDatePicker.getValue();
+                List<Order> filteredOrders = serVorder.getAll().stream()
+                        .filter(order -> order.getOrDate().toLocalDate().isEqual(selectedDate))
+                        .collect(Collectors.toList());
                 updateTable(filteredOrders);
             } else if (selectedItem.equals("Customer")) {
                 int selectedCustomerId = Integer.parseInt(customerField.getText());
