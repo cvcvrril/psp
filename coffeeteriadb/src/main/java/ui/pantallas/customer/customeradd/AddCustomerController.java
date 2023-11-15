@@ -84,6 +84,8 @@ public class AddCustomerController extends BasePantallaController {
         secondNameField.clear();
         phoneField.clear();
         emailField.clear();
+        usernameField.clear();
+        passwordField.clear();
     }
 
     @Override

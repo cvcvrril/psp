@@ -184,10 +184,9 @@ public class DAOcustomerDB {
                 return Either.left(new ErrorCCustomer("Error obteniendo el id del credential", 0));
             }
 
-            PreparedStatement pstmtLink = myConnection.prepareStatement(SQLqueries.LINK_CREDENTIAL_ID);
-            pstmtLink.setInt(1, generatedCustomerId);
-            pstmtLink.setInt(2, generatedCredentialId);
-            rowsAffected = pstmtLink.executeUpdate();
+            pstmtCustomer.setInt(1, generatedCustomerId);
+            pstmtCredential.setInt(2, generatedCredentialId);
+            rowsAffected = pstmtCredential.executeUpdate();
 
             if (rowsAffected != 1) {
                 myConnection.rollback();
