@@ -40,7 +40,6 @@ public class AddOrderController extends BasePantallaController {
     @FXML
     private TableColumn<OrderItem, Integer> quantityCol;
 
-
     @FXML
     private ComboBox<Integer> customerComboBox;
     @FXML
@@ -68,6 +67,11 @@ public class AddOrderController extends BasePantallaController {
     public void principalCargado() {
         List<Integer> customerIDs = serVorder.getCustomerIDs();
         customerComboBox.getItems().addAll(customerIDs);
+        if (getPrincipalController().getActualCredential().getId() > 0) {
+            customerComboBox.setVisible(false);
+        }else {
+            customerComboBox.setVisible(true);
+        }
         List<MenuItem> menuItems = serVmenuItems.getAll().getOrElse(Collections.emptyList());
         for (MenuItem menuItem : menuItems ){
             menuItemsCBox.getItems().add(menuItem.getNameMItem());
@@ -95,7 +99,12 @@ public class AddOrderController extends BasePantallaController {
 
     @FXML
     public void addOrder(ActionEvent actionEvent) {
-        int customerId = customerComboBox.getValue();
+        int customerId;
+        if (getPrincipalController().getActualCredential().getId() > 0) {
+            customerId = getPrincipalController().getActualCredential().getId();
+        } else {
+            customerId = customerComboBox.getValue();
+        }
         int tableId = tableComboBox.getValue();
         LocalDateTime orderDate = LocalDateTime.now();
 

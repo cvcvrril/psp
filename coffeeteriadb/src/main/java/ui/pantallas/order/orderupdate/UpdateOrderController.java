@@ -12,10 +12,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.MenuItem;
 import model.Order;
 import model.OrderItem;
+import model.TableRestaurant;
 import model.errors.ErrorCMenuItem;
+import model.errors.ErrorCTables;
 import services.SERVmenuItems;
 import services.SERVorder;
 import services.SERVorderItem;
+import services.SERVtablesRestaurant;
 import ui.pantallas.common.BasePantallaController;
 
 
@@ -29,6 +32,7 @@ public class UpdateOrderController extends BasePantallaController {
     private final SERVorder serVorder;
     private final SERVorderItem serVorderItem;
     private final SERVmenuItems serVmenuItems;
+    private final SERVtablesRestaurant serVtablesRestaurant;
 
     @FXML
     private TableView<Order> tableOrders;
@@ -49,9 +53,9 @@ public class UpdateOrderController extends BasePantallaController {
     @FXML
     private TextField dateField;
     @FXML
-    private TextField tableField;
+    private ComboBox<Integer> tableComboBox;
     @FXML
-    private TextField customerField;
+    private ComboBox<Integer> customerComboBox;
     @FXML
     private TextField quantityField;
     @FXML
@@ -66,10 +70,11 @@ public class UpdateOrderController extends BasePantallaController {
     private int lastOrderItemId;
 
     @Inject
-    public UpdateOrderController(SERVorder serVorder, SERVorderItem serVorderItem, SERVmenuItems serVmenuItems) {
+    public UpdateOrderController(SERVorder serVorder, SERVorderItem serVorderItem, SERVmenuItems serVmenuItems, SERVtablesRestaurant serVtablesRestaurant) {
         this.serVorder = serVorder;
         this.serVorderItem = serVorderItem;
         this.serVmenuItems = serVmenuItems;
+        this.serVtablesRestaurant = serVtablesRestaurant;
     }
 
     @Override
@@ -91,11 +96,10 @@ public class UpdateOrderController extends BasePantallaController {
                 orderItemTable.getItems().clear();
                 Order selOrder = tableOrders.getSelectionModel().getSelectedItem();
                 if (selOrder != null) {
-                    customerField.setText(String.valueOf(selOrder.getIdCo()));
-                    tableField.setText(String.valueOf(selOrder.getIdTable()));
                     dateField.setText(String.valueOf(selOrder.getOrDate()));
                 }
                 orderItemTable.getItems().addAll(serVorderItem.get(tableOrders.getSelectionModel().getSelectedItem().getIdOrd()).getOrNull());
+
             }
         });
         //Columnas Item table
@@ -119,6 +123,24 @@ public class UpdateOrderController extends BasePantallaController {
             observableList.add(menuItem.getNameMItem());
         }
         menuItemComboBox.getItems().addAll(observableList);
+        Either<ErrorCTables, List<TableRestaurant>> result = serVtablesRestaurant.getAll();
+        if (result.isRight()) {
+            List<TableRestaurant> tables = result.get();
+            for (TableRestaurant table : tables) {
+                tableComboBox.getItems().add(table.getIdTable());
+            }
+        } else {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setContentText("Error al obtener la lista de mesas");
+            errorAlert.show();
+        }
+        List<Integer> customerIDs = serVorder.getCustomerIDs();
+        customerComboBox.getItems().addAll(customerIDs);
+        if (getPrincipalController().getActualCredential().getId() > 0) {
+            customerComboBox.setVisible(false);
+        }else {
+            customerComboBox.setVisible(true);
+        }
     }
 
     public void addItem() {
@@ -159,10 +181,16 @@ public class UpdateOrderController extends BasePantallaController {
     }
 
     public void updateOrder() {
+        int customerId;
+        if (getPrincipalController().getActualCredential().getId() > 0) {
+            customerId = getPrincipalController().getActualCredential().getId();
+        } else {
+            customerId = customerComboBox.getValue();
+        }
         Order selectedOrder = tableOrders.getSelectionModel().getSelectedItem();
         if (selectedOrder != null) {
-            selectedOrder.setIdCo(Integer.parseInt(customerField.getText()));
-            selectedOrder.setIdTable(Integer.parseInt(tableField.getText()));
+            selectedOrder.setIdCo(customerId);
+            selectedOrder.setIdTable(Integer.parseInt(String.valueOf(tableComboBox.getValue())));
             serVorder.updateOrder(selectedOrder);
             if (serVorderItem.get(selectedOrder.getIdOrd()) != null) {
                 serVorderItem.delete(selectedOrder.getIdOrd());

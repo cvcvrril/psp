@@ -12,8 +12,8 @@
          </font>
       </Label>
       <TextField fx:id="dateField" layoutX="28.0" layoutY="131.0" />
-      <TextField fx:id="tableField" layoutX="27.0" layoutY="182.0" prefWidth="150.0" />
-      <TextField fx:id="customerField" layoutX="27.0" layoutY="227.0" prefWidth="150.0" />
+      <ComboBox fx:id="tableComboBox" layoutX="27.0" layoutY="182.0" prefWidth="150.0" />
+      <ComboBox fx:id="customerComboBox" layoutX="27.0" layoutY="227.0" prefWidth="150.0" />
       <TextField fx:id="quantityField" layoutX="476.0" layoutY="159.0" prefHeight="25.0" prefWidth="70.0" />
        <TableView fx:id="orderItemTable" layoutX="229.0" layoutY="119.0" prefHeight="106.0" prefWidth="200.0">
         <columns>
