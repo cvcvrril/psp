@@ -42,6 +42,17 @@ public class SERVmenuItems {
         return res;
     }
 
+    public Either<ErrorCMenuItem, Double> getMenuItemPrice(int id){
+        Either<ErrorCMenuItem, Double> res;
+        Either<ErrorCMenuItem, MenuItem> menouItemResult = daoMenuItemDBd.get(id);
+        if (menouItemResult.isRight()){
+            res = Either.right(menouItemResult.get().getPriceMItem());
+        } else {
+            res = Either.left(menouItemResult.getLeft());
+        }
+        return res;
+    }
+
     public Either<ErrorCMenuItem, MenuItem> getMenuItemByName(String name) {
         List<MenuItem> menuItems = getAll().getOrElse(Collections.emptyList());
 

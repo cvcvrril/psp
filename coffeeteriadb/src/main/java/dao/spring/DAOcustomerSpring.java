@@ -91,7 +91,7 @@ public class DAOcustomerSpring implements DAOcustomer {
                 return Either.left(new ErrorCCustomer("There was an error adding the credential", 0));
             }
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            log.error(e.getMessage(),e);
             return Either.left(new ErrorCCustomer(e.getMessage(), 0));
         }
     }

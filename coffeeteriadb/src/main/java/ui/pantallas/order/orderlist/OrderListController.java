@@ -3,6 +3,8 @@ package ui.pantallas.order.orderlist;
 import common.Constantes;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -62,6 +64,8 @@ public class OrderListController extends BasePantallaController {
     private TableColumn<OrderItem, Integer> orderItemQuantity;
     @FXML
     private TableColumn<OrderItem, Integer> orderItemID;
+    @FXML
+    private TableColumn<OrderItem, String> priceCol;
 
     /*Constructores*/
 
@@ -100,10 +104,12 @@ public class OrderListController extends BasePantallaController {
         });
         orderItemQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         orderItemID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        menuItemName.setCellValueFactory(cellData -> {
+        menuItemName.setCellValueFactory(cellData ->
+                new SimpleStringProperty(getMenuItemNameById(cellData.getValue().getMenuItem())));
+        priceCol.setCellValueFactory(cellData->{
             int menuItemId = cellData.getValue().getMenuItem();
-            String menuItemName = getMenuItemNameById(menuItemId);
-            return new SimpleStringProperty(menuItemName);
+            String menuItemPrice = String.valueOf(menuItemId);
+            return new SimpleStringProperty(menuItemPrice);
         });
     }
 
@@ -168,6 +174,25 @@ public class OrderListController extends BasePantallaController {
         if (orderItems.isRight()) {
             orderItemsTable.getItems().clear();
             orderItemsTable.getItems().addAll(orderItems.get());
+
+            double totalAmount = orderItems.get().stream()
+                    .mapToDouble(orderItem -> {
+                        int menuItemId = orderItem.getMenuItem();
+                        // Obtener el precio del menú item
+                        Either<ErrorCMenuItem, Double> menuItemPrice = serVmenuItems.getMenuItemPrice(menuItemId);
+                        if (menuItemPrice.isRight()) {
+                            return Double.parseDouble(String.valueOf(menuItemPrice.get()));
+                        } else {
+                            // Puedes manejar el error de alguna manera, como imprimir un mensaje de error
+                            log.error("Error al obtener el precio del MenuItem: {}", menuItemId);
+                            return 0.0;
+                        }
+                    })
+                    .sum();
+
+            // Actualizar el totalAmountField
+            totalAmountField.setText(String.valueOf(totalAmount));
+
         } else {
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setContentText("Error al mostrar los order items (loadOrderItems)");

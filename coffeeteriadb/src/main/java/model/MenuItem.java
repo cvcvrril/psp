@@ -10,5 +10,5 @@ public class MenuItem {
     private int idMItem;
     private  String nameMItem;
     private String descriptionMItem;
-    private float priceMItem;
+    private double priceMItem;
 }
