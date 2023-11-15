@@ -23,5 +23,8 @@ public class SQLqueries {
     public static final String INSERT_ORDER_ITEM = "INSERT INTO order_items (order_item_id, order_id, menu_item_id, quantity) VALUES (?, ?, ?, ?)";
     public static final String SELECT_CREDENTIAL_ID_FROM_CUSTOMERS_WHERE_ID = "SELECT id FROM customers WHERE id=?";
     public static final String INSERT_ORDER_ITEM_GEN = "INSERT INTO order_items (order_id, menu_item_id, quantity) VALUES (?, ?, ?)";
+    public static final String DELETE_ORDERS_FOR_CUSTOMER = "delete from orders where customer_id =?";
+    public static final String DELETE_ORDER_ITEMS_FOR_CUSTOMER = "DELETE FROM order_items WHERE order_id IN (SELECT order_id FROM orders WHERE customer_id = ?)";
+
 }
 

@@ -2,6 +2,7 @@ package services;
 
 import dao.db.DAOcustomerDB;
 import dao.db.DAOorderDB;
+import dao.imp.DAOorderXML;
 import dao.spring.DAOcustomerSpring;
 import dao.spring.DAOorderSpring;
 import io.vavr.control.Either;
@@ -22,14 +23,16 @@ public class SERVorder {
     private final DAOorderDB daOorderDB;
     private final DAOorderSpring daOorderSpring;
     private final DAOcustomerSpring daOcustomerSpring;
+    private final DAOorderXML daOorderXML;
 
 
     @Inject
-    public SERVorder(DAOcustomerDB daOcustomerDB, DAOorderDB daOorderDB, DAOorderSpring daOorderSpring, DAOcustomerSpring daOcustomerSpring) {
+    public SERVorder(DAOcustomerDB daOcustomerDB, DAOorderDB daOorderDB, DAOorderSpring daOorderSpring, DAOcustomerSpring daOcustomerSpring, DAOorderXML daOorderXML) {
         this.daOcustomerDB = daOcustomerDB;
         this.daOorderDB = daOorderDB;
         this.daOorderSpring = daOorderSpring;
         this.daOcustomerSpring = daOcustomerSpring;
+        this.daOorderXML = daOorderXML;
     }
 
     /*Métodos*/
@@ -49,7 +52,6 @@ public class SERVorder {
     public Either<ErrorCOrder, Integer> add(Order order) {
         return daOorderDB.add(order);
     }
-
     public Either<ErrorCOrder, Integer> updateOrder(Order o) {
         return daOorderDB.update(o);
     }
@@ -58,6 +60,9 @@ public class SERVorder {
        return daOorderDB.delete(i);
     }
 
+    public Either<ErrorCOrder, Integer> daOorderXML(List<Order> orderList, int customerId){
+        return daOorderXML(orderList,customerId);
+    }
 
     public List<Order> getOrdersByDate(LocalDate selectedDate) {
         List<Order> allOrders = daOorderDB.getAll().getOrNull();

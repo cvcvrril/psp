@@ -102,10 +102,17 @@ public class DAOcustomerSpring implements DAOcustomer {
         TransactionStatus txStatus = transactionManager.getTransaction(txDef);
         try {
             JdbcTemplate jtm = new JdbcTemplate(Objects.requireNonNull(transactionManager.getDataSource()));
+            if (conf) {
+                jtm.update(SQLqueries.DELETE_ORDER_ITEMS_FOR_CUSTOMER, id);
+            }
 
             int credentialId = jtm.queryForObject(SQLqueries.SELECT_CREDENTIAL_ID_FROM_CUSTOMERS_WHERE_ID, Integer.class, id);
 
+            jtm.update(SQLqueries.DELETE_ORDERS_FOR_CUSTOMER, id);
+
             int rowsAffected = jtm.update(SQLqueries.DELETE_CUSTOMERS, id);
+
+
 
             if (rowsAffected == 1) {
                 jtm.update(SQLqueries.DELETE_CREDENTIALS, credentialId);

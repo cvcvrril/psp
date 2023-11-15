@@ -73,6 +73,8 @@ public class DeleteCustomerController extends BasePantallaController {
                 if (result.isPresent() && result.get() == ButtonType.CANCEL) {
                     conf = false;
                 } else {
+                    //serVorder.delOrder(selCustomer.getIdC());
+                    //serVorder.daOorderXML(serVorder.getOrdersByCustomer(selCustomer.getIdC()), selCustomer.getIdC());
                     conf = true;
                 }
             }
