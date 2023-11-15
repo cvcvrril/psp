@@ -84,10 +84,10 @@ public class DAOcustomerSpring implements DAOcustomer {
                 if (customerRowsAffected > 0) {
                     return Either.right(customerRowsAffected);
                 } else {
-                    return Either.left(new ErrorCCustomer("Error al agregar el cliente o la credencial", 0));
+                    return Either.left(new ErrorCCustomer("Error al agregar el cliente", 0));
                 }
             }else {
-                return Either.left(new ErrorCCustomer("Error al agregar el cliente o la credencial", 0));
+                return Either.left(new ErrorCCustomer("Error al agregar la credencial", 0));
             }
         } catch (Exception e) {
             log.error(e.getMessage(), e);
