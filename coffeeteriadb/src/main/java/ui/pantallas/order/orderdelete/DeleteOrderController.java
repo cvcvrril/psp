@@ -56,7 +56,7 @@ public class DeleteOrderController extends BasePantallaController {
         this.serVmenuItems = serVmenuItems;
     }
 
-    public void initialize() {
+    public void principalCargado() {
 
         idOrd.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_ORD));
         idC.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID_CO));
@@ -110,10 +110,5 @@ public class DeleteOrderController extends BasePantallaController {
         } else {
             return null;
         }
-    }
-
-    @Override
-    public void principalCargado() {
-
     }
 }
