@@ -70,3 +70,9 @@ X
 (src/main/resources/config/properties.xml,6\7\67a4007b83808db067bd91097f31fac290f5cfbf
 W
 'src/main/java/dao/db/DAOmenuItemDB.java,e\0\e0c16a6ea1ea83c53ec14a3b256edb98b7cb8e15
+q
+Asrc/main/java/jakarta/excepciones/WrongObjectExceptionMapper.java,1\b\1b8910521c0616980242f7171f2e787b751d9768
+o
+?src/main/java/domain/modelo/excepciones/BaseCaidaException.java,f\0\f01d215c5108419a6cebb928afbd6bd4a964c426
+q
+Asrc/main/java/domain/modelo/excepciones/WrongObjectException.java,1\c\1c0e17a6d1d072331b90328ae052accf299af826
