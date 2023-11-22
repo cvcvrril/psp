@@ -1,12 +1,13 @@
 package cliente.ui.main;
 
+import cliente.ui.pantallas.principal.PrincipalController;
 import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ui.pantallas.principal.PrincipalController;
+
 
 import java.io.IOException;
 
