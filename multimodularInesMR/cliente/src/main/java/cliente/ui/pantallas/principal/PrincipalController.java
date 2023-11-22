@@ -120,6 +120,7 @@ public class PrincipalController extends BasePantallaController {
     private void actMenuOptions(ActionEvent actionEvent){
         switch (((MenuItem) actionEvent.getSource()).getId()){
             case "menuOptionsLogout":
+                break;
         }
     }
 

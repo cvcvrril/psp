@@ -40,3 +40,7 @@ p
 Qcliente/src/main/java/cliente/ui/pantallas/personaje/ListPersonajeController.java,e\5\e5b1cca077668c277ed73c67d820859cc2e197f7
 y
 Icliente/src/main/java/cliente/ui/pantallas/welcome/WelcomeController.java,a\d\adfb9f3706bb7df1e774111dbee69c7b1103f488
+b
+2cliente/src/main/java/cliente/data/DaoFaccion.java,4\a\4a86e8f390a29cda3760d724fd33dd534683d287
+k
+;cliente/src/main/java/cliente/data/DaoPersonajeFaccion.java,1\8\1806e22c14a88da4dff9446f6170ade235193935
