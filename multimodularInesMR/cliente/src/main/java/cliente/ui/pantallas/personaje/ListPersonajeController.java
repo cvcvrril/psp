@@ -1,3 +1,6 @@
 package cliente.ui.pantallas.personaje;
-public class ListPersonajeController {
+
+import cliente.ui.pantallas.common.BasePantallaController;
+
+public class ListPersonajeController extends BasePantallaController {
 }

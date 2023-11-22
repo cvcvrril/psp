@@ -127,14 +127,8 @@ public class PrincipalController extends BasePantallaController {
     @FXML
     private void actMenuLlamadas(ActionEvent actionEvent) {
         switch (((MenuItem) actionEvent.getSource()).getId()) {
-            case "menuLlamadasPersonajes":
-                cargarPantalla(Pantallas.LLA_PERSONAJE);
-                break;
-            case "menuLlamadasLugares":
-                cargarPantalla(Pantallas.LLA_LUGAR);
-                break;
-            case "menuLlamadasEpisodios":
-                cargarPantalla(Pantallas.LLA_EPISODIO);
+            case "menuListaPersonaje":
+                cargarPantalla(Pantallas.LISTA_PERSONAJE);
                 break;
         }
     }

@@ -38,3 +38,5 @@ p
 @cliente/src/main/java/cliente/ui/pantallas/common/Pantallas.java,7\f\7f3efff093a6ec810ab0b032174e27e74b5cbad2
 Å
 Qcliente/src/main/java/cliente/ui/pantallas/personaje/ListPersonajeController.java,e\5\e5b1cca077668c277ed73c67d820859cc2e197f7
+y
+Icliente/src/main/java/cliente/ui/pantallas/welcome/WelcomeController.java,a\d\adfb9f3706bb7df1e774111dbee69c7b1103f488
