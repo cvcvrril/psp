@@ -8,9 +8,6 @@ import javafx.scene.control.TableColumn;
 
 public class ListPersonajeController extends BasePantallaController {
 
-
-
-
     @FXML
     private TableColumn<Integer, Personaje> idPersonaje;
     @FXML
@@ -24,7 +21,7 @@ public class ListPersonajeController extends BasePantallaController {
     private TableColumn<Integer, Faccion> idFaccion;
     @FXML
     private TableColumn<String, Faccion> nombreFaccion;
-
+    
 
 
 
