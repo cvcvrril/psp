@@ -46,3 +46,9 @@ k
 ;cliente/src/main/java/cliente/data/DaoPersonajeFaccion.java,1\8\1806e22c14a88da4dff9446f6170ade235193935
 U
 %domain/src/main/java/module-info.java,3\7\37c8d656d13a8ebd08e65756acf7618a2f0a3c35
+_
+/domain/src/main/java/domain/modelo/Faccion.java,3\3\331c3373b29d9b0441ec0fa7bce18819d86aedf7
+k
+;cliente/src/main/java/cliente/data/DaoFaccionPersonaje.java,c\3\c3146559428379d5af4b069a047d6edfdebe0a5b
+h
+8domain/src/main/java/domain/modelo/FaccionPersonaje.java,2\8\28a4fd21be67b18a272abfaffb1e69eed22a7428
