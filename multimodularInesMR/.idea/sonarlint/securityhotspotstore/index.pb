@@ -44,3 +44,5 @@ b
 2cliente/src/main/java/cliente/data/DaoFaccion.java,4\a\4a86e8f390a29cda3760d724fd33dd534683d287
 k
 ;cliente/src/main/java/cliente/data/DaoPersonajeFaccion.java,1\8\1806e22c14a88da4dff9446f6170ade235193935
+U
+%domain/src/main/java/module-info.java,3\7\37c8d656d13a8ebd08e65756acf7618a2f0a3c35

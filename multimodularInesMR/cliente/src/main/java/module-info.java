@@ -9,6 +9,7 @@ module cliente {
     requires javafx.fxml;
     requires javafx.controls;
     requires jakarta.cdi;
+    requires domain;
 
 
     exports cliente.data;
