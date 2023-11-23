@@ -54,3 +54,7 @@ f
 6cliente/src/main/java/cliente/common/onfiguration.java,5\b\5b5fcef3ccb63222f5152ae51ddf47418621af3b
 g
 7cliente/src/main/java/cliente/common/Configuration.java,b\f\bf0c337308b7d236034d0467c6bd05101094cbed
+Z
+*servidor/src/main/webapp/WEB-INF/beans.xml,3\c\3c9d9ab823c928da81b8fec2676d8fb010bda296
+c
+3servidor/src/main/webapp/WEB-INF/config/config.yaml,9\8\9879df8a049820c8d6eab3ff52d98e85b0cfb214
