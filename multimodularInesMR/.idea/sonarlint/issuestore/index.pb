@@ -102,3 +102,5 @@ c
 Pcliente/src/main/java/cliente/ui/pantallas/personaje/ListPersonajeViewModel.java,4\6\46e0d8b1a45f216f28c4588b9324a21a90c01ee2
 |
 Lcliente/src/main/java/cliente/ui/pantallas/personaje/ListPersonajeState.java,a\3\a31b0b09110a9910db6d20378ae6c58dc35fdecc
+x
+Hcliente/src/main/java/cliente/data/usecases/GetAllPersonajesUseCase.java,0\1\01b447215a76b435e2185a6eb017d322779449f5
