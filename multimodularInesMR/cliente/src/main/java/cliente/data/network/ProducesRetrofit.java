@@ -1,6 +1,7 @@
 package cliente.data.network;
 
 import cliente.common.Configuration;
+import cliente.data.retrofit.PersonajeApi;
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Singleton;
 import com.google.gson.*;
@@ -37,10 +38,15 @@ public class ProducesRetrofit {
     @Singleton
     public Retrofit retrofit(Gson gson, OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl("http://localhost:8080/servidor-1.0-SNAPSHOT/api/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .client(okHttpClient)
                 .build();
+    }
+
+    @Produces
+    public PersonajeApi getPersonajeApi (Retrofit retrofit){
+        return retrofit.create(PersonajeApi.class);
     }
 }

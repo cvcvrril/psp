@@ -11,8 +11,6 @@ import java.util.Map;
 public interface PersonajeAPI {
 
 
-
-
     @GET(Constantes.CHARACTER)
     Call<Map<String, Object>> getPersonajes();
 

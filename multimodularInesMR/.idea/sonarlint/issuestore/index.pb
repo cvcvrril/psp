@@ -88,3 +88,17 @@ e
 5servidor/src/main/java/servidor/dao/DaoPersonaje.java,3\5\3521b3f64ea8cd232771ff1b9fd5586d1e275d5d
 w
 Gservidor/src/main/java/servidor/dao/implementacion/DaoPersonajeImp.java,4\5\4517786f3b53ede5444087d527fbfb50a3d35caf
+m
+=cliente/src/main/java/cliente/data/retrofit/PersonajeApi.java,7\2\7231737fdeadfbbec2e9f1704b4204a079e413c4
+l
+<cliente/src/main/java/cliente/data/retrofit/DaoGenerics.java,3\6\362c413cfe29ff3273cd0d612408107f21194515
+k
+;cliente/src/main/java/cliente/data/network/DaoGenerics.java,0\8\0893b1e809c37c6b00e30617c6466b9186c5ebe0
+c
+3cliente/src/main/java/cliente/data/DaoGenerics.java,a\a\aaeae64fae8f0170133bedfd36fcae998dbb7c48
+
+`cliente/src/main/java/cliente/ui/pantallas/personaje/list_personaje/ListPersonajeController.java,1\3\13d1d51647fbd765387188b994ee58b00ece5932
+€
+Pcliente/src/main/java/cliente/ui/pantallas/personaje/ListPersonajeViewModel.java,4\6\46e0d8b1a45f216f28c4588b9324a21a90c01ee2
+|
+Lcliente/src/main/java/cliente/ui/pantallas/personaje/ListPersonajeState.java,a\3\a31b0b09110a9910db6d20378ae6c58dc35fdecc

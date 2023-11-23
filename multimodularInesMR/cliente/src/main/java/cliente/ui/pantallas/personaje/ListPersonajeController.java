@@ -26,4 +26,5 @@ public class ListPersonajeController extends BasePantallaController {
 
 
 
+
 }

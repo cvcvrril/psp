@@ -15,6 +15,8 @@ module cliente {
     requires retrofit2.converter.gson;
     requires retrofit2;
     requires retrofit2.adapter.rxjava3;
+    requires io.reactivex.rxjava3;
+    requires io.vavr;
 
 
     exports cliente.data;
