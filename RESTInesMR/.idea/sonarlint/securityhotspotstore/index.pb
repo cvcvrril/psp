@@ -76,3 +76,5 @@ o
 ?src/main/java/domain/modelo/excepciones/BaseCaidaException.java,f\0\f01d215c5108419a6cebb928afbd6bd4a964c426
 q
 Asrc/main/java/domain/modelo/excepciones/WrongObjectException.java,1\c\1c0e17a6d1d072331b90328ae052accf299af826
+[
++src/main/java/jakarta/ConstantsJakarta.java,1\7\1724b217f67e8670965b532cecda6da6a68f0297
