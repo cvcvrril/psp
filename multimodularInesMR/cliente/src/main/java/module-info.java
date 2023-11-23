@@ -10,6 +10,11 @@ module cliente {
     requires javafx.controls;
     requires jakarta.cdi;
     requires domain;
+    requires com.google.gson;
+    requires okhttp3;
+    requires retrofit2.converter.gson;
+    requires retrofit2;
+    requires retrofit2.adapter.rxjava3;
 
 
     exports cliente.data;
