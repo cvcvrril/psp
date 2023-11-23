@@ -74,3 +74,11 @@ Sservidor/src/main/java/servidor/jakarta/excepciones/BadArgumentExceptionMapper.
 Qservidor/src/main/java/servidor/jakarta/excepciones/BaseCaidaExceptionMapper.java,2\a\2a5ed8d77dfa5da70e84f421603723064e63a113
 ƒ
 Sservidor/src/main/java/servidor/jakarta/excepciones/WrongObjectExceptionMapper.java,f\8\f8f3d8600f42c811c65cf44bf696b9bfb1cc1779
+i
+9servidor/src/main/java/servidor/dao/DbConnectionPool.java,f\b\fb43476b5803a30c6424b4437ebe0cffe506af82
+i
+9servidor/src/main/java/servidor/common/Configuration.java,e\0\e0174a42f33f5eebf1ec727c849a609b1e9735db
+k
+;servidor/src/main/java/servidor/common/ConstantsCommon.java,f\d\fdc51690936de5ad46002236dce2276c2434d1cb
+e
+5servidor/src/main/java/servidor/dao/ConstantsDAO.java,8\c\8c2b0653c4a2a17a9d834a43a07cd88ea40d8e20
