@@ -30,7 +30,7 @@ public class DaoPersonajeImp implements DaoPersonaje {
 
     @Override
     public Either<ApiError, List<Personaje>> getAll() {
-        List<Personaje> personajeList = new ArrayList<>();
+        List<Personaje> personajeList;
         Either <ApiError, List<Personaje>> res;
         try (Connection myconnection = db.getConnection()){
             Statement stmt = myconnection.createStatement();
