@@ -82,3 +82,9 @@ k
 ;servidor/src/main/java/servidor/common/ConstantsCommon.java,f\d\fdc51690936de5ad46002236dce2276c2434d1cb
 e
 5servidor/src/main/java/servidor/dao/ConstantsDAO.java,8\c\8c2b0653c4a2a17a9d834a43a07cd88ea40d8e20
+e
+5servidor/src/main/java/servidor/dao/ConstantsDao.java,1\6\1608e19fe59318b22b0813c102b75580171bb7d5
+e
+5servidor/src/main/java/servidor/dao/DaoPersonaje.java,3\5\3521b3f64ea8cd232771ff1b9fd5586d1e275d5d
+w
+Gservidor/src/main/java/servidor/dao/implementacion/DaoPersonajeImp.java,4\5\4517786f3b53ede5444087d527fbfb50a3d35caf

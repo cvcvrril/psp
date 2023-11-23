@@ -78,3 +78,5 @@ q
 Asrc/main/java/domain/modelo/excepciones/WrongObjectException.java,1\c\1c0e17a6d1d072331b90328ae052accf299af826
 [
 +src/main/java/jakarta/ConstantsJakarta.java,1\7\1724b217f67e8670965b532cecda6da6a68f0297
+P
+ src/main/java/dao/DAOtables.java,a\c\ace3d0de8cfb7fbb2566cdf08f3bea99ed993a27

@@ -4,7 +4,7 @@ package servidor.common;
 import jakarta.inject.Singleton;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
-import servidor.dao.ConstantsDAO;
+import servidor.dao.ConstantsDao;
 import servidor.domain.modelo.excepciones.BaseCaidaException;
 
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class Configuration {
             this.driver = ptxt.getProperty(ConstantsCommon.DRIVER);
         }catch (IOException e){
             log.error(e.getMessage(),e);
-            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
+            throw new BaseCaidaException(ConstantsDao.BASE_CAIDA_EXCEPTION);
         }
     }
 

@@ -1,6 +1,6 @@
 package servidor.dao;
 
-public class ConstantsDAO {
+public class ConstantsDao {
 
     public static final String BASE_CAIDA_EXCEPTION = "Error al interactuar con la base de datos";
     public static final String BAD_ARGUMENT_EXCEPTION = "Error al meter alguno de los argumentos";
