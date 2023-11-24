@@ -135,13 +135,31 @@ public class DaoPersonajeImp implements DaoPersonaje {
     public Either<ApiError, Integer> delete(int id) {
         Either<ApiError, Integer> res;
         try (Connection myConnection = db.getConnection()) {
-            PreparedStatement pstmt = myConnection.prepareStatement("delete from personajes where id=?");
-            pstmt.setInt(1, id);
-            int rowsAffected = pstmt.executeUpdate();
-            if (rowsAffected != 1) {
-                throw new WrongObjectException(ConstantsDao.WRONG_OBJECT_EXCEPTION);
-            } else {
-                res = Either.right(rowsAffected);
+            myConnection.setAutoCommit(false);
+            try {
+                // Paso 1: Eliminar relaciones de la tabla intermedia faccion_personaje
+                String deleteFaccionPersonajeSQL = "DELETE FROM faccion_personaje WHERE id_personaje=?";
+                try (PreparedStatement pstmtFaccionPersonaje = myConnection.prepareStatement(deleteFaccionPersonajeSQL)) {
+                    pstmtFaccionPersonaje.setInt(1, id);
+                    pstmtFaccionPersonaje.executeUpdate();
+                }
+                // Paso 2: Eliminar el personaje de la tabla personajes
+                String deletePersonajeSQL = "DELETE FROM personajes WHERE id=?";
+                try (PreparedStatement pstmtPersonaje = myConnection.prepareStatement(deletePersonajeSQL)) {
+                    pstmtPersonaje.setInt(1, id);
+                    int rowsAffectedPersonaje = pstmtPersonaje.executeUpdate();
+                    if (rowsAffectedPersonaje != 1) {
+                        throw new WrongObjectException(ConstantsDao.WRONG_OBJECT_EXCEPTION);
+                    }
+                }
+                myConnection.commit();
+                res = Either.right(1); // El valor 1 indica que se eliminó correctamente un personaje.
+            } catch (SQLException e) {
+                myConnection.rollback();
+                log.error(e.getMessage(), e);
+                throw new BaseCaidaException(ConstantsDao.BASE_CAIDA_EXCEPTION);
+            } finally {
+                myConnection.setAutoCommit(true);
             }
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
