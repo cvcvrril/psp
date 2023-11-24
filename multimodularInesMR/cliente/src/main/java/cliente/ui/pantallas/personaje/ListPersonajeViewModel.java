@@ -6,6 +6,8 @@ import domain.errores.ApiError;
 import domain.modelo.Personaje;
 import jakarta.inject.Inject;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.ReadOnlyBooleanProperty;
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
 
@@ -26,7 +28,6 @@ public class ListPersonajeViewModel {
 
     }
 
-
     public void loadPersonajes() {
 
         getAllPersonajesUseCase.getAllPersonajes()
@@ -38,4 +39,9 @@ public class ListPersonajeViewModel {
                     }
                 });
     }
+
+    public ReadOnlyObjectProperty<ListPersonajeState> getState(){
+        return _state;
+    }
+
 }

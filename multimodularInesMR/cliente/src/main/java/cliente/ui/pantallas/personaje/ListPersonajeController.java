@@ -48,5 +48,6 @@ public class ListPersonajeController extends BasePantallaController {
         nombrePersonaje.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         razaPersonaje.setCellValueFactory(new PropertyValueFactory<>("raza"));
         planetaPersonaje.setCellValueFactory(new PropertyValueFactory<>("planeta_residencia"));
+        tablaPersonajes.getItems().addAll(viewModel.getState().get().getPersonajes());
     }
 }
