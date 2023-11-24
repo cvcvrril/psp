@@ -13,6 +13,7 @@ public interface DaoPersonaje {
     Either<ApiError, Integer> add(Personaje nuevoPersonaje);
     Either<ApiError, Integer> update(Personaje actualizadoPersonaje);
     Either<ApiError, Integer> delete(int i);
+    Either<ApiError, Integer> deleteMultiple(int idFaccion);
     Either<ApiError, List<Faccion>> getFaccionesByPersonaje(int idPersonaje);
 
 

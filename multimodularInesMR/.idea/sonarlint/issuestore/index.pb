@@ -86,3 +86,5 @@ u
 Eservidor/src/main/java/servidor/dao/implementacion/DaoFaccionImp.java,5\4\54cade25900235c1ed80c0124def190e59c27f30
 u
 Eservidor/src/main/java/servidor/domain/servicios/ServicioFaccion.java,1\d\1db2bd1df6341672d2fe88fe77e4cf6a9794bd39
+h
+8domain/src/main/java/domain/modelo/FaccionPersonaje.java,2\8\28a4fd21be67b18a272abfaffb1e69eed22a7428

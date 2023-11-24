@@ -45,6 +45,26 @@ public class ServicioPersonaje {
         return daoPersonaje.update(actualizadoPersonaje);
     }
 
+    public Either<ApiError, Integer>delete(String idParam){
+        try {
+            Integer id = Integer.parseInt(idParam);
+            return daoPersonaje.delete(id);
+        }catch (NumberFormatException e){
+            log.error(e.getMessage(),e);
+            throw new BadArgumentException(ConstantsDao.BAD_ARGUMENT_EXCEPTION);
+        }
+    }
+
+    public Either<ApiError, Integer> deleteMultiple(String idFaccion){
+        try {
+            Integer id = Integer.parseInt(idFaccion);
+            return daoPersonaje.deleteMultiple(id);
+        } catch (NumberFormatException e){
+            log.error(e.getMessage(),e);
+            throw new BadArgumentException(ConstantsDao.BAD_ARGUMENT_EXCEPTION);
+        }
+    }
+
     public Either<ApiError, List<Faccion>> getFaccionesByPersonaje(String idParam){
         try {
             Integer id = Integer.parseInt(idParam);

@@ -132,8 +132,59 @@ public class DaoPersonajeImp implements DaoPersonaje {
     }
 
     @Override
-    public Either<ApiError, Integer> delete(int i) {
-        return null;
+    public Either<ApiError, Integer> delete(int id) {
+        Either<ApiError, Integer> res;
+        try (Connection myConnection = db.getConnection()) {
+            PreparedStatement pstmt = myConnection.prepareStatement("delete from personajes where id=?");
+            pstmt.setInt(1, id);
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected != 1) {
+                throw new WrongObjectException(ConstantsDao.WRONG_OBJECT_EXCEPTION);
+            } else {
+                res = Either.right(rowsAffected);
+            }
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDao.BASE_CAIDA_EXCEPTION);
+        }
+        return res;
+    }
+
+    @Override
+    public Either<ApiError, Integer> deleteMultiple(int idFaccion) {
+        Either<ApiError, Integer> res;
+        try (Connection myConnection = db.getConnection()) {
+            myConnection.setAutoCommit(false);
+            try {
+                // Paso 1: Eliminar registros de la tabla intermedia faccion_personaje
+                String deleteFaccionPersonajeSQL = "DELETE FROM faccion_personaje WHERE id_faccion=?";
+                try (PreparedStatement pstmtFaccionPersonaje = myConnection.prepareStatement(deleteFaccionPersonajeSQL)) {
+                    pstmtFaccionPersonaje.setInt(1, idFaccion);
+                    int rowsAffectedFaccionPersonaje = pstmtFaccionPersonaje.executeUpdate();
+                    if (rowsAffectedFaccionPersonaje == 0) {
+                        throw new WrongObjectException(ConstantsDao.WRONG_OBJECT_EXCEPTION);
+                    }
+                }
+
+                // Paso 2: Eliminar personajes que ya no tienen relaciones en la tabla personajes
+                String deletePersonajeSQL = "DELETE FROM personajes WHERE id NOT IN (SELECT id_personaje FROM faccion_personaje)";
+                try (PreparedStatement pstmtPersonaje = myConnection.prepareStatement(deletePersonajeSQL)) {
+                    int rowsAffectedPersonaje = pstmtPersonaje.executeUpdate();
+                    myConnection.commit();
+                    res = Either.right(rowsAffectedPersonaje);
+                }
+            } catch (SQLException e) {
+                myConnection.rollback();
+                log.error(e.getMessage(), e);
+                throw new BaseCaidaException(ConstantsDao.BASE_CAIDA_EXCEPTION);
+            } finally {
+                myConnection.setAutoCommit(true);
+            }
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDao.BASE_CAIDA_EXCEPTION);
+        }
+        return res;
     }
 
     @Override

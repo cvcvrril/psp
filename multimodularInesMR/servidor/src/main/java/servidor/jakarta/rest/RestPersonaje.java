@@ -51,4 +51,16 @@ public class RestPersonaje {
         return servicioPersonaje.add(nuevoPersonaje).get();
     }
 
+    @DELETE
+    @Path(ConstantsJakarta.ID_PATH)
+    public Integer delete(@PathParam(ConstantsJakarta.ID) String idParam){
+        return servicioPersonaje.delete(idParam).get();
+    }
+
+    @DELETE
+    @Path("/delete-multiple/{idFaccion}")
+    public Integer deleteMultiple(@PathParam("idFaccion") String idFaccion){
+        return servicioPersonaje.deleteMultiple(idFaccion).get();
+    }
+
 }
