@@ -11,11 +11,12 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import lombok.extern.log4j.Log4j2;
 import servidor.domain.servicios.ServicioFaccion;
+import servidor.jakarta.ConstantsJakarta;
 
 import java.util.List;
 
 @Log4j2
-@Path("/faccion")
+@Path(ConstantsJakarta.ROOT_FACCION)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestFaccion {

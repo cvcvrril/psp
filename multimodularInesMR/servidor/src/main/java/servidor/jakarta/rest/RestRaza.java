@@ -9,11 +9,12 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import lombok.extern.log4j.Log4j2;
 import servidor.domain.servicios.ServicioRaza;
+import servidor.jakarta.ConstantsJakarta;
 
 import java.util.List;
 
 @Log4j2
-@Path("/raza")
+@Path(ConstantsJakarta.ROOT_RAZA)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestRaza {
