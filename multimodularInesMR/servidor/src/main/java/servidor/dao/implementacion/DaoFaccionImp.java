@@ -6,6 +6,7 @@ import domain.modelo.Raza;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
+import servidor.common.SqlQueries;
 import servidor.dao.ConstantsDao;
 import servidor.dao.DaoFaccion;
 import servidor.dao.DbConnectionPool;
@@ -31,7 +32,7 @@ public class DaoFaccionImp implements DaoFaccion {
         Either<ApiError, List<Faccion>> res;
         try (Connection myconnection = db.getConnection()) {
             Statement stmt = myconnection.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from facciones");
+            ResultSet rs = stmt.executeQuery(SqlQueries.SELECT_FROM_FACCIONES);
             faccionList = readRS(rs);
             res = Either.right(faccionList);
         } catch (SQLException e) {
@@ -46,9 +47,7 @@ public class DaoFaccionImp implements DaoFaccion {
         List<Faccion> faccionList;
         Either<ApiError, List<Faccion>> res;
         try (Connection myconnection = db.getConnection()) {
-            PreparedStatement pstmt = myconnection.prepareStatement("SELECT facciones.* FROM facciones " +
-                    "INNER JOIN faccion_personaje ON facciones.idfacciones = faccion_personaje.id_faccion " +
-                    "WHERE faccion_personaje.id_personaje = ?");
+            PreparedStatement pstmt = myconnection.prepareStatement(SqlQueries.SELECT_FACCIONES_JOIN);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             faccionList = readRS(rs);

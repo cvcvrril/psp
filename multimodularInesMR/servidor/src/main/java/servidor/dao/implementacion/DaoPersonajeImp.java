@@ -6,6 +6,7 @@ import domain.modelo.Personaje;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
+import servidor.common.SqlQueries;
 import servidor.dao.ConstantsDao;
 import servidor.dao.DaoPersonaje;
 import servidor.dao.DbConnectionPool;
@@ -37,7 +38,7 @@ public class DaoPersonajeImp implements DaoPersonaje {
         Either<ApiError, List<Personaje>> res;
         try (Connection myconnection = db.getConnection()) {
             Statement stmt = myconnection.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from personajes");
+            ResultSet rs = stmt.executeQuery(SqlQueries.SELECT_FROM_PERSONAJES);
             personajeList = readRS(rs);
             res = Either.right(personajeList);
         } catch (SQLException e) {
@@ -52,7 +53,7 @@ public class DaoPersonajeImp implements DaoPersonaje {
         List<Personaje> personajeList;
         Either<ApiError, Personaje> res;
         try (Connection myConnection = db.getConnection()) {
-            PreparedStatement pstmt = myConnection.prepareStatement("select * from personajes where id=?");
+            PreparedStatement pstmt = myConnection.prepareStatement(SqlQueries.SELECT_FROM_PERSONAJES_WHERE_ID);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             personajeList = readRS(rs);
@@ -74,7 +75,7 @@ public class DaoPersonajeImp implements DaoPersonaje {
         Either<ApiError, Integer> res;
         try (Connection myConnection = db.getConnection()) {
             myConnection.setAutoCommit(false);
-            try (PreparedStatement pstmt = myConnection.prepareStatement("insert into personajes (nombre, raza, planeta_residencia) values (?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+            try (PreparedStatement pstmt = myConnection.prepareStatement(SqlQueries.INSERT_INTO_PERSONAJES, Statement.RETURN_GENERATED_KEYS)) {
                 pstmt.setString(1, nuevoPersonaje.getNombre());
                 pstmt.setInt(2, nuevoPersonaje.getRaza());
                 pstmt.setString(3, nuevoPersonaje.getPlanetaRes());
@@ -110,7 +111,7 @@ public class DaoPersonajeImp implements DaoPersonaje {
         int rowsAffected;
         Either<ApiError, Integer> res;
         try (Connection myConnection = db.getConnection()) {
-            try (PreparedStatement pstmt = myConnection.prepareStatement("update personajes set nombre=?, planeta_residencia=? where id=? ")) {
+            try (PreparedStatement pstmt = myConnection.prepareStatement(SqlQueries.UPDATE_PERSONAJES)) {
                 myConnection.setAutoCommit(false);
                 pstmt.setString(1, actualizadoPersonaje.getNombre());
                 pstmt.setString(2, actualizadoPersonaje.getPlanetaRes());
@@ -138,13 +139,13 @@ public class DaoPersonajeImp implements DaoPersonaje {
             myConnection.setAutoCommit(false);
             try {
                 // Paso 1: Eliminar relaciones de la tabla intermedia faccion_personaje
-                String deleteFaccionPersonajeSQL = "DELETE FROM faccion_personaje WHERE id_personaje=?";
+                String deleteFaccionPersonajeSQL = SqlQueries.DELETE_FROM_FACCION_PERSONAJE_WHERE_ID_PERSONAJE;
                 try (PreparedStatement pstmtFaccionPersonaje = myConnection.prepareStatement(deleteFaccionPersonajeSQL)) {
                     pstmtFaccionPersonaje.setInt(1, id);
                     pstmtFaccionPersonaje.executeUpdate();
                 }
                 // Paso 2: Eliminar el personaje de la tabla personajes
-                String deletePersonajeSQL = "DELETE FROM personajes WHERE id=?";
+                String deletePersonajeSQL = SqlQueries.DELETE_FROM_PERSONAJES_WHERE_ID;
                 try (PreparedStatement pstmtPersonaje = myConnection.prepareStatement(deletePersonajeSQL)) {
                     pstmtPersonaje.setInt(1, id);
                     int rowsAffectedPersonaje = pstmtPersonaje.executeUpdate();
@@ -175,7 +176,7 @@ public class DaoPersonajeImp implements DaoPersonaje {
             myConnection.setAutoCommit(false);
             try {
                 // Paso 1: Eliminar registros de la tabla intermedia faccion_personaje
-                String deleteFaccionPersonajeSQL = "DELETE FROM faccion_personaje WHERE id_faccion=?";
+                String deleteFaccionPersonajeSQL = SqlQueries.DELETE_FROM_FACCION_PERSONAJE_WHERE_ID_FACCION;
                 try (PreparedStatement pstmtFaccionPersonaje = myConnection.prepareStatement(deleteFaccionPersonajeSQL)) {
                     pstmtFaccionPersonaje.setInt(1, idFaccion);
                     int rowsAffectedFaccionPersonaje = pstmtFaccionPersonaje.executeUpdate();
@@ -185,7 +186,7 @@ public class DaoPersonajeImp implements DaoPersonaje {
                 }
 
                 // Paso 2: Eliminar personajes que ya no tienen relaciones en la tabla personajes
-                String deletePersonajeSQL = "DELETE FROM personajes WHERE id NOT IN (SELECT id_personaje FROM faccion_personaje)";
+                String deletePersonajeSQL = SqlQueries.DELETE_FROM_PERSONAJES_WHERE_ID_NOT_IN_SELECT_ID_PERSONAJE_FROM_FACCION_PERSONAJE;
                 try (PreparedStatement pstmtPersonaje = myConnection.prepareStatement(deletePersonajeSQL)) {
                     int rowsAffectedPersonaje = pstmtPersonaje.executeUpdate();
                     myConnection.commit();
@@ -210,9 +211,7 @@ public class DaoPersonajeImp implements DaoPersonaje {
         List<Faccion> faccionList;
         Either<ApiError, List<Faccion>> res;
         try (Connection myConnection = db.getConnection()) {
-            String sql = "SELECT facciones.* FROM facciones " +
-                    "INNER JOIN faccion_personaje ON facciones.idfacciones = faccion_personaje.id_faccion " +
-                    "WHERE faccion_personaje.id_personaje = ?";
+            String sql = SqlQueries.SELECT_FACCIONES_JOIN;
             PreparedStatement pstmt = myConnection.prepareStatement(sql);
             pstmt.setInt(1, idPersonaje);
             ResultSet rs = pstmt.executeQuery();

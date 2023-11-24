@@ -6,6 +6,7 @@ import domain.modelo.Raza;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
+import servidor.common.SqlQueries;
 import servidor.dao.ConstantsDao;
 import servidor.dao.DaoRaza;
 import servidor.dao.DbConnectionPool;
@@ -34,7 +35,7 @@ public class DaoRazaImp implements DaoRaza {
         Either<ApiError, List<Raza>> res;
         try (Connection myconnection = db.getConnection()) {
             Statement stmt = myconnection.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from razas");
+            ResultSet rs = stmt.executeQuery(SqlQueries.SELECT_FROM_RAZAS);
             razaList = readRS(rs);
             res = Either.right(razaList);
         } catch (SQLException e) {

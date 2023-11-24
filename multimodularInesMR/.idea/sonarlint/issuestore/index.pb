@@ -88,3 +88,7 @@ u
 Eservidor/src/main/java/servidor/domain/servicios/ServicioFaccion.java,1\d\1db2bd1df6341672d2fe88fe77e4cf6a9794bd39
 h
 8domain/src/main/java/domain/modelo/FaccionPersonaje.java,2\8\28a4fd21be67b18a272abfaffb1e69eed22a7428
+f
+6servidor/src/main/java/servidor/common/SqlQueries.java,b\1\b17e5ab1d025f8399c4570588ed679b7005ffd2a
+e
+5servidor/src/main/java/servidor/dao/ConstantsDao.java,1\6\1608e19fe59318b22b0813c102b75580171bb7d5
