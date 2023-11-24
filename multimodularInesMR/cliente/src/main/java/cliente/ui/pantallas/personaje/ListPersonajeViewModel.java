@@ -39,7 +39,7 @@ public class ListPersonajeViewModel {
                 });
     }
 
-    public ReadOnlyObjectProperty<ListPersonajeState> getState(){
+    public ReadOnlyObjectProperty<ListPersonajeState> getState() {
         return _state;
     }
 

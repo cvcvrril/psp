@@ -8,6 +8,7 @@ module domain {
 
     requires java.naming;
     requires java.logging;
-    requires jakarta.cdi;
+
+    opens domain.modelo to com.google.gson;
 
 }

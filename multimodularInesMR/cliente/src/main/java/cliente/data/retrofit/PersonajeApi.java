@@ -10,6 +10,4 @@ public interface PersonajeApi {
 
     @GET("personaje")
     Single<List<Personaje>> getPersonajes();
-
-
 }

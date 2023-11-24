@@ -8,7 +8,6 @@ module cliente {
     requires javafx.graphics;
     requires javafx.fxml;
     requires javafx.controls;
-    requires jakarta.cdi;
     requires domain;
     requires com.google.gson;
     requires okhttp3;
@@ -17,6 +16,8 @@ module cliente {
     requires retrofit2.adapter.rxjava3;
     requires io.reactivex.rxjava3;
     requires io.vavr;
+    requires jakarta.jakartaee.api;
+    requires jakarta.cdi;
 
 
     exports cliente.data;
@@ -32,6 +33,7 @@ module cliente {
     exports cliente.data.network;
 
     opens cliente.ui.main;
+
     opens cliente.ui.pantallas.principal;
 
     opens cliente.ui.pantallas.personaje to javafx.fxml;

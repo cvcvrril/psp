@@ -45,10 +45,11 @@ public class ListPersonajeController extends BasePantallaController {
     @Override
     public void principalCargado(){
         viewModel = new ListPersonajeViewModel(useCase);
-        initialize();
+        viewModel.loadPersonajes();
+        rellena();
     }
 
-    private void initialize(){
+    private void rellena(){
         idPersonaje.setCellValueFactory(new PropertyValueFactory<>("id"));
         nombrePersonaje.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         razaPersonaje.setCellValueFactory(new PropertyValueFactory<>("raza"));

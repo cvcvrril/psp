@@ -49,6 +49,8 @@ abstract class DaoGenerics {
 
     public <T> Single<Either<ErrorC, T>> safeSingleApicall(Single<T> call) {
         return call.map(t -> Either.right(t).mapLeft(o -> (ErrorC) o))
+
+                .subscribeOn(Schedulers.io())
                 .onErrorReturn(throwable -> {
                     Either<ErrorC, T> error = Either.left(new ErrorC(throwable.getMessage())
                     );
@@ -69,8 +71,8 @@ abstract class DaoGenerics {
                         }
                     }
                     return error;
-                })
-                .subscribeOn(Schedulers.io());
+                });
+
     }
 
     //TODO: USAR ESTE SOLO PARA EL DELETE Y LOGIN

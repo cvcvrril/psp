@@ -2,9 +2,9 @@ package cliente.data.network;
 
 import cliente.common.Configuration;
 import cliente.data.retrofit.PersonajeApi;
-import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Singleton;
 import com.google.gson.*;
+import jakarta.ws.rs.Produces;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
