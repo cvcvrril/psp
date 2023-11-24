@@ -63,8 +63,8 @@ public class DaoFaccionImp implements DaoFaccion {
         try {
             List<Faccion> faccionList = new ArrayList<>();
             while (rs.next()) {
-                int id = rs.getInt("idfacciones");
-                String nombreFaccion = rs.getString("nombre_faccion");
+                int id = rs.getInt(ConstantsDao.IDFACCIONES);
+                String nombreFaccion = rs.getString(ConstantsDao.NOMBRE_FACCION);
                 faccionList.add(new Faccion(id,nombreFaccion));
             }
             return faccionList;

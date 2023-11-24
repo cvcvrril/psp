@@ -138,13 +138,11 @@ public class DaoPersonajeImp implements DaoPersonaje {
         try (Connection myConnection = db.getConnection()) {
             myConnection.setAutoCommit(false);
             try {
-                // Paso 1: Eliminar relaciones de la tabla intermedia faccion_personaje
                 String deleteFaccionPersonajeSQL = SqlQueries.DELETE_FROM_FACCION_PERSONAJE_WHERE_ID_PERSONAJE;
                 try (PreparedStatement pstmtFaccionPersonaje = myConnection.prepareStatement(deleteFaccionPersonajeSQL)) {
                     pstmtFaccionPersonaje.setInt(1, id);
                     pstmtFaccionPersonaje.executeUpdate();
                 }
-                // Paso 2: Eliminar el personaje de la tabla personajes
                 String deletePersonajeSQL = SqlQueries.DELETE_FROM_PERSONAJES_WHERE_ID;
                 try (PreparedStatement pstmtPersonaje = myConnection.prepareStatement(deletePersonajeSQL)) {
                     pstmtPersonaje.setInt(1, id);
@@ -154,7 +152,7 @@ public class DaoPersonajeImp implements DaoPersonaje {
                     }
                 }
                 myConnection.commit();
-                res = Either.right(1); // El valor 1 indica que se eliminó correctamente un personaje.
+                res = Either.right(1);
             } catch (SQLException e) {
                 myConnection.rollback();
                 log.error(e.getMessage(), e);
@@ -175,7 +173,6 @@ public class DaoPersonajeImp implements DaoPersonaje {
         try (Connection myConnection = db.getConnection()) {
             myConnection.setAutoCommit(false);
             try {
-                // Paso 1: Eliminar registros de la tabla intermedia faccion_personaje
                 String deleteFaccionPersonajeSQL = SqlQueries.DELETE_FROM_FACCION_PERSONAJE_WHERE_ID_FACCION;
                 try (PreparedStatement pstmtFaccionPersonaje = myConnection.prepareStatement(deleteFaccionPersonajeSQL)) {
                     pstmtFaccionPersonaje.setInt(1, idFaccion);
@@ -185,7 +182,6 @@ public class DaoPersonajeImp implements DaoPersonaje {
                     }
                 }
 
-                // Paso 2: Eliminar personajes que ya no tienen relaciones en la tabla personajes
                 String deletePersonajeSQL = SqlQueries.DELETE_FROM_PERSONAJES_WHERE_ID_NOT_IN_SELECT_ID_PERSONAJE_FROM_FACCION_PERSONAJE;
                 try (PreparedStatement pstmtPersonaje = myConnection.prepareStatement(deletePersonajeSQL)) {
                     int rowsAffectedPersonaje = pstmtPersonaje.executeUpdate();
@@ -244,10 +240,10 @@ public class DaoPersonajeImp implements DaoPersonaje {
         try {
             List<Personaje> personajeList = new ArrayList<>();
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String nombre = rs.getString("nombre");
-                int raza = rs.getInt("raza");
-                String planetaRes = rs.getString("planeta_residencia");
+                int id = rs.getInt(ConstantsDao.ID);
+                String nombre = rs.getString(ConstantsDao.NOMBRE);
+                int raza = rs.getInt(ConstantsDao.RAZA);
+                String planetaRes = rs.getString(ConstantsDao.PLANETA_RESIDENCIA);
                 personajeList.add(new Personaje(id, nombre, raza, planetaRes, servicioFaccion.get(id).get()));
             }
             return personajeList;

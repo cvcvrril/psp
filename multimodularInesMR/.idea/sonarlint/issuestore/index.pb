@@ -92,3 +92,5 @@ f
 6servidor/src/main/java/servidor/common/SqlQueries.java,b\1\b17e5ab1d025f8399c4570588ed679b7005ffd2a
 e
 5servidor/src/main/java/servidor/dao/ConstantsDao.java,1\6\1608e19fe59318b22b0813c102b75580171bb7d5
+r
+Bservidor/src/main/java/servidor/jakarta/rest/JAXRSApplication.java,e\2\e282e59045b534237345692113788245945ce361

@@ -12,7 +12,7 @@ import servidor.jakarta.ConstantsJakarta;
 import java.util.List;
 
 @Log4j2
-@Path("/personaje")
+@Path(ConstantsJakarta.ROOT_PERSONAJE)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestPersonaje {
@@ -36,7 +36,7 @@ public class RestPersonaje {
     }
 
     @GET
-    @Path("/{id}/facciones")
+    @Path(ConstantsJakarta.PATH_ID_FACCIONES)
     public List<Faccion> getFaccionesByPersonaje(@PathParam(ConstantsJakarta.ID) String idParam){
         return servicioPersonaje.getFaccionesByPersonaje(idParam).get();
     }
@@ -58,8 +58,8 @@ public class RestPersonaje {
     }
 
     @DELETE
-    @Path("/delete-multiple/{idFaccion}")
-    public Integer deleteMultiple(@PathParam("idFaccion") String idFaccion){
+    @Path(ConstantsJakarta.DELETE_MULTIPLE_ID_FACCION_PATH)
+    public Integer deleteMultiple(@PathParam(ConstantsJakarta.ID_FACCION) String idFaccion){
         return servicioPersonaje.deleteMultiple(idFaccion).get();
     }
 

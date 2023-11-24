@@ -69,9 +69,9 @@ public class DaoRazaImp implements DaoRaza {
         try {
             List<Raza> personajeList = new ArrayList<>();
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String nombre = rs.getString("nombre_raza");
-                String planetaOrigen = rs.getString("planeta_origen");
+                int id = rs.getInt(ConstantsDao.ID);
+                String nombre = rs.getString(ConstantsDao.NOMBRE_RAZA);
+                String planetaOrigen = rs.getString(ConstantsDao.PLANETA_ORIGEN);
                 personajeList.add(new Raza(id, nombre, planetaOrigen));
             }
             return personajeList;
