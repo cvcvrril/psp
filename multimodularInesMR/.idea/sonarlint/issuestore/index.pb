@@ -40,3 +40,9 @@ V
 &cliente/src/main/java/module-info.java,d\b\db782433398db569b38df2fca72be7f90bfb511c
 }
 Mcliente/src/main/java/cliente/ui/pantallas/principal/PrincipalController.java,0\c\0c264a3d9957bb5d582e3f8578b8f4fee40a4ff2
+\
+,domain/src/main/java/domain/modelo/Raza.java,6\b\6b63094ddf85e1f6be262dcd47e740893ab593ed
+b
+2cliente/src/main/java/cliente/data/DaoFaccion.java,4\a\4a86e8f390a29cda3760d724fd33dd534683d287
+g
+7cliente/src/main/java/cliente/common/Configuration.java,b\f\bf0c337308b7d236034d0467c6bd05101094cbed

@@ -16,8 +16,8 @@ module cliente {
     requires retrofit2.adapter.rxjava3;
     requires io.reactivex.rxjava3;
     requires io.vavr;
-    requires jakarta.jakartaee.api;
     requires jakarta.cdi;
+    requires jakarta.inject;
 
 
     exports cliente.data;
