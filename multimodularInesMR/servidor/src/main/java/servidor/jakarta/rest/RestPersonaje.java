@@ -1,5 +1,6 @@
 package servidor.jakarta.rest;
 
+import domain.modelo.Faccion;
 import domain.modelo.Personaje;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -32,6 +33,22 @@ public class RestPersonaje {
     @Path(ConstantsJakarta.ID_PATH)
     public Personaje get(@PathParam(ConstantsJakarta.ID) String idParam){
         return servicioPersonaje.get(idParam).get();
+    }
+
+    @GET
+    @Path("/{id}/facciones")
+    public List<Faccion> getFaccionesByPersonaje(@PathParam(ConstantsJakarta.ID) String idParam){
+        return servicioPersonaje.getFaccionesByPersonaje(idParam).get();
+    }
+
+    @PUT
+    public Integer update(Personaje actualizadoPersonaje){
+        return servicioPersonaje.update(actualizadoPersonaje).get();
+    }
+
+    @POST
+    public Integer add(Personaje nuevoPersonaje){
+        return servicioPersonaje.add(nuevoPersonaje).get();
     }
 
 }

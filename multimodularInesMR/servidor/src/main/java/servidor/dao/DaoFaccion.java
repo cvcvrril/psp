@@ -9,5 +9,5 @@ import java.util.List;
 public interface DaoFaccion {
 
     Either<ApiError, List<Faccion>> getAll();
-    Either<ApiError, Faccion> get(int id);
+    Either<ApiError, List<Faccion>> get(int id);
 }

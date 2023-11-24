@@ -11,10 +11,7 @@ import servidor.dao.DaoFaccion;
 import servidor.dao.DbConnectionPool;
 import servidor.domain.modelo.excepciones.BaseCaidaException;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,8 +42,22 @@ public class DaoFaccionImp implements DaoFaccion {
     }
 
     @Override
-    public Either<ApiError, Faccion> get(int id) {
-        return null;
+    public Either<ApiError, List<Faccion>> get(int id) {
+        List<Faccion> faccionList;
+        Either<ApiError, List<Faccion>> res;
+        try (Connection myconnection = db.getConnection()) {
+            PreparedStatement pstmt = myconnection.prepareStatement("SELECT facciones.* FROM facciones " +
+                    "INNER JOIN faccion_personaje ON facciones.idfacciones = faccion_personaje.id_faccion " +
+                    "WHERE faccion_personaje.id_personaje = ?");
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            faccionList = readRS(rs);
+            res = Either.right(faccionList);
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDao.BASE_CAIDA_EXCEPTION);
+        }
+        return res;
     }
 
     private List<Faccion> readRS(ResultSet rs) {

@@ -1,6 +1,7 @@
 package servidor.domain.servicios;
 
 import domain.errores.ApiError;
+import domain.modelo.Faccion;
 import domain.modelo.Personaje;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
@@ -35,6 +36,26 @@ public class ServicioPersonaje {
         }
 
     }
+
+    public Either<ApiError, Integer> add(Personaje nuevoPersonaje){
+        return daoPersonaje.add(nuevoPersonaje);
+    }
+
+    public Either<ApiError, Integer> update(Personaje actualizadoPersonaje){
+        return daoPersonaje.update(actualizadoPersonaje);
+    }
+
+    public Either<ApiError, List<Faccion>> getFaccionesByPersonaje(String idParam){
+        try {
+            Integer id = Integer.parseInt(idParam);
+            return daoPersonaje.getFaccionesByPersonaje(id);
+        } catch (NumberFormatException e) {
+            log.error(e.getMessage(),e);
+            throw new BadArgumentException(ConstantsDao.BAD_ARGUMENT_EXCEPTION);
+        }
+    }
+
+
 
 }
 
