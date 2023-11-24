@@ -9,11 +9,9 @@ import servidor.dao.ConstantsDao;
 import servidor.dao.DaoPersonaje;
 import servidor.dao.DbConnectionPool;
 import servidor.domain.modelo.excepciones.BaseCaidaException;
+import servidor.domain.modelo.excepciones.WrongObjectException;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +29,8 @@ public class DaoPersonajeImp implements DaoPersonaje {
     @Override
     public Either<ApiError, List<Personaje>> getAll() {
         List<Personaje> personajeList;
-        Either <ApiError, List<Personaje>> res;
-        try (Connection myconnection = db.getConnection()){
+        Either<ApiError, List<Personaje>> res;
+        try (Connection myconnection = db.getConnection()) {
             Statement stmt = myconnection.createStatement();
             ResultSet rs = stmt.executeQuery("select * from personajes");
             personajeList = readRS(rs);
@@ -45,8 +43,24 @@ public class DaoPersonajeImp implements DaoPersonaje {
     }
 
     @Override
-    public Either<ApiError, Personaje> get(int i) {
-        return null;
+    public Either<ApiError, Personaje> get(int id) {
+        List<Personaje> personajeList;
+        Either<ApiError, Personaje> res;
+        try (Connection myConnection = db.getConnection()) {
+            PreparedStatement pstmt = myConnection.prepareStatement("select * from personajes where id=?");
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            personajeList = readRS(rs);
+            if (!personajeList.isEmpty()) {
+                res = Either.right(personajeList.get(0));
+            } else {
+                throw new WrongObjectException(ConstantsDao.WRONG_OBJECT_EXCEPTION);
+            }
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDao.BASE_CAIDA_EXCEPTION);
+        }
+        return res;
     }
 
     @Override
@@ -64,10 +78,10 @@ public class DaoPersonajeImp implements DaoPersonaje {
         return null;
     }
 
-    private List<Personaje> readRS(ResultSet rs){
+    private List<Personaje> readRS(ResultSet rs) {
         try {
             List<Personaje> personajeList = new ArrayList<>();
-            while (rs.next()){
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 String nombre = rs.getString("nombre");
                 int raza = rs.getInt("raza");
@@ -75,7 +89,7 @@ public class DaoPersonajeImp implements DaoPersonaje {
                 personajeList.add(new Personaje(id, nombre, raza, planetaRes));
             }
             return personajeList;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             log.error(e.getMessage(), e);
             throw new BaseCaidaException(ConstantsDao.BASE_CAIDA_EXCEPTION);
         }

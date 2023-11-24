@@ -2,13 +2,11 @@ package servidor.jakarta.rest;
 
 import domain.modelo.Personaje;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import lombok.extern.log4j.Log4j2;
 import servidor.domain.servicios.ServicioPersonaje;
+import servidor.jakarta.ConstantsJakarta;
 
 import java.util.List;
 
@@ -28,6 +26,12 @@ public class RestPersonaje {
     @GET
     public List<Personaje> getAll(){
         return servicioPersonaje.getAll().get();
+    }
+
+    @GET
+    @Path(ConstantsJakarta.ID_PATH)
+    public Personaje get(@PathParam(ConstantsJakarta.ID) String idParam){
+        return servicioPersonaje.get(idParam).get();
     }
 
 }

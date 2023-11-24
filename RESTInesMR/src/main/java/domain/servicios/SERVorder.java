@@ -33,8 +33,6 @@ public class SERVorder {
             log.error(e.getMessage(),e);
             throw new BadArgumentException(ConstantsDAO.BAD_ARGUMENT_EXCEPTION);
         }
-
-
     }
 
     public Either<ApiError, Integer> add(Order order) {
