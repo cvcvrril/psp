@@ -1,6 +1,7 @@
 package cliente.data;
 
 import cliente.data.retrofit.PersonajeApi;
+import cliente.domain.errores.ErrorC;
 import com.google.gson.Gson;
 import domain.modelo.Personaje;
 import io.reactivex.rxjava3.core.Single;
@@ -19,7 +20,7 @@ public class DaoPersonaje extends DaoGenerics{
         this.personajeApi = personajeApi;
     }
 
-    public Single<Either<Object, List<Personaje>>> getAllPersonajes(){
+    public Single<Either<ErrorC, List<Personaje>>> getAllPersonajes(){
         return safeSingleApicall(personajeApi.getPersonajes());
     }
 }

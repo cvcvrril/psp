@@ -1,6 +1,6 @@
 package cliente.ui.pantallas.personaje;
 
-import cliente.data.usecases.GetAllPersonajesUseCase;
+import cliente.domain.usecases.GetAllPersonajesUseCase;
 import domain.errores.ApiError;
 import domain.modelo.Personaje;
 import io.vavr.control.Either;
@@ -21,12 +21,10 @@ public class ListPersonajeViewModel {
 
     public void loadPersonajes(){
         List<Personaje> personajes = new ArrayList<>();
-        Either<ApiError, List<Personaje>> result = getAllPersonajesUseCase.getAllPersonajes();
-        if (result.isRight()){
-            personajes
-        } else {
-            
-        }
+        getAllPersonajesUseCase.getAllPersonajes()
+                .subscribe(resultado ->
+                resultado.get()
+                        );
 
     }
 

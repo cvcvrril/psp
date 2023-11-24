@@ -1,8 +1,10 @@
-package cliente.data.usecases;
+package cliente.domain.usecases;
 
 import cliente.data.DaoPersonaje;
+import cliente.domain.errores.ErrorC;
 import domain.errores.ApiError;
 import domain.modelo.Personaje;
+import io.reactivex.rxjava3.core.Single;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 
@@ -17,8 +19,8 @@ public class GetAllPersonajesUseCase {
         this.daoPersonaje = daoPersonaje;
     }
 
-    public Either<ApiError, List<Personaje>> getAllPersonajes(){
-        return (Either<ApiError, List<Personaje>>) daoPersonaje.getAllPersonajes();
+    public Single<Either<ErrorC, List<Personaje>>> getAllPersonajes(){
+        return daoPersonaje.getAllPersonajes();
     }
 
 }

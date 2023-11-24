@@ -1,5 +1,6 @@
 package cliente.data;
 
+import cliente.domain.errores.ErrorC;
 import com.google.gson.Gson;
 import domain.errores.ApiError;
 import io.reactivex.rxjava3.core.Single;
@@ -24,8 +25,8 @@ abstract class DaoGenerics {
         this.gson = gson;
     }
 
-    public <T> Either<String, T> safeApicall(Call<T> call) {
-        Either<String, T> resultado = null;
+    public <T> Either<ErrorC, T> safeApicall(Call<T> call) {
+        Either<ErrorC, T> resultado = null;
 
         try {
             Response<T> response = call.execute();
@@ -33,10 +34,10 @@ abstract class DaoGenerics {
                 resultado = Either.right(response.body());
             } else {
 
-                resultado = Either.left(response.errorBody().toString());
+                resultado = Either.left(new ErrorC(response.errorBody().toString()));
             }
         } catch (Exception e) {
-            resultado = Either.left("Error de comunicacion");
+            resultado = Either.left(new ErrorC("Error de comunicacion"));
 
         }
 
@@ -44,13 +45,13 @@ abstract class DaoGenerics {
     }
 
 
-    public <T> Single<Either<Object, T>> safeSingleApicall(Single<T> call) {
-        return call.map(Either::right)
+    //TODO: USAR EN TODAS MENOS EN DELETE
+
+    public <T> Single<Either<ErrorC, T>> safeSingleApicall(Single<T> call) {
+        return call.map(t -> Either.right(t).mapLeft(o -> (ErrorC) o))
                 .onErrorReturn(throwable -> {
-                    Either<Object, T> error = Either.left(ApiError.builder()
-                            .mensaje("Error de comunicacion")
-                            .fecha(LocalDateTime.now())
-                            .build());
+                    Either<ErrorC, T> error = Either.left(new ErrorC(throwable.getMessage())
+                    );
 
                     if (throwable instanceof HttpException) {
                         HttpException httpException = (HttpException) throwable;
@@ -60,15 +61,10 @@ abstract class DaoGenerics {
                         if (response != null && response.errorBody() != null) {
                             if (Objects.equals(response.errorBody().contentType(), MediaType.get("application/json"))) {
                                 ApiError api = gson.fromJson(response.errorBody().charStream(), ApiError.class);
-                                error = Either.left(ApiError.builder()
-                                        .mensaje(code + api.getMensaje())
-                                        .fecha(LocalDateTime.now())
-                                        .build());
+                                error = Either.left(new ErrorC(api.getMensaje()));
                             } else {
-                                error = Either.left(ApiError.builder()
-                                        .mensaje(response.message())
-                                        .fecha(LocalDateTime.now())
-                                        .build());
+                                error = Either.left(new ErrorC(response.message())
+                                );
                             }
                         }
                     }
@@ -77,13 +73,13 @@ abstract class DaoGenerics {
                 .subscribeOn(Schedulers.io());
     }
 
+    //TODO: USAR ESTE SOLO PARA EL DELETE Y LOGIN
 
-
-    public Single<Either<String, String>> safeSingleVoidApicall(Single<Response<Void>> call) {
+    public Single<Either<ErrorC, String>> safeSingleVoidApicall(Single<Response<Void>> call) {
         return call.map(response -> {
-                    var retorno = Either.right("OK").mapLeft(Object::toString);
+                    var retorno = Either.right("OK").mapLeft(o -> (ErrorC) o);
                     if (!response.isSuccessful()) {
-                        retorno = Either.left(response.message());
+                        retorno = Either.left(new ErrorC(response.message()));
                     }
                     return retorno;
                 })

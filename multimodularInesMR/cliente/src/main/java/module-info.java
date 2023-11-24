@@ -21,6 +21,7 @@ module cliente {
 
     exports cliente.data;
     exports cliente.common;
+    exports cliente.domain.usecases;
     exports cliente.ui.main to javafx.graphics;
     exports cliente.ui.pantallas.personaje;
     exports cliente.ui.pantallas.principal;
