@@ -53,5 +53,10 @@
             <artifactId>adapter-rxjava3</artifactId>
             <version>2.9.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>jakarta.el</artifactId>
+            <version>4.0.2</version>
+        </dependency>
     </dependencies>
 </project>
