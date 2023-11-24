@@ -82,3 +82,7 @@ s
 Cservidor/src/main/java/servidor/domain/servicios/ServiciosRaza.java,2\f\2fd8d2ee349a13af81fc7b589a7a659f20fe91bb
 r
 Bservidor/src/main/java/servidor/domain/servicios/ServicioRaza.java,d\5\d52fdb9ac9ed1cf7890abaa13c8e560c70c3d477
+u
+Eservidor/src/main/java/servidor/dao/implementacion/DaoFaccionImp.java,5\4\54cade25900235c1ed80c0124def190e59c27f30
+u
+Eservidor/src/main/java/servidor/domain/servicios/ServicioFaccion.java,1\d\1db2bd1df6341672d2fe88fe77e4cf6a9794bd39
