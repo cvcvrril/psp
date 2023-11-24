@@ -28,3 +28,15 @@ g
 7cliente/src/main/java/cliente/ui/main/StartupScene.java,8\5\85b570d2896d668ec536fcd2e3fc9a9f473a4b7d
 Å
 Qcliente/src/main/java/cliente/ui/pantallas/personaje/ListPersonajeController.java,e\5\e5b1cca077668c277ed73c67d820859cc2e197f7
+m
+=cliente/src/main/java/cliente/data/retrofit/PersonajeApi.java,7\2\7231737fdeadfbbec2e9f1704b4204a079e413c4
+|
+Lcliente/src/main/java/cliente/ui/pantallas/personaje/ListPersonajeState.java,a\3\a31b0b09110a9910db6d20378ae6c58dc35fdecc
+Ä
+Pcliente/src/main/java/cliente/ui/pantallas/personaje/ListPersonajeViewModel.java,4\6\46e0d8b1a45f216f28c4588b9324a21a90c01ee2
+c
+3cliente/src/main/java/cliente/data/DaoGenerics.java,a\a\aaeae64fae8f0170133bedfd36fcae998dbb7c48
+V
+&cliente/src/main/java/module-info.java,d\b\db782433398db569b38df2fca72be7f90bfb511c
+}
+Mcliente/src/main/java/cliente/ui/pantallas/principal/PrincipalController.java,0\c\0c264a3d9957bb5d582e3f8578b8f4fee40a4ff2

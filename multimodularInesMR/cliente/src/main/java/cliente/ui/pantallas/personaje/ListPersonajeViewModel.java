@@ -29,7 +29,6 @@ public class ListPersonajeViewModel {
     }
 
     public void loadPersonajes() {
-
         getAllPersonajesUseCase.getAllPersonajes()
                 .subscribe(res -> {
                     if (res.isLeft()) {

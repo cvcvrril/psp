@@ -2,13 +2,18 @@ package cliente.ui.pantallas.personaje;
 
 import cliente.domain.usecases.GetAllPersonajesUseCase;
 import cliente.ui.pantallas.common.BasePantallaController;
+import cliente.ui.pantallas.principal.PrincipalController;
 import domain.modelo.Faccion;
 import domain.modelo.Personaje;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.util.List;
 
 public class ListPersonajeController extends BasePantallaController {
 
@@ -48,6 +53,15 @@ public class ListPersonajeController extends BasePantallaController {
         nombrePersonaje.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         razaPersonaje.setCellValueFactory(new PropertyValueFactory<>("raza"));
         planetaPersonaje.setCellValueFactory(new PropertyValueFactory<>("planeta_residencia"));
-        tablaPersonajes.getItems().addAll(viewModel.getState().get().getPersonajes());
+        List<Personaje> personajes = viewModel.getState().get().getPersonajes();
+        if (personajes != null) {
+            tablaPersonajes.getItems().addAll(personajes);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Error al mostrar los personajes");
+            alert.getDialogPane().setId("alert");
+            alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
+            alert.showAndWait();
+        }
     }
 }
