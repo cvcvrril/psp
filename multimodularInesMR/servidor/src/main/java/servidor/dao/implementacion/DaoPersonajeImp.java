@@ -49,6 +49,21 @@ public class DaoPersonajeImp implements DaoPersonaje {
         return null;
     }
 
+    @Override
+    public Either<ApiError, Integer> add() {
+        return null;
+    }
+
+    @Override
+    public Either<ApiError, Integer> update() {
+        return null;
+    }
+
+    @Override
+    public Either<ApiError, Integer> delete(int i) {
+        return null;
+    }
+
     private List<Personaje> readRS(ResultSet rs){
         try {
             List<Personaje> personajeList = new ArrayList<>();
