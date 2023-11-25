@@ -6,9 +6,9 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cliente.ui.pantallas.personaje.AddPersonajeController">
    <children>
-      <TextField layoutX="48.0" layoutY="130.0" promptText="Nombre" />
-      <TextField layoutX="48.0" layoutY="188.0" promptText="Planeta de residencia" />
-      <TextField layoutX="48.0" layoutY="244.0" promptText="raza(id)" />
+      <TextField fx:id="nombreField" layoutX="48.0" layoutY="130.0" promptText="Nombre" />
+      <TextField fx:id="planetaResidenciaField" layoutX="48.0" layoutY="188.0" promptText="Planeta de residencia" />
+      <TextField fx:id="razaIdField" layoutX="48.0" layoutY="244.0" promptText="raza(id)" />
       <Label layoutX="48.0" layoutY="51.0" text="Añadir personaje">
          <font>
             <Font size="27.0" />
