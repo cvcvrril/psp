@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface FaccionApi {
 
-    @GET("personaje")
+    @GET("faccion")
     Single<List<Faccion>> getFacciones();
 
 }
