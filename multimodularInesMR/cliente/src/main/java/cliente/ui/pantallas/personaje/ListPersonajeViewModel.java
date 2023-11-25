@@ -9,12 +9,14 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import lombok.extern.log4j.Log4j2;
 
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Log4j2
 public class ListPersonajeViewModel {
 
     private final GetAllPersonajesUseCase getAllPersonajesUseCase;
@@ -29,14 +31,22 @@ public class ListPersonajeViewModel {
     }
 
     public void loadPersonajes() {
-        getAllPersonajesUseCase.getAllPersonajes()
-                .subscribe(res -> {
-                    if (res.isLeft()) {
-                        _state.setValue(new ListPersonajeState(null, new ApiError("Error al obtener los personajes", LocalDateTime.now())));
-                    } else {
-                        _state.setValue(new ListPersonajeState(res.get(), null));
-                    }
-                });
+        try {
+            getAllPersonajesUseCase.getAllPersonajes()
+                    .subscribe(res -> {
+                                if (res.isLeft()) {
+                                    _state.setValue(new ListPersonajeState(null, new ApiError("Error al obtener los personajes", LocalDateTime.now())));
+                                } else {
+                                    log.debug("Valor del res:" + res.get());
+                                    _state.setValue(new ListPersonajeState(res.get(), null));
+
+                                }
+                            },
+                            error -> log.error("Error al obtener los personajes", error));
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+
     }
 
     public ReadOnlyObjectProperty<ListPersonajeState> getState() {

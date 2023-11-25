@@ -54,8 +54,6 @@ _
 /domain/src/main/java/domain/modelo/Faccion.java,3\3\331c3373b29d9b0441ec0fa7bce18819d86aedf7
 c
 3servidor/src/main/java/servidor/dao/DaoFaccion.java,2\2\222ff801e027c9e9b50fa9bffa18a4c29ba66b6c
-o
-?servidor/src/main/java/servidor/dao/implementacion/DaoRaza.java,d\f\dff27bce09c52960a6728fda5c690804f887c490
 `
 0servidor/src/main/java/servidor/dao/DaoRaza.java,c\1\c1818895088050c4907e5e54a9d1260068869a96
 e
@@ -72,14 +70,10 @@ m
 =servidor/src/main/java/servidor/jakarta/rest/RestFaccion.java,4\b\4b57940cffb42baec79d2c824b17f6df06d39e46
 j
 :servidor/src/main/java/servidor/jakarta/rest/RestRaza.java,a\a\aaff6f06617d7737df4239d0a2b0bb3ca959ee1a
-v
-Fservidor/src/main/java/servidor/jakarta/rest/RestFaccionPersonaje.java,0\b\0bf8b9de6ee9c1424dc0eb985315603d60564fc6
 l
 <servidor/src/main/java/servidor/dao/DaoFaccionPersonaje.java,e\e\ee9ac444c8750dfb90c096176097fc0e81f261df
 r
 Bservidor/src/main/java/servidor/dao/implementacion/DaoRazaImp.java,4\0\40c5edabcffab7d8ec2d197d6047651a5c7cf450
-s
-Cservidor/src/main/java/servidor/domain/servicios/ServiciosRaza.java,2\f\2fd8d2ee349a13af81fc7b589a7a659f20fe91bb
 r
 Bservidor/src/main/java/servidor/domain/servicios/ServicioRaza.java,d\5\d52fdb9ac9ed1cf7890abaa13c8e560c70c3d477
 u
@@ -94,3 +88,13 @@ e
 5servidor/src/main/java/servidor/dao/ConstantsDao.java,1\6\1608e19fe59318b22b0813c102b75580171bb7d5
 r
 Bservidor/src/main/java/servidor/jakarta/rest/JAXRSApplication.java,e\2\e282e59045b534237345692113788245945ce361
+z
+Jcliente/src/main/java/cliente/domain/usecases/GetAllPersonajesUseCase.java,1\1\113d909c2dc9a5868767fd4b27cc12fdcf6feaf7
+d
+4cliente/src/main/java/cliente/ui/pantallas/raza.java,5\9\5999f8c32eadadb7ae5c155f454c1ac4fac0fd3d
+w
+Gcliente/src/main/java/cliente/ui/pantallas/raza/ListRazaController.java,7\e\7edba6bb9ad7fa844d8c07b17f4a401af6e880ed
+r
+Bcliente/src/main/java/cliente/ui/pantallas/raza/ListRazaState.java,b\8\b83090cc63c8b8edbbb5166e2cad398337cd6334
+v
+Fcliente/src/main/java/cliente/ui/pantallas/raza/ListRazaViewModel.java,3\c\3c064ea447b4d2df8e4c5dc3032fa49cd9957973

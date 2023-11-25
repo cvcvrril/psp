@@ -6,6 +6,7 @@ import cliente.ui.pantallas.principal.PrincipalController;
 import domain.modelo.Faccion;
 import domain.modelo.Personaje;
 import jakarta.inject.Inject;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -31,6 +32,9 @@ public class ListPersonajeController extends BasePantallaController {
     @FXML
     private TableColumn<String, Personaje> planetaPersonaje;
 
+
+    @FXML
+    private TableView<Faccion> tablaFacciones;
     @FXML
     private TableColumn<Integer, Faccion> idFaccion;
     @FXML
@@ -46,20 +50,22 @@ public class ListPersonajeController extends BasePantallaController {
     public void principalCargado(){
         viewModel = new ListPersonajeViewModel(useCase);
         viewModel.loadPersonajes();
-        rellena();
+        viewModel.getState().addListener((observable, oldValue, newValue) -> {
+            rellena(newValue);
+        });
     }
 
-    private void rellena(){
+    private void rellena(ListPersonajeState state){
         idPersonaje.setCellValueFactory(new PropertyValueFactory<>("id"));
         nombrePersonaje.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         razaPersonaje.setCellValueFactory(new PropertyValueFactory<>("raza"));
-        planetaPersonaje.setCellValueFactory(new PropertyValueFactory<>("planeta_residencia"));
-        List<Personaje> personajes = viewModel.getState().get().getPersonajes();
+        planetaPersonaje.setCellValueFactory(new PropertyValueFactory<>("planetaRes"));
+        List<Personaje> personajes = state.getPersonajes();
         if (personajes != null) {
-            tablaPersonajes.getItems().addAll(personajes);
+            tablaPersonajes.getItems().setAll(personajes);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Error al mostrar los personajes");
+            alert.setContentText("La lista de personajes está vacía");
             alert.getDialogPane().setId("alert");
             alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
             alert.showAndWait();
