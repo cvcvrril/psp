@@ -118,3 +118,7 @@ y
 Icliente/src/main/java/cliente/domain/usecases/GetAllFaccionesUseCase.java,c\d\cdedc63f279723fa8f0a8de4b081a906b57c6540
 y
 Icliente/src/main/java/cliente/domain/usecases/UpdatePersonajeUseCase.java,0\b\0b2bc66b5320378a812ce2912d507f8ab0dbeff2
+v
+Fcliente/src/main/java/cliente/domain/usecases/AddPersonajeUseCase.java,8\d\8df2555418719059231787cdd2312f8055123729
+y
+Icliente/src/main/java/cliente/domain/usecases/DeletePersonajeUseCase.java,b\a\ba2f5d6c935791089dce29aa15024f1e40d3793d

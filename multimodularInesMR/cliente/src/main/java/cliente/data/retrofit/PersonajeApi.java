@@ -13,7 +13,7 @@ public interface PersonajeApi {
     Single<List<Personaje>> getPersonajes();
 
     @POST("personaje")
-    Single<Personaje> createPersonaje(@Body Personaje personaje);
+    Single<Personaje> addPersonaje(@Body Personaje personaje);
 
     @PUT("personaje/{id}")
     Single<Personaje> updatePersonaje(@Path("id") int id, @Body Personaje personaje);
