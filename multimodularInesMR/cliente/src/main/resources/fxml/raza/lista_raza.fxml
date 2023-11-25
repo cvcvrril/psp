@@ -10,10 +10,11 @@
          <font>
             <Font size="27.0" />
          </font></Label>
-      <TableView fx:id="tablaRazas" layoutX="48.0" layoutY="90.0" prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="tablaRazas" layoutX="48.0" layoutY="90.0" prefHeight="200.0" prefWidth="339.0">
         <columns>
           <TableColumn fx:id="idRaza" prefWidth="75.0" text="id" />
-          <TableColumn fx:id="nombreRaza" prefWidth="123.33334350585938" text="Nombre de la raza" />
+          <TableColumn fx:id="nombreRaza" prefWidth="137.0" text="Nombre de la raza" />
+            <TableColumn fx:id="planetaOrigenRaza" prefWidth="125.33333333333331" text="Planeta de origen" />
         </columns>
       </TableView>
    </children>

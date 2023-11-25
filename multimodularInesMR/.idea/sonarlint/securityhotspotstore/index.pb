@@ -112,3 +112,7 @@ x
 Hcliente/src/main/java/cliente/ui/pantallas/faccion/ListFaccionState.java,7\0\70627e4dee65bf769a76ed0341f6a59a56877fbf
 |
 Lcliente/src/main/java/cliente/ui/pantallas/faccion/ListFaccionViewModel.java,0\9\0916bdd8b7a77216e3ada187cfe49d4db2fafac2
+k
+;cliente/src/main/java/cliente/data/retrofit/FaccionApi.java,8\3\8346e55fe4812b8f767daea877c127a04462ac05
+y
+Icliente/src/main/java/cliente/domain/usecases/GetAllFaccionesUseCase.java,c\d\cdedc63f279723fa8f0a8de4b081a906b57c6540

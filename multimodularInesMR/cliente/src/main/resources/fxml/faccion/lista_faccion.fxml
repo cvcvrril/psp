@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="fxml.faccion.ListaFaccion"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cliente.ui.pantallas.faccion.ListFaccionController">
+   <children>
+      <TableView fx:id="tablaFaccion" layoutX="52.0" layoutY="81.0" prefHeight="200.0" prefWidth="240.0">
+        <columns>
+          <TableColumn fx:id="idFaccion" prefWidth="75.0" text="id" />
+          <TableColumn fx:id="nombreFaccion" prefWidth="167.3333282470703" text="nombre de la faccion" />
+        </columns>
+      </TableView>
+      <Label layoutX="52.0" layoutY="28.0" text="Lista de facciones">
+         <font>
+            <Font size="27.0" />
+         </font></Label>
+   </children>
 </AnchorPane>

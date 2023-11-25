@@ -8,7 +8,8 @@ public enum Pantallas {
 
     /*LLAMADAS*/
     LISTA_PERSONAJE("/fxml/personaje/lista_personaje.fxml"),
-    LISTA_RAZA("/fxml/raza/lista_raza.fxml");
+    LISTA_RAZA("/fxml/raza/lista_raza.fxml"),
+    LISTA_FACCION("/fxml/faccion/lista_faccion.fxml");
 
 
     private String ruta;

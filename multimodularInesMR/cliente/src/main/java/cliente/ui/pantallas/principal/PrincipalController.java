@@ -143,7 +143,7 @@ public class PrincipalController extends BasePantallaController {
     public void actMenuLlamadasFaccion(ActionEvent actionEvent) {
         switch (((MenuItem) actionEvent.getSource()).getId()){
             case "menuListaFaccion":
-                cargarPantalla(Pantallas.LISTA_RAZA);
+                cargarPantalla(Pantallas.LISTA_FACCION);
                 break;
         }
     }

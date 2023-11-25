@@ -15,6 +15,7 @@ import java.util.List;
 
 public class ListRazaController extends BasePantallaController {
 
+
     private ListRazaViewModel viewModel;
     private final GetAllRazasUseCase useCase;
 
@@ -24,6 +25,8 @@ public class ListRazaController extends BasePantallaController {
     private TableColumn<Raza, Integer> idRaza;
     @FXML
     private TableColumn<Raza, String> nombreRaza;
+    @FXML
+    private TableColumn<Raza, String> planetaOrigenRaza;
 
     @Inject
     public ListRazaController(ListRazaViewModel viewModel, GetAllRazasUseCase useCase) {
@@ -43,6 +46,7 @@ public class ListRazaController extends BasePantallaController {
     private void rellena(ListRazaState state){
         idRaza.setCellValueFactory(new PropertyValueFactory<>("id"));
         nombreRaza.setCellValueFactory(new PropertyValueFactory<>("nombreRaza"));
+        planetaOrigenRaza.setCellValueFactory(new PropertyValueFactory<>("planetaOrigen"));
         List<Raza> razas = state.getRazas();
         if (razas!=null){
             tablaRazas.getItems().setAll(razas);

@@ -1,5 +1,6 @@
 package cliente.data.network;
 
+import cliente.data.retrofit.FaccionApi;
 import cliente.data.retrofit.PersonajeApi;
 import cliente.data.retrofit.RazaApi;
 import jakarta.inject.Singleton;
@@ -53,5 +54,10 @@ public class ProducesRetrofit {
     @Produces
     public RazaApi getRazaApi (Retrofit retrofit){
         return retrofit.create(RazaApi.class);
+    }
+
+    @Produces
+    public FaccionApi getFaccionApi (Retrofit retrofit){
+        return retrofit.create(FaccionApi.class);
     }
 }
