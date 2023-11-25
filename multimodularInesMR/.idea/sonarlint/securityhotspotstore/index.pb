@@ -98,3 +98,9 @@ r
 Bcliente/src/main/java/cliente/ui/pantallas/raza/ListRazaState.java,b\8\b83090cc63c8b8edbbb5166e2cad398337cd6334
 v
 Fcliente/src/main/java/cliente/ui/pantallas/raza/ListRazaViewModel.java,3\c\3c064ea447b4d2df8e4c5dc3032fa49cd9957973
+u
+Ecliente/src/main/java/cliente/domain/usecases/GetAllRazasUseCase.java,b\3\b37ccd9bf3eca1bdafb31232a0389abbebca4238
+_
+/cliente/src/main/java/cliente/data/DaoRaza.java,e\2\e24fa1fdbfd348a9a668954a0ed2b7a762993a19
+h
+8cliente/src/main/java/cliente/data/retrofit/RazaApi.java,1\9\19a82b8db7dc194b63616d0c269abe20365d6781

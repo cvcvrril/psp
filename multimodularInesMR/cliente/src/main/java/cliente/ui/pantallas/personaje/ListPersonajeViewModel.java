@@ -25,7 +25,6 @@ public class ListPersonajeViewModel {
     @Inject
     public ListPersonajeViewModel(GetAllPersonajesUseCase getAllPersonajesUseCase) {
         this.getAllPersonajesUseCase = getAllPersonajesUseCase;
-        ListPersonajeState ls = null;
         _state = new SimpleObjectProperty<>(new ListPersonajeState(null, null));
 
     }
@@ -37,7 +36,6 @@ public class ListPersonajeViewModel {
                                 if (res.isLeft()) {
                                     _state.setValue(new ListPersonajeState(null, new ApiError("Error al obtener los personajes", LocalDateTime.now())));
                                 } else {
-                                    log.debug("Valor del res:" + res.get());
                                     _state.setValue(new ListPersonajeState(res.get(), null));
 
                                 }
