@@ -28,6 +28,7 @@ module cliente {
     exports cliente.ui.pantallas.principal;
     exports cliente.ui.pantallas.common;
     exports cliente.ui.pantallas.welcome;
+    exports cliente.ui.pantallas.raza;
 
 
     exports cliente.data.network;
@@ -37,6 +38,7 @@ module cliente {
     opens cliente.ui.pantallas.principal;
 
     opens cliente.ui.pantallas.personaje to javafx.fxml;
+    opens cliente.ui.pantallas.raza to javafx.fxml;
     opens cliente.ui.pantallas.welcome to javafx.fxml;
 
 

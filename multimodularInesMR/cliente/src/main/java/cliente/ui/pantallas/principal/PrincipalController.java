@@ -115,7 +115,6 @@ public class PrincipalController extends BasePantallaController {
         primaryStage = stage;
     }
 
-    /*Menu Options*/
     @FXML
     private void actMenuOptions(ActionEvent actionEvent){
         switch (((MenuItem) actionEvent.getSource()).getId()){
@@ -124,12 +123,27 @@ public class PrincipalController extends BasePantallaController {
         }
     }
 
-    /*Menu de customers*/
     @FXML
-    private void actMenuLlamadas(ActionEvent actionEvent) {
+    private void actMenuLlamadasPersonaje(ActionEvent actionEvent) {
         switch (((MenuItem) actionEvent.getSource()).getId()) {
             case "menuListaPersonaje":
                 cargarPantalla(Pantallas.LISTA_PERSONAJE);
+                break;
+        }
+    }
+
+    public void actMenuLlamadasRaza(ActionEvent actionEvent) {
+        switch (((MenuItem) actionEvent.getSource()).getId()){
+            case "menuListaRaza":
+                cargarPantalla(Pantallas.LISTA_RAZA);
+                break;
+        }
+    }
+
+    public void actMenuLlamadasFaccion(ActionEvent actionEvent) {
+        switch (((MenuItem) actionEvent.getSource()).getId()){
+            case "menuListaFaccion":
+                cargarPantalla(Pantallas.LISTA_RAZA);
                 break;
         }
     }

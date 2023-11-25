@@ -104,3 +104,11 @@ _
 /cliente/src/main/java/cliente/data/DaoRaza.java,e\2\e24fa1fdbfd348a9a668954a0ed2b7a762993a19
 h
 8cliente/src/main/java/cliente/data/retrofit/RazaApi.java,1\9\19a82b8db7dc194b63616d0c269abe20365d6781
+p
+@cliente/src/main/java/cliente/ui/pantallas/common/Pantallas.java,7\f\7f3efff093a6ec810ab0b032174e27e74b5cbad2
+}
+Mcliente/src/main/java/cliente/ui/pantallas/faccion/ListFaccionController.java,8\8\884a648932c969ffad2f05902d84fc8f127d8b23
+x
+Hcliente/src/main/java/cliente/ui/pantallas/faccion/ListFaccionState.java,7\0\70627e4dee65bf769a76ed0341f6a59a56877fbf
+|
+Lcliente/src/main/java/cliente/ui/pantallas/faccion/ListFaccionViewModel.java,0\9\0916bdd8b7a77216e3ada187cfe49d4db2fafac2

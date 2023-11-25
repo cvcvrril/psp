@@ -19,7 +19,7 @@ import java.util.List;
 public class ListPersonajeController extends BasePantallaController {
 
     private ListPersonajeViewModel viewModel;
-    private GetAllPersonajesUseCase useCase;
+    private final GetAllPersonajesUseCase useCase;
 
     @FXML
     private TableView<Personaje> tablaPersonajes;

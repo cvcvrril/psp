@@ -1,8 +1,8 @@
 package cliente.ui.pantallas.raza;
 
 import cliente.domain.usecases.GetAllRazasUseCase;
-import cliente.ui.pantallas.personaje.ListPersonajeState;
 import domain.errores.ApiError;
+import jakarta.inject.Inject;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -16,6 +16,7 @@ public class ListRazaViewModel {
     private final GetAllRazasUseCase getAllRazasUseCase;
     private final ObjectProperty<ListRazaState> _state;
 
+    @Inject
     public ListRazaViewModel(GetAllRazasUseCase getAllRazasUseCase) {
         this.getAllRazasUseCase = getAllRazasUseCase;
         _state = new SimpleObjectProperty<>(new ListRazaState(null, null));

@@ -14,9 +14,19 @@
                         <MenuItem fx:id="menuOptionsExit" mnemonicParsing="false" onAction="#exit" text="Exit" />
                     </items>
                 </Menu>
-                <Menu fx:id="menuPersonaje" mnemonicParsing="false" text="Personaje" onAction="#actMenuLlamadas">
+                <Menu fx:id="menuPersonaje" mnemonicParsing="false" text="Personaje" onAction="#actMenuLlamadasPersonaje">
                     <items>
-                        <MenuItem fx:id="menuListaPersonaje" mnemonicParsing="false" text="Lista" onAction="#actMenuLlamadas"/>
+                        <MenuItem fx:id="menuListaPersonaje" mnemonicParsing="false" text="Lista" onAction="#actMenuLlamadasPersonaje"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="menuRaza" mnemonicParsing="false" text="Raza" onAction="#actMenuLlamadasRaza">
+                    <items>
+                        <MenuItem fx:id="menuListaRaza" mnemonicParsing="false" text="Lista" onAction="#actMenuLlamadasRaza"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="menuFaccion" mnemonicParsing="false" text="Facccion" onAction="#actMenuLlamadasFaccion">
+                    <items>
+                        <MenuItem fx:id="menuListaFaccion" mnemonicParsing="false" text="Lista" onAction="#actMenuLlamadasFaccion"/>
                     </items>
                 </Menu>
             </menus>

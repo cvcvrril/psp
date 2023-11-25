@@ -1,6 +1,7 @@
 package cliente.data.network;
 
 import cliente.data.retrofit.PersonajeApi;
+import cliente.data.retrofit.RazaApi;
 import jakarta.inject.Singleton;
 import com.google.gson.*;
 import jakarta.enterprise.inject.Produces;
@@ -47,5 +48,10 @@ public class ProducesRetrofit {
     @Produces
     public PersonajeApi getPersonajeApi (Retrofit retrofit){
         return retrofit.create(PersonajeApi.class);
+    }
+
+    @Produces
+    public RazaApi getRazaApi (Retrofit retrofit){
+        return retrofit.create(RazaApi.class);
     }
 }
