@@ -122,3 +122,9 @@ v
 Fcliente/src/main/java/cliente/domain/usecases/AddPersonajeUseCase.java,8\d\8df2555418719059231787cdd2312f8055123729
 y
 Icliente/src/main/java/cliente/domain/usecases/DeletePersonajeUseCase.java,b\a\ba2f5d6c935791089dce29aa15024f1e40d3793d
+€
+Pcliente/src/main/java/cliente/ui/pantallas/personaje/AddPersonajeController.java,f\d\fd99aa4a3b39e2e3f5b1a2a4d31b1b29842aa14d
+{
+Kcliente/src/main/java/cliente/ui/pantallas/personaje/AddPersonajeState.java,c\b\cb3332c5ae0e51dd704cdcec5d20af83ce80e62d
+
+Ocliente/src/main/java/cliente/ui/pantallas/personaje/AddPersonajeViewModel.java,6\0\60e8ea1f7b28eb884ef252db40acac8cd132fe6c
