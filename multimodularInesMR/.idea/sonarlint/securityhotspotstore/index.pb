@@ -126,3 +126,7 @@ Pcliente/src/main/java/cliente/ui/pantallas/personaje/AddPersonajeController.jav
 Kcliente/src/main/java/cliente/ui/pantallas/personaje/AddPersonajeState.java,c\b\cb3332c5ae0e51dd704cdcec5d20af83ce80e62d
 
 Ocliente/src/main/java/cliente/ui/pantallas/personaje/AddPersonajeViewModel.java,6\0\60e8ea1f7b28eb884ef252db40acac8cd132fe6c
+ƒ
+Scliente/src/main/java/cliente/ui/pantallas/personaje/UpdatePersonajeController.java,4\3\43ab22a32a88cd300877edcf9077471360994b54
+ƒ
+Scliente/src/main/java/cliente/ui/pantallas/personaje/DeletePersonajeController.java,c\1\c1c684c6907c6b474e162e075dd958a46c8fd151

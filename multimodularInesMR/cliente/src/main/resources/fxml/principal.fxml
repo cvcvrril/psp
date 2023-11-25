@@ -18,6 +18,8 @@
                     <items>
                         <MenuItem fx:id="menuListaPersonaje" mnemonicParsing="false" text="Lista" onAction="#actMenuLlamadasPersonaje"/>
                         <MenuItem fx:id="menuAddPersonaje" mnemonicParsing="false" text="Agregar" onAction="#actMenuLlamadasPersonaje"/>
+                        <MenuItem fx:id="menuUpdatePersonaje" mnemonicParsing="false" text="Actualizar" onAction="#actMenuLlamadasPersonaje"/>
+                        <MenuItem fx:id="menuDeletePersonaje" mnemonicParsing="false" text="Eliminar" onAction="#actMenuLlamadasPersonaje"/>
                     </items>
                 </Menu>
                 <Menu fx:id="menuRaza" mnemonicParsing="false" text="Raza" onAction="#actMenuLlamadasRaza">

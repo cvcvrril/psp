@@ -9,6 +9,8 @@ public enum Pantallas {
     /*LLAMADAS*/
     LISTA_PERSONAJE("/fxml/personaje/lista_personaje.fxml"),
     ADD_PERSONAJE("/fxml/personaje/add_personaje.fxml"),
+    UPDATE_PERSONAJE("/fxml/personaje/update_personaje.fxml"),
+    DELETE_PERSONAJE("/fxml/personaje/delete_personaje.fxml"),
     LISTA_RAZA("/fxml/raza/lista_raza.fxml"),
     LISTA_FACCION("/fxml/faccion/lista_faccion.fxml");
 

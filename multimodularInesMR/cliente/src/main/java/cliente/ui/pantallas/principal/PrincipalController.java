@@ -132,6 +132,12 @@ public class PrincipalController extends BasePantallaController {
             case "menuAddPersonaje":
                 cargarPantalla(Pantallas.ADD_PERSONAJE);
                 break;
+            case "menuUpdatePersonaje":
+                cargarPantalla(Pantallas.UPDATE_PERSONAJE);
+                break;
+            case "menuDeletePersonaje":
+                cargarPantalla(Pantallas.DELETE_PERSONAJE);
+                break;
         }
     }
 
