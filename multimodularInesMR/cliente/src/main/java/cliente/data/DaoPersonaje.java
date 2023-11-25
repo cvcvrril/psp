@@ -23,4 +23,17 @@ public class DaoPersonaje extends DaoGenerics{
     public Single<Either<ErrorC, List<Personaje>>> getAllPersonajes(){
         return safeSingleApicall(personajeApi.getPersonajes());
     }
+
+    public Single<Either<ErrorC, Personaje>> createPersonaje(Personaje personaje) {
+        return safeSingleApicall(personajeApi.createPersonaje(personaje));
+    }
+
+    public Single<Either<ErrorC, Personaje>> updatePersonaje(int id, Personaje personaje) {
+        return safeSingleApicall(personajeApi.updatePersonaje(id, personaje));
+    }
+
+    public Single<Either<ErrorC, String>> deletePersonaje(int id) {
+        return safeSingleVoidApicall(personajeApi.deletePersonaje(id));
+    }
+
 }

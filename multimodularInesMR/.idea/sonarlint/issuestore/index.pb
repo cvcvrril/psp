@@ -116,3 +116,5 @@ k
 ;cliente/src/main/java/cliente/data/retrofit/FaccionApi.java,8\3\8346e55fe4812b8f767daea877c127a04462ac05
 y
 Icliente/src/main/java/cliente/domain/usecases/GetAllFaccionesUseCase.java,c\d\cdedc63f279723fa8f0a8de4b081a906b57c6540
+y
+Icliente/src/main/java/cliente/domain/usecases/UpdatePersonajeUseCase.java,0\b\0b2bc66b5320378a812ce2912d507f8ab0dbeff2
