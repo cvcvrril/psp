@@ -34,6 +34,7 @@ public class AddPersonajeController extends BasePantallaController {
     }
 
 
+    @FXML
     private void add() {
         String nombre = nombreField.getText();
         String planetaResidencia = planetaResidenciaField.getText();

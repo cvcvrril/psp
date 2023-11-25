@@ -90,8 +90,6 @@ r
 Bservidor/src/main/java/servidor/jakarta/rest/JAXRSApplication.java,e\2\e282e59045b534237345692113788245945ce361
 z
 Jcliente/src/main/java/cliente/domain/usecases/GetAllPersonajesUseCase.java,1\1\113d909c2dc9a5868767fd4b27cc12fdcf6feaf7
-d
-4cliente/src/main/java/cliente/ui/pantallas/raza.java,5\9\5999f8c32eadadb7ae5c155f454c1ac4fac0fd3d
 w
 Gcliente/src/main/java/cliente/ui/pantallas/raza/ListRazaController.java,7\e\7edba6bb9ad7fa844d8c07b17f4a401af6e880ed
 r
