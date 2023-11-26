@@ -3,7 +3,7 @@ package cliente.ui.pantallas.common;
 public enum Pantallas {
 
     PRINCIPAL("/fxml/principal.fxml"),      //base de todas las pantallas, no tocar
-    LOGIN("/fxml/login.fxml"),
+    LOGIN("/fxml/login/login.fxml"),
     WELCOME("/fxml/welcome.fxml"),
 
     /*LLAMADAS*/

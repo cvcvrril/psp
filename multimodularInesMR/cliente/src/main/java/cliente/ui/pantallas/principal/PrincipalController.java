@@ -3,6 +3,7 @@ package cliente.ui.pantallas.principal;
 
 import cliente.ui.pantallas.common.BasePantallaController;
 import cliente.ui.pantallas.common.Pantallas;
+import domain.modelo.Usuario;
 import jakarta.enterprise.inject.Instance;
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
@@ -36,7 +37,9 @@ public class PrincipalController extends BasePantallaController {
 
 
     @Getter
-    private String user;
+    private String username;
+    @Getter
+    private int loginId;
     @FXML
     private BorderPane root;
 
@@ -103,9 +106,19 @@ public class PrincipalController extends BasePantallaController {
 
     public void initialize() {
         menuPrincipal.setVisible(true);
+        cargarPantalla(Pantallas.LOGIN);
+    }
+
+    public void onLogin(Usuario usuario) {
+        this.username = usuario.getUsername();
+        this.loginId = usuario.getId();
         cargarPantalla(Pantallas.WELCOME);
     }
 
+    public void onLogout() {
+        this.username = null;
+        cargarPantalla(Pantallas.LOGIN);
+    }
 
     public void exit() {
         primaryStage.fireEvent(new WindowEvent(primaryStage, WindowEvent.WINDOW_CLOSE_REQUEST));
@@ -119,6 +132,7 @@ public class PrincipalController extends BasePantallaController {
     private void actMenuOptions(ActionEvent actionEvent){
         switch (((MenuItem) actionEvent.getSource()).getId()){
             case "menuOptionsLogout":
+                onLogout();
                 break;
         }
     }
