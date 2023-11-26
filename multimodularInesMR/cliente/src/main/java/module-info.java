@@ -30,6 +30,7 @@ module cliente {
     exports cliente.ui.pantallas.welcome;
     exports cliente.ui.pantallas.raza;
     exports cliente.ui.pantallas.faccion;
+    exports cliente.ui.pantallas.login;
 
 
     exports cliente.data.network;
@@ -42,4 +43,6 @@ module cliente {
     opens cliente.ui.pantallas.raza to javafx.fxml;
     opens cliente.ui.pantallas.welcome to javafx.fxml;
     opens cliente.ui.pantallas.faccion to javafx.fxml;
+    opens cliente.ui.pantallas.login to javafx.fxml;
+
 }

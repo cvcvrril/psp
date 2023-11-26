@@ -236,3 +236,5 @@ l
 <cliente/src/main/java/cliente/data/retrofit/RegistroApi.java,b\7\b727a6209f3413a67f3d9e3c3a0ac9e1ee84fbeb
 `
 0cliente/src/main/java/cliente/data/DaoLogin.java,e\3\e3f45c9807c2cd24be86ec2832f0fcdccdbb095c
+c
+3cliente/src/main/java/cliente/data/DaoRegistro.java,8\a\8a0cfa24954eb884c3d02128c57bd7983ef482f3

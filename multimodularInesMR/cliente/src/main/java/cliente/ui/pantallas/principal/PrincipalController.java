@@ -105,18 +105,20 @@ public class PrincipalController extends BasePantallaController {
     }
 
     public void initialize() {
-        menuPrincipal.setVisible(true);
+        menuPrincipal.setVisible(false);
         cargarPantalla(Pantallas.LOGIN);
     }
 
     public void onLogin(Usuario usuario) {
         this.username = usuario.getUsername();
         this.loginId = usuario.getId();
+        menuPrincipal.setVisible(true);
         cargarPantalla(Pantallas.WELCOME);
     }
 
     public void onLogout() {
         this.username = null;
+        menuPrincipal.setVisible(false);
         cargarPantalla(Pantallas.LOGIN);
     }
 

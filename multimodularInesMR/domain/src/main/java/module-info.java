@@ -10,5 +10,6 @@ module domain {
     requires java.logging;
 
     opens domain.modelo to com.google.gson;
+    opens domain.errores to com.google.gson;
 
 }

@@ -8,5 +8,6 @@ import lombok.Data;
 public class LoginState {
     private final Usuario usuario;
     private final ApiError error;
+    private final boolean usuarioAdded;
 
 }
