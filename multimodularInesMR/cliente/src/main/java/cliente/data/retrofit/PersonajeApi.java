@@ -18,8 +18,8 @@ public interface PersonajeApi {
     @POST("personaje")
     Single<Personaje> addPersonaje(@Body Personaje personaje);
 
-    @PUT("personaje/{id}")
-    Single<Personaje> updatePersonaje(@Path("id") int id, @Body Personaje personaje);
+    @PUT("personaje")
+    Single<Personaje> updatePersonaje(@Body Personaje personaje);
 
     @DELETE("personaje/{id}")
     Single<Response<Void>> deletePersonaje(@Path("id") int id);

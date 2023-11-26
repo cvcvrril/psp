@@ -32,8 +32,8 @@ public class DaoPersonaje extends DaoGenerics{
         return safeSingleApicall(personajeApi.addPersonaje(personaje));
     }
 
-    public Single<Either<ErrorC, Personaje>> updatePersonaje(int id, Personaje personaje) {
-        return safeSingleApicall(personajeApi.updatePersonaje(id, personaje));
+    public Single<Either<ErrorC, Personaje>> updatePersonaje(Personaje personaje) {
+        return safeSingleApicall(personajeApi.updatePersonaje(personaje));
     }
 
     public Single<Either<ErrorC, String>> deletePersonaje(int id) {

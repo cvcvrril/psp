@@ -21,6 +21,6 @@
       </Label>
       <TextField fx:id="nombreField" layoutX="69.0" layoutY="117.0" promptText="Nombre" />
       <TextField fx:id="planetaResidenciaField" layoutX="69.0" layoutY="168.0" promptText="Planeta residencia" />
-      <Button fx:id="actualizarButton" layoutX="118.0" layoutY="234.0" mnemonicParsing="false" text="Actualizar" />
+      <Button fx:id="actualizarButton" layoutX="118.0" layoutY="234.0" mnemonicParsing="false" text="Actualizar" onAction="#actualizar" />
    </children>
 </AnchorPane>

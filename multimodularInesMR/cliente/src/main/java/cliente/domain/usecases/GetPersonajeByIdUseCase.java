@@ -7,7 +7,6 @@ import io.reactivex.rxjava3.core.Single;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 
-import java.util.List;
 
 public class GetPersonajeByIdUseCase {
 
@@ -18,7 +17,7 @@ public class GetPersonajeByIdUseCase {
         this.daoPersonaje = daoPersonaje;
     }
 
-    public Single<Either<ErrorC, Personaje>> getAllPersonajes(int id){
+    public Single<Either<ErrorC, Personaje>> getPersonajeById(int id){
         return daoPersonaje.getPersonajeById(id);
     }
 

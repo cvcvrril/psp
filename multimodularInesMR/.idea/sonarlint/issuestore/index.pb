@@ -136,3 +136,5 @@ Ncliente/src/main/java/cliente/ui/pantallas/personaje/UpdatePersonajeState.java
 Rcliente/src/main/java/cliente/ui/pantallas/personaje/UpdatePersonajeViewModel.java,a\d\ad46e00d2721dd9c6737fa99adac67ac3cd294ac
 z
 Jcliente/src/main/java/cliente/domain/usecases/GetPersonajeByIdUseCase.java,2\a\2a5cdc869f0add833ff7de369ae2244ab819f7a5
+i
+9servidor/src/main/java/servidor/common/Configuration.java,e\0\e0174a42f33f5eebf1ec727c849a609b1e9735db

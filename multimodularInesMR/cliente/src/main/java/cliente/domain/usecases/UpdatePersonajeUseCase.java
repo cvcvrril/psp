@@ -16,7 +16,7 @@ public class UpdatePersonajeUseCase {
         this.daoPersonaje = daoPersonaje;
     }
 
-    public Single<Either<ErrorC, Personaje>> updatePersonaje(int id, Personaje personaje){
-        return daoPersonaje.updatePersonaje(id, personaje);
+    public Single<Either<ErrorC, Personaje>> updatePersonaje(Personaje personaje){
+        return daoPersonaje.updatePersonaje(personaje);
     }
 }
