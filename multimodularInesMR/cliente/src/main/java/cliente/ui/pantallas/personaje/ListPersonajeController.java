@@ -63,6 +63,18 @@ public class ListPersonajeController extends BasePantallaController {
         List<Personaje> personajes = state.getPersonajes();
         if (personajes != null) {
             tablaPersonajes.getItems().setAll(personajes);
+            tablaPersonajes.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue != null) {
+                    List<Faccion> facciones = newValue.getFacciones();
+                    idFaccion.setCellValueFactory(new PropertyValueFactory<>("id"));
+                    nombreFaccion.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+                    if (facciones != null && !facciones.isEmpty()) {
+                        tablaFacciones.getItems().setAll(facciones);
+                    } else {
+                        tablaFacciones.getItems().clear(); 
+                    }
+                }
+            });
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("La lista de personajes está vacía");
