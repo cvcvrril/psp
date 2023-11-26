@@ -194,3 +194,17 @@ c
 3cliente/src/main/resources/config/config.properties,b\3\b352e56b7e68149123a616438988381af1faaa02
 ]
 -cliente/src/main/resources/META-INF/beans.xml,3\6\367b326e94649dadb95b7a031ee4364c5b47b6d7
+k
+;servidor/src/main/java/servidor/jakarta/rest/RestLogin.java,6\2\62c60a930cd2de482e47a73a5640bc3f0c7981c9
+s
+Cservidor/src/main/java/servidor/domain/servicios/ServicioLogin.java,8\8\88a46b03d0ea8557be4e7f04c3a15a7d66f9b696
+_
+/domain/src/main/java/domain/modelo/Usuario.java,a\e\ae7fc65f4d90c64e7c5b40ffb3388d5f1fde493f
+a
+1servidor/src/main/java/servidor/dao/DaoLogin.java,4\7\473d0c2305aba481613de877141757b17144c4e3
+p
+@servidor/src/main/java/servidor/dao/implementacion/DaoLogin.java,d\a\da8b867817074cf34999641ba773a3465ad90288
+s
+Cservidor/src/main/java/servidor/dao/implementacion/DaoLoginImp.java,1\7\17d1adfb4a299774791b93a6f10034e2d4c55105
+9
+	readme.md,2\7\275d783e298228506068436512433d343feb52aa
