@@ -28,7 +28,7 @@ public class ServicioLogin {
     }
 
     public Either<ApiError, Usuario> login(String usuario, String pass){
-        Either<ApiError, Usuario> res = null;
+        Either<ApiError, Usuario> res;
         Usuario user = check(usuario).get();
         try {
             if (pass.equals(daoLogin.check(usuario).get().getPassword())){
