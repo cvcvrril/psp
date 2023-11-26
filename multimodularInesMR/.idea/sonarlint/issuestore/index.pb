@@ -208,3 +208,11 @@ s
 Cservidor/src/main/java/servidor/dao/implementacion/DaoLoginImp.java,1\7\17d1adfb4a299774791b93a6f10034e2d4c55105
 9
 	readme.md,2\7\275d783e298228506068436512433d343feb52aa
+n
+>servidor/src/main/java/servidor/jakarta/rest/RestRegistro.java,4\7\474bcac3dc2cd0649dc41f5f90b3a81d5838cb7d
+v
+Fservidor/src/main/java/servidor/domain/servicios/ServicioRegistro.java,9\3\93ef5705d641d9b004b7bbef906589dc50da4e3c
+d
+4servidor/src/main/java/servidor/dao/DaoRegistro.java,d\2\d29f41024be62704df0bbe84a90f4791c6733d53
+v
+Fservidor/src/main/java/servidor/dao/implementacion/DaoRegistroImp.java,7\b\7bcde818ad0cfdd3ae7b8dd456ea8bf82e1ac9e5

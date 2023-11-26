@@ -33,6 +33,8 @@ public class ServicioLogin {
         try {
             if (pass.equals(daoLogin.check(usuario).get().getPassword())){
                 res = Either.right(user);
+            } else {
+                res = Either.left(new ApiError("Contraseña incorrecta", LocalDateTime.now()));
             }
         }catch (Exception e){
             log.error(e.getMessage(),e);
