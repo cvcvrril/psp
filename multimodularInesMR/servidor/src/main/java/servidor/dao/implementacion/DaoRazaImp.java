@@ -45,26 +45,6 @@ public class DaoRazaImp implements DaoRaza {
         return res;
     }
 
-    @Override
-    public Either<ApiError, Raza> get(int id) {
-        return null;
-    }
-
-    @Override
-    public Either<ApiError, Integer> add(Raza nuevaRaza) {
-        return null;
-    }
-
-    @Override
-    public Either<ApiError, Integer> update(Raza actualizadaRaza) {
-        return null;
-    }
-
-    @Override
-    public Either<ApiError, Integer> delete(int id) {
-        return null;
-    }
-
     private List<Raza> readRS(ResultSet rs) {
         try {
             List<Raza> personajeList = new ArrayList<>();

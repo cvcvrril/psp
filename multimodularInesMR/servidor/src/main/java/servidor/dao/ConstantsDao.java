@@ -21,5 +21,7 @@ public class ConstantsDao {
     public static final String NOMBRE = "nombre";
     public static final String RAZA = "raza";
     public static final String PLANETA_RESIDENCIA = "planeta_residencia";
+    public static final String USUARIO = "usuario";
+    public static final String PASS = "pass";
 }
 

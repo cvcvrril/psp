@@ -1,6 +1,7 @@
 package cliente.ui.pantallas.principal;
 
 
+import cliente.ui.ConstantesUi;
 import cliente.ui.pantallas.common.BasePantallaController;
 import cliente.ui.pantallas.common.Pantallas;
 import domain.modelo.Usuario;
@@ -24,6 +25,7 @@ import java.io.IOException;
 @Log4j2
 public class PrincipalController extends BasePantallaController {
 
+    public static final String MENU_LISTA_PERSONAJE = "menuListaPersonaje";
     @FXML
     private MenuItem menuLlamadasPersonajes;
     @FXML
@@ -91,16 +93,16 @@ public class PrincipalController extends BasePantallaController {
     public void sacarAlertError(String mensaje) {
         alert.setAlertType(Alert.AlertType.ERROR);
         alert.setContentText(mensaje);
-        alert.getDialogPane().setId("alert");
-        alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
+        alert.getDialogPane().setId(ConstantesUi.ALERT);
+        alert.getDialogPane().lookupButton(ButtonType.OK).setId(ConstantesUi.BTN_OK);
         alert.showAndWait();
     }
 
     public void sacarAlertConf(String mensaje) {
         alert.setAlertType(Alert.AlertType.CONFIRMATION);
         alert.setContentText(mensaje);
-        alert.getDialogPane().setId("alert");
-        alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
+        alert.getDialogPane().setId(ConstantesUi.ALERT);
+        alert.getDialogPane().lookupButton(ButtonType.OK).setId(ConstantesUi.BTN_OK);
         alert.showAndWait();
     }
 
@@ -133,7 +135,7 @@ public class PrincipalController extends BasePantallaController {
     @FXML
     private void actMenuOptions(ActionEvent actionEvent){
         switch (((MenuItem) actionEvent.getSource()).getId()){
-            case "menuOptionsLogout":
+            case ConstantesUi.MENU_OPTIONS_LOGOUT:
                 onLogout();
                 break;
         }
@@ -142,16 +144,16 @@ public class PrincipalController extends BasePantallaController {
     @FXML
     private void actMenuLlamadasPersonaje(ActionEvent actionEvent) {
         switch (((MenuItem) actionEvent.getSource()).getId()) {
-            case "menuListaPersonaje":
+            case MENU_LISTA_PERSONAJE:
                 cargarPantalla(Pantallas.LISTA_PERSONAJE);
                 break;
-            case "menuAddPersonaje":
+            case ConstantesUi.MENU_ADD_PERSONAJE:
                 cargarPantalla(Pantallas.ADD_PERSONAJE);
                 break;
-            case "menuUpdatePersonaje":
+            case ConstantesUi.MENU_UPDATE_PERSONAJE:
                 cargarPantalla(Pantallas.UPDATE_PERSONAJE);
                 break;
-            case "menuDeletePersonaje":
+            case ConstantesUi.MENU_DELETE_PERSONAJE:
                 cargarPantalla(Pantallas.DELETE_PERSONAJE);
                 break;
         }
@@ -159,7 +161,7 @@ public class PrincipalController extends BasePantallaController {
 
     public void actMenuLlamadasRaza(ActionEvent actionEvent) {
         switch (((MenuItem) actionEvent.getSource()).getId()){
-            case "menuListaRaza":
+            case ConstantesUi.MENU_LISTA_RAZA:
                 cargarPantalla(Pantallas.LISTA_RAZA);
                 break;
         }
@@ -167,10 +169,10 @@ public class PrincipalController extends BasePantallaController {
 
     public void actMenuLlamadasFaccion(ActionEvent actionEvent) {
         switch (((MenuItem) actionEvent.getSource()).getId()){
-            case "menuListaFaccion":
+            case ConstantesUi.MENU_LISTA_FACCION:
                 cargarPantalla(Pantallas.LISTA_FACCION);
                 break;
-            case "menuDeletePersonajeFaccion":
+            case ConstantesUi.MENU_DELETE_PERSONAJE_FACCION:
                 cargarPantalla(Pantallas.DELETE_PERSONAJE_FACCION);
                 break;
         }

@@ -14,4 +14,7 @@ public class SqlQueries {
     public static final String SELECT_FACCIONES_JOIN = "SELECT facciones.* FROM facciones INNER JOIN faccion_personaje ON facciones.idfacciones = faccion_personaje.id_faccion WHERE faccion_personaje.id_personaje = ?";
     public static final String SELECT_FROM_FACCIONES = "select * from facciones";
     public static final String SELECT_FROM_RAZAS = "select * from razas";
+    public static final String SELECT_FROM_CREDENCIALES_WHERE_USUARIO = "select * from credenciales where usuario=?";
+    public static final String SELECT_FROM_CREDENCIALES_WHERE_ID = "select * from credenciales where id =?";
+    public static final String INSERT_INTO_CREDENCIALES_USUARIO_PASS_VALUES = "insert into credenciales (usuario, pass) values (?, ?)";
 }

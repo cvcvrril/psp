@@ -13,4 +13,10 @@ public class ConstantsJakarta {
     public static final String DELETE_MULTIPLE_ID_FACCION_PATH = "/delete-multiple/{idFaccion}";
     public static final String ROOT_FACCION = "/faccion";
     public static final String ROOT_RAZA = "/raza";
+    public static final String LOGIN = "LOGIN";
+    public static final String ERROR_DE_FILTRO = "error de filtro";
+    public static final String ROOT_LOGIN = "/login";
+    public static final String USUARIO = "usuario";
+    public static final String PASS = "pass";
+    public static final String ROOT_USUARIO = "/usuario";
 }

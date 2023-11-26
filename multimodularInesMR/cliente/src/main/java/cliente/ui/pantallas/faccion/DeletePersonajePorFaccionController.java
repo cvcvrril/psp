@@ -2,6 +2,7 @@ package cliente.ui.pantallas.faccion;
 
 import cliente.domain.usecases.DeletePersonajePorFaccionUseCase;
 import cliente.domain.usecases.GetAllFaccionesUseCase;
+import cliente.ui.ConstantesUi;
 import cliente.ui.pantallas.common.BasePantallaController;
 import domain.modelo.Faccion;
 import jakarta.inject.Inject;
@@ -42,11 +43,19 @@ public class DeletePersonajePorFaccionController extends BasePantallaController 
     }
 
     private void rellena(DeletePersonajePorFaccionState state) {
-        idFaccionCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nombreFaccionCol.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        idFaccionCol.setCellValueFactory(new PropertyValueFactory<>(ConstantesUi.ID));
+        nombreFaccionCol.setCellValueFactory(new PropertyValueFactory<>(ConstantesUi.NOMBRE));
         List<Faccion> facciones = state.getFacciones();
         if (facciones != null) {
             tablaFacciones.getItems().setAll(facciones);
+        }
+    }
+
+    @FXML
+    private void deletePersonajes(){
+        Faccion faccionSeleccionada = tablaFacciones.getSelectionModel().getSelectedItem();
+        if (faccionSeleccionada!=null){
+            viewModel.deletePersonajePorFaccion(faccionSeleccionada.getId());
         }
     }
 }

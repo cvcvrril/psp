@@ -3,6 +3,7 @@ package cliente.ui.pantallas.personaje;
 import cliente.domain.usecases.GetAllPersonajesUseCase;
 import cliente.domain.usecases.GetPersonajeByIdUseCase;
 import cliente.domain.usecases.UpdatePersonajeUseCase;
+import cliente.ui.ConstantesUi;
 import domain.errores.ApiError;
 import domain.modelo.Personaje;
 import jakarta.inject.Inject;
@@ -35,12 +36,12 @@ public class UpdatePersonajeViewModel {
             getAllPersonajesUseCase.getAllPersonajes()
                     .subscribe(res -> {
                                 if (res.isLeft()) {
-                                    _state.setValue(new UpdatePersonajeState(null, new ApiError("Error al obtener los personajes", LocalDateTime.now()), null));
+                                    _state.setValue(new UpdatePersonajeState(null, new ApiError(ConstantesUi.ERROR_AL_OBTENER_LOS_PERSONAJES, LocalDateTime.now()), null));
                                 } else {
                                     _state.setValue(new UpdatePersonajeState(null, null, res.get()));
                                 }
                             },
-                            error -> log.error("Error al obtener los personajes", error));
+                            error -> log.error(ConstantesUi.ERROR_AL_OBTENER_LOS_PERSONAJES, error));
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
@@ -51,11 +52,11 @@ public class UpdatePersonajeViewModel {
         updatePersonajeUseCase.updatePersonaje(personaje)
                 .subscribe(res -> {
                     if (res.isLeft()) {
-                        _state.setValue(new UpdatePersonajeState(null, new ApiError("Error al actualizar el personaje", LocalDateTime.now()), null));
+                        _state.setValue(new UpdatePersonajeState(null, new ApiError(ConstantesUi.ERROR_AL_ACTUALIZAR_EL_PERSONAJE, LocalDateTime.now()), null));
                     } else {
                         _state.setValue(new UpdatePersonajeState(null, null, null));
                     }
-                }, error -> log.error("Error al actualizar el personaje", error));
+                }, error -> log.error(ConstantesUi.ERROR_AL_ACTUALIZAR_EL_PERSONAJE, error));
     }
 
     public ReadOnlyObjectProperty<UpdatePersonajeState> getState() {

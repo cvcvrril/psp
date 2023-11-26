@@ -246,3 +246,9 @@ Vcliente/src/main/java/cliente/ui/pantallas/faccion/DeletePersonajePorFaccionSta
 Zcliente/src/main/java/cliente/ui/pantallas/faccion/DeletePersonajePorFaccionViewModel.java,4\4\44a7f4a5ae25805a5d63de158591889cfb8f8bba
 ƒ
 Scliente/src/main/java/cliente/domain/usecases/DeletePersonajePorFaccionUseCase.java,0\4\044423c31dde4bc854c24b33e496cbe9599c1fe8
+f
+6cliente/src/main/java/cliente/data/ConstantesData.java,7\3\73706d5931f98e477b0ea31d603a1d331c6425de
+b
+2cliente/src/main/java/cliente/ui/ConstantesUi.java,4\b\4b52b3d1b1f4393941aaaefd45c1a17fa3262ddf
+l
+<servidor/src/main/java/servidor/domain/ConstantesDomain.java,6\9\69517da8417c4ed7795349e6308debf94d39ed98

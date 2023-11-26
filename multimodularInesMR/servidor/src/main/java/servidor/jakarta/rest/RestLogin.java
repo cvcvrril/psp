@@ -8,8 +8,9 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import servidor.domain.servicios.ServicioLogin;
+import servidor.jakarta.ConstantsJakarta;
 
-@Path("/login")
+@Path(ConstantsJakarta.ROOT_LOGIN)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestLogin {
@@ -24,9 +25,9 @@ public class RestLogin {
     }
 
     @GET
-    public Usuario getLogin(@QueryParam("usuario") String usuario, @QueryParam("pass") String pass){
+    public Usuario getLogin(@QueryParam(ConstantsJakarta.USUARIO) String usuario, @QueryParam(ConstantsJakarta.PASS) String pass){
         Usuario usuarioLogin = servicioLogin.login(usuario, pass).get();
-        request.getSession().setAttribute("LOGIN", true);
+        request.getSession().setAttribute(ConstantsJakarta.LOGIN, true);
         return usuarioLogin;
     }
 

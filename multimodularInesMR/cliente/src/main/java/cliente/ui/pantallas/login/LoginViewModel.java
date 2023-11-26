@@ -3,6 +3,7 @@ package cliente.ui.pantallas.login;
 
 import cliente.domain.usecases.LoginUseCase;
 import cliente.domain.usecases.RegistroUseCase;
+import cliente.ui.ConstantesUi;
 import domain.errores.ApiError;
 import domain.modelo.Usuario;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -31,7 +32,7 @@ public class LoginViewModel {
                 .observeOn(Schedulers.single())
                 .subscribe(res -> {
                             if (res.isLeft()) {
-                                _state.setValue(new LoginState(null, new ApiError("Error al hacer login", LocalDateTime.now()),false));
+                                _state.setValue(new LoginState(null, new ApiError(ConstantesUi.ERROR_AL_HACER_LOGIN, LocalDateTime.now()),false));
                             } else {
                                 _state.setValue(new LoginState(res.get(), null, false));
                             }
@@ -43,7 +44,7 @@ public class LoginViewModel {
         registroUseCase.add(usuario)
                 .subscribe(res ->{
                     if (res.isLeft()){
-                        _state.setValue(new LoginState(null, new ApiError("Error al crear el usuario", LocalDateTime.now()),false));
+                        _state.setValue(new LoginState(null, new ApiError(ConstantesUi.ERROR_AL_CREAR_EL_USUARIO, LocalDateTime.now()),false));
                     }else {
                         _state.setValue(new LoginState(usuario, null, true));
                     }

@@ -1,6 +1,7 @@
 package cliente.ui.pantallas.personaje;
 
 import cliente.domain.usecases.AddPersonajeUseCase;
+import cliente.ui.ConstantesUi;
 import domain.errores.ApiError;
 import domain.modelo.Personaje;
 import jakarta.inject.Inject;
@@ -27,11 +28,11 @@ public class AddPersonajeViewModel {
         addPersonajeUseCase.addPerdonaje(personaje)
                 .subscribe(res -> {
                     if (res.isLeft()) {
-                        _state.setValue(new AddPersonajeState(new ApiError("Error al añadir el personaje", LocalDateTime.now())));
+                        _state.setValue(new AddPersonajeState(new ApiError(ConstantesUi.ERROR_AL_ANADIR_EL_PERSONAJE, LocalDateTime.now())));
                     } else {
                         _state.setValue(new AddPersonajeState(null));
                     }
-                }, error -> log.error("Error al añadir el personaje", error));
+                }, error -> log.error(ConstantesUi.ERROR_AL_ANADIR_EL_PERSONAJE, error));
 
     }
 

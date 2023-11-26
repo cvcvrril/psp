@@ -8,6 +8,7 @@ import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
 import servidor.dao.ConstantsDao;
 import servidor.dao.DaoPersonaje;
+import servidor.domain.ConstantesDomain;
 import servidor.domain.modelo.excepciones.BadArgumentException;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public class ServicioPersonaje {
 
     private void validPersonaje(String nombrePersonaje){
         if (!Character.isUpperCase(nombrePersonaje.charAt(0))){
-            throw new BadArgumentException("El nombre del personaje debe de empezar por mayúscula");
+            throw new BadArgumentException(ConstantesDomain.EL_NOMBRE_DEL_PERSONAJE_DEBE_DE_EMPEZAR_POR_MAYÚSCULA);
         }
     }
 

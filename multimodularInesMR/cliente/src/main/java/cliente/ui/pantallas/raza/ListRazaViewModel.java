@@ -1,6 +1,7 @@
 package cliente.ui.pantallas.raza;
 
 import cliente.domain.usecases.GetAllRazasUseCase;
+import cliente.ui.ConstantesUi;
 import domain.errores.ApiError;
 import jakarta.inject.Inject;
 import javafx.beans.property.ObjectProperty;
@@ -27,12 +28,12 @@ public class ListRazaViewModel {
             getAllRazasUseCase.getAllRazas()
                     .subscribe(res -> {
                                 if (res.isLeft()) {
-                                    _state.setValue(new ListRazaState(null, new ApiError("Error al obtener los personajes", LocalDateTime.now())));
+                                    _state.setValue(new ListRazaState(null, new ApiError(ConstantesUi.ERROR_AL_OBTENER_LAS_RAZAS, LocalDateTime.now())));
                                 } else {
                                     _state.setValue(new ListRazaState(res.get(), null));
                                 }
                             },
-                            error -> log.error("Error al obtener los personajes", error));
+                            error -> log.error(ConstantesUi.ERROR_AL_OBTENER_LAS_RAZAS, error));
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }

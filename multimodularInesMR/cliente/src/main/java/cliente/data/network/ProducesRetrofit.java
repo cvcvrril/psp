@@ -1,5 +1,6 @@
 package cliente.data.network;
 
+import cliente.data.ConstantesData;
 import cliente.data.retrofit.*;
 import jakarta.inject.Singleton;
 import com.google.gson.*;
@@ -37,7 +38,7 @@ public class ProducesRetrofit {
     @Singleton
     public Retrofit retrofit(Gson gson, OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
-                .baseUrl("http://localhost:8080/servidor-1.0-SNAPSHOT/api/")
+                .baseUrl(ConstantesData.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .client(okHttpClient)

@@ -1,6 +1,7 @@
 package cliente.ui.pantallas.personaje;
 
 import cliente.domain.usecases.GetAllPersonajesUseCase;
+import cliente.ui.ConstantesUi;
 import cliente.ui.pantallas.common.BasePantallaController;
 import domain.modelo.Faccion;
 import domain.modelo.Personaje;
@@ -53,18 +54,18 @@ public class ListPersonajeController extends BasePantallaController {
     }
 
     private void rellena(ListPersonajeState state){
-        idPersonaje.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nombrePersonaje.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        razaPersonaje.setCellValueFactory(new PropertyValueFactory<>("raza"));
-        planetaPersonaje.setCellValueFactory(new PropertyValueFactory<>("planetaRes"));
+        idPersonaje.setCellValueFactory(new PropertyValueFactory<>(ConstantesUi.ID));
+        nombrePersonaje.setCellValueFactory(new PropertyValueFactory<>(ConstantesUi.NOMBRE));
+        razaPersonaje.setCellValueFactory(new PropertyValueFactory<>(ConstantesUi.RAZA));
+        planetaPersonaje.setCellValueFactory(new PropertyValueFactory<>(ConstantesUi.PLANETA_RES));
         List<Personaje> personajes = state.getPersonajes();
         if (personajes != null) {
             tablaPersonajes.getItems().setAll(personajes);
             tablaPersonajes.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                 if (newValue != null) {
                     List<Faccion> facciones = newValue.getFacciones();
-                    idFaccion.setCellValueFactory(new PropertyValueFactory<>("id"));
-                    nombreFaccion.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+                    idFaccion.setCellValueFactory(new PropertyValueFactory<>(ConstantesUi.ID));
+                    nombreFaccion.setCellValueFactory(new PropertyValueFactory<>(ConstantesUi.NOMBRE));
                     if (facciones != null && !facciones.isEmpty()) {
                         tablaFacciones.getItems().setAll(facciones);
                     } else {
@@ -74,9 +75,9 @@ public class ListPersonajeController extends BasePantallaController {
             });
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("La lista de personajes está vacía");
-            alert.getDialogPane().setId("alert");
-            alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
+            alert.setContentText(ConstantesUi.LA_LISTA_DE_PERSONAJES_ESTÁ_VACÍA);
+            alert.getDialogPane().setId(ConstantesUi.ALERT);
+            alert.getDialogPane().lookupButton(ButtonType.OK).setId(ConstantesUi.BTN_OK);
             alert.showAndWait();
         }
     }

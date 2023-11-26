@@ -2,6 +2,7 @@ package cliente.ui.pantallas.personaje;
 
 import cliente.domain.usecases.DeletePersonajeUseCase;
 import cliente.domain.usecases.GetAllPersonajesUseCase;
+import cliente.ui.ConstantesUi;
 import cliente.ui.pantallas.common.BasePantallaController;
 import domain.modelo.Personaje;
 import jakarta.inject.Inject;
@@ -13,7 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.util.List;
 
 public class DeletePersonajeController extends BasePantallaController {
-    
+
     private DeletePersonajeViewModel viewModel;
     private final DeletePersonajeUseCase deleteUseCase;
     private final GetAllPersonajesUseCase allUseCase;
@@ -46,10 +47,10 @@ public class DeletePersonajeController extends BasePantallaController {
     }
 
     private void rellena(DeletePersonajeState state) {
-        idPersonajeCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nombrePersonajeCol.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        razaPersonajeCol.setCellValueFactory(new PropertyValueFactory<>("raza"));
-        planetaResPersonajeCol.setCellValueFactory(new PropertyValueFactory<>("planetaRes"));
+        idPersonajeCol.setCellValueFactory(new PropertyValueFactory<>(ConstantesUi.ID));
+        nombrePersonajeCol.setCellValueFactory(new PropertyValueFactory<>(ConstantesUi.NOMBRE));
+        razaPersonajeCol.setCellValueFactory(new PropertyValueFactory<>(ConstantesUi.RAZA));
+        planetaResPersonajeCol.setCellValueFactory(new PropertyValueFactory<>(ConstantesUi.PLANETA_RES));
         List<Personaje> personajes = state.getPersonajes();
         if (personajes != null) {
             tablaPersonajes.getItems().setAll(personajes);

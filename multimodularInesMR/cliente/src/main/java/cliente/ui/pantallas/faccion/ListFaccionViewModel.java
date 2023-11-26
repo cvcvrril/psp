@@ -1,6 +1,7 @@
 package cliente.ui.pantallas.faccion;
 
 import cliente.domain.usecases.GetAllFaccionesUseCase;
+import cliente.ui.ConstantesUi;
 import domain.errores.ApiError;
 import jakarta.inject.Inject;
 import javafx.beans.property.ObjectProperty;
@@ -27,13 +28,13 @@ public class ListFaccionViewModel {
             getAllFaccionesUseCase.getAllFacciones()
                     .subscribe(res -> {
                             if (res.isLeft()){
-                                _state.setValue(new ListFaccionState(null,new ApiError("Error al obtener las facciones", LocalDateTime.now())));
+                                _state.setValue(new ListFaccionState(null,new ApiError(ConstantesUi.ERROR_AL_OBTENER_LAS_FACCIONES, LocalDateTime.now())));
                             }else {
                                 _state.setValue(new ListFaccionState(res.get(), null));
                             }
 
                             },
-                            error -> log.error("Error al obtener los personajes", error));
+                            error -> log.error(ConstantesUi.ERROR_AL_OBTENER_LAS_FACCIONES, error));
 
 
         } catch (Exception e) {

@@ -9,6 +9,7 @@ import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import jakarta.ws.rs.BadRequestException;
 import lombok.extern.log4j.Log4j2;
 import servidor.dao.DaoRegistro;
+import servidor.domain.ConstantesDomain;
 import servidor.domain.modelo.excepciones.BadArgumentException;
 
 @Log4j2
@@ -36,13 +37,13 @@ public class ServicioRegistro {
 
     private void validPass(String pass){
         if (pass.length() < 4){
-            throw new BadArgumentException("La contraseña debe de contener más de 4 carácteres");
+            throw new BadArgumentException(ConstantesDomain.LA_CONTRASENA_DEBE_DE_CONTENER_MAS_DE_4_CARACTERES);
         }
     }
 
     private void validUser(String user){
         if (!Character.isUpperCase(user.charAt(0))){
-            throw new BadArgumentException("El usuario debe de empezar por mayúscula");
+            throw new BadArgumentException(ConstantesDomain.EL_USUARIO_DEBE_DE_EMPEZAR_POR_MAYUSCULA);
         }
     }
 

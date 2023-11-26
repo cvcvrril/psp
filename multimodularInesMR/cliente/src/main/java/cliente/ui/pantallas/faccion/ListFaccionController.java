@@ -1,6 +1,7 @@
 package cliente.ui.pantallas.faccion;
 
 import cliente.domain.usecases.GetAllFaccionesUseCase;
+import cliente.ui.ConstantesUi;
 import cliente.ui.pantallas.common.BasePantallaController;
 import domain.modelo.Faccion;
 import jakarta.inject.Inject;
@@ -40,16 +41,16 @@ public class ListFaccionController extends BasePantallaController {
     }
 
     private void rellena(ListFaccionState state) {
-        idFaccion.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nombreFaccion.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        idFaccion.setCellValueFactory(new PropertyValueFactory<>(ConstantesUi.ID));
+        nombreFaccion.setCellValueFactory(new PropertyValueFactory<>(ConstantesUi.NOMBRE));
         List<Faccion> facciones = state.getFacciones();
         if (facciones != null) {
             tablaFaccion.getItems().setAll(facciones);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("La lista de facciones está vacía");
-            alert.getDialogPane().setId("alert");
-            alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
+            alert.setContentText(ConstantesUi.LA_LISTA_DE_FACCIONES_ESTÁ_VACÍA);
+            alert.getDialogPane().setId(ConstantesUi.ALERT);
+            alert.getDialogPane().lookupButton(ButtonType.OK).setId(ConstantesUi.BTN_OK);
             alert.showAndWait();
         }
     }

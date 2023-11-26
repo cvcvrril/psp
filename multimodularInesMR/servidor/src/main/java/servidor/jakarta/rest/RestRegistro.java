@@ -10,9 +10,10 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import lombok.extern.log4j.Log4j2;
 import servidor.domain.servicios.ServicioRegistro;
+import servidor.jakarta.ConstantsJakarta;
 
 @Log4j2
-@Path("/usuario")
+@Path(ConstantsJakarta.ROOT_USUARIO)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestRegistro {

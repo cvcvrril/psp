@@ -7,6 +7,7 @@ import jakarta.inject.Inject;
 import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import lombok.extern.log4j.Log4j2;
 import servidor.dao.DaoLogin;
+import servidor.domain.ConstantesDomain;
 
 import java.time.LocalDateTime;
 
@@ -33,11 +34,11 @@ public class ServicioLogin {
             if(hasheoPass.verify(pass.toCharArray(), user.getPassword())){
                 res = Either.right(user);
             } else {
-                res = Either.left(new ApiError("Contraseña incorrecta", LocalDateTime.now()));
+                res = Either.left(new ApiError(ConstantesDomain.CONTRASEÑA_INCORRECTA, LocalDateTime.now()));
             }
         }catch (Exception e){
             log.error(e.getMessage(),e);
-            res = Either.left(new ApiError("Error al iniciar sesión", LocalDateTime.now()));
+            res = Either.left(new ApiError(ConstantesDomain.ERROR_AL_INICIAR_SESIÓN, LocalDateTime.now()));
         }
         return res;
     }

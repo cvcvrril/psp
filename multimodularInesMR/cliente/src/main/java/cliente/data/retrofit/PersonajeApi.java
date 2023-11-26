@@ -1,5 +1,6 @@
 package cliente.data.retrofit;
 
+import cliente.data.ConstantesData;
 import domain.modelo.Personaje;
 import io.reactivex.rxjava3.core.Single;
 import retrofit2.Response;
@@ -9,21 +10,21 @@ import java.util.List;
 
 public interface PersonajeApi {
 
-    @GET("personaje")
+    @GET(ConstantesData.PERSONAJE)
     Single<List<Personaje>> getPersonajes();
 
-    @GET("personaje/{id}")
-    Single<Personaje> getPersonajeById(@Path("id") int id);
+    @GET(ConstantesData.PERSONAJE_ID)
+    Single<Personaje> getPersonajeById(@Path(ConstantesData.ID) int id);
 
-    @POST("personaje")
+    @POST(ConstantesData.PERSONAJE)
     Single<Personaje> addPersonaje(@Body Personaje personaje);
 
-    @PUT("personaje")
+    @PUT(ConstantesData.PERSONAJE)
     Single<Personaje> updatePersonaje(@Body Personaje personaje);
 
-    @DELETE("personaje/{id}")
-    Single<Response<Void>> deletePersonaje(@Path("id") int id);
+    @DELETE(ConstantesData.PERSONAJE_ID)
+    Single<Response<Void>> deletePersonaje(@Path(ConstantesData.ID) int id);
 
-    @DELETE("personaje/delete-multiple/{idFaccion}")
-    Single<Response<Void>> deletePersonajePorFaccion(@Path("idFaccion")int idFaccion);
+    @DELETE(ConstantesData.PERSONAJE_DELETE_MULTIPLE)
+    Single<Response<Void>> deletePersonajePorFaccion(@Path(ConstantesData.ID_FACCION)int idFaccion);
 }

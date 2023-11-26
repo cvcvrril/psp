@@ -5,6 +5,7 @@ import domain.modelo.Usuario;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
+import servidor.common.SqlQueries;
 import servidor.dao.ConstantsDao;
 import servidor.dao.DaoLogin;
 import servidor.dao.DbConnectionPool;
@@ -33,7 +34,7 @@ public class DaoLoginImp implements DaoLogin {
         List<Usuario> usuarioList;
         Either<ApiError, Usuario> res;
         try (Connection myConnection = db.getConnection()){
-            PreparedStatement pstmt = myConnection.prepareStatement("select * from credenciales where usuario=?");
+            PreparedStatement pstmt = myConnection.prepareStatement(SqlQueries.SELECT_FROM_CREDENCIALES_WHERE_USUARIO);
             pstmt.setString(1, usuario);
             ResultSet rs = pstmt.executeQuery();
             usuarioList = readRS(rs);
@@ -53,9 +54,9 @@ public class DaoLoginImp implements DaoLogin {
         try {
             List<Usuario> usuarioList = new ArrayList<>();
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String username = rs.getString("usuario");
-                String password = rs.getString("pass");
+                int id = rs.getInt(ConstantsDao.ID);
+                String username = rs.getString(ConstantsDao.USUARIO);
+                String password = rs.getString(ConstantsDao.PASS);
                 usuarioList.add(new Usuario(id, username, password));
             }
             return usuarioList;

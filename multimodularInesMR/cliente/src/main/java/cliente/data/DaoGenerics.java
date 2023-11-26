@@ -36,7 +36,7 @@ abstract class DaoGenerics {
                 resultado = Either.left(new ErrorC(response.errorBody().toString()));
             }
         } catch (Exception e) {
-            resultado = Either.left(new ErrorC("Error de comunicacion"));
+            resultado = Either.left(new ErrorC(ConstantesData.ERROR_DE_COMUNICACION));
 
         }
 
@@ -60,7 +60,7 @@ abstract class DaoGenerics {
                         Response<?> response = httpException.response();
 
                         if (response != null && response.errorBody() != null) {
-                            if (Objects.equals(response.errorBody().contentType(), MediaType.get("application/json"))) {
+                            if (Objects.equals(response.errorBody().contentType(), MediaType.get(ConstantesData.CONTENT_TYPE))) {
                                 ApiError api = gson.fromJson(response.errorBody().charStream(), ApiError.class);
                                 error = Either.left(new ErrorC(api.getMensaje()));
                             } else {
@@ -78,7 +78,7 @@ abstract class DaoGenerics {
 
     public Single<Either<ErrorC, String>> safeSingleVoidApicall(Single<Response<Void>> call) {
         return call.map(response -> {
-                    var retorno = Either.right("OK").mapLeft(o -> (ErrorC) o);
+                    var retorno = Either.right(ConstantesData.OK).mapLeft(o -> (ErrorC) o);
                     if (!response.isSuccessful()) {
                         retorno = Either.left(new ErrorC(response.message()));
                     }

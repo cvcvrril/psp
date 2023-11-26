@@ -1,4 +1,5 @@
 package cliente.ui.pantallas.welcome;
+import cliente.ui.ConstantesUi;
 import cliente.ui.pantallas.common.BasePantallaController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -12,7 +13,7 @@ public class WelcomeController extends BasePantallaController {
 
     @Override
     public void principalCargado(){
-        welcomeText.setText("Bienvenido");
+        welcomeText.setText(ConstantesUi.BIENVENIDO);
     }
 
 }

@@ -1,6 +1,7 @@
 package cliente.ui.pantallas.raza;
 
 import cliente.domain.usecases.GetAllRazasUseCase;
+import cliente.ui.ConstantesUi;
 import cliente.ui.pantallas.common.BasePantallaController;
 import domain.modelo.Raza;
 import jakarta.inject.Inject;
@@ -44,17 +45,17 @@ public class ListRazaController extends BasePantallaController {
     }
 
     private void rellena(ListRazaState state){
-        idRaza.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nombreRaza.setCellValueFactory(new PropertyValueFactory<>("nombreRaza"));
-        planetaOrigenRaza.setCellValueFactory(new PropertyValueFactory<>("planetaOrigen"));
+        idRaza.setCellValueFactory(new PropertyValueFactory<>(ConstantesUi.ID));
+        nombreRaza.setCellValueFactory(new PropertyValueFactory<>(ConstantesUi.NOMBRE_RAZA));
+        planetaOrigenRaza.setCellValueFactory(new PropertyValueFactory<>(ConstantesUi.PLANETA_ORIGEN));
         List<Raza> razas = state.getRazas();
         if (razas!=null){
             tablaRazas.getItems().setAll(razas);
         }else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("La lista de razas está vacía");
-            alert.getDialogPane().setId("alert");
-            alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
+            alert.setContentText(ConstantesUi.LA_LISTA_DE_RAZAS_ESTÁ_VACÍA);
+            alert.getDialogPane().setId(ConstantesUi.ALERT);
+            alert.getDialogPane().lookupButton(ButtonType.OK).setId(ConstantesUi.BTN_OK);
             alert.showAndWait();
         }
     }

@@ -8,6 +8,7 @@ import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.Provider;
+import servidor.jakarta.ConstantsJakarta;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -20,9 +21,9 @@ public class FiltroLogin implements ContainerRequestFilter {
     private HttpServletRequest request;
     @Override
     public void filter(ContainerRequestContext containerRequestContext) throws IOException {
-        if (request.getSession().getAttribute("LOGIN")==null){
+        if (request.getSession().getAttribute(ConstantsJakarta.LOGIN)==null){
             containerRequestContext.abortWith(Response.status(Response.Status.FORBIDDEN)
-                    .entity(ApiError.builder().mensaje("error de filtro").fecha(LocalDateTime.now()).build())
+                    .entity(ApiError.builder().mensaje(ConstantsJakarta.ERROR_DE_FILTRO).fecha(LocalDateTime.now()).build())
                     .type(MediaType.APPLICATION_JSON_TYPE).build());
         }
     }

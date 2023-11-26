@@ -3,6 +3,7 @@ package cliente.ui.pantallas.faccion;
 
 import cliente.domain.usecases.DeletePersonajePorFaccionUseCase;
 import cliente.domain.usecases.GetAllFaccionesUseCase;
+import cliente.ui.ConstantesUi;
 import domain.errores.ApiError;
 import jakarta.inject.Inject;
 import javafx.beans.property.ObjectProperty;
@@ -31,12 +32,12 @@ public class DeletePersonajePorFaccionViewModel {
             getAllFaccionesUseCase.getAllFacciones()
                     .subscribe(res -> {
                                 if (res.isLeft()) {
-                                    _state.setValue(new DeletePersonajePorFaccionState(null, new ApiError("Error al obtener los personajes", LocalDateTime.now()), null));
+                                    _state.setValue(new DeletePersonajePorFaccionState(null, new ApiError(ConstantesUi.ERROR_AL_OBTENER_LAS_FACCIONES, LocalDateTime.now()), null));
                                 } else {
                                     _state.setValue(new DeletePersonajePorFaccionState(null, null, res.get()));
                                 }
                             },
-                            error -> log.error("Error al obtener las facciones", error));
+                            error -> log.error(ConstantesUi.ERROR_AL_OBTENER_LAS_FACCIONES, error));
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
@@ -46,11 +47,11 @@ public class DeletePersonajePorFaccionViewModel {
         deletePersonajePorFaccionUseCase.deletePersonajePorFaccion(idFaccion)
                 .subscribe(res -> {
                     if (res.isLeft()) {
-                        _state.setValue(new DeletePersonajePorFaccionState(null, new ApiError("Error al eliminar los personajes", LocalDateTime.now()), null));
+                        _state.setValue(new DeletePersonajePorFaccionState(null, new ApiError(ConstantesUi.ERROR_AL_ELIMINAR_EL_PERSONAJE, LocalDateTime.now()), null));
                     } else {
                         loadAllFacciones();
                     }
-                }, error -> log.error("Error al eliminar el personaje", error));
+                }, error -> log.error(ConstantesUi.ERROR_AL_ELIMINAR_EL_PERSONAJE, error));
 
     }
 
