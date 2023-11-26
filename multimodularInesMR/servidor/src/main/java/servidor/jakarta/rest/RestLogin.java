@@ -3,7 +3,9 @@ package servidor.jakarta.rest;
 
 import domain.modelo.Usuario;
 import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import servidor.domain.servicios.ServicioLogin;
 
@@ -13,6 +15,8 @@ import servidor.domain.servicios.ServicioLogin;
 public class RestLogin {
 
     private final ServicioLogin servicioLogin;
+    @Context
+    private HttpServletRequest request;
 
     @Inject
     public RestLogin(ServicioLogin servicioLogin) {
@@ -22,6 +26,7 @@ public class RestLogin {
     @GET
     public Usuario getLogin(@QueryParam("usuario") String usuario, @QueryParam("pass") String pass){
         Usuario usuarioLogin = servicioLogin.login(usuario, pass).get();
+        request.getSession().setAttribute("LOGIN", true);
         return usuarioLogin;
     }
 

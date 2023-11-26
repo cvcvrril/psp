@@ -216,3 +216,7 @@ d
 4servidor/src/main/java/servidor/dao/DaoRegistro.java,d\2\d29f41024be62704df0bbe84a90f4791c6733d53
 v
 Fservidor/src/main/java/servidor/dao/implementacion/DaoRegistroImp.java,7\b\7bcde818ad0cfdd3ae7b8dd456ea8bf82e1ac9e5
+k
+;servidor/src/main/java/servidor/jakarta/filtros/Secure.java,9\3\9310d37f3f8050124f5d17e18a1537ae78c2eb8d
+p
+@servidor/src/main/java/servidor/jakarta/filtros/FiltroLogin.java,9\6\967e7ed54370aea89a18364f79bdb6b671b867da
