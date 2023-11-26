@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="cliente.ui.pantallas.personaje.DeletePersonajeController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cliente.ui.pantallas.personaje.DeletePersonajeController">
+   <children>
+      <TableView fx:id="tablaPersonajes" layoutX="44.0" layoutY="84.0" prefHeight="200.0" prefWidth="353.0">
+        <columns>
+          <TableColumn fx:id="idPersonajeCol" prefWidth="45.33333969116211" text="id" />
+          <TableColumn fx:id="nombrePersonajeCol" prefWidth="105.3333511352539" text="Nombre" />
+            <TableColumn fx:id="razaPersonajeCol" prefWidth="47.333343505859375" text="Raza" />
+            <TableColumn fx:id="planetaResPersonajeCol" prefWidth="153.3332977294922" text="Planeta residencia" />
+        </columns>
+      </TableView>
+      <Button fx:id="eliminarButton" layoutX="95.0" layoutY="319.0" mnemonicParsing="false" text="Eliminar" onAction="#delete" />
+      <Label layoutX="44.0" layoutY="31.0" text="Eliminar personaje">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
