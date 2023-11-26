@@ -34,11 +34,17 @@ public class ServicioPersonaje {
             log.error(e.getMessage(),e);
             throw new BadArgumentException(ConstantsDao.BAD_ARGUMENT_EXCEPTION);
         }
-
     }
 
     public Either<ApiError, Integer> add(Personaje nuevoPersonaje){
+        validPersonaje(nuevoPersonaje.getNombre());
         return daoPersonaje.add(nuevoPersonaje);
+    }
+
+    private void validPersonaje(String nombrePersonaje){
+        if (!Character.isUpperCase(nombrePersonaje.charAt(0))){
+            throw new BadArgumentException("El nombre del personaje debe de empezar por mayúscula");
+        }
     }
 
     public Either<ApiError, Integer> update(Personaje actualizadoPersonaje){

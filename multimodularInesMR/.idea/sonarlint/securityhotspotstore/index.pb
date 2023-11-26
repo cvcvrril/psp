@@ -238,3 +238,11 @@ l
 0cliente/src/main/java/cliente/data/DaoLogin.java,e\3\e3f45c9807c2cd24be86ec2832f0fcdccdbb095c
 c
 3cliente/src/main/java/cliente/data/DaoRegistro.java,8\a\8a0cfa24954eb884c3d02128c57bd7983ef482f3
+‹
+[cliente/src/main/java/cliente/ui/pantallas/faccion/DeletePersonajePorFaccionController.java,f\0\f087556db4b1562b7b7abc7f7f7eb9fc4f346762
+†
+Vcliente/src/main/java/cliente/ui/pantallas/faccion/DeletePersonajePorFaccionState.java,b\b\bbca4a84a3fd8965f73deec14a3180b6a0d9c56d
+Š
+Zcliente/src/main/java/cliente/ui/pantallas/faccion/DeletePersonajePorFaccionViewModel.java,4\4\44a7f4a5ae25805a5d63de158591889cfb8f8bba
+ƒ
+Scliente/src/main/java/cliente/domain/usecases/DeletePersonajePorFaccionUseCase.java,0\4\044423c31dde4bc854c24b33e496cbe9599c1fe8
