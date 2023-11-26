@@ -44,7 +44,7 @@ public class ServicioPersonaje {
 
     private void validPersonaje(String nombrePersonaje){
         if (!Character.isUpperCase(nombrePersonaje.charAt(0))){
-            throw new BadArgumentException(ConstantesDomain.EL_NOMBRE_DEL_PERSONAJE_DEBE_DE_EMPEZAR_POR_MAYÚSCULA);
+            throw new BadArgumentException(ConstantesDomain.EL_NOMBRE_DEL_PERSONAJE_DEBE_DE_EMPEZAR_POR_MAYUSCULA);
         }
     }
 

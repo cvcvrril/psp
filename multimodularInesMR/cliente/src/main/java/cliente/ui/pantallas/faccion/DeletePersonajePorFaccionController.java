@@ -34,6 +34,7 @@ public class DeletePersonajePorFaccionController extends BasePantallaController 
         this.allUseCase = allUseCase;
     }
 
+    @Override
     public void principalCargado() {
         viewModel = new DeletePersonajePorFaccionViewModel(allUseCase, deleteUseCase);
         viewModel.loadAllFacciones();

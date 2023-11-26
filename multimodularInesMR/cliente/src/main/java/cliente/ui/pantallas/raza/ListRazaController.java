@@ -53,7 +53,7 @@ public class ListRazaController extends BasePantallaController {
             tablaRazas.getItems().setAll(razas);
         }else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText(ConstantesUi.LA_LISTA_DE_RAZAS_ESTÁ_VACÍA);
+            alert.setContentText(ConstantesUi.LA_LISTA_DE_RAZAS_ESTA_VACIA);
             alert.getDialogPane().setId(ConstantesUi.ALERT);
             alert.getDialogPane().lookupButton(ButtonType.OK).setId(ConstantesUi.BTN_OK);
             alert.showAndWait();

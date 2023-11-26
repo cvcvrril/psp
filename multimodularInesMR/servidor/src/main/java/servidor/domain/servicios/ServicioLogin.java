@@ -34,11 +34,11 @@ public class ServicioLogin {
             if(hasheoPass.verify(pass.toCharArray(), user.getPassword())){
                 res = Either.right(user);
             } else {
-                res = Either.left(new ApiError(ConstantesDomain.CONTRASEÑA_INCORRECTA, LocalDateTime.now()));
+                res = Either.left(new ApiError(ConstantesDomain.CONTRASENA_INCORRECTA, LocalDateTime.now()));
             }
         }catch (Exception e){
             log.error(e.getMessage(),e);
-            res = Either.left(new ApiError(ConstantesDomain.ERROR_AL_INICIAR_SESIÓN, LocalDateTime.now()));
+            res = Either.left(new ApiError(ConstantesDomain.ERROR_AL_INICIAR_SESION, LocalDateTime.now()));
         }
         return res;
     }

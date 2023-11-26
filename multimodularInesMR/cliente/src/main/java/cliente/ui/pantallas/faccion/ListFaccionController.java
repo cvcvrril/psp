@@ -48,7 +48,7 @@ public class ListFaccionController extends BasePantallaController {
             tablaFaccion.getItems().setAll(facciones);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText(ConstantesUi.LA_LISTA_DE_FACCIONES_ESTÁ_VACÍA);
+            alert.setContentText(ConstantesUi.LA_LISTA_DE_FACCIONES_ESTÁ_VACIA);
             alert.getDialogPane().setId(ConstantesUi.ALERT);
             alert.getDialogPane().lookupButton(ButtonType.OK).setId(ConstantesUi.BTN_OK);
             alert.showAndWait();

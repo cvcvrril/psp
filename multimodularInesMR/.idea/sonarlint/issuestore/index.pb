@@ -252,3 +252,7 @@ b
 2cliente/src/main/java/cliente/ui/ConstantesUi.java,4\b\4b52b3d1b1f4393941aaaefd45c1a17fa3262ddf
 l
 <servidor/src/main/java/servidor/domain/ConstantesDomain.java,6\9\69517da8417c4ed7795349e6308debf94d39ed98
+`
+0cliente/src/main/resources/fxml/login/login.fxml,5\3\53b2088d9471d541bf6562f0452f1368cd16abad
+u
+Ecliente/src/main/resources/fxml/faccion/delete_personaje_faccion.fxml,f\2\f2d1ec19884184d2788b51cb040d6d2efa6ef3fa

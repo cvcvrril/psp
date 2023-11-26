@@ -44,8 +44,6 @@ abstract class DaoGenerics {
     }
 
 
-    //TODO: USAR EN TODAS MENOS EN DELETE
-
     public <T> Single<Either<ErrorC, T>> safeSingleApicall(Single<T> call) {
         return call.map(t -> Either.right(t).mapLeft(o -> (ErrorC) o))
 
@@ -73,8 +71,6 @@ abstract class DaoGenerics {
                 });
 
     }
-
-    //TODO: USAR ESTE SOLO PARA EL DELETE Y LOGIN
 
     public Single<Either<ErrorC, String>> safeSingleVoidApicall(Single<Response<Void>> call) {
         return call.map(response -> {
