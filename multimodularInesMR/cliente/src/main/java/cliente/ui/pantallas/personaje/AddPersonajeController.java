@@ -40,9 +40,11 @@ public class AddPersonajeController extends BasePantallaController {
         String planetaResidencia = planetaResidenciaField.getText();
         String razaId = razaIdField.getText();
         Integer razaIdInt = Integer.parseInt(razaId);
-
         Personaje personaje = new Personaje(0, nombre, razaIdInt, planetaResidencia, new ArrayList<>());
         viewModel.addPersonaje(personaje);
+        nombreField.clear();
+        planetaResidenciaField.clear();
+        razaIdField.clear();
     }
 
 

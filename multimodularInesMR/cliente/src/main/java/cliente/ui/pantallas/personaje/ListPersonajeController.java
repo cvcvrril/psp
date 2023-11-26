@@ -71,7 +71,7 @@ public class ListPersonajeController extends BasePantallaController {
                     if (facciones != null && !facciones.isEmpty()) {
                         tablaFacciones.getItems().setAll(facciones);
                     } else {
-                        tablaFacciones.getItems().clear(); 
+                        tablaFacciones.getItems().clear();
                     }
                 }
             });

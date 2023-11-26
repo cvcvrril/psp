@@ -138,3 +138,7 @@ z
 Jcliente/src/main/java/cliente/domain/usecases/GetPersonajeByIdUseCase.java,2\a\2a5cdc869f0add833ff7de369ae2244ab819f7a5
 i
 9servidor/src/main/java/servidor/common/Configuration.java,e\0\e0174a42f33f5eebf1ec727c849a609b1e9735db
+‚
+Rcliente/src/main/java/cliente/ui/pantallas/personaje/DeletePersonajeViewModel.java,8\b\8bff516aaccd5a14556cebd59ffc2d61fb8d06fd
+~
+Ncliente/src/main/java/cliente/ui/pantallas/personaje/DeletePersonajeState.java,7\6\7696c264eed49fb402265454d95626b9f24ef61d
