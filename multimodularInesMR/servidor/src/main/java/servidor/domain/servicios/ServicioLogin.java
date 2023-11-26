@@ -14,13 +14,12 @@ import java.time.LocalDateTime;
 public class ServicioLogin {
 
     private final DaoLogin daoLogin;
-    //private final Pbkdf2PasswordHash hasheoPass;
+    private final Pbkdf2PasswordHash hasheoPass;
 
     @Inject
-    //public ServicioLogin(DaoLogin daoLogin, Pbkdf2PasswordHash hasheoPass) {
-    public ServicioLogin(DaoLogin daoLogin) {
+    public ServicioLogin(DaoLogin daoLogin, Pbkdf2PasswordHash hasheoPass) {
         this.daoLogin = daoLogin;
-        //this.hasheoPass = hasheoPass;
+        this.hasheoPass = hasheoPass;
     }
 
     public Either<ApiError, Usuario> check(String usuario){
@@ -31,7 +30,7 @@ public class ServicioLogin {
         Either<ApiError, Usuario> res;
         Usuario user = check(usuario).get();
         try {
-            if (pass.equals(daoLogin.check(usuario).get().getPassword())){
+            if(hasheoPass.verify(pass.toCharArray(), user.getPassword())){
                 res = Either.right(user);
             } else {
                 res = Either.left(new ApiError("Contraseña incorrecta", LocalDateTime.now()));
