@@ -2,7 +2,6 @@ package servidor.jakarta.rest;
 
 
 import domain.modelo.Faccion;
-import domain.modelo.Raza;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;

@@ -2,11 +2,9 @@ package cliente.ui.pantallas.personaje;
 
 import cliente.domain.usecases.GetAllPersonajesUseCase;
 import cliente.ui.pantallas.common.BasePantallaController;
-import cliente.ui.pantallas.principal.PrincipalController;
 import domain.modelo.Faccion;
 import domain.modelo.Personaje;
 import jakarta.inject.Inject;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -50,9 +48,8 @@ public class ListPersonajeController extends BasePantallaController {
     public void principalCargado(){
         viewModel = new ListPersonajeViewModel(useCase);
         viewModel.loadPersonajes();
-        viewModel.getState().addListener((observable, oldValue, newValue) -> {
-            rellena(newValue);
-        });
+        viewModel.getState().addListener((observable, oldValue, newValue) ->
+            rellena(newValue));
     }
 
     private void rellena(ListPersonajeState state){

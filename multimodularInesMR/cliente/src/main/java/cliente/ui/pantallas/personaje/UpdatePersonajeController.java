@@ -47,9 +47,8 @@ public class UpdatePersonajeController extends BasePantallaController {
     public void principalCargado(){
         viewModel = new UpdatePersonajeViewModel(useCaseGet, useCaseAll, useCaseUpdate);
         viewModel.loadAllPersonajes();
-        viewModel.getState().addListener((observable, oldValue, newValue) -> {
-            rellena(newValue);
-        });
+        viewModel.getState().addListener((observable, oldValue, newValue) ->
+            rellena(newValue));
         actualizar();
         tablaPersonaje.setOnMouseClicked(event -> {
             Personaje personajeSeleccionado = tablaPersonaje.getSelectionModel().getSelectedItem();

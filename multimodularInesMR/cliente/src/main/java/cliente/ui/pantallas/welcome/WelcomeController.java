@@ -10,6 +10,7 @@ public class WelcomeController extends BasePantallaController {
     @FXML
     private Label welcomeText;
 
+    @Override
     public void principalCargado(){
         welcomeText.setText("Bienvenido");
     }

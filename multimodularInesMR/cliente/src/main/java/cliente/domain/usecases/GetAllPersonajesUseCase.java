@@ -2,7 +2,6 @@ package cliente.domain.usecases;
 
 import cliente.data.DaoPersonaje;
 import cliente.domain.errores.ErrorC;
-import domain.errores.ApiError;
 import domain.modelo.Personaje;
 import io.reactivex.rxjava3.core.Single;
 import io.vavr.control.Either;
