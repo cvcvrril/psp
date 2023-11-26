@@ -40,4 +40,8 @@ public class DaoPersonaje extends DaoGenerics{
         return safeSingleVoidApicall(personajeApi.deletePersonaje(id));
     }
 
+    public Single<Either<ErrorC, String>> deletePersonajePorFaccion(int idFaccion){
+        return safeSingleVoidApicall(personajeApi.deletePersonajePorFaccion(idFaccion));
+    }
+
 }

@@ -25,5 +25,5 @@ public interface PersonajeApi {
     Single<Response<Void>> deletePersonaje(@Path("id") int id);
 
     @DELETE("personaje/delete-multiple/{idFaccion}")
-    Single<Response<Void>> deletePersonajePorFaccion(@Path("idFaccion")String idFaccion);
+    Single<Response<Void>> deletePersonajePorFaccion(@Path("idFaccion")int idFaccion);
 }

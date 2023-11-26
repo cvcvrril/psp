@@ -170,6 +170,9 @@ public class PrincipalController extends BasePantallaController {
             case "menuListaFaccion":
                 cargarPantalla(Pantallas.LISTA_FACCION);
                 break;
+            case "menuDeletePersonajeFaccion":
+                cargarPantalla(Pantallas.DELETE_PERSONAJE_FACCION);
+                break;
         }
     }
 }

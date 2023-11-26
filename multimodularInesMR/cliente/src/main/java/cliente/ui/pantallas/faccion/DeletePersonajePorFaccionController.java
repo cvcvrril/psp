@@ -1,11 +1,23 @@
 package cliente.ui.pantallas.faccion;
 
+import cliente.domain.usecases.DeletePersonajePorFaccionUseCase;
+import cliente.domain.usecases.GetAllFaccionesUseCase;
+import cliente.ui.pantallas.common.BasePantallaController;
 import domain.modelo.Faccion;
+import jakarta.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-public class DeletePersonajePorFaccionController {
+import java.util.List;
+
+public class DeletePersonajePorFaccionController extends BasePantallaController {
+
+    private DeletePersonajePorFaccionViewModel viewModel;
+    private final DeletePersonajePorFaccionUseCase deleteUseCase;
+    private final GetAllFaccionesUseCase allUseCase;
+
 
     @FXML
     private TableView<Faccion> tablaFacciones;
@@ -14,6 +26,27 @@ public class DeletePersonajePorFaccionController {
     @FXML
     private TableColumn<Faccion, String> nombreFaccionCol;
 
-    
+    @Inject
+    public DeletePersonajePorFaccionController(DeletePersonajePorFaccionViewModel viewModel, DeletePersonajePorFaccionUseCase deleteUseCase, GetAllFaccionesUseCase allUseCase) {
+        this.viewModel = viewModel;
+        this.deleteUseCase = deleteUseCase;
+        this.allUseCase = allUseCase;
+    }
 
+    public void principalCargado() {
+        viewModel = new DeletePersonajePorFaccionViewModel(allUseCase, deleteUseCase);
+        viewModel.loadAllFacciones();
+        viewModel.getState().addListener((observable, oldValue, newValue) ->
+                rellena(newValue));
+
+    }
+
+    private void rellena(DeletePersonajePorFaccionState state) {
+        idFaccionCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nombreFaccionCol.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        List<Faccion> facciones = state.getFacciones();
+        if (facciones != null) {
+            tablaFacciones.getItems().setAll(facciones);
+        }
+    }
 }
