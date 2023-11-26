@@ -12,6 +12,9 @@ public interface PersonajeApi {
     @GET("personaje")
     Single<List<Personaje>> getPersonajes();
 
+    @GET("personaje/{id}")
+    Single<Personaje> getPersonajeById(@Path("id") int id);
+
     @POST("personaje")
     Single<Personaje> addPersonaje(@Body Personaje personaje);
 

@@ -134,3 +134,5 @@ Scliente/src/main/java/cliente/ui/pantallas/personaje/DeletePersonajeController.
 Ncliente/src/main/java/cliente/ui/pantallas/personaje/UpdatePersonajeState.java,e\2\e2c44b0ee6c775864a8a8f863583f0a254de475a
 ‚
 Rcliente/src/main/java/cliente/ui/pantallas/personaje/UpdatePersonajeViewModel.java,a\d\ad46e00d2721dd9c6737fa99adac67ac3cd294ac
+z
+Jcliente/src/main/java/cliente/domain/usecases/GetPersonajeByIdUseCase.java,2\a\2a5cdc869f0add833ff7de369ae2244ab819f7a5

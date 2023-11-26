@@ -6,10 +6,12 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cliente.ui.pantallas.personaje.UpdatePersonajeController">
    <children>
-      <TableView layoutX="276.0" layoutY="107.0" prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="tablaPersonaje" layoutX="239.0" layoutY="107.0" prefHeight="200.0" prefWidth="354.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="idPersonajeCol" prefWidth="43.33332824707031" text="id" />
+          <TableColumn fx:id="nombrePersonajeCol" prefWidth="118.66665649414062" text="Nombre" />
+            <TableColumn fx:id="razaPersonajeCol" prefWidth="50.0" text="Raza" />
+            <TableColumn fx:id="planetaResPersonajeCol" prefWidth="137.66671752929688" text="Planeta residencia" />
         </columns>
       </TableView>
       <Label layoutX="50.0" layoutY="34.0" text="Actualizar personaje">
@@ -17,7 +19,8 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <TextField layoutX="69.0" layoutY="117.0" promptText="Nombre" />
-      <TextField layoutX="69.0" layoutY="168.0" promptText="Planeta residencia" />
+      <TextField fx:id="nombreField" layoutX="69.0" layoutY="117.0" promptText="Nombre" />
+      <TextField fx:id="planetaResidenciaField" layoutX="69.0" layoutY="168.0" promptText="Planeta residencia" />
+      <Button fx:id="actualizarButton" layoutX="118.0" layoutY="234.0" mnemonicParsing="false" text="Actualizar" />
    </children>
 </AnchorPane>

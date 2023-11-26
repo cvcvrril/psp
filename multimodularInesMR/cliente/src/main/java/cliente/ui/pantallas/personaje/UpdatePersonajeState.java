@@ -8,4 +8,5 @@ public class UpdatePersonajeState {
 
     private final ApiError error;
 
+
 }
