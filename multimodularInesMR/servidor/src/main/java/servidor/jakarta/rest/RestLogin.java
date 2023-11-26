@@ -3,10 +3,7 @@ package servidor.jakarta.rest;
 
 import domain.modelo.Usuario;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import servidor.domain.servicios.ServicioLogin;
 
@@ -23,8 +20,9 @@ public class RestLogin {
     }
 
     @GET
-    public Usuario getLogin(){
-        return servicioLogin.check(getLogin().getUsername()).get();
+    public Usuario getLogin(@QueryParam("usuario") String usuario, @QueryParam("pass") String pass){
+        Usuario usuarioLogin = servicioLogin.login(usuario, pass).get();
+        return usuarioLogin;
     }
 
 }
