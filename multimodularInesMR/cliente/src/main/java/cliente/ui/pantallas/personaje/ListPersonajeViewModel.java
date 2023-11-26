@@ -37,7 +37,6 @@ public class ListPersonajeViewModel {
                                     _state.setValue(new ListPersonajeState(null, new ApiError("Error al obtener los personajes", LocalDateTime.now())));
                                 } else {
                                     _state.setValue(new ListPersonajeState(res.get(), null));
-
                                 }
                             },
                             error -> log.error("Error al obtener los personajes", error));

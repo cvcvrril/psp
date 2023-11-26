@@ -1,8 +1,6 @@
 package cliente.data.network;
 
-import cliente.data.retrofit.FaccionApi;
-import cliente.data.retrofit.PersonajeApi;
-import cliente.data.retrofit.RazaApi;
+import cliente.data.retrofit.*;
 import jakarta.inject.Singleton;
 import com.google.gson.*;
 import jakarta.enterprise.inject.Produces;
@@ -50,14 +48,20 @@ public class ProducesRetrofit {
     public PersonajeApi getPersonajeApi (Retrofit retrofit){
         return retrofit.create(PersonajeApi.class);
     }
-
     @Produces
     public RazaApi getRazaApi (Retrofit retrofit){
         return retrofit.create(RazaApi.class);
     }
-
     @Produces
     public FaccionApi getFaccionApi (Retrofit retrofit){
         return retrofit.create(FaccionApi.class);
+    }
+    @Produces
+    public LoginApi getLoginApi (Retrofit retrofit){
+        return retrofit.create(LoginApi.class);
+    }
+    @Produces
+    public RegistroApi getRegistroApi (Retrofit retrofit){
+        return retrofit.create(RegistroApi.class);
     }
 }
