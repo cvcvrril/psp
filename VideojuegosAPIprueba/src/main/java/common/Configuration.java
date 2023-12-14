@@ -1,5 +1,7 @@
 package common;
 
+import dao.ConstantsDAO;
+import domain.excepciones.BaseCaidaException;
 import jakarta.inject.Singleton;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
@@ -13,12 +15,7 @@ import java.util.Properties;
 public class Configuration {
 
     private Properties ptxt;
-    private Properties pxml;
-    private Properties psql;
 
-    private String pathDataCustomers;
-    private String pathDataOrders;
-    private String pathXMLOrders;
     private String pathSQL;
     private String userSQL;
     private String passSQL;
@@ -34,7 +31,7 @@ public class Configuration {
             this.driver = ptxt.getProperty(ConstantsCommon.DRIVER);
         } catch (IOException e) {
             log.error(e.getMessage(),e);
-            //throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
     }
 }

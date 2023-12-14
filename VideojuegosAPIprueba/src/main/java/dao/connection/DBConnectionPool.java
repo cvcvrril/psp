@@ -4,6 +4,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import common.Configuration;
 import dao.ConstantsDAO;
+import domain.excepciones.BaseCaidaException;
 import jakarta.annotation.PreDestroy;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
@@ -25,7 +26,7 @@ public class DBConnectionPool {
         try {
             Class.forName(ConstantsDAO.COM_MYSQL_CJ_JDBC_DRIVER);
         } catch (ClassNotFoundException e) {
-            //throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
     }
 
@@ -49,7 +50,7 @@ public class DBConnectionPool {
         try {
             con = hikariDataSource.getConnection();
         } catch (SQLException e) {
-            //throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
         return con;
     }
