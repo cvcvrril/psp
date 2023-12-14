@@ -44,8 +44,6 @@ Mcliente/src/main/java/cliente/ui/pantallas/principal/PrincipalController.java,
 ,domain/src/main/java/domain/modelo/Raza.java,6\b\6b63094ddf85e1f6be262dcd47e740893ab593ed
 b
 2cliente/src/main/java/cliente/data/DaoFaccion.java,4\a\4a86e8f390a29cda3760d724fd33dd534683d287
-g
-7cliente/src/main/java/cliente/common/Configuration.java,b\f\bf0c337308b7d236034d0467c6bd05101094cbed
 U
 %domain/src/main/java/module-info.java,3\7\37c8d656d13a8ebd08e65756acf7618a2f0a3c35
 W
@@ -70,8 +68,6 @@ m
 =servidor/src/main/java/servidor/jakarta/rest/RestFaccion.java,4\b\4b57940cffb42baec79d2c824b17f6df06d39e46
 j
 :servidor/src/main/java/servidor/jakarta/rest/RestRaza.java,a\a\aaff6f06617d7737df4239d0a2b0bb3ca959ee1a
-l
-<servidor/src/main/java/servidor/dao/DaoFaccionPersonaje.java,e\e\ee9ac444c8750dfb90c096176097fc0e81f261df
 r
 Bservidor/src/main/java/servidor/dao/implementacion/DaoRazaImp.java,4\0\40c5edabcffab7d8ec2d197d6047651a5c7cf450
 r
@@ -148,8 +144,6 @@ j
 :cliente/src/main/resources/fxml/faccion/lista_faccion.fxml,f\3\f36dea83da5343432d7755b3501550094714bb59
 d
 4cliente/src/main/resources/fxml/raza/lista_raza.fxml,8\7\87080fc9f0205863e51429a01a091fb8eeb246aa
-t
-Dcliente/src/main/java/cliente/ui/pantallas/common/BaseViewModel.java,7\d\7d2a13008b451811bce1aa2fac31aa6651e0aac2
 }
 Mcliente/src/main/java/cliente/ui/pantallas/common/BasePantallaController.java,4\5\450d26daef9b5a794f8b8206d025c9ad68d63aef
 d
@@ -164,8 +158,6 @@ Icliente/src/main/java/cliente/ui/pantallas/welcome/WelcomeController.java,a\d\
 ,cliente/src/main/resources/fxml/welcome.fxml,a\2\a29482b58cb6f0a0c4ef54f4cfc95735731d44fa
 h
 8cliente/src/main/java/cliente/domain/errores/ErrorC.java,2\7\2769877289674ba160ac6be0e5c2ff1977c687c8
-k
-;cliente/src/main/java/cliente/data/DaoFaccionPersonaje.java,c\3\c3146559428379d5af4b069a047d6edfdebe0a5b
 n
 >cliente/src/main/resources/fxml/personaje/lista_personaje.fxml,2\2\2230a3d09e798b24d13c5d3720ce79f9a42e8d58
 ƒ
@@ -184,8 +176,6 @@ i
 9servidor/src/main/java/servidor/dao/DbConnectionPool.java,f\b\fb43476b5803a30c6424b4437ebe0cffe506af82
 k
 ;servidor/src/main/java/servidor/common/ConstantsCommon.java,f\d\fdc51690936de5ad46002236dce2276c2434d1cb
-d
-4cliente/src/main/java/cliente/ui/main/Producers.java,4\a\4ae1fa8446edb86187e82b2d2b2b8cc8ca1d580c
 o
 ?cliente/src/main/resources/fxml/personaje/delete_personaje.fxml,0\4\0456830b0f35314e1520512d40b6ea5bfd9f8c1d
 o
@@ -202,8 +192,6 @@ _
 /domain/src/main/java/domain/modelo/Usuario.java,a\e\ae7fc65f4d90c64e7c5b40ffb3388d5f1fde493f
 a
 1servidor/src/main/java/servidor/dao/DaoLogin.java,4\7\473d0c2305aba481613de877141757b17144c4e3
-p
-@servidor/src/main/java/servidor/dao/implementacion/DaoLogin.java,d\a\da8b867817074cf34999641ba773a3465ad90288
 s
 Cservidor/src/main/java/servidor/dao/implementacion/DaoLoginImp.java,1\7\17d1adfb4a299774791b93a6f10034e2d4c55105
 9
