@@ -20,15 +20,16 @@ public class ServletMail extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         MandarMail mandarMail = new MandarMail();
         try {
-            mandarMail.generateAndSendEmail("ines07mar@gmail.com", "Coño pues sí funciona esto de mandar correos", "Prueba");
+
+            //TODO: A PARTIR DE ESTO ARMAR LO DE LA ACTIVACIÓN (CON EL SERVLET CAMBIAR EL BOOLEANO DE LA TABLA DEL USUARIO)
+
+            mandarMail.generateAndSendEmail("ines07mar@gmail.com", "<html><body><a href=\"http://localhost:8080/VideojuegosAPIprueba-1.0-SNAPSHOT/api/videojuegos/\">Activación</a></body></html>", "Prueba activacion");
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
         request.logout();
         //request.getSession().removeAttribute("USERLOGIN");
         response.setStatus(HttpServletResponse.SC_NO_CONTENT);
-
-
     }
 
     @Override
