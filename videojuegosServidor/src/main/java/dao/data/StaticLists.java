@@ -36,11 +36,11 @@ public class StaticLists {
     //TODO: HASHEAR LA CONTRASEÑA
 
     public static List<Credencial> listaCredenciales = new ArrayList<>(List.of(
-            new Credencial(1, "root", "2dam", "ines07mar@gmail.com", true)
+            new Credencial(1, "root", "PBKDF2WithHmacSHA256:2048:IkYZsBXLSqjTryINcSjkN9+PXLEchrZTuZOAQ/O5Huc=:5HOA5qBfUwIH3ixPKBL4teybX9AtB6k5sqeGlqdFFM0=", "ines07mar@gmail.com", true)
     ));
 
 
-    /*Contraseña usuario root -> 2dam*/
+    /*Contraseña usuario root -> admin*/
 
 
 }

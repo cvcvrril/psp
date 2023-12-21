@@ -43,3 +43,7 @@ W
 0src/main/java/jakarta/rest/RestCredenciales.java,0\0\0033cf37814ce547d85fdbf5dd51e92dc763f147
 [
 +src/main/java/dao/imp/DaoCredencialImp.java,8\b\8b2123ae0565b429241acd26282dc70890efc84d
+T
+$src/main/java/dao/DaoCredencial.java,0\1\0197aa2b5d221ebc84c682597f1d6a7a76ae6285
+T
+$src/main/java/dao/DaoVideojuego.java,2\4\2442fc50860939630084e271438fa87ce79acc1d

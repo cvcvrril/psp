@@ -1,5 +1,6 @@
 package jakarta.excepciones;
 
+import jakarta.json.bind.annotation.JsonbPropertyOrder;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@JsonbPropertyOrder({"message", "fecha"})
 public class ApiError {
 
     private String message;
