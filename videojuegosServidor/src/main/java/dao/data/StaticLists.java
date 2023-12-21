@@ -29,8 +29,8 @@ public class StaticLists {
             new Personaje(6, "Fragile", "", 4),
             new Personaje(7, "Phoenix", "", 6),
             new Personaje(8, "Reyna", "", 6),
-            new Personaje(9, "", "", 1),
-            new Personaje(10, "", "", 1)
+            new Personaje(9, "Layton", "", 8),
+            new Personaje(10, "Luke", "", 8)
     ));
 
     //TODO: HASHEAR LA CONTRASEÑA
