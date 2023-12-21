@@ -6,17 +6,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonbPropertyOrder({"id", "titulo", "descripcion"})
-public class Videojuego {
-
+@JsonbPropertyOrder({"id", "nombre", "descripcion", "idVideojuego"})
+public class Personaje {
     private int id;
-    private String titulo;
+    private String nombre;
     private String descripcion;
+    private int idVideojuego;
 
 
 }
