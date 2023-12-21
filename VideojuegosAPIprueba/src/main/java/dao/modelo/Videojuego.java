@@ -11,12 +11,11 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonbPropertyOrder({"id", "titulo", "fecha", "descripcion"})
+@JsonbPropertyOrder({"id", "titulo", "descripcion"})
 public class Videojuego {
 
     private int id;
     private String titulo;
-    private LocalDateTime fecha;
     private String descripcion;
 
 
