@@ -30,4 +30,9 @@ public class CredencialServicio {
         return false;
     }
 
+    public boolean doRegister (Credencial nuevoCredential){
+        nuevoCredential.setPassword(passwordHash.generate(nuevoCredential.getPassword().toCharArray()));
+        return daoCredencial.addCred(nuevoCredential).get();
+    }
+
 }

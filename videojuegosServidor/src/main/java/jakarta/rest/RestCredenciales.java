@@ -34,4 +34,15 @@ public class RestCredenciales {
                     build();
         }
     }
+
+    @POST
+    public Response doRegister(Credencial credencial){
+        if (servicio.doRegister(credencial)){
+            return Response.status(Response.Status.CREATED)
+                    .entity(credencial).build();
+        }else {
+            return Response.status(Response.Status.CONFLICT)
+                    .entity(new ApiError("The registration couldn't be completed", LocalDateTime.now())).build();
+        }
+    }
 }

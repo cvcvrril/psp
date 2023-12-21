@@ -40,7 +40,7 @@ public class StaticLists {
     ));
 
 
-    /*Contraseña usuario root -> admin*/
+    /*Contraseña usuario root -> Admin [CON PUTO MAYÚSCULAS]*/
 
 
 }

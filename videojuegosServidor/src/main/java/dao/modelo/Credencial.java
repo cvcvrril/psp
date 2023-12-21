@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonbPropertyOrder({"id", "titulo", "descripcion"})
+@JsonbPropertyOrder({"id", "user", "password", "email", "autentificado"})
 public class Credencial {
 
     private int id;
