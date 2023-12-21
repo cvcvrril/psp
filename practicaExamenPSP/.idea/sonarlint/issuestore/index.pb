@@ -3,12 +3,8 @@
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 @
 servidor/pom.xml,f\0\f0784b6bd8e433bbdb1fd1f40fb81f8a7afbdc18
-\
-,servidor/src/main/java/org/example/Main.java,2\f\2f4c1fab61a8b2478b5398780ffc7a114a0c0f25
 >
 domain/pom.xml,8\b\8b11330a6810846535e4b5ba2024ccfcee112862
-Z
-*domain/src/main/java/org/example/Main.java,3\0\30a6e833e8d5c2f5292f31751c288a68fc8cd080
 ?
 cliente/pom.xml,3\9\39b7bb94550bae4f8daf8f661fec48c5523f693b
 [
