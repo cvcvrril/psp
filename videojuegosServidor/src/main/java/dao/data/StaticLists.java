@@ -33,8 +33,6 @@ public class StaticLists {
             new Personaje(10, "Luke", "", 8)
     ));
 
-    //TODO: HASHEAR LA CONTRASEÑA
-
     public static List<Credencial> listaCredenciales = new ArrayList<>(List.of(
             new Credencial("root", "PBKDF2WithHmacSHA256:2048:IkYZsBXLSqjTryINcSjkN9+PXLEchrZTuZOAQ/O5Huc=:5HOA5qBfUwIH3ixPKBL4teybX9AtB6k5sqeGlqdFFM0=", "ines07mar@gmail.com", false)
     ));

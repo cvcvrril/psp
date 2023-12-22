@@ -3,8 +3,6 @@ package domain.servicios;
 import dao.DaoCredencial;
 import dao.modelo.Credencial;
 import domain.excepciones.BadArgumentException;
-import io.vavr.control.Either;
-import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
 import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import lombok.extern.log4j.Log4j2;
@@ -31,6 +29,8 @@ public class CredencialServicio {
         }
         return false;
     }
+
+    //TODO: ESTO ESTÁ DE FORMA TEMPORAL; MÁS ADELANTE CAMBIARLO
 
     public void checkAut(Credencial credencial){
         if (!credencial.isAutentificado()){
