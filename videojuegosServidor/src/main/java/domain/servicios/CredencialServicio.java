@@ -2,6 +2,7 @@ package domain.servicios;
 
 import dao.DaoCredencial;
 import dao.modelo.Credencial;
+import domain.excepciones.BadArgumentException;
 import io.vavr.control.Either;
 import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
@@ -24,10 +25,17 @@ public class CredencialServicio {
 
     public boolean doLogin(Credencial credencial) {
         Credencial credencialFromDb = daoCredencial.userLogged(credencial).get();
+        checkAut(credencial);
         if (credencialFromDb != null) {
             return passwordHash.verify(credencial.getPassword().toCharArray(), credencialFromDb.getPassword());
         }
         return false;
+    }
+
+    public void checkAut(Credencial credencial){
+        if (!credencial.isAutentificado()){
+            throw new BadArgumentException("Usuario no activado");
+        }
     }
 
     public boolean doRegister (Credencial nuevoCredential){
