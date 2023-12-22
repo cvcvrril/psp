@@ -26,7 +26,7 @@ public class RestCredenciales {
 
     @GET
     public Response getLogin(@QueryParam("username") String username, @QueryParam("password") String password){
-        if (servicio.doLogin(new Credencial(0, username, password, "", true))){
+        if (servicio.doLogin(new Credencial(username, password, "", true))){
             return Response.status(Response.Status.NO_CONTENT).build();
         }else {
             return Response.status(Response.Status.UNAUTHORIZED)
