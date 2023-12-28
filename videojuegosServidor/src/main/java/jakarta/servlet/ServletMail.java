@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.utils.RandomBytesGenerator;
 
 import java.io.IOException;
 
@@ -23,13 +24,17 @@ public class ServletMail extends HttpServlet {
 
             //TODO: A PARTIR DE ESTO ARMAR LO DE LA ACTIVACIÓN (CON EL SERVLET CAMBIAR EL BOOLEANO DE LA TABLA DEL USUARIO)
 
-            mandarMail.generateAndSendEmail("ines07mar@gmail.com", "<html><body><a href=\"http://localhost:8080/VideojuegosAPIprueba-1.0-SNAPSHOT/api/videojuegos/\">Activación</a></body></html>", "Prueba activacion");
+            RandomBytesGenerator randomBytesGenerator = new RandomBytesGenerator();
+            String random = randomBytesGenerator.randomBytes();
+
+            mandarMail.generateAndSendEmail("ines07mar@gmail.com", "<html><body><a href=\"http://localhost:8080/videojuegosServidor-1.0-SNAPSHOT/Activation?codigo="+ random+"\">Activación</a></body></html>", "Prueba activacion");
+            response.getWriter().println("Correo enviado");
         } catch (MessagingException e) {
-            throw new RuntimeException(e);
+            response.getWriter().println(e.getMessage());
         }
-        request.logout();
+        //request.logout();
         //request.getSession().removeAttribute("USERLOGIN");
-        response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+        //response.setStatus(HttpServletResponse.SC_NO_CONTENT);
     }
 
     @Override

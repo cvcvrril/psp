@@ -27,10 +27,11 @@ public class RestCredenciales {
     @GET
     public Response getLogin(@QueryParam("username") String username, @QueryParam("password") String password){
         if (servicio.doLogin(new Credencial(username, password, "", true))){
+
             return Response.status(Response.Status.NO_CONTENT).build();
         }else {
             return Response.status(Response.Status.UNAUTHORIZED)
-                    .entity(new ApiError("The username or the password are incorrect", LocalDateTime.now())).
+                    .entity(new ApiError("El usuario o la contraseña son incorrectos", LocalDateTime.now())).
                     build();
         }
     }
@@ -42,7 +43,7 @@ public class RestCredenciales {
                     .entity(credencial).build();
         }else {
             return Response.status(Response.Status.CONFLICT)
-                    .entity(new ApiError("The registration couldn't be completed", LocalDateTime.now())).build();
+                    .entity(new ApiError("El registro no pudo ser completado", LocalDateTime.now())).build();
         }
     }
 }
