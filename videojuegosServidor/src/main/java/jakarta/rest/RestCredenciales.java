@@ -6,8 +6,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
@@ -40,10 +38,13 @@ public class RestCredenciales {
     @GET
     public Response getLogin(@QueryParam("username") String username, @QueryParam("password") String password, @Context HttpServletResponse response){
         if (servicio.doLogin(new Credencial(username, password, "", true))){
-            String jwtToken = generarTokenJWT();
+            String jwtAToken = generarTokenJWT(60);
+            String jwtRToken = generarTokenJWT(1800);
 
             // Adjuntar el token como un atributo en la respuesta
-            response.addHeader("accessToken", jwtToken);
+            response.addHeader("accessToken", jwtAToken);
+            response.addHeader("refreshToken", jwtRToken);
+
             return Response.status(Response.Status.NO_CONTENT).build();
         }else {
             return Response.status(Response.Status.UNAUTHORIZED)
@@ -53,7 +54,7 @@ public class RestCredenciales {
     }
 
     @SneakyThrows
-    private String generarTokenJWT() {
+    private String generarTokenJWT(int expirationSeconds) {
         final MessageDigest digest =
                 MessageDigest.getInstance("SHA-512");
         digest.update("clave".getBytes(StandardCharsets.UTF_8));
@@ -61,16 +62,14 @@ public class RestCredenciales {
                 digest.digest(), 0, 64, "AES");
         SecretKey keyConfig = Keys.hmacShaKeyFor(key2.getEncoded());
 
-        String jws = Jwts.builder()
+        return Jwts.builder()
                 .setSubject("servidor")
                 .setIssuer("self")
                 .setExpiration(Date
-                        .from(LocalDateTime.now().plusSeconds(60).atZone(ZoneId.systemDefault())
+                        .from(LocalDateTime.now().plusSeconds(expirationSeconds).atZone(ZoneId.systemDefault())
                                 .toInstant()))
                 .claim("user", "root")
                 .signWith(keyConfig).compact();
-
-        return jws;
     }
 
     @POST
@@ -83,9 +82,5 @@ public class RestCredenciales {
                     .entity(new ApiError("El registro no pudo ser completado", LocalDateTime.now())).build();
         }
     }
-
-
-
-
 
 }
