@@ -2,6 +2,9 @@ package jakarta.servlet;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import jakarta.servlet.annotation.HttpConstraint;
+import jakarta.servlet.annotation.ServletSecurity;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -11,12 +14,15 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.security.Key;
 import java.security.MessageDigest;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
+@WebServlet(name = "ServletJWT", value = "/JWT")
+@ServletSecurity(
+        @HttpConstraint(transportGuarantee = ServletSecurity.TransportGuarantee.NONE)
+)
 public class ServletJWT extends HttpServlet {
 
     @Override
