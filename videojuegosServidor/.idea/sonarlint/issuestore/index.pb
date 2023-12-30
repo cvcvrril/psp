@@ -47,3 +47,11 @@ T
 $src/main/java/dao/DaoCredencial.java,0\1\0197aa2b5d221ebc84c682597f1d6a7a76ae6285
 T
 $src/main/java/dao/DaoVideojuego.java,2\4\2442fc50860939630084e271438fa87ce79acc1d
+^
+.src/main/java/jakarta/rest/RestPersonajes.java,4\4\445fd2af2570b313280819c1f54aa2d219c4fdd1
+e
+5src/main/java/domain/servicios/PersonajeServicio.java,e\1\e17f3694cd2582b35a764b980ed2743e63871c1e
+S
+#src/main/java/dao/DaoPersonaje.java,3\e\3ebf1e7e67934d5e1861feaa396cca9a29bb7047
+Z
+*src/main/java/dao/imp/DaoPersonajeImp.java,d\7\d7ac79fcfa49af96d2f6c977c011c80a153fc8b9
