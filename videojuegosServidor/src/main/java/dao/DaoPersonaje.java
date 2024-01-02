@@ -9,5 +9,6 @@ import java.util.List;
 public interface DaoPersonaje {
 
     Either<ApiError, List<Personaje>> getAll();
+    Either<ApiError, Integer> delete(int id);
 
 }

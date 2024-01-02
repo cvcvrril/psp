@@ -26,4 +26,9 @@ public class DaoPersonajeImp implements DaoPersonaje {
         }
         return res;
     }
+
+    @Override
+    public Either<ApiError, Integer> delete(int id) {
+        return null;
+    }
 }

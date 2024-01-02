@@ -9,5 +9,5 @@ import java.util.List;
 public interface DaoVideojuego {
 
     Either<ApiError, List<Videojuego>> getAll();
-
+    Either<ApiError, Integer> delete(Integer id);
 }

@@ -38,10 +38,9 @@ public class RestCredenciales {
     @GET
     public Response getLogin(@QueryParam("username") String username, @QueryParam("password") String password, @Context HttpServletResponse response){
         if (servicio.doLogin(new Credencial(username, password, "", true))){
-            String jwtAToken = generarTokenJWT(120);
-            String jwtRToken = generarTokenJWT(1800);
+            String jwtAToken = generarTokenJWT(120, username);
+            String jwtRToken = generarTokenJWT(1800, username);
 
-            // Adjuntar el token como un atributo en la respuesta
             response.addHeader("Authorization", "Bearer " + jwtAToken + " " + jwtRToken);
 
             return Response.status(Response.Status.NO_CONTENT).build();
@@ -53,7 +52,7 @@ public class RestCredenciales {
     }
 
     @SneakyThrows
-    private String generarTokenJWT(int expirationSeconds) {
+    private String generarTokenJWT(int expirationSeconds, String username) {
         final MessageDigest digest =
                 MessageDigest.getInstance("SHA-512");
         digest.update("clave".getBytes(StandardCharsets.UTF_8));
@@ -62,7 +61,7 @@ public class RestCredenciales {
         SecretKey keyConfig = Keys.hmacShaKeyFor(key2.getEncoded());
 
         return Jwts.builder()
-                .setSubject("root")
+                .setSubject(username)
                 .setIssuer("self")
                 .setExpiration(Date
                         .from(LocalDateTime.now().plusSeconds(expirationSeconds).atZone(ZoneId.systemDefault())

@@ -84,7 +84,6 @@ public class TokenFilter implements HttpAuthenticationMechanism {
             log.error(e.getMessage(), e);
             return CredentialValidationResult.INVALID_RESULT;
         }
-
     }
 
     @Override
