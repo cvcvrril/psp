@@ -6,8 +6,7 @@ import domain.excepciones.BadArgumentException;
 import jakarta.inject.Inject;
 import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import lombok.extern.log4j.Log4j2;
-
-import java.time.LocalDateTime;
+import jakarta.validation.Validator;
 
 @Log4j2
 public class CredencialServicio {
@@ -16,7 +15,7 @@ public class CredencialServicio {
     private final Pbkdf2PasswordHash passwordHash;
 
     @Inject
-    public CredencialServicio(DaoCredencial daoCredencial, Pbkdf2PasswordHash passwordHash) {
+    public CredencialServicio(DaoCredencial daoCredencial, Pbkdf2PasswordHash passwordHash, Validator validator) {
         this.daoCredencial = daoCredencial;
         this.passwordHash = passwordHash;
     }

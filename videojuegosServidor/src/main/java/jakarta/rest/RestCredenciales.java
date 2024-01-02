@@ -38,12 +38,11 @@ public class RestCredenciales {
     @GET
     public Response getLogin(@QueryParam("username") String username, @QueryParam("password") String password, @Context HttpServletResponse response){
         if (servicio.doLogin(new Credencial(username, password, "", true))){
-            String jwtAToken = generarTokenJWT(60);
+            String jwtAToken = generarTokenJWT(120);
             String jwtRToken = generarTokenJWT(1800);
 
             // Adjuntar el token como un atributo en la respuesta
-            response.addHeader("accessToken", jwtAToken);
-            response.addHeader("refreshToken", jwtRToken);
+            response.addHeader("Authorization", "Bearer " + jwtAToken + " " + jwtRToken);
 
             return Response.status(Response.Status.NO_CONTENT).build();
         }else {
@@ -63,12 +62,12 @@ public class RestCredenciales {
         SecretKey keyConfig = Keys.hmacShaKeyFor(key2.getEncoded());
 
         return Jwts.builder()
-                .setSubject("servidor")
+                .setSubject("root")
                 .setIssuer("self")
                 .setExpiration(Date
                         .from(LocalDateTime.now().plusSeconds(expirationSeconds).atZone(ZoneId.systemDefault())
                                 .toInstant()))
-                .claim("user", "root")
+                .claim("rol", "Admin")
                 .signWith(keyConfig).compact();
     }
 

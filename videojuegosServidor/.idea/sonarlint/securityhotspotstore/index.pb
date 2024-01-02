@@ -55,3 +55,11 @@ S
 #src/main/java/dao/DaoPersonaje.java,3\e\3ebf1e7e67934d5e1861feaa396cca9a29bb7047
 Z
 *src/main/java/dao/imp/DaoPersonajeImp.java,d\7\d7ac79fcfa49af96d2f6c977c011c80a153fc8b9
+^
+.src/main/java/jakarta/servlet/TokenFilter.java,1\d\1d6db27167f035ae8cda1fb42ba5cd3b888eef32
+c
+3src/main/java/jakarta/servlet/ServletPruebaJWT.java,9\a\9a0755fc0a23b95698672ae0efb5d8df8f59d2b1
+h
+8src/main/java/jakarta/servlet/InMemoryIdentityStore.java,3\e\3ebca4c14f9a8920e77ff1f36bbf893afc0513eb
+]
+-src/main/java/jakarta/servlet/ServletJWT.java,5\3\530346125ebfdcf1cdda8f9370a8672032f25a0a

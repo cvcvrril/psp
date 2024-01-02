@@ -2,6 +2,8 @@ package jakarta.rest;
 
 import dao.modelo.Personaje;
 import domain.servicios.PersonajeServicio;
+import jakarta.annotation.security.DeclareRoles;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -16,6 +18,7 @@ import java.util.List;
 @Path("/personajes")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@DeclareRoles({"Admin", "User"})
 public class RestPersonajes {
 
     private final PersonajeServicio personajeServicio;
@@ -26,6 +29,7 @@ public class RestPersonajes {
     }
 
     @GET
+    @RolesAllowed({"Admin", "User"})
     public List<Personaje> getAll(){
         return personajeServicio.getAll().get();
     }

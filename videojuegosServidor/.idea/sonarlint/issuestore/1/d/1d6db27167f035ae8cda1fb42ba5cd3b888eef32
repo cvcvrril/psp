@@ -1,0 +1,13 @@
+
+l
+java:S11927"JDefine a constant instead of duplicating this literal "USERLOGIN" 5 times.(€´«Üúÿÿÿÿ8»ÅèÛÌ1
+]	java:S1254"<This block of commented-out lines of code should be removed.(İ¦¡ºûÿÿÿÿ8ÔÅèÛÌ1
+~
+java:S1128
+"aRemove this unused import 'jakarta.security.enterprise.credential.BasicAuthenticationCredential'.(ÁøËØ8Ğ„éÛÌ1
+J
+java:S1128".Remove this unused import 'java.util.HashSet'.(Ê‚êX8Ğ„éÛÌ1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Ñ„éÛÌ1
+N
+java:S1068",Remove this unused "identity" private field.(ÂÆüöùÿÿÿÿ8ÛÅèÛÌ1
