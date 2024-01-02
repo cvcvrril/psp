@@ -7,19 +7,18 @@ import jakarta.security.enterprise.AuthenticationException;
 import jakarta.security.enterprise.AuthenticationStatus;
 import jakarta.security.enterprise.authentication.mechanism.http.HttpAuthenticationMechanism;
 import jakarta.security.enterprise.authentication.mechanism.http.HttpMessageContext;
-import jakarta.security.enterprise.credential.BasicAuthenticationCredential;
 import jakarta.security.enterprise.identitystore.CredentialValidationResult;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.core.HttpHeaders;
 import jakarta.ws.rs.ext.Provider;
+import lombok.extern.log4j.Log4j2;
 
 import java.text.ParseException;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 
+@Log4j2
 @Provider
 @WebFilter("regex(/api/((?!login).)*)")
 public class TokenFilter implements HttpAuthenticationMechanism {
@@ -46,10 +45,7 @@ public class TokenFilter implements HttpAuthenticationMechanism {
             if (valores[0].equalsIgnoreCase("Bearer")) {
                 String accessToken = valores[1];
 
-                // Validar el token de acceso
                 c = validarTokenDeAcceso(accessToken);
-
-                //c = identity.validate(new BasicAuthenticationCredential(valores[1]));
 
                 if (c.getStatus() == CredentialValidationResult.Status.VALID) {
                     httpServletRequest.getSession().setAttribute("USERLOGIN", c);
@@ -78,23 +74,14 @@ public class TokenFilter implements HttpAuthenticationMechanism {
 
     private CredentialValidationResult validarTokenDeAcceso(String accessToken) {
         try {
-            // Parsear el token JWT
             JWTClaimsSet claimsSet = JWTParser.parse(accessToken).getJWTClaimsSet();
 
-            // Validar cualquier condición adicional que necesites
-            // (puede depender de tu lógica de negocio y de los datos almacenados en el token)
-
-            // Obtener información del token (por ejemplo, roles y nombre de usuario)
             String username = claimsSet.getSubject();
             String roles = claimsSet.getStringClaim("rol");
 
-            // Realizar cualquier otra validación necesaria
-
-            // Devolver un CredentialValidationResult válido con roles y nombre de usuario
             return new CredentialValidationResult(username, Collections.singleton(roles));
         } catch (ParseException e) {
-            // El token no pudo ser parseado, considerarlo inválido
-            e.printStackTrace(); // Tratar de loggear o manejar el error de forma apropiada
+            log.error(e.getMessage(), e);
             return CredentialValidationResult.INVALID_RESULT;
         }
 
