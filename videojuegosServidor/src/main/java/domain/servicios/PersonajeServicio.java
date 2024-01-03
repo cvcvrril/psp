@@ -2,12 +2,15 @@ package domain.servicios;
 
 import dao.DaoPersonaje;
 import dao.modelo.Personaje;
+import domain.excepciones.BadArgumentException;
 import io.vavr.control.Either;
 import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
+import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
 
+@Log4j2
 public class PersonajeServicio {
 
     private final DaoPersonaje daoPersonaje;
@@ -20,4 +23,15 @@ public class PersonajeServicio {
     public Either<ApiError, List<Personaje>> getAll(){
         return daoPersonaje.getAll();
     }
+
+    public Either<ApiError, Integer> delete(String idParam){
+        try{
+            Integer id = Integer.parseInt(idParam);
+            return daoPersonaje.delete(id);
+        }catch (NumberFormatException e){
+            log.error(e.getMessage(),e);
+            throw new BadArgumentException("Error al meter alguno de los argumentos");
+        }
+    }
+
 }

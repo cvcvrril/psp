@@ -5,10 +5,7 @@ import domain.servicios.PersonajeServicio;
 import jakarta.annotation.security.DeclareRoles;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import lombok.extern.log4j.Log4j2;
 
@@ -34,7 +31,12 @@ public class RestPersonajes {
         return personajeServicio.getAll().get();
     }
 
-
+    @DELETE
+    @Path("/{id}")
+    @RolesAllowed({"Admin"})
+    public Integer deleteVideojuego(@PathParam("id") String idParam){
+        return personajeServicio.delete(idParam).get();
+    }
 
 
 }
