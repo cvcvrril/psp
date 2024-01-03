@@ -18,5 +18,4 @@ public class Videojuego {
     private String titulo;
     private String descripcion;
 
-
 }

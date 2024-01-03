@@ -29,8 +29,6 @@ public class CredencialServicio {
         return false;
     }
 
-    //TODO: ESTO ESTÁ DE FORMA TEMPORAL; MÁS ADELANTE CAMBIARLO
-
     public void checkAut(Credencial credencial){
         if (!credencial.isAutentificado()){
             throw new BadArgumentException("Usuario no activado");
@@ -40,6 +38,15 @@ public class CredencialServicio {
     public boolean doRegister (Credencial nuevoCredential){
         nuevoCredential.setPassword(passwordHash.generate(nuevoCredential.getPassword().toCharArray()));
         return daoCredencial.addCred(nuevoCredential).get();
+    }
+
+
+    public boolean actualizarPassword(Credencial actualizadoCredencial){
+        if (daoCredencial.actualizarPassword(actualizadoCredencial).get()){
+            actualizadoCredencial.setPassword(passwordHash.generate(actualizadoCredencial.getPassword().toCharArray()));
+            return true;
+        }
+        return false;
     }
 
 }

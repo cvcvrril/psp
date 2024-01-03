@@ -82,4 +82,16 @@ public class RestCredenciales {
         }
     }
 
+
+    @Path("/forgotPassword")
+    @PUT
+    public Response actualizarPassword(Credencial credencial){
+        if (servicio.actualizarPassword(credencial)){
+            return Response.status(Response.Status.CREATED)
+                    .entity(credencial).build();
+        }else {
+            return Response.status(Response.Status.CONFLICT)
+                    .entity(new ApiError("El cambio de la contraseña no ha podido ser efectuado", LocalDateTime.now())).build();
+        }
+    }
 }
