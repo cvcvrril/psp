@@ -67,6 +67,7 @@ public class RestCredenciales {
                         .from(LocalDateTime.now().plusSeconds(expirationSeconds).atZone(ZoneId.systemDefault())
                                 .toInstant()))
                 .claim("rol", "Admin")
+                //.claim("rol", "User")
                 .signWith(keyConfig).compact();
     }
 
