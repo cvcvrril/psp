@@ -19,7 +19,6 @@ public class Credencial {
     private String email;
     private boolean autentificado;
     private String rol;
-    //private LocalDateTime registro;
 
 
     public Credencial(String user, String password, String email, boolean autentificado, String rol) {
