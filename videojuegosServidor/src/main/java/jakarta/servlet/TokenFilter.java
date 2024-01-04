@@ -15,7 +15,10 @@ import jakarta.ws.rs.ext.Provider;
 import lombok.extern.log4j.Log4j2;
 
 import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Collections;
+import java.util.Date;
 
 @Log4j2
 @Provider
@@ -63,12 +66,25 @@ public class TokenFilter implements HttpAuthenticationMechanism {
         return httpMessageContext.notifyContainerAboutLogin(c);
     }
 
+    //TODO: MONTAR COMPROBACIÓN DE LA CADUCIDAD DEL TOKEN
+
     private CredentialValidationResult validarTokenDeAcceso(String accessToken) {
         try {
             JWTClaimsSet claimsSet = JWTParser.parse(accessToken).getJWTClaimsSet();
 
             String username = claimsSet.getSubject();
             String roles = claimsSet.getStringClaim("rol");
+
+            Date expirationDate = claimsSet.getExpirationTime();
+            LocalDateTime expiration = expirationDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+
+            LocalDateTime now = LocalDateTime.now();
+
+            if (expiration != null && now.isAfter(expiration)) {
+                // Token expirado
+                log.warn("El token de acceso ha expirado.");
+                return CredentialValidationResult.INVALID_RESULT;
+            }
 
             return new CredentialValidationResult(username, Collections.singleton(roles));
         } catch (ParseException e) {
