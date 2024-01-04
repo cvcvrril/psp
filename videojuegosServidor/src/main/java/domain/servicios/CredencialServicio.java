@@ -49,4 +49,8 @@ public class CredencialServicio {
         return false;
     }
 
+    public Credencial getCredencial(String username){
+        return daoCredencial.getCredencial(username).get();
+    }
+
 }

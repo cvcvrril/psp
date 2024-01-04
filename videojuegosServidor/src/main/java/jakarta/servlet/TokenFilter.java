@@ -23,13 +23,6 @@ import java.util.Collections;
 @WebFilter("regex(/api/((?!login).)*)")
 public class TokenFilter implements HttpAuthenticationMechanism {
 
-    private final InMemoryIdentityStore identity;
-
-    @Inject
-    public TokenFilter(InMemoryIdentityStore identity) {
-        this.identity = identity;
-    }
-
     @Override
     public AuthenticationStatus validateRequest(HttpServletRequest httpServletRequest,
                                                 HttpServletResponse httpServletResponse

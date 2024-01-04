@@ -34,8 +34,8 @@ public class StaticLists {
     ));
 
     public static List<Credencial> listaCredenciales = new ArrayList<>(List.of(
-            new Credencial("root", "PBKDF2WithHmacSHA256:2048:IkYZsBXLSqjTryINcSjkN9+PXLEchrZTuZOAQ/O5Huc=:5HOA5qBfUwIH3ixPKBL4teybX9AtB6k5sqeGlqdFFM0=", "ines07mar@gmail.com", true),
-            new Credencial("patata", "PBKDF2WithHmacSHA256:2048:/QSvjU3uE30KKMJV94/EC7FhqVF4x3H1ekWw5A+6XDQ=:87UgaTeuKinKRcytYD1dWyvZoS4FBtz/qUNnoxDeIZQ=", "ines07mar@gmail.com", true)
+            new Credencial("root", "PBKDF2WithHmacSHA256:2048:IkYZsBXLSqjTryINcSjkN9+PXLEchrZTuZOAQ/O5Huc=:5HOA5qBfUwIH3ixPKBL4teybX9AtB6k5sqeGlqdFFM0=", "ines07mar@gmail.com", true, "Admin"),
+            new Credencial("patata", "PBKDF2WithHmacSHA256:2048:/QSvjU3uE30KKMJV94/EC7FhqVF4x3H1ekWw5A+6XDQ=:87UgaTeuKinKRcytYD1dWyvZoS4FBtz/qUNnoxDeIZQ=", "ines07mar@gmail.com", true, "User")
     ));
 
 

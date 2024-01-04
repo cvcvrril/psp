@@ -18,14 +18,16 @@ public class Credencial {
     private String password;
     private String email;
     private boolean autentificado;
+    private String rol;
     //private LocalDateTime registro;
 
 
-    public Credencial(String user, String password, String email, boolean autentificado) {
+    public Credencial(String user, String password, String email, boolean autentificado, String rol) {
         uuid = java.util.UUID.randomUUID();
         this.user = user;
         this.password = password;
         this.email = email;
         this.autentificado = autentificado;
+        this.rol = rol;
     }
 }

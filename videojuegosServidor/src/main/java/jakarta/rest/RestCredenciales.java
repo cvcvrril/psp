@@ -37,12 +37,11 @@ public class RestCredenciales {
 
     @GET
     public Response getLogin(@QueryParam("username") String username, @QueryParam("password") String password, @Context HttpServletResponse response){
-        if (servicio.doLogin(new Credencial(username, password, "", true))){
-            String jwtAToken = generarTokenJWT(120, username);
-            String jwtRToken = generarTokenJWT(1800, username);
-
+        if (servicio.doLogin(new Credencial(username, password, "", true, ""))){
+            Credencial inicioSesion = servicio.getCredencial(username);
+            String jwtAToken = generarTokenJWT(120, inicioSesion.getUser(), inicioSesion.getRol());
+            String jwtRToken = generarTokenJWT(1800, inicioSesion.getUser(), inicioSesion.getRol());
             response.addHeader("Authorization", "Bearer " + jwtAToken + " " + jwtRToken);
-
             return Response.status(Response.Status.NO_CONTENT).build();
         }else {
             return Response.status(Response.Status.UNAUTHORIZED)
@@ -52,7 +51,7 @@ public class RestCredenciales {
     }
 
     @SneakyThrows
-    private String generarTokenJWT(int expirationSeconds, String username) {
+    private String generarTokenJWT(int expirationSeconds, String username, String rol) {
         final MessageDigest digest =
                 MessageDigest.getInstance("SHA-512");
         digest.update("clave".getBytes(StandardCharsets.UTF_8));
@@ -66,8 +65,7 @@ public class RestCredenciales {
                 .setExpiration(Date
                         .from(LocalDateTime.now().plusSeconds(expirationSeconds).atZone(ZoneId.systemDefault())
                                 .toInstant()))
-                .claim("rol", "Admin")
-                //.claim("rol", "User")
+                .claim("rol", rol)
                 .signWith(keyConfig).compact();
     }
 
