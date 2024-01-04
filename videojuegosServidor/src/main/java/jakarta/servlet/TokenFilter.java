@@ -2,7 +2,6 @@ package jakarta.servlet;
 
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.JWTParser;
-import jakarta.inject.Inject;
 import jakarta.security.enterprise.AuthenticationException;
 import jakarta.security.enterprise.AuthenticationStatus;
 import jakarta.security.enterprise.authentication.mechanism.http.HttpAuthenticationMechanism;
@@ -42,8 +41,7 @@ public class TokenFilter implements HttpAuthenticationMechanism {
 
                 if (c.getStatus() == CredentialValidationResult.Status.VALID) {
                     httpServletRequest.getSession().setAttribute("USERLOGIN", c);
-                    // Generar token
-                    // Añadir al response
+
                 }
             } else if (valores[0].equalsIgnoreCase("Logout")) {
                 httpServletRequest.getSession().removeAttribute("USERLOGIN");
