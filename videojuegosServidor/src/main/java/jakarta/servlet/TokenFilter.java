@@ -2,6 +2,8 @@ package jakarta.servlet;
 
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.JWTParser;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 import jakarta.security.enterprise.AuthenticationException;
 import jakarta.security.enterprise.AuthenticationStatus;
 import jakarta.security.enterprise.authentication.mechanism.http.HttpAuthenticationMechanism;
@@ -12,8 +14,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.core.HttpHeaders;
 import jakarta.ws.rs.ext.Provider;
+import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -39,13 +46,22 @@ public class TokenFilter implements HttpAuthenticationMechanism {
 
             if (valores[0].equalsIgnoreCase("Bearer")) {
                 String accessToken = valores[1];
+                String refreshToken = valores[2];
 
-                c = validarTokenDeAcceso(accessToken);
+                c = validarTokenRefresh(refreshToken);
+
 
                 if (c.getStatus() == CredentialValidationResult.Status.VALID) {
+
                     httpServletRequest.getSession().setAttribute("USERLOGIN", c);
 
+                    c = validarTokenDeAcceso(accessToken);
+                    if (c.getStatus() == CredentialValidationResult.Status.VALID) {
+                        httpServletRequest.getSession().setAttribute("USERLOGIN", c);
+                    }
                 }
+
+
             } else if (valores[0].equalsIgnoreCase("Logout")) {
                 httpServletRequest.getSession().removeAttribute("USERLOGIN");
                 httpServletResponse.setStatus(HttpServletResponse.SC_NO_CONTENT);
@@ -66,8 +82,6 @@ public class TokenFilter implements HttpAuthenticationMechanism {
         return httpMessageContext.notifyContainerAboutLogin(c);
     }
 
-    //TODO: MONTAR COMPROBACIÓN DE LA CADUCIDAD DEL TOKEN
-
     private CredentialValidationResult validarTokenDeAcceso(String accessToken) {
         try {
             JWTClaimsSet claimsSet = JWTParser.parse(accessToken).getJWTClaimsSet();
@@ -81,8 +95,33 @@ public class TokenFilter implements HttpAuthenticationMechanism {
             LocalDateTime now = LocalDateTime.now();
 
             if (expiration != null && now.isAfter(expiration)) {
-                // Token expirado
-                log.warn("El token de acceso ha expirado.");
+                log.warn("El token de acceso ha expirado. Se va a generar otro");
+                generarTokenJWT(60,username, roles);
+
+                return CredentialValidationResult.INVALID_RESULT;
+            }
+
+            return new CredentialValidationResult(username, Collections.singleton(roles));
+        } catch (ParseException e) {
+            log.error(e.getMessage(), e);
+            return CredentialValidationResult.INVALID_RESULT;
+        }
+    }
+
+    private CredentialValidationResult validarTokenRefresh(String accessToken) {
+        try {
+            JWTClaimsSet claimsSet = JWTParser.parse(accessToken).getJWTClaimsSet();
+
+            String username = claimsSet.getSubject();
+            String roles = claimsSet.getStringClaim("rol");
+
+            Date expirationDate = claimsSet.getExpirationTime();
+            LocalDateTime expiration = expirationDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+
+            LocalDateTime now = LocalDateTime.now();
+
+            if (expiration != null && now.isAfter(expiration)) {
+                log.warn("El token de refresco ha expirado. Debe de volver a iniciar sesión");
                 return CredentialValidationResult.INVALID_RESULT;
             }
 
@@ -103,6 +142,25 @@ public class TokenFilter implements HttpAuthenticationMechanism {
         request.getSession().removeAttribute("USERLOGIN");
         request.getSession().removeAttribute("accessToken");
         request.getSession().removeAttribute("refreshToken");
+    }
+
+    @SneakyThrows
+    private String generarTokenJWT(int expirationSeconds, String username, String rol) {
+        final MessageDigest digest =
+                MessageDigest.getInstance("SHA-512");
+        digest.update("clave".getBytes(StandardCharsets.UTF_8));
+        final SecretKeySpec key2 = new SecretKeySpec(
+                digest.digest(), 0, 64, "AES");
+        SecretKey keyConfig = Keys.hmacShaKeyFor(key2.getEncoded());
+
+        return Jwts.builder()
+                .setSubject(username)
+                .setIssuer("self")
+                .setExpiration(Date
+                        .from(LocalDateTime.now().plusSeconds(expirationSeconds).atZone(ZoneId.systemDefault())
+                                .toInstant()))
+                .claim("rol", rol)
+                .signWith(keyConfig).compact();
     }
 
 }
