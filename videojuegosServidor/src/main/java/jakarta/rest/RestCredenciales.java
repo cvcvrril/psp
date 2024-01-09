@@ -37,11 +37,12 @@ public class RestCredenciales {
 
     @GET
     public Response getLogin(@QueryParam("username") String username, @QueryParam("password") String password, @Context HttpServletResponse response){
-        if (servicio.doLogin(new Credencial(username, password, "", true, ""))){
+        if (servicio.doLogin(new Credencial(username, password, "", true, "", ""))){
             Credencial inicioSesion = servicio.getCredencial(username);
             String jwtAToken = generarTokenJWT(120, inicioSesion.getUser(), inicioSesion.getRol());
             String jwtRToken = generarTokenJWT(1800, inicioSesion.getUser(), inicioSesion.getRol());
-            response.addHeader("Authorization", "Bearer " + jwtAToken + " " + jwtRToken);
+            response.addHeader("Authorization", "Bearer " + jwtAToken );
+            response.addHeader("RefreshToken", jwtRToken);
             return Response.status(Response.Status.NO_CONTENT).build();
         }else {
             return Response.status(Response.Status.UNAUTHORIZED)
