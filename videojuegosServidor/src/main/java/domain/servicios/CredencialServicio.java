@@ -3,8 +3,11 @@ package domain.servicios;
 import dao.DaoCredencial;
 import dao.modelo.Credencial;
 import domain.excepciones.BadArgumentException;
+import domain.excepciones.WrongObjectException;
 import jakarta.inject.Inject;
+import jakarta.mail.MessagingException;
 import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
+import jakarta.utils.RandomBytesGenerator;
 import lombok.extern.log4j.Log4j2;
 import jakarta.validation.Validator;
 
@@ -49,8 +52,46 @@ public class CredencialServicio {
         return false;
     }
 
-    public Credencial getCredencial(String username){
-        return daoCredencial.getCredencial(username).get();
+    public Credencial getCredencialUser(String username){
+        return daoCredencial.getCredencialUser(username).get();
+    }
+
+    public Credencial getCredencialEmail(String email){
+        return daoCredencial.getCredencialEmail(email).get();
+    }
+
+    public Credencial getCredencialCode(String code){
+        return daoCredencial.getCredencialCode(code).get();
+    }
+
+    public void mandarMail(String email) {
+        MandarMail m = new MandarMail();
+        try {
+            RandomBytesGenerator randomBytesGenerator = new RandomBytesGenerator();
+            String random = randomBytesGenerator.randomBytes();
+            Credencial credencialMandarMail = getCredencialEmail(email);
+            credencialMandarMail.setCodAut(random);
+            m.generateAndSendEmail(email, "<html><body><a href=\"http://localhost:8080/videojuegosServidor-1.0-SNAPSHOT/Activation?codigo="+ random+"\">Activación</a></body></html>", "Prueba activacion");
+        }catch (MessagingException e) {
+            throw new BadArgumentException("Ha habido un error al mandar el mail");
+        }
+    }
+
+    public void mandarMailCambioPassword(String email){
+        MandarMail m = new MandarMail();
+        try {
+            RandomBytesGenerator randomBytesGenerator = new RandomBytesGenerator();
+            String random = randomBytesGenerator.randomBytes();
+            Credencial credencialMandarMail = getCredencialEmail(email);
+            if (credencialMandarMail != null){
+                credencialMandarMail.setCodAut(random);
+                m.generateAndSendEmail(email, "<html><body><a href=\"http://localhost:8080/videojuegosServidor-1.0-SNAPSHOT/api/changePassword?codigo="+ random+"\">Cambio contraseña</a></body></html>", "Cambiar contraseña");
+            } else {
+                throw new WrongObjectException("No se encuentra ninguna credencial con ese correo. ¿Desea mejor registrarse?");
+            }
+        }catch (MessagingException e) {
+            throw new BadArgumentException("Ha habido un error al mandar el mail");
+        }
     }
 
 }

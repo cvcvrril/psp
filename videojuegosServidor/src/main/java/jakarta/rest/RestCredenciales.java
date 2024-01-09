@@ -1,11 +1,13 @@
 package jakarta.rest;
 
 import dao.modelo.Credencial;
+import domain.excepciones.WrongObjectException;
 import domain.servicios.CredencialServicio;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
@@ -38,7 +40,7 @@ public class RestCredenciales {
     @GET
     public Response getLogin(@QueryParam("username") String username, @QueryParam("password") String password, @Context HttpServletResponse response){
         if (servicio.doLogin(new Credencial(username, password, "", true, "", ""))){
-            Credencial inicioSesion = servicio.getCredencial(username);
+            Credencial inicioSesion = servicio.getCredencialUser(username);
             String jwtAToken = generarTokenJWT(120, inicioSesion.getUser(), inicioSesion.getRol());
             String jwtRToken = generarTokenJWT(1800, inicioSesion.getUser(), inicioSesion.getRol());
             response.addHeader("Authorization", "Bearer " + jwtAToken );
@@ -77,6 +79,7 @@ public class RestCredenciales {
     @POST
     public Response doRegister(Credencial credencial){
         if (servicio.doRegister(credencial)){
+            servicio.mandarMail(credencial.getEmail());
             return Response.status(Response.Status.CREATED)
                     .entity(credencial).build();
         }else {
@@ -85,13 +88,28 @@ public class RestCredenciales {
         }
     }
 
-
     @Path("/forgotPassword")
+    @POST
+    public Response mandarCorreoPassword(Credencial credencial){
+        if (credencial.getEmail() != null){
+            servicio.mandarMailCambioPassword(credencial.getEmail());
+            return Response.status(Response.Status.OK)
+                    .entity("Correo enviado").build();
+        }else {
+            throw new WrongObjectException("El correo no es válido");
+        }
+
+    }
+
+
+    @Path("/changePassword")
     @PUT
-    public Response actualizarPassword(Credencial credencial){
-        if (servicio.actualizarPassword(credencial)){
-            return Response.status(Response.Status.CREATED)
-                    .entity(credencial).build();
+    public Response actualizarPassword(@Context HttpServletRequest request, @Context HttpServletResponse response){
+        String codigoAuth = request.getParameter("codigo");
+        Credencial credencialChangePassword = servicio.getCredencialCode(codigoAuth);
+        if (servicio.actualizarPassword(credencialChangePassword)){
+            return Response.status(Response.Status.OK)
+                    .entity(credencialChangePassword).build();
         }else {
             return Response.status(Response.Status.CONFLICT)
                     .entity(new ApiError("El cambio de la contraseña no ha podido ser efectuado", LocalDateTime.now())).build();

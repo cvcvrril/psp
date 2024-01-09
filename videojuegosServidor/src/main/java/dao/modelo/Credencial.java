@@ -28,7 +28,7 @@ public class Credencial {
         this.password = password;
         this.email = email;
         this.autentificado = autentificado;
-        this.rol = "User";
+        this.rol = rol;
         this.codAut = codAut;
     }
 }

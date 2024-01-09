@@ -63,9 +63,29 @@ public class DaoCredencialImp implements DaoCredencial {
     }
 
     @Override
-    public Either<ApiError, Credencial> getCredencial(String username) {
+    public Either<ApiError, Credencial> getCredencialUser(String username) {
         for (Credencial credencial : StaticLists.listaCredenciales) {
             if (credencial.getUser().equals(username)) {
+                return Either.right(credencial);
+            }
+        }
+        return Either.left(new ApiError("Credencial no encontrada para el usuario.", LocalDateTime.now()));
+    }
+
+    @Override
+    public Either<ApiError, Credencial> getCredencialEmail(String email) {
+        for (Credencial credencial : StaticLists.listaCredenciales) {
+            if (credencial.getEmail().equals(email)) {
+                return Either.right(credencial);
+            }
+        }
+        return Either.left(new ApiError("Credencial no encontrada para el usuario.", LocalDateTime.now()));
+    }
+
+    @Override
+    public Either<ApiError, Credencial> getCredencialCode(String code) {
+        for (Credencial credencial : StaticLists.listaCredenciales) {
+            if (credencial.getCodAut().equals(code)) {
                 return Either.right(credencial);
             }
         }
