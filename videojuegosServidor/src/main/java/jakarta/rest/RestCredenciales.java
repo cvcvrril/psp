@@ -50,6 +50,8 @@ public class RestCredenciales {
         }
     }
 
+    //TODO: METER ESTO EN OTRO LADO [
+
     @SneakyThrows
     private String generarTokenJWT(int expirationSeconds, String username, String rol) {
         final MessageDigest digest =
@@ -68,6 +70,8 @@ public class RestCredenciales {
                 .claim("rol", rol)
                 .signWith(keyConfig).compact();
     }
+
+    //TODO: METER ESTO EN OTRO LADO ]
 
     @POST
     public Response doRegister(Credencial credencial){
