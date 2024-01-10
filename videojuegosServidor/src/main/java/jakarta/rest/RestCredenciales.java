@@ -45,7 +45,7 @@ public class RestCredenciales {
             String jwtRToken = generarTokenJWT(1800, inicioSesion.getUser(), inicioSesion.getRol());
             response.addHeader("Authorization", "Bearer " + jwtAToken );
             response.addHeader("RefreshToken", jwtRToken);
-            return Response.status(Response.Status.NO_CONTENT).build();
+            return Response.status(Response.Status.OK).build();
         }else {
             return Response.status(Response.Status.UNAUTHORIZED)
                     .entity(new ApiError("El usuario o la contraseña son incorrectos", LocalDateTime.now())).
