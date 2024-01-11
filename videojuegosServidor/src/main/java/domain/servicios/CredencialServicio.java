@@ -85,7 +85,7 @@ public class CredencialServicio {
             Credencial credencialMandarMail = getCredencialEmail(email);
             if (credencialMandarMail != null){
                 credencialMandarMail.setCodAut(random);
-                m.generateAndSendEmail(email, "<html><body><a href=\"http://localhost:8080/videojuegosServidor-1.0-SNAPSHOT/api/changePassword?codigo="+ random+"\">Cambio contraseña</a></body></html>", "Cambiar contraseña");
+                m.generateAndSendEmail(email, "<html><body><a href=\"http://localhost:8080/videojuegosServidor-1.0-SNAPSHOT/ChangePassword?codigo="+ random+"\">Cambio contraseña</a></body></html>", "Cambiar contraseña");
             } else {
                 throw new WrongObjectException("No se encuentra ninguna credencial con ese correo. ¿Desea mejor registrarse?");
             }

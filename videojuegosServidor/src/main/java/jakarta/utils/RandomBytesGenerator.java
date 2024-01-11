@@ -11,4 +11,11 @@ public class RandomBytesGenerator {
         sr.nextBytes(bits);
         return Base64.getUrlEncoder().encodeToString(bits);
     }
+
+    public String randomNewPassword() {
+        SecureRandom sr = new SecureRandom();
+        byte[] bits = new byte[8];
+        sr.nextBytes(bits);
+        return Base64.getUrlEncoder().encodeToString(bits);
+    }
 }

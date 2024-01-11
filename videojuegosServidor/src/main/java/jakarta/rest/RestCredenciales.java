@@ -101,18 +101,9 @@ public class RestCredenciales {
 
     }
 
-
-    @Path("/changePassword")
+    @Path("/refreshToken")
     @PUT
-    public Response actualizarPassword(@Context HttpServletRequest request, @Context HttpServletResponse response){
-        String codigoAuth = request.getParameter("codigo");
-        Credencial credencialChangePassword = servicio.getCredencialCode(codigoAuth);
-        if (servicio.actualizarPassword(credencialChangePassword)){
-            return Response.status(Response.Status.OK)
-                    .entity(credencialChangePassword).build();
-        }else {
-            return Response.status(Response.Status.CONFLICT)
-                    .entity(new ApiError("El cambio de la contraseña no ha podido ser efectuado", LocalDateTime.now())).build();
-        }
+    public Response actualizarTokenAcceso(){
+        return null;
     }
 }
