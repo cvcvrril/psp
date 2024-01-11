@@ -101,9 +101,12 @@ public class RestCredenciales {
 
     }
 
+    //TODO: TENGO QUE ARREGLAR LO DEL REFRESH TOKEN -> INVESTIGAR SI ES MEJOR HACERLO CON SERVLETS O CON LLAMADA DESDE EL REST
+
     @Path("/refreshToken")
     @PUT
     public Response actualizarTokenAcceso(){
+
         return null;
     }
 }
