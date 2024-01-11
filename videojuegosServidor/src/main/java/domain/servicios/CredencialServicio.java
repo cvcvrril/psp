@@ -16,11 +16,13 @@ public class CredencialServicio {
 
     private final DaoCredencial daoCredencial;
     private final Pbkdf2PasswordHash passwordHash;
+    private final MandarMail m;
 
     @Inject
-    public CredencialServicio(DaoCredencial daoCredencial, Pbkdf2PasswordHash passwordHash, Validator validator) {
+    public CredencialServicio(DaoCredencial daoCredencial, Pbkdf2PasswordHash passwordHash, Validator validator, MandarMail m) {
         this.daoCredencial = daoCredencial;
         this.passwordHash = passwordHash;
+        this.m = m;
     }
 
     public boolean doLogin(Credencial credencial) {
@@ -43,11 +45,11 @@ public class CredencialServicio {
         return daoCredencial.addCred(nuevoCredential).get();
     }
 
-
     public boolean actualizarPassword(Credencial actualizadoCredencial){
         if (daoCredencial.actualizarPassword(actualizadoCredencial).get()){
             actualizadoCredencial.setPassword(passwordHash.generate(actualizadoCredencial.getPassword().toCharArray()));
-            return true;
+        } else {
+            throw new BadArgumentException("Ha habido un error al actualizar la contraseña");
         }
         return false;
     }
@@ -65,7 +67,6 @@ public class CredencialServicio {
     }
 
     public void mandarMail(String email) {
-        MandarMail m = new MandarMail();
         try {
             RandomBytesGenerator randomBytesGenerator = new RandomBytesGenerator();
             String random = randomBytesGenerator.randomBytes();
@@ -78,7 +79,6 @@ public class CredencialServicio {
     }
 
     public void mandarMailCambioPassword(String email){
-        MandarMail m = new MandarMail();
         try {
             RandomBytesGenerator randomBytesGenerator = new RandomBytesGenerator();
             String random = randomBytesGenerator.randomBytes();
