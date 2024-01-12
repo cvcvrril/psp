@@ -51,3 +51,11 @@ $src/main/java/dao/DaoVideojuego.java,2\4\2442fc50860939630084e271438fa87ce79ac
 .src/main/java/jakarta/servlet/TokenFilter.java,1\d\1d6db27167f035ae8cda1fb42ba5cd3b888eef32
 e
 5src/main/java/jakarta/utils/RandomBytesGenerator.java,7\d\7d9145e6e20cb0b087ed0989ff874060c621cfc9
+d
+4src/main/java/jakarta/servlet/ServletActivation.java,e\2\e229be7658ac9c574192eec7d5475a7b655d6d50
+h
+8src/main/java/jakarta/servlet/ServletForgotPassword.java,a\8\a8d4225208da10b37abd13cb5dd31914f8a09a18
+]
+-src/main/java/jakarta/servlet/ServletJWT.java,5\3\530346125ebfdcf1cdda8f9370a8672032f25a0a
+f
+6src/main/java/jakarta/servlet/ServletRefreshToken.java,9\a\9acbd93fba8e22997f355b6916d9b95f1e5d06b0

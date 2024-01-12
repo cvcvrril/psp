@@ -29,7 +29,7 @@ import java.util.Date;
 
 @Log4j2
 @Provider
-@WebFilter("regex(/api/((?!login).)*)")
+
 public class TokenFilter implements HttpAuthenticationMechanism {
 
     @Override
@@ -50,27 +50,14 @@ public class TokenFilter implements HttpAuthenticationMechanism {
                 c = validarTokenDeAcceso(accessToken);
 
                 if (c.getStatus() == CredentialValidationResult.Status.VALID) {
-
                     httpServletRequest.getSession().setAttribute("USERLOGIN", c);
                 }
-
-            } else if (valores[0].equalsIgnoreCase("Logout")) {
-                httpServletRequest.getSession().removeAttribute("USERLOGIN");
-                httpServletResponse.setStatus(HttpServletResponse.SC_NO_CONTENT);
-            }
-
-        } else {
-            if (httpServletRequest.getSession().getAttribute("USERLOGIN") != null) {
-                c = (CredentialValidationResult) httpServletRequest.getSession().getAttribute("USERLOGIN");
             }
         }
-
         if (!c.getStatus().equals(CredentialValidationResult.Status.VALID)) {
             httpServletRequest.setAttribute("status", c.getStatus());
             return httpMessageContext.doNothing();
         }
-
-
         return httpMessageContext.notifyContainerAboutLogin(c);
     }
 
@@ -88,11 +75,8 @@ public class TokenFilter implements HttpAuthenticationMechanism {
 
             if (expiration != null && now.isAfter(expiration)) {
                 log.warn("El token de acceso ha expirado. Se va a generar otro");
-                //TODO: AQUÍ LLAMAR A GENERAR OTRO ACCESS TOKEN USANDO EL REFRESH TOKEN
-
                 return CredentialValidationResult.INVALID_RESULT;
             }
-
             return new CredentialValidationResult(username, Collections.singleton(roles));
         } catch (ParseException e) {
             log.error(e.getMessage(), e);

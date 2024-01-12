@@ -2,6 +2,7 @@ package jakarta.rest;
 
 import dao.modelo.Credencial;
 import domain.excepciones.WrongObjectException;
+import domain.servicios.AuthorizacionRespone;
 import domain.servicios.CredencialServicio;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -43,9 +44,8 @@ public class RestCredenciales {
             Credencial inicioSesion = servicio.getCredencialUser(username);
             String jwtAToken = generarTokenJWT(120, inicioSesion.getUser(), inicioSesion.getRol());
             String jwtRToken = generarTokenJWT(1800, inicioSesion.getUser(), inicioSesion.getRol());
-            response.addHeader("Authorization", "Bearer " + jwtAToken );
-            response.addHeader("RefreshToken", jwtRToken);
-            return Response.status(Response.Status.OK).build();
+            AuthorizacionRespone auth = new AuthorizacionRespone(jwtAToken,jwtRToken);
+            return Response.status(Response.Status.OK).entity(auth).build();
         }else {
             return Response.status(Response.Status.UNAUTHORIZED)
                     .entity(new ApiError("El usuario o la contraseña son incorrectos", LocalDateTime.now())).
