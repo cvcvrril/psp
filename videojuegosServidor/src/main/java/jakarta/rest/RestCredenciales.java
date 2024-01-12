@@ -55,6 +55,8 @@ public class RestCredenciales {
 
     //TODO: METER ESTO EN OTRO LADO [
 
+
+    //TODO: CAMBIAR LO DEL SNEAKYTHROWS
     @SneakyThrows
     private String generarTokenJWT(int expirationSeconds, String username, String rol) {
         final MessageDigest digest =
