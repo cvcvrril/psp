@@ -1,5 +1,6 @@
 package dao.modelo;
 
+import dao.ConstantsDao;
 import jakarta.json.bind.annotation.JsonbPropertyOrder;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +11,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonbPropertyOrder({"uuid", "user", "password", "email", "autentificado"})
+@JsonbPropertyOrder({ConstantsDao.UUID, ConstantsDao.USER, ConstantsDao.PASSWORD, ConstantsDao.EMAIL, ConstantsDao.AUTENTIFICADO})
 public class Credencial {
 
     private UUID uuid;

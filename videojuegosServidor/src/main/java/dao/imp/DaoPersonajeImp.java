@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 @Log4j2
 public class DaoPersonajeImp implements DaoPersonaje {
+
     @Override
     public Either<ApiError, List<Personaje>> getAll() {
         Either<ApiError, List<Personaje>> res;
@@ -36,7 +37,7 @@ public class DaoPersonajeImp implements DaoPersonaje {
         if (StaticLists.listaPersonajes.remove(personajeEliminar)) {
             res = Either.right(1);
         } else {
-            res = Either.left(new ApiError("Hubo un error al eliminar el personaje", LocalDateTime.now()));
+            res = Either.left(new ApiError(ConstantsDao.HUBO_UN_ERROR_AL_ELIMINAR_EL_PERSONAJE, LocalDateTime.now()));
         }
         return res;
     }

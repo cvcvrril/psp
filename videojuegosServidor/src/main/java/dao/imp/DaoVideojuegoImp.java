@@ -35,12 +35,11 @@ public class DaoVideojuegoImp implements DaoVideojuego {
         Either<ApiError, Integer> res;
         Videojuego videojuegoEliminar = StaticLists.listaVideojuegos.stream().filter(videojuego -> videojuego.getId() == id).findFirst().orElse(null);
         if (StaticLists.listaVideojuegos.remove(videojuegoEliminar)){
-            //Personaje personajeEliminar = StaticLists.listaPersonajes.stream().filter(personaje -> personaje.getIdVideojuego() == id).findFirst().orElse(null);
             List<Personaje> personajesEliminar = StaticLists.listaPersonajes.stream().filter(personaje -> personaje.getIdVideojuego() == id).toList();
             StaticLists.listaPersonajes.removeAll(personajesEliminar);
             res = Either.right(1);
         } else {
-            res = Either.left(new ApiError("Hubo un error al eliminar el videojuego", LocalDateTime.now()));
+            res = Either.left(new ApiError(ConstantsDao.HUBO_UN_ERROR_AL_ELIMINAR_EL_VIDEOJUEGO, LocalDateTime.now()));
         }
         return res;
     }

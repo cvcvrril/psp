@@ -2,6 +2,7 @@ package domain.servicios;
 
 import dao.interfaces.DaoCredencial;
 import dao.modelo.Credencial;
+import domain.ConstantsDomain;
 import domain.excepciones.BadArgumentException;
 import domain.excepciones.WrongObjectException;
 import jakarta.inject.Inject;
@@ -10,8 +11,12 @@ import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import jakarta.utils.RandomBytesGenerator;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 @Log4j2
 public class CredencialServicio {
+
 
     private final DaoCredencial daoCredencial;
     private final Pbkdf2PasswordHash passwordHash;
@@ -37,21 +42,26 @@ public class CredencialServicio {
 
     private void checkAut(Credencial credencial){
         if (!credencial.isAutentificado()){
-            throw new BadArgumentException("Usuario no activado");
+            throw new BadArgumentException(ConstantsDomain.USUARIO_NO_ACTIVADO);
         }
     }
 
-    //TODO: MONTAR COMPROBADOR REGEX DEL EMAIL
-
     private void checkEmailRegex(String email){
+        String emailRegex = ConstantsDomain.EMAIL_REGEX;
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
+        if (!matcher.matches()){
+            throw new BadArgumentException(ConstantsDomain.EL_EMAIL_INTRODUCIDO_NO_ES_VALIDO);
+        }
     }
 
     public boolean doRegister (Credencial nuevoCredential){
         if (nuevoCredential.getEmail()!= null){
+            checkEmailRegex(nuevoCredential.getEmail());
             nuevoCredential.setPassword(passwordHash.generate(nuevoCredential.getPassword().toCharArray()));
             return daoCredencial.addCred(nuevoCredential).get();
         }else {
-            throw new BadArgumentException("Ha habido un error con el registro");
+            throw new BadArgumentException(ConstantsDomain.HA_HABIDO_UN_ERROR_CON_EL_REGISTRO);
         }
     }
 
@@ -59,7 +69,7 @@ public class CredencialServicio {
         if (daoCredencial.actualizarPassword(actualizadoCredencial).get()){
             actualizadoCredencial.setPassword(passwordHash.generate(actualizadoCredencial.getPassword().toCharArray()));
         } else {
-            throw new BadArgumentException("Ha habido un error al actualizar la contraseña");
+            throw new BadArgumentException(ConstantsDomain.HA_HABIDO_UN_ERROR_AL_ACTUALIZAR_LA_CONTRASENA);
         }
         return false;
     }
@@ -81,9 +91,9 @@ public class CredencialServicio {
             String random = randomBytesGenerator.randomBytes();
             Credencial credencialMandarMail = getCredencialEmail(email);
             credencialMandarMail.setCodAut(random);
-            m.generateAndSendEmail(email, "<html><body><a href=\"http://localhost:8080/videojuegosServidor-1.0-SNAPSHOT/Activation?codigo="+ random+"\">Activación</a></body></html>", "Prueba activacion");
+            m.generateAndSendEmail(email, ConstantsDomain.URL_ACTIVACION_1 + random + ConstantsDomain.URL_ACTIVACION_2, ConstantsDomain.ACTIVACION_DE_LA_CUENTA);
         }catch (MessagingException e) {
-            throw new BadArgumentException("Ha habido un error al mandar el mail");
+            throw new BadArgumentException(ConstantsDomain.HA_HABIDO_UN_ERROR_AL_MANDAR_EL_MAIL);
         }
     }
 
@@ -93,12 +103,12 @@ public class CredencialServicio {
             Credencial credencialMandarMail = getCredencialEmail(email);
             if (credencialMandarMail != null){
                 credencialMandarMail.setCodAut(random);
-                m.generateAndSendEmail(email, "<html><body><a href=\"http://localhost:8080/videojuegosServidor-1.0-SNAPSHOT/ChangePassword?codigo="+ random+"\">Cambio contraseña</a></body></html>", "Cambiar contraseña");
+                m.generateAndSendEmail(email, ConstantsDomain.URL_CONTRASENA_1 + random + ConstantsDomain.URL_CONTRASENA_2, ConstantsDomain.CAMBIO_DE_CONTRASENA);
             } else {
-                throw new WrongObjectException("No se encuentra ninguna credencial con ese correo. ¿Desea mejor registrarse?");
+                throw new WrongObjectException(ConstantsDomain.NO_SE_ENCUENTRA_NINGUNA_CREDENCIAL_CON_ESE_CORREO_DESEA_MEJOR_REGISTRARSE);
             }
         }catch (MessagingException e) {
-            throw new BadArgumentException("Ha habido un error al mandar el mail");
+            throw new BadArgumentException(ConstantsDomain.HA_HABIDO_UN_ERROR_AL_MANDAR_EL_MAIL);
         }
     }
 

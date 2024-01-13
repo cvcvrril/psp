@@ -4,6 +4,7 @@ import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.JWTParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import jakarta.ConstantsJakarta;
 import jakarta.security.enterprise.AuthenticationException;
 import jakarta.security.enterprise.AuthenticationStatus;
 import jakarta.security.enterprise.authentication.mechanism.http.HttpAuthenticationMechanism;
@@ -42,20 +43,20 @@ public class TokenFilter implements HttpAuthenticationMechanism {
 
         String header = httpServletRequest.getHeader(HttpHeaders.AUTHORIZATION);
         if (header != null) {
-            String[] valores = header.split(" ");
+            String[] valores = header.split(ConstantsJakarta.EMPTY);
 
-            if (valores[0].equalsIgnoreCase("Bearer")) {
+            if (valores[0].equalsIgnoreCase(ConstantsJakarta.BEARER)) {
                 String accessToken = valores[1];
 
                 c = validarTokenDeAcceso(accessToken);
 
                 if (c.getStatus() == CredentialValidationResult.Status.VALID) {
-                    httpServletRequest.getSession().setAttribute("USERLOGIN", c);
+                    httpServletRequest.getSession().setAttribute(ConstantsJakarta.USERLOGIN, c);
                 }
             }
         }
         if (!c.getStatus().equals(CredentialValidationResult.Status.VALID)) {
-            httpServletRequest.setAttribute("status", c.getStatus());
+            httpServletRequest.setAttribute(ConstantsJakarta.STATUS, c.getStatus());
             return httpMessageContext.doNothing();
         }
         return httpMessageContext.notifyContainerAboutLogin(c);
@@ -66,7 +67,7 @@ public class TokenFilter implements HttpAuthenticationMechanism {
             JWTClaimsSet claimsSet = JWTParser.parse(accessToken).getJWTClaimsSet();
 
             String username = claimsSet.getSubject();
-            String roles = claimsSet.getStringClaim("rol");
+            String roles = claimsSet.getStringClaim(ConstantsJakarta.ROL);
 
             Date expirationDate = claimsSet.getExpirationTime();
             LocalDateTime expiration = expirationDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
@@ -74,7 +75,7 @@ public class TokenFilter implements HttpAuthenticationMechanism {
             LocalDateTime now = LocalDateTime.now();
 
             if (expiration != null && now.isAfter(expiration)) {
-                log.warn("El token de acceso ha expirado. Se va a generar otro");
+                log.warn(ConstantsJakarta.EL_TOKEN_DE_ACCESO_HA_EXPIRADO_SE_VA_A_GENERAR_OTRO);
                 return CredentialValidationResult.INVALID_RESULT;
             }
             return new CredentialValidationResult(username, Collections.singleton(roles));
@@ -91,9 +92,9 @@ public class TokenFilter implements HttpAuthenticationMechanism {
 
     @Override
     public void cleanSubject(HttpServletRequest request, HttpServletResponse response, HttpMessageContext httpMessageContext) {
-        request.getSession().removeAttribute("USERLOGIN");
-        request.getSession().removeAttribute("accessToken");
-        request.getSession().removeAttribute("refreshToken");
+        request.getSession().removeAttribute(ConstantsJakarta.USERLOGIN);
+        request.getSession().removeAttribute(ConstantsJakarta.AUTHORIZATION);
+        request.getSession().removeAttribute(ConstantsJakarta.REFRESH_TOKEN);
     }
 
 }

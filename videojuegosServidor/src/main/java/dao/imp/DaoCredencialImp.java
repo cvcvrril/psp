@@ -15,6 +15,8 @@ import java.util.Optional;
 @Log4j2
 public class DaoCredencialImp implements DaoCredencial {
 
+
+
     @Override
     public Either<ApiError, Credencial> userLogged(Credencial credencial) {
         Either<ApiError, Credencial> res;
@@ -53,11 +55,11 @@ public class DaoCredencialImp implements DaoCredencial {
                 credencialExistente.setPassword(actualizadoCredencial.getPassword());
                 return Either.right(true);
             } else {
-                ApiError error = new ApiError("Usuario no encontrado.No se encontró el usuario para actualizar la contraseña.", LocalDateTime.now());
+                ApiError error = new ApiError(ConstantsDao.NO_SE_ENCONTRO_EL_USUARIO_PARA_ACTUALIZAR_LA_CONTRASENA, LocalDateTime.now());
                 return Either.left(error);
             }
         } catch (Exception e) {
-            ApiError error = new ApiError("Error en la actualización. Ocurrió un error al actualizar la contraseña.", LocalDateTime.now());
+            ApiError error = new ApiError(ConstantsDao.ERROR_EN_LA_ACTUALIZACION_OCURRIO_UN_ERROR_AL_ACTUALIZAR_LA_CONTRASENA, LocalDateTime.now());
             return Either.left(error);
         }
     }
@@ -69,7 +71,7 @@ public class DaoCredencialImp implements DaoCredencial {
                 return Either.right(credencial);
             }
         }
-        return Either.left(new ApiError("Credencial no encontrada para el usuario.", LocalDateTime.now()));
+        return Either.left(new ApiError(ConstantsDao.CREDENCIAL_NO_ENCONTRADA_PARA_EL_USUARIO, LocalDateTime.now()));
     }
 
     @Override
@@ -79,7 +81,7 @@ public class DaoCredencialImp implements DaoCredencial {
                 return Either.right(credencial);
             }
         }
-        return Either.left(new ApiError("Credencial no encontrada para el usuario.", LocalDateTime.now()));
+        return Either.left(new ApiError(ConstantsDao.CREDENCIAL_NO_ENCONTRADA_PARA_EL_USUARIO, LocalDateTime.now()));
     }
 
     @Override
@@ -89,7 +91,7 @@ public class DaoCredencialImp implements DaoCredencial {
                 return Either.right(credencial);
             }
         }
-        return Either.left(new ApiError("Credencial no encontrada para el usuario.", LocalDateTime.now()));
+        return Either.left(new ApiError(ConstantsDao.CREDENCIAL_NO_ENCONTRADA_PARA_EL_USUARIO, LocalDateTime.now()));
     }
 
 

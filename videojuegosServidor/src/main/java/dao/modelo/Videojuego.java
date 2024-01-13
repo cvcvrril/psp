@@ -1,6 +1,7 @@
 package dao.modelo;
 
 
+import dao.ConstantsDao;
 import jakarta.json.bind.annotation.JsonbPropertyOrder;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonbPropertyOrder({"id", "titulo", "descripcion"})
+@JsonbPropertyOrder({ConstantsDao.ID, ConstantsDao.TITULO, ConstantsDao.DESCRIPCION})
 public class Videojuego {
 
     private int id;

@@ -1,5 +1,7 @@
 package jakarta.rest;
 
+import com.nimbusds.jwt.JWTClaimsSet;
+import com.nimbusds.jwt.JWTParser;
 import dao.modelo.Credencial;
 import domain.excepciones.WrongObjectException;
 import domain.servicios.AuthorizacionRespone;
@@ -9,9 +11,11 @@ import io.jsonwebtoken.security.Keys;
 import jakarta.ConstantsJakarta;
 import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.HttpHeaders;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import lombok.extern.log4j.Log4j2;
@@ -21,6 +25,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -75,16 +80,26 @@ public class RestCredenciales {
         }else {
             throw new WrongObjectException(ConstantsJakarta.EL_CORREO_NO_ES_VALIDO);
         }
-
     }
-
-    //TODO: TENGO QUE ARREGLAR LO DEL REFRESH TOKEN -> INVESTIGAR SI ES MEJOR HACERLO CON SERVLETS O CON LLAMADA DESDE EL REST
 
     @Path(ConstantsJakarta.REFRESHTOKEN)
     @PUT
-    public Response actualizarTokenAcceso(@Context HttpServletResponse response){
-        response.getHeader("A");
-        return null;
+    public Response actualizarTokenAcceso(@Context HttpServletResponse response, @Context HttpServletRequest request){
+        String refreshToken = request.getHeader(ConstantsJakarta.REFRESH_TOKEN);
+        JWTClaimsSet claimsSet;
+        try {
+
+            claimsSet = JWTParser.parse(refreshToken).getJWTClaimsSet();
+            String username = claimsSet.getSubject();
+            String roles = claimsSet.getStringClaim(ConstantsJakarta.ROL);
+
+            String newAccessToken =  generarTokenJWT(120, username, roles);
+
+            response.setHeader(HttpHeaders.AUTHORIZATION, newAccessToken);
+            return Response.ok().entity(newAccessToken).build();
+        } catch (ParseException e) {
+            throw new WrongObjectException(ConstantsJakarta.HA_HABIDO_UN_PROBLEMA_AL_GENERAR_EL_NUEVO_ACCESS_TOKEN);
+        }
     }
 
 

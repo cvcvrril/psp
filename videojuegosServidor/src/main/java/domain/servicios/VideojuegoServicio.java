@@ -2,6 +2,7 @@ package domain.servicios;
 
 import dao.interfaces.DaoVideojuego;
 import dao.modelo.Videojuego;
+import domain.ConstantsDomain;
 import domain.excepciones.BadArgumentException;
 import io.vavr.control.Either;
 import jakarta.excepciones.ApiError;
@@ -30,7 +31,7 @@ public class VideojuegoServicio {
             return daoVideojuego.delete(id);
         }catch (NumberFormatException e){
             log.error(e.getMessage(),e);
-            throw new BadArgumentException("Error al meter alguno de los argumentos");
+            throw new BadArgumentException(ConstantsDomain.ERROR_AL_METER_ALGUNO_DE_LOS_ARGUMENTOS);
         }
     }
 

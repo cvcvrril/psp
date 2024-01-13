@@ -26,4 +26,22 @@ public class ConstantsJakarta {
     public static final String ID = "id";
     public static final String PATH_ID_VIDEOJUEGO = "/{idVideojuego}";
     public static final String ID_VIDEOJUEGO = "idVideojuego";
+    public static final String REFRESH_TOKEN = "refreshToken";
+    public static final String HA_HABIDO_UN_PROBLEMA_AL_GENERAR_EL_NUEVO_ACCESS_TOKEN = "Ha habido un problema al generar el nuevo accessToken";
+    public static final String VIDEOJUEGOS = "/videojuegos";
+    public static final String SERVLET_ACTIVATION = "ServletActivation";
+    public static final String ACTIVATION = "/Activation";
+    public static final String CODIGO = "codigo";
+    public static final String CUENTA_ACTIVADA = "Cuenta activada";
+    public static final String LA_CREDENCIAL_QUE_SE_HA_TRATADO_DE_ACTIVAR_NO_EXISTE = "La credencial que se ha tratado de activar no existe";
+    public static final String SERVLET_CHANGE_PASSWORD = "ServletChangePassword";
+    public static final String CHANGE_PASSWORD = "/ChangePassword";
+    public static final String CONTRASENA_CAMBIADA = "Contraseña cambiada";
+    public static final String NUEVA_CONTRASENA = "Nueva contraseña: ";
+    public static final String HA_HABIDO_UN_ERROR_AL_TRATAR_DE_CAMBIAR_LA_CONTRASENA = "Ha habido un error al tratar de cambiar la contraseña";
+    public static final String BEARER = "Bearer";
+    public static final String USERLOGIN = "USERLOGIN";
+    public static final String STATUS = "status";
+    public static final String EL_TOKEN_DE_ACCESO_HA_EXPIRADO_SE_VA_A_GENERAR_OTRO = "El token de acceso ha expirado. Se va a generar otro";
+    public static final String AUTHORIZATION = "Authorization";
 }

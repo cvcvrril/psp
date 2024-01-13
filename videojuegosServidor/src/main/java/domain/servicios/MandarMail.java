@@ -1,6 +1,7 @@
 package domain.servicios;
 
 
+import domain.ConstantsDomain;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
 import jakarta.mail.Session;
@@ -11,69 +12,32 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.Properties;
 
-
-/**
- *
- * @author oscar
- */
 @Log4j2
 public class MandarMail {
-
-
-//    public void mandarMail(String to, String msg, String subject) {
-//        try {
-//            Email email = new SimpleEmail();
-//
-//            email.setHostName("smtp.gmail.com");
-//            email.setSmtpPort(Integer.parseInt("587"));
-//            email.setAuthentication("alumnosdamquevedo@gmail.com", "quevedo2020");
-//            //email.setSSLOnConnect(true);
-//            email.setStartTLSEnabled(true);
-//            email.setFrom("alumnosDamQuevedo@gmail.com");
-//            email.setSubject(subject);
-//            email.setContent(msg,"text/html");
-//            email.addTo(to);
-//
-//            email.send();
-//        } catch (EmailException ex) {
-//
-//            Logger.getLogger(MandarMail.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
-
 
     public void generateAndSendEmail(String to, String msg, String subject) throws MessagingException {
         Properties mailServerProperties;
         Session getMailSession;
         MimeMessage generateMailMessage;
 
-        // Step1
-
         mailServerProperties = System.getProperties();
-        mailServerProperties.put("mail.smtp.port", Integer.parseInt("587"));
-        mailServerProperties.put("mail.smtp.auth", "true");
-        mailServerProperties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-        mailServerProperties.put("mail.smtp.starttls.enable", "true");
-
-        // Step2
+        mailServerProperties.put(ConstantsDomain.MAIL_SMTP_PORT, Integer.parseInt(ConstantsDomain.NUMBER));
+        mailServerProperties.put(ConstantsDomain.MAIL_SMTP_AUTH, ConstantsDomain.TRUE);
+        mailServerProperties.put(ConstantsDomain.MAIL_SMTP_SSL_TRUST, ConstantsDomain.SMTP_GMAIL_COM);
+        mailServerProperties.put(ConstantsDomain.MAIL_SMTP_STARTTLS_ENABLE, ConstantsDomain.TRUE);
 
         getMailSession = Session.getDefaultInstance(mailServerProperties, null);
         generateMailMessage = new MimeMessage(getMailSession);
         generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
         generateMailMessage.setSubject(subject);
         String emailBody = msg;
-        generateMailMessage.setContent(emailBody, "text/html");
+        generateMailMessage.setContent(emailBody, ConstantsDomain.CONTENT_TYPE);
 
+        Transport transport = getMailSession.getTransport(ConstantsDomain.SMTP);
 
-        // Step3
-
-        Transport transport = getMailSession.getTransport("smtp");
-
-        // Enter your correct gmail UserID and Password
-        // if you have 2FA enabled then provide App Specific Password
-        transport.connect("smtp.gmail.com",
-                "alumnosdamquevedo@gmail.com",
-                "uyhqfbbfmszvuykt");
+        transport.connect(ConstantsDomain.SMTP_GMAIL_COM,
+                ConstantsDomain.MAIL,
+                ConstantsDomain.PASSWORD);
         transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
         transport.close();
     }
