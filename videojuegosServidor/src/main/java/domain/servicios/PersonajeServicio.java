@@ -24,6 +24,17 @@ public class PersonajeServicio {
         return daoPersonaje.getAll();
     }
 
+    public Either<ApiError, List<Personaje>> getIdVideojuego(String idVideojuegoParam){
+        try {
+            Integer idVideojuego = Integer.parseInt(idVideojuegoParam);
+            return daoPersonaje.getIdVideojuego(idVideojuego);
+        }catch (NumberFormatException e){
+            log.error(e.getMessage(),e);
+            throw new BadArgumentException("Error al meter alguno de los argumentos");
+        }
+    }
+
+
     public Either<ApiError, Integer> delete(String idParam){
         try{
             Integer id = Integer.parseInt(idParam);

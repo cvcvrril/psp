@@ -31,12 +31,19 @@ public class RestPersonajes {
         return personajeServicio.getAll().get();
     }
 
+
+
     @DELETE
     @Path("/{id}")
     @RolesAllowed({"Admin"})
     public Integer deleteVideojuego(@PathParam("id") String idParam){
         return personajeServicio.delete(idParam).get();
     }
+
+    @GET
+    @Path("/{idVideojuego}")
+    @RolesAllowed({"Admin", "User"})
+    public List<Personaje> getIdVideojuego(@PathParam("idVideojuego") String idVideojuegoParam) {return personajeServicio.getIdVideojuego(idVideojuegoParam).get();}
 
 
 }

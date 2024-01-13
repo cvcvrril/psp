@@ -10,5 +10,5 @@ public interface DaoPersonaje {
 
     Either<ApiError, List<Personaje>> getAll();
     Either<ApiError, Integer> delete(int id);
-
+    Either<ApiError, List<Personaje>> getIdVideojuego(int idVideojuego);
 }

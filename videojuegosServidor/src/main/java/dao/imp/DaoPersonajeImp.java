@@ -11,6 +11,7 @@ import lombok.extern.log4j.Log4j2;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Log4j2
 public class DaoPersonajeImp implements DaoPersonaje {
@@ -36,6 +37,20 @@ public class DaoPersonajeImp implements DaoPersonaje {
             res = Either.right(1);
         } else {
             res = Either.left(new ApiError("Hubo un error al eliminar el personaje", LocalDateTime.now()));
+        }
+        return res;
+    }
+
+    @Override
+    public Either<ApiError, List<Personaje>> getIdVideojuego(int idVideojuego) {
+        Either<ApiError, List<Personaje>> res;
+        List<Personaje> personajeIdVideojuegoList;
+        try {
+            personajeIdVideojuegoList = StaticLists.listaPersonajes.stream().filter(personaje -> personaje.getIdVideojuego() == idVideojuego).collect(Collectors.toList());
+            res = Either.right(personajeIdVideojuegoList);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
         }
         return res;
     }
