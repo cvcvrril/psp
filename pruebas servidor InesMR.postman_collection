@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "58a6470c-3338-46d9-9e0d-3a710ec36f97",
+		"name": "pruebas servidor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30305512"
+	},
+	"item": [
+		{
+			"name": "Pillar la lista de videojuegos",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb290IiwiaXNzIjoic2VsZiIsImV4cCI6MTcwNTE1MTI1NSwicm9sIjoiQWRtaW4ifQ.mhFjcKUqqlXhuXy64SZtVT3H6PO2Rw8ZXEFn4r0K5SzXe450XdmQr4pZqgiB-al19Srgf7g83w7HA_JVUSD_Dg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/videojuegosServidor-1.0-SNAPSHOT/api/videojuegos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"videojuegosServidor-1.0-SNAPSHOT",
+						"api",
+						"videojuegos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pillar la lista de personajes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb290IiwiaXNzIjoic2VsZiIsImV4cCI6MTcwNTE1MTI1NSwicm9sIjoiQWRtaW4ifQ.mhFjcKUqqlXhuXy64SZtVT3H6PO2Rw8ZXEFn4r0K5SzXe450XdmQr4pZqgiB-al19Srgf7g83w7HA_JVUSD_Dg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/videojuegosServidor-1.0-SNAPSHOT/api/personajes/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"videojuegosServidor-1.0-SNAPSHOT",
+						"api",
+						"personajes",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/videojuegosServidor-1.0-SNAPSHOT/api/login?username=root&password=Admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"videojuegosServidor-1.0-SNAPSHOT",
+						"api",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "root"
+						},
+						{
+							"key": "password",
+							"value": "Admin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user\": \"prueba\",\r\n  \"password\": \"prueba\",\r\n  \"email\": \"ines07mar@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/videojuegosServidor-1.0-SNAPSHOT/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"videojuegosServidor-1.0-SNAPSHOT",
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar videojuego",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYXRhdGEiLCJpc3MiOiJzZWxmIiwiZXhwIjoxNzA0MzcwMDE4LCJyb2wiOiJVc2VyIn0.3yErMuNRDhw1qVf6rza_srO68RKwnk5b5DhmkookDxo_y8PasHNT-TkklQtIRegGFUxndH5mXjGI-82pzHlAqw eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYXRhdGEiLCJpc3MiOiJzZWxmIiwiZXhwIjoxNzA0MzcxNjk4LCJyb2wiOiJVc2VyIn0.W5lqz8hM1YonSOlxyghppnc0ZhCnVHuHOTikTaaHS-_uL4xDVPargHfEu8iriPTvJqy7EIQPPAzyOuLoZa1E6w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/videojuegosServidor-1.0-SNAPSHOT/api/videojuegos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"videojuegosServidor-1.0-SNAPSHOT",
+						"api",
+						"videojuegos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar contraseña",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"inesysoniadam@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/videojuegosServidor-1.0-SNAPSHOT/api/login/forgotPassword",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"videojuegosServidor-1.0-SNAPSHOT",
+						"api",
+						"login",
+						"forgotPassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pedir accessToken a partir del refreshToken",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "refreshToken",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb290IiwiaXNzIjoic2VsZiIsImV4cCI6MTcwNTE3OTA3Nywicm9sIjoiQWRtaW4ifQ.rjL05SF0bp3e6UWoQKCDtZzGmFNwXIuEMQ4Sdf_1EvuxY1DWoKA57P676LXL-NLiByNGe6B9hyTspvb_qWnq6w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/videojuegosServidor-1.0-SNAPSHOT/api/login/refreshToken",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"videojuegosServidor-1.0-SNAPSHOT",
+						"api",
+						"login",
+						"refreshToken"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
