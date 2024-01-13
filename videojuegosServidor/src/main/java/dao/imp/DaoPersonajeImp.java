@@ -47,7 +47,7 @@ public class DaoPersonajeImp implements DaoPersonaje {
         Either<ApiError, List<Personaje>> res;
         List<Personaje> personajeIdVideojuegoList;
         try {
-            personajeIdVideojuegoList = StaticLists.listaPersonajes.stream().filter(personaje -> personaje.getIdVideojuego() == idVideojuego).collect(Collectors.toList());
+            personajeIdVideojuegoList = StaticLists.listaPersonajes.stream().filter(personaje -> personaje.getIdVideojuego() == idVideojuego).toList();
             res = Either.right(personajeIdVideojuegoList);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
