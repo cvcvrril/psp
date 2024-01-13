@@ -1,6 +1,6 @@
 package domain.servicios;
 
-import dao.DaoPersonaje;
+import dao.interfaces.DaoPersonaje;
 import dao.modelo.Personaje;
 import domain.excepciones.BadArgumentException;
 import io.vavr.control.Either;

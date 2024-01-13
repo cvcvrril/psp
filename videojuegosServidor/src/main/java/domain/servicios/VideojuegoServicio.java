@@ -1,6 +1,6 @@
 package domain.servicios;
 
-import dao.DaoVideojuego;
+import dao.interfaces.DaoVideojuego;
 import dao.modelo.Videojuego;
 import domain.excepciones.BadArgumentException;
 import io.vavr.control.Either;

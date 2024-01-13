@@ -8,19 +8,18 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -53,31 +52,6 @@ public class RestCredenciales {
         }
     }
 
-    //TODO: METER ESTO EN OTRO LADO [
-
-
-    //TODO: CAMBIAR LO DEL SNEAKYTHROWS
-    @SneakyThrows
-    private String generarTokenJWT(int expirationSeconds, String username, String rol) {
-        final MessageDigest digest =
-                MessageDigest.getInstance("SHA-512");
-        digest.update("clave".getBytes(StandardCharsets.UTF_8));
-        final SecretKeySpec key2 = new SecretKeySpec(
-                digest.digest(), 0, 64, "AES");
-        SecretKey keyConfig = Keys.hmacShaKeyFor(key2.getEncoded());
-
-        return Jwts.builder()
-                .setSubject(username)
-                .setIssuer("self")
-                .setExpiration(Date
-                        .from(LocalDateTime.now().plusSeconds(expirationSeconds).atZone(ZoneId.systemDefault())
-                                .toInstant()))
-                .claim("rol", rol)
-                .signWith(keyConfig).compact();
-    }
-
-    //TODO: METER ESTO EN OTRO LADO ]
-
     @POST
     public Response doRegister(Credencial credencial){
         if (servicio.doRegister(credencial)){
@@ -107,8 +81,33 @@ public class RestCredenciales {
 
     @Path("/refreshToken")
     @PUT
-    public Response actualizarTokenAcceso(){
-
+    public Response actualizarTokenAcceso(@Context HttpServletResponse response){
+        response.getHeader("A");
         return null;
     }
+
+
+    private String generarTokenJWT(int expirationSeconds, String username, String rol) {
+        final MessageDigest digest;
+        try {
+            digest = MessageDigest.getInstance("SHA-512");
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+        digest.update("clave".getBytes(StandardCharsets.UTF_8));
+        final SecretKeySpec key2 = new SecretKeySpec(
+                digest.digest(), 0, 64, "AES");
+        SecretKey keyConfig = Keys.hmacShaKeyFor(key2.getEncoded());
+
+        return Jwts.builder()
+                .setSubject(username)
+                .setIssuer("self")
+                .setExpiration(Date
+                        .from(LocalDateTime.now().plusSeconds(expirationSeconds).atZone(ZoneId.systemDefault())
+                                .toInstant()))
+                .claim("rol", rol)
+                .signWith(keyConfig).compact();
+    }
+
+
 }

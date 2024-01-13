@@ -1,7 +1,7 @@
 package dao.imp;
 
-import dao.ConstantsDAO;
-import dao.DaoPersonaje;
+import dao.ConstantsDao;
+import dao.interfaces.DaoPersonaje;
 import dao.data.StaticLists;
 import dao.modelo.Personaje;
 import domain.excepciones.BaseCaidaException;
@@ -24,7 +24,7 @@ public class DaoPersonajeImp implements DaoPersonaje {
             res = Either.right(personajeList);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
+            throw new BaseCaidaException(ConstantsDao.BASE_CAIDA_EXCEPTION);
         }
         return res;
     }
@@ -50,7 +50,7 @@ public class DaoPersonajeImp implements DaoPersonaje {
             res = Either.right(personajeIdVideojuegoList);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
+            throw new BaseCaidaException(ConstantsDao.BASE_CAIDA_EXCEPTION);
         }
         return res;
     }

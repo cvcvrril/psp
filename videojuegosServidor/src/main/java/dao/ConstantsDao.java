@@ -1,6 +1,6 @@
 package dao;
 
-public class ConstantsDAO {
+public class ConstantsDao {
 
     /*Orders*/
 

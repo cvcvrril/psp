@@ -1,7 +1,7 @@
 package dao.imp;
 
-import dao.ConstantsDAO;
-import dao.DaoVideojuego;
+import dao.ConstantsDao;
+import dao.interfaces.DaoVideojuego;
 import dao.data.StaticLists;
 import dao.modelo.Personaje;
 import dao.modelo.Videojuego;
@@ -25,7 +25,7 @@ public class DaoVideojuegoImp implements DaoVideojuego {
             res = Either.right(videojuegoList);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
+            throw new BaseCaidaException(ConstantsDao.BASE_CAIDA_EXCEPTION);
         }
         return res;
     }

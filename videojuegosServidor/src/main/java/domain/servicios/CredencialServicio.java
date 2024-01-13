@@ -1,6 +1,6 @@
 package domain.servicios;
 
-import dao.DaoCredencial;
+import dao.interfaces.DaoCredencial;
 import dao.modelo.Credencial;
 import domain.excepciones.BadArgumentException;
 import domain.excepciones.WrongObjectException;
@@ -9,7 +9,6 @@ import jakarta.mail.MessagingException;
 import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import jakarta.utils.RandomBytesGenerator;
 import lombok.extern.log4j.Log4j2;
-import jakarta.validation.Validator;
 
 @Log4j2
 public class CredencialServicio {
@@ -19,7 +18,7 @@ public class CredencialServicio {
     private final MandarMail m;
 
     @Inject
-    public CredencialServicio(DaoCredencial daoCredencial, Pbkdf2PasswordHash passwordHash, Validator validator, MandarMail m) {
+    public CredencialServicio(DaoCredencial daoCredencial, Pbkdf2PasswordHash passwordHash, MandarMail m) {
         this.daoCredencial = daoCredencial;
         this.passwordHash = passwordHash;
         this.m = m;

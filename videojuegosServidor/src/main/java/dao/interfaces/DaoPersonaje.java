@@ -1,4 +1,4 @@
-package dao;
+package dao.interfaces;
 
 import dao.modelo.Personaje;
 import io.vavr.control.Either;

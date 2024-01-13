@@ -1,7 +1,7 @@
 package dao.imp;
 
-import dao.ConstantsDAO;
-import dao.DaoCredencial;
+import dao.ConstantsDao;
+import dao.interfaces.DaoCredencial;
 import dao.data.StaticLists;
 import dao.modelo.Credencial;
 import domain.excepciones.BaseCaidaException;
@@ -23,7 +23,7 @@ public class DaoCredencialImp implements DaoCredencial {
             res = Either.right(c);
         }catch (Exception e){
             log.error(e.getMessage(), e);
-            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
+            throw new BaseCaidaException(ConstantsDao.BASE_CAIDA_EXCEPTION);
         }
         return res;
     }
@@ -35,7 +35,7 @@ public class DaoCredencialImp implements DaoCredencial {
             res = Either.right(StaticLists.listaCredenciales.add(nuevoCredential));
         }catch (Exception e){
             log.error(e.getMessage(), e);
-            throw new BaseCaidaException(ConstantsDAO.BASE_CAIDA_EXCEPTION);
+            throw new BaseCaidaException(ConstantsDao.BASE_CAIDA_EXCEPTION);
         }
         return res;
 
