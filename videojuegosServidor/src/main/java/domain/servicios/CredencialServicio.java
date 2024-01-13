@@ -35,15 +35,24 @@ public class CredencialServicio {
         return false;
     }
 
-    public void checkAut(Credencial credencial){
+    private void checkAut(Credencial credencial){
         if (!credencial.isAutentificado()){
             throw new BadArgumentException("Usuario no activado");
         }
     }
 
+    //TODO: MONTAR COMPROBADOR REGEX DEL EMAIL
+
+    private void checkEmailRegex(String email){
+    }
+
     public boolean doRegister (Credencial nuevoCredential){
-        nuevoCredential.setPassword(passwordHash.generate(nuevoCredential.getPassword().toCharArray()));
-        return daoCredencial.addCred(nuevoCredential).get();
+        if (nuevoCredential.getEmail()!= null){
+            nuevoCredential.setPassword(passwordHash.generate(nuevoCredential.getPassword().toCharArray()));
+            return daoCredencial.addCred(nuevoCredential).get();
+        }else {
+            throw new BadArgumentException("Ha habido un error con el registro");
+        }
     }
 
     public boolean actualizarPassword(Credencial actualizadoCredencial){
