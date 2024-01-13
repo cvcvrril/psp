@@ -16,12 +16,14 @@ public class CredencialServicio {
     private final DaoCredencial daoCredencial;
     private final Pbkdf2PasswordHash passwordHash;
     private final MandarMail m;
+    private final RandomBytesGenerator randomBytesGenerator;
 
     @Inject
-    public CredencialServicio(DaoCredencial daoCredencial, Pbkdf2PasswordHash passwordHash, MandarMail m) {
+    public CredencialServicio(DaoCredencial daoCredencial, Pbkdf2PasswordHash passwordHash, MandarMail m, RandomBytesGenerator randomBytesGenerator) {
         this.daoCredencial = daoCredencial;
         this.passwordHash = passwordHash;
         this.m = m;
+        this.randomBytesGenerator = randomBytesGenerator;
     }
 
     public boolean doLogin(Credencial credencial) {
@@ -67,7 +69,6 @@ public class CredencialServicio {
 
     public void mandarMail(String email) {
         try {
-            RandomBytesGenerator randomBytesGenerator = new RandomBytesGenerator();
             String random = randomBytesGenerator.randomBytes();
             Credencial credencialMandarMail = getCredencialEmail(email);
             credencialMandarMail.setCodAut(random);
@@ -79,7 +80,6 @@ public class CredencialServicio {
 
     public void mandarMailCambioPassword(String email){
         try {
-            RandomBytesGenerator randomBytesGenerator = new RandomBytesGenerator();
             String random = randomBytesGenerator.randomBytes();
             Credencial credencialMandarMail = getCredencialEmail(email);
             if (credencialMandarMail != null){

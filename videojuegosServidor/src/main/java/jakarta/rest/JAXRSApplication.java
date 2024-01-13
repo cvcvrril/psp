@@ -1,7 +1,6 @@
 package jakarta.rest;
 
-
-import jakarta.utils.ConstantsJakarta;
+import jakarta.ConstantsJakarta;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 

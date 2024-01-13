@@ -6,6 +6,7 @@ import domain.servicios.AuthorizacionRespone;
 import domain.servicios.CredencialServicio;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import jakarta.ConstantsJakarta;
 import jakarta.excepciones.ApiError;
 import jakarta.inject.Inject;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,7 +26,7 @@ import java.time.ZoneId;
 import java.util.Date;
 
 @Log4j2
-@Path("/login")
+@Path(ConstantsJakarta.LOGIN)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestCredenciales {
@@ -38,8 +39,8 @@ public class RestCredenciales {
     }
 
     @GET
-    public Response getLogin(@QueryParam("username") String username, @QueryParam("password") String password, @Context HttpServletResponse response){
-        if (servicio.doLogin(new Credencial(username, password, "", true, "", ""))){
+    public Response getLogin(@QueryParam(ConstantsJakarta.USERNAME) String username, @QueryParam(ConstantsJakarta.PASSWORD) String password){
+        if (servicio.doLogin(new Credencial(username, password, ConstantsJakarta.EMPTY, true, ConstantsJakarta.EMPTY, ConstantsJakarta.EMPTY))){
             Credencial inicioSesion = servicio.getCredencialUser(username);
             String jwtAToken = generarTokenJWT(120, inicioSesion.getUser(), inicioSesion.getRol());
             String jwtRToken = generarTokenJWT(1800, inicioSesion.getUser(), inicioSesion.getRol());
@@ -47,7 +48,7 @@ public class RestCredenciales {
             return Response.status(Response.Status.OK).entity(auth).build();
         }else {
             return Response.status(Response.Status.UNAUTHORIZED)
-                    .entity(new ApiError("El usuario o la contraseña son incorrectos", LocalDateTime.now())).
+                    .entity(new ApiError(ConstantsJakarta.EL_USUARIO_O_LA_CONTRASENA_SON_INCORRECTOS, LocalDateTime.now())).
                     build();
         }
     }
@@ -60,26 +61,26 @@ public class RestCredenciales {
                     .entity(credencial).build();
         }else {
             return Response.status(Response.Status.CONFLICT)
-                    .entity(new ApiError("El registro no pudo ser completado", LocalDateTime.now())).build();
+                    .entity(new ApiError(ConstantsJakarta.EL_REGISTRO_NO_PUDO_SER_COMPLETADO, LocalDateTime.now())).build();
         }
     }
 
-    @Path("/forgotPassword")
+    @Path(ConstantsJakarta.FORGOTPASSWORD)
     @POST
     public Response mandarCorreoPassword(Credencial credencial){
         if (credencial.getEmail() != null){
             servicio.mandarMailCambioPassword(credencial.getEmail());
             return Response.status(Response.Status.OK)
-                    .entity("Correo enviado").build();
+                    .entity(ConstantsJakarta.CORREO_ENVIADO).build();
         }else {
-            throw new WrongObjectException("El correo no es válido");
+            throw new WrongObjectException(ConstantsJakarta.EL_CORREO_NO_ES_VALIDO);
         }
 
     }
 
     //TODO: TENGO QUE ARREGLAR LO DEL REFRESH TOKEN -> INVESTIGAR SI ES MEJOR HACERLO CON SERVLETS O CON LLAMADA DESDE EL REST
 
-    @Path("/refreshToken")
+    @Path(ConstantsJakarta.REFRESHTOKEN)
     @PUT
     public Response actualizarTokenAcceso(@Context HttpServletResponse response){
         response.getHeader("A");
@@ -90,22 +91,22 @@ public class RestCredenciales {
     private String generarTokenJWT(int expirationSeconds, String username, String rol) {
         final MessageDigest digest;
         try {
-            digest = MessageDigest.getInstance("SHA-512");
+            digest = MessageDigest.getInstance(ConstantsJakarta.ALGORITHM_SHA_512);
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
-        digest.update("clave".getBytes(StandardCharsets.UTF_8));
+        digest.update(ConstantsJakarta.CLAVE.getBytes(StandardCharsets.UTF_8));
         final SecretKeySpec key2 = new SecretKeySpec(
-                digest.digest(), 0, 64, "AES");
+                digest.digest(), 0, 64, ConstantsJakarta.ALGORITHM_AES);
         SecretKey keyConfig = Keys.hmacShaKeyFor(key2.getEncoded());
 
         return Jwts.builder()
                 .setSubject(username)
-                .setIssuer("self")
+                .setIssuer(ConstantsJakarta.ISSUER_SELF)
                 .setExpiration(Date
                         .from(LocalDateTime.now().plusSeconds(expirationSeconds).atZone(ZoneId.systemDefault())
                                 .toInstant()))
-                .claim("rol", rol)
+                .claim(ConstantsJakarta.ROL, rol)
                 .signWith(keyConfig).compact();
     }
 
