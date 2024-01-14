@@ -44,4 +44,5 @@ public class ConstantsJakarta {
     public static final String STATUS = "status";
     public static final String EL_TOKEN_DE_ACCESO_HA_EXPIRADO_SE_VA_A_GENERAR_OTRO = "El token de acceso ha expirado. Se va a generar otro";
     public static final String AUTHORIZATION = "Authorization";
+    public static final String HUBO_UN_PROBLEMA = "Hubo un problema";
 }

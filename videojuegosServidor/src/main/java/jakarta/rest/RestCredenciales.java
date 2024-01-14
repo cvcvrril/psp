@@ -108,7 +108,7 @@ public class RestCredenciales {
         try {
             digest = MessageDigest.getInstance(ConstantsJakarta.ALGORITHM_SHA_512);
         } catch (NoSuchAlgorithmException e) {
-            throw new WrongObjectException("Hubo un problema");
+            throw new WrongObjectException(ConstantsJakarta.HUBO_UN_PROBLEMA);
         }
         digest.update(ConstantsJakarta.CLAVE.getBytes(StandardCharsets.UTF_8));
         final SecretKeySpec key2 = new SecretKeySpec(
