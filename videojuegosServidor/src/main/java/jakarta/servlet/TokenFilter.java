@@ -28,6 +28,10 @@ import java.time.ZoneId;
 import java.util.Collections;
 import java.util.Date;
 
+
+/**Pequeña nota: No puedo meter el espacio en blanco usado para el regex [linea 50 del código] como una constante, porque sino no me lee el espacio, sino que me separa toda la cabecera por cada carácter**/
+
+
 @Log4j2
 @Provider
 
@@ -43,7 +47,7 @@ public class TokenFilter implements HttpAuthenticationMechanism {
 
         String header = httpServletRequest.getHeader(HttpHeaders.AUTHORIZATION);
         if (header != null) {
-            String[] valores = header.split(ConstantsJakarta.EMPTY);
+            String[] valores = header.split(" ");
 
             if (valores[0].equalsIgnoreCase(ConstantsJakarta.BEARER)) {
                 String accessToken = valores[1];
