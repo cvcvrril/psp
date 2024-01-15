@@ -1,22 +1,22 @@
 
 ~
-java:S1104"\Make listaVideojuegos a static final constant or non-public and provide accessors if needed.(ÓŒéÁøÿÿÿÿ8¾‰µ¦Ğ1
+java:S1104"\Make listaVideojuegos a static final constant or non-public and provide accessors if needed.(ÓŒéÁøÿÿÿÿ8Øïğ¸Ğ1
 w
-java:S1104"[Make listaPersonajes a static final constant or non-public and provide accessors if needed.(Æ½İe8À‰µ¦Ğ1
+java:S1104"[Make listaPersonajes a static final constant or non-public and provide accessors if needed.(Æ½İe8Øïğ¸Ğ1
 
-java:S1104$"]Make listaCredenciales a static final constant or non-public and provide accessors if needed.(™‰°¾ùÿÿÿÿ8ıÑ³¦Ğ1
+java:S1104*"]Make listaCredenciales a static final constant or non-public and provide accessors if needed.(™‰°¾ùÿÿÿÿ8Øïğ¸Ğ1
 X
-java:S1444"6Make this "public static listaVideojuegos" field final(ÓŒéÁøÿÿÿÿ8Ã‰µ¦Ğ1
+java:S1444"6Make this "public static listaVideojuegos" field final(ÓŒéÁøÿÿÿÿ8Øïğ¸Ğ1
 Q
-java:S1444"5Make this "public static listaPersonajes" field final(Æ½İe8Å‰µ¦Ğ1
+java:S1444"5Make this "public static listaPersonajes" field final(Æ½İe8Øïğ¸Ğ1
 Y
-java:S1444$"7Make this "public static listaCredenciales" field final(™‰°¾ùÿÿÿÿ8ıÑ³¦Ğ1
+java:S1444*"7Make this "public static listaCredenciales" field final(™‰°¾ùÿÿÿÿ8Øïğ¸Ğ1
 ?
-java:S2386"Make this member "protected".(ÓŒéÁøÿÿÿÿ8ãº”¢Í1
+java:S2386"Make this member "protected".(ÓŒéÁøÿÿÿÿ8Ûïğ¸Ğ1
 9
-java:S2386"Make this member "protected".(Æ½İe8ãº”¢Í1
+java:S2386"Make this member "protected".(Æ½İe8Ûïğ¸Ğ1
 ?
-java:S2386$"Make this member "protected".(™‰°¾ùÿÿÿÿ8ÿÑ³¦Ğ1
+java:S2386*"Make this member "protected".(™‰°¾ùÿÿÿÿ8Ûïğ¸Ğ1
 W
 java:S1118
-":Add a private constructor to hide the implicit public one.(œâ¢ò8æº”¢Í1
+":Add a private constructor to hide the implicit public one.(œâ¢ò8Üïğ¸Ğ1
