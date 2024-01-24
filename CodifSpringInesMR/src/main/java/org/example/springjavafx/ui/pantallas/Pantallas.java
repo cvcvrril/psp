@@ -1,4 +1,4 @@
-package org.example.springjavafx.ui;
+package org.example.springjavafx.ui.pantallas;
 
 public enum Pantallas {
 

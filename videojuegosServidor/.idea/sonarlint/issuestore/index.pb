@@ -45,8 +45,6 @@ W
 .src/main/java/jakarta/servlet/TokenFilter.java,1\d\1d6db27167f035ae8cda1fb42ba5cd3b888eef32
 e
 5src/main/java/jakarta/utils/RandomBytesGenerator.java,7\d\7d9145e6e20cb0b087ed0989ff874060c621cfc9
-h
-8src/main/java/jakarta/servlet/ServletForgotPassword.java,a\8\a8d4225208da10b37abd13cb5dd31914f8a09a18
 d
 4src/main/java/jakarta/servlet/ServletActivation.java,e\2\e229be7658ac9c574192eec7d5475a7b655d6d50
 ^
@@ -56,21 +54,11 @@ Q
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-^
-.src/main/java/dao/interfaces/DaoPersonaje.java,9\3\935594e33dacaafbdd1a53e2074845c370f5e654
-_
-/src/main/java/dao/interfaces/DaoVideojuego.java,c\d\cd32e5bbbfb3760d7327beeb8f722e7fb6e3dc30
-h
-8src/main/java/domain/servicios/AuthorizacionRespone.java,c\7\c7be2f039aab159d92509fcab4f53a094e024469
 e
 5src/main/java/domain/servicios/PersonajeServicio.java,e\1\e17f3694cd2582b35a764b980ed2743e63871c1e
 [
 +src/main/java/jakarta/ConstantsJakarta.java,1\7\1724b217f67e8670965b532cecda6da6a68f0297
-Y
-)src/main/java/domain/ConstantsDomain.java,c\c\ccbbeb6c63ca72db8025bb5c0c40877f6204b1ba
 S
 #src/main/java/dao/ConstantsDao.java,2\8\2890cf7346774b01ce772ac5dfa8aa39b956986a
-_
-/src/main/java/dao/interfaces/DaoCredencial.java,d\8\d8756d9898696b954f63594d11480f6e2f40c39d
 Z
 *src/main/java/dao/imp/DaoPersonajeImp.java,d\7\d7ac79fcfa49af96d2f6c977c011c80a153fc8b9

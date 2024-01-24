@@ -36,6 +36,7 @@ public class LoginRegistroController{
 
     private void doLogin(){
 
+
     }
 
     @FXML
@@ -47,6 +48,8 @@ public class LoginRegistroController{
         }else{
             User nuevoUsuario = new User(UUID.randomUUID(),username,password, new ArrayList<>());
             servicios.addUser(nuevoUsuario);
+            usernameRegistroField.clear();
+            passwordRegistroField.clear();
         }
     }
 }
