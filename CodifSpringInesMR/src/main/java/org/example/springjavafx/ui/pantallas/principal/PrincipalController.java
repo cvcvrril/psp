@@ -2,10 +2,10 @@ package org.example.springjavafx.ui.pantallas.principal;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import org.example.springjavafx.servicios.ServiciosUsuarios;
 import org.example.springjavafx.ui.pantallas.Pantallas;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -39,5 +39,4 @@ public class PrincipalController {
         }
         return panePantalla;
     }
-
 }
