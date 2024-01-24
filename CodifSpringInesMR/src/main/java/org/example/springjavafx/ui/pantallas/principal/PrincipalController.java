@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import org.example.springjavafx.servicios.ServiciosUsuarios;
+import org.example.springjavafx.ui.pantallas.Pantallas;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
@@ -22,8 +23,7 @@ public class PrincipalController {
     }
 
     public void initialize() {
-
-        cargarPantalla("/fxml/loginregistro.fxml");
+        cargarPantalla(Pantallas.LOGINREGISTRO.getRuta());
     }
 
     private Pane cargarPantalla(String ruta) {
