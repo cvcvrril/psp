@@ -12,7 +12,7 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-@Table(name = "users")
+@Table(name = "usuarios")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -27,8 +27,4 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Cosa> cosas;
-
-
-
-
 }

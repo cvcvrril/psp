@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.springjavafx.ui.pantallas.LoginRegistroController">
+   <children>
+      <Button fx:id="loginButton" layoutX="121.0" layoutY="258.0" mnemonicParsing="false" text="Loguearse" />
+      <Button fx:id="registroButton" layoutX="396.0" layoutY="258.0" mnemonicParsing="false" text="Registrarse" />
+      <Label layoutX="119.0" layoutY="44.0" text="Login">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="384.0" layoutY="83.0" text="Registro">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="passwordLoginField" layoutX="82.0" layoutY="199.0" promptText="Password" />
+      <TextField fx:id="usernameLoginField" layoutX="82.0" layoutY="128.0" promptText="Username" />
+      <TextField fx:id="usernameRegistroField" layoutX="359.0" layoutY="153.0" promptText="Username" />
+      <PasswordField fx:id="passwordRegistroField" layoutX="359.0" layoutY="199.0" promptText="Password" />
+      <Label layoutX="381.0" layoutY="44.0" text="¿No tienes usuario?" />
+   </children>
+</AnchorPane>
