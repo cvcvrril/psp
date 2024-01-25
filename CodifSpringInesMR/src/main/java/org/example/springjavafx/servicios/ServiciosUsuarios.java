@@ -2,7 +2,6 @@ package org.example.springjavafx.servicios;
 
 import org.example.springjavafx.data.UserRepository;
 import org.example.springjavafx.data.modelo.User;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -10,21 +9,22 @@ import org.springframework.stereotype.Service;
 public class ServiciosUsuarios {
 
     private final UserRepository repository;
-    //private final Pbkdf2PasswordEncoder passwordHash;
-    //private final PasswordEncoder passwordHash;
+    private final PasswordEncoder passwordHash;
 
 
-    public ServiciosUsuarios(UserRepository repository) {
+    public ServiciosUsuarios(UserRepository repository, PasswordEncoder passwordHash) {
         this.repository = repository;
+        this.passwordHash = passwordHash;
     }
 
     public void addUser(User nuevoUsuario){
+        String passwordHashed = hashPassword(nuevoUsuario.getPassword());
+        nuevoUsuario.setPassword(passwordHashed);
         repository.save(nuevoUsuario);
     }
 
-    public void hashPassword(String userPassword){
-        //INFO: Método para hashear la contraseña
-
+    public String hashPassword(String userPassword){
+         return passwordHash.encode(userPassword);
     }
 
     public void checkPassword(String passwordIntroducida){

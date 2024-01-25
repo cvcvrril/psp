@@ -1,10 +1,17 @@
 package org.example.springjavafx.servicios;
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
 
+import static org.bouncycastle.oer.its.etsi102941.CtlDelete.cert;
+
+@Log4j2
 @Service
 public class ServiciosClaves {
 
@@ -12,10 +19,12 @@ public class ServiciosClaves {
     //INFO: De esta clase se sacan los métodos que se usarán en los controladores
 
     private void keystoreLoad(){
-
-
-
-
+        try {
+            KeyStore ks = KeyStore.getInstance("PKCS12");
+            char[] password = "abc".toCharArray();               // -> Tomar la contraseña de aquí desde el Config
+        } catch (KeyStoreException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void generatePrivateKey(){
@@ -28,13 +37,6 @@ public class ServiciosClaves {
 
     private void saveInCertificate(){
         //INFO: Método para guardar la clave pública en un certificado -> Este luego va al Keystore
-
-        try {
-            KeyStore keyLoad = KeyStore.getInstance("PKCS12");
-            //KeyStore.PasswordProtection pp = new KeyStore.PasswordProtection("algo");
-        } catch (KeyStoreException e) {
-            throw new RuntimeException(e);
-        }
 
 
     }
