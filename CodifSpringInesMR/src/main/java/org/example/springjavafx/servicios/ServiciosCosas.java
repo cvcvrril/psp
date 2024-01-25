@@ -34,4 +34,16 @@ public class ServiciosCosas {
         return res;
     }
 
+    public Either<ErrorObject, Integer> add(Cosa nuevaCosa){
+        Either<ErrorObject, Integer> res;
+        try {
+            repository.save(nuevaCosa);
+            res = Either.right(1);
+        }catch (Exception e){
+            log.error(e.getMessage(), e);
+            res = Either.left(new ErrorObject(e.getMessage(), LocalDateTime.now()));
+        }
+        return res;
+    }
+
 }

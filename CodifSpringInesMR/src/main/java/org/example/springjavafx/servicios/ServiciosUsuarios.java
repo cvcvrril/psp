@@ -28,6 +28,10 @@ public class ServiciosUsuarios {
         repository.save(nuevoUsuario);
     }
 
+    public User getByPassword(String passwordUser){
+        return repository.findByPassword(passwordUser).get();
+    }
+
     public String hashPassword(String userPassword){
          return passwordHash.encode(userPassword);
     }
