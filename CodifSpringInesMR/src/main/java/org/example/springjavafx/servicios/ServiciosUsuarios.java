@@ -6,6 +6,8 @@ import org.example.springjavafx.data.modelo.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ServiciosUsuarios {
 
@@ -30,22 +32,13 @@ public class ServiciosUsuarios {
          return passwordHash.encode(userPassword);
     }
 
-    //TODO:
-
-    public boolean checkPassword(String passwordIntroducida){
-        //TODO: MONTAR UN MÉTODO PARA CHECKEAR LA CONTRASEÑA QUE HAY EN LA BASE DE DATOS CON LA QUE INTRODUCE EL USUARIO
-        //TODO: LUEGO, PASAR LA CONTRASEÑA AL SINGLETON CACHE PARA QUE SE LA GUARDE DURANTE TODO EL PROCESO EN LA MEMORIA
-
-
-
-
-        //String passwordUserRep = repository.findByPassword();
-        if (passwordHash.matches(passwordIntroducida, "hola")){
-            return true;
+    public boolean doLogin(User userLogin){
+        User userFromRepository = repository.findByName(userLogin.getName()).get();
+        if (userFromRepository != null){
+            return passwordHash.matches(userLogin.getPassword(), userFromRepository.getPassword());
         } else {
             return false;
         }
-
     }
 
 }

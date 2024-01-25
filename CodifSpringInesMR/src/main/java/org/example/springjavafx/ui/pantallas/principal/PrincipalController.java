@@ -30,7 +30,7 @@ public class PrincipalController {
         cargarPantalla(Pantallas.LOGINREGISTRO.getRuta());
     }
 
-    private Pane cargarPantalla(String ruta) {
+    public Pane cargarPantalla(String ruta) {
         Pane panePantalla = null;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();

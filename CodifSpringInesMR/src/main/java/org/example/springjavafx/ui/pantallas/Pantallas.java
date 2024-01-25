@@ -3,8 +3,7 @@ package org.example.springjavafx.ui.pantallas;
 public enum Pantallas {
 
     LOGINREGISTRO("/fxml/loginregistro.fxml"),
-    PROGRAMAS("/fxml/programas.fxml"),
-    PERMISOS("/fxml/permisos.fxml");
+    PROGRAMASPERMISOS("/fxml/programaspermisos.fxml");
 
     private String ruta;
 
