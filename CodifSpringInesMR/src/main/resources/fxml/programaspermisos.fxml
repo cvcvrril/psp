@@ -8,9 +8,9 @@
    <children>
       <TableView fx:id="programasTable" layoutX="34.0" layoutY="81.0" prefHeight="200.0" prefWidth="241.0">
         <columns>
-          <TableColumn fx:id="idProgramasField" prefWidth="43.33332443237305" text="id" />
-          <TableColumn fx:id="nombreProgramasField" prefWidth="107.3333511352539" text="Nombre" />
-            <TableColumn fx:id="contrasenaProgramasField" prefWidth="75.0" text="Contraseña" />
+          <TableColumn fx:id="idProgramasColumn" prefWidth="43.33332443237305" text="id" />
+          <TableColumn fx:id="nombreProgramasColumn" prefWidth="107.3333511352539" text="Nombre" />
+            <TableColumn fx:id="contrasenaProgramasColumn" prefWidth="75.0" text="Contraseña" />
         </columns>
       </TableView>
       <TableView fx:id="permisosTable" layoutX="328.0" layoutY="81.0" prefHeight="200.0" prefWidth="283.0">
@@ -29,5 +29,8 @@
             <Font size="27.0" />
          </font>
       </Label>
+      <Button layoutX="209.0" layoutY="325.0" mnemonicParsing="false" text="Añadir programa" />
+      <TextField fx:id="nombre" layoutX="34.0" layoutY="303.0" promptText="Nombre del programa" />
+      <PasswordField layoutX="34.0" layoutY="338.0" promptText="Contraseña del programa" />
    </children>
 </AnchorPane>

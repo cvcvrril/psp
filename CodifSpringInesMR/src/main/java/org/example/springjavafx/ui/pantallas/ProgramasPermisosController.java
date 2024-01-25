@@ -30,7 +30,7 @@ public class ProgramasPermisosController {
         this.servicios = servicios;
     }
 
-    public void principalCargado(){
+    public void initialize(){
         programasTable.getItems().setAll(servicios.getAll(UUID.randomUUID()).getOrNull());
     }
 
