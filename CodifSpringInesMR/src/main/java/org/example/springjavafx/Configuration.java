@@ -1,12 +1,13 @@
 package org.example.springjavafx;
 
 import javafx.fxml.FXMLLoader;
+import org.example.springjavafx.data.modelo.Cache;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
+
+//INFO: Meter aquí objetos para que no salte la mierda del Beans
 
 @org.springframework.context.annotation.Configuration
 public class Configuration {
@@ -20,8 +21,12 @@ public class Configuration {
 
     @Bean
     public PasswordEncoder createPasswordEncoder() {
-
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public Cache passwordCache(){
+        return new Cache();
     }
 
 }
