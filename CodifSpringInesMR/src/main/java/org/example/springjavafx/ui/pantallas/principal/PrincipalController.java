@@ -15,14 +15,18 @@ import java.io.IOException;
 @Component
 public class PrincipalController {
     private final ApplicationContext context;
+    private Alert alert;
     @FXML
     public BorderPane root;
 
+
     public PrincipalController(ApplicationContext context) {
         this.context = context;
+
     }
 
     public void initialize() {
+        this.alert = new Alert(Alert.AlertType.NONE);
         cargarPantalla(Pantallas.LOGINREGISTRO.getRuta());
     }
 
@@ -39,4 +43,21 @@ public class PrincipalController {
         }
         return panePantalla;
     }
+
+    public void sacarAlertError(String mensaje) {
+        alert.setAlertType(Alert.AlertType.ERROR);
+        alert.setContentText(mensaje);
+        alert.getDialogPane().setId("alert");
+        alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
+        alert.showAndWait();
+    }
+
+    public void sacarAlertConf(String mensaje) {
+        alert.setAlertType(Alert.AlertType.CONFIRMATION);
+        alert.setContentText(mensaje);
+        alert.getDialogPane().setId("alert");
+        alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
+        alert.showAndWait();
+    }
+
 }

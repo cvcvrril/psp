@@ -30,12 +30,16 @@ public class ServiciosUsuarios {
          return passwordHash.encode(userPassword);
     }
 
+    //TODO:
+
     public boolean checkPassword(String passwordIntroducida){
-        //TODO: CAMBIAR A BOOLEANO EL MÉTODO (EN VEZ DE VOID)
         //TODO: MONTAR UN MÉTODO PARA CHECKEAR LA CONTRASEÑA QUE HAY EN LA BASE DE DATOS CON LA QUE INTRODUCE EL USUARIO
         //TODO: LUEGO, PASAR LA CONTRASEÑA AL SINGLETON CACHE PARA QUE SE LA GUARDE DURANTE TODO EL PROCESO EN LA MEMORIA
 
-        //String passwordUserRep = repository.fi
+
+
+
+        //String passwordUserRep = repository.findByPassword();
         if (passwordHash.matches(passwordIntroducida, "hola")){
             return true;
         } else {

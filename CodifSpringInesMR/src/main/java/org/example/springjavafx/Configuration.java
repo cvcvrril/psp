@@ -1,6 +1,7 @@
 package org.example.springjavafx;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import org.example.springjavafx.data.modelo.Cache;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -28,5 +29,7 @@ public class Configuration {
     public Cache passwordCache(){
         return new Cache();
     }
+
+
 
 }

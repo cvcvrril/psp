@@ -8,7 +8,6 @@ import org.example.springjavafx.ui.pantallas.principal.PrincipalController;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -44,10 +43,11 @@ public class LoginRegistroController{
         String username = usernameRegistroField.getText();
         String password = passwordRegistroField.getText();
         if (username.isEmpty() || password.isEmpty()){
-            System.out.println("tu puta madre");
+            principal.sacarAlertError("Hay campos vacíos");
         }else{
             User nuevoUsuario = new User(UUID.randomUUID(),username,password, new ArrayList<>());
             servicios.addUser(nuevoUsuario);
+            principal.sacarAlertConf("Usuario añadido correctamente");
             usernameRegistroField.clear();
             passwordRegistroField.clear();
         }
