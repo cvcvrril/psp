@@ -21,6 +21,9 @@ public class Cosa {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
+    @Column(name = "contrasena", nullable = false)
+    private String contrasena;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

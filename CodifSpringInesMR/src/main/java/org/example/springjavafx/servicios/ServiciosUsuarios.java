@@ -35,7 +35,13 @@ public class ServiciosUsuarios {
     public boolean doLogin(User userLogin){
         User userFromRepository = repository.findByName(userLogin.getName()).get();
         if (userFromRepository != null){
-            return passwordHash.matches(userLogin.getPassword(), userFromRepository.getPassword());
+            if (passwordHash.matches(userLogin.getPassword(), userFromRepository.getPassword())){
+                passwordCache.setUserPassword(userLogin.getPassword());
+                return true;
+            }
+            else {
+                return false;
+            }
         } else {
             return false;
         }
