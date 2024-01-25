@@ -2,7 +2,8 @@ package org.example.springjavafx.servicios;
 
 import org.example.springjavafx.data.UserRepository;
 import org.example.springjavafx.data.modelo.User;
-import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,12 +11,11 @@ public class ServiciosUsuarios {
 
     private final UserRepository repository;
     //private final Pbkdf2PasswordEncoder passwordHash;
+    //private final PasswordEncoder passwordHash;
 
-    //TODO: ENCONTRAR LA PUÑETERA MANERA DE QUE NO ME VUELVA A SALIR LO DEL PUTO BEANS TT.TT
 
     public ServiciosUsuarios(UserRepository repository) {
         this.repository = repository;
-        //this.passwordHash = passwordHash;
     }
 
     public void addUser(User nuevoUsuario){
@@ -23,7 +23,7 @@ public class ServiciosUsuarios {
     }
 
     public void hashPassword(String userPassword){
-
+        //INFO: Método para hashear la contraseña
 
     }
 
