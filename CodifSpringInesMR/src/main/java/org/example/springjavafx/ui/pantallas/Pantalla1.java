@@ -61,12 +61,14 @@ public class Pantalla1 {
         alert.showAndWait();
     }
 
+    //Esto a servicio -> LLamar a clase en el paquete de seguridad
+
     public void crearCertificados(ActionEvent actionEvent) {
 
         List<User> users = userRepository.findAll();
-        users.getFirst().setCosas(cosaRepository.findByUserId(users.getFirst().getId()));
+        //users.getFirst().setCosas(cosaRepository.findByUserId(users.getFirst().getId()));
 
-        users.getFirst().getCosas().forEach(cosa -> System.out.println(cosa.getNombre()));
+        //users.getFirst().getCosas().forEach(cosa -> System.out.println(cosa.getNombre()));
 
         // generar clave publica y privada
         KeyPairGenerator generadorRSA = null; // Hace uso del provider BC
@@ -79,7 +81,8 @@ public class Pantalla1 {
         KeyPair clavesRSA = generadorRSA.generateKeyPair();
         PrivateKey clavePrivada = clavesRSA.getPrivate();
         PublicKey clavePublica = clavesRSA.getPublic();
-
+        //crear certificado a partir de la ñublica
+        //guardar privada y certificado en keystore
 
 
 
