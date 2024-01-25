@@ -4,16 +4,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.springjavafx.ui.pantallas.ProgramasPermisosController">
    <children>
-      <TableView layoutX="34.0" layoutY="81.0" prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="programasTable" layoutX="34.0" layoutY="81.0" prefHeight="200.0" prefWidth="241.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Nombre" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="idProgramasField" prefWidth="43.33332443237305" text="id" />
+          <TableColumn fx:id="nombreProgramasField" prefWidth="107.3333511352539" text="Nombre" />
+            <TableColumn fx:id="contrasenaProgramasField" prefWidth="75.0" text="Contraseña" />
         </columns>
       </TableView>
-      <TableView layoutX="300.0" layoutY="81.0" prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="permisosTable" layoutX="328.0" layoutY="81.0" prefHeight="200.0" prefWidth="283.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
@@ -24,7 +24,7 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <Label layoutX="335.0" layoutY="31.0" text="Permisos">
+      <Label layoutX="399.0" layoutY="31.0" text="Permisos">
          <font>
             <Font size="27.0" />
          </font>

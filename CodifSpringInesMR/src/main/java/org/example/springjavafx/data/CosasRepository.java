@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface CosasRepository extends ListCrudRepository<Cosa, UUID> {
-
+public interface CosasRepository extends
+        ListCrudRepository<Cosa, UUID> {
     List<Cosa> findByUserId(UUID userId);
 }
