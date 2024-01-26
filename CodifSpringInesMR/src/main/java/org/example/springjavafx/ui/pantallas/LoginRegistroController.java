@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.example.springjavafx.data.modelo.User;
 import org.example.springjavafx.servicios.ServiciosUsuarios;
+import org.example.springjavafx.ui.pantallas.principal.BasePantallaController;
 import org.example.springjavafx.ui.pantallas.principal.PrincipalController;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 @Component
-public class LoginRegistroController{
+public class LoginRegistroController extends BasePantallaController {
     @FXML
     private Button loginButton;
     @FXML
@@ -24,12 +25,9 @@ public class LoginRegistroController{
     private TextField usernameRegistroField;
     @FXML
     private PasswordField passwordRegistroField;
-
-    private final PrincipalController principal;
     private final ServiciosUsuarios servicios;
 
-    public LoginRegistroController(PrincipalController principal, ServiciosUsuarios servicios) {
-        this.principal = principal;
+    public LoginRegistroController(ServiciosUsuarios servicios) {
         this.servicios = servicios;
     }
 
@@ -38,14 +36,16 @@ public class LoginRegistroController{
         String usernameLogin = usernameLoginField.getText();
         String passwordLogin = passwordLoginField.getText();
         if (usernameLogin.isEmpty() || passwordLogin.isEmpty()){
-            principal.sacarAlertError("Hay campos vacíos.");
+            getPirncipalController().sacarAlertError("Hay campos vacíos.");
         }else{
-            if (servicios.doLogin(new User(UUID.randomUUID(), usernameLogin, passwordLogin, new ArrayList<>()))){
+            User usuarioLogin = servicios.doLogin(new User(UUID.randomUUID(), usernameLogin, passwordLogin, new ArrayList<>())).get();
+            if (usuarioLogin!= null){
+                getPirncipalController().setUser(usuarioLogin);
                 usernameLoginField.clear();
                 passwordLoginField.clear();
-                principal.cargarPantalla(Pantallas.PROGRAMASPERMISOS.getRuta());
+                getPirncipalController().cargarPantalla(Pantallas.PROGRAMASPERMISOS.getRuta());
             } else {
-                principal.sacarAlertError("Usuario o contraseña incorrectos.");
+                getPirncipalController().sacarAlertError("Usuario o contraseña incorrectos.");
             }
         }
 
@@ -56,13 +56,18 @@ public class LoginRegistroController{
         String username = usernameRegistroField.getText();
         String password = passwordRegistroField.getText();
         if (username.isEmpty() || password.isEmpty()){
-            principal.sacarAlertError("Hay campos vacíos.");
+            getPirncipalController().sacarAlertError("Hay campos vacíos.");
         }else{
             User nuevoUsuario = new User(UUID.randomUUID(),username,password, new ArrayList<>());
             servicios.addUser(nuevoUsuario);
-            principal.sacarAlertConf("Usuario añadido correctamente.");
+            getPirncipalController().sacarAlertConf("Usuario añadido correctamente.");
             usernameRegistroField.clear();
             passwordRegistroField.clear();
         }
+    }
+
+    @Override
+    public void principalCargado() {
+
     }
 }

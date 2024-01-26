@@ -29,8 +29,8 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <Button layoutX="209.0" layoutY="325.0" mnemonicParsing="false" text="Añadir programa" onAction="#addPrograma"/>
-      <TextField fx:id="nombre" layoutX="34.0" layoutY="303.0" promptText="Nombre del programa" />
-      <PasswordField layoutX="34.0" layoutY="338.0" promptText="Contraseña del programa" />
+      <Button layoutX="209.0" layoutY="325.0" mnemonicParsing="false" onAction="#addPrograma" text="Añadir programa" />
+      <TextField fx:id="nombreProgramaField" layoutX="34.0" layoutY="303.0" promptText="Nombre del programa" />
+      <PasswordField fx:id="contrasenaProgramaField" layoutX="34.0" layoutY="338.0" promptText="Contraseña del programa" />
    </children>
 </AnchorPane>

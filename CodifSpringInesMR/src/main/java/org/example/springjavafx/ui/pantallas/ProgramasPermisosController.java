@@ -1,14 +1,17 @@
 package org.example.springjavafx.ui.pantallas;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import org.example.springjavafx.data.modelo.Cache;
 import org.example.springjavafx.data.modelo.Cosa;
 import org.example.springjavafx.data.modelo.Cosita;
 import org.example.springjavafx.data.modelo.User;
 import org.example.springjavafx.servicios.ServiciosCosas;
 import org.example.springjavafx.servicios.ServiciosUsuarios;
+import org.example.springjavafx.ui.pantallas.principal.BasePantallaController;
 import org.example.springjavafx.ui.pantallas.principal.PrincipalController;
 import org.springframework.stereotype.Component;
 
@@ -16,8 +19,12 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 @Component
-public class ProgramasPermisosController {
+public class ProgramasPermisosController extends BasePantallaController {
 
+    @FXML
+    private TextField nombreProgramaField;
+    @FXML
+    private PasswordField contrasenaProgramaField;
     @FXML
     private TableView<Cosa> programasTable;
     @FXML
@@ -30,37 +37,32 @@ public class ProgramasPermisosController {
 
     @FXML
     private TableView<Cosita> permisosTable;
-
-    private final PrincipalController principal;
     private final ServiciosCosas serviciosCosas;
     private final ServiciosUsuarios serviciosUsuarios;
-    private final Cache passwordCache;
-    private User usuarioLog;
 
-    //TODO: Preguntar si lo del usuario se puede hacer de otra forma???????
-
-    public ProgramasPermisosController(PrincipalController principal, ServiciosCosas serviciosCosas, ServiciosUsuarios serviciosUsuarios, Cache passwordCache) {
-        this.principal = principal;
+    public ProgramasPermisosController(ServiciosCosas serviciosCosas, ServiciosUsuarios serviciosUsuarios) {
         this.serviciosCosas = serviciosCosas;
         this.serviciosUsuarios = serviciosUsuarios;
-        this.passwordCache = passwordCache;
     }
 
     public void initialize(){
-        usuarioLog = serviciosUsuarios.getByPassword(passwordCache.getUserPassword());
-        programasTable.getItems().setAll(serviciosCosas.getAll(UUID.randomUUID()).getOrNull());
+
     }
 
     @FXML
     private void addPrograma(){
-        String nombrePrograma = nombreProgramasColumn.getText();
-        String contrasenaPrograma = contrasenaProgramasColumn.getText();
+        String nombrePrograma = nombreProgramaField.getText();
+        String contrasenaPrograma = contrasenaProgramaField.getText();
         if (nombrePrograma.isEmpty() || contrasenaPrograma.isEmpty()){
-            principal.sacarAlertError("Hay campos vacíos.");
+            getPirncipalController().sacarAlertError("Hay campos vacíos.");
         }else {
-            Cosa cosaAdd = new Cosa(UUID.randomUUID(), nombrePrograma, contrasenaPrograma, usuarioLog, new ArrayList<>());
+            Cosa cosaAdd = new Cosa(UUID.randomUUID(), nombrePrograma, contrasenaPrograma, getPirncipalController().getUser(), new ArrayList<>());
             serviciosCosas.add(cosaAdd);
         }
     }
 
+    @Override
+    public void principalCargado() {
+        programasTable.getItems().setAll(serviciosCosas.getAll(getPirncipalController().getUser().getId()).get());
+    }
 }

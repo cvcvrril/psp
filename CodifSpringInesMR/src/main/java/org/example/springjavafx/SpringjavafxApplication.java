@@ -11,7 +11,6 @@ public class SpringjavafxApplication {
 
         Application.launch(DIJavafx.class, args);
 
-//        SpringApplication.run(SpringjavafxApplication.class, args);
     }
 
 }

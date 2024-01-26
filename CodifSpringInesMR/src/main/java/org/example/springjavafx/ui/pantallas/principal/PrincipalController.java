@@ -6,16 +6,24 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
+import org.example.springjavafx.data.modelo.User;
 import org.example.springjavafx.ui.pantallas.Pantallas;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+@Log4j2
 @Component
 public class PrincipalController {
     private final ApplicationContext context;
     private Alert alert;
+    @Getter
+    @Setter
+    private User user;
     @FXML
     public BorderPane root;
 
@@ -36,10 +44,12 @@ public class PrincipalController {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setControllerFactory(context::getBean);
             panePantalla = fxmlLoader.load(getClass().getResourceAsStream(ruta));
+            BasePantallaController pantallaController = fxmlLoader.getController();
+            pantallaController.setPirncipalController(this);
+            pantallaController.principalCargado();
             root.setCenter(panePantalla);
-
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            log.error(e.getMessage(), e);
         }
         return panePantalla;
     }

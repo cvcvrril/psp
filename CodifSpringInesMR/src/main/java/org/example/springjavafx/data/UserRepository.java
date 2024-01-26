@@ -12,7 +12,6 @@ import java.util.UUID;
 public interface UserRepository extends
         ListCrudRepository<User, UUID> {
 
-    Optional<User> findByPassword(String password);
     Optional<User> findByName(String name);
 
 }
