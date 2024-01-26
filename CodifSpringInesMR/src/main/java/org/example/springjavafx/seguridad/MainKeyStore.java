@@ -3,6 +3,7 @@ package org.example.springjavafx.seguridad;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.x509.X509V3CertificateGenerator;
+import org.example.springjavafx.common.Configuration;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -21,7 +22,11 @@ import static org.bouncycastle.oer.its.etsi102941.CtlDelete.cert;
 public class MainKeyStore {
 
     public static void main(String[] args) {
+
+
         try {
+
+            Configuration conf = new Configuration();
 
             Security.addProvider(new BouncyCastleProvider());
             KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA"); // Hace uso del provider BC
@@ -43,7 +48,8 @@ public class MainKeyStore {
 
             X509Certificate cert =  cert1.generate(clavePrivada);
             KeyStore ks = KeyStore.getInstance("PKCS12");
-            char[] password = "Obito".toCharArray();        // -> Tomar la contraseña de aquí desde el Config
+            //char[] password = "Obito".toCharArray();        // -> Tomar la contraseña de aquí desde el Config
+            char[] password = conf.getKeyStorePassword().toCharArray();
             ks.load(null, null);
             ks.setCertificateEntry("server", cert);
             ks.setKeyEntry("server", clavePrivada, password, new Certificate[]{cert});
@@ -56,5 +62,4 @@ public class MainKeyStore {
             throw new RuntimeException(e);
         }
     }
-
 }
