@@ -3,6 +3,7 @@ package org.example.springjavafx.servicios;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -14,18 +15,8 @@ import static org.bouncycastle.oer.its.etsi102941.CtlDelete.cert;
 @Log4j2
 @Service
 public class ServiciosClaves {
-
-    //TODO: MONTAR EL SERVICIO DONDE REALZIAR LA GENERACIÓN DE LAS CLAVES TANTO PRIVADAS COMO PÚBLICAS (CERTIFICADOS)
     //INFO: De esta clase se sacan los métodos que se usarán en los controladores
 
-    private void keystoreLoad(){
-        try {
-            KeyStore ks = KeyStore.getInstance("PKCS12");
-            char[] password = "abc".toCharArray();               // -> Tomar la contraseña de aquí desde el Config
-        } catch (KeyStoreException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     private void generatePrivateKey(){
         //INFO: Método para generar la clave privada
