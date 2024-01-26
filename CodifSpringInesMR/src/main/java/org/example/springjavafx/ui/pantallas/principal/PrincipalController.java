@@ -45,7 +45,7 @@ public class PrincipalController {
             fxmlLoader.setControllerFactory(context::getBean);
             panePantalla = fxmlLoader.load(getClass().getResourceAsStream(ruta));
             BasePantallaController pantallaController = fxmlLoader.getController();
-            pantallaController.setPirncipalController(this);
+            pantallaController.setPrincipalController(this);
             pantallaController.principalCargado();
             root.setCenter(panePantalla);
         } catch (IOException e) {

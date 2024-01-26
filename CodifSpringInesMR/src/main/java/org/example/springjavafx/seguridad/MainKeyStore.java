@@ -3,7 +3,7 @@ package org.example.springjavafx.seguridad;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.x509.X509V3CertificateGenerator;
-import org.example.springjavafx.common.Configuration;
+import org.example.springjavafx.Configuration;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -37,9 +37,9 @@ public class MainKeyStore {
 
             X509V3CertificateGenerator cert1 = new X509V3CertificateGenerator();
 
-            cert1.setSerialNumber(BigInteger.valueOf(1));   //or generate a random number
-            cert1.setSubjectDN(new X509Principal("CN=Server"));  //see examples to add O,OU etc
-            cert1.setIssuerDN(new X509Principal("CN=Server")); //same since it is self-signed
+            cert1.setSerialNumber(BigInteger.valueOf(1));
+            cert1.setSubjectDN(new X509Principal("CN=Server"));
+            cert1.setIssuerDN(new X509Principal("CN=Server"));
             cert1.setPublicKey(clavesRSA.getPublic());
             cert1.setNotBefore(
                     Date.from(LocalDate.now().plus(365, ChronoUnit.DAYS).atStartOfDay().toInstant(ZoneOffset.UTC)));
@@ -48,7 +48,6 @@ public class MainKeyStore {
 
             X509Certificate cert =  cert1.generate(clavePrivada);
             KeyStore ks = KeyStore.getInstance("PKCS12");
-            //char[] password = "Obito".toCharArray();        // -> Tomar la contraseña de aquí desde el Config
             char[] password = conf.getKeyStorePassword().toCharArray();
             ks.load(null, null);
             ks.setCertificateEntry("server", cert);

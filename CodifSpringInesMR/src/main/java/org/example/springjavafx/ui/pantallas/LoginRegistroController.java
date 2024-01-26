@@ -36,16 +36,16 @@ public class LoginRegistroController extends BasePantallaController {
         String usernameLogin = usernameLoginField.getText();
         String passwordLogin = passwordLoginField.getText();
         if (usernameLogin.isEmpty() || passwordLogin.isEmpty()){
-            getPirncipalController().sacarAlertError("Hay campos vacíos.");
+            getPrincipalController().sacarAlertError("Hay campos vacíos.");
         }else{
             User usuarioLogin = servicios.doLogin(new User(UUID.randomUUID(), usernameLogin, passwordLogin, new ArrayList<>())).get();
             if (usuarioLogin!= null){
-                getPirncipalController().setUser(usuarioLogin);
+                getPrincipalController().setUser(usuarioLogin);
                 usernameLoginField.clear();
                 passwordLoginField.clear();
-                getPirncipalController().cargarPantalla(Pantallas.PROGRAMASPERMISOS.getRuta());
+                getPrincipalController().cargarPantalla(Pantallas.PROGRAMASPERMISOS.getRuta());
             } else {
-                getPirncipalController().sacarAlertError("Usuario o contraseña incorrectos.");
+                getPrincipalController().sacarAlertError("Usuario o contraseña incorrectos.");
             }
         }
 
@@ -56,11 +56,11 @@ public class LoginRegistroController extends BasePantallaController {
         String username = usernameRegistroField.getText();
         String password = passwordRegistroField.getText();
         if (username.isEmpty() || password.isEmpty()){
-            getPirncipalController().sacarAlertError("Hay campos vacíos.");
+            getPrincipalController().sacarAlertError("Hay campos vacíos.");
         }else{
             User nuevoUsuario = new User(UUID.randomUUID(),username,password, new ArrayList<>());
             servicios.addUser(nuevoUsuario);
-            getPirncipalController().sacarAlertConf("Usuario añadido correctamente.");
+            getPrincipalController().sacarAlertConf("Usuario añadido correctamente.");
             usernameRegistroField.clear();
             passwordRegistroField.clear();
         }

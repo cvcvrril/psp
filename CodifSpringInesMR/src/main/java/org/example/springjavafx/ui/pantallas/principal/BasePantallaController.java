@@ -1,18 +1,15 @@
 package org.example.springjavafx.ui.pantallas.principal;
 
 import lombok.Getter;
-import org.springframework.stereotype.Component;
 
-@Component
 @Getter
 public abstract class BasePantallaController {
 
-    private PrincipalController pirncipalController;
+    private PrincipalController principalController;
 
-    public void setPirncipalController(PrincipalController pirncipalController) {
-        this.pirncipalController = pirncipalController;
+    public void setPrincipalController(PrincipalController principalController) {
+        this.principalController = principalController;
     }
 
     abstract public void principalCargado();
-
 }
