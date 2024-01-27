@@ -62,7 +62,7 @@ public class LoginRegistroController extends BasePantallaController {
         }else{
             User nuevoUsuario = new User(UUID.randomUUID(),username,password, new ArrayList<>());
             servicios.addUser(nuevoUsuario);
-            claves.generateAsymmetricPrivatePublicKey(nuevoUsuario.getName());
+            claves.generateUserPrivatePublicKey(nuevoUsuario.getName());
             getPrincipalController().sacarAlertConf("Usuario añadido correctamente.");
             usernameRegistroField.clear();
             passwordRegistroField.clear();

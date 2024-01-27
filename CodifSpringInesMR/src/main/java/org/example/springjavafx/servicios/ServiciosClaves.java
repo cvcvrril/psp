@@ -32,7 +32,7 @@ public class ServiciosClaves {
     }
 
 
-    public void generateAsymmetricPrivatePublicKey(String nombreUsuario){
+    public void generateUserPrivatePublicKey(String nombreUsuario){
         //INFO: Método para generar las claves privada y pública asimétricas
         try {
             Security.addProvider(new BouncyCastleProvider());
