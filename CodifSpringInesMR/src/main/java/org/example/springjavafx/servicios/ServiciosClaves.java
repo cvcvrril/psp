@@ -1,29 +1,22 @@
 package org.example.springjavafx.servicios;
 
 import lombok.extern.log4j.Log4j2;
-import org.bouncycastle.asn1.sec.SECNamedCurves;
-import org.bouncycastle.asn1.x9.X9ECParameters;
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.generators.ECKeyPairGenerator;
-import org.bouncycastle.crypto.params.ECDomainParameters;
-import org.bouncycastle.crypto.params.ECKeyGenerationParameters;
-import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
-import org.bouncycastle.crypto.params.ECPublicKeyParameters;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.x509.X509V3CertificateGenerator;
 import org.example.springjavafx.Configuration;
 import org.springframework.stereotype.Service;
 
-import javax.crypto.Cipher;
 import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.FileOutputStream;
 import java.math.BigInteger;
 import java.security.*;
-import java.security.cert.CertificateException;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
+import java.security.cert.Certificate;
+import java.security.cert.X509Certificate;
+import java.time.LocalDate;
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 import static org.bouncycastle.oer.its.etsi102941.CtlDelete.cert;
 
@@ -32,25 +25,46 @@ import static org.bouncycastle.oer.its.etsi102941.CtlDelete.cert;
 public class ServiciosClaves {
     //INFO: De esta clase se sacan los métodos que se usarán en los controladores
 
-    private Configuration configuration;
+    private final Configuration configuration;
+
+    public ServiciosClaves(Configuration configuration) {
+        this.configuration = configuration;
+    }
 
 
     public void generateAsymmetricPrivatePublicKey(String nombreUsuario){
         //INFO: Método para generar las claves privada y pública asimétricas
         try {
+            Security.addProvider(new BouncyCastleProvider());
             KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
             KeyPair clavesRSA = keyGen.generateKeyPair();
             PrivateKey clavePrivadaUser = clavesRSA.getPrivate();
             PublicKey clavePublicaUser = clavesRSA.getPublic();
 
             char[] keyStorePassword = configuration.getKeyStorePassword().toCharArray();
+            PrivateKey firmaKey = privateKeyKeyStore();
 
             X509V3CertificateGenerator cert1 = new X509V3CertificateGenerator();
 
             cert1.setSerialNumber(BigInteger.valueOf(1));
-            cert1.setSubjectDN(new X509Principal("CN=Server"));
-            cert1.setIssuerDN(new X509Principal("CN=Server"));
+            cert1.setSubjectDN(new X509Principal("CN=prueba"));
+            cert1.setIssuerDN(new X509Principal("CN=prueba"));
+            cert1.setPublicKey(clavePublicaUser);
+            cert1.setNotBefore(Date.from(LocalDate.now().plus(365, ChronoUnit.DAYS).atStartOfDay().toInstant(ZoneOffset.UTC)));
+            cert1.setNotAfter(new Date());
+            cert1.setSignatureAlgorithm("SHA256WithRSAEncryption");
 
+            X509Certificate cert = cert1.generate(firmaKey);
+
+            KeyStore ks = KeyStore.getInstance("PKCS12");
+            FileInputStream fis = new FileInputStream("keystore.pfx");
+            ks.load(fis, keyStorePassword);
+
+            ks.setCertificateEntry("prueba", cert);
+            ks.setKeyEntry("prueba", clavePrivadaUser, "prueba".toCharArray(), new Certificate[]{cert});
+            FileOutputStream fos = new FileOutputStream("keystore.pfx");
+            ks.store(fos, keyStorePassword);
+            fos.close();
 
         }catch (Exception e){
          log.error(e.getMessage(), e);
@@ -64,6 +78,23 @@ public class ServiciosClaves {
     public void saveInCertificate(){
         //INFO: Método para guardar la clave pública en un certificado -> Este luego va al Keystore
 
+
+    }
+
+    private PrivateKey privateKeyKeyStore(){
+        try {
+            char[] keyStorePassword = configuration.getKeyStorePassword().toCharArray();
+
+            KeyStore ks = KeyStore.getInstance("PKCS12");
+            FileInputStream fis = new FileInputStream("keystore.pfx");
+            ks.load(fis, keyStorePassword);
+            KeyStore.PasswordProtection protection = new KeyStore.PasswordProtection(keyStorePassword);
+            KeyStore.PrivateKeyEntry privateKeyEntry = (KeyStore.PrivateKeyEntry) ks.getEntry("server", protection);
+
+            return privateKeyEntry.getPrivateKey();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }
