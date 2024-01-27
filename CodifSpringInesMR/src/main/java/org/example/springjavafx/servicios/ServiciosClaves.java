@@ -75,16 +75,59 @@ public class ServiciosClaves {
         }
     }
 
-    public void generateSymmetricPrivatePublicKey(){
-        //INFO: Método para generar las claves privada y pública simétrica
-    }
-
     public String encryptCode(String code){
         return aes.encriptar(code, "algo");
     }
 
     public String decryptCode(String code){
         return aes.desencriptar(code, "algo");
+    }
+
+    private String signCode(String code, String username){
+        try {
+            PublicKey publicKeyUser = publicKeyUser(username);
+
+            Signature sign = Signature.getInstance("SHA256WithRSA");
+            sign.initVerify(publicKeyUser);
+            sign.update("contenIdo".getBytes());
+            byte[] firma = sign.sign();
+        }catch (Exception e){
+            log.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    private PublicKey publicKeyUser(String username){
+        try {
+            char[] keyStorePassword = configuration.getKeyStorePassword().toCharArray();
+
+            KeyStore ks = KeyStore.getInstance(Constantes.PKCS_12);
+            FileInputStream fis = new FileInputStream(Constantes.KEYSTORE_PFX);
+            ks.load(fis, keyStorePassword);
+            X509Certificate certLoad = (X509Certificate) ks.getCertificate(username);
+            PublicKey publicKey = certLoad.getPublicKey();
+            return publicKey;
+
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    private PrivateKey privateKeyUser(String username){
+        try {
+            char[] keyStorePassword = configuration.getKeyStorePassword().toCharArray();
+
+            KeyStore ks = KeyStore.getInstance(Constantes.PKCS_12);
+            FileInputStream fis = new FileInputStream(Constantes.KEYSTORE_PFX);
+            ks.load(fis, keyStorePassword);
+            KeyStore.PasswordProtection protection = new KeyStore.PasswordProtection(keyStorePassword);
+            KeyStore.PrivateKeyEntry privateKeyEntry = (KeyStore.PrivateKeyEntry) ks.getEntry(username, protection);
+            return privateKeyEntry.getPrivateKey();
+        }catch (Exception e){
+            log.error(e.getMessage(), e);
+            throw new RuntimeException(e);
+        }
     }
 
     private PrivateKey privateKeyKeyStore(){
@@ -96,9 +139,9 @@ public class ServiciosClaves {
             ks.load(fis, keyStorePassword);
             KeyStore.PasswordProtection protection = new KeyStore.PasswordProtection(keyStorePassword);
             KeyStore.PrivateKeyEntry privateKeyEntry = (KeyStore.PrivateKeyEntry) ks.getEntry(Constantes.SERVER, protection);
-
             return privateKeyEntry.getPrivateKey();
         } catch (Exception e) {
+            log.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
 

@@ -68,8 +68,6 @@ public class SignTest {
             PKCS8EncodedKeySpec clavePrivadaSpec = new PKCS8EncodedKeySpec(bufferPriv2);
 
             PrivateKey clavePrivada2 = keyFactoryRSA.generatePrivate(clavePrivadaSpec);
-
-
             Signature sign = Signature.getInstance("SHA256WithRSA");
             sign.initSign(clavePrivada2);
             sign.update("contenIdo".getBytes());
