@@ -2,6 +2,7 @@ package org.example.springjavafx.ui.pantallas;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import org.example.springjavafx.common.Constantes;
 import org.example.springjavafx.data.modelo.User;
 import org.example.springjavafx.servicios.ServiciosClaves;
 import org.example.springjavafx.servicios.ServiciosUsuarios;
@@ -38,7 +39,7 @@ public class LoginRegistroController extends BasePantallaController {
         String usernameLogin = usernameLoginField.getText();
         String passwordLogin = passwordLoginField.getText();
         if (usernameLogin.isEmpty() || passwordLogin.isEmpty()){
-            getPrincipalController().sacarAlertError("Hay campos vacíos.");
+            getPrincipalController().sacarAlertError(Constantes.HAY_CAMPOS_VACIOS);
         }else{
             User usuarioLogin = servicios.doLogin(new User(UUID.randomUUID(), usernameLogin, passwordLogin, new ArrayList<>())).get();
             if (usuarioLogin!= null){
@@ -47,7 +48,7 @@ public class LoginRegistroController extends BasePantallaController {
                 passwordLoginField.clear();
                 getPrincipalController().cargarPantalla(Pantallas.PROGRAMASPERMISOS.getRuta());
             } else {
-                getPrincipalController().sacarAlertError("Usuario o contraseña incorrectos.");
+                getPrincipalController().sacarAlertError(Constantes.USUARIO_O_CONTRASENA_INCORRECTOS);
             }
         }
 
@@ -58,12 +59,12 @@ public class LoginRegistroController extends BasePantallaController {
         String username = usernameRegistroField.getText();
         String password = passwordRegistroField.getText();
         if (username.isEmpty() || password.isEmpty()){
-            getPrincipalController().sacarAlertError("Hay campos vacíos.");
+            getPrincipalController().sacarAlertError(Constantes.HAY_CAMPOS_VACIOS);
         }else{
             User nuevoUsuario = new User(UUID.randomUUID(),username,password, new ArrayList<>());
             servicios.addUser(nuevoUsuario);
             claves.generateUserPrivatePublicKey(nuevoUsuario.getName());
-            getPrincipalController().sacarAlertConf("Usuario añadido correctamente.");
+            getPrincipalController().sacarAlertConf(Constantes.USUARIO_ANADIDO_CORRECTAMENTE);
             usernameRegistroField.clear();
             passwordRegistroField.clear();
         }

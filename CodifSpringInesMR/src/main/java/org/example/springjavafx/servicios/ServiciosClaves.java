@@ -5,6 +5,7 @@ import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.x509.X509V3CertificateGenerator;
 import org.example.springjavafx.Configuration;
+import org.example.springjavafx.common.Constantes;
 import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;
@@ -36,7 +37,7 @@ public class ServiciosClaves {
         //INFO: Método para generar las claves privada y pública asimétricas
         try {
             Security.addProvider(new BouncyCastleProvider());
-            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+            KeyPairGenerator keyGen = KeyPairGenerator.getInstance(Constantes.RSA);
             KeyPair clavesRSA = keyGen.generateKeyPair();
             PrivateKey clavePrivadaUser = clavesRSA.getPrivate();
             PublicKey clavePublicaUser = clavesRSA.getPublic();
@@ -47,22 +48,22 @@ public class ServiciosClaves {
             X509V3CertificateGenerator cert1 = new X509V3CertificateGenerator();
 
             cert1.setSerialNumber(BigInteger.valueOf(1));
-            cert1.setSubjectDN(new X509Principal("CN="+ nombreUsuario));
-            cert1.setIssuerDN(new X509Principal("CN=Server"));
+            cert1.setSubjectDN(new X509Principal(Constantes.CN + nombreUsuario));
+            cert1.setIssuerDN(new X509Principal(Constantes.CN_SERVER));
             cert1.setPublicKey(clavePublicaUser);
             cert1.setNotBefore(Date.from(LocalDate.now().plus(365, ChronoUnit.DAYS).atStartOfDay().toInstant(ZoneOffset.UTC)));
             cert1.setNotAfter(new Date());
-            cert1.setSignatureAlgorithm("SHA256WithRSAEncryption");
+            cert1.setSignatureAlgorithm(Constantes.SHA_256_WITH_RSA_ENCRYPTION);
 
             X509Certificate cert = cert1.generate(firmaKey);
 
-            KeyStore ks = KeyStore.getInstance("PKCS12");
-            FileInputStream fis = new FileInputStream("keystore.pfx");
+            KeyStore ks = KeyStore.getInstance(Constantes.PKCS_12);
+            FileInputStream fis = new FileInputStream(Constantes.KEYSTORE_PFX);
             ks.load(fis, keyStorePassword);
 
             ks.setCertificateEntry(nombreUsuario, cert);
             ks.setKeyEntry(nombreUsuario, clavePrivadaUser, nombreUsuario.toCharArray(), new Certificate[]{cert});
-            FileOutputStream fos = new FileOutputStream("keystore.pfx");
+            FileOutputStream fos = new FileOutputStream(Constantes.KEYSTORE_PFX);
             ks.store(fos, keyStorePassword);
             fos.close();
 
@@ -75,21 +76,19 @@ public class ServiciosClaves {
         //INFO: Método para generar las claves privada y pública simétrica
     }
 
-    public void saveInCertificate(){
-        //INFO: Método para guardar la clave pública en un certificado -> Este luego va al Keystore
-
-
+    public void encriptCode(String code){
+        
     }
 
     private PrivateKey privateKeyKeyStore(){
         try {
             char[] keyStorePassword = configuration.getKeyStorePassword().toCharArray();
 
-            KeyStore ks = KeyStore.getInstance("PKCS12");
-            FileInputStream fis = new FileInputStream("keystore.pfx");
+            KeyStore ks = KeyStore.getInstance(Constantes.PKCS_12);
+            FileInputStream fis = new FileInputStream(Constantes.KEYSTORE_PFX);
             ks.load(fis, keyStorePassword);
             KeyStore.PasswordProtection protection = new KeyStore.PasswordProtection(keyStorePassword);
-            KeyStore.PrivateKeyEntry privateKeyEntry = (KeyStore.PrivateKeyEntry) ks.getEntry("server", protection);
+            KeyStore.PrivateKeyEntry privateKeyEntry = (KeyStore.PrivateKeyEntry) ks.getEntry(Constantes.SERVER, protection);
 
             return privateKeyEntry.getPrivateKey();
         } catch (Exception e) {

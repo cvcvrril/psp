@@ -6,6 +6,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.springjavafx.common.Constantes;
 import org.example.springjavafx.data.modelo.Cache;
 import org.example.springjavafx.data.modelo.Cosa;
 import org.example.springjavafx.data.modelo.Cosita;
@@ -55,7 +56,7 @@ public class ProgramasPermisosController extends BasePantallaController {
         String nombrePrograma = nombreProgramaField.getText();
         String contrasenaPrograma = contrasenaProgramaField.getText();
         if (nombrePrograma.isEmpty() || contrasenaPrograma.isEmpty()){
-            getPrincipalController().sacarAlertError("Hay campos vacíos.");
+            getPrincipalController().sacarAlertError(Constantes.HAY_CAMPOS_VACIOS);
         }else {
             Cosa cosaAdd = new Cosa(UUID.randomUUID(), nombrePrograma, contrasenaPrograma, getPrincipalController().getUser(), new ArrayList<>());
             serviciosCosas.add(cosaAdd);
@@ -65,8 +66,8 @@ public class ProgramasPermisosController extends BasePantallaController {
     @Override
     public void principalCargado() {
         programasTable.getItems().setAll(serviciosCosas.getAll(getPrincipalController().getUser().getId()).get());
-        idProgramasColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nombreProgramasColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        idProgramasColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID));
+        nombreProgramasColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.NOMBRE));
 
     }
 }
