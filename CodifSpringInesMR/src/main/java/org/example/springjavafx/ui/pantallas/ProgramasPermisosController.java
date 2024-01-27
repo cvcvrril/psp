@@ -90,6 +90,7 @@ public class ProgramasPermisosController extends BasePantallaController {
 
     @Override
     public void principalCargado() {
+        getPrincipalController().menuAccount.setVisible(true);
         cargarTabla();
     }
 

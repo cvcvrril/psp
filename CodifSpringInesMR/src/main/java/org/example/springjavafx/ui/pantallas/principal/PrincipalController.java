@@ -1,9 +1,12 @@
 package org.example.springjavafx.ui.pantallas.principal;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import lombok.Getter;
@@ -20,6 +23,8 @@ import java.io.IOException;
 @Component
 public class PrincipalController {
     private final ApplicationContext context;
+    public Menu menuAccount;
+    public javafx.scene.control.MenuItem menuAccountLogout;
     private Alert alert;
     @Getter
     @Setter
@@ -34,6 +39,7 @@ public class PrincipalController {
     }
 
     public void initialize() {
+        menuAccount.setVisible(false);
         this.alert = new Alert(Alert.AlertType.NONE);
         cargarPantalla(Pantallas.LOGINREGISTRO.getRuta());
     }
@@ -68,6 +74,22 @@ public class PrincipalController {
         alert.getDialogPane().setId("alert");
         alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
         alert.showAndWait();
+    }
+
+
+    @FXML
+    private void actMenuAccount(ActionEvent event) {
+        if (event.getSource().equals("menuAccountLogout")) {
+            logout();
+        }
+    }
+
+    //INFO: No funciona :(
+
+    private void logout(){
+        user = null;
+        menuAccount.setVisible(false);
+        cargarPantalla(Pantallas.LOGINREGISTRO.getRuta());
     }
 
 }
