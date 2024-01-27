@@ -16,4 +16,12 @@ public class Constantes {
     public static final String PROGRAMA_AGREGADO_CORRECTAMENTE = "Programa agregado correctamente.";
     public static final String CONTRASENA = "contrasena";
     public static final String SELECCIONA_UN_PROGRAMA_DE_LA_LISTA = "Selecciona un programa de la lista.";
+    public static final String PBKDF_2_WITH_HMAC_SHA_256 = "PBKDF2WithHmacSHA256";
+    public static final String AES = "AES";
+    public static final String AES_GCM_NO_PADDING = "AES/GCM/noPadding";
+    public static final String KEY_STORE_PASSWORD = "KeyStorePassword";
+    public static final String NAME = "config/config.properties";
+    public static final String ALERT = "alert";
+    public static final String BTN_OK = "btn-ok";
+    public static final String MENU_ACCOUNT_LOGOUT = "menuAccountLogout";
 }

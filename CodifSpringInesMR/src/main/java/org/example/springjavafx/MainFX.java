@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.example.springjavafx.ui.pantallas.Pantallas;
 import org.example.springjavafx.ui.pantallas.principal.PrincipalController;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
@@ -28,7 +29,7 @@ public class MainFX implements ApplicationListener<DIJavafx.StageReadyEvent> {
 //            ResourceBundle r = ResourceBundle.getBundle("/i18n/textos");
             Stage stage = event.getStage();
             //fxmlLoader.setResources(r);
-            Parent fxmlParent = fxmlLoader.load(getClass().getResourceAsStream("/fxml/principal.fxml"));
+            Parent fxmlParent = fxmlLoader.load(getClass().getResourceAsStream(Pantallas.PRINCIPAL.getRuta()));
             PrincipalController controller = fxmlLoader.getController();
 
 

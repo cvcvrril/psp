@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
+import org.example.springjavafx.common.Constantes;
 import org.example.springjavafx.data.modelo.User;
 import org.example.springjavafx.ui.pantallas.Pantallas;
 import org.springframework.context.ApplicationContext;
@@ -63,23 +64,23 @@ public class PrincipalController {
     public void sacarAlertError(String mensaje) {
         alert.setAlertType(Alert.AlertType.ERROR);
         alert.setContentText(mensaje);
-        alert.getDialogPane().setId("alert");
-        alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
+        alert.getDialogPane().setId(Constantes.ALERT);
+        alert.getDialogPane().lookupButton(ButtonType.OK).setId(Constantes.BTN_OK);
         alert.showAndWait();
     }
 
     public void sacarAlertConf(String mensaje) {
         alert.setAlertType(Alert.AlertType.CONFIRMATION);
         alert.setContentText(mensaje);
-        alert.getDialogPane().setId("alert");
-        alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
+        alert.getDialogPane().setId(Constantes.ALERT);
+        alert.getDialogPane().lookupButton(ButtonType.OK).setId(Constantes.BTN_OK);
         alert.showAndWait();
     }
 
 
     @FXML
     private void actMenuAccount(ActionEvent event) {
-        if (event.getSource().equals("menuAccountLogout")) {
+        if (event.getSource().equals(Constantes.MENU_ACCOUNT_LOGOUT)) {
             logout();
         }
     }

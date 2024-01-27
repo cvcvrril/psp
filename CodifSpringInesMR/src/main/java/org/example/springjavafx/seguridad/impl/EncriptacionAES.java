@@ -1,6 +1,8 @@
 package org.example.springjavafx.seguridad.impl;
 
 import com.google.common.primitives.Bytes;
+import lombok.extern.log4j.Log4j2;
+import org.example.springjavafx.common.Constantes;
 import org.example.springjavafx.seguridad.Encriptacion;
 import org.springframework.stereotype.Component;
 
@@ -17,11 +19,10 @@ import java.security.spec.KeySpec;
 import java.util.Arrays;
 import java.util.Base64;
 
+
+@Log4j2
 @Component
 public class EncriptacionAES implements Encriptacion {
-
-
-
 
     @Override
     public String encriptar(String strToEncrypt, String secret) {
@@ -33,19 +34,18 @@ public class EncriptacionAES implements Encriptacion {
             sr.nextBytes(salt);
             GCMParameterSpec parameterSpec = new GCMParameterSpec(128, iv);
 
-            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+            SecretKeyFactory factory = SecretKeyFactory.getInstance(Constantes.PBKDF_2_WITH_HMAC_SHA_256);
 
             KeySpec spec = new PBEKeySpec(secret.toCharArray(), salt, 65536, 256);
             SecretKey tmp = factory.generateSecret(spec);
-            SecretKeySpec secretKey = new SecretKeySpec(tmp.getEncoded(), "AES");
+            SecretKeySpec secretKey = new SecretKeySpec(tmp.getEncoded(), Constantes.AES);
 
-            Cipher cipher = Cipher.getInstance("AES/GCM/noPadding");
+            Cipher cipher = Cipher.getInstance(Constantes.AES_GCM_NO_PADDING);
             cipher.init(Cipher.ENCRYPT_MODE, secretKey, parameterSpec);
             return Base64.getUrlEncoder().encodeToString(Bytes.concat(iv,salt,
                     cipher.doFinal(strToEncrypt.getBytes(StandardCharsets.UTF_8))));
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error while encrypting: " + e.toString());
+            log.error(e.getMessage(), e);
         }
         return null;
     }
@@ -60,16 +60,16 @@ public class EncriptacionAES implements Encriptacion {
 
             GCMParameterSpec parameterSpec = new GCMParameterSpec(128, iv);
 
-            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+            SecretKeyFactory factory = SecretKeyFactory.getInstance(Constantes.PBKDF_2_WITH_HMAC_SHA_256);
             KeySpec spec = new PBEKeySpec(secret.toCharArray(), salt, 65536,256);
             SecretKey tmp = factory.generateSecret(spec);
-            SecretKeySpec secretKey = new SecretKeySpec(tmp.getEncoded(), "AES");
+            SecretKeySpec secretKey = new SecretKeySpec(tmp.getEncoded(), Constantes.AES);
 
-            Cipher cipher = Cipher.getInstance("AES/GCM/noPADDING");
+            Cipher cipher = Cipher.getInstance(Constantes.AES_GCM_NO_PADDING);
             cipher.init(Cipher.DECRYPT_MODE, secretKey, parameterSpec);
             return new String(cipher.doFinal(Arrays.copyOfRange(decoded, 28, decoded.length)), StandardCharsets.UTF_8);
         } catch (Exception e) {
-            System.out.println("Error while decrypting: " + e.toString());
+            log.error(e.getMessage(), e);
         }
         return null;
     }

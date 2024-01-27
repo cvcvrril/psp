@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
+import org.example.springjavafx.common.Constantes;
 import org.example.springjavafx.data.modelo.Cache;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -26,8 +27,8 @@ public class Configuration {
     public Configuration(){
         try {
             configProperties = new Properties();
-            configProperties.load(getClass().getClassLoader().getResourceAsStream("config/config.properties"));
-            this.keyStorePassword = configProperties.getProperty("KeyStorePassword");
+            configProperties.load(getClass().getClassLoader().getResourceAsStream(Constantes.NAME));
+            this.keyStorePassword = configProperties.getProperty(Constantes.KEY_STORE_PASSWORD);
         }catch (Exception e){
             log.error(e.getMessage(),e);
         }
