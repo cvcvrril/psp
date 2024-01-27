@@ -4,16 +4,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="453.0" prefWidth="661.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.springjavafx.ui.pantallas.ProgramasPermisosController">
+<AnchorPane prefHeight="453.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.springjavafx.ui.pantallas.ProgramasPermisosController">
    <children>
-      <TableView fx:id="programasTable" layoutX="34.0" layoutY="81.0" prefHeight="200.0" prefWidth="241.0">
+      <TableView fx:id="programasTable" layoutX="34.0" layoutY="81.0" prefHeight="200.0" prefWidth="292.0">
         <columns>
           <TableColumn fx:id="nombreProgramasColumn" prefWidth="73.00001525878906" text="Nombre" />
             <TableColumn fx:id="contrasenaProgramasColumn" prefWidth="71.33332824707031" text="Contraseña" />
           <TableColumn fx:id="nombreUserProgramasColumn" prefWidth="83.33334350585938" text="Nombre User" />
+            <TableColumn fx:id="firmaProgramaColumn" prefWidth="75.0" text="Firma" />
         </columns>
       </TableView>
-      <TableView fx:id="permisosTable" layoutX="328.0" layoutY="81.0" prefHeight="200.0" prefWidth="283.0">
+      <TableView fx:id="permisosTable" layoutX="465.0" layoutY="81.0" prefHeight="200.0" prefWidth="283.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
@@ -24,7 +25,7 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <Label layoutX="399.0" layoutY="31.0" text="Permisos">
+      <Label layoutX="499.0" layoutY="31.0" text="Permisos">
          <font>
             <Font size="27.0" />
          </font>

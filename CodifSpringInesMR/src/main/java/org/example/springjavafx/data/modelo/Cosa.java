@@ -28,6 +28,9 @@ public class Cosa {
     @Column(name = "contrasena", nullable = false)
     private String contrasena;
 
+    @Column(name = "firma")
+    private String firma;
+
     @ManyToOne
     @JoinColumn(name = "user_name")
     private User user;

@@ -53,6 +53,7 @@ public class ServiciosCosas {
         Either<ErrorObject, Integer> res;
         try {
             String contrasenaEncriptada = claves.encryptCode(nuevaCosa.getContrasena());
+            //String firmaPrograma = claves.signCode();
             nuevaCosa.setContrasena(contrasenaEncriptada);
             repository.save(nuevaCosa);
             res = Either.right(1);

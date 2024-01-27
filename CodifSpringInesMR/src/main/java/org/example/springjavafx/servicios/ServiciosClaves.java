@@ -83,7 +83,7 @@ public class ServiciosClaves {
         return aes.desencriptar(code, "algo");
     }
 
-    private String signCode(String code, String username){
+    public String signCode(String code, String username){
         try {
             PublicKey publicKeyUser = publicKeyUser(username);
 

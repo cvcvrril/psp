@@ -60,7 +60,7 @@ public class ProgramasPermisosController extends BasePantallaController {
         if (nombrePrograma.isEmpty() || contrasenaPrograma.isEmpty()){
             getPrincipalController().sacarAlertError(Constantes.HAY_CAMPOS_VACIOS);
         }else {
-            Cosa cosaAdd = new Cosa(UUID.randomUUID(), nombrePrograma, contrasenaPrograma, getPrincipalController().getUser(), new ArrayList<>());
+            Cosa cosaAdd = new Cosa(UUID.randomUUID(), nombrePrograma, contrasenaPrograma,null, getPrincipalController().getUser(), new ArrayList<>());
             if (serviciosCosas.add(cosaAdd).isRight()){
                 getPrincipalController().sacarAlertConf(Constantes.PROGRAMA_AGREGADO_CORRECTAMENTE);
                 nombreProgramaField.clear();
