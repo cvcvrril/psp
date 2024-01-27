@@ -47,8 +47,8 @@ public class ServiciosClaves {
             X509V3CertificateGenerator cert1 = new X509V3CertificateGenerator();
 
             cert1.setSerialNumber(BigInteger.valueOf(1));
-            cert1.setSubjectDN(new X509Principal("CN=prueba"));
-            cert1.setIssuerDN(new X509Principal("CN=prueba"));
+            cert1.setSubjectDN(new X509Principal("CN="+ nombreUsuario));
+            cert1.setIssuerDN(new X509Principal("CN=Server"));
             cert1.setPublicKey(clavePublicaUser);
             cert1.setNotBefore(Date.from(LocalDate.now().plus(365, ChronoUnit.DAYS).atStartOfDay().toInstant(ZoneOffset.UTC)));
             cert1.setNotAfter(new Date());
@@ -60,8 +60,8 @@ public class ServiciosClaves {
             FileInputStream fis = new FileInputStream("keystore.pfx");
             ks.load(fis, keyStorePassword);
 
-            ks.setCertificateEntry("prueba", cert);
-            ks.setKeyEntry("prueba", clavePrivadaUser, "prueba".toCharArray(), new Certificate[]{cert});
+            ks.setCertificateEntry(nombreUsuario, cert);
+            ks.setKeyEntry(nombreUsuario, clavePrivadaUser, nombreUsuario.toCharArray(), new Certificate[]{cert});
             FileOutputStream fos = new FileOutputStream("keystore.pfx");
             ks.store(fos, keyStorePassword);
             fos.close();
