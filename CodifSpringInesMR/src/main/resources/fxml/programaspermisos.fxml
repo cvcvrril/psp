@@ -8,9 +8,9 @@
    <children>
       <TableView fx:id="programasTable" layoutX="34.0" layoutY="81.0" prefHeight="200.0" prefWidth="241.0">
         <columns>
-          <TableColumn fx:id="idProgramasColumn" prefWidth="43.33332443237305" text="id" />
-          <TableColumn fx:id="nombreProgramasColumn" prefWidth="107.3333511352539" text="Nombre" />
-            <TableColumn fx:id="contrasenaProgramasColumn" prefWidth="75.0" text="Contraseña" />
+          <TableColumn fx:id="nombreProgramasColumn" prefWidth="73.00001525878906" text="Nombre" />
+            <TableColumn fx:id="contrasenaProgramasColumn" prefWidth="71.33332824707031" text="Contraseña" />
+          <TableColumn fx:id="nombreUserProgramasColumn" prefWidth="83.33334350585938" text="Nombre User" />
         </columns>
       </TableView>
       <TableView fx:id="permisosTable" layoutX="328.0" layoutY="81.0" prefHeight="200.0" prefWidth="283.0">
@@ -32,7 +32,7 @@
       <Button layoutX="209.0" layoutY="325.0" mnemonicParsing="false" onAction="#addPrograma" text="Añadir programa" />
       <TextField fx:id="nombreProgramaField" layoutX="34.0" layoutY="303.0" promptText="Nombre del programa" />
       <PasswordField fx:id="contrasenaProgramaField" layoutX="34.0" layoutY="338.0" promptText="Contraseña del programa" />
-      <Button layoutX="183.0" layoutY="388.0" mnemonicParsing="false" text="Ver contraseña" onAction="#mostrarContrasenaPrograma"/>
+      <Button layoutX="183.0" layoutY="388.0" mnemonicParsing="false" onAction="#mostrarContrasenaPrograma" text="Ver contraseña" />
       <Label fx:id="contrasenaText" layoutX="42.0" layoutY="388.0" text="Contraseña">
          <font>
             <Font size="16.0" />

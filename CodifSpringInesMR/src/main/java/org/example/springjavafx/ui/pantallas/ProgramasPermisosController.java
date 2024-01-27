@@ -26,7 +26,7 @@ public class ProgramasPermisosController extends BasePantallaController {
     @FXML
     private TableView<Cosa> programasTable;
     @FXML
-    private TableColumn<Cosa, UUID> idProgramasColumn;
+    private TableColumn<Cosa, String> nombreUserProgramasColumn;
     @FXML
     private TableColumn<Cosa, String> nombreProgramasColumn;
     @FXML
@@ -71,10 +71,11 @@ public class ProgramasPermisosController extends BasePantallaController {
     }
 
     private void cargarTabla(){
-        programasTable.getItems().setAll(serviciosCosas.getAll(getPrincipalController().getUser().getId()).get());
-        idProgramasColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID));
+        //programasTable.getItems().setAll(serviciosCosas.getAll(getPrincipalController().getUser().getId()).get());
+        programasTable.getItems().setAll(serviciosCosas.getALl().get());
         nombreProgramasColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.NOMBRE));
         contrasenaProgramasColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.CONTRASENA));
+        nombreUserProgramasColumn.setCellValueFactory(new PropertyValueFactory<>("user_name"));
     }
 
     @FXML

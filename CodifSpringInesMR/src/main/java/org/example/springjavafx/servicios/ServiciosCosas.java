@@ -23,7 +23,20 @@ public class ServiciosCosas {
         this.claves = claves;
     }
 
-    public Either<ErrorObject, List<Cosa>> getAll(UUID idUser){
+    public Either<ErrorObject, List<Cosa>> getALl(){
+        Either<ErrorObject, List<Cosa>> res;
+        List<Cosa> cosas;
+        try {
+            cosas = repository.findAll();
+            res = Either.right(cosas);
+        }catch (Exception e){
+            log.error(e.getMessage(), e);
+            res = Either.left(new ErrorObject(e.getMessage(), LocalDateTime.now()));
+        }
+        return res;
+    }
+
+    public Either<ErrorObject, List<Cosa>> getAllById(UUID idUser){
         Either<ErrorObject, List<Cosa>> res;
         List<Cosa> cosas;
         try {
