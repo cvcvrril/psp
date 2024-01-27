@@ -13,4 +13,7 @@ public class Constantes {
     public static final String USUARIO_ANADIDO_CORRECTAMENTE = "Usuario añadido correctamente.";
     public static final String ID = "id";
     public static final String NOMBRE = "nombre";
+    public static final String PROGRAMA_AGREGADO_CORRECTAMENTE = "Programa agregado correctamente.";
+    public static final String CONTRASENA = "contrasena";
+    public static final String SELECCIONA_UN_PROGRAMA_DE_LA_LISTA = "Selecciona un programa de la lista.";
 }

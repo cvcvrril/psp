@@ -16,9 +16,11 @@ import java.util.UUID;
 public class ServiciosCosas {
 
     private final CosasRepository repository;
+    private final ServiciosClaves claves;
 
-    public ServiciosCosas(CosasRepository repository) {
+    public ServiciosCosas(CosasRepository repository, ServiciosClaves claves) {
         this.repository = repository;
+        this.claves = claves;
     }
 
     public Either<ErrorObject, List<Cosa>> getAll(UUID idUser){
@@ -37,6 +39,8 @@ public class ServiciosCosas {
     public Either<ErrorObject, Integer> add(Cosa nuevaCosa){
         Either<ErrorObject, Integer> res;
         try {
+            String contrasenaEncriptada = claves.encryptCode(nuevaCosa.getContrasena());
+            nuevaCosa.setContrasena(contrasenaEncriptada);
             repository.save(nuevaCosa);
             res = Either.right(1);
         }catch (Exception e){

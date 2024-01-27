@@ -26,7 +26,6 @@ public class EncriptacionAES implements Encriptacion {
     @Override
     public String encriptar(String strToEncrypt, String secret) {
         try {
-
             byte [] iv = new byte[12];
             byte []salt = new byte[16];
             SecureRandom sr = new SecureRandom();
@@ -34,9 +33,8 @@ public class EncriptacionAES implements Encriptacion {
             sr.nextBytes(salt);
             GCMParameterSpec parameterSpec = new GCMParameterSpec(128, iv);
 
-
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
-            // en el jdk8 esta limitado a 128 bits, desde el 9 puede ser de 256
+
             KeySpec spec = new PBEKeySpec(secret.toCharArray(), salt, 65536, 256);
             SecretKey tmp = factory.generateSecret(spec);
             SecretKeySpec secretKey = new SecretKeySpec(tmp.getEncoded(), "AES");

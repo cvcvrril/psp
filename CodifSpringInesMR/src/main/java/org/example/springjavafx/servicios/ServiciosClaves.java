@@ -6,6 +6,7 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.x509.X509V3CertificateGenerator;
 import org.example.springjavafx.Configuration;
 import org.example.springjavafx.common.Constantes;
+import org.example.springjavafx.seguridad.impl.EncriptacionAES;
 import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;
@@ -27,9 +28,11 @@ public class ServiciosClaves {
     //INFO: De esta clase se sacan los métodos que se usarán en los controladores
 
     private final Configuration configuration;
+    private final EncriptacionAES aes;
 
-    public ServiciosClaves(Configuration configuration) {
+    public ServiciosClaves(Configuration configuration, EncriptacionAES aes) {
         this.configuration = configuration;
+        this.aes = aes;
     }
 
 
@@ -76,8 +79,12 @@ public class ServiciosClaves {
         //INFO: Método para generar las claves privada y pública simétrica
     }
 
-    public void encriptCode(String code){
-        
+    public String encryptCode(String code){
+        return aes.encriptar(code, "algo");
+    }
+
+    public String decryptCode(String code){
+        return aes.desencriptar(code, "algo");
     }
 
     private PrivateKey privateKeyKeyStore(){

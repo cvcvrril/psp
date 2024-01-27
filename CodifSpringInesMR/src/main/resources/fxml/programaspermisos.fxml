@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.springjavafx.ui.pantallas.ProgramasPermisosController">
+<AnchorPane prefHeight="453.0" prefWidth="661.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.springjavafx.ui.pantallas.ProgramasPermisosController">
    <children>
       <TableView fx:id="programasTable" layoutX="34.0" layoutY="81.0" prefHeight="200.0" prefWidth="241.0">
         <columns>
@@ -32,5 +32,11 @@
       <Button layoutX="209.0" layoutY="325.0" mnemonicParsing="false" onAction="#addPrograma" text="Añadir programa" />
       <TextField fx:id="nombreProgramaField" layoutX="34.0" layoutY="303.0" promptText="Nombre del programa" />
       <PasswordField fx:id="contrasenaProgramaField" layoutX="34.0" layoutY="338.0" promptText="Contraseña del programa" />
+      <Button layoutX="183.0" layoutY="388.0" mnemonicParsing="false" text="Ver contraseña" onAction="#mostrarContrasenaPrograma"/>
+      <Label fx:id="contrasenaText" layoutX="42.0" layoutY="388.0" text="Contraseña">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
