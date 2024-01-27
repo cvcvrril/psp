@@ -22,8 +22,6 @@ import static org.bouncycastle.oer.its.etsi102941.CtlDelete.cert;
 public class MainKeyStore {
 
     public static void main(String[] args) {
-
-
         try {
 
             Configuration conf = new Configuration();
@@ -40,13 +38,13 @@ public class MainKeyStore {
             cert1.setSerialNumber(BigInteger.valueOf(1));
             cert1.setSubjectDN(new X509Principal("CN=Server"));
             cert1.setIssuerDN(new X509Principal("CN=Server"));
-            cert1.setPublicKey(clavesRSA.getPublic());
-            cert1.setNotBefore(
-                    Date.from(LocalDate.now().plus(365, ChronoUnit.DAYS).atStartOfDay().toInstant(ZoneOffset.UTC)));
+            cert1.setPublicKey(clavePublica);
+            cert1.setNotBefore(Date.from(LocalDate.now().plus(365, ChronoUnit.DAYS).atStartOfDay().toInstant(ZoneOffset.UTC)));
             cert1.setNotAfter(new Date());
             cert1.setSignatureAlgorithm("SHA256WithRSAEncryption");
 
             X509Certificate cert =  cert1.generate(clavePrivada);
+
             KeyStore ks = KeyStore.getInstance("PKCS12");
             char[] password = conf.getKeyStorePassword().toCharArray();
             ks.load(null, null);

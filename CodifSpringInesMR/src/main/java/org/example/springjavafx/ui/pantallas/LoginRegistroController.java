@@ -3,9 +3,9 @@ package org.example.springjavafx.ui.pantallas;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.example.springjavafx.data.modelo.User;
+import org.example.springjavafx.servicios.ServiciosClaves;
 import org.example.springjavafx.servicios.ServiciosUsuarios;
 import org.example.springjavafx.ui.pantallas.principal.BasePantallaController;
-import org.example.springjavafx.ui.pantallas.principal.PrincipalController;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -26,9 +26,11 @@ public class LoginRegistroController extends BasePantallaController {
     @FXML
     private PasswordField passwordRegistroField;
     private final ServiciosUsuarios servicios;
+    private final ServiciosClaves claves;
 
-    public LoginRegistroController(ServiciosUsuarios servicios) {
+    public LoginRegistroController(ServiciosUsuarios servicios, ServiciosClaves claves) {
         this.servicios = servicios;
+        this.claves = claves;
     }
 
     @FXML
@@ -60,6 +62,7 @@ public class LoginRegistroController extends BasePantallaController {
         }else{
             User nuevoUsuario = new User(UUID.randomUUID(),username,password, new ArrayList<>());
             servicios.addUser(nuevoUsuario);
+            claves.generateAsymmetricPrivatePublicKey(nuevoUsuario.getName());
             getPrincipalController().sacarAlertConf("Usuario añadido correctamente.");
             usernameRegistroField.clear();
             passwordRegistroField.clear();

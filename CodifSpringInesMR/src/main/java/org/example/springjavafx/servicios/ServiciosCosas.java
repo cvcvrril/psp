@@ -46,4 +46,9 @@ public class ServiciosCosas {
         return res;
     }
 
+    public Either<ErrorObject, Integer> changePassword(String newPassword){
+        Either<ErrorObject, Integer> res;
+        return null;
+    }
+
 }
