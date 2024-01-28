@@ -1,6 +1,8 @@
 package org.example.springjavafx.data.modelo;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.Getter;
 
@@ -9,6 +11,8 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "permisos")
 public class Cosita {
     @Id

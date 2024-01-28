@@ -39,7 +39,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="487.0" layoutY="388.0" mnemonicParsing="false" text="Cambiar contraseña" />
+      <Button layoutX="487.0" layoutY="388.0" mnemonicParsing="false" text="Cambiar contraseña" onAction="#changePassword"/>
       <TextField fx:id="newContrasenaField" layoutX="316.0" layoutY="388.0" promptText="Nueva contraseña" />
    </children>
 </AnchorPane>

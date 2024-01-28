@@ -26,4 +26,7 @@ public class Constantes {
     public static final String MENU_ACCOUNT_LOGOUT = "menuAccountLogout";
     public static final String ERROR_CON_LA_CONTRASENA = "Error con la contraseña";
     public static final String ERROR_AL_ENCONTRAR_EL_USUARIO = "Error al encontrar el usuario";
+    public static final String USERNAME = "username";
+    public static final String EL_CAMPO_ESTA_SIN_COMPLETAR = "El campo está sin completar";
+    public static final String CONTRASENA_CAMBIADA_CORRECTAMENTE = "Contraseña cambiada correctamente";
 }
