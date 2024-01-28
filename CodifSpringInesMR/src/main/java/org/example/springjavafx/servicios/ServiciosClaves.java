@@ -1,10 +1,12 @@
 package org.example.springjavafx.servicios;
 
+import io.vavr.control.Either;
 import lombok.extern.log4j.Log4j2;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.x509.X509V3CertificateGenerator;
 import org.example.springjavafx.Configuration;
+import org.example.springjavafx.data.modelo.ErrorObject;
 import org.example.springjavafx.utils.Constantes;
 import org.example.springjavafx.seguridad.impl.EncriptacionAES;
 import org.example.springjavafx.utils.RandomBytesGenerator;
@@ -17,8 +19,10 @@ import java.security.*;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 import java.util.Date;
 
 @Log4j2
@@ -83,19 +87,27 @@ public class ServiciosClaves {
         return aes.desencriptar(code, String.valueOf(ksa));
     }
 
-    public String signCode(String code, String username){
+    public Either<ErrorObject, String> signCode(String ksa, String username){
+        Either<ErrorObject, String> res;
         try {
             PublicKey publicKeyUser = publicKeyUser(username);
             PrivateKey privateKeyUser = privateKeyUser(username);
             Signature sign = Signature.getInstance("SHA256WithRSA");
             sign.initSign(privateKeyUser);
-            sign.initVerify(publicKeyUser);
-            sign.update("contenIdo".getBytes());
+            sign.update(ksa.getBytes());
             byte[] firma = sign.sign();
+            sign.initVerify(publicKeyUser);
+            sign.update(ksa.getBytes());
+
+            //EX: Bad signature length: got 256 but was expecting 384
+
+            String resFirma = String.valueOf(sign.verify(firma));
+            res = Either.right(resFirma);
         }catch (Exception e){
             log.error(e.getMessage(), e);
+            res = Either.left(new ErrorObject(e.getMessage(), LocalDateTime.now()));
         }
-        return null;
+        return res;
     }
 
     public String privateKeyUserString(String username){
@@ -104,7 +116,7 @@ public class ServiciosClaves {
     }
 
     public String publicKeyUserString(String username){
-        String puKString = publicKeyUserString(username);
+        String puKString = String.valueOf(publicKeyUser(username));
         return puKString;
     }
 

@@ -61,9 +61,12 @@ public class ServiciosCosas {
         try {
             String contrasenaEncriptada = claves.encryptCode(nuevoPrograma.getContrasena(), ksa.randomBytes());
             String firmaNuevoPrograma = claves.encryptCode(ksa.randomBytes(), claves.privateKeyUserString(nuevoPrograma.getUsername()));
+            //String firmaNuevoPrograma = claves.signCode(ksa.randomBytes(), nuevoPrograma.getUsername()).get();
             nuevoPrograma.setFirma(firmaNuevoPrograma);
             nuevoPrograma.setContrasena(contrasenaEncriptada);
             repository.save(nuevoPrograma);
+            String ksaEncriptada = claves.encryptCode(ksa.randomBytes(), claves.publicKeyUserString(nuevoPrograma.getUsername()));
+            nuevoPermiso.setAsym(ksaEncriptada);
             repositoryPermisos.save(nuevoPermiso);
             res = Either.right(1);
         }catch (Exception e){
