@@ -6,20 +6,6 @@
 
 <AnchorPane prefHeight="453.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.springjavafx.ui.pantallas.ProgramasPermisosController">
    <children>
-      <TableView fx:id="programasTable" layoutX="34.0" layoutY="81.0" prefHeight="200.0" prefWidth="292.0">
-        <columns>
-          <TableColumn fx:id="nombreProgramasColumn" prefWidth="73.00001525878906" text="Nombre" />
-            <TableColumn fx:id="contrasenaProgramasColumn" prefWidth="71.33332824707031" text="Contraseña" />
-          <TableColumn fx:id="nombreUserProgramasColumn" prefWidth="83.33334350585938" text="Nombre User" />
-            <TableColumn fx:id="firmaProgramaColumn" prefWidth="75.0" text="Firma" />
-        </columns>
-      </TableView>
-      <TableView fx:id="permisosTable" layoutX="465.0" layoutY="81.0" prefHeight="200.0" prefWidth="283.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
       <Label layoutX="64.0" layoutY="31.0" text="Programas">
          <font>
             <Font size="27.0" />
@@ -30,16 +16,31 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <Button layoutX="209.0" layoutY="325.0" mnemonicParsing="false" onAction="#addPrograma" text="Añadir programa" />
       <TextField fx:id="nombreProgramaField" layoutX="34.0" layoutY="303.0" promptText="Nombre del programa" />
       <PasswordField fx:id="contrasenaProgramaField" layoutX="34.0" layoutY="338.0" promptText="Contraseña del programa" />
+      <Button layoutX="272.0" layoutY="315.0" mnemonicParsing="false" onAction="#addPrograma" text="Añadir programa" />
       <Button layoutX="183.0" layoutY="388.0" mnemonicParsing="false" onAction="#mostrarContrasenaPrograma" text="Ver contraseña" />
+      <TextField fx:id="newContrasenaField" layoutX="316.0" layoutY="388.0" promptText="Nueva contraseña" />
+      <Button layoutX="487.0" layoutY="388.0" mnemonicParsing="false" onAction="#changePassword" text="Cambiar contraseña" />
+      <TableView fx:id="programasTable" layoutX="34.0" layoutY="81.0" prefHeight="200.0" prefWidth="359.0">
+        <columns>
+          <TableColumn fx:id="nombreProgramasColumn" prefWidth="73.00001525878906" text="Nombre" />
+            <TableColumn fx:id="contrasenaProgramasColumn" prefWidth="71.33332824707031" text="Contraseña" />
+          <TableColumn fx:id="nombreUserProgramasColumn" prefWidth="83.33334350585938" text="Nombre User" />
+            <TableColumn fx:id="firmaProgramaColumn" prefWidth="75.0" text="Firma" />
+        </columns>
+      </TableView>
+      <TableView fx:id="permisosTable" layoutX="465.0" layoutY="81.0" prefHeight="200.0" prefWidth="283.0">
+        <columns>
+          <TableColumn fx:id="idPermisoColumn" prefWidth="57.3333740234375" text="id" />
+          <TableColumn fx:id="nombreUserPermisoColumn" prefWidth="114.66668701171875" text="Nombre User" />
+            <TableColumn fx:id="asymPermisoColumn" prefWidth="75.33331298828125" text="Asym" />
+        </columns>
+      </TableView>
       <Label fx:id="contrasenaText" layoutX="42.0" layoutY="388.0" text="Contraseña">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="487.0" layoutY="388.0" mnemonicParsing="false" text="Cambiar contraseña" onAction="#changePassword"/>
-      <TextField fx:id="newContrasenaField" layoutX="316.0" layoutY="388.0" promptText="Nueva contraseña" />
    </children>
 </AnchorPane>

@@ -22,6 +22,7 @@ import java.util.UUID;
 public class ProgramasPermisosController extends BasePantallaController {
 
 
+
     @FXML
     private PasswordField contrasenaProgramaField;
     @FXML
@@ -42,6 +43,12 @@ public class ProgramasPermisosController extends BasePantallaController {
 
     @FXML
     private TableView<Cosita> permisosTable;
+    @FXML
+    private TableColumn<Cosita, UUID> idPermisoColumn;
+    @FXML
+    private TableColumn<Cosita, String> nombreUserPermisoColumn;
+    @FXML
+    private TableColumn<Cosita, String> asymPermisoColumn;
 
     @FXML
     private Label contrasenaText;
@@ -73,7 +80,10 @@ public class ProgramasPermisosController extends BasePantallaController {
     private void cargarTablaPermisos(MouseEvent event){
         Cosa programaSeleccionado = programasTable.getSelectionModel().getSelectedItem();
         if (programaSeleccionado != null){
-            permisosTable.getItems().setAll(serviciosCositas.getAll(programaSeleccionado.getId()).get());
+            permisosTable.getItems().setAll(serviciosCositas.getAllByProgramId(programaSeleccionado.getId()).get());
+            idPermisoColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID));
+            nombreUserPermisoColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.USERNAME));
+            asymPermisoColumn.setCellValueFactory(new PropertyValueFactory<>("asym"));
         }
     }
 

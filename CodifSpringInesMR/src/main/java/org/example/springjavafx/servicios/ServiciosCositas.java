@@ -23,24 +23,12 @@ public class ServiciosCositas {
         this.claves = claves;
     }
 
-    public Either<ErrorObject, List<Cosita>> getAll(UUID cosaId){
+    public Either<ErrorObject, List<Cosita>> getAllByProgramId(UUID programId){
         Either<ErrorObject, List<Cosita>> res;
         List<Cosita> cositas;
         try {
-            cositas = repository.findByCosaId(cosaId);
+            cositas = repository.findByCosaId(programId);
             res = Either.right(cositas);
-        }catch (Exception e){
-            log.error(e.getMessage(), e);
-            res = Either.left(new ErrorObject(e.getMessage(), LocalDateTime.now()));
-        }
-        return res;
-    }
-
-    public Either<ErrorObject, Integer> add(Cosita cosita){
-        Either<ErrorObject, Integer> res;
-        try {
-            repository.save(cosita);
-            res = Either.right(1);
         }catch (Exception e){
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorObject(e.getMessage(), LocalDateTime.now()));
