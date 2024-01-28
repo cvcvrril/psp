@@ -24,4 +24,6 @@ public class Constantes {
     public static final String ALERT = "alert";
     public static final String BTN_OK = "btn-ok";
     public static final String MENU_ACCOUNT_LOGOUT = "menuAccountLogout";
+    public static final String ERROR_CON_LA_CONTRASENA = "Error con la contraseña";
+    public static final String ERROR_AL_ENCONTRAR_EL_USUARIO = "Error al encontrar el usuario";
 }

@@ -28,11 +28,11 @@ public class Cosa {
     @Column(name = "contrasena", nullable = false)
     private String contrasena;
 
-    @Column(name = "firma")
-    private String firma;
+    @Column(name = "user_name")
+    private String username;
 
     @ManyToOne
-    @JoinColumn(name = "user_name")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(

@@ -16,11 +16,14 @@ public class Cosita {
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @Column(name = "nombre", nullable = false)
-    private String nombre;
+    @Column(name = "user_name", nullable = false)
+    private String username;
+
+    @Column(name = "asym")
+    private String asym;
 
     @ManyToOne
-    @JoinColumn(name = "cosa_id")
+    @JoinColumn(name = "programa_id")
     private Cosa cosa;
 
 }

@@ -2,6 +2,7 @@ package org.example.springjavafx.servicios;
 
 import io.vavr.control.Either;
 import lombok.extern.log4j.Log4j2;
+import org.example.springjavafx.common.Constantes;
 import org.example.springjavafx.data.UserRepository;
 import org.example.springjavafx.data.modelo.Cache;
 import org.example.springjavafx.data.modelo.ErrorObject;
@@ -47,10 +48,10 @@ public class ServiciosUsuarios {
                     res = Either.right(userFromRepository);
                 }
                 else {
-                    res = Either.left(new ErrorObject("Erro con la contraseña", LocalDateTime.now()));
+                    res = Either.left(new ErrorObject(Constantes.ERROR_CON_LA_CONTRASENA, LocalDateTime.now()));
                 }
             } else {
-                res = Either.left(new ErrorObject("Error al encontrar el usuario", LocalDateTime.now()));
+                res = Either.left(new ErrorObject(Constantes.ERROR_AL_ENCONTRAR_EL_USUARIO, LocalDateTime.now()));
             }
         }catch (Exception e){
             log.error(e.getMessage(), e);

@@ -19,8 +19,7 @@ import java.util.UUID;
 public class ProgramasPermisosController extends BasePantallaController {
 
 
-    @FXML
-    private TextField nombreProgramaField;
+
     @FXML
     private PasswordField contrasenaProgramaField;
     @FXML
@@ -31,6 +30,10 @@ public class ProgramasPermisosController extends BasePantallaController {
     private TableColumn<Cosa, String> nombreProgramasColumn;
     @FXML
     private TableColumn<Cosa, String> contrasenaProgramasColumn;
+    @FXML
+    private TableColumn<Cosa, String> firmaProgramaColumn;
+    @FXML
+    private TextField nombreProgramaField;
 
 
     @FXML
@@ -60,7 +63,7 @@ public class ProgramasPermisosController extends BasePantallaController {
         if (nombrePrograma.isEmpty() || contrasenaPrograma.isEmpty()){
             getPrincipalController().sacarAlertError(Constantes.HAY_CAMPOS_VACIOS);
         }else {
-            Cosa cosaAdd = new Cosa(UUID.randomUUID(), nombrePrograma, contrasenaPrograma,null, getPrincipalController().getUser(), new ArrayList<>());
+            Cosa cosaAdd = new Cosa(UUID.randomUUID(), nombrePrograma, contrasenaPrograma,getPrincipalController().getUser().getName(), getPrincipalController().getUser(), new ArrayList<>());
             if (serviciosCosas.add(cosaAdd).isRight()){
                 getPrincipalController().sacarAlertConf(Constantes.PROGRAMA_AGREGADO_CORRECTAMENTE);
                 nombreProgramaField.clear();
@@ -75,7 +78,7 @@ public class ProgramasPermisosController extends BasePantallaController {
         programasTable.getItems().setAll(serviciosCosas.getALl().get());
         nombreProgramasColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.NOMBRE));
         contrasenaProgramasColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.CONTRASENA));
-        nombreUserProgramasColumn.setCellValueFactory(new PropertyValueFactory<>("user_name"));
+        nombreUserProgramasColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
     }
 
     @FXML
