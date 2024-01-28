@@ -60,8 +60,8 @@ public class ServiciosCosas {
         Either<ErrorObject, Integer> res;
         try {
             String contrasenaEncriptada = claves.encryptCode(nuevoPrograma.getContrasena(), ksa.randomBytes());
-            String firmaNuevoPrograma = claves.encryptCode(ksa.randomBytes(), claves.privateKeyUserString(nuevoPrograma.getUsername()));
-            //String firmaNuevoPrograma = claves.signCode(ksa.randomBytes(), nuevoPrograma.getUsername()).get();
+            //String firmaNuevoPrograma = claves.encryptCode(ksa.randomBytes(), claves.privateKeyUserString(nuevoPrograma.getUsername()));
+            String firmaNuevoPrograma = claves.signCode(ksa.randomBytes(), nuevoPrograma.getUsername()).get();
             nuevoPrograma.setFirma(firmaNuevoPrograma);
             nuevoPrograma.setContrasena(contrasenaEncriptada);
             repository.save(nuevoPrograma);

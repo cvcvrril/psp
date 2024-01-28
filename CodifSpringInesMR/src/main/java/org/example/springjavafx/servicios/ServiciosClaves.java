@@ -96,12 +96,13 @@ public class ServiciosClaves {
             sign.initSign(privateKeyUser);
             sign.update(ksa.getBytes());
             byte[] firma = sign.sign();
-            sign.initVerify(publicKeyUser);
-            sign.update(ksa.getBytes());
 
             //EX: Bad signature length: got 256 but was expecting 384
 
-            String resFirma = String.valueOf(sign.verify(firma));
+            //EX: could not execute statement [Data truncation: Data too long for column 'firma' at row 1] [insert into programas (contrasena,firma,nombre,user_id,user_name,id) values (?,?,?,?,?,?)]; SQL [insert into programas (contrasena,firma,nombre,user_id,user_name,id) values (?,?,?,?,?,?)]
+
+            String resFirma = Arrays.toString(firma);
+            //String resFirma = String.valueOf(sign.verify(firma));
             res = Either.right(resFirma);
         }catch (Exception e){
             log.error(e.getMessage(), e);
