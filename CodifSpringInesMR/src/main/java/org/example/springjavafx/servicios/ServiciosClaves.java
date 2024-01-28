@@ -37,7 +37,7 @@ public class ServiciosClaves {
     }
 
     public void generateUserPrivatePublicKey(String nombreUsuario){
-        //INFO: Método para generar las claves privada y pública asimétricas
+        //INFO: Método para generar las claves privada y pública del usuario
         try {
             Security.addProvider(new BouncyCastleProvider());
             KeyPairGenerator keyGen = KeyPairGenerator.getInstance(Constantes.RSA);
@@ -52,7 +52,7 @@ public class ServiciosClaves {
 
             cert1.setSerialNumber(BigInteger.valueOf(1));
             cert1.setSubjectDN(new X509Principal(Constantes.CN + nombreUsuario));
-            cert1.setIssuerDN(new X509Principal(Constantes.CN_SERVER));
+            cert1.setIssuerDN(new X509Principal(Constantes.CN + nombreUsuario));
             cert1.setPublicKey(clavePublicaUser);
             cert1.setNotBefore(Date.from(LocalDate.now().plus(365, ChronoUnit.DAYS).atStartOfDay().toInstant(ZoneOffset.UTC)));
             cert1.setNotAfter(new Date());
@@ -75,8 +75,8 @@ public class ServiciosClaves {
         }
     }
 
-    public String encryptCode(String code){
-        return aes.encriptar(code, String.valueOf(ksa));
+    public String encryptCode(String code, String secret){
+        return aes.encriptar(code, secret);
     }
 
     public String decryptCode(String code){
@@ -98,7 +98,17 @@ public class ServiciosClaves {
         return null;
     }
 
-    private PublicKey publicKeyUser(String username){
+    public String privateKeyUserString(String username){
+        String pKString = String.valueOf(privateKeyUser(username));
+        return pKString;
+    }
+
+    public String publicKeyUserString(String username){
+        String puKString = publicKeyUserString(username);
+        return puKString;
+    }
+
+    public PublicKey publicKeyUser(String username){
         try {
             char[] keyStorePassword = configuration.getKeyStorePassword().toCharArray();
 
@@ -115,7 +125,7 @@ public class ServiciosClaves {
         }
     }
 
-    private PrivateKey privateKeyUser(String username){
+    public PrivateKey privateKeyUser(String username){
         try {
             char[] keyStorePassword = configuration.getKeyStorePassword().toCharArray();
 
@@ -123,7 +133,7 @@ public class ServiciosClaves {
             FileInputStream fis = new FileInputStream(Constantes.KEYSTORE_PFX);
             ks.load(fis, keyStorePassword);
             KeyStore.PasswordProtection protection = new KeyStore.PasswordProtection(keyStorePassword);
-            KeyStore.PrivateKeyEntry privateKeyEntry = (KeyStore.PrivateKeyEntry) ks.getEntry(username, protection);
+            KeyStore.PrivateKeyEntry privateKeyEntry = (KeyStore.PrivateKeyEntry) ks.getEntry(Constantes.SERVER, protection);
             return privateKeyEntry.getPrivateKey();
         }catch (Exception e){
             log.error(e.getMessage(), e);

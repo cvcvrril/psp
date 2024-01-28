@@ -35,9 +35,4 @@ public class ServiciosCositas {
         }
         return res;
     }
-
-    public Either<ErrorObject, Integer> update(Cosita cosita){
-        return null;
-    }
-
 }

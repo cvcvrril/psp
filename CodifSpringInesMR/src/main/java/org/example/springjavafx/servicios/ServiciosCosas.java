@@ -7,6 +7,7 @@ import org.example.springjavafx.data.CositasRepository;
 import org.example.springjavafx.data.modelo.Cosa;
 import org.example.springjavafx.data.modelo.Cosita;
 import org.example.springjavafx.data.modelo.ErrorObject;
+import org.example.springjavafx.utils.RandomBytesGenerator;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -20,11 +21,13 @@ public class ServiciosCosas {
     private final CosasRepository repository;
     private final CositasRepository repositoryPermisos;
     private final ServiciosClaves claves;
+    private final RandomBytesGenerator ksa;
 
-    public ServiciosCosas(CosasRepository repository, CositasRepository repositoryPermisos, ServiciosClaves claves) {
+    public ServiciosCosas(CosasRepository repository, CositasRepository repositoryPermisos, ServiciosClaves claves, RandomBytesGenerator ksa) {
         this.repository = repository;
         this.repositoryPermisos = repositoryPermisos;
         this.claves = claves;
+        this.ksa = ksa;
     }
 
     public Either<ErrorObject, List<Cosa>> getALl(){
@@ -53,13 +56,14 @@ public class ServiciosCosas {
         return res;
     }
 
-    public Either<ErrorObject, Integer> add(Cosa nuevaCosa, Cosita nuevoPermiso){
+    public Either<ErrorObject, Integer> add(Cosa nuevoPrograma, Cosita nuevoPermiso){
         Either<ErrorObject, Integer> res;
         try {
-            String contrasenaEncriptada = claves.encryptCode(nuevaCosa.getContrasena());
-            //String firmaPrograma = claves.signCode();
-            nuevaCosa.setContrasena(contrasenaEncriptada);
-            repository.save(nuevaCosa);
+            String contrasenaEncriptada = claves.encryptCode(nuevoPrograma.getContrasena(), ksa.randomBytes());
+            String firmaNuevoPrograma = claves.encryptCode(ksa.randomBytes(), claves.privateKeyUserString(nuevoPrograma.getUsername()));
+            nuevoPrograma.setFirma(firmaNuevoPrograma);
+            nuevoPrograma.setContrasena(contrasenaEncriptada);
+            repository.save(nuevoPrograma);
             repositoryPermisos.save(nuevoPermiso);
             res = Either.right(1);
         }catch (Exception e){
@@ -72,7 +76,7 @@ public class ServiciosCosas {
     public Either<ErrorObject, Integer> changePassword(Cosa programaContrasenaCambiada){
         Either<ErrorObject, Integer> res;
         try {
-            String nuevaContrasenaEncriptada = claves.encryptCode(programaContrasenaCambiada.getContrasena());
+            String nuevaContrasenaEncriptada = claves.encryptCode(programaContrasenaCambiada.getContrasena(), ksa.randomBytes());
             programaContrasenaCambiada.setContrasena(nuevaContrasenaEncriptada);
             repository.save(programaContrasenaCambiada);
             res = Either.right(1);

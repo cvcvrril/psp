@@ -55,8 +55,7 @@ public class MainKeyStore {
             ks.store(fos, password);
             fos.close();
 
-        } catch (KeyStoreException | IOException | NoSuchAlgorithmException | CertificateException |
-                 SignatureException | InvalidKeyException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
