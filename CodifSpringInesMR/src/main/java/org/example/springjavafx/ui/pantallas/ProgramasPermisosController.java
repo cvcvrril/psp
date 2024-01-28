@@ -93,7 +93,7 @@ public class ProgramasPermisosController extends BasePantallaController {
         if (nombrePrograma.isEmpty() || contrasenaPrograma.isEmpty()) {
             getPrincipalController().sacarAlertError(Constantes.HAY_CAMPOS_VACIOS);
         } else {
-            Cosa programaAdd = new Cosa(UUID.randomUUID(), nombrePrograma, contrasenaPrograma, getPrincipalController().getUser().getName(), getPrincipalController().getUser(), new ArrayList<>());
+            Cosa programaAdd = new Cosa(UUID.randomUUID(), nombrePrograma, contrasenaPrograma, getPrincipalController().getUser().getName(),null,getPrincipalController().getUser(), new ArrayList<>());
             Cosita permisoAdd = new Cosita(UUID.randomUUID(),getPrincipalController().getUser().getName(),null,programaAdd);
             if (serviciosCosas.add(programaAdd, permisoAdd).isRight()) {
                 getPrincipalController().sacarAlertConf(Constantes.PROGRAMA_AGREGADO_CORRECTAMENTE);
@@ -122,7 +122,7 @@ public class ProgramasPermisosController extends BasePantallaController {
         if (newContrasena == null || programaSeleccionado == null) {
             getPrincipalController().sacarAlertError(Constantes.EL_CAMPO_ESTA_SIN_COMPLETAR);
         } else {
-            Cosa programaContrasenaCambiada = new Cosa(programaSeleccionado.getId(), programaSeleccionado.getNombre(), newContrasena, programaSeleccionado.getUsername(), programaSeleccionado.getUser(), programaSeleccionado.getCositas());
+            Cosa programaContrasenaCambiada = new Cosa(programaSeleccionado.getId(), programaSeleccionado.getNombre(), newContrasena, programaSeleccionado.getUsername(),null, programaSeleccionado.getUser(), programaSeleccionado.getCositas());
             if (serviciosCosas.changePassword(programaContrasenaCambiada).isRight()){
                 getPrincipalController().sacarAlertConf(Constantes.CONTRASENA_CAMBIADA_CORRECTAMENTE);
                 newContrasenaField.clear();

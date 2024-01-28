@@ -25,11 +25,18 @@ public class Cosa {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
+    //INFO: Contraseña del programa (cifrada con la KSA)
+
     @Column(name = "contrasena", nullable = false)
     private String contrasena;
 
     @Column(name = "user_name")
     private String username;
+
+    //INFO: KSA firmada con la privada del usuario
+
+    @Column(name = "firma")
+    private String firma;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

@@ -21,8 +21,6 @@ import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
-import static org.bouncycastle.oer.its.etsi102941.CtlDelete.cert;
-
 @Log4j2
 @Service
 public class ServiciosClaves {
@@ -37,7 +35,6 @@ public class ServiciosClaves {
         this.aes = aes;
         this.ksa = ksa;
     }
-
 
     public void generateUserPrivatePublicKey(String nombreUsuario){
         //INFO: Método para generar las claves privada y pública asimétricas
@@ -89,8 +86,9 @@ public class ServiciosClaves {
     public String signCode(String code, String username){
         try {
             PublicKey publicKeyUser = publicKeyUser(username);
-
+            PrivateKey privateKeyUser = privateKeyUser(username);
             Signature sign = Signature.getInstance("SHA256WithRSA");
+            sign.initSign(privateKeyUser);
             sign.initVerify(publicKeyUser);
             sign.update("contenIdo".getBytes());
             byte[] firma = sign.sign();
