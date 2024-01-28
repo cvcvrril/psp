@@ -1,4 +1,4 @@
-package org.example.springjavafx.common;
+package org.example.springjavafx.utils;
 
 public class Constantes {
     public static final String KEYSTORE_PFX = "keystore.pfx";
@@ -29,4 +29,5 @@ public class Constantes {
     public static final String USERNAME = "username";
     public static final String EL_CAMPO_ESTA_SIN_COMPLETAR = "El campo está sin completar";
     public static final String CONTRASENA_CAMBIADA_CORRECTAMENTE = "Contraseña cambiada correctamente";
+    public static final String ASYM = "asym";
 }

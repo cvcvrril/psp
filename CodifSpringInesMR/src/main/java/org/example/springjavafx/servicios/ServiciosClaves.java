@@ -5,8 +5,9 @@ import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.x509.X509V3CertificateGenerator;
 import org.example.springjavafx.Configuration;
-import org.example.springjavafx.common.Constantes;
+import org.example.springjavafx.utils.Constantes;
 import org.example.springjavafx.seguridad.impl.EncriptacionAES;
+import org.example.springjavafx.utils.RandomBytesGenerator;
 import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;
@@ -29,10 +30,12 @@ public class ServiciosClaves {
 
     private final Configuration configuration;
     private final EncriptacionAES aes;
+    private final RandomBytesGenerator ksa;
 
-    public ServiciosClaves(Configuration configuration, EncriptacionAES aes) {
+    public ServiciosClaves(Configuration configuration, EncriptacionAES aes, RandomBytesGenerator ksa) {
         this.configuration = configuration;
         this.aes = aes;
+        this.ksa = ksa;
     }
 
 
@@ -76,11 +79,11 @@ public class ServiciosClaves {
     }
 
     public String encryptCode(String code){
-        return aes.encriptar(code, "algo");
+        return aes.encriptar(code, String.valueOf(ksa));
     }
 
     public String decryptCode(String code){
-        return aes.desencriptar(code, "algo");
+        return aes.desencriptar(code, String.valueOf(ksa));
     }
 
     public String signCode(String code, String username){
@@ -144,6 +147,7 @@ public class ServiciosClaves {
             log.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
-
     }
+
+
 }

@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import org.example.springjavafx.common.Constantes;
+import org.example.springjavafx.utils.Constantes;
 import org.example.springjavafx.data.modelo.Cosa;
 import org.example.springjavafx.data.modelo.Cosita;
 import org.example.springjavafx.servicios.ServiciosClaves;
@@ -20,7 +20,6 @@ import java.util.UUID;
 
 @Component
 public class ProgramasPermisosController extends BasePantallaController {
-
 
 
     @FXML
@@ -83,7 +82,7 @@ public class ProgramasPermisosController extends BasePantallaController {
             permisosTable.getItems().setAll(serviciosCositas.getAllByProgramId(programaSeleccionado.getId()).get());
             idPermisoColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID));
             nombreUserPermisoColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.USERNAME));
-            asymPermisoColumn.setCellValueFactory(new PropertyValueFactory<>("asym"));
+            asymPermisoColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.ASYM));
         }
     }
 

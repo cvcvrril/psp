@@ -2,7 +2,7 @@ package org.example.springjavafx.servicios;
 
 import io.vavr.control.Either;
 import lombok.extern.log4j.Log4j2;
-import org.example.springjavafx.common.Constantes;
+import org.example.springjavafx.utils.Constantes;
 import org.example.springjavafx.data.UserRepository;
 import org.example.springjavafx.data.modelo.Cache;
 import org.example.springjavafx.data.modelo.ErrorObject;
@@ -11,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Log4j2
 @Service

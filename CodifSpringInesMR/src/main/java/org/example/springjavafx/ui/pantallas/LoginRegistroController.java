@@ -2,7 +2,7 @@ package org.example.springjavafx.ui.pantallas;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import org.example.springjavafx.common.Constantes;
+import org.example.springjavafx.utils.Constantes;
 import org.example.springjavafx.data.modelo.User;
 import org.example.springjavafx.servicios.ServiciosClaves;
 import org.example.springjavafx.servicios.ServiciosUsuarios;

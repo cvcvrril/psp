@@ -4,7 +4,7 @@ import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.x509.X509V3CertificateGenerator;
 import org.example.springjavafx.Configuration;
-import org.example.springjavafx.common.Constantes;
+import org.example.springjavafx.utils.Constantes;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

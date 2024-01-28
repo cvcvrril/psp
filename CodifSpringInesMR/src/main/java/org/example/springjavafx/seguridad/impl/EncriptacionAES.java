@@ -2,7 +2,7 @@ package org.example.springjavafx.seguridad.impl;
 
 import com.google.common.primitives.Bytes;
 import lombok.extern.log4j.Log4j2;
-import org.example.springjavafx.common.Constantes;
+import org.example.springjavafx.utils.Constantes;
 import org.example.springjavafx.seguridad.Encriptacion;
 import org.springframework.stereotype.Component;
 
