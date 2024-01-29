@@ -1,5 +1,8 @@
 package org.example.springjavafx.seguridad;
 
+/**El SonarLint se está quejando en esta clase porque dice que el X509 está "deprecado" y por el throw new RuntimeException**/
+
+import lombok.extern.log4j.Log4j2;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.x509.X509V3CertificateGenerator;
@@ -7,19 +10,16 @@ import org.example.springjavafx.Configuration;
 import org.example.springjavafx.utils.Constantes;
 
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.math.BigInteger;
 import java.security.*;
 import java.security.cert.Certificate;
-import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
-import static org.bouncycastle.oer.its.etsi102941.CtlDelete.cert;
-
+@Log4j2
 public class MainKeyStore {
 
     public static void main(String[] args) {
@@ -56,6 +56,7 @@ public class MainKeyStore {
             fos.close();
 
         } catch (Exception e) {
+            log.error(e.getMessage(),e);
             throw new RuntimeException(e);
         }
     }

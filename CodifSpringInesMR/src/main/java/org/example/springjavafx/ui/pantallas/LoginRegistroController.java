@@ -72,6 +72,6 @@ public class LoginRegistroController extends BasePantallaController {
 
     @Override
     public void principalCargado() {
-
+        //Vacío porque no debería de ir nada aquí
     }
 }

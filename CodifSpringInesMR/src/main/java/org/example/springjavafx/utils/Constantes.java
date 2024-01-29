@@ -30,4 +30,6 @@ public class Constantes {
     public static final String EL_CAMPO_ESTA_SIN_COMPLETAR = "El campo está sin completar";
     public static final String CONTRASENA_CAMBIADA_CORRECTAMENTE = "Contraseña cambiada correctamente";
     public static final String ASYM = "asym";
+    public static final String FIRMA = "firma";
+    public static final String SHA_256_WITH_RSA = "SHA256WithRSA";
 }

@@ -1,6 +1,5 @@
 package org.example.springjavafx.data;
 
-import org.example.springjavafx.data.modelo.Cosa;
 import org.example.springjavafx.data.modelo.Cosita;
 import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.stereotype.Repository;

@@ -21,13 +21,11 @@ public class ServiciosCosas {
     private final CosasRepository repository;
     private final CositasRepository repositoryPermisos;
     private final ServiciosClaves claves;
-    private final RandomBytesGenerator ksa;
 
-    public ServiciosCosas(CosasRepository repository, CositasRepository repositoryPermisos, ServiciosClaves claves, RandomBytesGenerator ksa) {
+    public ServiciosCosas(CosasRepository repository, CositasRepository repositoryPermisos, ServiciosClaves claves) {
         this.repository = repository;
         this.repositoryPermisos = repositoryPermisos;
         this.claves = claves;
-        this.ksa = ksa;
     }
 
     public Either<ErrorObject, List<Cosa>> getALl() {
@@ -59,14 +57,13 @@ public class ServiciosCosas {
     public Either<ErrorObject, Integer> add(Cosa nuevoPrograma, Cosita nuevoPermiso) {
         Either<ErrorObject, Integer> res;
         try {
-            String contrasenaEncriptada = claves.encryptCode(nuevoPrograma.getContrasena(), ksa.randomBytes());
-            //String firmaNuevoPrograma = claves.encryptCode(ksa.randomBytes(), claves.privateKeyUserString(nuevoPrograma.getUsername()));
+            String contrasenaEncriptada = claves.encryptCode(nuevoPrograma.getContrasena());
             String firmaNuevoPrograma = claves.signCode(nuevoPrograma.getContrasena(), nuevoPrograma.getUsername()).get();
             nuevoPrograma.setFirma(firmaNuevoPrograma);
             nuevoPrograma.setContrasena(contrasenaEncriptada);
             repository.save(nuevoPrograma);
-            String ksaEncriptada = claves.encryptCode(ksa.randomBytes(), claves.publicKeyUserString(nuevoPrograma.getUsername()));
-            nuevoPermiso.setAsym(ksaEncriptada);
+            String firmaEncriptada = claves.encryptCode(contrasenaEncriptada);
+            nuevoPermiso.setAsym(firmaEncriptada);
             repositoryPermisos.save(nuevoPermiso);
             res = Either.right(1);
 
@@ -80,11 +77,10 @@ public class ServiciosCosas {
     public Either<ErrorObject, Integer> changePassword(Cosa programaContrasenaCambiada) {
         Either<ErrorObject, Integer> res;
         try {
-            String nuevaContrasenaEncriptada = claves.encryptCode(programaContrasenaCambiada.getContrasena(), ksa.randomBytes());
+            String nuevaContrasenaEncriptada = claves.encryptCode(programaContrasenaCambiada.getContrasena());
+            String firmaNuevoPrograma = claves.signCode(programaContrasenaCambiada.getContrasena(), programaContrasenaCambiada.getUsername()).get();
+            programaContrasenaCambiada.setFirma(firmaNuevoPrograma);
             programaContrasenaCambiada.setContrasena(nuevaContrasenaEncriptada);
-
-            //TODO: montar para cambiar la firma
-
             repository.save(programaContrasenaCambiada);
             res = Either.right(1);
         } catch (Exception e) {

@@ -35,4 +35,10 @@ public class ServiciosCositas {
         }
         return res;
     }
+
+    public Either<ErrorObject, Integer> add(Cosita nuevoPermiso){
+
+
+        return null;
+    }
 }

@@ -80,7 +80,7 @@ public class ServiciosClaves {
         }
     }
 
-    public String encryptCode(String code, String secret){
+    public String encryptCode(String code){
         return aes.encriptar(code, String.valueOf(ksa));
     }
 
@@ -92,18 +92,12 @@ public class ServiciosClaves {
         Either<ErrorObject, String> res;
         try {
 
-            PrivateKey privateKeyUser = privateKeyUser(username);
-            Signature sign = Signature.getInstance("SHA256WithRSA");
+            PrivateKey privateKeyUser = privateKeyUser();
+            Signature sign = Signature.getInstance(Constantes.SHA_256_WITH_RSA);
             sign.initSign(privateKeyUser);
             sign.update(contrasena.getBytes());
             byte[] firma = sign.sign();
-
-            //EX: Bad signature length: got 256 but was expecting 384
-
-            //EX: could not execute statement [Data truncation: Data too long for column 'firma' at row 1] [insert into programas (contrasena,firma,nombre,user_id,user_name,id) values (?,?,?,?,?,?)]; SQL [insert into programas (contrasena,firma,nombre,user_id,user_name,id) values (?,?,?,?,?,?)]
-
             String resFirma = Base64.getUrlEncoder().encodeToString(firma);
-            //String resFirma = String.valueOf(sign.verify(firma));
             res = Either.right(resFirma);
         }catch (Exception e){
             log.error(e.getMessage(), e);
@@ -116,7 +110,7 @@ public class ServiciosClaves {
         Either<ErrorObject, Boolean> res;
         try {
             PublicKey publicKeyUser = publicKeyUser(username);
-            Signature sign = Signature.getInstance("SHA256WithRSA");
+            Signature sign = Signature.getInstance(Constantes.SHA_256_WITH_RSA);
             sign.initVerify(publicKeyUser);
             byte[] firmaCheck = firmaUser.getBytes();
             res = Either.right(sign.verify(firmaCheck));
@@ -125,16 +119,6 @@ public class ServiciosClaves {
             res = Either.left(new ErrorObject(e.getMessage(), LocalDateTime.now()));
         }
         return res;
-    }
-
-    public String privateKeyUserString(String username){
-        String pKString = String.valueOf(privateKeyUser(username));
-        return pKString;
-    }
-
-    public String publicKeyUserString(String username){
-        String puKString = String.valueOf(publicKeyUser(username));
-        return puKString;
     }
 
     public PublicKey publicKeyUser(String username){
@@ -154,7 +138,7 @@ public class ServiciosClaves {
         }
     }
 
-    public PrivateKey privateKeyUser(String username){
+    public PrivateKey privateKeyUser(){
         try {
             char[] keyStorePassword = configuration.getKeyStorePassword().toCharArray();
 

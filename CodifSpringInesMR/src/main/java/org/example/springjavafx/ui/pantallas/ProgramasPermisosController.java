@@ -65,15 +65,15 @@ public class ProgramasPermisosController extends BasePantallaController {
     }
 
     public void initialize() {
-
+        //Comento algo aquí para que el SonarLint deje de llorar
     }
 
     private void cargarTablaProgramas() {
-        //programasTable.getItems().setAll(serviciosCosas.getAll(getPrincipalController().getUser().getId()).get());
         programasTable.getItems().setAll(serviciosCosas.getALl().get());
         nombreProgramasColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.NOMBRE));
         contrasenaProgramasColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.CONTRASENA));
         nombreUserProgramasColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.USERNAME));
+        firmaProgramaColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.FIRMA));
     }
 
     private void cargarTablaPermisos(MouseEvent event){
@@ -110,8 +110,11 @@ public class ProgramasPermisosController extends BasePantallaController {
         if (programaSeleccionado == null) {
             getPrincipalController().sacarAlertError(Constantes.SELECCIONA_UN_PROGRAMA_DE_LA_LISTA);
         } else {
-            String contrasenaDesencriptada = serviciosClaves.decryptCode(programaSeleccionado.getContrasena());
-            contrasenaText.setText(contrasenaDesencriptada);
+            if (serviciosClaves.checkCode(programaSeleccionado.getFirma(), programaSeleccionado.getUsername()).isRight()){
+                String contrasenaDesencriptada = serviciosClaves.decryptCode(programaSeleccionado.getContrasena());
+                String usuarioFirma = programaSeleccionado.getUser().getName();
+                contrasenaText.setText(contrasenaDesencriptada+" ("+usuarioFirma+")");
+            }
         }
     }
 
