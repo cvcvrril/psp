@@ -32,4 +32,5 @@ public class Constantes {
     public static final String ASYM = "asym";
     public static final String FIRMA = "firma";
     public static final String SHA_256_WITH_RSA = "SHA256WithRSA";
+    public static final String PERMISO_ANADIDO_CON_EXITO = "Permiso añadido con éxito";
 }

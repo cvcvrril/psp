@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Log4j2
 @Service
@@ -25,6 +26,19 @@ public class ServiciosUsuarios {
         this.repository = repository;
         this.passwordHash = passwordHash;
         this.passwordCache = passwordCache;
+    }
+
+    public Either<ErrorObject, List<User>> getAll(){
+        Either<ErrorObject, List<User>> res;
+        List<User> userList;
+        try {
+            userList = repository.findAll();
+            res = Either.right(userList);
+        }catch (Exception e){
+            log.error(e.getMessage(), e);
+            throw new RuntimeException(e.getMessage(), e);
+        }
+        return res;
     }
 
     public void addUser(User nuevoUsuario){

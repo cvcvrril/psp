@@ -1,9 +1,11 @@
 package org.example.springjavafx.ui.pantallas;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import org.example.springjavafx.data.modelo.User;
 import org.example.springjavafx.utils.Constantes;
 import org.example.springjavafx.data.modelo.Cosa;
 import org.example.springjavafx.data.modelo.Cosita;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Component;
 
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -52,6 +55,9 @@ public class ProgramasPermisosController extends BasePantallaController {
     @FXML
     private Label contrasenaText;
 
+    @FXML
+    private ComboBox<String> userPermisoComboBox;
+
     private final ServiciosCosas serviciosCosas;
     private final ServiciosUsuarios serviciosUsuarios;
     private final ServiciosClaves serviciosClaves;
@@ -74,6 +80,13 @@ public class ProgramasPermisosController extends BasePantallaController {
         contrasenaProgramasColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.CONTRASENA));
         nombreUserProgramasColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.USERNAME));
         firmaProgramaColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.FIRMA));
+    }
+
+    private void cargarComboBoxUsers(){
+        List<User> userList = serviciosUsuarios.getAll().get();
+        for (User user : userList){
+            userPermisoComboBox.getItems().add(user.getName());
+        }
     }
 
     private void cargarTablaPermisos(MouseEvent event){
@@ -102,6 +115,20 @@ public class ProgramasPermisosController extends BasePantallaController {
                 cargarTablaProgramas();
             }
         }
+    }
+
+    @FXML
+    private void addPermiso(ActionEvent actionEvent) {
+        Cosa programaSeleccionado = programasTable.getSelectionModel().getSelectedItem();
+        if (programaSeleccionado!= null){
+            Cosita nuevoPermiso = new Cosita(UUID.randomUUID(),getPrincipalController().getUser().getName(),null, programaSeleccionado);
+            if (serviciosCositas.add(nuevoPermiso, programaSeleccionado.getContrasena()).isRight()){
+                getPrincipalController().sacarAlertConf(Constantes.PERMISO_ANADIDO_CON_EXITO);
+            }
+        }else {
+            getPrincipalController().sacarAlertError(Constantes.SELECCIONA_UN_PROGRAMA_DE_LA_LISTA);
+        }
+
     }
 
     @FXML
@@ -138,6 +165,7 @@ public class ProgramasPermisosController extends BasePantallaController {
     public void principalCargado() {
         getPrincipalController().menuAccount.setVisible(true);
         cargarTablaProgramas();
+        cargarComboBoxUsers();
         programasTable.setOnMouseClicked(this::cargarTablaPermisos);
     }
 

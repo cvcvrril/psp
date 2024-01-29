@@ -36,9 +36,17 @@ public class ServiciosCositas {
         return res;
     }
 
-    public Either<ErrorObject, Integer> add(Cosita nuevoPermiso){
-
-
-        return null;
+    public Either<ErrorObject, Integer> add(Cosita nuevoPermiso, String contrasena){
+        Either<ErrorObject, Integer> res;
+        try {
+            String firmaEncriptada = claves.encryptCode(contrasena);
+            nuevoPermiso.setAsym(firmaEncriptada);
+            repository.save(nuevoPermiso);
+            res = Either.right(1);
+        }catch (Exception e){
+            log.error(e.getMessage(), e);
+            res = Either.left(new ErrorObject(e.getMessage(), LocalDateTime.now()));
+        }
+        return res;
     }
 }

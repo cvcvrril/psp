@@ -42,5 +42,7 @@
             <Font size="16.0" />
          </font>
       </Label>
+      <ComboBox fx:id="userPermisoComboBox" layoutX="487.0" layoutY="315.0" prefWidth="150.0" promptText="Usuarios" />
+      <Button layoutX="674.0" layoutY="316.0" mnemonicParsing="false" onAction="#addPermiso" text="Añadir permiso" />
    </children>
 </AnchorPane>
