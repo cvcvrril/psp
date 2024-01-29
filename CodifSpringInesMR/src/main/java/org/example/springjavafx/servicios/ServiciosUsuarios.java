@@ -4,7 +4,6 @@ import io.vavr.control.Either;
 import lombok.extern.log4j.Log4j2;
 import org.example.springjavafx.utils.Constantes;
 import org.example.springjavafx.data.UserRepository;
-import org.example.springjavafx.data.modelo.Cache;
 import org.example.springjavafx.data.modelo.ErrorObject;
 import org.example.springjavafx.data.modelo.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,13 +18,11 @@ public class ServiciosUsuarios {
 
     private final UserRepository repository;
     private final PasswordEncoder passwordHash;
-    private final Cache passwordCache;
 
 
-    public ServiciosUsuarios(UserRepository repository, PasswordEncoder passwordHash, Cache passwordCache) {
+    public ServiciosUsuarios(UserRepository repository, PasswordEncoder passwordHash) {
         this.repository = repository;
         this.passwordHash = passwordHash;
-        this.passwordCache = passwordCache;
     }
 
     public Either<ErrorObject, List<User>> getAll(){
@@ -57,7 +54,6 @@ public class ServiciosUsuarios {
             User userFromRepository = repository.findByName(userLogin.getName()).get();
             if (userFromRepository != null){
                 if (passwordHash.matches(userLogin.getPassword(), userFromRepository.getPassword())){
-                    passwordCache.setUserPassword(userLogin.getPassword());
                     res = Either.right(userFromRepository);
                 }
                 else {

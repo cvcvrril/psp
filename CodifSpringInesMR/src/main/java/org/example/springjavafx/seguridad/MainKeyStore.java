@@ -28,8 +28,8 @@ public class MainKeyStore {
             Configuration conf = new Configuration();
 
             Security.addProvider(new BouncyCastleProvider());
-            KeyPairGenerator keyGen = KeyPairGenerator.getInstance(Constantes.RSA); // Hace uso del provider BC
-            keyGen.initialize(2048,new SecureRandom());  // tamano clave 512 bits
+            KeyPairGenerator keyGen = KeyPairGenerator.getInstance(Constantes.RSA);
+            keyGen.initialize(2048,new SecureRandom());
             KeyPair clavesRSA = keyGen.generateKeyPair();
             PrivateKey clavePrivada = clavesRSA.getPrivate();
             PublicKey clavePublica = clavesRSA.getPublic();

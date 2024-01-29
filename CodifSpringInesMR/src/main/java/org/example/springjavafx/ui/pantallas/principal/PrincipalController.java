@@ -84,8 +84,6 @@ public class PrincipalController {
         }
     }
 
-    //INFO: No funciona :(
-
     private void logout(){
         user = null;
         menuAccount.setVisible(false);

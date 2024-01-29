@@ -4,7 +4,6 @@ import javafx.fxml.FXMLLoader;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 import org.example.springjavafx.utils.Constantes;
-import org.example.springjavafx.data.modelo.Cache;
 import org.example.springjavafx.utils.RandomBytesGenerator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -12,8 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Properties;
-
-//INFO: Meter aquí objetos para que no salte la mierda del Beans
 
 @Log4j2
 @Data
@@ -44,11 +41,6 @@ public class Configuration {
     @Bean
     public PasswordEncoder createPasswordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public Cache passwordCache(){
-        return new Cache();
     }
 
     @Bean

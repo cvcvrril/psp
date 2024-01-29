@@ -29,7 +29,6 @@ import java.util.Date;
 @Log4j2
 @Service
 public class ServiciosClaves {
-    //INFO: De esta clase se sacan los métodos que se usarán en los controladores
 
     private final Configuration configuration;
     private final EncriptacionAES aes;
@@ -42,7 +41,6 @@ public class ServiciosClaves {
     }
 
     public void generateUserPrivatePublicKey(String nombreUsuario){
-        //INFO: Método para generar las claves privada y pública del usuario
         try {
             Security.addProvider(new BouncyCastleProvider());
             KeyPairGenerator keyGen = KeyPairGenerator.getInstance(Constantes.RSA);
