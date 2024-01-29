@@ -61,14 +61,18 @@ public class ServiciosCosas {
         try {
             String contrasenaEncriptada = claves.encryptCode(nuevoPrograma.getContrasena(), ksa.randomBytes());
             //String firmaNuevoPrograma = claves.encryptCode(ksa.randomBytes(), claves.privateKeyUserString(nuevoPrograma.getUsername()));
-            String firmaNuevoPrograma = claves.signCode(ksa.randomBytes(), nuevoPrograma.getUsername()).get();
-            nuevoPrograma.setFirma(firmaNuevoPrograma);
-            nuevoPrograma.setContrasena(contrasenaEncriptada);
-            repository.save(nuevoPrograma);
-            String ksaEncriptada = claves.encryptCode(ksa.randomBytes(), claves.publicKeyUserString(nuevoPrograma.getUsername()));
-            nuevoPermiso.setAsym(ksaEncriptada);
-            repositoryPermisos.save(nuevoPermiso);
-            res = Either.right(1);
+            String firmaNuevoPrograma = claves.signCode(nuevoPrograma.getContrasena(), nuevoPrograma.getUsername()).get();
+            if (claves.checkCode(firmaNuevoPrograma, nuevoPrograma.getUsername()).get()){
+                nuevoPrograma.setFirma(firmaNuevoPrograma);
+                nuevoPrograma.setContrasena(contrasenaEncriptada);
+                repository.save(nuevoPrograma);
+                String ksaEncriptada = claves.encryptCode(ksa.randomBytes(), claves.publicKeyUserString(nuevoPrograma.getUsername()));
+                nuevoPermiso.setAsym(ksaEncriptada);
+                repositoryPermisos.save(nuevoPermiso);
+                res = Either.right(1);
+            }else {
+                res = Either.left(new ErrorObject("Hubo un problema con la firma", LocalDateTime.now()));
+            }
         }catch (Exception e){
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorObject(e.getMessage(), LocalDateTime.now()));
@@ -81,6 +85,9 @@ public class ServiciosCosas {
         try {
             String nuevaContrasenaEncriptada = claves.encryptCode(programaContrasenaCambiada.getContrasena(), ksa.randomBytes());
             programaContrasenaCambiada.setContrasena(nuevaContrasenaEncriptada);
+
+            //TODO: montar para cambiar la firma
+
             repository.save(programaContrasenaCambiada);
             res = Either.right(1);
         }catch (Exception e){

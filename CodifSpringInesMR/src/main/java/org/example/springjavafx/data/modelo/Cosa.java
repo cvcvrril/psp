@@ -33,9 +33,9 @@ public class Cosa {
     @Column(name = "user_name")
     private String username;
 
-    //INFO: KSA firmada con la privada del usuario
+    //INFO: contraseña firmada con la privada del usuario
 
-    @Column(name = "firma")
+    @Column(name = "firma", columnDefinition = "varchar(500)")
     private String firma;
 
     @ManyToOne

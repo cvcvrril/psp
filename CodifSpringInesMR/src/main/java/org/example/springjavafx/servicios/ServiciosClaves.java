@@ -23,6 +23,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Date;
 
 @Log4j2
@@ -80,30 +81,45 @@ public class ServiciosClaves {
     }
 
     public String encryptCode(String code, String secret){
-        return aes.encriptar(code, secret);
+        return aes.encriptar(code, String.valueOf(ksa));
     }
 
     public String decryptCode(String code){
         return aes.desencriptar(code, String.valueOf(ksa));
     }
 
-    public Either<ErrorObject, String> signCode(String ksa, String username){
+    public Either<ErrorObject, String> signCode(String contrasena, String username){
         Either<ErrorObject, String> res;
         try {
-            PublicKey publicKeyUser = publicKeyUser(username);
+
             PrivateKey privateKeyUser = privateKeyUser(username);
             Signature sign = Signature.getInstance("SHA256WithRSA");
             sign.initSign(privateKeyUser);
-            sign.update(ksa.getBytes());
+            sign.update(contrasena.getBytes());
             byte[] firma = sign.sign();
 
             //EX: Bad signature length: got 256 but was expecting 384
 
             //EX: could not execute statement [Data truncation: Data too long for column 'firma' at row 1] [insert into programas (contrasena,firma,nombre,user_id,user_name,id) values (?,?,?,?,?,?)]; SQL [insert into programas (contrasena,firma,nombre,user_id,user_name,id) values (?,?,?,?,?,?)]
 
-            String resFirma = Arrays.toString(firma);
+            String resFirma = Base64.getUrlEncoder().encodeToString(firma);
             //String resFirma = String.valueOf(sign.verify(firma));
             res = Either.right(resFirma);
+        }catch (Exception e){
+            log.error(e.getMessage(), e);
+            res = Either.left(new ErrorObject(e.getMessage(), LocalDateTime.now()));
+        }
+        return res;
+    }
+
+    public Either<ErrorObject, Boolean> checkCode(String firmaUser, String username){
+        Either<ErrorObject, Boolean> res;
+        try {
+            PublicKey publicKeyUser = publicKeyUser(username);
+            Signature sign = Signature.getInstance("SHA256WithRSA");
+            sign.initVerify(publicKeyUser);
+            byte[] firmaCheck = firmaUser.getBytes();
+            res = Either.right(sign.verify(firmaCheck));
         }catch (Exception e){
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorObject(e.getMessage(), LocalDateTime.now()));
