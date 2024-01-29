@@ -23,7 +23,7 @@ public class Cosita {
     @Column(name = "user_name", nullable = false)
     private String username;
 
-    //INFO: KSA firmada con la pública del usuario
+    //INFO: contraseña firmada con la privada del usuario, cifrada con la KSA
 
     @Column(name = "asym")
     private String asym;

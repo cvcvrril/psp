@@ -30,57 +30,54 @@ public class ServiciosCosas {
         this.ksa = ksa;
     }
 
-    public Either<ErrorObject, List<Cosa>> getALl(){
+    public Either<ErrorObject, List<Cosa>> getALl() {
         Either<ErrorObject, List<Cosa>> res;
         List<Cosa> cosas;
         try {
             cosas = repository.findAll();
             res = Either.right(cosas);
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorObject(e.getMessage(), LocalDateTime.now()));
         }
         return res;
     }
 
-    public Either<ErrorObject, List<Cosa>> getAllById(UUID idUser){
+    public Either<ErrorObject, List<Cosa>> getAllById(UUID idUser) {
         Either<ErrorObject, List<Cosa>> res;
         List<Cosa> cosas;
         try {
             cosas = repository.findByUserId(idUser);
             res = Either.right(cosas);
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorObject(e.getMessage(), LocalDateTime.now()));
         }
         return res;
     }
 
-    public Either<ErrorObject, Integer> add(Cosa nuevoPrograma, Cosita nuevoPermiso){
+    public Either<ErrorObject, Integer> add(Cosa nuevoPrograma, Cosita nuevoPermiso) {
         Either<ErrorObject, Integer> res;
         try {
             String contrasenaEncriptada = claves.encryptCode(nuevoPrograma.getContrasena(), ksa.randomBytes());
             //String firmaNuevoPrograma = claves.encryptCode(ksa.randomBytes(), claves.privateKeyUserString(nuevoPrograma.getUsername()));
             String firmaNuevoPrograma = claves.signCode(nuevoPrograma.getContrasena(), nuevoPrograma.getUsername()).get();
-            if (claves.checkCode(firmaNuevoPrograma, nuevoPrograma.getUsername()).get()){
-                nuevoPrograma.setFirma(firmaNuevoPrograma);
-                nuevoPrograma.setContrasena(contrasenaEncriptada);
-                repository.save(nuevoPrograma);
-                String ksaEncriptada = claves.encryptCode(ksa.randomBytes(), claves.publicKeyUserString(nuevoPrograma.getUsername()));
-                nuevoPermiso.setAsym(ksaEncriptada);
-                repositoryPermisos.save(nuevoPermiso);
-                res = Either.right(1);
-            }else {
-                res = Either.left(new ErrorObject("Hubo un problema con la firma", LocalDateTime.now()));
-            }
-        }catch (Exception e){
+            nuevoPrograma.setFirma(firmaNuevoPrograma);
+            nuevoPrograma.setContrasena(contrasenaEncriptada);
+            repository.save(nuevoPrograma);
+            String ksaEncriptada = claves.encryptCode(ksa.randomBytes(), claves.publicKeyUserString(nuevoPrograma.getUsername()));
+            nuevoPermiso.setAsym(ksaEncriptada);
+            repositoryPermisos.save(nuevoPermiso);
+            res = Either.right(1);
+
+        } catch (Exception e) {
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorObject(e.getMessage(), LocalDateTime.now()));
         }
         return res;
     }
 
-    public Either<ErrorObject, Integer> changePassword(Cosa programaContrasenaCambiada){
+    public Either<ErrorObject, Integer> changePassword(Cosa programaContrasenaCambiada) {
         Either<ErrorObject, Integer> res;
         try {
             String nuevaContrasenaEncriptada = claves.encryptCode(programaContrasenaCambiada.getContrasena(), ksa.randomBytes());
@@ -90,7 +87,7 @@ public class ServiciosCosas {
 
             repository.save(programaContrasenaCambiada);
             res = Either.right(1);
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorObject(e.getMessage(), LocalDateTime.now()));
         }
