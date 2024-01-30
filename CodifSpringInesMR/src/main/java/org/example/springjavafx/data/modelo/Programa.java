@@ -15,7 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "programas")
-public class Cosa {
+public class Programa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -43,6 +43,6 @@ public class Cosa {
     private User user;
 
     @OneToMany(
-    mappedBy = "cosa")
-    private List<Cosita> cositas;
+    mappedBy = "programa")
+    private List<Permiso> permisos;
 }

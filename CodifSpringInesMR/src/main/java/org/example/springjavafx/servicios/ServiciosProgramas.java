@@ -2,12 +2,11 @@ package org.example.springjavafx.servicios;
 
 import io.vavr.control.Either;
 import lombok.extern.log4j.Log4j2;
-import org.example.springjavafx.data.CosasRepository;
-import org.example.springjavafx.data.CositasRepository;
-import org.example.springjavafx.data.modelo.Cosa;
-import org.example.springjavafx.data.modelo.Cosita;
+import org.example.springjavafx.data.ProgramaRepository;
+import org.example.springjavafx.data.PermisoRepository;
+import org.example.springjavafx.data.modelo.Programa;
+import org.example.springjavafx.data.modelo.Permiso;
 import org.example.springjavafx.data.modelo.ErrorObject;
-import org.example.springjavafx.utils.RandomBytesGenerator;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,24 +15,24 @@ import java.util.UUID;
 
 @Log4j2
 @Service
-public class ServiciosCosas {
+public class ServiciosProgramas {
 
-    private final CosasRepository repository;
-    private final CositasRepository repositoryPermisos;
+    private final ProgramaRepository repository;
+    private final PermisoRepository repositoryPermisos;
     private final ServiciosClaves claves;
 
-    public ServiciosCosas(CosasRepository repository, CositasRepository repositoryPermisos, ServiciosClaves claves) {
+    public ServiciosProgramas(ProgramaRepository repository, PermisoRepository repositoryPermisos, ServiciosClaves claves) {
         this.repository = repository;
         this.repositoryPermisos = repositoryPermisos;
         this.claves = claves;
     }
 
-    public Either<ErrorObject, List<Cosa>> getALl() {
-        Either<ErrorObject, List<Cosa>> res;
-        List<Cosa> cosas;
+    public Either<ErrorObject, List<Programa>> getALl() {
+        Either<ErrorObject, List<Programa>> res;
+        List<Programa> programas;
         try {
-            cosas = repository.findAll();
-            res = Either.right(cosas);
+            programas = repository.findAll();
+            res = Either.right(programas);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorObject(e.getMessage(), LocalDateTime.now()));
@@ -41,12 +40,12 @@ public class ServiciosCosas {
         return res;
     }
 
-    public Either<ErrorObject, List<Cosa>> getAllById(UUID idUser) {
-        Either<ErrorObject, List<Cosa>> res;
-        List<Cosa> cosas;
+    public Either<ErrorObject, List<Programa>> getAllById(UUID idUser) {
+        Either<ErrorObject, List<Programa>> res;
+        List<Programa> programas;
         try {
-            cosas = repository.findByUserId(idUser);
-            res = Either.right(cosas);
+            programas = repository.findByUserId(idUser);
+            res = Either.right(programas);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorObject(e.getMessage(), LocalDateTime.now()));
@@ -54,7 +53,7 @@ public class ServiciosCosas {
         return res;
     }
 
-    public Either<ErrorObject, Integer> add(Cosa nuevoPrograma, Cosita nuevoPermiso) {
+    public Either<ErrorObject, Integer> add(Programa nuevoPrograma, Permiso nuevoPermiso) {
         Either<ErrorObject, Integer> res;
         try {
             String contrasenaEncriptada = claves.encryptCode(nuevoPrograma.getContrasena());
@@ -74,7 +73,7 @@ public class ServiciosCosas {
         return res;
     }
 
-    public Either<ErrorObject, Integer> changePassword(Cosa programaContrasenaCambiada) {
+    public Either<ErrorObject, Integer> changePassword(Programa programaContrasenaCambiada) {
         Either<ErrorObject, Integer> res;
         try {
             String nuevaContrasenaEncriptada = claves.encryptCode(programaContrasenaCambiada.getContrasena());

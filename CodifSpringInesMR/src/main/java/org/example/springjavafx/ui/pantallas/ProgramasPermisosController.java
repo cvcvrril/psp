@@ -7,11 +7,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.example.springjavafx.data.modelo.User;
 import org.example.springjavafx.utils.Constantes;
-import org.example.springjavafx.data.modelo.Cosa;
-import org.example.springjavafx.data.modelo.Cosita;
+import org.example.springjavafx.data.modelo.Programa;
+import org.example.springjavafx.data.modelo.Permiso;
 import org.example.springjavafx.servicios.ServiciosClaves;
-import org.example.springjavafx.servicios.ServiciosCosas;
-import org.example.springjavafx.servicios.ServiciosCositas;
+import org.example.springjavafx.servicios.ServiciosProgramas;
+import org.example.springjavafx.servicios.ServiciosPermisos;
 import org.example.springjavafx.servicios.ServiciosUsuarios;
 import org.example.springjavafx.ui.pantallas.principal.BasePantallaController;
 import org.springframework.stereotype.Component;
@@ -28,15 +28,15 @@ public class ProgramasPermisosController extends BasePantallaController {
     @FXML
     private PasswordField contrasenaProgramaField;
     @FXML
-    private TableView<Cosa> programasTable;
+    private TableView<Programa> programasTable;
     @FXML
-    private TableColumn<Cosa, String> nombreUserProgramasColumn;
+    private TableColumn<Programa, String> nombreUserProgramasColumn;
     @FXML
-    private TableColumn<Cosa, String> nombreProgramasColumn;
+    private TableColumn<Programa, String> nombreProgramasColumn;
     @FXML
-    private TableColumn<Cosa, String> contrasenaProgramasColumn;
+    private TableColumn<Programa, String> contrasenaProgramasColumn;
     @FXML
-    private TableColumn<Cosa, String> firmaProgramaColumn;
+    private TableColumn<Programa, String> firmaProgramaColumn;
     @FXML
     private TextField nombreProgramaField;
     @FXML
@@ -44,13 +44,13 @@ public class ProgramasPermisosController extends BasePantallaController {
 
 
     @FXML
-    private TableView<Cosita> permisosTable;
+    private TableView<Permiso> permisosTable;
     @FXML
-    private TableColumn<Cosita, UUID> idPermisoColumn;
+    private TableColumn<Permiso, UUID> idPermisoColumn;
     @FXML
-    private TableColumn<Cosita, String> nombreUserPermisoColumn;
+    private TableColumn<Permiso, String> nombreUserPermisoColumn;
     @FXML
-    private TableColumn<Cosita, String> asymPermisoColumn;
+    private TableColumn<Permiso, String> asymPermisoColumn;
 
     @FXML
     private Label contrasenaText;
@@ -58,16 +58,16 @@ public class ProgramasPermisosController extends BasePantallaController {
     @FXML
     private ComboBox<String> userPermisoComboBox;
 
-    private final ServiciosCosas serviciosCosas;
+    private final ServiciosProgramas serviciosProgramas;
     private final ServiciosUsuarios serviciosUsuarios;
     private final ServiciosClaves serviciosClaves;
-    private final ServiciosCositas serviciosCositas;
+    private final ServiciosPermisos serviciosPermisos;
 
-    public ProgramasPermisosController(ServiciosCosas serviciosCosas, ServiciosUsuarios serviciosUsuarios, ServiciosClaves serviciosClaves, ServiciosCositas serviciosCositas) {
-        this.serviciosCosas = serviciosCosas;
+    public ProgramasPermisosController(ServiciosProgramas serviciosProgramas, ServiciosUsuarios serviciosUsuarios, ServiciosClaves serviciosClaves, ServiciosPermisos serviciosPermisos) {
+        this.serviciosProgramas = serviciosProgramas;
         this.serviciosUsuarios = serviciosUsuarios;
         this.serviciosClaves = serviciosClaves;
-        this.serviciosCositas = serviciosCositas;
+        this.serviciosPermisos = serviciosPermisos;
     }
 
     public void initialize() {
@@ -75,7 +75,7 @@ public class ProgramasPermisosController extends BasePantallaController {
     }
 
     private void cargarTablaProgramas() {
-        programasTable.getItems().setAll(serviciosCosas.getALl().get());
+        programasTable.getItems().setAll(serviciosProgramas.getALl().get());
         nombreProgramasColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.NOMBRE));
         contrasenaProgramasColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.CONTRASENA));
         nombreUserProgramasColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.USERNAME));
@@ -90,9 +90,9 @@ public class ProgramasPermisosController extends BasePantallaController {
     }
 
     private void cargarTablaPermisos(MouseEvent event){
-        Cosa programaSeleccionado = programasTable.getSelectionModel().getSelectedItem();
+        Programa programaSeleccionado = programasTable.getSelectionModel().getSelectedItem();
         if (programaSeleccionado != null){
-            permisosTable.getItems().setAll(serviciosCositas.getAllByProgramId(programaSeleccionado.getId()).get());
+            permisosTable.getItems().setAll(serviciosPermisos.getAllByProgramId(programaSeleccionado.getId()).get());
             idPermisoColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.ID));
             nombreUserPermisoColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.USERNAME));
             asymPermisoColumn.setCellValueFactory(new PropertyValueFactory<>(Constantes.ASYM));
@@ -106,9 +106,9 @@ public class ProgramasPermisosController extends BasePantallaController {
         if (nombrePrograma.isEmpty() || contrasenaPrograma.isEmpty()) {
             getPrincipalController().sacarAlertError(Constantes.HAY_CAMPOS_VACIOS);
         } else {
-            Cosa programaAdd = new Cosa(UUID.randomUUID(), nombrePrograma, contrasenaPrograma, getPrincipalController().getUser().getName(),null,getPrincipalController().getUser(), new ArrayList<>());
-            Cosita permisoAdd = new Cosita(UUID.randomUUID(),getPrincipalController().getUser().getName(),null,programaAdd);
-            if (serviciosCosas.add(programaAdd, permisoAdd).isRight()) {
+            Programa programaAdd = new Programa(UUID.randomUUID(), nombrePrograma, contrasenaPrograma, getPrincipalController().getUser().getName(),null,getPrincipalController().getUser(), new ArrayList<>());
+            Permiso permisoAdd = new Permiso(UUID.randomUUID(),getPrincipalController().getUser().getName(),null,programaAdd);
+            if (serviciosProgramas.add(programaAdd, permisoAdd).isRight()) {
                 getPrincipalController().sacarAlertConf(Constantes.PROGRAMA_AGREGADO_CORRECTAMENTE);
                 nombreProgramaField.clear();
                 contrasenaProgramaField.clear();
@@ -119,10 +119,10 @@ public class ProgramasPermisosController extends BasePantallaController {
 
     @FXML
     private void addPermiso(ActionEvent actionEvent) {
-        Cosa programaSeleccionado = programasTable.getSelectionModel().getSelectedItem();
+        Programa programaSeleccionado = programasTable.getSelectionModel().getSelectedItem();
         if (programaSeleccionado!= null){
-            Cosita nuevoPermiso = new Cosita(UUID.randomUUID(),getPrincipalController().getUser().getName(),null, programaSeleccionado);
-            if (serviciosCositas.add(nuevoPermiso, programaSeleccionado.getContrasena()).isRight()){
+            Permiso nuevoPermiso = new Permiso(UUID.randomUUID(),getPrincipalController().getUser().getName(),null, programaSeleccionado);
+            if (serviciosPermisos.add(nuevoPermiso, programaSeleccionado.getContrasena()).isRight()){
                 getPrincipalController().sacarAlertConf(Constantes.PERMISO_ANADIDO_CON_EXITO);
             }
         }else {
@@ -133,7 +133,7 @@ public class ProgramasPermisosController extends BasePantallaController {
 
     @FXML
     private void mostrarContrasenaPrograma() {
-        Cosa programaSeleccionado = programasTable.getSelectionModel().getSelectedItem();
+        Programa programaSeleccionado = programasTable.getSelectionModel().getSelectedItem();
         if (programaSeleccionado == null) {
             getPrincipalController().sacarAlertError(Constantes.SELECCIONA_UN_PROGRAMA_DE_LA_LISTA);
         } else {
@@ -147,13 +147,13 @@ public class ProgramasPermisosController extends BasePantallaController {
 
     @FXML
     private void changePassword() {
-        Cosa programaSeleccionado = programasTable.getSelectionModel().getSelectedItem();
+        Programa programaSeleccionado = programasTable.getSelectionModel().getSelectedItem();
         String newContrasena = newContrasenaField.getText();
         if (newContrasena == null || programaSeleccionado == null) {
             getPrincipalController().sacarAlertError(Constantes.EL_CAMPO_ESTA_SIN_COMPLETAR);
         } else {
-            Cosa programaContrasenaCambiada = new Cosa(programaSeleccionado.getId(), programaSeleccionado.getNombre(), newContrasena, programaSeleccionado.getUsername(),null, programaSeleccionado.getUser(), programaSeleccionado.getCositas());
-            if (serviciosCosas.changePassword(programaContrasenaCambiada).isRight()){
+            Programa programaContrasenaCambiada = new Programa(programaSeleccionado.getId(), programaSeleccionado.getNombre(), newContrasena, programaSeleccionado.getUsername(),null, programaSeleccionado.getUser(), programaSeleccionado.getPermisos());
+            if (serviciosProgramas.changePassword(programaContrasenaCambiada).isRight()){
                 getPrincipalController().sacarAlertConf(Constantes.CONTRASENA_CAMBIADA_CORRECTAMENTE);
                 newContrasenaField.clear();
                 cargarTablaProgramas();

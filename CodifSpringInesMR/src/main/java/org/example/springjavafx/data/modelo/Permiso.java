@@ -8,13 +8,15 @@ import lombok.Getter;
 
 import java.util.UUID;
 
+/**He cambiado lo de visualizadores por permisos porque así lo veía mejor**/
+
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "permisos")
-public class Cosita {
+public class Permiso {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false)
@@ -30,6 +32,6 @@ public class Cosita {
 
     @ManyToOne
     @JoinColumn(name = "programa_id")
-    private Cosa cosa;
+    private Programa programa;
 
 }

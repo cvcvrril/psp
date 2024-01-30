@@ -2,8 +2,8 @@ package org.example.springjavafx.servicios;
 
 import io.vavr.control.Either;
 import lombok.extern.log4j.Log4j2;
-import org.example.springjavafx.data.CositasRepository;
-import org.example.springjavafx.data.modelo.Cosita;
+import org.example.springjavafx.data.PermisoRepository;
+import org.example.springjavafx.data.modelo.Permiso;
 import org.example.springjavafx.data.modelo.ErrorObject;
 import org.springframework.stereotype.Service;
 
@@ -13,22 +13,22 @@ import java.util.UUID;
 
 @Log4j2
 @Service
-public class ServiciosCositas {
+public class ServiciosPermisos {
 
-    private final CositasRepository repository;
+    private final PermisoRepository repository;
     private final ServiciosClaves claves;
 
-    public ServiciosCositas(CositasRepository repository, ServiciosClaves claves) {
+    public ServiciosPermisos(PermisoRepository repository, ServiciosClaves claves) {
         this.repository = repository;
         this.claves = claves;
     }
 
-    public Either<ErrorObject, List<Cosita>> getAllByProgramId(UUID programId){
-        Either<ErrorObject, List<Cosita>> res;
-        List<Cosita> cositas;
+    public Either<ErrorObject, List<Permiso>> getAllByProgramId(UUID programId){
+        Either<ErrorObject, List<Permiso>> res;
+        List<Permiso> permisos;
         try {
-            cositas = repository.findByCosaId(programId);
-            res = Either.right(cositas);
+            permisos = repository.findByProgramaId(programId);
+            res = Either.right(permisos);
         }catch (Exception e){
             log.error(e.getMessage(), e);
             res = Either.left(new ErrorObject(e.getMessage(), LocalDateTime.now()));
@@ -36,7 +36,7 @@ public class ServiciosCositas {
         return res;
     }
 
-    public Either<ErrorObject, Integer> add(Cosita nuevoPermiso, String contrasena){
+    public Either<ErrorObject, Integer> add(Permiso nuevoPermiso, String contrasena){
         Either<ErrorObject, Integer> res;
         try {
             String firmaEncriptada = claves.encryptCode(contrasena);
