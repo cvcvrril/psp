@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.springjavafx.utils.Constantes;
 
 import java.util.List;
 import java.util.UUID;
@@ -14,19 +15,19 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "usuarios")
+@Table(name = Constantes.USUARIOS)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id", nullable = false)
+    @Column(name = Constantes.ID, nullable = false)
     private UUID id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = Constantes.NAMEUSER, nullable = false)
     private String name;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = Constantes.PASSWORD, nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = Constantes.USER)
     private List<Programa> programas;
 }

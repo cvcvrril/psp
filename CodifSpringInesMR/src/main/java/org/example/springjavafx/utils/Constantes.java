@@ -33,4 +33,18 @@ public class Constantes {
     public static final String FIRMA = "firma";
     public static final String SHA_256_WITH_RSA = "SHA256WithRSA";
     public static final String PERMISO_ANADIDO_CON_EXITO = "Permiso añadido con éxito";
+    public static final String PERMISOS = "permisos";
+    public static final String USER_NAME = "user_name";
+    public static final String PROGRAMA_ID = "programa_id";
+    public static final String NAMEUSER = "name";
+    public static final String PASSWORD = "password";
+    public static final String USER = "user";
+    public static final String USUARIOS = "usuarios";
+    public static final String PROGRAMAS = "programas";
+    public static final String VARCHAR_500 = "varchar(500)";
+    public static final String USER_ID = "user_id";
+    public static final String PROGRAMA = "programa";
+    public static final String FXML_LOGINREGISTRO_FXML = "/fxml/loginregistro.fxml";
+    public static final String FXML_PROGRAMASPERMISOS_FXML = "/fxml/programaspermisos.fxml";
+    public static final String FXML_PRINCIPAL_FXML = "/fxml/principal.fxml";
 }

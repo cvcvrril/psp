@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.springjavafx.utils.Constantes;
 
 import java.util.List;
 import java.util.UUID;
@@ -14,35 +15,35 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "programas")
+@Table(name = Constantes.PROGRAMAS)
 public class Programa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id", nullable = false)
+    @Column(name = Constantes.ID, nullable = false)
     private UUID id;
 
-    @Column(name = "nombre", nullable = false)
+    @Column(name = Constantes.NOMBRE, nullable = false)
     private String nombre;
 
     //INFO: Contraseña del programa (cifrada con la KSA)
 
-    @Column(name = "contrasena", nullable = false)
+    @Column(name = Constantes.CONTRASENA, nullable = false)
     private String contrasena;
 
-    @Column(name = "user_name")
+    @Column(name = Constantes.USER_NAME)
     private String username;
 
     //INFO: contraseña firmada con la privada del usuario
 
-    @Column(name = "firma", columnDefinition = "varchar(500)")
+    @Column(name = Constantes.FIRMA, columnDefinition = Constantes.VARCHAR_500)
     private String firma;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = Constantes.USER_ID)
     private User user;
 
     @OneToMany(
-    mappedBy = "programa")
+    mappedBy = Constantes.PROGRAMA)
     private List<Permiso> permisos;
 }

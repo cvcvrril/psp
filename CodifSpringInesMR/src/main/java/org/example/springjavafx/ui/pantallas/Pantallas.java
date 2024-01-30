@@ -1,10 +1,12 @@
 package org.example.springjavafx.ui.pantallas;
 
+import org.example.springjavafx.utils.Constantes;
+
 public enum Pantallas {
 
-    LOGINREGISTRO("/fxml/loginregistro.fxml"),
-    PROGRAMASPERMISOS("/fxml/programaspermisos.fxml"),
-    PRINCIPAL("/fxml/principal.fxml");
+    LOGINREGISTRO(Constantes.FXML_LOGINREGISTRO_FXML),
+    PROGRAMASPERMISOS(Constantes.FXML_PROGRAMASPERMISOS_FXML),
+    PRINCIPAL(Constantes.FXML_PRINCIPAL_FXML);
 
     private String ruta;
 
