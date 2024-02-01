@@ -1,4 +1,10 @@
 package com.example.graphqlserverinesmr.domain.modelo
 
-class Personaje {
-}
+import lombok.Data
+
+@Data
+data class Personaje (
+        val id: Int,
+        val nombre: String,
+        val descripcion: String,
+)
