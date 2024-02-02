@@ -20,5 +20,8 @@ public class PersonajeEntity {
     private String nombre;
     @Column(name = "descripcion", nullable = false)
     private String descripcion;
+    @ManyToOne
+    @JoinColumn(name = "id_videojuego", nullable = false)
+    private VideojuegoEntity videojuego;
 
 }

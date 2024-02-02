@@ -19,7 +19,7 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private UUID id;
+    private int id;
     @Column(name = "username", nullable = false)
     private String username;
     @Column(name = "password", nullable = false)

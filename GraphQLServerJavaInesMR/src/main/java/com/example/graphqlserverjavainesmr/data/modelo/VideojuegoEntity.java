@@ -3,6 +3,8 @@ package com.example.graphqlserverjavainesmr.data.modelo;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -20,4 +22,6 @@ public class VideojuegoEntity {
     private String titulo;
     @Column(name = "descripcion", nullable = false)
     private String descripcion;
+    @OneToMany(mappedBy = "videojuego", cascade = CascadeType.PERSIST)
+    private List<PersonajeEntity> personajes;
 }
