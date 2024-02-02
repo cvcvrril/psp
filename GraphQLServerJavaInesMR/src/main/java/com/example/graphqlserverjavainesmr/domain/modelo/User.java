@@ -1,4 +1,9 @@
 package com.example.graphqlserverjavainesmr.domain.modelo;
 
-public class User {
+import java.util.List;
+
+public record User(int id,
+                   String username,
+                   String password,
+                   List<Rol> roles) {
 }

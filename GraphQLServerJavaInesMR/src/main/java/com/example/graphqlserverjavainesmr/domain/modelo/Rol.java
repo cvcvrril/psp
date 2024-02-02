@@ -1,4 +1,3 @@
 package com.example.graphqlserverjavainesmr.domain.modelo;
 
-public class Rol {
-}
+public record Rol (int id, String rol) {}
