@@ -31,7 +31,14 @@ public class AuthController {
         return username;
     }
 
-    //TODO: montar lo del loginToken (tokenAccess y bla bla bla)
+    @GetMapping("/loginBasic")
+    public String loginBasic(Principal principal, HttpServletRequest request) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        request.getSession().setAttribute("LOGIN", auth);
+
+        return principal.getName();
+    }
+
 
     @GetMapping("/loginToken")
     public String loginToken(@RequestBody AuthRequest requestAuth, HttpServletRequest request) {

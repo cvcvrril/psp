@@ -21,7 +21,7 @@ public class UserServicio {
                 userEntity -> {
                     List<Rol> roles = userEntity.getRoles().stream().map(
                         rolEntity ->
-                                new Rol(rolEntity.getId(),
+                                new Rol(Math.toIntExact(rolEntity.getId()),
                                         rolEntity.getRol()
                                 )
                     ).toList();

@@ -14,8 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @org.springframework.context.annotation.Configuration
 public class Configuration {
 
-
-
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
