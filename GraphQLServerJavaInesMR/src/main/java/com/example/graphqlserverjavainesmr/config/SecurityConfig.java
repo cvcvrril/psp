@@ -1,6 +1,6 @@
 package com.example.graphqlserverjavainesmr.config;
 
-import com.example.demo.ui.auth.SessionFilter;
+import com.example.graphqlserverjavainesmr.ui.auth.SessionFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

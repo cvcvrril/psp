@@ -4,6 +4,7 @@ import com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepositor
 import com.example.graphqlserverjavainesmr.domain.modelo.Videojuego;
 import com.example.graphqlserverjavainesmr.domain.servicio.VideojuegoServicio;
 import lombok.RequiredArgsConstructor;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class VideojuegoController {
 
     private final VideojuegoServicio servicio;
 
+    @QueryMapping
     public List<Videojuego> getVideojuegos() {
         return servicio.getVideojuegos();
     }
