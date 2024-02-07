@@ -25,7 +25,7 @@ public class UserServicio {
                                         rolEntity.getRol()
                                 )
                     ).toList();
-                    return new User(userEntity.getId(),
+                    return new User(Math.toIntExact(userEntity.getId()),
                             userEntity.getUsername(),
                             userEntity.getPassword(),
                             roles);

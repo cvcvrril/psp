@@ -16,10 +16,12 @@ import java.util.UUID;
 @Table(name = "users")
 public class UserEntity {
 
+    //TODO: preguntar por el error del jointable
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Long id;
     @Column(name = "username", nullable = false)
     private String username;
     @Column(name = "password", nullable = false)
