@@ -34,5 +34,5 @@ input PersonajeInput {
     id: ID
     nombre: String
     descripcion: String
-    ciudad: VideojuegoInput
+    videojuego: VideojuegoInput
 }
