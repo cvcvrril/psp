@@ -7,9 +7,5 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface VideojuegoEntityMapper {
-
     Videojuego toVideojuego(VideojuegoEntity videojuegoEntity);
-
-
-
 }

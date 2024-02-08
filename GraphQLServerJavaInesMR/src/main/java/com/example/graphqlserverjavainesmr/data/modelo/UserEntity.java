@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -15,8 +14,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @Table(name = "users")
 public class UserEntity {
-
-    //TODO: preguntar por el error del jointable
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
