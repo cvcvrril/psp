@@ -5006,3 +5006,720 @@ Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1
 2024-02-08 14:09:16,232 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-4] Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-02-08 14:09:16,232 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-4] Initializing Servlet 'dispatcherServlet'
 2024-02-08 14:09:16,233 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-4] Completed initialization in 1 ms
+2024-02-08 16:56:07,242 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-08 16:56:07,306 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 17.0.1 with PID 4008 (C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\target\classes started by madrid in C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR)
+2024-02-08 16:56:07,307 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-08 16:56:07,449 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-08 16:56:10,191 INFO o.s.b.l.LogLevel [OutputReader-stderr]  Network graphqlserverjavainesmr_default  Creating
+2024-02-08 16:56:10,258 INFO o.s.b.l.LogLevel [OutputReader-stderr]  Network graphqlserverjavainesmr_default  Created
+2024-02-08 16:56:10,259 INFO o.s.b.l.LogLevel [OutputReader-stderr]  Container graphqlserverjavainesmr-db-1  Creating
+2024-02-08 16:56:10,559 INFO o.s.b.l.LogLevel [OutputReader-stderr]  Container graphqlserverjavainesmr-db-1  Created
+2024-02-08 16:56:10,566 INFO o.s.b.l.LogLevel [OutputReader-stderr]  Container graphqlserverjavainesmr-db-1  Starting
+2024-02-08 16:56:11,369 INFO o.s.b.l.LogLevel [OutputReader-stderr]  Container graphqlserverjavainesmr-db-1  Started
+2024-02-08 16:56:11,371 INFO o.s.b.l.LogLevel [OutputReader-stderr]  Container graphqlserverjavainesmr-db-1  Waiting
+2024-02-08 16:56:11,909 INFO o.s.b.l.LogLevel [OutputReader-stderr]  Container graphqlserverjavainesmr-db-1  Healthy
+2024-02-08 16:56:43,240 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 16:56:43,243 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-08 16:56:43,291 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 16:56:43,293 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 16:56:43,295 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 16:56:43,296 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 44 ms. Found 0 JDBC repository interfaces.
+2024-02-08 16:56:43,311 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 16:56:43,313 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-08 16:56:43,564 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 244 ms. Found 3 JPA repository interfaces.
+2024-02-08 16:56:44,348 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-08 16:56:44,360 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-08 16:56:44,362 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-08 16:56:44,362 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-08 16:56:44,472 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-08 16:56:44,473 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 3428 ms
+2024-02-08 16:56:44,712 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-08 16:56:44,801 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-08 16:56:44,845 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-08 16:56:45,170 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-08 16:56:45,211 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-08 16:56:45,743 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@183ef89a
+2024-02-08 16:56:45,746 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-08 16:56:47,137 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-08 16:56:47,194 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table personajes (id integer not null auto_increment, descripcion varchar(255) not null, nombre varchar(255) not null, id_videojuego integer not null, primary key (id)) engine=InnoDB
+2024-02-08 16:56:47,310 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table roles (id bigint not null auto_increment, rol varchar(255) not null, primary key (id)) engine=InnoDB
+2024-02-08 16:56:47,396 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table user_roles (user_id bigint not null, roles_id bigint not null, primary key (user_id, roles_id)) engine=InnoDB
+2024-02-08 16:56:47,494 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table users (id bigint not null auto_increment, password varchar(255) not null, username varchar(255) not null, primary key (id)) engine=InnoDB
+2024-02-08 16:56:47,604 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table videojuegos (id integer not null auto_increment, descripcion varchar(255) not null, titulo varchar(255) not null, primary key (id)) engine=InnoDB
+2024-02-08 16:56:47,711 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table personajes add constraint FKgrng0033c5d4f7kl7kfpunguy foreign key (id_videojuego) references videojuegos (id)
+2024-02-08 16:56:47,974 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table user_roles add constraint FKdbv8tdyltxa1qjmfnj9oboxse foreign key (roles_id) references roles (id)
+2024-02-08 16:56:48,654 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table user_roles add constraint FKhfh9dx7w3ubf1co1vdev94g3f foreign key (user_id) references users (id)
+2024-02-08 16:56:49,300 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 16:56:49,618 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-08 16:56:49,618 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-08 16:56:50,870 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] Loaded 1 resource(s) in the GraphQL schema.
+2024-02-08 16:56:51,190 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] GraphQL schema inspection:
+	Unmapped fields: {Query=[getVideojuego], Personaje=[id, nombre, descripcion, videojuego], Mutation=[addVideojuego, addPersonaje]}
+	Unmapped registrations: {Query.getVideojuegos=VideojuegoController#getVideojuegos[0 args]}
+	Skipped types: []
+2024-02-08 16:56:51,210 INFO o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration [main] GraphQL endpoint HTTP POST /graphql
+2024-02-08 16:56:51,303 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7bcd497, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@71a9e31b, org.springframework.security.web.context.SecurityContextHolderFilter@43e6bcfd, org.springframework.security.web.header.HeaderWriterFilter@156c1c4e, org.springframework.web.filter.CorsFilter@18e7b33e, org.springframework.security.web.authentication.logout.LogoutFilter@42ea4bac, com.example.graphqlserverjavainesmr.ui.auth.SessionFilter@1a2e563e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@289a70a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2461b519, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3b386ba7, org.springframework.security.web.access.ExceptionTranslationFilter@3b3639f9, org.springframework.security.web.access.intercept.AuthorizationFilter@28a821f9]
+2024-02-08 16:56:51,512 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-08 16:56:52,100 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-02-08 16:56:52,145 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
+2024-02-08 16:56:52,158 INFO o.s.b.StartupInfoLogger [main] Started GraphQlServerJavaInesMrApplication in 45.529 seconds (process running for 48.971)
+2024-02-08 16:59:45,215 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-08 16:59:45,264 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2024-02-08 16:59:45,451 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 187 ms
+2024-02-08 17:23:50,784 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 17:23:50,937 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-02-08 17:23:51,152 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-02-08 17:24:02,723 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-08 17:24:02,782 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 17.0.1 with PID 1168 (C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\target\classes started by madrid in C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR)
+2024-02-08 17:24:02,784 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-08 17:24:02,870 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-08 17:24:05,273 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] There are already Docker Compose services running, skipping startup
+2024-02-08 17:24:06,881 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 17:24:06,885 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-08 17:24:06,959 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 17:24:06,960 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 17:24:06,963 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 17:24:06,964 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 68 ms. Found 0 JDBC repository interfaces.
+2024-02-08 17:24:06,982 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 17:24:06,986 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-08 17:24:07,792 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 798 ms. Found 3 JPA repository interfaces.
+2024-02-08 17:24:08,899 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-08 17:24:08,911 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-08 17:24:08,914 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-08 17:24:08,915 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-08 17:24:09,009 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-08 17:24:09,009 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 3665 ms
+2024-02-08 17:24:09,231 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-08 17:24:09,326 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-08 17:24:09,378 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-08 17:24:09,741 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-08 17:24:09,781 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-08 17:24:10,266 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@33f2eb04
+2024-02-08 17:24:10,269 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-08 17:24:11,679 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-08 17:24:11,873 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 17:24:12,183 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-08 17:24:12,184 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-08 17:24:13,638 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] Loaded 1 resource(s) in the GraphQL schema.
+2024-02-08 17:24:13,988 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] GraphQL schema inspection:
+	Unmapped fields: {Query=[getVideojuego], Personaje=[id, nombre, descripcion, videojuego], Mutation=[addVideojuego, addPersonaje]}
+	Unmapped registrations: {Query.getVideojuegos=VideojuegoController#getVideojuegos[0 args]}
+	Skipped types: []
+2024-02-08 17:24:14,026 INFO o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration [main] GraphQL endpoint HTTP POST /graphql
+2024-02-08 17:24:14,138 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1def2d16, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@47bcb545, org.springframework.security.web.context.SecurityContextHolderFilter@6382bc3f, org.springframework.security.web.header.HeaderWriterFilter@6466e599, org.springframework.web.filter.CorsFilter@2899745e, org.springframework.security.web.authentication.logout.LogoutFilter@25c6f0fc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2a4137a2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7bcd497, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3df88502, org.springframework.security.web.session.SessionManagementFilter@71e740c6, org.springframework.security.web.access.ExceptionTranslationFilter@3fb8e8cf, org.springframework.security.web.access.intercept.AuthorizationFilter@4095ebff]
+2024-02-08 17:24:14,349 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-08 17:24:15,089 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-02-08 17:24:15,146 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
+2024-02-08 17:24:15,159 INFO o.s.b.StartupInfoLogger [main] Started GraphQlServerJavaInesMrApplication in 13.049 seconds (process running for 14.586)
+2024-02-08 17:24:24,116 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-08 17:24:24,116 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2024-02-08 17:24:24,118 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 2 ms
+2024-02-08 17:24:42,117 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 17:24:42,119 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-02-08 17:24:42,149 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-02-08 17:26:14,175 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-08 17:26:14,257 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 17.0.1 with PID 18124 (C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\target\classes started by madrid in C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR)
+2024-02-08 17:26:14,260 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-08 17:26:14,418 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-08 17:26:16,674 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] There are already Docker Compose services running, skipping startup
+2024-02-08 17:26:17,669 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 17:26:17,671 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-08 17:26:17,713 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 17:26:17,715 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 17:26:17,716 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 17:26:17,717 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 41 ms. Found 0 JDBC repository interfaces.
+2024-02-08 17:26:17,730 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 17:26:17,732 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-08 17:26:17,940 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 201 ms. Found 3 JPA repository interfaces.
+2024-02-08 17:26:18,653 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-08 17:26:18,665 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-08 17:26:18,667 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-08 17:26:18,668 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-08 17:26:18,765 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-08 17:26:18,765 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2040 ms
+2024-02-08 17:26:18,990 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-08 17:26:19,065 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-08 17:26:19,111 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-08 17:26:19,445 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-08 17:26:19,489 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-08 17:26:19,944 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4d75c604
+2024-02-08 17:26:19,947 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-08 17:26:21,311 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-08 17:26:21,559 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 17:26:21,842 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-08 17:26:21,842 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-08 17:26:23,125 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] Loaded 1 resource(s) in the GraphQL schema.
+2024-02-08 17:26:23,514 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] GraphQL schema inspection:
+	Unmapped fields: {Query=[getVideojuego], Personaje=[id, nombre, descripcion, videojuego], Mutation=[addVideojuego, addPersonaje]}
+	Unmapped registrations: {Query.getVideojuegos=VideojuegoController#getVideojuegos[0 args]}
+	Skipped types: []
+2024-02-08 17:26:23,557 INFO o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration [main] GraphQL endpoint HTTP POST /graphql
+2024-02-08 17:26:23,633 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@a15e4fd, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@515c3dd2, org.springframework.security.web.context.SecurityContextHolderFilter@7e753fd6, org.springframework.security.web.header.HeaderWriterFilter@38a2fbc3, org.springframework.web.filter.CorsFilter@245504d, org.springframework.security.web.authentication.logout.LogoutFilter@68fce3e5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1f234e35, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2350e46, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6c9fe061, org.springframework.security.web.access.ExceptionTranslationFilter@a8dedda]
+2024-02-08 17:26:23,834 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-08 17:26:24,512 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-02-08 17:26:24,537 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
+2024-02-08 17:26:24,547 INFO o.s.b.StartupInfoLogger [main] Started GraphQlServerJavaInesMrApplication in 10.897 seconds (process running for 12.436)
+2024-02-08 17:26:29,671 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-08 17:26:29,672 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2024-02-08 17:26:29,673 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2024-02-08 17:37:27,889 WARN g.GraphQL [http-nio-8080-exec-3] Query did not validate : 'query{
+    getVideojuego{
+        id
+        nombre
+        descripcion
+        personajes
+    }
+}'
+2024-02-08 17:49:46,747 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 17:49:47,061 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-02-08 17:49:49,031 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-02-08 17:50:04,680 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-08 17:50:04,792 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 17.0.1 with PID 14944 (C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\target\classes started by madrid in C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR)
+2024-02-08 17:50:04,794 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-08 17:50:04,984 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-08 17:50:07,922 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] There are already Docker Compose services running, skipping startup
+2024-02-08 17:50:10,282 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 17:50:10,285 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-08 17:50:10,336 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 17:50:10,337 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 17:50:10,340 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 17:50:10,342 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 48 ms. Found 0 JDBC repository interfaces.
+2024-02-08 17:50:10,364 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 17:50:10,367 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-08 17:50:10,619 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 244 ms. Found 3 JPA repository interfaces.
+2024-02-08 17:50:11,521 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-08 17:50:11,534 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-08 17:50:11,536 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-08 17:50:11,538 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-08 17:50:11,653 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-08 17:50:11,654 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 3660 ms
+2024-02-08 17:50:11,941 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-08 17:50:12,039 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-08 17:50:12,097 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-08 17:50:12,488 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-08 17:50:12,530 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-08 17:50:13,120 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@56b704ea
+2024-02-08 17:50:13,124 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-08 17:50:14,996 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-08 17:50:15,296 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 17:50:15,651 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-08 17:50:15,651 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-08 17:50:19,221 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] Loaded 1 resource(s) in the GraphQL schema.
+2024-02-08 17:50:20,367 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] GraphQL schema inspection:
+	Unmapped fields: {Query=[getVideojuego], Personaje=[id, nombre, descripcion, videojuego], Mutation=[addVideojuego, addPersonaje]}
+	Unmapped registrations: {Query.getVideojuegos=VideojuegoController#getVideojuegos[0 args]}
+	Skipped types: []
+2024-02-08 17:50:20,447 INFO o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration [main] GraphQL endpoint HTTP POST /graphql
+2024-02-08 17:50:20,787 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@134b9d9c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3199c2c1, org.springframework.security.web.context.SecurityContextHolderFilter@4750e942, org.springframework.security.web.header.HeaderWriterFilter@28f33810, org.springframework.web.filter.CorsFilter@74c997b1, org.springframework.security.web.authentication.logout.LogoutFilter@7798de95, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5bebdfcb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2ca6937, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@593f6c3, org.springframework.security.web.access.ExceptionTranslationFilter@155788a7]
+2024-02-08 17:50:21,245 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-08 17:50:22,583 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-02-08 17:50:22,658 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
+2024-02-08 17:50:22,679 INFO o.s.b.StartupInfoLogger [main] Started GraphQlServerJavaInesMrApplication in 18.659 seconds (process running for 22.192)
+2024-02-08 17:51:05,111 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-08 17:51:05,112 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2024-02-08 17:51:05,116 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
+2024-02-08 17:51:34,250 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 17:51:34,257 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-02-08 17:51:34,302 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-02-08 17:51:48,334 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-08 17:51:48,449 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 17.0.1 with PID 1276 (C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\target\classes started by madrid in C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR)
+2024-02-08 17:51:48,451 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-08 17:51:48,664 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-08 17:51:54,639 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] There are already Docker Compose services running, skipping startup
+2024-02-08 17:51:55,816 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 17:51:55,823 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-08 17:51:55,880 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 17:51:55,881 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 17:51:55,884 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 17:51:55,884 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 53 ms. Found 0 JDBC repository interfaces.
+2024-02-08 17:51:55,898 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 17:51:55,900 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-08 17:51:56,155 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 245 ms. Found 3 JPA repository interfaces.
+2024-02-08 17:51:57,161 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-08 17:51:57,177 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-08 17:51:57,180 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-08 17:51:57,181 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-08 17:51:57,287 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-08 17:51:57,288 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2597 ms
+2024-02-08 17:51:57,578 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-08 17:51:57,712 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-08 17:51:57,791 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-08 17:51:58,208 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-08 17:51:58,257 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-08 17:51:58,932 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@33fec21
+2024-02-08 17:51:58,937 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-08 17:52:00,806 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-08 17:52:00,963 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 17:52:01,331 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-08 17:52:01,332 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-08 17:52:05,971 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] Loaded 1 resource(s) in the GraphQL schema.
+2024-02-08 17:52:07,494 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] GraphQL schema inspection:
+	Unmapped fields: {Videojuego=[id, nombre, descripcion, personajes], Personaje=[id, nombre, descripcion, videojuego], Mutation=[addVideojuego, addPersonaje]}
+	Unmapped registrations: {}
+	Skipped types: []
+2024-02-08 17:52:07,563 INFO o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration [main] GraphQL endpoint HTTP POST /graphql
+2024-02-08 17:52:07,893 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2a3ced3d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7ab5b01a, org.springframework.security.web.context.SecurityContextHolderFilter@26a2106e, org.springframework.security.web.header.HeaderWriterFilter@3d1319b, org.springframework.web.filter.CorsFilter@25fa5c0c, org.springframework.security.web.authentication.logout.LogoutFilter@3444ac8f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@23c95292, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2f43c73a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@22112da1, org.springframework.security.web.access.ExceptionTranslationFilter@544502d6]
+2024-02-08 17:52:08,410 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-08 17:52:10,435 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-02-08 17:52:10,838 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
+2024-02-08 17:52:10,917 INFO o.s.b.StartupInfoLogger [main] Started GraphQlServerJavaInesMrApplication in 23.193 seconds (process running for 28.923)
+2024-02-08 18:03:12,535 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-08 18:03:12,541 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2024-02-08 18:03:12,569 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 27 ms
+2024-02-08 18:03:13,502 WARN g.GraphQL [http-nio-8080-exec-2] Query did not validate : 'query{
+    getVideojuego{
+        id
+        nombre
+        descripcion
+        personajes{
+            id
+            nombre
+            descripcion
+        }
+    }
+}'
+2024-02-08 18:10:52,198 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] select ve1_0.id,ve1_0.descripcion,ve1_0.titulo from videojuegos ve1_0
+2024-02-08 18:11:39,330 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] select ve1_0.id,ve1_0.descripcion,ve1_0.titulo from videojuegos ve1_0
+2024-02-08 18:12:05,046 WARN g.GraphQL [http-nio-8080-exec-8] Query did not parse : 'query{
+    getVideojuegos{
+        id : 1
+        nombre
+    }
+}'
+2024-02-08 18:12:22,500 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-9] select ve1_0.id,ve1_0.descripcion,ve1_0.titulo from videojuegos ve1_0
+2024-02-08 18:12:49,449 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=50s79ms13µs500ns).
+2024-02-08 18:13:33,067 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-10] select ve1_0.id,ve1_0.descripcion,ve1_0.titulo from videojuegos ve1_0
+2024-02-08 18:18:37,975 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-5] select ve1_0.id,ve1_0.descripcion,ve1_0.titulo from videojuegos ve1_0
+2024-02-08 18:21:20,157 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m48s796ms999µs100ns).
+2024-02-08 18:21:39,468 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 18:21:39,648 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-02-08 18:21:40,059 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-02-08 18:22:06,688 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-08 18:22:06,785 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 17.0.1 with PID 13660 (C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\target\classes started by madrid in C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR)
+2024-02-08 18:22:06,788 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-08 18:22:06,960 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-08 18:22:09,695 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] There are already Docker Compose services running, skipping startup
+2024-02-08 18:22:11,507 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 18:22:11,510 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-08 18:22:11,562 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:22:11,563 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:22:11,565 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:22:11,567 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 50 ms. Found 0 JDBC repository interfaces.
+2024-02-08 18:22:11,584 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 18:22:11,588 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-08 18:22:11,846 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 248 ms. Found 3 JPA repository interfaces.
+2024-02-08 18:22:12,976 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-08 18:22:12,993 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-08 18:22:12,996 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-08 18:22:12,997 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-08 18:22:13,103 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-08 18:22:13,104 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 3308 ms
+2024-02-08 18:22:13,342 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-08 18:22:13,440 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-08 18:22:13,517 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-08 18:22:13,904 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-08 18:22:13,948 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-08 18:22:14,561 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@33fec21
+2024-02-08 18:22:14,565 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-08 18:22:17,814 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-08 18:22:18,049 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 18:22:18,395 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-08 18:22:18,395 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-08 18:22:22,401 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] Loaded 1 resource(s) in the GraphQL schema.
+2024-02-08 18:22:23,911 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] GraphQL schema inspection:
+	Unmapped fields: {Videojuego=[id, nombre, descripcion, personajes], Personaje=[id, nombre, descripcion, videojuego], Mutation=[addVideojuego, addPersonaje]}
+	Unmapped registrations: {}
+	Skipped types: []
+2024-02-08 18:22:23,979 INFO o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration [main] GraphQL endpoint HTTP POST /graphql
+2024-02-08 18:22:24,329 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2a3ced3d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7ab5b01a, org.springframework.security.web.context.SecurityContextHolderFilter@26a2106e, org.springframework.security.web.header.HeaderWriterFilter@3d1319b, org.springframework.web.filter.CorsFilter@25fa5c0c, org.springframework.security.web.authentication.logout.LogoutFilter@3444ac8f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@23c95292, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2f43c73a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@22112da1, org.springframework.security.web.access.ExceptionTranslationFilter@544502d6]
+2024-02-08 18:22:25,361 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-08 18:22:27,247 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-02-08 18:22:27,332 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
+2024-02-08 18:22:27,358 INFO o.s.b.StartupInfoLogger [main] Started GraphQlServerJavaInesMrApplication in 21.334 seconds (process running for 23.46)
+2024-02-08 18:24:17,032 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 18:24:17,038 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-02-08 18:24:17,069 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-02-08 18:24:55,708 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-08 18:24:55,768 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 17.0.1 with PID 14732 (C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\target\classes started by madrid in C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR)
+2024-02-08 18:24:55,769 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-08 18:24:55,846 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-08 18:24:58,173 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] There are already Docker Compose services running, skipping startup
+2024-02-08 18:24:59,210 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 18:24:59,213 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-08 18:24:59,264 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:24:59,266 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:24:59,268 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:24:59,269 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 51 ms. Found 0 JDBC repository interfaces.
+2024-02-08 18:24:59,283 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 18:24:59,285 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-08 18:24:59,474 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 184 ms. Found 3 JPA repository interfaces.
+2024-02-08 18:25:00,435 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-08 18:25:00,446 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-08 18:25:00,449 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-08 18:25:00,450 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-08 18:25:00,570 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-08 18:25:00,574 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2382 ms
+2024-02-08 18:25:00,813 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-08 18:25:00,922 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-08 18:25:01,084 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-08 18:25:01,449 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-08 18:25:01,504 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-08 18:25:02,014 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b8142f4
+2024-02-08 18:25:02,017 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-08 18:25:03,922 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-08 18:25:04,186 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 18:25:04,712 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-08 18:25:04,713 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-08 18:25:06,200 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] Loaded 1 resource(s) in the GraphQL schema.
+2024-02-08 18:25:06,751 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] GraphQL schema inspection:
+	Unmapped fields: {Videojuego=[id, nombre, descripcion, personajes], Personaje=[id, nombre, descripcion, videojuego], Mutation=[addVideojuego, addPersonaje]}
+	Unmapped registrations: {}
+	Skipped types: []
+2024-02-08 18:25:06,846 INFO o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration [main] GraphQL endpoint HTTP POST /graphql
+2024-02-08 18:25:07,060 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@a15e4fd, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@515c3dd2, org.springframework.security.web.context.SecurityContextHolderFilter@7e753fd6, org.springframework.security.web.header.HeaderWriterFilter@38a2fbc3, org.springframework.web.filter.CorsFilter@245504d, org.springframework.security.web.authentication.logout.LogoutFilter@68fce3e5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1f234e35, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2350e46, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6c9fe061, org.springframework.security.web.access.ExceptionTranslationFilter@a8dedda]
+2024-02-08 18:25:07,720 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-08 18:25:08,531 WARN o.s.c.s.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #10 of file [C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\target\classes\data.sql]: insert into personajes (id, nombre, descripcion, id_videojuego) values (0, 'Franklin', 'Eoooo', 0)
+2024-02-08 18:25:08,531 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 18:25:08,541 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
+2024-02-08 18:25:08,599 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown completed.
+2024-02-08 18:25:08,607 INFO o.a.j.l.DirectJDKLog [main] Stopping service [Tomcat]
+2024-02-08 18:25:08,643 INFO o.s.b.a.l.ConditionEvaluationReportLogger [main] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-02-08 18:25:08,684 ERROR o.s.b.SpringApplication [main] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #10 of file [C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\target\classes\data.sql]: insert into personajes (id, nombre, descripcion, id_videojuego) values (0, 'Franklin', 'Eoooo', 0)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1773)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:959)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at com.example.graphqlserverjavainesmr.GraphQlServerJavaInesMrApplication.main(GraphQlServerJavaInesMrApplication.java:10)
+Caused by: org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #10 of file [C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\target\classes\data.sql]: insert into personajes (id, nombre, descripcion, id_videojuego) values (0, 'Franklin', 'Eoooo', 0)
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:282)
+	at org.springframework.jdbc.datasource.init.ResourceDatabasePopulator.populate(ResourceDatabasePopulator.java:254)
+	at org.springframework.jdbc.datasource.init.DatabasePopulatorUtils.execute(DatabasePopulatorUtils.java:54)
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.runScripts(DataSourceScriptDatabaseInitializer.java:87)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.runScripts(AbstractScriptDatabaseInitializer.java:146)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:108)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyDataScripts(AbstractScriptDatabaseInitializer.java:102)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:77)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:66)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1820)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1769)
+	... 18 common frames omitted
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`demo`.`personajes`, CONSTRAINT `FKgrng0033c5d4f7kl7kfpunguy` FOREIGN KEY (`id_videojuego`) REFERENCES `videojuegos` (`id`))
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261)
+	... 28 common frames omitted
+2024-02-08 18:28:08,033 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-08 18:28:08,121 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 17.0.1 with PID 14196 (C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\target\classes started by madrid in C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR)
+2024-02-08 18:28:08,123 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-08 18:28:08,259 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-08 18:28:10,925 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] There are already Docker Compose services running, skipping startup
+2024-02-08 18:28:11,913 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 18:28:11,914 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-08 18:28:11,950 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:28:11,952 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:28:11,953 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:28:11,954 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 35 ms. Found 0 JDBC repository interfaces.
+2024-02-08 18:28:11,969 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 18:28:11,971 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-08 18:28:12,199 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 222 ms. Found 3 JPA repository interfaces.
+2024-02-08 18:28:13,002 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-08 18:28:13,012 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-08 18:28:13,016 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-08 18:28:13,016 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-08 18:28:13,104 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-08 18:28:13,104 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2122 ms
+2024-02-08 18:28:13,325 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-08 18:28:13,405 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-08 18:28:13,454 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-08 18:28:13,786 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-08 18:28:13,825 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-08 18:28:14,307 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@77e730bd
+2024-02-08 18:28:14,310 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-08 18:28:15,782 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-08 18:28:15,923 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 18:28:16,192 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-08 18:28:16,192 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-08 18:28:17,655 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] Loaded 1 resource(s) in the GraphQL schema.
+2024-02-08 18:28:17,968 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] GraphQL schema inspection:
+	Unmapped fields: {Videojuego=[id, nombre, descripcion, personajes], Personaje=[id, nombre, descripcion, videojuego], Mutation=[addVideojuego, addPersonaje]}
+	Unmapped registrations: {}
+	Skipped types: []
+2024-02-08 18:28:17,986 INFO o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration [main] GraphQL endpoint HTTP POST /graphql
+2024-02-08 18:28:18,053 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5ddd3fbd, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@57ae3c0e, org.springframework.security.web.context.SecurityContextHolderFilter@66d8a602, org.springframework.security.web.header.HeaderWriterFilter@72d4d9ac, org.springframework.web.filter.CorsFilter@43e6bcfd, org.springframework.security.web.authentication.logout.LogoutFilter@3152a0a3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@47a22020, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@cf822a6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@361d56a3, org.springframework.security.web.access.ExceptionTranslationFilter@43051a8d]
+2024-02-08 18:28:18,249 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-08 18:28:18,844 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-02-08 18:28:18,867 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
+2024-02-08 18:28:18,878 INFO o.s.b.StartupInfoLogger [main] Started GraphQlServerJavaInesMrApplication in 11.567 seconds (process running for 13.482)
+2024-02-08 18:31:12,517 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 18:31:12,522 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-02-08 18:31:12,567 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-02-08 18:31:24,207 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-08 18:31:24,295 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 17.0.1 with PID 8728 (C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\target\classes started by madrid in C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR)
+2024-02-08 18:31:24,298 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-08 18:31:24,426 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-08 18:31:27,231 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] There are already Docker Compose services running, skipping startup
+2024-02-08 18:31:28,433 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 18:31:28,436 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-08 18:31:28,482 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:31:28,483 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:31:28,486 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:31:28,488 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 44 ms. Found 0 JDBC repository interfaces.
+2024-02-08 18:31:28,499 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 18:31:28,502 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-08 18:31:28,710 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 205 ms. Found 3 JPA repository interfaces.
+2024-02-08 18:31:30,943 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-08 18:31:30,961 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-08 18:31:30,966 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-08 18:31:30,967 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-08 18:31:31,107 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-08 18:31:31,107 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 3848 ms
+2024-02-08 18:31:31,359 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-08 18:31:31,473 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-08 18:31:31,542 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-08 18:31:31,947 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-08 18:31:32,016 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-08 18:31:32,814 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@d3d5094
+2024-02-08 18:31:32,816 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-08 18:31:34,653 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-08 18:31:34,826 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 18:31:35,100 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-08 18:31:35,101 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-08 18:31:36,303 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] Loaded 1 resource(s) in the GraphQL schema.
+2024-02-08 18:31:36,559 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] GraphQL schema inspection:
+	Unmapped fields: {Videojuego=[id, nombre, descripcion, personajes], Personaje=[id, nombre, descripcion, videojuego], Mutation=[addVideojuego, addPersonaje]}
+	Unmapped registrations: {}
+	Skipped types: []
+2024-02-08 18:31:36,577 INFO o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration [main] GraphQL endpoint HTTP POST /graphql
+2024-02-08 18:31:36,676 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3ce17e4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@27bde886, org.springframework.security.web.context.SecurityContextHolderFilter@43051a8d, org.springframework.security.web.header.HeaderWriterFilter@233202aa, org.springframework.web.filter.CorsFilter@3b3639f9, org.springframework.security.web.authentication.logout.LogoutFilter@7e753fd6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@72d4d9ac, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@76b06e50, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@66ee4640, org.springframework.security.web.access.ExceptionTranslationFilter@2fd79ac6]
+2024-02-08 18:31:36,928 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-08 18:31:37,712 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-02-08 18:31:37,741 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
+2024-02-08 18:31:37,752 INFO o.s.b.StartupInfoLogger [main] Started GraphQlServerJavaInesMrApplication in 14.095 seconds (process running for 16.326)
+2024-02-08 18:31:56,623 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-08 18:31:56,624 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2024-02-08 18:31:56,627 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 3 ms
+2024-02-08 18:31:57,298 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-2] select ve1_0.id,ve1_0.descripcion,ve1_0.titulo from videojuegos ve1_0
+2024-02-08 18:32:08,997 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-6] select ve1_0.id,ve1_0.descripcion,ve1_0.titulo from videojuegos ve1_0
+2024-02-08 18:32:41,402 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 18:32:41,407 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-02-08 18:32:41,448 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-02-08 18:32:46,144 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-08 18:32:46,242 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 17.0.1 with PID 12168 (C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\target\classes started by madrid in C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR)
+2024-02-08 18:32:46,244 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-08 18:32:46,396 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-08 18:32:48,938 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] There are already Docker Compose services running, skipping startup
+2024-02-08 18:32:50,048 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 18:32:50,051 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-08 18:32:50,097 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:32:50,098 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:32:50,101 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:32:50,102 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 42 ms. Found 0 JDBC repository interfaces.
+2024-02-08 18:32:50,115 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 18:32:50,117 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-08 18:32:50,302 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 179 ms. Found 3 JPA repository interfaces.
+2024-02-08 18:32:51,620 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-08 18:32:51,633 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-08 18:32:51,635 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-08 18:32:51,639 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-08 18:32:51,725 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-08 18:32:51,725 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2757 ms
+2024-02-08 18:32:51,969 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-08 18:32:52,082 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-08 18:32:52,149 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-08 18:32:53,239 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-08 18:32:53,606 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-08 18:32:54,104 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1791e231
+2024-02-08 18:32:54,107 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-08 18:32:55,689 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-08 18:32:55,850 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 18:32:56,142 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-08 18:32:56,142 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-08 18:32:59,664 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] Loaded 1 resource(s) in the GraphQL schema.
+2024-02-08 18:33:00,774 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] GraphQL schema inspection:
+	Unmapped fields: {Videojuego=[id, nombre, descripcion, personajes], Personaje=[id, nombre, descripcion, videojuego], Mutation=[addVideojuego, addPersonaje]}
+	Unmapped registrations: {}
+	Skipped types: []
+2024-02-08 18:33:00,822 INFO o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration [main] GraphQL endpoint HTTP POST /graphql
+2024-02-08 18:33:00,953 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@591b9836, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7b2f18cd, org.springframework.security.web.context.SecurityContextHolderFilter@39889671, org.springframework.security.web.header.HeaderWriterFilter@5a41183b, org.springframework.web.filter.CorsFilter@18f7a872, org.springframework.security.web.authentication.logout.LogoutFilter@6dfe4788, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7b4e5982, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@17f216cc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@61defefb, org.springframework.security.web.access.ExceptionTranslationFilter@18e7b33e]
+2024-02-08 18:33:01,405 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-08 18:33:02,428 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-02-08 18:33:02,489 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
+2024-02-08 18:33:02,507 INFO o.s.b.StartupInfoLogger [main] Started GraphQlServerJavaInesMrApplication in 16.965 seconds (process running for 18.826)
+2024-02-08 18:33:21,453 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-08 18:33:21,454 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2024-02-08 18:33:21,459 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 4 ms
+2024-02-08 18:33:23,670 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] select ve1_0.id,ve1_0.descripcion,ve1_0.titulo from videojuegos ve1_0
+2024-02-08 18:34:07,812 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m13s577ms558µs600ns).
+2024-02-08 18:34:08,169 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 18:34:08,322 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-02-08 18:34:08,523 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-02-08 18:38:27,478 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-08 18:38:27,577 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 17.0.1 with PID 16184 (C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\target\classes started by madrid in C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR)
+2024-02-08 18:38:27,579 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-08 18:38:27,748 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-08 18:38:30,503 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] There are already Docker Compose services running, skipping startup
+2024-02-08 18:38:31,818 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 18:38:31,821 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-08 18:38:31,885 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:38:31,886 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:38:31,888 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:38:31,889 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 61 ms. Found 0 JDBC repository interfaces.
+2024-02-08 18:38:31,902 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 18:38:31,903 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-08 18:38:32,136 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 226 ms. Found 3 JPA repository interfaces.
+2024-02-08 18:38:33,246 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-08 18:38:33,261 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-08 18:38:33,264 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-08 18:38:33,264 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-08 18:38:33,375 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-08 18:38:33,375 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2721 ms
+2024-02-08 18:38:33,625 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-08 18:38:33,749 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-08 18:38:34,537 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-08 18:38:36,322 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-08 18:38:36,394 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-08 18:38:36,977 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@75aa7703
+2024-02-08 18:38:36,980 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-08 18:38:38,840 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-08 18:38:39,155 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 18:38:39,550 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-08 18:38:39,550 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-08 18:38:43,701 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] Loaded 1 resource(s) in the GraphQL schema.
+2024-02-08 18:38:44,403 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] GraphQL schema inspection:
+	Unmapped fields: {Videojuego=[id, nombre, descripcion, personajes], Personaje=[id, nombre, descripcion, videojuego], Mutation=[addVideojuego, addPersonaje]}
+	Unmapped registrations: {}
+	Skipped types: []
+2024-02-08 18:38:44,441 INFO o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration [main] GraphQL endpoint HTTP POST /graphql
+2024-02-08 18:38:44,634 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6d6c4775, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@44929971, org.springframework.security.web.context.SecurityContextHolderFilter@382e7f70, org.springframework.security.web.header.HeaderWriterFilter@676b85f3, org.springframework.web.filter.CorsFilter@344d6bb3, org.springframework.security.web.authentication.logout.LogoutFilter@2c8174ce, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1193d400, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6dbc3756, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2564410b, org.springframework.security.web.access.ExceptionTranslationFilter@61defefb]
+2024-02-08 18:38:45,161 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-08 18:38:46,681 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-02-08 18:38:46,838 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
+2024-02-08 18:38:46,876 INFO o.s.b.StartupInfoLogger [main] Started GraphQlServerJavaInesMrApplication in 19.993 seconds (process running for 22.048)
+2024-02-08 18:38:57,832 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-08 18:38:57,833 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2024-02-08 18:38:57,836 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 3 ms
+2024-02-08 18:38:59,623 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-2] select ve1_0.id,ve1_0.descripcion,ve1_0.titulo from videojuegos ve1_0
+2024-02-08 18:45:38,164 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m998ms298µs400ns).
+2024-02-08 18:45:39,008 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 18:45:39,065 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-02-08 18:45:39,238 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-02-08 18:45:50,108 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-08 18:45:50,285 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 17.0.1 with PID 11244 (C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\target\classes started by madrid in C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR)
+2024-02-08 18:45:50,286 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-08 18:45:50,391 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-08 18:45:53,852 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] There are already Docker Compose services running, skipping startup
+2024-02-08 18:45:57,228 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 18:45:57,230 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-08 18:45:57,261 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:45:57,262 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:45:57,263 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:45:57,264 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 30 ms. Found 0 JDBC repository interfaces.
+2024-02-08 18:45:57,273 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 18:45:57,274 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-08 18:45:57,435 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 152 ms. Found 3 JPA repository interfaces.
+2024-02-08 18:45:58,083 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-08 18:45:58,097 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-08 18:45:58,099 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-08 18:45:58,099 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-08 18:45:58,187 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-08 18:45:58,188 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 4276 ms
+2024-02-08 18:45:58,422 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-08 18:45:58,503 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-08 18:45:58,547 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-08 18:45:58,820 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-08 18:45:58,845 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-08 18:45:59,258 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4bb9f7d4
+2024-02-08 18:45:59,259 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-08 18:46:00,259 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-08 18:46:00,375 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 18:46:00,610 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-08 18:46:00,611 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-08 18:46:01,401 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] Loaded 1 resource(s) in the GraphQL schema.
+2024-02-08 18:46:01,600 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] GraphQL schema inspection:
+	Unmapped fields: {Videojuego=[id, nombre, descripcion, personajes], Personaje=[id, nombre, descripcion, videojuego], Mutation=[addVideojuego, addPersonaje]}
+	Unmapped registrations: {}
+	Skipped types: []
+2024-02-08 18:46:01,618 INFO o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration [main] GraphQL endpoint HTTP POST /graphql
+2024-02-08 18:46:01,675 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5d12fa92, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3ab87cac, org.springframework.security.web.context.SecurityContextHolderFilter@5ddd3fbd, org.springframework.security.web.header.HeaderWriterFilter@3b3639f9, org.springframework.web.filter.CorsFilter@71e740c6, org.springframework.security.web.authentication.logout.LogoutFilter@798ac54d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@43e6bcfd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@361d56a3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@50aa5826, org.springframework.security.web.access.ExceptionTranslationFilter@3ce17e4]
+2024-02-08 18:46:01,803 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-08 18:46:02,400 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-02-08 18:46:02,415 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
+2024-02-08 18:46:02,421 INFO o.s.b.StartupInfoLogger [main] Started GraphQlServerJavaInesMrApplication in 12.682 seconds (process running for 13.67)
+2024-02-08 18:46:43,243 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-4] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-08 18:46:43,243 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-4] Initializing Servlet 'dispatcherServlet'
+2024-02-08 18:46:43,244 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-4] Completed initialization in 1 ms
+2024-02-08 18:46:43,467 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] select ve1_0.id,ve1_0.descripcion,ve1_0.titulo from videojuegos ve1_0
+2024-02-08 18:47:17,063 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 18:47:17,066 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-02-08 18:47:17,095 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-02-08 18:47:21,143 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-08 18:47:21,207 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 17.0.1 with PID 4572 (C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\target\classes started by madrid in C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR)
+2024-02-08 18:47:21,208 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-08 18:47:21,294 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'C:\Users\madrid\Documents\GH\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-08 18:47:24,348 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] There are already Docker Compose services running, skipping startup
+2024-02-08 18:47:25,109 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 18:47:25,114 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-08 18:47:25,150 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:47:25,150 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:47:25,151 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-08 18:47:25,152 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 33 ms. Found 0 JDBC repository interfaces.
+2024-02-08 18:47:25,160 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-08 18:47:25,160 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-08 18:47:25,286 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 122 ms. Found 3 JPA repository interfaces.
+2024-02-08 18:47:25,881 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-08 18:47:25,890 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-08 18:47:25,892 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-08 18:47:25,892 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-08 18:47:25,949 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-08 18:47:25,949 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1584 ms
+2024-02-08 18:47:26,134 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-08 18:47:26,201 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-08 18:47:26,241 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-08 18:47:26,485 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-08 18:47:26,512 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-08 18:47:26,839 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2c02a007
+2024-02-08 18:47:26,840 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-08 18:47:27,853 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-08 18:47:27,961 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 18:47:28,180 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-08 18:47:28,181 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-08 18:47:30,324 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] Loaded 1 resource(s) in the GraphQL schema.
+2024-02-08 18:47:30,745 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] GraphQL schema inspection:
+	Unmapped fields: {Videojuego=[id, nombre, descripcion, personajes], Personaje=[id, nombre, descripcion, videojuego], Mutation=[addVideojuego, addPersonaje]}
+	Unmapped registrations: {}
+	Skipped types: []
+2024-02-08 18:47:30,767 INFO o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration [main] GraphQL endpoint HTTP POST /graphql
+2024-02-08 18:47:30,870 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3444ac8f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3ab26cad, org.springframework.security.web.context.SecurityContextHolderFilter@648100de, org.springframework.security.web.header.HeaderWriterFilter@7b2f18cd, org.springframework.web.filter.CorsFilter@4b477d05, org.springframework.security.web.authentication.logout.LogoutFilter@2c07277f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@42fa1554, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@544502d6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7c5dbca5, org.springframework.security.web.access.ExceptionTranslationFilter@3df88502]
+2024-02-08 18:47:31,110 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-08 18:47:31,862 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-02-08 18:47:31,903 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
+2024-02-08 18:47:31,912 INFO o.s.b.StartupInfoLogger [main] Started GraphQlServerJavaInesMrApplication in 11.171 seconds (process running for 12.613)
+2024-02-08 18:47:47,633 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-08 18:47:47,633 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2024-02-08 18:47:47,634 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2024-02-08 18:47:48,087 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] select ve1_0.id,ve1_0.descripcion,ve1_0.titulo from videojuegos ve1_0
+2024-02-08 18:50:13,673 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m46s671ms294µs800ns).
+2024-02-08 18:50:14,273 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 18:50:14,363 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-02-08 18:50:14,696 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

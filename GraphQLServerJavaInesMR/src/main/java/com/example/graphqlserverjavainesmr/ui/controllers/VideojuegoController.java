@@ -20,5 +20,4 @@ public class VideojuegoController {
         return servicio.getVideojuegos();
     }
 
-
 }
