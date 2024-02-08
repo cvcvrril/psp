@@ -4958,3 +4958,6 @@ Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1
 2024-02-08 13:27:37,918 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
 2024-02-08 13:27:37,932 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
 2024-02-08 13:27:37,938 INFO o.s.b.StartupInfoLogger [main] Started GraphQlServerJavaInesMrApplication in 5.687 seconds (process running for 6.373)
+2024-02-08 13:28:51,432 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08 13:28:51,434 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-02-08 13:28:51,443 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
