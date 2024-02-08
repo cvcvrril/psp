@@ -7,9 +7,7 @@ delete from users;
 insert into roles (id, rol) values (1, 'ROLE_ADMIN');
 insert into roles (id, rol) values (1, 'ROLE_USER');
 
-insert into 
-
-insert into users()
+insert into users (id, username, password) values (1, 'ines', '$2a$10$QmslVN.VYaukSrN03XSVSukpEiiG//MpvBh2KzG3mxk5kXlC4A5Em');
 
 insert into videojuegos(id, titulo, descripcion) values (1, 'Grand Thief Auto V', 'Prueba prueba');
 
