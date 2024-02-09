@@ -13,11 +13,8 @@ public interface PersonajeRepository extends ListCrudRepository<PersonajeEntity,
 
     @Query(""" 
     select p from PersonajeEntity p 
-    JOIN FETCH p.nombre nombre
-    JOIN FETCH p.descripcion descripcion
-    JOIN FETCH p.videojuego videojuego
-    where p.id = :id
+    JOIN FETCH p.videojuego
     """)
-    Optional<PersonajeEntity> findEnteroById(Long id);
+    Optional<PersonajeEntity> findPersonajes();
 
 }

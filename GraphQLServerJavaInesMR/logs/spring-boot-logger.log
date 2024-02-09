@@ -7780,3 +7780,679 @@ java.lang.ClassCastException: class org.hibernate.metamodel.mapping.internal.Bas
 2024-02-09 10:19:21,366 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-02-09 10:19:21,368 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
 2024-02-09 10:19:21,381 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-02-09 15:31:22,617 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-09 15:31:22,649 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 21 with PID 6908 (D:\Ines\GitHub\psp\GraphQLServerJavaInesMR\target\classes started by Inés in D:\Ines\GitHub\psp\GraphQLServerJavaInesMR)
+2024-02-09 15:31:22,650 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-09 15:31:22,705 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'D:\Ines\GitHub\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-09 15:32:39,032 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-09 15:32:39,059 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 21 with PID 9900 (D:\Ines\GitHub\psp\GraphQLServerJavaInesMR\target\classes started by Inés in D:\Ines\GitHub\psp\GraphQLServerJavaInesMR)
+2024-02-09 15:32:39,060 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-09 15:32:39,099 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'D:\Ines\GitHub\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-09 15:32:40,805 INFO o.s.b.l.LogLevel [OutputReader-stderr]  db Pulling 
+2024-02-09 15:32:43,151 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Pulling fs layer 
+2024-02-09 15:32:43,151 INFO o.s.b.l.LogLevel [OutputReader-stderr]  32f3542f2ba9 Pulling fs layer 
+2024-02-09 15:32:43,151 INFO o.s.b.l.LogLevel [OutputReader-stderr]  795385976c83 Pulling fs layer 
+2024-02-09 15:32:43,151 INFO o.s.b.l.LogLevel [OutputReader-stderr]  03b553142f26 Pulling fs layer 
+2024-02-09 15:32:43,151 INFO o.s.b.l.LogLevel [OutputReader-stderr]  d8ce6174541f Pulling fs layer 
+2024-02-09 15:32:43,151 INFO o.s.b.l.LogLevel [OutputReader-stderr]  681c64901273 Pulling fs layer 
+2024-02-09 15:32:43,151 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Pulling fs layer 
+2024-02-09 15:32:43,151 INFO o.s.b.l.LogLevel [OutputReader-stderr]  db8e96eb91f6 Pulling fs layer 
+2024-02-09 15:32:43,151 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Pulling fs layer 
+2024-02-09 15:32:43,152 INFO o.s.b.l.LogLevel [OutputReader-stderr]  d0c9925abfdf Pulling fs layer 
+2024-02-09 15:32:43,152 INFO o.s.b.l.LogLevel [OutputReader-stderr]  03b553142f26 Waiting 
+2024-02-09 15:32:43,152 INFO o.s.b.l.LogLevel [OutputReader-stderr]  681c64901273 Waiting 
+2024-02-09 15:32:43,152 INFO o.s.b.l.LogLevel [OutputReader-stderr]  d8ce6174541f Waiting 
+2024-02-09 15:32:43,152 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Waiting 
+2024-02-09 15:32:43,152 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Waiting 
+2024-02-09 15:32:43,152 INFO o.s.b.l.LogLevel [OutputReader-stderr]  d0c9925abfdf Waiting 
+2024-02-09 15:32:43,152 INFO o.s.b.l.LogLevel [OutputReader-stderr]  db8e96eb91f6 Waiting 
+2024-02-09 15:32:43,590 INFO o.s.b.l.LogLevel [OutputReader-stderr]  32f3542f2ba9 Downloading [========================================>          ]     721B/884B
+2024-02-09 15:32:43,591 INFO o.s.b.l.LogLevel [OutputReader-stderr]  32f3542f2ba9 Downloading [==================================================>]     884B/884B
+2024-02-09 15:32:43,592 INFO o.s.b.l.LogLevel [OutputReader-stderr]  32f3542f2ba9 Verifying Checksum 
+2024-02-09 15:32:43,592 INFO o.s.b.l.LogLevel [OutputReader-stderr]  32f3542f2ba9 Download complete 
+2024-02-09 15:32:43,593 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [>                                                  ]  523.5kB/51.33MB
+2024-02-09 15:32:43,598 INFO o.s.b.l.LogLevel [OutputReader-stderr]  795385976c83 Downloading [>                                                  ]   10.3kB/982.8kB
+2024-02-09 15:32:43,705 INFO o.s.b.l.LogLevel [OutputReader-stderr]  795385976c83 Downloading [========================>                          ]  474.4kB/982.8kB
+2024-02-09 15:32:43,772 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=>                                                 ]  1.567MB/51.33MB
+2024-02-09 15:32:43,776 INFO o.s.b.l.LogLevel [OutputReader-stderr]  795385976c83 Verifying Checksum 
+2024-02-09 15:32:43,776 INFO o.s.b.l.LogLevel [OutputReader-stderr]  795385976c83 Download complete 
+2024-02-09 15:32:43,895 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [===>                                               ]   3.14MB/51.33MB
+2024-02-09 15:32:44,028 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [====>                                              ]  4.713MB/51.33MB
+2024-02-09 15:32:44,062 INFO o.s.b.l.LogLevel [OutputReader-stderr]  03b553142f26 Downloading [>                                                  ]  46.46kB/4.603MB
+2024-02-09 15:32:44,166 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=====>                                             ]  5.765MB/51.33MB
+2024-02-09 15:32:44,168 INFO o.s.b.l.LogLevel [OutputReader-stderr]  03b553142f26 Downloading [=====>                                             ]  498.9kB/4.603MB
+2024-02-09 15:32:44,262 INFO o.s.b.l.LogLevel [OutputReader-stderr]  d8ce6174541f Downloading [=============>                                     ]     720B/2.606kB
+2024-02-09 15:32:44,263 INFO o.s.b.l.LogLevel [OutputReader-stderr]  d8ce6174541f Downloading [==================================================>]  2.606kB/2.606kB
+2024-02-09 15:32:44,263 INFO o.s.b.l.LogLevel [OutputReader-stderr]  d8ce6174541f Verifying Checksum 
+2024-02-09 15:32:44,263 INFO o.s.b.l.LogLevel [OutputReader-stderr]  d8ce6174541f Download complete 
+2024-02-09 15:32:44,278 INFO o.s.b.l.LogLevel [OutputReader-stderr]  03b553142f26 Downloading [============>                                      ]  1.187MB/4.603MB
+2024-02-09 15:32:44,290 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [======>                                            ]  6.282MB/51.33MB
+2024-02-09 15:32:44,409 INFO o.s.b.l.LogLevel [OutputReader-stderr]  03b553142f26 Downloading [==================>                                ]  1.731MB/4.603MB
+2024-02-09 15:32:44,426 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=======>                                           ]  7.322MB/51.33MB
+2024-02-09 15:32:44,511 INFO o.s.b.l.LogLevel [OutputReader-stderr]  03b553142f26 Downloading [=========================>                         ]  2.321MB/4.603MB
+2024-02-09 15:32:44,530 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=======>                                           ]  7.842MB/51.33MB
+2024-02-09 15:32:44,613 INFO o.s.b.l.LogLevel [OutputReader-stderr]  03b553142f26 Downloading [===================================>               ]  3.255MB/4.603MB
+2024-02-09 15:32:44,712 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [========>                                          ]  8.891MB/51.33MB
+2024-02-09 15:32:44,716 INFO o.s.b.l.LogLevel [OutputReader-stderr]  03b553142f26 Downloading [==========================================>        ]  3.943MB/4.603MB
+2024-02-09 15:32:44,810 INFO o.s.b.l.LogLevel [OutputReader-stderr]  03b553142f26 Verifying Checksum 
+2024-02-09 15:32:44,811 INFO o.s.b.l.LogLevel [OutputReader-stderr]  03b553142f26 Download complete 
+2024-02-09 15:32:44,814 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=========>                                         ]  9.411MB/51.33MB
+2024-02-09 15:32:44,857 INFO o.s.b.l.LogLevel [OutputReader-stderr]  681c64901273 Downloading [==================================================>]     339B/339B
+2024-02-09 15:32:44,858 INFO o.s.b.l.LogLevel [OutputReader-stderr]  681c64901273 Verifying Checksum 
+2024-02-09 15:32:44,858 INFO o.s.b.l.LogLevel [OutputReader-stderr]  681c64901273 Download complete 
+2024-02-09 15:32:44,915 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [==========>                                        ]  10.46MB/51.33MB
+2024-02-09 15:32:45,047 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [===========>                                       ]  12.02MB/51.33MB
+2024-02-09 15:32:45,186 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=============>                                     ]  13.59MB/51.33MB
+2024-02-09 15:32:45,319 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [==============>                                    ]  15.17MB/51.33MB
+2024-02-09 15:32:45,386 INFO o.s.b.l.LogLevel [OutputReader-stderr]  db8e96eb91f6 Downloading [==================================================>]     326B/326B
+2024-02-09 15:32:45,387 INFO o.s.b.l.LogLevel [OutputReader-stderr]  db8e96eb91f6 Verifying Checksum 
+2024-02-09 15:32:45,387 INFO o.s.b.l.LogLevel [OutputReader-stderr]  db8e96eb91f6 Download complete 
+2024-02-09 15:32:45,435 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [===============>                                   ]  16.21MB/51.33MB
+2024-02-09 15:32:45,493 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [>                                                  ]  538.9kB/63.08MB
+2024-02-09 15:32:45,646 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [================>                                  ]  17.25MB/51.33MB
+2024-02-09 15:32:45,649 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=>                                                 ]  1.604MB/63.08MB
+2024-02-09 15:32:45,794 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==>                                                ]  2.677MB/63.08MB
+2024-02-09 15:32:45,830 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=================>                                 ]   18.3MB/51.33MB
+2024-02-09 15:32:45,996 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==>                                                ]  3.746MB/63.08MB
+2024-02-09 15:32:46,034 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [>                                                  ]  538.9kB/63.4MB
+2024-02-09 15:32:46,040 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [==================>                                ]  18.83MB/51.33MB
+2024-02-09 15:32:46,120 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [===>                                               ]  4.287MB/63.08MB
+2024-02-09 15:32:46,156 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [>                                                  ]  1.067MB/63.4MB
+2024-02-09 15:32:46,264 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [====>                                              ]  5.368MB/63.08MB
+2024-02-09 15:32:46,266 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=>                                                 ]  1.608MB/63.4MB
+2024-02-09 15:32:46,378 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=>                                                 ]  2.145MB/63.4MB
+2024-02-09 15:32:46,420 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [==================>                                ]  19.36MB/51.33MB
+2024-02-09 15:32:46,432 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=====>                                             ]  6.449MB/63.08MB
+2024-02-09 15:32:46,542 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=====>                                             ]   6.99MB/63.08MB
+2024-02-09 15:32:46,589 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [==>                                                ]  3.222MB/63.4MB
+2024-02-09 15:32:46,717 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [======>                                            ]  8.071MB/63.08MB
+2024-02-09 15:32:46,782 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===>                                               ]  4.303MB/63.4MB
+2024-02-09 15:32:46,825 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [======>                                            ]  8.604MB/63.08MB
+2024-02-09 15:32:46,891 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===>                                               ]  4.844MB/63.4MB
+2024-02-09 15:32:46,945 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=======>                                           ]  9.145MB/63.08MB
+2024-02-09 15:32:47,062 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [====>                                              ]  5.925MB/63.4MB
+2024-02-09 15:32:47,121 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [========>                                          ]  10.21MB/63.08MB
+2024-02-09 15:32:47,124 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [===================>                               ]  19.88MB/51.33MB
+2024-02-09 15:32:47,229 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [========>                                          ]  10.75MB/63.08MB
+2024-02-09 15:32:47,257 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=====>                                             ]  7.007MB/63.4MB
+2024-02-09 15:32:47,370 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=====>                                             ]  7.547MB/63.4MB
+2024-02-09 15:32:47,397 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=========>                                         ]  11.83MB/63.08MB
+2024-02-09 15:32:47,534 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=========>                                         ]  12.37MB/63.08MB
+2024-02-09 15:32:47,552 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [======>                                            ]  8.629MB/63.4MB
+2024-02-09 15:32:47,653 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=======>                                           ]  9.169MB/63.4MB
+2024-02-09 15:32:47,654 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [===================>                               ]   20.4MB/51.33MB
+2024-02-09 15:32:47,704 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==========>                                        ]  13.44MB/63.08MB
+2024-02-09 15:32:47,767 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=======>                                           ]   9.71MB/63.4MB
+2024-02-09 15:32:47,821 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [===========>                                       ]  13.98MB/63.08MB
+2024-02-09 15:32:47,872 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [========>                                          ]  10.25MB/63.4MB
+2024-02-09 15:32:48,027 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [===========>                                       ]  15.06MB/63.08MB
+2024-02-09 15:32:48,055 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [====================>                              ]  20.93MB/51.33MB
+2024-02-09 15:32:48,101 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [========>                                          ]  11.32MB/63.4MB
+2024-02-09 15:32:48,228 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [============>                                      ]  16.13MB/63.08MB
+2024-02-09 15:32:48,242 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=========>                                         ]   12.4MB/63.4MB
+2024-02-09 15:32:48,350 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=============>                                     ]  16.67MB/63.08MB
+2024-02-09 15:32:48,352 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [==========>                                        ]  12.94MB/63.4MB
+2024-02-09 15:32:48,459 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=============>                                     ]  17.21MB/63.08MB
+2024-02-09 15:32:48,532 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===========>                                       ]  14.02MB/63.4MB
+2024-02-09 15:32:48,554 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [====================>                              ]  21.45MB/51.33MB
+2024-02-09 15:32:48,563 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==============>                                    ]  17.75MB/63.08MB
+2024-02-09 15:32:48,668 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==============>                                    ]  18.29MB/63.08MB
+2024-02-09 15:32:48,716 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===========>                                       ]   15.1MB/63.4MB
+2024-02-09 15:32:48,778 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==============>                                    ]  18.83MB/63.08MB
+2024-02-09 15:32:48,882 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [===============>                                   ]  19.36MB/63.08MB
+2024-02-09 15:32:48,904 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [============>                                      ]  16.18MB/63.4MB
+2024-02-09 15:32:48,983 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [===============>                                   ]  19.88MB/63.08MB
+2024-02-09 15:32:49,081 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=============>                                     ]  17.24MB/63.4MB
+2024-02-09 15:32:49,193 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [================>                                  ]  20.95MB/63.08MB
+2024-02-09 15:32:49,208 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=====================>                             ]  21.97MB/51.33MB
+2024-02-09 15:32:49,259 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [==============>                                    ]  18.32MB/63.4MB
+2024-02-09 15:32:49,407 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=================>                                 ]  22.03MB/63.08MB
+2024-02-09 15:32:49,434 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===============>                                   ]  19.37MB/63.4MB
+2024-02-09 15:32:49,540 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===============>                                   ]  19.91MB/63.4MB
+2024-02-09 15:32:49,585 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=====================>                             ]   22.5MB/51.33MB
+2024-02-09 15:32:49,589 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==================>                                ]  23.11MB/63.08MB
+2024-02-09 15:32:49,657 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [================>                                  ]  20.44MB/63.4MB
+2024-02-09 15:32:49,696 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==================>                                ]  23.64MB/63.08MB
+2024-02-09 15:32:49,762 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [================>                                  ]  20.98MB/63.4MB
+2024-02-09 15:32:49,822 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [===================>                               ]  24.18MB/63.08MB
+2024-02-09 15:32:49,837 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [======================>                            ]  23.02MB/51.33MB
+2024-02-09 15:32:49,865 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [================>                                  ]  21.51MB/63.4MB
+2024-02-09 15:32:49,944 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [===================>                               ]  24.72MB/63.08MB
+2024-02-09 15:32:49,985 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=================>                                 ]  22.04MB/63.4MB
+2024-02-09 15:32:50,074 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [====================>                              ]  25.26MB/63.08MB
+2024-02-09 15:32:50,084 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [======================>                            ]  23.54MB/51.33MB
+2024-02-09 15:32:50,172 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [==================>                                ]  23.12MB/63.4MB
+2024-02-09 15:32:50,190 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [====================>                              ]   25.8MB/63.08MB
+2024-02-09 15:32:50,265 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=======================>                           ]  24.06MB/51.33MB
+2024-02-09 15:32:50,281 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [==================>                                ]  23.66MB/63.4MB
+2024-02-09 15:32:50,323 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [====================>                              ]  26.34MB/63.08MB
+2024-02-09 15:32:50,388 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===================>                               ]  24.19MB/63.4MB
+2024-02-09 15:32:50,446 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=======================>                           ]  24.58MB/51.33MB
+2024-02-09 15:32:50,455 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=====================>                             ]  26.87MB/63.08MB
+2024-02-09 15:32:50,498 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===================>                               ]  24.72MB/63.4MB
+2024-02-09 15:32:50,591 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=====================>                             ]   27.4MB/63.08MB
+2024-02-09 15:32:50,613 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [========================>                          ]   25.1MB/51.33MB
+2024-02-09 15:32:50,618 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===================>                               ]  25.26MB/63.4MB
+2024-02-09 15:32:50,727 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [======================>                            ]  27.94MB/63.08MB
+2024-02-09 15:32:50,738 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [====================>                              ]   25.8MB/63.4MB
+2024-02-09 15:32:50,771 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [========================>                          ]  25.63MB/51.33MB
+2024-02-09 15:32:50,852 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [====================>                              ]  26.34MB/63.4MB
+2024-02-09 15:32:50,865 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [======================>                            ]  28.47MB/63.08MB
+2024-02-09 15:32:50,920 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=========================>                         ]  26.16MB/51.33MB
+2024-02-09 15:32:50,969 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=====================>                             ]  26.87MB/63.4MB
+2024-02-09 15:32:51,022 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [======================>                            ]  29.01MB/63.08MB
+2024-02-09 15:32:51,065 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=========================>                         ]  26.68MB/51.33MB
+2024-02-09 15:32:51,078 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=====================>                             ]   27.4MB/63.4MB
+2024-02-09 15:32:51,168 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=======================>                           ]  29.54MB/63.08MB
+2024-02-09 15:32:51,186 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [======================>                            ]  27.95MB/63.4MB
+2024-02-09 15:32:51,231 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [==========================>                        ]   27.2MB/51.33MB
+2024-02-09 15:32:51,292 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [======================>                            ]  28.48MB/63.4MB
+2024-02-09 15:32:51,318 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=======================>                           ]  30.08MB/63.08MB
+2024-02-09 15:32:51,388 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [===========================>                       ]  27.72MB/51.33MB
+2024-02-09 15:32:51,402 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [======================>                            ]  29.02MB/63.4MB
+2024-02-09 15:32:51,460 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [========================>                          ]  30.61MB/63.08MB
+2024-02-09 15:32:51,513 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=======================>                           ]  29.56MB/63.4MB
+2024-02-09 15:32:51,551 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [===========================>                       ]  28.25MB/51.33MB
+2024-02-09 15:32:51,605 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [========================>                          ]  31.14MB/63.08MB
+2024-02-09 15:32:51,627 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=======================>                           ]   30.1MB/63.4MB
+2024-02-09 15:32:51,708 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [============================>                      ]  28.77MB/51.33MB
+2024-02-09 15:32:51,736 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [========================>                          ]  30.63MB/63.4MB
+2024-02-09 15:32:51,743 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=========================>                         ]  31.66MB/63.08MB
+2024-02-09 15:32:51,844 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [========================>                          ]  31.17MB/63.4MB
+2024-02-09 15:32:51,882 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=========================>                         ]  32.21MB/63.08MB
+2024-02-09 15:32:51,888 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [============================>                      ]  29.29MB/51.33MB
+2024-02-09 15:32:52,041 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=========================>                         ]  32.24MB/63.4MB
+2024-02-09 15:32:52,046 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=============================>                     ]  29.81MB/51.33MB
+2024-02-09 15:32:52,064 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=========================>                         ]  32.73MB/63.08MB
+2024-02-09 15:32:52,158 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=========================>                         ]  32.77MB/63.4MB
+2024-02-09 15:32:52,187 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=============================>                     ]  30.33MB/51.33MB
+2024-02-09 15:32:52,234 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==========================>                        ]  33.27MB/63.08MB
+2024-02-09 15:32:52,268 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [==========================>                        ]  33.29MB/63.4MB
+2024-02-09 15:32:52,293 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [==============================>                    ]  30.85MB/51.33MB
+2024-02-09 15:32:52,381 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [==========================>                        ]  33.84MB/63.4MB
+2024-02-09 15:32:52,399 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==========================>                        ]  33.81MB/63.08MB
+2024-02-09 15:32:52,429 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [==============================>                    ]  31.37MB/51.33MB
+2024-02-09 15:32:52,495 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===========================>                       ]  34.37MB/63.4MB
+2024-02-09 15:32:52,551 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [===========================>                       ]  34.35MB/63.08MB
+2024-02-09 15:32:52,580 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [===============================>                   ]  31.89MB/51.33MB
+2024-02-09 15:32:52,603 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===========================>                       ]   34.9MB/63.4MB
+2024-02-09 15:32:52,700 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [===========================>                       ]  34.88MB/63.08MB
+2024-02-09 15:32:52,713 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===========================>                       ]  35.44MB/63.4MB
+2024-02-09 15:32:52,734 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [===============================>                   ]  32.41MB/51.33MB
+2024-02-09 15:32:52,819 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [============================>                      ]  35.97MB/63.4MB
+2024-02-09 15:32:52,846 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [============================>                      ]  35.41MB/63.08MB
+2024-02-09 15:32:52,899 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [================================>                  ]  32.92MB/51.33MB
+2024-02-09 15:32:52,926 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [============================>                      ]   36.5MB/63.4MB
+2024-02-09 15:32:52,989 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [============================>                      ]  35.95MB/63.08MB
+2024-02-09 15:32:53,035 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=============================>                     ]  37.03MB/63.4MB
+2024-02-09 15:32:53,058 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [================================>                  ]  33.44MB/51.33MB
+2024-02-09 15:32:53,138 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [============================>                      ]  36.49MB/63.08MB
+2024-02-09 15:32:53,145 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=============================>                     ]  37.57MB/63.4MB
+2024-02-09 15:32:53,223 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=================================>                 ]  33.96MB/51.33MB
+2024-02-09 15:32:53,252 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [==============================>                    ]   38.1MB/63.4MB
+2024-02-09 15:32:53,274 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=============================>                     ]  37.03MB/63.08MB
+2024-02-09 15:32:53,362 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [==============================>                    ]  38.63MB/63.4MB
+2024-02-09 15:32:53,398 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=============================>                     ]  37.57MB/63.08MB
+2024-02-09 15:32:53,406 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=================================>                 ]  34.49MB/51.33MB
+2024-02-09 15:32:53,477 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [==============================>                    ]  39.17MB/63.4MB
+2024-02-09 15:32:53,533 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==============================>                    ]  38.11MB/63.08MB
+2024-02-09 15:32:53,583 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===============================>                   ]  39.71MB/63.4MB
+2024-02-09 15:32:53,590 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [==================================>                ]  35.01MB/51.33MB
+2024-02-09 15:32:53,672 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==============================>                    ]  38.65MB/63.08MB
+2024-02-09 15:32:53,685 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===============================>                   ]  40.25MB/63.4MB
+2024-02-09 15:32:53,795 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [==================================>                ]  35.54MB/51.33MB
+2024-02-09 15:32:53,820 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [===============================>                   ]  39.18MB/63.08MB
+2024-02-09 15:32:53,875 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [================================>                  ]  41.32MB/63.4MB
+2024-02-09 15:32:53,959 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [===============================>                   ]  39.73MB/63.08MB
+2024-02-09 15:32:53,978 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=================================>                 ]  41.86MB/63.4MB
+2024-02-09 15:32:53,991 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [===================================>               ]  36.07MB/51.33MB
+2024-02-09 15:32:54,077 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [===============================>                   ]  40.27MB/63.08MB
+2024-02-09 15:32:54,157 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [===================================>               ]  36.59MB/51.33MB
+2024-02-09 15:32:54,167 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=================================>                 ]  42.39MB/63.4MB
+2024-02-09 15:32:54,178 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [================================>                  ]  40.81MB/63.08MB
+2024-02-09 15:32:54,289 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [================================>                  ]  41.34MB/63.08MB
+2024-02-09 15:32:54,297 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=================================>                 ]  42.93MB/63.4MB
+2024-02-09 15:32:54,299 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [====================================>              ]   37.1MB/51.33MB
+2024-02-09 15:32:54,399 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=================================>                 ]  41.88MB/63.08MB
+2024-02-09 15:32:54,436 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [==================================>                ]  43.46MB/63.4MB
+2024-02-09 15:32:54,465 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [====================================>              ]  37.63MB/51.33MB
+2024-02-09 15:32:54,517 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=================================>                 ]  42.42MB/63.08MB
+2024-02-09 15:32:54,566 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [==================================>                ]  43.99MB/63.4MB
+2024-02-09 15:32:54,628 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=====================================>             ]  38.16MB/51.33MB
+2024-02-09 15:32:54,634 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==================================>                ]  42.94MB/63.08MB
+2024-02-09 15:32:54,689 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===================================>               ]  44.52MB/63.4MB
+2024-02-09 15:32:54,760 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==================================>                ]  43.49MB/63.08MB
+2024-02-09 15:32:54,796 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=====================================>             ]  38.68MB/51.33MB
+2024-02-09 15:32:54,806 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===================================>               ]  45.05MB/63.4MB
+2024-02-09 15:32:54,898 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==================================>                ]  44.03MB/63.08MB
+2024-02-09 15:32:54,910 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===================================>               ]  45.58MB/63.4MB
+2024-02-09 15:32:54,998 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [===================================>               ]  44.55MB/63.08MB
+2024-02-09 15:32:55,094 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [====================================>              ]  46.66MB/63.4MB
+2024-02-09 15:32:55,099 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [===================================>               ]  45.08MB/63.08MB
+2024-02-09 15:32:55,132 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [======================================>            ]  39.21MB/51.33MB
+2024-02-09 15:32:55,199 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=====================================>             ]  47.19MB/63.4MB
+2024-02-09 15:32:55,242 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [====================================>              ]  45.62MB/63.08MB
+2024-02-09 15:32:55,269 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [======================================>            ]  39.73MB/51.33MB
+2024-02-09 15:32:55,328 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=====================================>             ]  47.73MB/63.4MB
+2024-02-09 15:32:55,386 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=======================================>           ]  40.26MB/51.33MB
+2024-02-09 15:32:55,408 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [====================================>              ]  46.15MB/63.08MB
+2024-02-09 15:32:55,468 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [======================================>            ]  48.27MB/63.4MB
+2024-02-09 15:32:55,489 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=======================================>           ]  40.79MB/51.33MB
+2024-02-09 15:32:55,595 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=====================================>             ]  46.69MB/63.08MB
+2024-02-09 15:32:55,626 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [======================================>            ]   48.8MB/63.4MB
+2024-02-09 15:32:55,669 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [========================================>          ]  41.83MB/51.33MB
+2024-02-09 15:32:55,802 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [======================================>            ]  49.33MB/63.4MB
+2024-02-09 15:32:55,815 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=====================================>             ]  47.23MB/63.08MB
+2024-02-09 15:32:55,830 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=========================================>         ]  42.88MB/51.33MB
+2024-02-09 15:32:55,970 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [==========================================>        ]  43.93MB/51.33MB
+2024-02-09 15:32:56,012 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=======================================>           ]  49.86MB/63.4MB
+2024-02-09 15:32:56,077 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=====================================>             ]  47.77MB/63.08MB
+2024-02-09 15:32:56,112 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [===========================================>       ]  44.96MB/51.33MB
+2024-02-09 15:32:56,257 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=======================================>           ]   50.4MB/63.4MB
+2024-02-09 15:32:56,265 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [============================================>      ]  46.01MB/51.33MB
+2024-02-09 15:32:56,372 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=============================================>     ]  47.06MB/51.33MB
+2024-02-09 15:32:56,382 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [======================================>            ]  48.31MB/63.08MB
+2024-02-09 15:32:56,498 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [==============================================>    ]  48.11MB/51.33MB
+2024-02-09 15:32:56,557 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [========================================>          ]  50.94MB/63.4MB
+2024-02-09 15:32:56,616 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [===============================================>   ]  49.15MB/51.33MB
+2024-02-09 15:32:56,716 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [======================================>            ]  48.85MB/63.08MB
+2024-02-09 15:32:56,740 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [================================================>  ]  50.19MB/51.33MB
+2024-02-09 15:32:56,852 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [========================================>          ]  51.48MB/63.4MB
+2024-02-09 15:32:56,866 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Downloading [=================================================> ]  51.24MB/51.33MB
+2024-02-09 15:32:56,875 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Verifying Checksum 
+2024-02-09 15:32:56,876 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Download complete 
+2024-02-09 15:32:56,912 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Extracting [>                                                  ]  524.3kB/51.33MB
+2024-02-09 15:32:56,955 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=======================================>           ]  49.38MB/63.08MB
+2024-02-09 15:32:56,966 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=========================================>         ]  52.01MB/63.4MB
+2024-02-09 15:32:57,021 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Extracting [===>                                               ]   3.67MB/51.33MB
+2024-02-09 15:32:57,069 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=======================================>           ]  49.92MB/63.08MB
+2024-02-09 15:32:57,119 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=========================================>         ]  53.08MB/63.4MB
+2024-02-09 15:32:57,183 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=======================================>           ]  50.46MB/63.08MB
+2024-02-09 15:32:57,229 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Extracting [======>                                            ]  6.816MB/51.33MB
+2024-02-09 15:32:57,267 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [==========================================>        ]  54.16MB/63.4MB
+2024-02-09 15:32:57,301 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [========================================>          ]     51MB/63.08MB
+2024-02-09 15:32:57,335 INFO o.s.b.l.LogLevel [OutputReader-stderr]  d0c9925abfdf Downloading [======>                                            ]     720B/5.18kB
+2024-02-09 15:32:57,335 INFO o.s.b.l.LogLevel [OutputReader-stderr]  d0c9925abfdf Downloading [==================================================>]   5.18kB/5.18kB
+2024-02-09 15:32:57,335 INFO o.s.b.l.LogLevel [OutputReader-stderr]  d0c9925abfdf Verifying Checksum 
+2024-02-09 15:32:57,360 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Extracting [=========>                                         ]  9.961MB/51.33MB
+2024-02-09 15:32:57,413 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===========================================>       ]  55.22MB/63.4MB
+2024-02-09 15:32:57,419 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [========================================>          ]  51.53MB/63.08MB
+2024-02-09 15:32:57,467 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Extracting [=============>                                     ]  14.16MB/51.33MB
+2024-02-09 15:32:57,548 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=========================================>         ]  52.07MB/63.08MB
+2024-02-09 15:32:57,556 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [============================================>      ]   56.3MB/63.4MB
+2024-02-09 15:32:57,575 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Extracting [==================>                                ]  18.87MB/51.33MB
+2024-02-09 15:32:57,666 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=========================================>         ]  52.61MB/63.08MB
+2024-02-09 15:32:57,685 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Extracting [=======================>                           ]  24.12MB/51.33MB
+2024-02-09 15:32:57,701 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=============================================>     ]  57.37MB/63.4MB
+2024-02-09 15:32:57,785 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==========================================>        ]  53.14MB/63.08MB
+2024-02-09 15:32:57,790 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Extracting [============================>                      ]  28.84MB/51.33MB
+2024-02-09 15:32:57,846 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [==============================================>    ]  58.44MB/63.4MB
+2024-02-09 15:32:57,891 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Extracting [================================>                  ]  33.03MB/51.33MB
+2024-02-09 15:32:57,907 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==========================================>        ]  53.68MB/63.08MB
+2024-02-09 15:32:57,989 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [==============================================>    ]  59.51MB/63.4MB
+2024-02-09 15:32:57,997 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Extracting [=================================>                 ]   34.6MB/51.33MB
+2024-02-09 15:32:58,026 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==========================================>        ]   54.2MB/63.08MB
+2024-02-09 15:32:58,107 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Extracting [===================================>               ]  36.18MB/51.33MB
+2024-02-09 15:32:58,136 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [===============================================>   ]  60.58MB/63.4MB
+2024-02-09 15:32:58,145 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [===========================================>       ]  54.75MB/63.08MB
+2024-02-09 15:32:58,217 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Extracting [=============================================>     ]  46.66MB/51.33MB
+2024-02-09 15:32:58,263 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [===========================================>       ]  55.28MB/63.08MB
+2024-02-09 15:32:58,283 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [================================================>  ]  61.66MB/63.4MB
+2024-02-09 15:32:58,327 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Extracting [==============================================>    ]  47.71MB/51.33MB
+2024-02-09 15:32:58,381 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [============================================>      ]  55.82MB/63.08MB
+2024-02-09 15:32:58,428 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Downloading [=================================================> ]  62.73MB/63.4MB
+2024-02-09 15:32:58,504 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [============================================>      ]  56.35MB/63.08MB
+2024-02-09 15:32:58,517 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Download complete 
+2024-02-09 15:32:58,618 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=============================================>     ]  57.42MB/63.08MB
+2024-02-09 15:32:58,753 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [==============================================>    ]  59.01MB/63.08MB
+2024-02-09 15:32:58,873 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Extracting [================================================>  ]  49.81MB/51.33MB
+2024-02-09 15:32:58,889 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [================================================>  ]  60.64MB/63.08MB
+2024-02-09 15:32:59,026 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Downloading [=================================================> ]  62.26MB/63.08MB
+2024-02-09 15:32:59,035 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Extracting [=================================================> ]  50.33MB/51.33MB
+2024-02-09 15:32:59,062 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Extracting [==================================================>]  51.33MB/51.33MB
+2024-02-09 15:32:59,098 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Verifying Checksum 
+2024-02-09 15:32:59,098 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Download complete 
+2024-02-09 15:32:59,104 INFO o.s.b.l.LogLevel [OutputReader-stderr]  b8307a22608d Pull complete 
+2024-02-09 15:32:59,107 INFO o.s.b.l.LogLevel [OutputReader-stderr]  32f3542f2ba9 Extracting [==================================================>]     884B/884B
+2024-02-09 15:32:59,108 INFO o.s.b.l.LogLevel [OutputReader-stderr]  32f3542f2ba9 Extracting [==================================================>]     884B/884B
+2024-02-09 15:32:59,122 INFO o.s.b.l.LogLevel [OutputReader-stderr]  32f3542f2ba9 Pull complete 
+2024-02-09 15:32:59,125 INFO o.s.b.l.LogLevel [OutputReader-stderr]  795385976c83 Extracting [=>                                                 ]  32.77kB/982.8kB
+2024-02-09 15:32:59,140 INFO o.s.b.l.LogLevel [OutputReader-stderr]  795385976c83 Extracting [==================================================>]  982.8kB/982.8kB
+2024-02-09 15:32:59,140 INFO o.s.b.l.LogLevel [OutputReader-stderr]  795385976c83 Extracting [==================================================>]  982.8kB/982.8kB
+2024-02-09 15:32:59,152 INFO o.s.b.l.LogLevel [OutputReader-stderr]  795385976c83 Pull complete 
+2024-02-09 15:32:59,155 INFO o.s.b.l.LogLevel [OutputReader-stderr]  03b553142f26 Extracting [>                                                  ]  65.54kB/4.603MB
+2024-02-09 15:32:59,260 INFO o.s.b.l.LogLevel [OutputReader-stderr]  03b553142f26 Extracting [=========================>                         ]  2.359MB/4.603MB
+2024-02-09 15:32:59,362 INFO o.s.b.l.LogLevel [OutputReader-stderr]  03b553142f26 Extracting [=================================================> ]  4.588MB/4.603MB
+2024-02-09 15:32:59,363 INFO o.s.b.l.LogLevel [OutputReader-stderr]  03b553142f26 Extracting [==================================================>]  4.603MB/4.603MB
+2024-02-09 15:32:59,378 INFO o.s.b.l.LogLevel [OutputReader-stderr]  03b553142f26 Pull complete 
+2024-02-09 15:32:59,381 INFO o.s.b.l.LogLevel [OutputReader-stderr]  d8ce6174541f Extracting [==================================================>]  2.606kB/2.606kB
+2024-02-09 15:32:59,381 INFO o.s.b.l.LogLevel [OutputReader-stderr]  d8ce6174541f Extracting [==================================================>]  2.606kB/2.606kB
+2024-02-09 15:32:59,391 INFO o.s.b.l.LogLevel [OutputReader-stderr]  d8ce6174541f Pull complete 
+2024-02-09 15:32:59,394 INFO o.s.b.l.LogLevel [OutputReader-stderr]  681c64901273 Extracting [==================================================>]     339B/339B
+2024-02-09 15:32:59,394 INFO o.s.b.l.LogLevel [OutputReader-stderr]  681c64901273 Extracting [==================================================>]     339B/339B
+2024-02-09 15:32:59,404 INFO o.s.b.l.LogLevel [OutputReader-stderr]  681c64901273 Pull complete 
+2024-02-09 15:32:59,418 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Extracting [>                                                  ]  557.1kB/63.08MB
+2024-02-09 15:32:59,526 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Extracting [===>                                               ]  5.014MB/63.08MB
+2024-02-09 15:32:59,631 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Extracting [=======>                                           ]  8.913MB/63.08MB
+2024-02-09 15:32:59,742 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Extracting [==========>                                        ]  13.37MB/63.08MB
+2024-02-09 15:32:59,854 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Extracting [==============>                                    ]  17.83MB/63.08MB
+2024-02-09 15:32:59,961 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Extracting [================>                                  ]  21.17MB/63.08MB
+2024-02-09 15:33:00,065 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Extracting [===================>                               ]  25.07MB/63.08MB
+2024-02-09 15:33:00,172 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Extracting [======================>                            ]  28.97MB/63.08MB
+2024-02-09 15:33:00,284 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Extracting [===========================>                       ]  34.54MB/63.08MB
+2024-02-09 15:33:00,389 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Extracting [===============================>                   ]  40.11MB/63.08MB
+2024-02-09 15:33:00,493 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Extracting [===================================>               ]  45.12MB/63.08MB
+2024-02-09 15:33:00,595 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Extracting [========================================>          ]  51.25MB/63.08MB
+2024-02-09 15:33:00,706 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Extracting [==========================================>        ]  54.03MB/63.08MB
+2024-02-09 15:33:00,809 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Extracting [=============================================>     ]  57.93MB/63.08MB
+2024-02-09 15:33:00,927 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Extracting [=================================================> ]  61.83MB/63.08MB
+2024-02-09 15:33:00,960 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Extracting [==================================================>]  63.08MB/63.08MB
+2024-02-09 15:33:00,978 INFO o.s.b.l.LogLevel [OutputReader-stderr]  27db2241c611 Pull complete 
+2024-02-09 15:33:00,981 INFO o.s.b.l.LogLevel [OutputReader-stderr]  db8e96eb91f6 Extracting [==================================================>]     326B/326B
+2024-02-09 15:33:00,981 INFO o.s.b.l.LogLevel [OutputReader-stderr]  db8e96eb91f6 Extracting [==================================================>]     326B/326B
+2024-02-09 15:33:00,992 INFO o.s.b.l.LogLevel [OutputReader-stderr]  db8e96eb91f6 Pull complete 
+2024-02-09 15:33:01,006 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [>                                                  ]  557.1kB/63.4MB
+2024-02-09 15:33:01,113 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [====>                                              ]  5.571MB/63.4MB
+2024-02-09 15:33:01,214 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [========>                                          ]  11.14MB/63.4MB
+2024-02-09 15:33:01,327 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [============>                                      ]  16.15MB/63.4MB
+2024-02-09 15:33:01,442 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [===============>                                   ]   19.5MB/63.4MB
+2024-02-09 15:33:01,547 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [==================>                                ]   23.4MB/63.4MB
+2024-02-09 15:33:01,656 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [=====================>                             ]   27.3MB/63.4MB
+2024-02-09 15:33:01,777 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [======================>                            ]  28.97MB/63.4MB
+2024-02-09 15:33:02,027 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [=======================>                           ]  30.08MB/63.4MB
+2024-02-09 15:33:02,284 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [========================>                          ]  30.64MB/63.4MB
+2024-02-09 15:33:02,535 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [========================>                          ]   31.2MB/63.4MB
+2024-02-09 15:33:02,786 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [=========================>                         ]  31.75MB/63.4MB
+2024-02-09 15:33:03,032 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [=========================>                         ]  32.31MB/63.4MB
+2024-02-09 15:33:03,287 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [=========================>                         ]  32.87MB/63.4MB
+2024-02-09 15:33:03,479 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [==========================>                        ]  33.42MB/63.4MB
+2024-02-09 15:33:03,684 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [==========================>                        ]  33.98MB/63.4MB
+2024-02-09 15:33:03,995 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [===========================>                       ]  34.54MB/63.4MB
+2024-02-09 15:33:04,282 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [===========================>                       ]  35.09MB/63.4MB
+2024-02-09 15:33:04,512 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [============================>                      ]  35.65MB/63.4MB
+2024-02-09 15:33:04,687 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [============================>                      ]  36.21MB/63.4MB
+2024-02-09 15:33:04,923 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [============================>                      ]  36.77MB/63.4MB
+2024-02-09 15:33:05,168 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [=============================>                     ]  37.32MB/63.4MB
+2024-02-09 15:33:05,412 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [=============================>                     ]  37.88MB/63.4MB
+2024-02-09 15:33:05,718 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [==============================>                    ]  38.44MB/63.4MB
+2024-02-09 15:33:05,988 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [==============================>                    ]  38.99MB/63.4MB
+2024-02-09 15:33:06,289 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [===============================>                   ]  39.55MB/63.4MB
+2024-02-09 15:33:06,524 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [===============================>                   ]  40.11MB/63.4MB
+2024-02-09 15:33:06,778 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [================================>                  ]  41.22MB/63.4MB
+2024-02-09 15:33:06,880 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [=================================>                 ]  42.34MB/63.4MB
+2024-02-09 15:33:06,983 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [=================================>                 ]  42.89MB/63.4MB
+2024-02-09 15:33:07,145 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [==================================>                ]  44.01MB/63.4MB
+2024-02-09 15:33:07,307 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [===================================>               ]  45.12MB/63.4MB
+2024-02-09 15:33:07,428 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [=====================================>             ]  47.91MB/63.4MB
+2024-02-09 15:33:07,559 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [=======================================>           ]  49.58MB/63.4MB
+2024-02-09 15:33:07,661 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [=======================================>           ]  50.69MB/63.4MB
+2024-02-09 15:33:07,879 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [========================================>          ]  51.81MB/63.4MB
+2024-02-09 15:33:07,996 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [==========================================>        ]  54.03MB/63.4MB
+2024-02-09 15:33:08,136 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [===========================================>       ]  55.15MB/63.4MB
+2024-02-09 15:33:08,275 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [============================================>      ]  56.82MB/63.4MB
+2024-02-09 15:33:08,377 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [===============================================>   ]  60.72MB/63.4MB
+2024-02-09 15:33:08,456 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Extracting [==================================================>]   63.4MB/63.4MB
+2024-02-09 15:33:08,529 INFO o.s.b.l.LogLevel [OutputReader-stderr]  28b560af9a2a Pull complete 
+2024-02-09 15:33:08,532 INFO o.s.b.l.LogLevel [OutputReader-stderr]  d0c9925abfdf Extracting [==================================================>]   5.18kB/5.18kB
+2024-02-09 15:33:08,533 INFO o.s.b.l.LogLevel [OutputReader-stderr]  d0c9925abfdf Extracting [==================================================>]   5.18kB/5.18kB
+2024-02-09 15:33:08,546 INFO o.s.b.l.LogLevel [OutputReader-stderr]  d0c9925abfdf Pull complete 
+2024-02-09 15:33:08,567 INFO o.s.b.l.LogLevel [OutputReader-stderr]  db Pulled 
+2024-02-09 15:33:08,593 INFO o.s.b.l.LogLevel [OutputReader-stderr]  Network graphqlserverjavainesmr_default  Creating
+2024-02-09 15:33:08,642 INFO o.s.b.l.LogLevel [OutputReader-stderr]  Network graphqlserverjavainesmr_default  Created
+2024-02-09 15:33:08,643 INFO o.s.b.l.LogLevel [OutputReader-stderr]  Container graphqlserverjavainesmr-db-1  Creating
+2024-02-09 15:33:09,216 INFO o.s.b.l.LogLevel [OutputReader-stderr]  Container graphqlserverjavainesmr-db-1  Created
+2024-02-09 15:33:09,220 INFO o.s.b.l.LogLevel [OutputReader-stderr]  Container graphqlserverjavainesmr-db-1  Starting
+2024-02-09 15:33:09,571 INFO o.s.b.l.LogLevel [OutputReader-stderr]  Container graphqlserverjavainesmr-db-1  Started
+2024-02-09 15:33:09,571 INFO o.s.b.l.LogLevel [OutputReader-stderr]  Container graphqlserverjavainesmr-db-1  Waiting
+2024-02-09 15:33:10,084 INFO o.s.b.l.LogLevel [OutputReader-stderr]  Container graphqlserverjavainesmr-db-1  Healthy
+2024-02-09 15:33:21,609 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-09 15:33:21,611 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-09 15:33:21,638 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-09 15:33:21,638 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-09 15:33:21,639 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-09 15:33:21,639 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 24 ms. Found 0 JDBC repository interfaces.
+2024-02-09 15:33:21,646 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-09 15:33:21,646 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-09 15:33:21,753 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 103 ms. Found 3 JPA repository interfaces.
+2024-02-09 15:33:22,256 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-09 15:33:22,264 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-09 15:33:22,265 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-09 15:33:22,265 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-09 15:33:22,332 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-09 15:33:22,332 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1616 ms
+2024-02-09 15:33:22,477 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-09 15:33:22,535 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-09 15:33:22,563 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-09 15:33:22,769 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-09 15:33:22,791 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-09 15:33:23,129 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@70421a08
+2024-02-09 15:33:23,131 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-09 15:33:23,993 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-09 15:33:24,030 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table personajes (id integer not null auto_increment, descripcion varchar(255) not null, nombre varchar(255) not null, id_videojuego integer not null, primary key (id)) engine=InnoDB
+2024-02-09 15:33:24,053 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table roles (id bigint not null auto_increment, rol varchar(255) not null, primary key (id)) engine=InnoDB
+2024-02-09 15:33:24,073 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table user_roles (user_id bigint not null, roles_id bigint not null, primary key (user_id, roles_id)) engine=InnoDB
+2024-02-09 15:33:24,092 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table users (id bigint not null auto_increment, password varchar(255) not null, username varchar(255) not null, primary key (id)) engine=InnoDB
+2024-02-09 15:33:24,110 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table videojuegos (id integer not null auto_increment, descripcion varchar(255) not null, titulo varchar(255) not null, primary key (id)) engine=InnoDB
+2024-02-09 15:33:24,131 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table personajes add constraint FKgrng0033c5d4f7kl7kfpunguy foreign key (id_videojuego) references videojuegos (id)
+2024-02-09 15:33:24,178 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table user_roles add constraint FKdbv8tdyltxa1qjmfnj9oboxse foreign key (roles_id) references roles (id)
+2024-02-09 15:33:24,231 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table user_roles add constraint FKhfh9dx7w3ubf1co1vdev94g3f foreign key (user_id) references users (id)
+2024-02-09 15:33:24,287 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-09 15:33:24,554 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-09 15:33:24,554 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-09 15:33:25,427 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] Loaded 1 resource(s) in the GraphQL schema.
+2024-02-09 15:33:25,578 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] GraphQL schema inspection:
+	Unmapped fields: {Personaje=[id, nombre, descripcion, videojuego], Mutation=[addVideojuego, addPersonaje]}
+	Unmapped registrations: {}
+	Skipped types: []
+2024-02-09 15:33:25,591 INFO o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration [main] GraphQL endpoint HTTP POST /graphql
+2024-02-09 15:33:25,664 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3acae925, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@67a6f2c4, org.springframework.security.web.context.SecurityContextHolderFilter@7aead7d9, org.springframework.security.web.header.HeaderWriterFilter@62df1f0e, org.springframework.web.filter.CorsFilter@6bac199f, org.springframework.security.web.authentication.logout.LogoutFilter@2a0cc666, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@c7ec499, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@38300447, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2a47fb5d, org.springframework.security.web.access.ExceptionTranslationFilter@1036bb9f]
+2024-02-09 15:33:25,802 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-09 15:33:26,181 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-02-09 15:33:26,201 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
+2024-02-09 15:33:26,211 INFO o.s.b.StartupInfoLogger [main] Started GraphQlServerJavaInesMrApplication in 47.384 seconds (process running for 48.019)
+2024-02-09 15:33:38,522 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-4] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-09 15:33:38,522 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-4] Initializing Servlet 'dispatcherServlet'
+2024-02-09 15:33:38,523 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-4] Completed initialization in 1 ms
+2024-02-09 15:33:44,683 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-6] select ve1_0.id,ve1_0.descripcion,p1_0.id_videojuego,p1_0.id,p1_0.descripcion,p1_0.nombre,ve1_0.titulo from videojuegos ve1_0 join personajes p1_0 on ve1_0.id=p1_0.id_videojuego
+2024-02-09 15:39:28,423 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-09 15:39:28,424 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-02-09 15:39:28,436 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-02-09 15:39:32,326 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-09 15:39:32,352 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 21 with PID 17236 (D:\Ines\GitHub\psp\GraphQLServerJavaInesMR\target\classes started by Inés in D:\Ines\GitHub\psp\GraphQLServerJavaInesMR)
+2024-02-09 15:39:32,353 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-09 15:39:32,395 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'D:\Ines\GitHub\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-09 15:39:33,737 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] There are already Docker Compose services running, skipping startup
+2024-02-09 15:39:34,195 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-09 15:39:34,196 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-09 15:39:34,218 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-09 15:39:34,219 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-09 15:39:34,219 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-09 15:39:34,220 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 21 ms. Found 0 JDBC repository interfaces.
+2024-02-09 15:39:34,226 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-09 15:39:34,227 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-09 15:39:34,309 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 79 ms. Found 3 JPA repository interfaces.
+2024-02-09 15:39:34,757 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-09 15:39:34,764 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-09 15:39:34,765 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-09 15:39:34,766 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-09 15:39:34,813 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-09 15:39:34,814 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1068 ms
+2024-02-09 15:39:34,939 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-09 15:39:34,977 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-09 15:39:35,000 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-09 15:39:35,152 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-09 15:39:35,170 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-09 15:39:35,404 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4910afdf
+2024-02-09 15:39:35,405 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-09 15:39:36,149 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-09 15:39:36,206 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-09 15:39:36,435 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-09 15:39:36,436 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-09 15:39:36,750 WARN o.s.c.s.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personajeServicio' defined in file [D:\Ines\GitHub\psp\GraphQLServerJavaInesMR\target\classes\com\example\graphqlserverjavainesmr\domain\servicio\PersonajeServicio.class]: Unsatisfied dependency expressed through constructor parameter 1: No qualifying bean of type 'com.example.graphqlserverjavainesmr.domain.modelo.mapper.PersonajeEntityMapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2024-02-09 15:39:36,750 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-09 15:39:36,751 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
+2024-02-09 15:39:36,761 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown completed.
+2024-02-09 15:39:36,763 INFO o.a.j.l.DirectJDKLog [main] Stopping service [Tomcat]
+2024-02-09 15:39:36,771 INFO o.s.b.a.l.ConditionEvaluationReportLogger [main] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-02-09 15:39:36,791 ERROR o.s.b.d.LoggingFailureAnalysisReporter [main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 1 of constructor in com.example.graphqlserverjavainesmr.domain.servicio.PersonajeServicio required a bean of type 'com.example.graphqlserverjavainesmr.domain.modelo.mapper.PersonajeEntityMapper' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.example.graphqlserverjavainesmr.domain.modelo.mapper.PersonajeEntityMapper' in your configuration.
+
+2024-02-09 15:39:57,856 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-09 15:39:57,887 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 21 with PID 9244 (D:\Ines\GitHub\psp\GraphQLServerJavaInesMR\target\classes started by Inés in D:\Ines\GitHub\psp\GraphQLServerJavaInesMR)
+2024-02-09 15:39:57,887 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-09 15:39:57,936 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'D:\Ines\GitHub\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-09 15:39:59,322 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] There are already Docker Compose services running, skipping startup
+2024-02-09 15:39:59,842 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-09 15:39:59,843 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-09 15:39:59,869 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-09 15:39:59,870 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-09 15:39:59,871 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-09 15:39:59,871 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 24 ms. Found 0 JDBC repository interfaces.
+2024-02-09 15:39:59,878 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-09 15:39:59,879 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-09 15:39:59,977 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 94 ms. Found 3 JPA repository interfaces.
+2024-02-09 15:40:00,493 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-09 15:40:00,500 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-09 15:40:00,501 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-09 15:40:00,501 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-09 15:40:00,549 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-09 15:40:00,550 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1217 ms
+2024-02-09 15:40:00,680 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-09 15:40:00,722 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-09 15:40:00,755 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-09 15:40:00,922 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-09 15:40:00,942 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-09 15:40:01,203 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7aab98b6
+2024-02-09 15:40:01,205 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-09 15:40:02,026 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-09 15:40:02,096 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-09 15:40:02,329 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-09 15:40:02,329 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-09 15:40:03,198 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] Loaded 1 resource(s) in the GraphQL schema.
+2024-02-09 15:40:03,344 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] GraphQL schema inspection:
+	Unmapped fields: {Personaje=[id, nombre, descripcion, videojuego], Mutation=[addVideojuego, addPersonaje]}
+	Unmapped registrations: {}
+	Skipped types: []
+2024-02-09 15:40:03,362 INFO o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration [main] GraphQL endpoint HTTP POST /graphql
+2024-02-09 15:40:03,424 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@73f83bff, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@72e950ef, org.springframework.security.web.context.SecurityContextHolderFilter@2f0765f7, org.springframework.security.web.header.HeaderWriterFilter@ddca64d, org.springframework.web.filter.CorsFilter@79e2aa2d, org.springframework.security.web.authentication.logout.LogoutFilter@47970962, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@51e513b7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@87affb5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@13b0755e, org.springframework.security.web.access.ExceptionTranslationFilter@3310bb28]
+2024-02-09 15:40:03,553 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-09 15:40:03,867 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-02-09 15:40:03,881 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
+2024-02-09 15:40:03,888 INFO o.s.b.StartupInfoLogger [main] Started GraphQlServerJavaInesMrApplication in 6.261 seconds (process running for 7.358)
+2024-02-09 15:40:07,423 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-09 15:40:07,424 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2024-02-09 15:40:07,425 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2024-02-09 15:40:07,608 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] select pe1_0.id,pe1_0.descripcion,pe1_0.nombre,pe1_0.id_videojuego,v1_0.id,v1_0.descripcion,v1_0.titulo from personajes pe1_0 join videojuegos v1_0 on v1_0.id=pe1_0.id_videojuego
+2024-02-09 15:41:24,342 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-09 15:41:24,376 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 21 with PID 11636 (D:\Ines\GitHub\psp\GraphQLServerJavaInesMR\target\classes started by Inés in D:\Ines\GitHub\psp\GraphQLServerJavaInesMR)
+2024-02-09 15:41:24,377 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-09 15:41:24,429 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'D:\Ines\GitHub\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-09 15:41:25,799 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] There are already Docker Compose services running, skipping startup
+2024-02-09 15:41:26,271 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-09 15:41:26,272 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-09 15:41:26,296 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-09 15:41:26,297 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-09 15:41:26,297 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-09 15:41:26,299 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 23 ms. Found 0 JDBC repository interfaces.
+2024-02-09 15:41:26,306 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-09 15:41:26,306 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-09 15:41:26,392 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 83 ms. Found 3 JPA repository interfaces.
+2024-02-09 15:41:26,875 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-09 15:41:26,884 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-09 15:41:26,886 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-09 15:41:26,886 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-09 15:41:26,932 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-09 15:41:26,932 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1124 ms
+2024-02-09 15:41:27,063 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-09 15:41:27,107 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-09 15:41:27,134 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-09 15:41:27,310 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-09 15:41:27,333 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-09 15:41:27,606 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6fd97fd1
+2024-02-09 15:41:27,608 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-09 15:41:28,444 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-09 15:41:28,506 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-09 15:41:28,758 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-09 15:41:28,758 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-09 15:41:29,575 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] Loaded 1 resource(s) in the GraphQL schema.
+2024-02-09 15:41:29,733 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] GraphQL schema inspection:
+	Unmapped fields: {Personaje=[id, nombre, descripcion, videojuego], Mutation=[addVideojuego, addPersonaje]}
+	Unmapped registrations: {}
+	Skipped types: []
+2024-02-09 15:41:29,745 INFO o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration [main] GraphQL endpoint HTTP POST /graphql
+2024-02-09 15:41:29,806 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1362f4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6e5506c9, org.springframework.security.web.context.SecurityContextHolderFilter@72216f0b, org.springframework.security.web.header.HeaderWriterFilter@1e6a74fe, org.springframework.web.filter.CorsFilter@446b74b9, org.springframework.security.web.authentication.logout.LogoutFilter@77d771a2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@78edbe01, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@438f205c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@41d0b71d, org.springframework.security.web.access.ExceptionTranslationFilter@4d76f990]
+2024-02-09 15:41:29,929 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-09 15:41:30,278 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-02-09 15:41:30,292 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
+2024-02-09 15:41:30,299 INFO o.s.b.StartupInfoLogger [main] Started GraphQlServerJavaInesMrApplication in 6.205 seconds (process running for 7.329)
+2024-02-09 15:41:33,259 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-3] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-09 15:41:33,259 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-3] Initializing Servlet 'dispatcherServlet'
+2024-02-09 15:41:33,260 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-3] Completed initialization in 1 ms
+2024-02-09 15:41:33,442 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-3] select pe1_0.id,pe1_0.descripcion,pe1_0.nombre,pe1_0.id_videojuego,v1_0.id,v1_0.descripcion,v1_0.titulo from personajes pe1_0 join videojuegos v1_0 on v1_0.id=pe1_0.id_videojuego
+2024-02-09 15:42:07,681 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-09 15:42:07,682 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-02-09 15:42:07,695 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-02-09 15:42:11,075 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-02-09 15:42:11,102 INFO o.s.b.StartupInfoLogger [main] Starting GraphQlServerJavaInesMrApplication using Java 21 with PID 18700 (D:\Ines\GitHub\psp\GraphQLServerJavaInesMR\target\classes started by Inés in D:\Ines\GitHub\psp\GraphQLServerJavaInesMR)
+2024-02-09 15:42:11,103 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-02-09 15:42:11,148 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] Using Docker Compose file 'D:\Ines\GitHub\psp\GraphQLServerJavaInesMR\docker-compose.yaml'
+2024-02-09 15:42:12,482 INFO o.s.b.d.c.l.DockerComposeLifecycleManager [main] There are already Docker Compose services running, skipping startup
+2024-02-09 15:42:12,954 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-09 15:42:12,955 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-02-09 15:42:12,978 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.PersonajeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-09 15:42:12,979 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-09 15:42:12,980 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [main] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.graphqlserverjavainesmr.data.repositorios.VideojuegoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-02-09 15:42:12,980 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 22 ms. Found 0 JDBC repository interfaces.
+2024-02-09 15:42:12,987 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-09 15:42:12,988 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-09 15:42:13,081 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 90 ms. Found 3 JPA repository interfaces.
+2024-02-09 15:42:13,563 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2024-02-09 15:42:13,571 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-09 15:42:13,573 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-02-09 15:42:13,573 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-09 15:42:13,623 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-02-09 15:42:13,623 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1130 ms
+2024-02-09 15:42:13,760 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-09 15:42:13,804 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-09 15:42:13,831 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-02-09 15:42:14,000 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-09 15:42:14,022 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-02-09 15:42:14,295 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6fd97fd1
+2024-02-09 15:42:14,297 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-02-09 15:42:15,110 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-09 15:42:15,173 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-09 15:42:15,369 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-02-09 15:42:15,369 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-09 15:42:16,235 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] Loaded 1 resource(s) in the GraphQL schema.
+2024-02-09 15:42:16,400 INFO o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder [main] GraphQL schema inspection:
+	Unmapped fields: {Personaje=[id, nombre, descripcion, videojuego], Mutation=[addVideojuego, addPersonaje]}
+	Unmapped registrations: {}
+	Skipped types: []
+2024-02-09 15:42:16,412 INFO o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration [main] GraphQL endpoint HTTP POST /graphql
+2024-02-09 15:42:16,475 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1362f4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6e5506c9, org.springframework.security.web.context.SecurityContextHolderFilter@72216f0b, org.springframework.security.web.header.HeaderWriterFilter@1e6a74fe, org.springframework.web.filter.CorsFilter@446b74b9, org.springframework.security.web.authentication.logout.LogoutFilter@77d771a2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@78edbe01, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@438f205c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@41d0b71d, org.springframework.security.web.access.ExceptionTranslationFilter@4d76f990]
+2024-02-09 15:42:16,597 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [main] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-09 15:42:16,916 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-02-09 15:42:16,931 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
+2024-02-09 15:42:16,938 INFO o.s.b.StartupInfoLogger [main] Started GraphQlServerJavaInesMrApplication in 6.098 seconds (process running for 6.875)
+2024-02-09 15:42:42,157 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-09 15:42:42,157 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2024-02-09 15:42:42,158 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
+2024-02-09 15:42:42,343 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-2] select pe1_0.id,pe1_0.descripcion,pe1_0.nombre,pe1_0.id_videojuego,v1_0.id,v1_0.descripcion,v1_0.titulo from personajes pe1_0 join videojuegos v1_0 on v1_0.id=pe1_0.id_videojuego
+2024-02-09 15:42:45,198 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-3] select ve1_0.id,ve1_0.descripcion,p1_0.id_videojuego,p1_0.id,p1_0.descripcion,p1_0.nombre,ve1_0.titulo from videojuegos ve1_0 join personajes p1_0 on ve1_0.id=p1_0.id_videojuego
+2024-02-09 15:45:00,810 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-09 15:45:00,812 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-02-09 15:45:00,823 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

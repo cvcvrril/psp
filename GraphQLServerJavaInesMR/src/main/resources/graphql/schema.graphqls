@@ -28,7 +28,7 @@ type Mutation {
 
 input VideojuegoInput {
     id: ID
-    nombre: String
+    titulo: String
 }
 input PersonajeInput {
     id: ID
