@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -15,6 +16,6 @@ public interface PersonajeRepository extends ListCrudRepository<PersonajeEntity,
     select p from PersonajeEntity p 
     JOIN FETCH p.videojuego
     """)
-    Optional<PersonajeEntity> findPersonajes();
+    List<PersonajeEntity> findPersonajes();
 
 }

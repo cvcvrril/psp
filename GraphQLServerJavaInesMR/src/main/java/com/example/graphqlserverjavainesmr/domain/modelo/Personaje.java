@@ -1,4 +1,13 @@
 package com.example.graphqlserverjavainesmr.domain.modelo;
 
-public class Personaje {
+import com.example.graphqlserverjavainesmr.data.modelo.VideojuegoEntity;
+
+public record Personaje(
+        int id,
+        String nombre,
+        String descripcion,
+        VideojuegoEntity videojuego
+) {
+
+
 }
