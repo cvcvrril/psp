@@ -15,9 +15,14 @@ public class VideojuegoController {
 
     private final VideojuegoServicio servicio;
 
+//    @QueryMapping
+//    public List<Videojuego> getVideojuegos() {
+//        return servicio.getVideojuegos();
+//    }
+
     @QueryMapping
     public List<Videojuego> getVideojuegos() {
-        return servicio.getVideojuegos();
+        return servicio.findVideojuegos();
     }
 
 }

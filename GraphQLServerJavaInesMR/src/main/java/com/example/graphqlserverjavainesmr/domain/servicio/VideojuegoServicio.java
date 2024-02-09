@@ -20,4 +20,10 @@ public class VideojuegoServicio {
                 .map(mapper::toVideojuego)
                 .toList();
     }
+
+    public List<Videojuego> findVideojuegos() {
+        return repository.findVideojuegos().stream()
+                .map(mapper::toVideojuego)
+                .toList();
+    }
 }
