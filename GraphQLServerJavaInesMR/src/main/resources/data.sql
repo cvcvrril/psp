@@ -9,11 +9,11 @@ insert into roles (id, rol) values (2, 'ROLE_USER');
 
 insert into users (id, username, password) values (1, 'ines', '$2a$10$QmslVN.VYaukSrN03XSVSukpEiiG//MpvBh2KzG3mxk5kXlC4A5Em');
 
-insert into videojuegos(id, titulo, descripcion) values (1, 'Grand Thief Auto V', 'Prueba prueba');
-insert into videojuegos(id, titulo, descripcion) values (2, 'Blasphemous', 'Pipipipi');
-insert into videojuegos(id, titulo, descripcion) values (3, 'Mario Kart', 'Loloolololo');
+insert into videojuegos(id, titulo, descripcion) values (1, 'Prueba', 'Prueba prueba');
+insert into videojuegos(id, titulo, descripcion) values (2, 'Más pruebas', 'Pipipipi');
+insert into videojuegos(id, titulo, descripcion) values (3, 'Blablablabla', 'Loloolololo');
 
-insert into personajes (id, nombre, descripcion, id_videojuego) values (1, 'Franklin', 'Eoooo', 1);
+insert into personajes (id, nombre, descripcion, id_videojuego) values (1, 'Fiuuuuuuum', 'Eoooo', 1);
 
 
 
