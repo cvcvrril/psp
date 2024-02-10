@@ -24,4 +24,6 @@ public class VideojuegoEntity {
     private String descripcion;
     @OneToMany(mappedBy = "videojuego", cascade = CascadeType.PERSIST)
     private List<PersonajeEntity> personajes;
+    @OneToOne(mappedBy = "videojuego")
+    private MapaEntity mapa;
 }

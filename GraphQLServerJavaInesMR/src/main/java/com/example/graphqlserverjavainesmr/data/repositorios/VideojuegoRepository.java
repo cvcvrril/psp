@@ -14,6 +14,7 @@ public interface VideojuegoRepository extends ListCrudRepository<VideojuegoEntit
     @Query(""" 
     select v from VideojuegoEntity v 
     JOIN FETCH v.personajes
+    JOIN FETCH v.mapa
     """)
     List<VideojuegoEntity> findVideojuegos();
 

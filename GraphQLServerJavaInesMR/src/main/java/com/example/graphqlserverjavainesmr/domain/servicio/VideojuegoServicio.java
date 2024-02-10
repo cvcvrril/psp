@@ -15,12 +15,6 @@ public class VideojuegoServicio {
     private final VideojuegoRepository repository;
     private final VideojuegoEntityMapper mapper;
 
-    public List<Videojuego> getVideojuegos() {
-        return repository.findAll().stream()
-                .map(mapper::toVideojuego)
-                .toList();
-    }
-
     public List<Videojuego> findVideojuegos() {
         return repository.findVideojuegos().stream()
                 .map(mapper::toVideojuego)

@@ -37,35 +37,35 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
 
-                //.authorizeHttpRequests(req ->
-//                        req.requestMatchers(WHITE_LIST_URL)
-//                                .permitAll()
+                .authorizeHttpRequests(req ->
+                        req.requestMatchers(WHITE_LIST_URL)
+                                .permitAll()
 //                                .requestMatchers("/api/v1/management/**").hasAnyRole(ADMIN.name(), MANAGER.name())
 //                                .requestMatchers(GET, "/api/v1/management/**").hasAnyAuthority(ADMIN_READ.name(), MANAGER_READ.name())
 //                                .requestMatchers(POST, "/api/v1/management/**").hasAnyAuthority(ADMIN_CREATE.name(), MANAGER_CREATE.name())
 //                                .requestMatchers(PUT, "/api/v1/management/**").hasAnyAuthority(ADMIN_UPDATE.name(), MANAGER_UPDATE.name())
 //                                .requestMatchers(DELETE, "/api/v1/management/**").hasAnyAuthority(ADMIN_DELETE.name(), MANAGER_DELETE.name())
-                        //req
+//                        req
 //                                .requestMatchers(POST,"/**").permitAll()
-                           //     .requestMatchers(GET,WHITE_LIST_URL).permitAll()
-                            //    .requestMatchers(POST,WHITE_LIST_URL).permitAll()
+                                .requestMatchers(GET, WHITE_LIST_URL).permitAll()
+                                .requestMatchers(POST, WHITE_LIST_URL).permitAll()
 
-                          //      .requestMatchers("/api/auth/login").permitAll()
-                            //    .requestMatchers("/api/alumnos").hasRole("ADMIN")
-                              //  .anyRequest()
+                                //      .requestMatchers("/api/auth/login").permitAll()
+                                //    .requestMatchers("/api/alumnos").hasRole("ADMIN")
+                                //  .anyRequest()
                                 //.authenticated()
-                //)
-                //.sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
-                //.authenticationProvider(authenticationProvider)
-                //.httpBasic(Customizer.withDefaults())
-                //.formLogin(Customizer.withDefaults())
+                                //)
+                                //.sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
+                                //.authenticationProvider(authenticationProvider)
+                                //.httpBasic(Customizer.withDefaults())
+                                //.formLogin(Customizer.withDefaults())
 //                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                //.addFilterBefore(sessionFilter, UsernamePasswordAuthenticationFilter.class)
-                .logout(logout ->
-                        logout.logoutUrl("/api/auth/logout")
-                                .addLogoutHandler((request, response, authentication) -> request.getSession().removeAttribute("LOGIN"))
-                                .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
-                )
+                                //.addFilterBefore(sessionFilter, UsernamePasswordAuthenticationFilter.class)
+                                //.logout(logout ->
+                                //        logout.logoutUrl("/api/auth/logout")
+                                //                .addLogoutHandler((request, response, authentication) -> request.getSession().removeAttribute("LOGIN"))
+                                //                .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
+                                )
         ;
 
         return http.build();
