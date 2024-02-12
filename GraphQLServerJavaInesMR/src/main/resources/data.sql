@@ -23,18 +23,7 @@ insert into videojuegos(id, titulo, descripcion) values (10, 'Red Dead Redemptio
 insert into videojuegos(id, titulo, descripcion) values (11, 'League of Legends', 'Enfréntate en emocionantes batallas de equipo en un juego de estrategia y habilidad.');
 insert into videojuegos(id, titulo, descripcion) values (12, 'Dark Souls III', 'Supera desafiantes enemigos y jefes en un oscuro mundo de fantasía donde cada paso puede ser tu último.');
 
-insert into mapas(id, nombre, id_videojuego) values (1, 'Los Santos', 1);
-insert into mapas(id, nombre, id_videojuego) values (2, 'Circuito Mario', 2);
-insert into mapas(id, nombre, id_videojuego) values (3, 'Al Bagra Fortress', 3);
-insert into mapas(id, nombre, id_videojuego) values (4, 'Hyrule', 4);
-insert into mapas(id, nombre, id_videojuego) values (5, 'Gibraltar', 5);
-insert into mapas(id, nombre, id_videojuego) values (6, 'Antigua Grecia', 6);
-insert into mapas(id, nombre, id_videojuego) values (7, 'Tierras de Caza', 7);
-insert into mapas(id, nombre, id_videojuego) values (8, 'Pisos picados', 8);
-insert into mapas(id, nombre, id_videojuego) values (9, 'Nether', 9);
-insert into mapas(id, nombre, id_videojuego) values (10, 'Salvaje Oeste', 10);
-insert into mapas(id, nombre, id_videojuego) values (11, 'Jungla', 11);
-insert into mapas(id, nombre, id_videojuego) values (12, 'El Burgo De Los No Muertos', 12);
+
 
 insert into personajes(id, nombre, descripcion, id_videojuego) values (1, 'Franklin Clinton', 'Un hábil y astuto delincuente que busca hacerse un nombre en Los Santos', 1);
 insert into personajes(id, nombre, descripcion, id_videojuego) values (2, 'Michael De Santa', 'Un ex ladrón de bancos y estafador que intenta encontrar un equilibrio entre su vida familiar y sus instintos criminales', 1);

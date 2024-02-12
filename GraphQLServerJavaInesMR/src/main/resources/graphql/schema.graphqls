@@ -5,14 +5,8 @@ type Videojuego{
     titulo: String
     descripcion: String
     personajes: [Personaje]
-    mapa: Mapa
 }
 
-type Mapa{
-    id : ID!
-    nombre: String
-    videojuego : Videojuego
-}
 
 type Personaje{
     id : ID!
@@ -37,10 +31,6 @@ input VideojuegoInput {
     titulo: String
 }
 
-input MapaInput {
-    id: ID
-    nombre: String
-}
 
 input PersonajeInput {
     id: ID

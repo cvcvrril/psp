@@ -6,7 +6,6 @@ import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface VideojuegoRepository extends ListCrudRepository<VideojuegoEntity, Integer> {
@@ -14,7 +13,6 @@ public interface VideojuegoRepository extends ListCrudRepository<VideojuegoEntit
     @Query(""" 
     select v from VideojuegoEntity v 
     JOIN FETCH v.personajes
-    JOIN FETCH v.mapa
     """)
     List<VideojuegoEntity> findVideojuegos();
 
