@@ -1,4 +1,4 @@
-package com.example.graphqlserverjavainesmr.config;
+package com.example.graphql.config;
 
 
 @org.springframework.context.annotation.Configuration

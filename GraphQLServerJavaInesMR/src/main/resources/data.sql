@@ -1,6 +1,5 @@
 delete from user_roles;
 delete from personajes;
-delete from mapas;
 delete from videojuegos;
 delete from roles;
 delete from users;
