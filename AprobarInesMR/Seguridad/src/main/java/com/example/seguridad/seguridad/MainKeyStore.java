@@ -1,8 +1,9 @@
-package com.example.graphql.seguridad;
+package com.example.seguridad.seguridad;
 
 
-import com.example.graphql.config.Configuration;
-import com.example.graphql.utils.Constantes;
+
+import com.example.seguridad.config.Configuration;
+import com.example.seguridad.utils.Constantes;
 import lombok.extern.log4j.Log4j2;
 import org.bouncycastle.jce.X509Principal;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -19,7 +20,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 @Log4j2
-public class GraphQLKeyStore {
+public class MainKeyStore {
 
     public static void main(String[] args) {
         try {
