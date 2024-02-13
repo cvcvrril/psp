@@ -4,6 +4,8 @@
 
 * Meter CRUD (add, delete, update) -> Ejemplo GraphQL 
 * Meter más objetos
+* Meter login sencillo
+* Meter registro sencillo
 
 ### Seguridad
 

@@ -1,3 +1,3 @@
 package com.example.graphql.domain.modelo;
 
-public record Rol (int id, String rol) {}
+public record Rol (Long id, String rol) {}

@@ -4,6 +4,9 @@ package com.example.graphql.config;
 import com.example.graphql.utils.Constantes;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Properties;
 
@@ -23,6 +26,11 @@ public class Configuration {
         }catch (Exception e){
             log.error(e.getMessage(),e);
         }
+    }
+
+    @Bean
+    public PasswordEncoder createPasswordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 
