@@ -1,27 +1,24 @@
 package com.example.graphql.domain.servicio;
 
 
-import com.example.graphql.data.modelo.RolEntity;
 import com.example.graphql.data.modelo.UserEntity;
 import com.example.graphql.data.repositorios.UserRepository;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import com.example.graphql.domain.modelo.Rol;
 import com.example.graphql.domain.modelo.User;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class UserServicio {
 
     private final UserRepository repository;
-    private final PasswordEncoder passwordHash;
+    //private final PasswordEncoder passwordHash;
 
-    public UserServicio(UserRepository repository, PasswordEncoder passwordHash) {
+    public UserServicio(UserRepository repository) {
         this.repository = repository;
-        this.passwordHash = passwordHash;
+        //this.passwordHash = passwordHash;
     }
 
     public List<User> getAll(){
@@ -41,18 +38,17 @@ public class UserServicio {
         ).toList();
     }
 
-    public void add(User user){
-        Set<RolEntity> rolesEntity = new HashSet<>();
-        for (Rol rol: user.roles()){
-            rolesEntity.add(new RolEntity(rol.id(), rol.rol()));
-        }
-        String passwordHashed = hashPassword(user.password());
-        UserEntity newUser = new UserEntity(user.id(), user.username(), passwordHashed, rolesEntity);
+    public User add(User user){
+        //String passwordHashed = hashPassword(user.password());
+        String passwordHashed = user.password();
+        UserEntity newUser = new UserEntity(2L, user.username(), passwordHashed, new HashSet<>());
         repository.save(newUser);
+        return user;
     }
 
     private String hashPassword(String password){
-        return passwordHash.encode(password);
+        //return passwordHash.encode(password);
+        return null;
     }
 
 }
