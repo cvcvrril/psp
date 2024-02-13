@@ -10,7 +10,6 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface PersonajeEntityMapper {
     Personaje toPersonaje(PersonajeEntity personajeEntity);
-    Videojuego toVideojuego(VideojuegoEntity videojuegoEntity);
 
 
 }

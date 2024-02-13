@@ -1,0 +1,41 @@
+scalar Date
+
+type Videojuego{
+    id : ID!
+    titulo: String
+    descripcion: String
+    personajes: [Personaje]
+}
+
+
+type Personaje{
+    id : ID!
+    nombre: String
+    descripcion: String
+    videojuego : Videojuego
+}
+
+type Query {
+    getVideojuegos : [Videojuego]!
+    getPersonajes : [Personaje]!
+}
+
+type Mutation {
+    addVideojuego(nombre: String!) : Videojuego
+    addPersonaje(personaje: PersonajeInput!) : Personaje
+}
+
+
+input VideojuegoInput {
+    id: ID
+    titulo: String
+}
+
+
+input PersonajeInput {
+    id: ID
+    nombre: String
+    descripcion: String
+    videojuego: VideojuegoInput
+
+}
