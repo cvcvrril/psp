@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface UserRepository extends ListCrudRepository<UserEntity, UUID> {
+public interface UserRepository extends ListCrudRepository<UserEntity, Long> {
 
     @EntityGraph(attributePaths = {"roles"})
     Optional<UserEntity> findByUsername(String username);

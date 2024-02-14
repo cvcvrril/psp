@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -20,14 +21,13 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/user")
 public class UserController {
 
     private final UserServicio servicio;
 
-    @PostMapping("/registro")
+    @PostMapping("/inesregistrp")
     public User registro(@RequestBody User newUser){
         return servicio.add(newUser);
     }

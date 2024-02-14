@@ -41,7 +41,7 @@ public class UserServicio {
     public User add(User user){
         //String passwordHashed = hashPassword(user.password());
         String passwordHashed = user.password();
-        UserEntity newUser = new UserEntity(2L, user.username(), passwordHashed, new HashSet<>());
+        UserEntity newUser = new UserEntity(0L, user.username(), user.password(), null);
         repository.save(newUser);
         return user;
     }
