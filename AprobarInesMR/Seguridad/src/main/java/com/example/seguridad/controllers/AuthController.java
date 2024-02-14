@@ -1,12 +1,14 @@
 package com.example.seguridad.controllers;
 
 import com.example.seguridad.servicios.AuthServicio;
+import com.google.common.net.HttpHeaders;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.Context;
+import org.springframework.security.core.token.Token;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,7 +42,22 @@ public class AuthController {
     }
 
     @PostMapping("/refreshToken")
-    public String actualizarTokenAccess(@Context HttpServletResponse response, @Context HttpServletRequest request){
+    public Token actualizarTokenAccess(@Context HttpServletResponse response, @Context HttpServletRequest request){
+        String refreshToken = request.getHeader("refreshToken");
+
+        try {
+
+            //INFO: de alguna forma tengo que poder sacar las cosas del refreshToken
+            String username = "";
+            String roles = "";
+
+            String newAccessToken =  generarTokenJWT(120, username, roles);
+
+            response.setHeader(HttpHeaders.AUTHORIZATION, newAccessToken);
+        } catch (Exception e) {
+            throw new RuntimeException("Ha habido un problema al generar el nuevo Access Token");
+        }
+
         //return servicio;
         return null;
     }
@@ -50,7 +67,6 @@ public class AuthController {
         try {
             digest = MessageDigest.getInstance("SHA-512");
         } catch (NoSuchAlgorithmException e) {
-            //throw new WrongObjectException(ConstantsJakarta.HUBO_UN_PROBLEMA);
             throw new RuntimeException("Hubo un problema");
         }
         digest.update("clave".getBytes(StandardCharsets.UTF_8));
