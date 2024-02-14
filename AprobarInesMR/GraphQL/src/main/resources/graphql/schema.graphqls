@@ -21,7 +21,7 @@ type Query {
 }
 
 type Mutation {
-    addVideojuego(nombre: String!) : Videojuego
+    addVideojuego(titulo: String!) : Videojuego
     addPersonaje(personaje: PersonajeInput!) : Personaje
 }
 
