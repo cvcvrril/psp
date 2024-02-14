@@ -2,11 +2,14 @@ package com.example.graphql.domain.servicio;
 
 
 import com.example.graphql.data.modelo.UserEntity;
+import com.example.graphql.data.modelo.error.ErrorObject;
 import com.example.graphql.data.repositorios.UserRepository;
 import com.example.graphql.domain.modelo.Rol;
 import com.example.graphql.domain.modelo.User;
+import io.vavr.control.Either;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 
@@ -38,17 +41,21 @@ public class UserServicio {
         ).toList();
     }
 
-    public User add(User user){
-        //String passwordHashed = hashPassword(user.password());
-        String passwordHashed = user.password();
-        UserEntity newUser = new UserEntity(0L, user.username(), user.password(), null);
-        repository.save(newUser);
-        return user;
+    public Either<ErrorObject,User> add(User user){
+        Either<ErrorObject,User> res;
+        try {
+            //String passwordHashed = hashPassword(user.password());
+            //String passwordHashed = user.password();
+            UserEntity newUser = new UserEntity(0L, user.username(), user.password(), null);
+            repository.save(newUser);
+            res = Either.right(user);
+        }catch (Exception e){
+            res = Either.left(new ErrorObject("Hubo un error", LocalDateTime.now()));
+        }
+        return res;
     }
 
-    private String hashPassword(String password){
-        //return passwordHash.encode(password);
+    public User login(User loginUser) {
         return null;
     }
-
 }

@@ -27,9 +27,14 @@ public class UserController {
 
     private final UserServicio servicio;
 
-    @PostMapping("/inesregistrp")
+    @PostMapping("/registro")
     public User registro(@RequestBody User newUser){
-        return servicio.add(newUser);
+        return servicio.add(newUser).get();
+    }
+
+    @PostMapping("/login")
+    public User login(@RequestBody User loginUser){
+        return servicio.login(loginUser);
     }
 
 
