@@ -20,7 +20,7 @@ public class VideojuegoEntity {
     private int id;
     @Column(name = "titulo", nullable = false)
     private String titulo;
-    @Column(name = "descripcion", nullable = false)
+    @Column(name = "descripcion")
     private String descripcion;
     @OneToMany(mappedBy = "videojuego", cascade = CascadeType.PERSIST)
     private List<PersonajeEntity> personajes;

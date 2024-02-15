@@ -6,6 +6,7 @@ import com.example.graphql.data.modelo.error.ErrorObject;
 import com.example.graphql.data.repositorios.VideojuegoRepository;
 import com.example.graphql.domain.modelo.Videojuego;
 import com.example.graphql.domain.modelo.mapper.VideojuegoEntityMapper;
+import com.example.graphql.ui.exceptions.NotFoundException;
 import io.vavr.control.Either;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,22 +31,19 @@ public class VideojuegoServicio {
                     .toList();
             res = Either.right(videojuegos);
         }catch (Exception e){
-            res = Either.left(new ErrorObject("Hubo un problema con la lista", LocalDateTime.now()));
+            throw new NotFoundException(e.getMessage());
         }
         return res;
     }
 
-    //TODO: cambiar el left por exception
-
     public Either<ErrorObject, Videojuego> addVideojuego(String titulo) {
         Either<ErrorObject, Videojuego> res;
-        VideojuegoEntity newVideojuegoEntity = new VideojuegoEntity(0, titulo, null, new ArrayList<>());
+        VideojuegoEntity newVideojuegoEntity = new VideojuegoEntity(0, titulo, "Videojuego añadido por el usuario", new ArrayList<>());
         try {
             repository.save(newVideojuegoEntity);
             res = Either.right(mapper.toVideojuego(newVideojuegoEntity));
         }catch (Exception e){
-
-            res = Either.left(new ErrorObject("Hubo un problema con la lista", LocalDateTime.now()));
+            throw new NotFoundException(e.getMessage());
         }
         return res;
     }
