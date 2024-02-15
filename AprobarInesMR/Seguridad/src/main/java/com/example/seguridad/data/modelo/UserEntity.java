@@ -1,4 +1,4 @@
-package com.example.graphql.data.modelo;
+package com.example.seguridad.data.modelo;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,27 +1,28 @@
-package com.example.graphql.domain.servicio;
+package com.example.seguridad.domain.servicios;
 
 
-import com.example.graphql.data.modelo.UserEntity;
-import com.example.graphql.data.modelo.error.ErrorObject;
-import com.example.graphql.data.repositorios.UserRepository;
-import com.example.graphql.domain.modelo.Rol;
-import com.example.graphql.domain.modelo.User;
+
+import com.example.seguridad.data.modelo.UserEntity;
+import com.example.seguridad.data.modelo.error.ErrorObjectSeguridad;
+import com.example.seguridad.data.repositorios.UserRepository;
+import com.example.seguridad.domain.modelo.Rol;
+import com.example.seguridad.domain.modelo.User;
 import io.vavr.control.Either;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.List;
 
 @Service
 public class UserServicio {
 
     private final UserRepository repository;
-    //private final PasswordEncoder passwordHash;
+    private final PasswordEncoder passwordHash;
 
-    public UserServicio(UserRepository repository) {
+    public UserServicio(UserRepository repository, PasswordEncoder passwordHash) {
         this.repository = repository;
-        //this.passwordHash = passwordHash;
+        this.passwordHash = passwordHash;
     }
 
     public List<User> getAll(){
@@ -41,8 +42,8 @@ public class UserServicio {
         ).toList();
     }
 
-    public Either<ErrorObject,User> add(User user){
-        Either<ErrorObject,User> res;
+    public Either<ErrorObjectSeguridad,User> add(User user){
+        Either<ErrorObjectSeguridad,User> res;
         try {
             //String passwordHashed = hashPassword(user.password());
             //String passwordHashed = user.password();
@@ -50,7 +51,7 @@ public class UserServicio {
             repository.save(newUser);
             res = Either.right(user);
         }catch (Exception e){
-            res = Either.left(new ErrorObject("Hubo un error", LocalDateTime.now()));
+            res = Either.left(new ErrorObjectSeguridad("Hubo un error", LocalDateTime.now()));
         }
         return res;
     }

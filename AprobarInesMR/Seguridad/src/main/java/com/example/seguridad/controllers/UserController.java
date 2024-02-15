@@ -1,8 +1,7 @@
-package com.example.graphql.ui.controllers;
+package com.example.seguridad.controllers;
 
-
-import com.example.graphql.domain.modelo.User;
-import com.example.graphql.domain.servicio.UserServicio;
+import com.example.seguridad.domain.modelo.User;
+import com.example.seguridad.domain.servicios.UserServicio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,9 +23,5 @@ public class UserController {
     public User login(@RequestBody User loginUser){
         return servicio.login(loginUser);
     }
-
-
-
-
 
 }

@@ -1,4 +1,4 @@
-package com.example.seguridad.servicios;
+package com.example.seguridad.domain.servicios;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

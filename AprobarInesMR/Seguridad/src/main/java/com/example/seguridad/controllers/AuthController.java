@@ -1,6 +1,7 @@
 package com.example.seguridad.controllers;
 
-import com.example.seguridad.servicios.AuthServicio;
+import com.example.seguridad.domain.modelo.User;
+import com.example.seguridad.domain.servicios.UserServicio;
 import com.google.common.net.HttpHeaders;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -8,8 +9,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.Context;
+import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.security.core.token.Token;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,39 +30,43 @@ import java.util.Date;
 @RequestMapping("/auth")
 public class AuthController {
 
-    private final AuthServicio servicio;
+    //private final AuthServicio servicio;
+    private final UserServicio servicioUser;
 
     @PostMapping("/registro")
-    public String registroAuth(){
-        return null;
-        //return servicio;
+    public User registroAuth(@RequestBody User newUser){
+        return servicioUser.add(newUser).get();
     }
 
     @PostMapping("/login")
-    public String loginAuth(){
-        //return servicio;
-        return null;
+    public User loginAuth(@RequestBody User loginUser){
+        return servicioUser.login(loginUser);
     }
 
     @PostMapping("/refreshToken")
-    public Token actualizarTokenAccess(@Context HttpServletResponse response, @Context HttpServletRequest request){
+    public Token actualizarTokenAccess(@Argument String refreshTokenDb, @Context HttpServletResponse response, @Context HttpServletRequest request){
         String refreshToken = request.getHeader("refreshToken");
 
-        try {
+        if (refreshTokenDb.matches(refreshToken)){
+            try {
 
-            //INFO: de alguna forma tengo que poder sacar las cosas del refreshToken
-            String username = "";
-            String roles = "";
+                //INFO: de alguna forma tengo que poder sacar las cosas del refreshToken
+                String username = "";
+                String roles = "";
 
-            String newAccessToken =  generarTokenJWT(120, username, roles);
+                String newAccessToken =  generarTokenJWT(120, username, roles);
 
-            response.setHeader(HttpHeaders.AUTHORIZATION, newAccessToken);
-        } catch (Exception e) {
-            throw new RuntimeException("Ha habido un problema al generar el nuevo Access Token");
+                response.setHeader(HttpHeaders.AUTHORIZATION, newAccessToken);
+            } catch (Exception e) {
+                throw new RuntimeException("Ha habido un problema al generar el nuevo Access Token");
+            }
+
+            //return servicio;
+            return null;
+        }else {
+            return null;
         }
 
-        //return servicio;
-        return null;
     }
 
     private String generarTokenJWT(int expirationSeconds, String username, String rol) {

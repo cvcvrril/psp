@@ -1,4 +1,4 @@
-package com.example.graphql.domain.modelo;
+package com.example.seguridad.domain.modelo;
 
 import java.util.List;
 

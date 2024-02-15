@@ -1,7 +1,6 @@
-package com.example.graphql.data.repositorios;
+package com.example.seguridad.data.repositorios;
 
-
-import com.example.graphql.data.modelo.UserEntity;
+import com.example.seguridad.data.modelo.UserEntity;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.ListCrudRepository;
