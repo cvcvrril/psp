@@ -6,6 +6,7 @@
 * Meter más objetos
 * Meter login sencillo
 * Meter registro sencillo
+* Mover de aquí el login y el registro al servidor de Seguridad
 
 ### Seguridad
 
@@ -18,5 +19,4 @@
 
 ### Dudas
 
-* En el apartado del registro me sale un 404 por alguna razón
 * No sé cómo meter el security ni donde (es necesario para el hasheo de las contraseñas)
