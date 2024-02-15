@@ -13,6 +13,7 @@ import java.util.Properties;
 public class Configuration {
 
     private Properties configProperties;
+
     private String keyStorePassword;
 
     public Configuration(){

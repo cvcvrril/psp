@@ -1,19 +1,26 @@
 # TODOs:
 
+### General
+
+* Mover la contraseña de sitio (del config.properties al application.properties).
+* Quitar el Configuration. Te lo hace solo Spring si metes el @Value. 
+
 ### GraphQL
 
-* Meter CRUD (add, delete, update) -> Ejemplo GraphQL 
-* Meter más objetos
-* Meter login sencillo
-* Meter registro sencillo
-* Mover de aquí el login y el registro al servidor de Seguridad
+* Meter CRUD (add, delete, update) -> Ejemplo GraphQL. 
+* Meter más objetos.
+* Meter login sencillo.
+* Meter registro sencillo.
+* Mover de aquí el login y el registro al servidor de Seguridad.
 
 ### Seguridad
 
-* Probar generación de Tokens (Spring)
-* Probar conexiones con módulo/servidor GraphQL
+* Probar generación de Tokens (Spring).
+* Probar conexiones con módulo/servidor GraphQL.
 
+### Swagger
 
+* Empezar a probarlo. Si hay problemas acudir a Luis.
 
 ---------------------------------------------------------------------
 

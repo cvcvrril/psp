@@ -35,13 +35,16 @@ public class VideojuegoServicio {
         return res;
     }
 
-    public Either<ErrorObject, Videojuego> addVideojuego(String titulo, String descripcion) {
+    //TODO: cambiar el left por exception
+
+    public Either<ErrorObject, Videojuego> addVideojuego(String titulo) {
         Either<ErrorObject, Videojuego> res;
-        VideojuegoEntity newVideojuegoEntity = new VideojuegoEntity(0, titulo, descripcion, new ArrayList<>());
+        VideojuegoEntity newVideojuegoEntity = new VideojuegoEntity(0, titulo, null, new ArrayList<>());
         try {
             repository.save(newVideojuegoEntity);
             res = Either.right(mapper.toVideojuego(newVideojuegoEntity));
         }catch (Exception e){
+
             res = Either.left(new ErrorObject("Hubo un problema con la lista", LocalDateTime.now()));
         }
         return res;

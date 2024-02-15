@@ -3,6 +3,7 @@ package com.example.graphql.ui.controllers;
 import com.example.graphql.domain.modelo.Videojuego;
 import com.example.graphql.domain.servicio.VideojuegoServicio;
 import lombok.RequiredArgsConstructor;
+import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,8 +23,8 @@ public class VideojuegoController {
     }
 
     @MutationMapping
-    public Videojuego addVideojuego(@RequestBody String titulo, String descripcion){
-        return servicio.addVideojuego(titulo, descripcion).get();
+    public Videojuego addVideojuego(@Argument String titulo){
+       return servicio.addVideojuego(titulo).get();
     }
 
 }
