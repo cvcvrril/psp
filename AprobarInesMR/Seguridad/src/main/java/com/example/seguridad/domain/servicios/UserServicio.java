@@ -45,9 +45,9 @@ public class UserServicio {
     public Either<ErrorObjectSeguridad,User> add(User user){
         Either<ErrorObjectSeguridad,User> res;
         try {
-            //String passwordHashed = hashPassword(user.password());
+            String passwordHashed = hashPassword(user.password());
             //String passwordHashed = user.password();
-            UserEntity newUser = new UserEntity(0L, user.username(), user.password(), null);
+            UserEntity newUser = new UserEntity(0L, user.username(), passwordHashed, null);
             repository.save(newUser);
             res = Either.right(user);
         }catch (Exception e){
@@ -56,7 +56,7 @@ public class UserServicio {
         return res;
     }
 
-    public User login(User loginUser) {
-        return null;
+    private String hashPassword(String password){
+        return passwordHash.encode(password);
     }
 }
