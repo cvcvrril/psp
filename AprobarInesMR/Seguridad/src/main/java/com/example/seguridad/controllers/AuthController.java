@@ -17,7 +17,6 @@ public class AuthController {
 
     private final AuthServicio servicioAuth;
     private final UserServicio servicioUser;
-    private final AuthenticationManager authenticationManager;
 
     @PostMapping("/registro")
     public User registroAuth(@RequestBody User newUser) {
