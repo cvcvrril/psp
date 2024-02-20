@@ -8,6 +8,6 @@ import org.springframework.beans.factory.annotation.Value;
 @Data
 @org.springframework.context.annotation.Configuration
 public class Configuration {
-    @Value("KeyStorePassword")
+    @Value("${KeyStorePassword}")
     private String keyStorePassword;
 }

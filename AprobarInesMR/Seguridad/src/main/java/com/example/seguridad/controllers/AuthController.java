@@ -18,14 +18,14 @@ public class AuthController {
     private final AuthServicio servicioAuth;
     private final UserServicio servicioUser;
 
-    @PostMapping("/registro")
-    public User registroAuth(@RequestBody User newUser) {
-        return servicioUser.add(newUser).get();
-    }
-
     @PostMapping("/login")
     public AuthenticationResponse loginAuth(@RequestBody AuthenticationRequest requestAuth, HttpServletRequest request) {
         return servicioAuth.authenticate(requestAuth);
+    }
+
+    @PostMapping("/registro")
+    public User registroAuth(@RequestBody User newUser) {
+        return servicioUser.add(newUser).get();
     }
 
 }

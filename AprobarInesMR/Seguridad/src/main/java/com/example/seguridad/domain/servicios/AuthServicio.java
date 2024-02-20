@@ -23,11 +23,6 @@ public class AuthServicio {
         this.jwtService = jwtService;
     }
 
-    public String hashPassword(String password){
-        passwordHash.encode(password);
-        return null;
-    }
-
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -36,9 +31,8 @@ public class AuthServicio {
                 )
         );
         var user = userDetailsService.loadUserByUsername(request.username());
-
-        var jwtToken = jwtService.generateToken(user);
-        var refreshToken = jwtService.generateRefreshToken(user);
+        var jwtToken = jwtService.generateToken(user.getUsername(), 60).get();
+        var refreshToken = jwtService.generateToken(user.getUsername(), 3000).get();
         return AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
