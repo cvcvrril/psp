@@ -36,8 +36,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Value("${KeyStorePassword}")
     private String keyStorePassword;
 
-    private final UserDetailsService userDetailsService;
-
     @Override
     protected void doFilterInternal(
             @NonNull HttpServletRequest request,
@@ -72,6 +70,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
             }
         }
+        filterChain.doFilter(request, response);
     }
 
     private PublicKey clavePublicaKeyStore() {
