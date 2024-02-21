@@ -7,6 +7,7 @@ import com.example.seguridad.data.modelo.error.ErrorObjectSeguridad;
 import com.example.seguridad.data.repositorios.UserRepository;
 import com.example.seguridad.domain.modelo.Rol;
 import com.example.seguridad.domain.modelo.User;
+import com.example.seguridad.domain.modelo.UserDTO;
 import io.vavr.control.Either;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -37,13 +38,14 @@ public class UserServicio {
         ).toList();
     }
 
-    public Either<ErrorObjectSeguridad,User> add(User user){
-        Either<ErrorObjectSeguridad,User> res;
+    public Either<ErrorObjectSeguridad,UserDTO> add(User user){
+        Either<ErrorObjectSeguridad, UserDTO> res;
         try {
             String passwordHashed = hashPassword(user.password());
             UserEntity newUser = new UserEntity(0L, user.username(), passwordHashed, null);
             repository.save(newUser);
-            res = Either.right(user);
+            UserDTO newUserDTO = new UserDTO(newUser.getId(), newUser.getUsername());
+            res = Either.right(newUserDTO);
         }catch (Exception e){
             res = Either.left(new ErrorObjectSeguridad("Hubo un error", LocalDateTime.now()));
         }

@@ -18,8 +18,7 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity(securedEnabled = true,
-        prePostEnabled = true,
+@EnableMethodSecurity(
         jsr250Enabled = true
 )
 @RequiredArgsConstructor
@@ -39,8 +38,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req
-                                .requestMatchers(GET, WHITE_LIST_URL).permitAll()
-                                .requestMatchers(POST, WHITE_LIST_URL).permitAll()
+                                .requestMatchers(WHITE_LIST_URL).permitAll()
                                 .anyRequest().authenticated()
                                 //.anyRequest().permitAll()
                 )

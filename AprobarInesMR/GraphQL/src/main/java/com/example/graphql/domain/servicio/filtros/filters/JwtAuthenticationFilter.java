@@ -49,29 +49,31 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             String accessToken = authHeader.substring("Bearer".length()).trim();
 
             try {
-                Claims claims = Jwts.parserBuilder()
+                Claims claims = Jwts
+                        .parserBuilder()
                         .setSigningKey(clavePublicaKeyStore())
                         .build()
                         .parseClaimsJws(accessToken)
                         .getBody();
-                String name = (String) claims.get("name");
+                String user = (String) claims.get("user");
                 String rol = (String) claims.get("rol");
 
                 UserDetails userDetails = User.builder()
-                        .username(name)
+                        .username(user)
                         .password("")
-                        .authorities(rol).build();
+                        .roles(rol)
+                        .build();
 
-                if (rol.equals("ADMIN") || rol.equals("USER")){
-                    Authentication authentication = new UsernamePasswordAuthenticationToken(name, null, userDetails.getAuthorities());
-                    SecurityContextHolder.getContext().setAuthentication(authentication);
-                }else {
-                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-                }
-            }catch (ExpiredJwtException ex){
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            }catch (JwtException e){
-                response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                UsernamePasswordAuthenticationToken authentication =
+                        new UsernamePasswordAuthenticationToken(
+                                userDetails,
+                                null,
+                                userDetails.getAuthorities()
+                        );
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            }catch (Exception e){
+                throw new RuntimeException(e.getMessage());
             }
         }
         filterChain.doFilter(request, response);
@@ -93,6 +95,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
-        throw new RuntimeException("Error al cargar la privateKey de la Keystore");
+        throw new RuntimeException("Error al cargar la clave pública de la Keystore");
     }
 }
