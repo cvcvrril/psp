@@ -1,13 +1,5 @@
-delete from user_roles;
 delete from personajes;
 delete from videojuegos;
-delete from roles;
-delete from users;
-
-insert into roles (id, rol) values (1, 'ROLE_ADMIN');
-insert into roles (id, rol) values (2, 'ROLE_USER');
-
-insert into users (id, username, password) values (1, 'ines', '$2a$10$QmslVN.VYaukSrN03XSVSukpEiiG//MpvBh2KzG3mxk5kXlC4A5Em');
 
 insert into videojuegos(id, titulo, descripcion) values (1, 'GTA V', 'Explora Los Santos y disfruta de una historia de crimen y caos.');
 insert into videojuegos(id, titulo, descripcion) values (2, 'Mario Kart', '¡Compite con tus personajes favoritos de Nintendo en emocionantes carreras!');
@@ -21,8 +13,6 @@ insert into videojuegos(id, titulo, descripcion) values (9, 'Minecraft', 'Crea y
 insert into videojuegos(id, titulo, descripcion) values (10, 'Red Dead Redemption 2', 'Vive la vida de un forajido en el salvaje oeste y lucha por la supervivencia y la libertad.');
 insert into videojuegos(id, titulo, descripcion) values (11, 'League of Legends', 'Enfréntate en emocionantes batallas de equipo en un juego de estrategia y habilidad.');
 insert into videojuegos(id, titulo, descripcion) values (12, 'Dark Souls III', 'Supera desafiantes enemigos y jefes en un oscuro mundo de fantasía donde cada paso puede ser tu último.');
-
-
 
 insert into personajes(id, nombre, descripcion, id_videojuego) values (1, 'Franklin Clinton', 'Un hábil y astuto delincuente que busca hacerse un nombre en Los Santos', 1);
 insert into personajes(id, nombre, descripcion, id_videojuego) values (2, 'Michael De Santa', 'Un ex ladrón de bancos y estafador que intenta encontrar un equilibrio entre su vida familiar y sus instintos criminales', 1);

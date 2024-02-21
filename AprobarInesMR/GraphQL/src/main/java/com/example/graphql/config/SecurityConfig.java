@@ -28,8 +28,6 @@ public class SecurityConfig {
     //TODO: ARREGLAR PROBLEMA AUTH
 
     private static final String[] WHITE_LIST_URL = {
-            "/graphiql",
-            "/graphql",
             "/v3/api-docs/**",
             "/swagger-resources/**",
             "/swagger-ui/**",
@@ -46,7 +44,7 @@ public class SecurityConfig {
                                 .requestMatchers(GET, WHITE_LIST_URL).permitAll()
                                 .requestMatchers(POST, WHITE_LIST_URL).permitAll()
                                 .anyRequest().authenticated()
-                        //.anyRequest().permitAll()
+                                //.anyRequest().permitAll()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);

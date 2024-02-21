@@ -28,16 +28,11 @@ public class UserServicio {
     public List<User> getAll(){
         return repository.getAllWithPermisos().stream().map(
                 userEntity -> {
-                    List<Rol> roles = userEntity.getRoles().stream().map(
-                        rolEntity ->
-                                new Rol((long) Math.toIntExact(rolEntity.getId()),
-                                        rolEntity.getRol()
-                                )
-                    ).toList();
+                    Rol rol = new Rol(userEntity.getRoles().getId(), userEntity.getRoles().getRol());
                     return new User((long) Math.toIntExact(userEntity.getId()),
                             userEntity.getUsername(),
                             userEntity.getPassword(),
-                            roles);
+                            rol);
                 }
         ).toList();
     }

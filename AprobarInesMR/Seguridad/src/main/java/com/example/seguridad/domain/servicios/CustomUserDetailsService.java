@@ -32,9 +32,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .username(user.getUsername())
                 .password(user.getPassword())
                 .roles(
-                        user.getRoles().stream()
-                                .map(RolEntity::getRol)
-                                .collect(Collectors.joining(",")))
+                        user.getRoles().getRol())
                 .build();
 
     }
