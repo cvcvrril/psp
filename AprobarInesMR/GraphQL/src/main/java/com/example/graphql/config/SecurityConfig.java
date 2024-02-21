@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
@@ -25,12 +27,27 @@ public class SecurityConfig {
 
     //TODO: ARREGLAR PROBLEMA AUTH
 
+    private static final String[] WHITE_LIST_URL = {
+            "/graphiql",
+            "/graphql",
+            "/v3/api-docs/**",
+            "/swagger-resources/**",
+            "/swagger-ui/**",
+            "/v2/api-docs/**"
+    };
+
     private final JwtAuthenticationFilter jwtFilter;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(req -> req.anyRequest().permitAll())
+                .authorizeHttpRequests(req -> req
+                                .requestMatchers(GET, WHITE_LIST_URL).permitAll()
+                                .requestMatchers(POST, WHITE_LIST_URL).permitAll()
+                                .anyRequest().authenticated()
+                        //.anyRequest().permitAll()
+                )
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
