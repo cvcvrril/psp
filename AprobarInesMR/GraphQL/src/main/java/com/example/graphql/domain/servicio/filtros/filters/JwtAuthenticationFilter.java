@@ -11,13 +11,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -52,11 +51,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                         .build()
                         .parseClaimsJws(accessToken)
                         .getBody();
-                String subject = claims.getSubject();
+                String name = (String) claims.get("name");
                 String rol = (String) claims.get("rol");
 
+                UserDetails userDetails = User.builder()
+                        .username(name)
+                        .password("")
+                        .authorities(rol).build();
+
                 if (rol.equals("ADMIN") || rol.equals("USER")){
-                    Authentication authentication = new UsernamePasswordAuthenticationToken(subject, null, AuthorityUtils.createAuthorityList(rol));
+                    Authentication authentication = new UsernamePasswordAuthenticationToken(name, null, userDetails.getAuthorities());
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }else {
                     response.setStatus(HttpServletResponse.SC_FORBIDDEN);
@@ -69,6 +73,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
         filterChain.doFilter(request, response);
     }
+
+    //TODO: Sacar la contraseña del config
 
     private PublicKey clavePublicaKeyStore() {
         String contra = "Jack";
