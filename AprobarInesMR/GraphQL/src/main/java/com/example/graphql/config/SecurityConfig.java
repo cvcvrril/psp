@@ -25,8 +25,6 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    //TODO: ARREGLAR PROBLEMA AUTH
-
     private static final String[] WHITE_LIST_URL = {
             "/v3/api-docs/**",
             "/swagger-resources/**",

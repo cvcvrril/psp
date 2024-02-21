@@ -41,7 +41,6 @@ public class UserServicio {
         Either<ErrorObjectSeguridad,User> res;
         try {
             String passwordHashed = hashPassword(user.password());
-            //String passwordHashed = user.password();
             UserEntity newUser = new UserEntity(0L, user.username(), passwordHashed, null);
             repository.save(newUser);
             res = Either.right(user);

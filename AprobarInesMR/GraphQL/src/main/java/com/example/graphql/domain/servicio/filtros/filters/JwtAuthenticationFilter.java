@@ -55,7 +55,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 String subject = claims.getSubject();
                 String rol = (String) claims.get("rol");
 
-                if (rol.equals("ROLE_ADMIN") || rol.equals("ROLE_USER")){
+                if (rol.equals("ADMIN") || rol.equals("USER")){
                     Authentication authentication = new UsernamePasswordAuthenticationToken(subject, null, AuthorityUtils.createAuthorityList(rol));
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }else {
