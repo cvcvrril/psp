@@ -23,22 +23,9 @@ public class ExceptionHandlers {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiError);
     }
 
-
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> handleValidationsExceptions(
-            MethodArgumentNotValidException ex) {
-
-        Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach((error) -> {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
-        });
-
-        return errors;
-
+    @ExceptionHandler(FailedTokenException.class)
+    public ResponseEntity<ErrorObject> handleException(FailedTokenException e) {
+        ErrorObject apiError = new ErrorObject(e.getMessage(), LocalDateTime.now());
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(apiError);
     }
-
-
 }

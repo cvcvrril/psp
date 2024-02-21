@@ -1,6 +1,7 @@
 package com.example.graphql.domain.servicio.filtros.filters;
 
 
+import com.example.graphql.config.Configuration;
 import com.google.common.net.HttpHeaders;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -31,6 +32,8 @@ import java.security.cert.X509Certificate;
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
+
+    private final Configuration configuration;
 
     @Override
     protected void doFilterInternal(
@@ -74,11 +77,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    //TODO: Sacar la contraseña del config
-
     private PublicKey clavePublicaKeyStore() {
-        String contra = "Jack";
-        char[] password = contra.toCharArray();
+        String passwordString = "Prueba";
+        char[] password = passwordString.toCharArray();
         try (FileInputStream fis = new FileInputStream("keystore.pfx")) {
             KeyStore keyStore = KeyStore.getInstance("PKCS12");
             keyStore.load(fis, password);

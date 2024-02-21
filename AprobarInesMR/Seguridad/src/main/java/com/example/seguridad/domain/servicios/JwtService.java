@@ -1,5 +1,6 @@
 package com.example.seguridad.domain.servicios;
 
+import com.example.seguridad.config.Configuration;
 import com.example.seguridad.data.modelo.UserEntity;
 import com.example.seguridad.data.modelo.error.ErrorObjectSeguridad;
 import com.example.seguridad.data.repositorios.UserRepository;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.io.FileInputStream;
 import java.security.Key;
 import java.security.KeyStore;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -24,14 +24,16 @@ public class JwtService {
     private String keyStorePassword;
 
     private final UserRepository repository;
+    private final Configuration configuration;
 
-    public JwtService(UserRepository repository) {
+    public JwtService(UserRepository repository, Configuration configuration) {
         this.repository = repository;
+        this.configuration = configuration;
     }
 
     private Key clavePrivadaKeyStore() {
-        String contra = "Jack";
-        char[] password = contra.toCharArray();
+        String passwordString = "Prueba";
+        char[] password = passwordString.toCharArray();
         try (FileInputStream fis = new FileInputStream("keystore.pfx")){
             KeyStore keyStore = KeyStore.getInstance("PKCS12");
             keyStore.load(fis, password);
