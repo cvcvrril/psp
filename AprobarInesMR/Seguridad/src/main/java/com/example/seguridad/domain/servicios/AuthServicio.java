@@ -31,7 +31,10 @@ public class AuthServicio {
                 )
         );
         var user = userDetailsService.loadUserByUsername(request.username());
-        var jwtToken = jwtService.generateToken(user.getUsername(), 60).get();
+
+        //TODO: Cambiar duración del token de acceso ->
+
+        var jwtToken = jwtService.generateToken(user.getUsername(), 3000).get();
         var refreshToken = jwtService.generateToken(user.getUsername(), 3000).get();
         return AuthenticationResponse.builder()
                 .accessToken(jwtToken)

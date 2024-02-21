@@ -33,9 +33,6 @@ import java.security.cert.X509Certificate;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    @Value("${KeyStorePassword}")
-    private String keyStorePassword;
-
     @Override
     protected void doFilterInternal(
             @NonNull HttpServletRequest request,

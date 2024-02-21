@@ -18,8 +18,8 @@ public class AuthController {
     private final AuthServicio servicioAuth;
     private final UserServicio servicioUser;
 
-    @PostMapping("/login")
-    public AuthenticationResponse loginAuth(@RequestBody AuthenticationRequest requestAuth, HttpServletRequest request) {
+    @GetMapping("/login")
+    public AuthenticationResponse loginAuth(@RequestBody AuthenticationRequest requestAuth) {
         return servicioAuth.authenticate(requestAuth);
     }
 
