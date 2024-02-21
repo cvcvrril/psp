@@ -1,9 +1,12 @@
 package com.example.graphql.domain.servicio;
 
 
+import com.example.graphql.data.modelo.PersonajeEntity;
+import com.example.graphql.data.modelo.VideojuegoEntity;
 import com.example.graphql.data.repositorios.PersonajeRepository;
 import com.example.graphql.domain.modelo.Personaje;
 import com.example.graphql.domain.modelo.mapper.PersonajeEntityMapper;
+import com.example.graphql.ui.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,5 +26,14 @@ public class PersonajeServicio {
         return repository.findPersonajes().stream()
                 .map(mapper::toPersonaje)
                 .toList();
+    }
+
+    public void deletePersonaje(int id){
+        PersonajeEntity personajeEntitySel = repository.findById(id).get();
+        if (personajeEntitySel != null){
+            repository.delete(personajeEntitySel);
+        }else {
+            throw new NotFoundException("No se encontró el videojuego seleccionado");
+        }
     }
 }

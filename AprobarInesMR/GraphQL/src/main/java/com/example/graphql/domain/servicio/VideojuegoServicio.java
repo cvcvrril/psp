@@ -47,4 +47,13 @@ public class VideojuegoServicio {
         }
         return res;
     }
+
+    public void deleteVideojuego(int id){
+        VideojuegoEntity videojuegoEntitySel = repository.findById(id).get();
+        if (videojuegoEntitySel != null){
+            repository.delete(videojuegoEntitySel);
+        }else {
+            throw new NotFoundException("No se encontró el videojuego seleccionado");
+        }
+    }
 }
