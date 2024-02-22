@@ -25,6 +25,11 @@ public class PersonajesController {
         return servicio.getPersonajes();
     }
 
+    @QueryMapping
+    public Personaje getPersonaje(@Argument int id){
+        return servicio.getPersonaje(id);
+    }
+
     @MutationMapping
     //@RolesAllowed({"USER", "ADMIN"})
     public void deletePersonaje(@Argument int id){

@@ -36,4 +36,9 @@ public class PersonajeServicio {
             throw new NotFoundException("No se encontró el videojuego seleccionado");
         }
     }
+
+    public Personaje getPersonaje(int id) {
+        PersonajeEntity personajeEntity =  repository.findById(id).orElseThrow(() -> new NotFoundException("Personaje no encontrado"));
+        return mapper.toPersonaje(personajeEntity);
+    }
 }
