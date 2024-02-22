@@ -20,19 +20,19 @@ public class VideojuegoController {
     private final VideojuegoServicio servicio;
 
     @QueryMapping
-    @RolesAllowed({"USER", "ADMIN"})
+    //@RolesAllowed({"USER", "ADMIN"})
     public List<Videojuego> getVideojuegos() {
         return servicio.findVideojuegos().get();
     }
 
     @MutationMapping
-    @RolesAllowed({"USER", "ADMIN"})
+    //@RolesAllowed({"USER", "ADMIN"})
     public Videojuego addVideojuego(@Argument String titulo){
        return servicio.addVideojuego(titulo).get();
     }
 
     @MutationMapping
-    @RolesAllowed({"USER", "ADMIN"})
+    //@RolesAllowed({"USER", "ADMIN"})
     public void deleteVideojuego(@Argument int id){
         servicio.deleteVideojuego(id);
     }

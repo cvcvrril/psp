@@ -6,7 +6,6 @@ type Videojuego{
     descripcion: String
     personajes: [Personaje]
     mapa: Mapa
-    consola: Consola
 }
 
 
@@ -22,14 +21,10 @@ type Mapa{
     nombre: String
 }
 
-type Consola{
-    id : ID!
-    nombre: String
-}
-
 type Query {
     getVideojuegos : [Videojuego]!
     getPersonajes : [Personaje]!
+    getMapas : [Mapa]!
 }
 
 type Mutation {

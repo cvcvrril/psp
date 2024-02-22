@@ -20,7 +20,7 @@ public class PersonajesController {
     private final PersonajeServicio servicio;
 
     @QueryMapping
-    @RolesAllowed({"USER", "ADMIN"})
+    //@RolesAllowed({"USER", "ADMIN"})
     public List<Personaje> getPersonajes() {
         return servicio.getPersonajes();
     }
