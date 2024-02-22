@@ -26,7 +26,7 @@ public class PersonajesController {
     }
 
     @MutationMapping
-    @RolesAllowed({"USER", "ADMIN"})
+    //@RolesAllowed({"USER", "ADMIN"})
     public void deletePersonaje(@Argument int id){
         servicio.deletePersonaje(id);
     }

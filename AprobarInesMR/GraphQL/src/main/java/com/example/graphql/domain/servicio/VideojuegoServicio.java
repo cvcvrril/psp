@@ -38,7 +38,7 @@ public class VideojuegoServicio {
 
     public Either<ErrorObject, Videojuego> addVideojuego(String titulo) {
         Either<ErrorObject, Videojuego> res;
-        VideojuegoEntity newVideojuegoEntity = new VideojuegoEntity(0, titulo, "Videojuego añadido por el usuario", new ArrayList<>());
+        VideojuegoEntity newVideojuegoEntity = new VideojuegoEntity(0, titulo, "Videojuego añadido por el usuario", new ArrayList<>(), null, null);
         try {
             repository.save(newVideojuegoEntity);
             res = Either.right(mapper.toVideojuego(newVideojuegoEntity));

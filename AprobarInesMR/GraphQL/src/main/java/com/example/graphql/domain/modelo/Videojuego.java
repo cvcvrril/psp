@@ -6,7 +6,7 @@ public record Videojuego(
     int id,
     String titulo,
     String descripcion,
-    List<Personaje> personajes
-    //Mapa mapa
+    List<Personaje> personajes,
+    Mapa mapa
 ) {
 }

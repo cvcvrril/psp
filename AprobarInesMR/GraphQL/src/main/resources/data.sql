@@ -1,5 +1,7 @@
 delete from personajes;
 delete from videojuegos;
+delete from consolas;
+delete from mapas;
 
 insert into videojuegos(id, titulo, descripcion) values (1, 'GTA V', 'Explora Los Santos y disfruta de una historia de crimen y caos.');
 insert into videojuegos(id, titulo, descripcion) values (2, 'Mario Kart', '¡Compite con tus personajes favoritos de Nintendo en emocionantes carreras!');
@@ -27,7 +29,14 @@ insert into personajes(id, nombre, descripcion, id_videojuego) values (12, 'Ezio
 insert into personajes(id, nombre, descripcion, id_videojuego) values (13, 'Steve', 'El protagonista sin nombre de Minecraft, quien explora, construye y sobrevive en un mundo de bloques', 9);
 insert into personajes(id, nombre, descripcion, id_videojuego) values (14, 'Arthur Morgan', 'Un forajido de corazón noble en busca de su lugar en un mundo que cambia rápidamente', 10);
 
+insert into consolas(id, nombre) values (1, 'PlayStation');
+insert into consolas(id, nombre) values (2, 'Switch');
+insert into consolas(id, nombre) values (3, 'Xbox');
+insert into consolas(id, nombre) values (4, 'PC');
 
+insert into mapas(id, nombre) values (1, 'Los Santos');
+insert into mapas(id, nombre) values (2, 'Senda Arcoiris');
+insert into mapas(id, nombre) values (3, 'Los Santos');
 
 
 
