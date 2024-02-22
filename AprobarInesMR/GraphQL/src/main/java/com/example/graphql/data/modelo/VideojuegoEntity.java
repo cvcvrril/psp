@@ -26,6 +26,4 @@ public class VideojuegoEntity {
     private List<PersonajeEntity> personajes;
     @OneToOne
     private MapaEntity mapa;
-    @OneToOne
-    private ConsolaEntity consola;
 }

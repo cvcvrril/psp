@@ -5,6 +5,8 @@ type Videojuego{
     titulo: String
     descripcion: String
     personajes: [Personaje]
+    mapa: Mapa
+    consola: Consola
 }
 
 
@@ -13,6 +15,16 @@ type Personaje{
     nombre: String
     descripcion: String
     videojuego : Videojuego
+}
+
+type Mapa{
+    id : ID!
+    nombre: String
+}
+
+type Consola{
+    id : ID!
+    nombre: String
 }
 
 type Query {
