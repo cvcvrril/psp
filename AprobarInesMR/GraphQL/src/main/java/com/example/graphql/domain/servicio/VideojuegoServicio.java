@@ -1,9 +1,12 @@
 package com.example.graphql.domain.servicio;
 
 
+import com.example.graphql.data.modelo.PersonajeEntity;
 import com.example.graphql.data.modelo.VideojuegoEntity;
 import com.example.graphql.data.modelo.error.ErrorObject;
+import com.example.graphql.data.repositorios.PersonajeRepository;
 import com.example.graphql.data.repositorios.VideojuegoRepository;
+import com.example.graphql.domain.modelo.Personaje;
 import com.example.graphql.domain.modelo.Videojuego;
 import com.example.graphql.domain.modelo.mapper.VideojuegoEntityMapper;
 import com.example.graphql.ui.exceptions.NotFoundException;
@@ -21,6 +24,7 @@ import java.util.List;
 public class VideojuegoServicio {
 
     private final VideojuegoRepository repository;
+    private final PersonajeRepository repositorySec;
     private final VideojuegoEntityMapper mapper;
 
     public Either<ErrorObject, List<Videojuego>> findVideojuegos() {
@@ -51,10 +55,15 @@ public class VideojuegoServicio {
 
     public void deleteVideojuego(int id){
         try {
-            VideojuegoEntity videojuegoEntitySel = repository.findById(id).orElseThrow(() -> new NotFoundException(Constantes.ERROR_VIDEOJUEGO_NO_ENCONTRADO));
+            VideojuegoEntity videojuegoEntitySel = repository.findAllById(id).orElseThrow(() -> new NotFoundException(Constantes.ERROR_VIDEOJUEGO_NO_ENCONTRADO));
             repository.delete(videojuegoEntitySel);
         }catch (Exception e){
             throw new NotFoundException(e.getMessage());
         }
+    }
+
+    public Videojuego getVideojuego(int id) {
+        VideojuegoEntity videojuegoEntity = repository.findAllById(id).orElseThrow(() -> new NotFoundException(Constantes.ERROR_VIDEOJUEGO_NO_ENCONTRADO));
+        return mapper.toVideojuego(videojuegoEntity);
     }
 }

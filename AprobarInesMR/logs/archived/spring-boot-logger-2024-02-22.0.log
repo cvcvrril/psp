@@ -54,7 +54,7 @@ This generated password is for development use only. Your security configuration
 2024-02-22 00:00:45,544 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
 2024-02-22 00:00:45,545 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
 2024-02-22 00:01:16,259 ERROR o.s.g.e.ExceptionResolversExceptionHandler [http-nio-8080-exec-3] Unresolved IllegalStateException for executionId 6677e215-13d9-1980-8734-4dad1b403198
-java.lang.IllegalStateException: Could not resolve parameter [0] in public void com.example.graphql.ui.controllers.PersonajesController.deletePersonaje(int): No suitable resolver
+java.lang.IllegalStateException: Could not resolve parameter [0] in public void com.example.graphql.ui.controllers.PersonajeController.deletePersonaje(int): No suitable resolver
 	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.getMethodArgumentValues(DataFetcherHandlerMethod.java:174)
 	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.invoke(DataFetcherHandlerMethod.java:119)
 	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.invoke(DataFetcherHandlerMethod.java:107)
@@ -549,12 +549,12 @@ This generated password is for development use only. Your security configuration
 java.util.NoSuchElementException: No value present
 	at java.base/java.util.Optional.get(Optional.java:143)
 	at com.example.graphql.domain.servicio.PersonajeServicio.deletePersonaje(PersonajeServicio.java:32)
-	at com.example.graphql.ui.controllers.PersonajesController.deletePersonaje(PersonajesController.java:31)
+	at com.example.graphql.ui.controllers.PersonajeController.deletePersonaje(PersonajesController.java:31)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:351)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:713)
-	at com.example.graphql.ui.controllers.PersonajesController$$SpringCGLIB$$0.deletePersonaje(<generated>)
+	at com.example.graphql.ui.controllers.PersonajeController$$SpringCGLIB$$0.deletePersonaje(<generated>)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.graphql.data.method.InvocableHandlerMethodSupport.doInvoke(InvocableHandlerMethodSupport.java:87)

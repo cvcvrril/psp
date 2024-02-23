@@ -1,5 +1,6 @@
 package com.example.graphql.ui.controllers;
 
+import com.example.graphql.domain.modelo.Personaje;
 import com.example.graphql.domain.modelo.Videojuego;
 import com.example.graphql.domain.servicio.VideojuegoServicio;
 import jakarta.annotation.security.RolesAllowed;
@@ -23,6 +24,11 @@ public class VideojuegoController {
     //@RolesAllowed({"USER", "ADMIN"})
     public List<Videojuego> getVideojuegos() {
         return servicio.findVideojuegos().get();
+    }
+
+    @QueryMapping
+    public Videojuego getVideojuego(@Argument int id){
+        return servicio.getVideojuego(id);
     }
 
     @MutationMapping

@@ -5,6 +5,7 @@ import com.example.graphql.data.modelo.PersonajeEntity;
 import com.example.graphql.data.modelo.VideojuegoEntity;
 import com.example.graphql.data.repositorios.PersonajeRepository;
 import com.example.graphql.domain.modelo.Personaje;
+import com.example.graphql.domain.modelo.graphql.PersonajeInput;
 import com.example.graphql.domain.modelo.mapper.PersonajeEntityMapper;
 import com.example.graphql.ui.exceptions.NotFoundException;
 import com.example.graphql.utils.Constantes;
@@ -48,5 +49,12 @@ public class PersonajeServicio {
         PersonajeEntity newPersonajeEntity = new PersonajeEntity(0, nombre, "", null);
         repository.save(newPersonajeEntity);
         return mapper.toPersonaje(newPersonajeEntity);
+    }
+
+    public Personaje updatePersonaje(PersonajeInput personajeInput){
+        Personaje updatedPersonajeObjeto = mapper.toPersonaje(personajeInput);
+        PersonajeEntity personajeEntity = mapper.toPersonajeEntity(updatedPersonajeObjeto);
+        repository.save(personajeEntity);
+        return updatedPersonajeObjeto;
     }
 }
