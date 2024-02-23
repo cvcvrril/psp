@@ -4,6 +4,7 @@ package com.example.seguridad.config;
 
 import com.example.seguridad.data.repositorios.UserRepository;
 import com.example.seguridad.domain.servicios.CustomUserDetailsService;
+import com.example.seguridad.utils.Constantes;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @org.springframework.context.annotation.Configuration
 public class Configuration {
 
-    @Value("${KeyStorePassword}")
+    @Value(Constantes.KEY_STORE_PASSWORD)
     private String keyStorePassword;
 
     @Bean
