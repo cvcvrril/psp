@@ -40,4 +40,6 @@ public class Constantes {
     public static final String REQUEST_MAPPING = "/auth";
     public static final String MAPPING_LOGIN = "/login";
     public static final String MAPPING_REGISTRO = "/registro";
+    public static final String REQUEST_PARAM_USERNAME = "username";
+    public static final String REQUEST_PARAM_PASSWORD = "password";
 }

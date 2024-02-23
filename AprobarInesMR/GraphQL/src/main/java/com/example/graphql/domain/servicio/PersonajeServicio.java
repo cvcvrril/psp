@@ -43,4 +43,10 @@ public class PersonajeServicio {
         }
 
     }
+
+    public Personaje addPersonaje(String nombre) {
+        PersonajeEntity newPersonajeEntity = new PersonajeEntity(0, nombre, "", null);
+        repository.save(newPersonajeEntity);
+        return mapper.toPersonaje(newPersonajeEntity);
+    }
 }

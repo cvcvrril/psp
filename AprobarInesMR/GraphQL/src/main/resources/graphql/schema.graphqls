@@ -30,7 +30,7 @@ type Query {
 
 type Mutation {
     addVideojuego(titulo: String!) : Videojuego
-    addPersonaje(personaje: PersonajeInput!) : Personaje
+    addPersonaje(nombre: String!) : Personaje
     deleteVideojuego(id : Int) : Videojuego
     deletePersonaje(id : Int) : Personaje
 }

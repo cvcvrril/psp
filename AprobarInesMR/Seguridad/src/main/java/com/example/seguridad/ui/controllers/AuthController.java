@@ -8,10 +8,7 @@ import com.example.seguridad.domain.servicios.AuthServicio;
 import com.example.seguridad.domain.servicios.UserServicio;
 import com.example.seguridad.ui.exceptions.NullObjectException;
 import com.example.seguridad.utils.Constantes;
-import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,7 +20,7 @@ public class AuthController {
     private final UserServicio servicioUser;
 
     @GetMapping(Constantes.MAPPING_LOGIN)
-    public AuthenticationResponse loginAuth(@RequestParam("username") String username, @RequestParam("password") String password) {
+    public AuthenticationResponse loginAuth(@RequestParam(Constantes.REQUEST_PARAM_USERNAME) String username, @RequestParam(Constantes.REQUEST_PARAM_PASSWORD) String password) {
         AuthenticationRequest requestAuth = new AuthenticationRequest(username, password);
         return servicioAuth.authenticate(requestAuth);
     }

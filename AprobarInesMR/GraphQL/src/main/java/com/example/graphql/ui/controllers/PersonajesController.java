@@ -31,8 +31,17 @@ public class PersonajesController {
     }
 
     @MutationMapping
+    public Personaje addPersonaje(@Argument String nombre){
+        return servicio.addPersonaje(nombre);
+    }
+
+    @MutationMapping
     //@RolesAllowed({"USER", "ADMIN"})
     public void deletePersonaje(@Argument int id){
         servicio.deletePersonaje(id);
     }
+
+
+
+
 }
