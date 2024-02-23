@@ -42,7 +42,7 @@ public class UserServicio {
 
     public Either<ErrorObjectSeguridad,UserDTO> add(User user){
         Either<ErrorObjectSeguridad, UserDTO> res;
-        if (user.username().isEmpty() || user.password().isEmpty()){
+        if (user.username() == null || user.password() == null){
             res = Either.left(new ErrorObjectSeguridad(Constantes.ERROR_USERNAME_PASSWORD_VACIOS, LocalDateTime.now()));
         }else {
             try {

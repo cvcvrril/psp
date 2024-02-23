@@ -6,6 +6,7 @@ import com.example.seguridad.domain.modelo.User;
 import com.example.seguridad.domain.modelo.UserDTO;
 import com.example.seguridad.domain.servicios.AuthServicio;
 import com.example.seguridad.domain.servicios.UserServicio;
+import com.example.seguridad.ui.exceptions.NullObjectException;
 import com.example.seguridad.utils.Constantes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class AuthController {
 
     @PostMapping(Constantes.MAPPING_REGISTRO)
     public UserDTO registroAuth(@RequestBody User newUser) {
-        return servicioUser.add(newUser).get();
+        return servicioUser.add(newUser).getOrElseThrow(() -> new NullObjectException("User vacío"));
     }
 
 }
