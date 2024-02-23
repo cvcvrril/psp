@@ -1,5 +1,6 @@
 package com.example.graphql.data.modelo;
 
+import com.example.graphql.utils.Constantes;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,13 +10,13 @@ import lombok.*;
 @Builder
 @ToString
 @NoArgsConstructor
-@Table(name = "mapas")
+@Table(name = Constantes.TABLE_MAPAS)
 @AllArgsConstructor
 public class MapaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = Constantes.ID, nullable = false)
     private int id;
-    @Column(name = "nombre", nullable = false)
+    @Column(name = Constantes.NOMBRE, nullable = false)
     private String nombre;
 }

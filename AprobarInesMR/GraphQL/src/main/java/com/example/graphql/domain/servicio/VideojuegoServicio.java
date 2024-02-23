@@ -7,6 +7,7 @@ import com.example.graphql.data.repositorios.VideojuegoRepository;
 import com.example.graphql.domain.modelo.Videojuego;
 import com.example.graphql.domain.modelo.mapper.VideojuegoEntityMapper;
 import com.example.graphql.ui.exceptions.NotFoundException;
+import com.example.graphql.utils.Constantes;
 import io.vavr.control.Either;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -38,7 +39,7 @@ public class VideojuegoServicio {
 
     public Either<ErrorObject, Videojuego> addVideojuego(String titulo) {
         Either<ErrorObject, Videojuego> res;
-        VideojuegoEntity newVideojuegoEntity = new VideojuegoEntity(0, titulo, "Videojuego añadido por el usuario", new ArrayList<>(), null);
+        VideojuegoEntity newVideojuegoEntity = new VideojuegoEntity(0, titulo, Constantes.DESCRIPCION_POR_DEFECTO, new ArrayList<>(), null);
         try {
             repository.save(newVideojuegoEntity);
             res = Either.right(mapper.toVideojuego(newVideojuegoEntity));
@@ -49,11 +50,11 @@ public class VideojuegoServicio {
     }
 
     public void deleteVideojuego(int id){
-        VideojuegoEntity videojuegoEntitySel = repository.findById(id).get();
-        if (videojuegoEntitySel != null){
+        try {
+            VideojuegoEntity videojuegoEntitySel = repository.findById(id).orElseThrow(() -> new NotFoundException(Constantes.ERROR_VIDEOJUEGO_NO_ENCONTRADO));
             repository.delete(videojuegoEntitySel);
-        }else {
-            throw new NotFoundException("No se encontró el videojuego seleccionado");
+        }catch (Exception e){
+            throw new NotFoundException(e.getMessage());
         }
     }
 }

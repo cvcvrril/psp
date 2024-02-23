@@ -2,6 +2,7 @@ package com.example.seguridad.domain.servicios;
 
 
 
+import com.example.seguridad.data.modelo.RolEntity;
 import com.example.seguridad.data.modelo.UserEntity;
 import com.example.seguridad.data.modelo.error.ErrorObjectSeguridad;
 import com.example.seguridad.data.repositorios.UserRepository;
@@ -42,7 +43,7 @@ public class UserServicio {
         Either<ErrorObjectSeguridad, UserDTO> res;
         try {
             String passwordHashed = hashPassword(user.password());
-            UserEntity newUser = new UserEntity(0L, user.username(), passwordHashed, null);
+            UserEntity newUser = new UserEntity(0L, user.username(), passwordHashed, new RolEntity(1L, "USER"));
             repository.save(newUser);
             UserDTO newUserDTO = new UserDTO(newUser.getId(), newUser.getUsername());
             res = Either.right(newUserDTO);
