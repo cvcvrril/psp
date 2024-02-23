@@ -46,7 +46,7 @@ public class PersonajeServicio {
     }
 
     public Personaje addPersonaje(String nombre) {
-        PersonajeEntity newPersonajeEntity = new PersonajeEntity(0, nombre, "", null);
+        PersonajeEntity newPersonajeEntity = new PersonajeEntity(0, nombre, com.example.seguridad.utils.Constantes.DESCRIPCION_POR_DEFECTO_PERSONAJE, null);
         repository.save(newPersonajeEntity);
         return mapper.toPersonaje(newPersonajeEntity);
     }
@@ -57,4 +57,9 @@ public class PersonajeServicio {
         repository.save(personajeEntity);
         return updatedPersonajeObjeto;
     }
+
+    private int genIds(){
+        return getPersonajes().size() + 1;
+    }
+
 }

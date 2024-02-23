@@ -22,7 +22,7 @@ public class PersonajeEntity {
     @Column(name = Constantes.DESCRIPCION, nullable = false)
     private String descripcion;
     @ManyToOne
-    @JoinColumn(name = Constantes.ID_VIDEOJUEGO, nullable = false)
+    @JoinColumn(name = Constantes.ID_VIDEOJUEGO)
     private VideojuegoEntity videojuego;
 
 }

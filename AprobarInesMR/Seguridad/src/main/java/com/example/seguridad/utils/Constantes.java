@@ -42,4 +42,6 @@ public class Constantes {
     public static final String MAPPING_REGISTRO = "/registro";
     public static final String REQUEST_PARAM_USERNAME = "username";
     public static final String REQUEST_PARAM_PASSWORD = "password";
+    public static final String DESCRIPCION_POR_DEFECTO_PERSONAJE = "Personaje añadido por el usuario";
+    public static final String USER_EMPTY = "User vacío";
 }

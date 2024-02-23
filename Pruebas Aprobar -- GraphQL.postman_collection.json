@@ -1,0 +1,564 @@
+{
+	"info": {
+		"_postman_id": "8da9153c-e76e-4a83-a2c3-b5350f86ec9d",
+		"name": "Pruebas Aprobar :: GraphQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30305512"
+	},
+	"item": [
+		{
+			"name": "getVideojuegosCompleto",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJpbmVzIiwiZXhwIjoxNzA4Njg5MzU4LCJ1c2VyIjoiaW5lcyIsInJvbCI6IkFETUlOIn0.VdEzMJbsTr8qBfIze3M8q1TiXioCB5tvoWL3k_hUs18OuMVJgfC6FcTNxa0BzNd-EXrYZWXw8cNl_aBXWv0tMskWc7vIvh0TdhHRhlyZa7Bfy41Uiz1VTYk7E49sW-iW9SQvuBbJX8ijpNpeluxPRzg2A1Dyy43FDlLuxRmVyCgd8Qu8t5XbsFmjaNh16D_-2UwNRMHYkLxXjT1e_n5hJRGx_4vBmHfuZGhjuCwkXbsmBH68AWq-HVO4vJgkVZ8lKQVgklBOCTW_sREqDR-d3vaPOiX15bfUy4dcJwB_Y2Wsfa3xHVsMU_ZHM6kwZKR6nhQ7-sQKfynzRJzGwut_XA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n    getVideojuegos{\r\n        id\r\n        titulo\r\n        descripcion\r\n        personajes{\r\n            nombre\r\n        }\r\n        mapa{\r\n            nombre\r\n        }\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getVideojuegos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJpbmVzIiwiZXhwIjoxNzA4NTU1MTQ3LCJ1c2VyIjoiaW5lcyIsInJvbCI6IkFETUlOIn0.paQqVfjdq2wnsDl-CBPlU-8oM9qqYDY_EQJqDwjzbYUweqhcAmUDYe-v3nB_bX5iRqDSSnL6hYAy4QLIApMzVhX1ChhokGUJuDh8WFfVN1nTz2UXVhd-YjTSKeC6h8hc03S5SsoQtrxmCD6rooJZN6nDZU3fAglOzMgtWK4sWSuvTKlmspwNjBPfxa7ryLt_g4fbuI5MBAk8mcyf4c2cfKoL1q8d9shsbtt65zjo5APbkTh6-c3pOe3KoHYoc1VMfVAOggQRovoD8gGzjvfS2V7pXGAjSp_d9lKRAJbmOmdF1T_Husl0zzjg0mAYK9ZCD_JD6S2eSx_d5kGaa68Wuw",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n    getVideojuegos{\r\n        id\r\n        titulo\r\n        descripcion\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPersonajes",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "algorithm",
+							"value": "HS256",
+							"type": "string"
+						},
+						{
+							"key": "isSecretBase64Encoded",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "payload",
+							"value": "{}",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "queryParamKey",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "header",
+							"value": "{}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJpbmVzIiwiZXhwIjoxNzA4Njg3ODk4LCJ1c2VyIjoiaW5lcyIsInJvbCI6IkFETUlOIn0.u2vLQubalh9FpBDbu473yrrQILbVuxiLNiHLLyyqpW9rjdbj8rRHaG5HtSBGebIuAbzNNTA9mn_BxhPnOxoUjUOd6YKWi0djkDVQpb1YQPxyFsvpqhTvm_vHJSfNlQbl8HG1OSGP7sJ8DTYTOmLIqjA8EmtCZYNygcZIv1Ig8cXP9alblJem5HVIAcFWS5r14f1Q6-shpYz_foa3L5HR_zFlAYKh_wciaJacBEEYaiVBPgiYzbVza2dZZgfoidcWyyVs6CkBKB0fDC_eRSdLmN3iBuc2GAobSRrm_paogKICt8uOJRx6Lh1VfOwPHMcmEh7WXuTW4VHLXzJpzNGrqQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n    getPersonajes{\r\n        nombre\r\n        descripcion\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPersonaje",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "algorithm",
+							"value": "HS256",
+							"type": "string"
+						},
+						{
+							"key": "isSecretBase64Encoded",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "payload",
+							"value": "{}",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "queryParamKey",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "header",
+							"value": "{}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJpbmVzIiwiZXhwIjoxNzA4NTkzODU3LCJ1c2VyIjoiaW5lcyIsInJvbCI6ImFkbWluIn0.EJZVP4r_gzLxaDN1ph2f4P7ZjnyHb1hJJcRbBZkiv5VRvlrJdluxRmDmgy7AcCtuLNkvdXZZbYfB_JNRDOF7c-o671AHYjSpP51jP7krkEeHmm8mnZDiNezfI-Io-OFaqhkCIP-UKg5a3NA6Qbjal-HuZGtpHiMElhxrL7anu-0hwm1lgAZzMQ2-MR3dHmMZfjR5s03y8FtJTu_ErZUJW0_KD2IYFT-kpsaoN6PvJjkTsBTS28tNWnJLuSqIBidtiCG895kKw28UelFLcyHAiCa_r5z1-BEfY1aq5dS7klmSNrSZTRDbRpphiTVdpogT4ZLbuZ-FzukGdyJkFGJw5g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n   getPersonaje(id: 1){\r\n        nombre\r\n        descripcion\r\n   }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getVideojuego",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "algorithm",
+							"value": "HS256",
+							"type": "string"
+						},
+						{
+							"key": "isSecretBase64Encoded",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "payload",
+							"value": "{}",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "queryParamKey",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "header",
+							"value": "{}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJpbmVzIiwiZXhwIjoxNzA4NTkzODU3LCJ1c2VyIjoiaW5lcyIsInJvbCI6ImFkbWluIn0.EJZVP4r_gzLxaDN1ph2f4P7ZjnyHb1hJJcRbBZkiv5VRvlrJdluxRmDmgy7AcCtuLNkvdXZZbYfB_JNRDOF7c-o671AHYjSpP51jP7krkEeHmm8mnZDiNezfI-Io-OFaqhkCIP-UKg5a3NA6Qbjal-HuZGtpHiMElhxrL7anu-0hwm1lgAZzMQ2-MR3dHmMZfjR5s03y8FtJTu_ErZUJW0_KD2IYFT-kpsaoN6PvJjkTsBTS28tNWnJLuSqIBidtiCG895kKw28UelFLcyHAiCa_r5z1-BEfY1aq5dS7klmSNrSZTRDbRpphiTVdpogT4ZLbuZ-FzukGdyJkFGJw5g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n   getVideojuego(id: 1){\r\n        id\r\n        titulo\r\n        descripcion\r\n   }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getMapas",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "algorithm",
+							"value": "HS256",
+							"type": "string"
+						},
+						{
+							"key": "isSecretBase64Encoded",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "payload",
+							"value": "{}",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "queryParamKey",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "header",
+							"value": "{}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJpbmVzIiwiZXhwIjoxNzA4NTkzODU3LCJ1c2VyIjoiaW5lcyIsInJvbCI6ImFkbWluIn0.EJZVP4r_gzLxaDN1ph2f4P7ZjnyHb1hJJcRbBZkiv5VRvlrJdluxRmDmgy7AcCtuLNkvdXZZbYfB_JNRDOF7c-o671AHYjSpP51jP7krkEeHmm8mnZDiNezfI-Io-OFaqhkCIP-UKg5a3NA6Qbjal-HuZGtpHiMElhxrL7anu-0hwm1lgAZzMQ2-MR3dHmMZfjR5s03y8FtJTu_ErZUJW0_KD2IYFT-kpsaoN6PvJjkTsBTS28tNWnJLuSqIBidtiCG895kKw28UelFLcyHAiCa_r5z1-BEfY1aq5dS7klmSNrSZTRDbRpphiTVdpogT4ZLbuZ-FzukGdyJkFGJw5g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n    getMapas{\r\n        id\r\n        nombre\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"hola\",\r\n    \"password\": \"hola\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/auth/registro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"auth",
+						"registro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "loginInes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/auth/login?username=ines&password=ines",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"auth",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "ines"
+						},
+						{
+							"key": "password",
+							"value": "ines"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addVideojuego",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation addVideojuego{\r\n    addVideojuego( titulo: \"Portal\" ){\r\n        titulo\r\n        descripcion\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addPersonaje",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation addPersonaje{\r\n    addPersonaje( nombre: \"Portal\" ){\r\n        nombre\r\n        descripcion\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePersonaje",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJpbmVzIiwiZXhwIjoxNzA4NTkwMjY4LCJ1c2VyIjoiaW5lcyIsInJvbCI6IkFETUlOIn0.aHAFLW21JiubeIqH_7KbU97lvYfraQIgigVol2jzQZ7uQGYYIpo6eH8jmze5VWRH-vXZJFg8ZDf8CnsyY08NFxt34tOoUzAUQMQYWvCVexvoAOXngcbGCGFwwLgGOYV5BRUkxnWLFfw6rzmwTv04TNV5UX__iapL73Rq9cVCY1qjMF7KQ5FCjYiIRtkuR643p7quHn5hGEgUQMVb3QZ2mEhwqFb7lVgmSxp6wW3g77QM8VCqDpSLC_Qb6k_3cXwsEgMldvyj8U4Cw3VzfcCpE7i4erPnWUUcHn_C2bNHBdQw3riR6zSVECZrVBxZNvFJGN8AMbtGrEvuJKsp94ZSKA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation deletePersonaje{\r\n    deletePersonaje(id: 14){\r\n        nombre\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePersonaje",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJpbmVzIiwiZXhwIjoxNzA4NTkwMjY4LCJ1c2VyIjoiaW5lcyIsInJvbCI6IkFETUlOIn0.aHAFLW21JiubeIqH_7KbU97lvYfraQIgigVol2jzQZ7uQGYYIpo6eH8jmze5VWRH-vXZJFg8ZDf8CnsyY08NFxt34tOoUzAUQMQYWvCVexvoAOXngcbGCGFwwLgGOYV5BRUkxnWLFfw6rzmwTv04TNV5UX__iapL73Rq9cVCY1qjMF7KQ5FCjYiIRtkuR643p7quHn5hGEgUQMVb3QZ2mEhwqFb7lVgmSxp6wW3g77QM8VCqDpSLC_Qb6k_3cXwsEgMldvyj8U4Cw3VzfcCpE7i4erPnWUUcHn_C2bNHBdQw3riR6zSVECZrVBxZNvFJGN8AMbtGrEvuJKsp94ZSKA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation deletePersonaje{\r\n    deletePersonaje(id: 14){\r\n        nombre\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteVideojuego",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation deleteVideojuego{\r\n    deleteVideojuego(id: 1){\r\n        titulo\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

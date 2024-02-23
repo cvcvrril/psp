@@ -27,7 +27,7 @@ public class AuthController {
 
     @PostMapping(Constantes.MAPPING_REGISTRO)
     public UserDTO registroAuth(@RequestBody User newUser) {
-        return servicioUser.add(newUser).getOrElseThrow(() -> new NullObjectException("User vacío"));
+        return servicioUser.add(newUser).getOrElseThrow(() -> new NullObjectException(Constantes.USER_EMPTY));
     }
 
 }
