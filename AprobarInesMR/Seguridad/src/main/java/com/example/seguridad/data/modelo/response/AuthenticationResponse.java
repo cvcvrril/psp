@@ -1,5 +1,6 @@
 package com.example.seguridad.data.modelo.response;
 
+import com.example.seguridad.utils.Constantes;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,8 +13,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AuthenticationResponse {
 
-  @JsonProperty("access_token")
+  @JsonProperty(Constantes.ACCESS_TOKEN)
   private String accessToken;
-  @JsonProperty("refresh_token")
+  @JsonProperty(Constantes.REFRESH_TOKEN)
   private String refreshToken;
 }

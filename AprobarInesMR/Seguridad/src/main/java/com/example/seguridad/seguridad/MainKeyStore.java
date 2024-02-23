@@ -47,7 +47,7 @@ public class MainKeyStore {
             X509Certificate cert =  cert1.generate(clavePrivada);
 
             KeyStore ks = KeyStore.getInstance(Constantes.PKCS_12);
-            String passwordString = "Prueba";
+            String passwordString = Constantes.PASSWORD_STRING;
             char[] password = passwordString.toCharArray();
             ks.load(null, null);
             ks.setCertificateEntry(Constantes.SERVER, cert);

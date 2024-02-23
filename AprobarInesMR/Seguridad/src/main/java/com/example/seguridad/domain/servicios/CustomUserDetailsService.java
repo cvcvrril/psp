@@ -4,6 +4,7 @@ package com.example.seguridad.domain.servicios;
 import com.example.seguridad.data.modelo.UserEntity;
 import com.example.seguridad.data.modelo.RolEntity;
 import com.example.seguridad.data.repositorios.UserRepository;
+import com.example.seguridad.utils.Constantes;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,7 +26,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        UserEntity user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        UserEntity user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(Constantes.ERROR_USER_NOT_FOUND));
 
         return User.builder()
                 .username(user.getUsername())

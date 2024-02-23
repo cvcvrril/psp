@@ -6,23 +6,24 @@ import com.example.seguridad.domain.modelo.User;
 import com.example.seguridad.domain.modelo.UserDTO;
 import com.example.seguridad.domain.servicios.AuthServicio;
 import com.example.seguridad.domain.servicios.UserServicio;
+import com.example.seguridad.utils.Constantes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/auth")
+@RequestMapping(Constantes.REQUEST_MAPPING)
 public class AuthController {
 
     private final AuthServicio servicioAuth;
     private final UserServicio servicioUser;
 
-    @GetMapping("/login")
+    @GetMapping(Constantes.MAPPING_LOGIN)
     public AuthenticationResponse loginAuth(@RequestBody AuthenticationRequest requestAuth) {
         return servicioAuth.authenticate(requestAuth);
     }
 
-    @PostMapping("/registro")
+    @PostMapping(Constantes.MAPPING_REGISTRO)
     public UserDTO registroAuth(@RequestBody User newUser) {
         return servicioUser.add(newUser).get();
     }

@@ -1,5 +1,6 @@
 package com.example.seguridad.data.modelo;
 
+import com.example.seguridad.utils.Constantes;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,16 +13,16 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@Table(name = "users")
+@Table(name = Constantes.TABLE_USERS)
 public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = Constantes.ID, nullable = false)
     private Long id;
-    @Column(name = "username", nullable = false)
+    @Column(name = Constantes.USERNAME, nullable = false)
     private String username;
-    @Column(name = "password", nullable = false)
+    @Column(name = Constantes.PASSWORD, nullable = false)
     private String password;
     @ManyToOne(fetch = FetchType.LAZY)
     private RolEntity roles;

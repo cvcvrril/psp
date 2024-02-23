@@ -4,6 +4,7 @@ import com.example.seguridad.config.Configuration;
 import com.example.seguridad.data.modelo.UserEntity;
 import com.example.seguridad.data.modelo.error.ErrorObjectSeguridad;
 import com.example.seguridad.data.repositorios.UserRepository;
+import com.example.seguridad.utils.Constantes;
 import io.jsonwebtoken.Jwts;
 import io.vavr.control.Either;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,11 +19,6 @@ import java.util.Date;
 
 @Service
 public class JwtService {
-
-
-    @Value("${KeyStorePassword}")
-    private String keyStorePassword;
-
     private final UserRepository repository;
     private final Configuration configuration;
 
@@ -32,12 +28,12 @@ public class JwtService {
     }
 
     private Key clavePrivadaKeyStore() {
-        String passwordString = "Prueba";
+        String passwordString = Constantes.PASSWORD_STRING;
         char[] password = passwordString.toCharArray();
-        try (FileInputStream fis = new FileInputStream("keystore.pfx")) {
-            KeyStore keyStore = KeyStore.getInstance("PKCS12");
+        try (FileInputStream fis = new FileInputStream(Constantes.KEYSTORE_PFX)) {
+            KeyStore keyStore = KeyStore.getInstance(Constantes.PKCS_12);
             keyStore.load(fis, password);
-            return keyStore.getKey("server", password);
+            return keyStore.getKey(Constantes.ALIAS_SERVER, password);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -50,8 +46,8 @@ public class JwtService {
             String token = Jwts.builder()
                     .setSubject(user.getUsername())
                     .setExpiration(Date.from(LocalDateTime.now().plusSeconds(duration).atZone(ZoneId.systemDefault()).toInstant()))
-                    .claim("user", user.getUsername())
-                    .claim("rol", user.getRoles().getRol())
+                    .claim(Constantes.CLAIM_USER, user.getUsername())
+                    .claim(Constantes.CLAIM_ROL, user.getRoles().getRol())
                     .signWith(clavePrivadaKeyStore())
                     .compact();
             res = Either.right(token);
@@ -68,8 +64,8 @@ public class JwtService {
             String token = Jwts.builder()
                     .setSubject(user.getUsername())
                     .setExpiration(Date.from(LocalDateTime.now().plusHours(duration).atZone(ZoneId.systemDefault()).toInstant()))
-                    .claim("user", user.getUsername())
-                    .claim("rol", user.getRoles().getRol())
+                    .claim(Constantes.CLAIM_USER, user.getUsername())
+                    .claim(Constantes.CLAIM_ROL, user.getRoles().getRol())
                     .signWith(clavePrivadaKeyStore())
                     .compact();
             res = Either.right(token);
