@@ -20,6 +20,10 @@ public class InformeEntity {
     private int id;
     @Column(name = "documento")
     private String documento;
-    private EmpleadoEntity empleadoEntity;
+    @Column(name = "firma")
+    private String firma;
+    @ManyToOne
+    @JoinColumn(name = "id_empleado")
+    private EmpleadoEntity empleado;
 
 }
