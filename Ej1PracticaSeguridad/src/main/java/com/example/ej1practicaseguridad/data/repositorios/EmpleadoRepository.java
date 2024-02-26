@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EmpleadoRepository extends ListCrudRepository<EmpleadoEntity, Integer> {
+
+    EmpleadoEntity findByUsername(String username);
+
 }

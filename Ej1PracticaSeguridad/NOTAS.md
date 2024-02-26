@@ -19,3 +19,7 @@ informe lo ha hecho el de la mañana."
 ## Idea de cómo realizar este ejercicio
 
 * Hay que usar 
+
+## Otras notas
+
+* La encriptación asimétrica se usa cuando se desee compartir una clave simétrica entre dos personas
